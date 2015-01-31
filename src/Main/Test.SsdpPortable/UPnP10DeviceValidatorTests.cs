@@ -126,7 +126,7 @@ namespace Test.RssdpPortable
 				Location = new Uri("http://testdevice:1700/xml")
 			};
 
-			var testDevice = new SsdpDevice(rootDevice)
+			var testDevice = new SsdpEmbeddedDevice()
 			{
 				DeviceType = "TestEmbeddedDevice",
 				FriendlyName = "Embedded Device 1",
@@ -139,6 +139,7 @@ namespace Test.RssdpPortable
 				SerialNumber = "SN-123",
 				Uuid = System.Guid.NewGuid().ToString(),
 			};
+			rootDevice.AddDevice(testDevice);
 
 			var validator = new Upnp10DeviceValidator();
 			var results = validator.GetValidationErrors(rootDevice);
@@ -165,7 +166,7 @@ namespace Test.RssdpPortable
 				Location = new Uri("http://testdevice:1700/xml")
 			};
 
-			var testDevice = new SsdpDevice(rootDevice)
+			var testDevice = new SsdpEmbeddedDevice()
 			{
 				DeviceType = "TestEmbeddedDevice",
 				FriendlyName = "Embedded Device 1",
@@ -179,6 +180,7 @@ namespace Test.RssdpPortable
 				Uuid = System.Guid.NewGuid().ToString(),
 				Upc = null
 			};
+			rootDevice.AddDevice(testDevice);
 
 			var validator = new Upnp10DeviceValidator();
 			var results = validator.GetValidationErrors(testDevice);
@@ -203,7 +205,7 @@ namespace Test.RssdpPortable
 				Location = new Uri("http://testdevice:1700/xml")
 			};
 
-			var testDevice = new SsdpDevice(rootDevice)
+			var testDevice = new SsdpEmbeddedDevice()
 			{
 				DeviceType = "TestEmbeddedDevice",
 				FriendlyName = "Embedded Device 1",
@@ -217,6 +219,7 @@ namespace Test.RssdpPortable
 				Uuid = System.Guid.NewGuid().ToString(),
 				Upc = "ABCDEFGHIJKL"
 			};
+			rootDevice.AddDevice(testDevice);
 
 			var validator = new Upnp10DeviceValidator();
 			var results = validator.GetValidationErrors(testDevice);
@@ -242,7 +245,7 @@ namespace Test.RssdpPortable
 				Location = new Uri("http://testdevice:1700/xml")
 			};
 
-			var testDevice = new SsdpDevice(rootDevice)
+			var testDevice = new SsdpEmbeddedDevice()
 			{
 				DeviceType = "TestEmbeddedDevice",
 				FriendlyName = "Embedded Device 1",
@@ -256,6 +259,7 @@ namespace Test.RssdpPortable
 				Uuid = System.Guid.NewGuid().ToString(),
 				Upc = "12345"
 			};
+			rootDevice.AddDevice(testDevice);
 
 			var validator = new Upnp10DeviceValidator();
 			var results = validator.GetValidationErrors(testDevice);
@@ -281,7 +285,7 @@ namespace Test.RssdpPortable
 				Location = new Uri("http://testdevice:1700/xml")
 			};
 
-			var testDevice = new SsdpDevice(rootDevice)
+			var testDevice = new SsdpEmbeddedDevice()
 			{
 				DeviceType = "TestEmbeddedDevice",
 				FriendlyName = "Embedded Device 1",
@@ -295,6 +299,7 @@ namespace Test.RssdpPortable
 				Uuid = System.Guid.NewGuid().ToString(),
 				Upc = "1234567890123"
 			};
+			rootDevice.AddDevice(testDevice);
 
 			var validator = new Upnp10DeviceValidator();
 			var results = validator.GetValidationErrors(testDevice);
@@ -324,7 +329,7 @@ namespace Test.RssdpPortable
 				Location = new Uri("http://testdevice:1700/xml")
 			};
 
-			var testDevice = new SsdpDevice(rootDevice)
+			var testDevice = new SsdpEmbeddedDevice()
 			{
 				DeviceType = "TestEmbeddedDevice",
 				FriendlyName = "Embedded Device 1",
@@ -337,6 +342,7 @@ namespace Test.RssdpPortable
 				SerialNumber = "SN-123",
 				Uuid = null
 			};
+			rootDevice.AddDevice(testDevice);
 
 			var validator = new Upnp10DeviceValidator();
 			var results = validator.GetValidationErrors(testDevice);
@@ -361,7 +367,7 @@ namespace Test.RssdpPortable
 				Location = new Uri("http://testdevice:1700/xml")
 			};
 
-			var testDevice = new SsdpDevice(rootDevice)
+			var testDevice = new SsdpEmbeddedDevice()
 			{
 				DeviceType = "TestEmbeddedDevice",
 				FriendlyName = "Embedded Device 1",
@@ -374,6 +380,7 @@ namespace Test.RssdpPortable
 				SerialNumber = "SN-123",
 				Uuid = String.Empty
 			};
+			rootDevice.AddDevice(testDevice);
 
 			var validator = new Upnp10DeviceValidator();
 			var results = validator.GetValidationErrors(testDevice);
@@ -402,7 +409,7 @@ namespace Test.RssdpPortable
 				Location = new Uri("http://testdevice:1700/xml"),
 			};
 
-			var testDevice = new SsdpDevice(rootDevice)
+			var testDevice = new SsdpEmbeddedDevice()
 			{
 				DeviceType = "TestEmbeddedDevice",
 				FriendlyName = "Embedded Device 1",
@@ -416,6 +423,7 @@ namespace Test.RssdpPortable
 				Uuid = System.Guid.NewGuid().ToString(),
 				Udn = System.Guid.NewGuid().ToString()
 			};
+			rootDevice.AddDevice(testDevice);
 
 			var validator = new Upnp10DeviceValidator();
 			var results = validator.GetValidationErrors(testDevice);
@@ -440,7 +448,7 @@ namespace Test.RssdpPortable
 				Location = new Uri("http://testdevice:1700/xml"),
 			};
 
-			var testDevice = new SsdpDevice(rootDevice)
+			var testDevice = new SsdpEmbeddedDevice()
 			{
 				DeviceType = "TestEmbeddedDevice",
 				FriendlyName = "Embedded Device 1",
@@ -454,6 +462,7 @@ namespace Test.RssdpPortable
 				Uuid = System.Guid.NewGuid().ToString(),
 				Udn = "uuid: someothervalue"
 			};
+			rootDevice.AddDevice(testDevice);
 
 			var validator = new Upnp10DeviceValidator();
 			var results = validator.GetValidationErrors(testDevice);
@@ -479,7 +488,7 @@ namespace Test.RssdpPortable
 			};
 
 			var uuid = System.Guid.NewGuid().ToString();
-			var testDevice = new SsdpDevice(rootDevice)
+			var testDevice = new SsdpEmbeddedDevice()
 			{
 				DeviceType = "TestEmbeddedDevice",
 				FriendlyName = "Embedded Device 1",
@@ -493,6 +502,7 @@ namespace Test.RssdpPortable
 				Uuid = uuid,
 				Udn = "uuid:   " + uuid
 			};
+			rootDevice.AddDevice(testDevice);
 
 			var validator = new Upnp10DeviceValidator();
 			var results = validator.GetValidationErrors(testDevice);
@@ -625,7 +635,7 @@ namespace Test.RssdpPortable
 				Location = new Uri("http://testdevice:1700/xml"),
 			};
 
-			var testDevice = new SsdpDevice(rootDevice)
+			var testDevice = new SsdpEmbeddedDevice()
 			{
 				DeviceType = "TestEmbeddedDevice",
 				FriendlyName = "Embedded Device 1",
@@ -639,6 +649,7 @@ namespace Test.RssdpPortable
 				SerialNumber = "SN-123",
 				Uuid = System.Guid.NewGuid().ToString(),
 			};
+			rootDevice.AddDevice(testDevice);
 
 			var validator = new Upnp10DeviceValidator();
 			var results = validator.GetValidationErrors(testDevice);
@@ -663,7 +674,7 @@ namespace Test.RssdpPortable
 				Location = new Uri("http://testdevice:1700/xml"),
 			};
 
-			var testDevice = new SsdpDevice(rootDevice)
+			var testDevice = new SsdpEmbeddedDevice()
 			{
 				DeviceType = "TestEmbeddedDevice",
 				FriendlyName = "Embedded Device 1",
@@ -677,6 +688,7 @@ namespace Test.RssdpPortable
 				SerialNumber = "SN-123",
 				Uuid = System.Guid.NewGuid().ToString(),
 			};
+			rootDevice.AddDevice(testDevice);
 
 			var validator = new Upnp10DeviceValidator();
 			var results = validator.GetValidationErrors(testDevice);
@@ -753,7 +765,7 @@ namespace Test.RssdpPortable
 				Location = new Uri("http://testdevice:1700/xml"),
 			};
 
-			var testDevice = new SsdpDevice(rootDevice)
+			var testDevice = new SsdpEmbeddedDevice()
 			{
 				DeviceType = "TestEmbeddedDevice",
 				FriendlyName = null,
@@ -767,6 +779,7 @@ namespace Test.RssdpPortable
 				SerialNumber = "SN-123",
 				Uuid = System.Guid.NewGuid().ToString()
 			};
+			rootDevice.AddDevice(testDevice);
 
 			var validator = new Upnp10DeviceValidator();
 			var results = validator.GetValidationErrors(testDevice);
@@ -791,7 +804,7 @@ namespace Test.RssdpPortable
 				Location = new Uri("http://testdevice:1700/xml"),
 			};
 
-			var testDevice = new SsdpDevice(rootDevice)
+			var testDevice = new SsdpEmbeddedDevice()
 			{
 				DeviceType = "TestEmbeddedDevice",
 				FriendlyName = String.Empty,
@@ -805,6 +818,7 @@ namespace Test.RssdpPortable
 				SerialNumber = "SN-123",
 				Uuid = System.Guid.NewGuid().ToString()
 			};
+			rootDevice.AddDevice(testDevice);
 
 			var validator = new Upnp10DeviceValidator();
 			var results = validator.GetValidationErrors(testDevice);
@@ -829,7 +843,7 @@ namespace Test.RssdpPortable
 				Location = new Uri("http://testdevice:1700/xml"),
 			};
 
-			var testDevice = new SsdpDevice(rootDevice)
+			var testDevice = new SsdpEmbeddedDevice()
 			{
 				DeviceType = "TestEmbeddedDevice",
 				FriendlyName = new string('A', 65),
@@ -843,6 +857,7 @@ namespace Test.RssdpPortable
 				SerialNumber = "SN-123",
 				Uuid = System.Guid.NewGuid().ToString()
 			};
+			rootDevice.AddDevice(testDevice);
 
 			var validator = new Upnp10DeviceValidator();
 			var results = validator.GetValidationErrors(testDevice);
@@ -871,7 +886,7 @@ namespace Test.RssdpPortable
 				Location = new Uri("http://testdevice:1700/xml"),
 			};
 
-			var testDevice = new SsdpDevice(rootDevice)
+			var testDevice = new SsdpEmbeddedDevice()
 			{
 				DeviceType = "TestEmbeddedDevice",
 				FriendlyName = "Embedded Device 1",
@@ -885,6 +900,7 @@ namespace Test.RssdpPortable
 				SerialNumber = "SN-123",
 				Uuid = System.Guid.NewGuid().ToString()
 			};
+			rootDevice.AddDevice(testDevice);
 
 			var validator = new Upnp10DeviceValidator();
 			var results = validator.GetValidationErrors(testDevice);
@@ -909,7 +925,7 @@ namespace Test.RssdpPortable
 				Location = new Uri("http://testdevice:1700/xml"),
 			};
 
-			var testDevice = new SsdpDevice(rootDevice)
+			var testDevice = new SsdpEmbeddedDevice()
 			{
 				DeviceType = "TestEmbeddedDevice",
 				FriendlyName = "Embedded Device 1",
@@ -923,6 +939,7 @@ namespace Test.RssdpPortable
 				SerialNumber = "SN-123",
 				Uuid = System.Guid.NewGuid().ToString()
 			};
+			rootDevice.AddDevice(testDevice);
 
 			var validator = new Upnp10DeviceValidator();
 			var results = validator.GetValidationErrors(testDevice);
@@ -947,7 +964,7 @@ namespace Test.RssdpPortable
 				Location = new Uri("http://testdevice:1700/xml"),
 			};
 
-			var testDevice = new SsdpDevice(rootDevice)
+			var testDevice = new SsdpEmbeddedDevice()
 			{
 				DeviceType = "TestEmbeddedDevice",
 				FriendlyName = "Embedded Device 1",
@@ -961,6 +978,7 @@ namespace Test.RssdpPortable
 				SerialNumber = "SN-123",
 				Uuid = System.Guid.NewGuid().ToString()
 			};
+			rootDevice.AddDevice(testDevice);
 
 			var validator = new Upnp10DeviceValidator();
 			var results = validator.GetValidationErrors(testDevice);
@@ -989,7 +1007,7 @@ namespace Test.RssdpPortable
 				Location = new Uri("http://testdevice:1700/xml"),
 			};
 
-			var testDevice = new SsdpDevice(rootDevice)
+			var testDevice = new SsdpEmbeddedDevice()
 			{
 				DeviceType = "TestEmbeddedDevice",
 				FriendlyName = "Embedded Device 1",
@@ -1003,6 +1021,7 @@ namespace Test.RssdpPortable
 				SerialNumber = "SN-123",
 				Uuid = System.Guid.NewGuid().ToString()
 			};
+			rootDevice.AddDevice(testDevice);
 
 			var validator = new Upnp10DeviceValidator();
 			var results = validator.GetValidationErrors(testDevice);
@@ -1027,7 +1046,7 @@ namespace Test.RssdpPortable
 				Location = new Uri("http://testdevice:1700/xml"),
 			};
 
-			var testDevice = new SsdpDevice(rootDevice)
+			var testDevice = new SsdpEmbeddedDevice()
 			{
 				DeviceType = "TestEmbeddedDevice",
 				FriendlyName = "Embedded Device 1",
@@ -1041,6 +1060,7 @@ namespace Test.RssdpPortable
 				SerialNumber = "SN-123",
 				Uuid = System.Guid.NewGuid().ToString()
 			};
+			rootDevice.AddDevice(testDevice);
 
 			var validator = new Upnp10DeviceValidator();
 			var results = validator.GetValidationErrors(testDevice);
@@ -1065,7 +1085,7 @@ namespace Test.RssdpPortable
 				Location = new Uri("http://testdevice:1700/xml"),
 			};
 
-			var testDevice = new SsdpDevice(rootDevice)
+			var testDevice = new SsdpEmbeddedDevice()
 			{
 				DeviceType = "TestEmbeddedDevice",
 				FriendlyName = "Embedded Device 1",
@@ -1079,6 +1099,7 @@ namespace Test.RssdpPortable
 				SerialNumber = "SN-123",
 				Uuid = System.Guid.NewGuid().ToString()
 			};
+			rootDevice.AddDevice(testDevice);
 
 			var validator = new Upnp10DeviceValidator();
 			var results = validator.GetValidationErrors(testDevice);
@@ -1107,7 +1128,7 @@ namespace Test.RssdpPortable
 				Location = new Uri("http://testdevice:1700/xml"),
 			};
 
-			var testDevice = new SsdpDevice(rootDevice)
+			var testDevice = new SsdpEmbeddedDevice()
 			{
 				DeviceType = "TestEmbeddedDevice",
 				FriendlyName = "Embedded Device 1",
@@ -1121,6 +1142,7 @@ namespace Test.RssdpPortable
 				SerialNumber = "SN-123",
 				Uuid = System.Guid.NewGuid().ToString()
 			};
+			rootDevice.AddDevice(testDevice);
 
 			var validator = new Upnp10DeviceValidator();
 			var results = validator.GetValidationErrors(testDevice);
@@ -1149,7 +1171,7 @@ namespace Test.RssdpPortable
 				Location = new Uri("http://testdevice:1700/xml"),
 			};
 
-			var testDevice = new SsdpDevice(rootDevice)
+			var testDevice = new SsdpEmbeddedDevice()
 			{
 				DeviceType = "TestEmbeddedDevice",
 				FriendlyName = "Embedded Device 1",
@@ -1163,6 +1185,7 @@ namespace Test.RssdpPortable
 				SerialNumber = new string('A', 65),
 				Uuid = System.Guid.NewGuid().ToString()
 			};
+			rootDevice.AddDevice(testDevice);
 
 			var validator = new Upnp10DeviceValidator();
 			var results = validator.GetValidationErrors(testDevice);
@@ -1191,7 +1214,7 @@ namespace Test.RssdpPortable
 				Location = new Uri("http://testdevice:1700/xml"),
 			};
 
-			var testDevice = new SsdpDevice(rootDevice)
+			var testDevice = new SsdpEmbeddedDevice()
 			{
 				DeviceType = "TestEmbeddedDevice",
 				FriendlyName = "Embedded Device 1",
@@ -1205,6 +1228,7 @@ namespace Test.RssdpPortable
 				SerialNumber = "SN-1234",
 				Uuid = System.Guid.NewGuid().ToString()
 			};
+			rootDevice.AddDevice(testDevice);
 
 			var validator = new Upnp10DeviceValidator();
 			var results = validator.GetValidationErrors(testDevice);
@@ -1233,7 +1257,7 @@ namespace Test.RssdpPortable
 				Location = new Uri("http://testdevice:1700/xml"),
 			};
 
-			var testDevice = new SsdpDevice(rootDevice)
+			var testDevice = new SsdpEmbeddedDevice()
 			{
 				DeviceType = "TestEmbeddedDevice",
 				FriendlyName = "Embedded Device 1",
@@ -1281,7 +1305,7 @@ namespace Test.RssdpPortable
 				Location = new Uri("http://testdevice:1700/xml"),
 			};
 
-			var testDevice = new SsdpDevice(rootDevice)
+			var testDevice = new SsdpEmbeddedDevice()
 			{
 				DeviceType = "TestEmbeddedDevice",
 				FriendlyName = "Embedded Device 1",
@@ -1295,6 +1319,7 @@ namespace Test.RssdpPortable
 				SerialNumber = "SN-123",
 				Uuid = System.Guid.NewGuid().ToString()
 			};
+			rootDevice.AddDevice(testDevice);
 
 			var icon = new SsdpDeviceIcon()
 			{
@@ -1330,7 +1355,7 @@ namespace Test.RssdpPortable
 				Location = new Uri("http://testdevice:1700/xml"),
 			};
 
-			var testDevice = new SsdpDevice(rootDevice)
+			var testDevice = new SsdpEmbeddedDevice()
 			{
 				DeviceType = "TestEmbeddedDevice",
 				FriendlyName = "Embedded Device 1",
@@ -1379,7 +1404,7 @@ namespace Test.RssdpPortable
 				Location = new Uri("http://testdevice:1700/xml"),
 			};
 
-			var testDevice = new SsdpDevice(rootDevice)
+			var testDevice = new SsdpEmbeddedDevice()
 			{
 				DeviceType = "TestEmbeddedDevice",
 				FriendlyName = "Embedded Device 1",
@@ -1393,6 +1418,7 @@ namespace Test.RssdpPortable
 				SerialNumber = "SN-123",
 				Uuid = System.Guid.NewGuid().ToString()
 			};
+			rootDevice.AddDevice(testDevice);
 
 			var icon = new SsdpDeviceIcon()
 			{
@@ -1428,7 +1454,7 @@ namespace Test.RssdpPortable
 				Location = new Uri("http://testdevice:1700/xml"),
 			};
 
-			var testDevice = new SsdpDevice(rootDevice)
+			var testDevice = new SsdpEmbeddedDevice()
 			{
 				DeviceType = "TestEmbeddedDevice",
 				FriendlyName = "Embedded Device 1",
@@ -1442,6 +1468,7 @@ namespace Test.RssdpPortable
 				SerialNumber = "SN-123",
 				Uuid = System.Guid.NewGuid().ToString()
 			};
+			rootDevice.AddDevice(testDevice);
 
 			var icon = new SsdpDeviceIcon()
 			{
@@ -1477,7 +1504,7 @@ namespace Test.RssdpPortable
 				Location = new Uri("http://testdevice:1700/xml"),
 			};
 
-			var testDevice = new SsdpDevice(rootDevice)
+			var testDevice = new SsdpEmbeddedDevice()
 			{
 				DeviceType = "TestEmbeddedDevice",
 				FriendlyName = "Embedded Device 1",
@@ -1491,6 +1518,7 @@ namespace Test.RssdpPortable
 				SerialNumber = "SN-123",
 				Uuid = System.Guid.NewGuid().ToString()
 			};
+			rootDevice.AddDevice(testDevice);
 
 			var icon = new SsdpDeviceIcon()
 			{
@@ -1526,7 +1554,7 @@ namespace Test.RssdpPortable
 				Location = new Uri("http://testdevice:1700/xml"),
 			};
 
-			var testDevice = new SsdpDevice(rootDevice)
+			var testDevice = new SsdpEmbeddedDevice()
 			{
 				DeviceType = "TestEmbeddedDevice",
 				FriendlyName = "Embedded Device 1",
@@ -1575,7 +1603,7 @@ namespace Test.RssdpPortable
 				Location = new Uri("http://testdevice:1700/xml"),
 			};
 
-			var testDevice = new SsdpDevice(rootDevice)
+			var testDevice = new SsdpEmbeddedDevice()
 			{
 				DeviceType = "TestEmbeddedDevice",
 				FriendlyName = "Embedded Device 1",
@@ -1589,6 +1617,7 @@ namespace Test.RssdpPortable
 				SerialNumber = "SN-123",
 				Uuid = System.Guid.NewGuid().ToString()
 			};
+			rootDevice.AddDevice(testDevice);
 
 			var icon = new SsdpDeviceIcon()
 			{
@@ -1624,7 +1653,7 @@ namespace Test.RssdpPortable
 				Location = new Uri("http://testdevice:1700/xml"),
 			};
 
-			var testDevice = new SsdpDevice(rootDevice)
+			var testDevice = new SsdpEmbeddedDevice()
 			{
 				DeviceType = "TestEmbeddedDevice",
 				FriendlyName = "Embedded Device 1",
@@ -1673,7 +1702,7 @@ namespace Test.RssdpPortable
 				Location = new Uri("http://testdevice:1700/xml"),
 			};
 
-			var testDevice = new SsdpDevice(rootDevice)
+			var testDevice = new SsdpEmbeddedDevice()
 			{
 				DeviceType = "TestEmbeddedDevice",
 				FriendlyName = "Embedded Device 1",
@@ -1687,6 +1716,7 @@ namespace Test.RssdpPortable
 				SerialNumber = "SN-123",
 				Uuid = System.Guid.NewGuid().ToString()
 			};
+			rootDevice.AddDevice(testDevice);
 
 			var icon = new SsdpDeviceIcon()
 			{
@@ -1724,7 +1754,7 @@ namespace Test.RssdpPortable
 				Location = new Uri("http://testdevice:1700/xml"),
 			};
 
-			var testDevice = new SsdpDevice(rootDevice)
+			var testDevice = new SsdpEmbeddedDevice()
 			{
 				DeviceType = "TestEmbeddedDevice",
 				FriendlyName = "Embedded Device 1",
@@ -1738,8 +1768,9 @@ namespace Test.RssdpPortable
 				SerialNumber = "SN-123",
 				Uuid = System.Guid.NewGuid().ToString()
 			};
+			rootDevice.AddDevice(testDevice);
 
-			var testDevice2 = new SsdpDevice(rootDevice);
+			var testDevice2 = new SsdpEmbeddedDevice();
 			testDevice.AddDevice(testDevice2);
 
 			var validator = new Upnp10DeviceValidator();

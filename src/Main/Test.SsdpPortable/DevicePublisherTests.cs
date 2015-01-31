@@ -1361,11 +1361,11 @@ namespace Test.RssdpPortable
 			return rootDevice;
 		}
 
-		private SsdpDevice CreateValidEmbeddedDevice(SsdpRootDevice rootDevice)
+		private SsdpEmbeddedDevice CreateValidEmbeddedDevice(SsdpRootDevice rootDevice)
 		{
 			var uuid = Guid.NewGuid().ToString();
 
-			return new SsdpDevice(rootDevice)
+			var retVal = new SsdpEmbeddedDevice()
 			{
 				DeviceType = "TestEmbeddedDevice",
 				FriendlyName = "Test Embedded Device " + uuid,
@@ -1373,6 +1373,9 @@ namespace Test.RssdpPortable
 				ModelName = "Test Model",
 				Uuid = uuid
 			};
+
+			rootDevice.AddDevice(retVal);
+			return retVal;
 		}
 
 		private IEnumerable<System.Net.Http.HttpRequestMessage> GetNotificationsForSearchTarget(IEnumerable<System.Net.Http.HttpRequestMessage> requests, string searchTarget)

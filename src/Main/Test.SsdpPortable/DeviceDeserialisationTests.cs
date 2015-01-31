@@ -173,7 +173,7 @@ namespace Test.RssdpPortable
 		public void DeserialisationConstructor_ThrowsOnNullDocument()
 		{
 			var rootDevice = new SsdpRootDevice();
-			var device = new SsdpDevice(rootDevice, null);
+			var device = new SsdpEmbeddedDevice(null);
 		}
 
 		[ExpectedException(typeof(System.ArgumentException))]
@@ -181,7 +181,7 @@ namespace Test.RssdpPortable
 		public void DeserialisationConstructor_ThrowsOnEmptyDocument()
 		{
 			var rootDevice = new SsdpRootDevice();
-			var device = new SsdpDevice(rootDevice, String.Empty);
+			var device = new SsdpEmbeddedDevice(String.Empty);
 		}
 
 		[ExpectedException(typeof(System.ArgumentException))]
@@ -204,15 +204,7 @@ namespace Test.RssdpPortable
 		{
 			var rootDevice = new SsdpRootDevice(null, TimeSpan.FromMinutes(30), "<root />");
 		}
-
-		[ExpectedException(typeof(System.ArgumentNullException))]
-		[TestMethod]
-		public void DeserialisationConstructor_ThrowsOnNullRootDevice()
-		{
-			var rootDevice = new SsdpRootDevice();
-			var device = new SsdpDevice(null, "data");
-		}
-		
+	
 		private void AssertDevicesAreSame(SsdpRootDevice originalDevice, SsdpRootDevice deserialisedDevice)
 		{
 			Assert.AreEqual(originalDevice.CacheLifetime, deserialisedDevice.CacheLifetime);
@@ -277,9 +269,9 @@ namespace Test.RssdpPortable
 			return retVal;
 		}
 
-		private SsdpDevice CreateEmbeddedDevice(SsdpRootDevice rootDevice)
+		private SsdpEmbeddedDevice CreateEmbeddedDevice(SsdpRootDevice rootDevice)
 		{
-			var retVal = new SsdpDevice(rootDevice)
+			var retVal = new SsdpEmbeddedDevice()
 			{
 				DeviceType = "TestEmbeddedDeviceType",
 				DeviceTypeNamespace = "test-device-ns",
@@ -295,6 +287,7 @@ namespace Test.RssdpPortable
 				Upc = "123456789012",
 				Uuid = Guid.NewGuid().ToString()
 			};
+			rootDevice.AddDevice(retVal);
 
 			return retVal;
 		}

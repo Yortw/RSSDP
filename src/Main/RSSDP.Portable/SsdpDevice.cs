@@ -10,9 +10,14 @@ using Rssdp.Infrastructure;
 namespace Rssdp
 {
 	/// <summary>
-	/// Represents the full details of a device, either to be published, or that has been located.
+	/// Base class representing the common details of a (root or embedded) device, either to be published or that has been located.
 	/// </summary>
-	public class SsdpDevice
+	/// <remarks>
+	/// <para>Do not derive new types directly from this class. New device classes should derive from either <see cref="SsdpRootDevice"/> or <see cref="SsdpEmbeddedDevice"/>.</para>
+	/// </remarks>
+	/// <seealso cref="SsdpRootDevice"/>
+	/// <seealso cref="SsdpEmbeddedDevice"/>
+	public abstract class SsdpDevice
 	{
 
 		#region Fields
@@ -24,8 +29,6 @@ namespace Rssdp
 		private Dictionary<string, SsdpDeviceProperty> _CustomProperties;
 
 		private IList<SsdpDevice> _Devices;
-
-		private SsdpRootDevice _RootDevice;
 
 		#endregion
 
@@ -66,28 +69,14 @@ namespace Rssdp
 		}
 
 		/// <summary>
-		/// Default constructor.
-		/// </summary>
-		/// <param name="rootDevice">A reference to the root device for this device.</param>
-		/// <exception cref="System.ArgumentNullException">Thrown if the <paramref name="rootDevice"/> is null.</exception>
-		/// <exception cref="System.ArgumentNullException">Thrown if the <paramref name="rootDevice"/> argument is null, but only if this instance doesn't dervice from <see cref="SsdpRootDevice"/>.</exception>
-		public SsdpDevice(SsdpRootDevice rootDevice)
-			: this()
-		{
-			if (rootDevice == null && this as SsdpRootDevice == null) throw new ArgumentNullException("rootDevice");
-
-			_RootDevice = rootDevice;
-		}
-
-		/// <summary>
 		/// Deserialisation constructor.
 		/// </summary>
 		/// <remarks><para>Uses the provided XML string and parent device properties to set the properties of the object. The XML provided must be a valid UPnP device description document.</para></remarks>
-		/// <param name="rootDevice">The parent <see cref="SsdpDevice"/> of the new device.</param>
 		/// <param name="deviceDescriptionXml">A UPnP device description XML document.</param>
-		/// <exception cref="System.ArgumentNullException">Thrown if the <paramref name="rootDevice"/> argument is null, but only if this instance doesn't dervice from <see cref="SsdpRootDevice"/>.</exception>
-		public SsdpDevice(SsdpRootDevice rootDevice, string deviceDescriptionXml)
-			: this(rootDevice)
+		/// <exception cref="System.ArgumentNullException">Thrown if the <paramref name="deviceDescriptionXml"/> argument is null.</exception>
+		/// <exception cref="System.ArgumentException">Thrown if the <paramref name="deviceDescriptionXml"/> argument is empty.</exception>
+		protected SsdpDevice(string deviceDescriptionXml)
+			: this()
 		{
 			if (deviceDescriptionXml == null) throw new ArgumentNullException("deviceDescriptionXml");
 			if (deviceDescriptionXml.Length == 0) throw new ArgumentException("deviceDescriptionXml cannot be an empty string.", "deviceDescriptionXml");
@@ -277,18 +266,6 @@ namespace Rssdp
 		#endregion
 
 		/// <summary>
-		/// Returns the <see cref="SsdpRootDevice"/> that is this device's first ancestor. If this device is itself an <see cref="SsdpRootDevice"/>, then returns a reference to itself.
-		/// </summary>
-		public SsdpRootDevice RootDevice
-		{
-			get
-			{
-				if (_RootDevice == null) return this as SsdpRootDevice;
-				return _RootDevice;
-			}
-		}
-
-		/// <summary>
 		/// Returns a list of icons (images) that can be used to display this device. Optional, but recommended you provide at least one at 48x48 pixels.
 		/// </summary>
 		public IList<SsdpDeviceIcon> Icons
@@ -326,21 +303,26 @@ namespace Rssdp
 		/// <summary>
 		/// Adds a child device to the <see cref="Devices"/> collection.
 		/// </summary>
-		/// <param name="device">The <see cref="SsdpDevice"/> instance to add.</param>
+		/// <param name="device">The <see cref="SsdpEmbeddedDevice"/> instance to add.</param>
 		/// <remarks>
 		/// <para>If the device is already a member of the <see cref="Devices"/> collection, this method does nothing.</para>
+		/// <para>Also sets the <see cref="SsdpEmbeddedDevice.RootDevice"/> property of the added device and all descendant devices to the relevant <see cref="SsdpRootDevice"/> instance.</para>
 		/// </remarks>
 		/// <exception cref="System.ArgumentNullException">Thrown if the <paramref name="device"/> argument is null.</exception>
+		/// <exception cref="System.InvalidOperationException">Thrown if the <paramref name="device"/> is already associated with a different <see cref="SsdpRootDevice"/> instance than used in this tree. Can occur if you try to add the same device instance to more than one tree. Also thrown if you try to add a device to itself.</exception>
 		/// <seealso cref="DeviceAdded"/>
-		public void AddDevice(SsdpDevice device)
+		public void AddDevice(SsdpEmbeddedDevice device)
 		{
 			if (device == null) throw new ArgumentNullException("device");
+			if (device.RootDevice != null && device.RootDevice != this.ToRootDevice()) throw new InvalidOperationException("This device is already associated with a different root device (has been added as a child in another branch).");
+			if (device == this) throw new InvalidOperationException("Can't add device to itself.");
 
 			bool wasAdded = false;
 			lock (_Devices)
 			{
 				if (!ChildDeviceExists(device))
 				{
+					device.RootDevice = this.ToRootDevice();
 					_Devices.Add(device);
 					wasAdded = true;
 				}
@@ -353,13 +335,14 @@ namespace Rssdp
 		/// <summary>
 		/// Removes a child device from the <see cref="Devices"/> collection.
 		/// </summary>
-		/// <param name="device">The <see cref="SsdpDevice"/> instance to remove.</param>
+		/// <param name="device">The <see cref="SsdpEmbeddedDevice"/> instance to remove.</param>
 		/// <remarks>
 		/// <para>If the device is not a member of the <see cref="Devices"/> collection, this method does nothing.</para>
+		/// <para>Also sets the <see cref="SsdpEmbeddedDevice.RootDevice"/> property to null for the removed device and all descendant devices.</para>
 		/// </remarks>
 		/// <exception cref="System.ArgumentNullException">Thrown if the <paramref name="device"/> argument is null.</exception>
 		/// <seealso cref="DeviceRemoved"/>
-		public void RemoveDevice(SsdpDevice device)
+		public void RemoveDevice(SsdpEmbeddedDevice device)
 		{
 			if (device == null) throw new ArgumentNullException("device");
 
@@ -370,6 +353,7 @@ namespace Rssdp
 				{
 					_Devices.Remove(device);
 					wasRemoved = true;
+					device.RootDevice = null;
 				}
 			}
 
@@ -380,10 +364,10 @@ namespace Rssdp
 		/// <summary>
 		/// Raises the <see cref="DeviceAdded"/> event.
 		/// </summary>
-		/// <param name="device">The <see cref="SsdpDevice"/> instance added to the <see cref="Devices"/> collection.</param>
+		/// <param name="device">The <see cref="SsdpEmbeddedDevice"/> instance added to the <see cref="Devices"/> collection.</param>
 		/// <seealso cref="AddDevice"/>
 		/// <seealso cref="DeviceAdded"/>		
-		protected virtual void OnDeviceAdded(SsdpDevice device)
+		protected virtual void OnDeviceAdded(SsdpEmbeddedDevice device)
 		{
 			var handlers = this.DeviceAdded;
 			if (handlers != null)
@@ -393,10 +377,10 @@ namespace Rssdp
 		/// <summary>
 		/// Raises the <see cref="DeviceRemoved"/> event.
 		/// </summary>
-		/// <param name="device">The <see cref="SsdpDevice"/> instance removed from the <see cref="Devices"/> collection.</param>
+		/// <param name="device">The <see cref="SsdpEmbeddedDevice"/> instance removed from the <see cref="Devices"/> collection.</param>
 		/// <seealso cref="RemoveDevice"/>
 		/// <see cref="DeviceRemoved"/>
-		protected virtual void OnDeviceRemoved(SsdpDevice device)
+		protected virtual void OnDeviceRemoved(SsdpEmbeddedDevice device)
 		{
 			var handlers = this.DeviceRemoved;
 			if (handlers != null)
@@ -737,7 +721,7 @@ namespace Rssdp
 
 				if (reader.LocalName == "device")
 				{
-					var childDevice = new SsdpDevice();
+					var childDevice = new SsdpEmbeddedDevice();
 					LoadDeviceProperties(reader, childDevice);
 					device.AddDevice(childDevice);
 				}

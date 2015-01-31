@@ -35,7 +35,7 @@ namespace Test.RssdpPortable
 					eventDevice = e.Device;
 				};
 
-			var embeddedDevice = new SsdpDevice(rootDevice);
+			var embeddedDevice = new SsdpEmbeddedDevice();
 			rootDevice.AddDevice(embeddedDevice);
 			Assert.IsTrue(eventRaised);
 			Assert.AreEqual(embeddedDevice, eventDevice);
@@ -46,10 +46,49 @@ namespace Test.RssdpPortable
 		{
 			var rootDevice = new SsdpRootDevice();
 
-			var embeddedDevice = new SsdpDevice(rootDevice);
+			var embeddedDevice = new SsdpEmbeddedDevice();
 			rootDevice.AddDevice(embeddedDevice);
 			rootDevice.AddDevice(embeddedDevice);
 			Assert.AreEqual(1, rootDevice.Devices.Count());
+		}
+
+		[TestMethod]
+		public void SsdpDevice_AddDevice_SetsRootDeviceOnDescendants()
+		{
+			var rootDevice = new SsdpRootDevice();
+
+			var embeddedDevice = new SsdpEmbeddedDevice();
+			var embeddedDevice2 = new SsdpEmbeddedDevice();
+			embeddedDevice.AddDevice(embeddedDevice2);
+			Assert.IsNull(embeddedDevice2.RootDevice);
+
+			rootDevice.AddDevice(embeddedDevice);
+
+			Assert.AreEqual(rootDevice, embeddedDevice.RootDevice);
+			Assert.AreEqual(rootDevice, embeddedDevice2.RootDevice);
+		}
+		
+		[ExpectedException(typeof(InvalidOperationException))]
+		[TestMethod]
+		public void SsdpDevice_AddDevice_ThrowsAddingDeviceToSelf()
+		{
+			var embeddedDevice = new SsdpEmbeddedDevice();
+
+			embeddedDevice.AddDevice(embeddedDevice);
+		}
+
+		[ExpectedException(typeof(InvalidOperationException))]
+		[TestMethod]
+		public void SsdpDevice_AddDevice_ThrowsAddingDeviceToMultipleParents()
+		{
+			var rootDevice1 = new SsdpRootDevice();
+			var rootDevice2 = new SsdpRootDevice();
+
+			var embeddedDevice = new SsdpEmbeddedDevice();
+
+
+			rootDevice1.AddDevice(embeddedDevice);
+			rootDevice2.AddDevice(embeddedDevice);
 		}
 
 		#endregion
@@ -69,7 +108,7 @@ namespace Test.RssdpPortable
 				eventDevice = e.Device;
 			};
 
-			var embeddedDevice = new SsdpDevice(rootDevice) { Uuid = System.Guid.NewGuid().ToString() };
+			var embeddedDevice = new SsdpEmbeddedDevice() { Uuid = System.Guid.NewGuid().ToString() };
 			rootDevice.AddDevice(embeddedDevice);
 			rootDevice.RemoveDevice(embeddedDevice);
 
@@ -82,7 +121,7 @@ namespace Test.RssdpPortable
 		{
 			var rootDevice = new SsdpRootDevice();
 
-			var embeddedDevice = new SsdpDevice(rootDevice) { Uuid = System.Guid.NewGuid().ToString() };
+			var embeddedDevice = new SsdpEmbeddedDevice() { Uuid = System.Guid.NewGuid().ToString() };
 			rootDevice.AddDevice(embeddedDevice);
 			Assert.AreEqual(1, rootDevice.Devices.Count());
 			rootDevice.RemoveDevice(embeddedDevice);
@@ -106,7 +145,7 @@ namespace Test.RssdpPortable
 		[TestMethod]
 		public void SsdpDevice_ConstructorThrowsArgumentNullIfNotRootDevice()
 		{
-			var device = new SsdpDevice(null);
+			var device = new SsdpEmbeddedDevice(null);
 		}
 
 		[ExpectedException(typeof(System.ArgumentNullException))]
@@ -170,19 +209,41 @@ namespace Test.RssdpPortable
 		#region RootDevice Tests
 
 		[TestMethod]
-		public void SsdpDevice_RootDeviceReturnsSelfFromRootDeviceProperty()
+		public void SsdpDevice_RootDeviceToRootDeviceReturnsSelf()
 		{
 			var rootDevice = new SsdpRootDevice();
-			Assert.AreEqual(rootDevice, rootDevice.RootDevice);
+			Assert.AreEqual(rootDevice, rootDevice.ToRootDevice());
 		}
 
 		[TestMethod]
-		public void SsdpDevice_DeviceReturnsAssignedRootDevice()
+		public void SsdpDevice_DeviceToRootDeviceReturnsAssignedRootDevice()
 		{
 			var rootDevice = new SsdpRootDevice();
-			var device = new SsdpDevice(rootDevice);
+			var device = new SsdpEmbeddedDevice();
+			rootDevice.AddDevice(device);
 
 			Assert.AreEqual(rootDevice, device.RootDevice);
+		}
+
+		[TestMethod]
+		public void SsdpDevice_DeviceToRootDeviceReturnsNullWhenNoRootAssigned()
+		{
+			var device = new SsdpEmbeddedDevice();
+
+			Assert.AreEqual(null, device.RootDevice);
+		}
+
+		#endregion
+
+		#region Extension Tests
+
+		[ExpectedException(typeof(System.ArgumentNullException))]
+		[TestMethod]
+		public void SsdpDevice_ToRootDevice_ThrowsOnNullSource()
+		{
+			SsdpDevice device = null;
+
+			device.ToRootDevice();
 		}
 
 		#endregion

@@ -220,9 +220,9 @@ namespace Test.RssdpPortable
 			return retVal;
 		}
 
-		private SsdpDevice CreateEmbeddedDevice(SsdpRootDevice rootDevice)
+		private SsdpEmbeddedDevice CreateEmbeddedDevice(SsdpRootDevice rootDevice)
 		{
-			var retVal = new SsdpDevice(rootDevice)
+			var retVal = new SsdpEmbeddedDevice()
 			{
 				DeviceType = "TestEmbeddedDeviceType",
 				DeviceTypeNamespace = "test-device-ns",
@@ -238,6 +238,7 @@ namespace Test.RssdpPortable
 				Upc = "123456789012",
 				Uuid = Guid.NewGuid().ToString()
 			};
+			rootDevice.AddDevice(retVal);
 
 			return retVal;
 		}

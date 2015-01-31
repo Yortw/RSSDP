@@ -359,11 +359,13 @@ USN: {1}
 
 		private void SendSearchResponse(string searchTarget, SsdpDevice device, string uniqueServiceName, UdpEndPoint endPoint)
 		{
+			var rootDevice = device.ToRootDevice();
+
 			var message = String.Format(DeviceSearchResponseMessageFormat,
-					CacheControlHeaderFromTimeSpan(device.RootDevice),
+					CacheControlHeaderFromTimeSpan(rootDevice),
 					searchTarget,
 					uniqueServiceName,
-					device.RootDevice.Location,
+					rootDevice.Location,
 					_OSName,
 					_OSVersion,
 					ServerVersion,
@@ -442,6 +444,8 @@ USN: {1}
 
 				foreach (var device in devices)
 				{
+					if (IsDisposed) return;
+
 					SendAliveNotifications(device, true);
 				}
 			}
@@ -472,11 +476,13 @@ USN: {1}
 
 		private void SendAliveNotification(SsdpDevice device, string notificationType, string uniqueServiceName)
 		{
+			var rootDevice = device.ToRootDevice();
+
 			var message = String.Format(AliveNotificationMessageFormat,
 					notificationType,
 					uniqueServiceName,
-					device.RootDevice.Location,
-					CacheControlHeaderFromTimeSpan(device.RootDevice),
+					rootDevice.Location,
+					CacheControlHeaderFromTimeSpan(rootDevice),
 					_OSName,
 					_OSVersion,
 					ServerVersion,

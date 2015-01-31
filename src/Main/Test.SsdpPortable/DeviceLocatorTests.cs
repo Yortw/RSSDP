@@ -13,8 +13,6 @@ namespace Test.RssdpPortable
 	public class DeviceLocatorTests
 	{
 		
-		// How should client code generate notification filters/search targets? 
-
 		#region Constructor Tests
 
 		[ExpectedException(typeof(System.ArgumentNullException))]
@@ -406,7 +404,7 @@ namespace Test.RssdpPortable
 		}
 
 		[TestMethod()]
-		public void DeviceLocator_Notifications_SubsequentNotificationsUpdateCachedData()
+		public void DeviceLocator_Notifications_SubsequentNotificationsUpdatesCachedDescriptionLocation()
 		{
 			var publishedDevice = CreateDeviceTree();
 
@@ -431,7 +429,6 @@ namespace Test.RssdpPortable
 				var updatedDevice = CreateDeviceTree();
 				updatedDevice.Uuid = publishedDevice.Uuid;
 				updatedDevice.Location = new Uri("http://somewhereelse:1701");
-				updatedDevice.CacheLifetime = TimeSpan.FromDays(365);
 				server.MockReceiveBroadcast(GetMockAliveNotification(updatedDevice));
 				signal.WaitOne(10000);
 
@@ -444,10 +441,51 @@ namespace Test.RssdpPortable
 				var second = discoveredDevices.Last();
 
 				Assert.AreNotEqual(first.DescriptionLocation, second.DescriptionLocation);
+
+				Assert.AreEqual(second.DescriptionLocation, new Uri("http://somewhereelse:1701"));
+			}
+		}
+
+		[TestMethod()]
+		public void DeviceLocator_Notifications_SubsequentNotificationsUpdatesCachedCacheTime()
+		{
+			var publishedDevice = CreateDeviceTree();
+
+			var server = new MockCommsServer();
+			var deviceLocator = new MockDeviceLocator(server);
+			var discoveredDevices = new List<DiscoveredSsdpDevice>();
+
+			using (var signal = new System.Threading.AutoResetEvent(false))
+			{
+				deviceLocator.DeviceAvailable += (sender, args) =>
+				{
+					discoveredDevices.Add(args.DiscoveredDevice);
+					signal.Set();
+				};
+				deviceLocator.StartListeningForNotifications();
+
+				server.MockReceiveBroadcast(GetMockAliveNotification(publishedDevice));
+				signal.WaitOne(10000);
+
+				var t = deviceLocator.SearchAsync(TimeSpan.FromSeconds(5));
+
+				var updatedDevice = CreateDeviceTree();
+				updatedDevice.Uuid = publishedDevice.Uuid;
+				updatedDevice.CacheLifetime = TimeSpan.FromDays(365);
+				server.MockReceiveBroadcast(GetMockAliveNotification(updatedDevice));
+				signal.WaitOne(10000);
+
+				var results = t.GetAwaiter().GetResult();
+				Assert.IsNotNull(results);
+				Assert.IsTrue(results.Any());
+				Assert.AreEqual(String.Format("{0}::{1}", publishedDevice.Udn, publishedDevice.FullDeviceType), discoveredDevices.Last().Usn);
+
+				var first = discoveredDevices.First();
+				var second = discoveredDevices.Last();
+
 				Assert.AreNotEqual(first.CacheLifetime, second.CacheLifetime);
 
 				Assert.AreEqual(second.CacheLifetime, TimeSpan.FromDays(365));
-				Assert.AreEqual(second.DescriptionLocation, new Uri("http://somewhereelse:1701"));
 			}
 		}
 
@@ -924,7 +962,7 @@ namespace Test.RssdpPortable
 
 		private ReceivedUdpData GetMockSearchResponse(SsdpDevice device, string stHeader)
 		{
-			return GetMockSearchResponseWithCustomCacheHeader(device, stHeader, String.Format("CACHE-CONTROL: public, max-age={0}", device.RootDevice.CacheLifetime.TotalSeconds));
+			return GetMockSearchResponseWithCustomCacheHeader(device, stHeader, String.Format("CACHE-CONTROL: public, max-age={0}", device.ToRootDevice().CacheLifetime.TotalSeconds));
 		}
 
 		private ReceivedUdpData GetMockSearchResponseWithCustomCacheHeader(SsdpDevice device, string stHeader, string cacheHeader)
@@ -941,7 +979,7 @@ LOCATION:{3}
  String.IsNullOrEmpty(cacheHeader) ? String.Empty : Environment.NewLine + cacheHeader,
  stHeader,
  String.Format("{0}:{1}", device.Udn, device.FullDeviceType),
- device.RootDevice.Location,
+ device.ToRootDevice().Location,
  DateTime.UtcNow.ToString("r")
  );
 
@@ -1082,6 +1120,8 @@ CACHE-CONTROL: public, max-age=1800
 
 		private ReceivedUdpData GetMockAliveNotification(SsdpDevice device)
 		{
+			var rootDevice = device.ToRootDevice();
+
 			var data = String.Format(@"NOTIFY * HTTP/1.1
 HOST: 239.255.255.250:1900
 Date: {0}
@@ -1096,8 +1136,8 @@ CACHE-CONTROL: public, max-age={4}
 		DateTime.UtcNow.ToString("r"),
 		device.Udn,
 		String.Format("{0}::{1}", device.Udn, device.FullDeviceType),
-		device.RootDevice.Location,
-		device.RootDevice.CacheLifetime.TotalSeconds
+		rootDevice.Location,
+		rootDevice.CacheLifetime.TotalSeconds
 	 );
 
 			var retVal = new ReceivedUdpData()
@@ -1141,11 +1181,11 @@ CACHE-CONTROL: public, max-age={4}
 			return rootDevice;
 		}
 
-		private SsdpDevice CreateValidEmbeddedDevice(SsdpRootDevice rootDevice)
+		private SsdpEmbeddedDevice CreateValidEmbeddedDevice(SsdpRootDevice rootDevice)
 		{
 			var uuid = Guid.NewGuid().ToString();
 
-			return new SsdpDevice(rootDevice)
+			var retVal = new SsdpEmbeddedDevice()
 			{
 				DeviceType = "TestEmbeddedDevice",
 				FriendlyName = "Test Embedded Device " + uuid,
@@ -1153,6 +1193,9 @@ CACHE-CONTROL: public, max-age={4}
 				ModelName = "Test Model",
 				Uuid = uuid
 			};
+			rootDevice.AddDevice(retVal);
+			
+			return retVal;
 		}
 
 		#endregion

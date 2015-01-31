@@ -41,7 +41,7 @@ namespace Rssdp
 		/// <exception cref="System.ArgumentNullException">Thrown if the <paramref name="deviceDescriptionXml"/> or <paramref name="location"/> arguments are null.</exception>
 		/// <exception cref="System.ArgumentException">Thrown if the <paramref name="deviceDescriptionXml"/> argument is empty.</exception>
 		public SsdpRootDevice(Uri location, TimeSpan cacheLifetime, string deviceDescriptionXml)
-			: base(null, deviceDescriptionXml)
+			: base(deviceDescriptionXml)
 		{
 			if (location == null) throw new ArgumentNullException("location");
 
