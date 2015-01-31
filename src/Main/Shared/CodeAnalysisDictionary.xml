@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Dictionary>
+	<Words>
+		<Unrecognized>
+		</Unrecognized>
+		<Recognized>
+			<Word>Ssdp</Word>
+			<Word>Rssdp</Word>
+			<Word>Uuid</Word>
+			<Word>Upc</Word>
+			<Word>Udn</Word>
+			<Word>iOS</Word>
+			<Word>os</Word>
+			<Word>Usn</Word>
+		</Recognized>
+		<DiscreteExceptions>
+		</DiscreteExceptions>
+	</Words>
+	<Acronyms>
+		<CasingExceptions>
+			<Acronym>Ssdp</Acronym>
+			<Acronym>Rssdp</Acronym>
+			<Acronym>UPNP</Acronym>
+			<Acronym>Uuid</Acronym>
+			<Acronym>Upc</Acronym>
+			<Acronym>Udn</Acronym>
+			<Acronym>iOS</Acronym>
+		</CasingExceptions>
+	</Acronyms>
+</Dictionary>
