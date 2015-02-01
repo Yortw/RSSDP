@@ -10,15 +10,13 @@ using Rssdp.Infrastructure;
 
 namespace Rssdp
 {
-	internal sealed class UdpSocket : IUdpSocket
+	internal sealed class UdpSocket : DisposableManagedObjectBase, IUdpSocket
 	{
 
 		#region Fields
 
 		private System.Net.Sockets.Socket _Socket;
 		private int _LocalPort;
-
-		private bool _IsDisposed;
 
 		#endregion
 
@@ -27,10 +25,10 @@ namespace Rssdp
 		public UdpSocket(System.Net.Sockets.Socket socket, int localPort)
 		{
 			if (socket == null) throw new ArgumentNullException("socket");
-			
+
 			_Socket = socket;
 			_LocalPort = localPort;
-			
+
 			_Socket.Bind(new IPEndPoint(IPAddress.Any, localPort));
 			if (_LocalPort == 0)
 				_LocalPort = (_Socket.LocalEndPoint as IPEndPoint).Port;
@@ -40,13 +38,13 @@ namespace Rssdp
 
 		#region IUdpSocket Members
 
-		[System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Reliability", "CA2000:Dispose objects before losing scope", Justification="This is the worlds ugliest Microsoft API anyway, but we can't dispose the event args object or else it will cause the async call to fail. The object should be disposed of when we are done with it, in the event handler.")]
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Reliability", "CA2000:Dispose objects before losing scope", Justification = "This is the worlds ugliest Microsoft API anyway, but we can't dispose the event args object or else it will cause the async call to fail. The object should be disposed of when we are done with it, in the event handler.")]
 		public System.Threading.Tasks.Task<ReceivedUdpData> ReceiveAsync()
 		{
 			ThrowIfDisposed();
 
 			var tcs = new TaskCompletionSource<ReceivedUdpData>();
-			
+
 			var socketEventArg = new SocketAsyncEventArgs();
 			try
 			{
@@ -65,11 +63,11 @@ namespace Rssdp
 
 				throw;
 			}
-			
+
 			return tcs.Task;
 		}
 
-		[System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Reliability", "CA2000:Dispose objects before losing scope", Justification="This is the worlds ugliest Microsoft API anyway, but we can't dispose the event args object or else it will cause the async call to fail. The object should be disposed of when we are done with it, in the event handler.")]
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Reliability", "CA2000:Dispose objects before losing scope", Justification = "This is the worlds ugliest Microsoft API anyway, but we can't dispose the event args object or else it will cause the async call to fail. The object should be disposed of when we are done with it, in the event handler.")]
 		public void SendTo(byte[] messageData, UdpEndPoint endPoint)
 		{
 			if (messageData == null) throw new ArgumentNullException("messageData");
@@ -92,7 +90,7 @@ namespace Rssdp
 					};
 
 					_Socket.SendToAsync(args);
-				
+
 					signal.WaitOne();
 				}
 				finally
@@ -111,20 +109,16 @@ namespace Rssdp
 
 		#endregion
 
-		#region Public Properties
+		#region Overrides
 
-		public bool IsDisposed
+		protected override void Dispose(bool disposing)
 		{
-			get { return _IsDisposed; }
-		}
-
-		#endregion
-
-		#region Private Methods
-
-		private void ThrowIfDisposed()
-		{
-			if (this.IsDisposed) throw new ObjectDisposedException("Socket disposed.");
+			if (disposing)
+			{
+				var socket = _Socket;
+				if (socket != null)
+					socket.Dispose();
+			}
 		}
 
 		#endregion
@@ -160,26 +154,6 @@ namespace Rssdp
 			finally
 			{
 				e.Dispose();
-			}
-		}
-
-		#endregion
-
-		#region IDisposable Members
-
-		public void Dispose()
-		{
-			try
-			{
-				_IsDisposed = true;
-
-				var socket = _Socket;
-				if (socket != null)
-					socket.Dispose();
-			}
-			finally
-			{
-				GC.SuppressFinalize(this);
 			}
 		}
 

@@ -33,14 +33,14 @@
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
-    <OutputPath>..\lib\MonoTouch\</OutputPath>
+    <OutputPath>..\lib\Xamarin.iOS10\</OutputPath>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <ConsolePause>false</ConsolePause>
     <CodesignKey>iPhone Developer</CodesignKey>
     <RunCodeAnalysis>true</RunCodeAnalysis>
     <CodeAnalysisRuleSet>..\RssdpRuleset.ruleset</CodeAnalysisRuleSet>
-    <DocumentationFile>..\lib\MonoTouch\Rssdp.iOS.xml</DocumentationFile>
+    <DocumentationFile>C:\Projects\GitHub\RSSDP\src\Main\lib\Xamarin.iOS10\Rssdp.iOS.xml</DocumentationFile>
     <DebugSymbols>true</DebugSymbols>
   </PropertyGroup>
   <PropertyGroup>

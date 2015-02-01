@@ -33,12 +33,12 @@
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
-    <OutputPath>..\lib\Portable\</OutputPath>
+    <OutputPath>..\lib\portable-net45+win+wpa81+wp80\</OutputPath>
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <CodeAnalysisRuleSet>..\RssdpRuleset.ruleset</CodeAnalysisRuleSet>
-    <DocumentationFile>..\lib\Portable\Rssdp.Portable.XML</DocumentationFile>
+    <DocumentationFile>C:\Projects\GitHub\RSSDP\src\Main\lib\portable-net45+win+wpa81+wp80\Rssdp.Portable.XML</DocumentationFile>
     <RunCodeAnalysis>true</RunCodeAnalysis>
   </PropertyGroup>
   <ItemGroup>

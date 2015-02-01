@@ -311,6 +311,10 @@ namespace Rssdp.Infrastructure
 							var processTask = TaskEx.Run(processWork);
 						}
 					}
+					catch (ObjectDisposedException)
+					{
+						cancelled = true;
+					}
 					catch (TaskCanceledException)
 					{
 						cancelled = true;

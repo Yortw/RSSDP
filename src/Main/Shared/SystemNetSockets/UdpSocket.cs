@@ -14,7 +14,7 @@ namespace Rssdp
 	// THIS IS A LINKED FILE - SHARED AMONGST MULTIPLE PLATFORMS	
 	// Be careful to check any changes compile and work for all platform projects it is shared in.
 
-	internal sealed class UdpSocket : IUdpSocket
+	internal sealed class UdpSocket : DisposableManagedObjectBase, IUdpSocket
 	{
 
 		#region Fields
@@ -44,6 +44,8 @@ namespace Rssdp
 
 		public System.Threading.Tasks.Task<ReceivedUdpData> ReceiveAsync()
 		{
+			ThrowIfDisposed();
+
 			var tcs = new TaskCompletionSource<ReceivedUdpData>();
 
 			System.Net.EndPoint receivedFromEndPoint = new IPEndPoint(IPAddress.Any, 0);
@@ -56,10 +58,26 @@ namespace Rssdp
 
 		public void SendTo(byte[] messageData, UdpEndPoint endPoint)
 		{
+			ThrowIfDisposed();
+
 			if (messageData == null) throw new ArgumentNullException("messageData");
 			if (endPoint == null) throw new ArgumentNullException("endPoint");
 
 			_Socket.SendTo(messageData, new System.Net.IPEndPoint(IPAddress.Parse(endPoint.IPAddress), endPoint.Port));
+		}
+
+		#endregion
+
+		#region Overrides
+
+		protected override void Dispose(bool disposing)
+		{
+			if (disposing)
+			{
+				var socket = _Socket;
+				if (socket != null)
+					socket.Dispose();
+			}
 		}
 
 		#endregion
@@ -109,24 +127,6 @@ namespace Rssdp
 					throw;
 
 				state.TaskCompletionSource.SetException(ex);
-			}
-		}
-
-		#endregion
-
-		#region IDisposable Members
-
-		public void Dispose()
-		{
-			try
-			{
-				var socket = _Socket;
-				if (socket != null)
-					socket.Dispose();
-			}
-			finally
-			{
-				GC.SuppressFinalize(this);
 			}
 		}
 
