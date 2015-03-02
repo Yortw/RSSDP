@@ -8,7 +8,7 @@
         <owners>Yortw</owners>
         <licenseUrl>https://github.com/Yortw/RSSDP/blob/master/LICENSE</licenseUrl>
         <projectUrl>https://github.com/Yortw/RSSDP</projectUrl>
-        <iconUrl>https://github.com/Yortw/RSSDP/blob/master/RssdpIcon.png</iconUrl>
+        <iconUrl>https://raw.githubusercontent.com/Yortw/RSSDP/master/RssdpIcon.png</iconUrl>
         <requireLicenseAcceptance>false</requireLicenseAcceptance>
         <description>Really Simple Service Discovery Protocol - a 100% .Net implementation of the SSDP protocol for publishing custom/basic devices, and discovering all device types on a network.</description>
         <summary>A 100% .Net implementation of the SSDP protocol for basic and custom device types.</summary>
