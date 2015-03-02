@@ -315,7 +315,7 @@ USN: {1}
 						else if (searchTarget.Trim().StartsWith("uuid:", StringComparison.OrdinalIgnoreCase))
 							devices = (from device in GetAllDevicesAsFlatEnumerable() where String.Compare(device.Uuid, searchTarget.Substring(5), StringComparison.OrdinalIgnoreCase) == 0 select device).ToArray();
 						else if (searchTarget.StartsWith("urn:", StringComparison.OrdinalIgnoreCase))
-							devices = (from device in GetAllDevicesAsFlatEnumerable() where String.Compare(device.FullDeviceType, searchTarget.Substring(4), StringComparison.OrdinalIgnoreCase) == 0 select device).ToArray();
+							devices = (from device in GetAllDevicesAsFlatEnumerable() where String.Compare(device.FullDeviceType, searchTarget, StringComparison.OrdinalIgnoreCase) == 0 select device).ToArray();
 					}
 
 					if (devices != null)

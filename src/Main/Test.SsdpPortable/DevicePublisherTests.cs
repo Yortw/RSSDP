@@ -916,7 +916,7 @@ namespace Test.RssdpPortable
 			{
 				publisher.AddDevice(rootDevice);
 
-				ReceivedUdpData searchRequest = GetSearchRequestMessage(String.Format("urn:{0}", rootDevice.FullDeviceType));
+				ReceivedUdpData searchRequest = GetSearchRequestMessage(rootDevice.FullDeviceType);
 
 				server.MockReceiveMessage(searchRequest);
 				server.WaitForMockMessage(1500);
