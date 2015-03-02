@@ -186,10 +186,10 @@ existing, standard protocols that did this. I decided Zeroconf and SSDP seemed l
 
 Sadly, I couldn't find a .Net implementation that met the criteria (I found some Node.Js and implementations in other languages that might have worked, but not in my environment/with my tools). Maybe I didn't look hard enough 
 but that's where I ended up. Having failed on Zeroconf I went looking for SSDP implementations that met the same goals, and have exactly the same problem. I then looked at implementing each protocol and while Zeroconf looked 
-better overall, it *seemed* less well documented and harder to implement. At the point where I decided this wheel needed reinventing* I chose SSDP.
+better overall, it *seemed* less well documented and harder to implement. At the point where I decided this wheel needed reinventing** I chose SSDP.
 
-* Have you ever thought about how many different, useful, kinds of wheel there are in the world? Train wheels won't work on a bicycle, and bicycle wheels won't work on a car etc. Often people who say don't re-invent the wheel 
-haven't really considered how many variation of a wheel might be needed.
+ ** Have you ever thought about how many different, useful, kinds of wheel there are in the world? Train wheels won't work on a bicycle, and bicycle wheels won't work on a car etc. Often people who say don't re-invent the wheel 
+haven't really considered how many variations of a wheel might be needed.
 
 ## References
 Reference materials used while writing this library, or that may be useful to people working with RSSDP who are not familiar with SSDP/UPnP device types and protocols.
