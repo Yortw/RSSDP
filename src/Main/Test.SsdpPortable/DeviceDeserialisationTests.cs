@@ -257,9 +257,9 @@ namespace Test.RssdpPortable
 			};
 
 			var customProp = new SsdpDeviceProperty() { Namespace = "custom-ns", Name = "TestProp1", Value = "Test" };
-			retVal.CustomProperties.Add(customProp.FullName, customProp);
+			retVal.CustomProperties.Add(customProp);
 			customProp = new SsdpDeviceProperty() { Namespace = "custom-ns", Name = "TestProp2", Value = "Test" };
-			retVal.CustomProperties.Add(customProp.FullName, customProp);
+			retVal.CustomProperties.Add(customProp);
 
 			var icon = new SsdpDeviceIcon() { ColorDepth = 32, Height = 48, Width = 48, MimeType = "image/png", Url = new Uri("icons/48", UriKind.Relative) };
 			retVal.Icons.Add(icon);

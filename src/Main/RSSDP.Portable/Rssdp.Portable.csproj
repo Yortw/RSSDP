@@ -72,6 +72,7 @@
     <Compile Include="SsdpConstants.cs" />
     <Compile Include="SsdpDevice.cs" />
     <Compile Include="SsdpDeviceIcon.cs" />
+    <Compile Include="SsdpDeviceProperties.cs" />
     <Compile Include="SsdpDeviceProperty.cs" />
     <Compile Include="SsdpDevicePublisherBase.cs" />
     <Compile Include="SsdpEmbeddedDevice.cs" />

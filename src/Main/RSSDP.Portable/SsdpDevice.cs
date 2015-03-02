@@ -26,7 +26,7 @@ namespace Rssdp
 		private string _DeviceType;
 		private string _DeviceTypeNamespace;
 		private int _DeviceVersion;
-		private Dictionary<string, SsdpDeviceProperty> _CustomProperties;
+		private SsdpDevicePropertiesCollection _CustomProperties;
 
 		private IList<SsdpDevice> _Devices;
 
@@ -65,7 +65,7 @@ namespace Rssdp
 			_Devices = new List<SsdpDevice>();
 			this.Devices = new ReadOnlyEnumerable<SsdpDevice>(_Devices);
 
-			_CustomProperties = new Dictionary<string, SsdpDeviceProperty>();
+			_CustomProperties = new SsdpDevicePropertiesCollection();
 		}
 
 		/// <summary>
@@ -288,7 +288,7 @@ namespace Rssdp
 		/// <summary>
 		/// Returns a dictionary of <see cref="SsdpDeviceProperty"/> objects keyed by <see cref="SsdpDeviceProperty.FullName"/>. Each value represents a custom property in the device description document.
 		/// </summary>
-		public IDictionary<string, SsdpDeviceProperty> CustomProperties
+		public SsdpDevicePropertiesCollection CustomProperties
 		{
 			get
 			{
@@ -443,9 +443,9 @@ namespace Rssdp
 
 		private static void WriteCustomProperties(XmlWriter writer, SsdpDevice device)
 		{
-			foreach (var propKvp in device.CustomProperties)
+			foreach (var prop in device.CustomProperties)
 			{
-				writer.WriteElementString(propKvp.Value.Namespace, propKvp.Value.Name, SsdpConstants.SsdpDeviceDescriptionXmlNamespace, propKvp.Value.Value);
+				writer.WriteElementString(prop.Namespace, prop.Name, SsdpConstants.SsdpDeviceDescriptionXmlNamespace, prop.Value);
 			}
 		}
 
@@ -734,8 +734,8 @@ namespace Rssdp
 		{
 			var newProp = new SsdpDeviceProperty() { Namespace = reader.Prefix, Name = reader.LocalName, Value = reader.ReadElementContentAsString() };
 			// We don't support complex nested types or repeat/multi-value properties
-			if (!device.CustomProperties.ContainsKey(newProp.FullName))
-				device.CustomProperties.Add(newProp.FullName, newProp);
+			if (!device.CustomProperties.Contains(newProp.FullName))
+				device.CustomProperties.Add(newProp);
 		}
 
 		#endregion
