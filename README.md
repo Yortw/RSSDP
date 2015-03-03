@@ -84,7 +84,7 @@ Basically, just create an SsdpDeviceLocator object and call the search method. B
 * urn:&lt;fully qualified device type&gt;
 
 The format of a fully qualified device type is;
-urn:&lt;device namespace&gt:device:&lt;device type&gt:&lt;device version&gt
+urn:&lt;device namespace&gt;:device:&lt;device type&gt;:&lt;device version&gt;
 
 i.e
 
