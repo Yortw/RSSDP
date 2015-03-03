@@ -12,8 +12,8 @@ If you are looking for a way to discover a custom service (such as a proprietary
 Currently;
 
 * .Net Framework 4.0+
-* Windows Phone Silverlight (8.0+) (works Xamarin.Forms WP too)
-* Xamarin.iOS Unified (works Xamarin.Forms 1.3+ for iOS too)
+* Windows Phone Silverlight (8.0+) (works with Xamarin.Forms 1.3+ too)
+* Xamarin.iOS Unified (works with Xamarin.Forms 1.3+  too)
 
 Planned;    
 *eventually*
@@ -29,7 +29,7 @@ There is a sample console applicaton included in the repository. If you don't wa
 
 **One common gotcha to look out for:** SSDP root devices must publish an xml document describing themselves and any embedded devices, and this document must be published on a url that can be accessed via an HTTP GET.
 RSSDP will return devices in search results and notifications regardless of whether this document is actually accessible (it is up to you to retrieve the document if you care, and handle any exceptions that occur doing so).
-However, many other SSDP device locators (such as Intel's Device Spy application) will not report devices if the Url cannot be accessed, the document is invalid, or data in the document (such as the UUID) does not 
+However, many other SSDP device locators (such as Intel's Device Spy application) will not report devices if the url cannot be accessed, the document is invalid, or data in the document (such as the UUID) does not 
 match the associated notification or search request. For this reason, if you are using another tool to locate devices published with RSSDP, ensure you are publishing a correct document on the url specified in the Location
 property of your root device, or else the device may not be found. 
 
@@ -92,9 +92,8 @@ i.e
 * urn:schemas-upnp-org:device:Basic:1
 
 #### Simple Search
-Simple search is easy, but requires you to wait for the full search to finish before getting any results back. 
-This is asynchronous because the method returns a task which you can choose to wait or not and the search itself does happen asynchronously, but we talk about it being 'synchronous' since the results
-can't be accessed until the entire task completes.
+Simple search is easy but requires you to wait for the full search to finish before getting any results back. 
+This is asynchronous and  returns a task which you can choose to wait on (or not), but you must wait for the task to complete before accessing the results.
 
 ```C#
 using Rssdp;
@@ -177,7 +176,7 @@ async static void deviceLocator_DeviceAvailable(object sender, DeviceAvailableEv
 I needed to find a custom/proprietary service on local networks from a mobile device. I decided this had been done before and I shouldn't re-invent the wheel so I started looking for 
 existing, standard protocols that did this. I decided Zeroconf and SSDP seemed like the best two, and Zeroconf looked like the more efficient, less overhead option. Unfortunately I also need a solution where
 
-* I could publish a device. Many other SSDP libraries only focus on discovery.
+* I could publish a device. Many other libraries only focus on discovery.
 * the publish component runs on (at least) .Net 4.0, without relying on any external services. Many other implementations are just wrappers around a Windows or Linux service, which I couldn't guarantee would be installed/enabled etc.
 * the discovery component (at least) runs on Windows Phone and Xamarin.iOS. Preferably also .Net 4.0, Xamain.Android, WinRT and Compact Framework projects (I haven't yet done Android/WinRT/CF but they should be fairly easy when I get around to them). A lot of other implementations don't support the Xamarin platforms.
 * the API was consistent across platforms so I can write as little code with as little conditional compilation as possible (especially in Xamarin Forms projects).
@@ -185,7 +184,7 @@ existing, standard protocols that did this. I decided Zeroconf and SSDP seemed l
 * the library guided me (at least a little) towards publishing devices correctly, i.e correct device types, not leaving out required fields etc.
 
 Sadly, I couldn't find a .Net implementation that met the criteria (I found some Node.Js and implementations in other languages that might have worked, but not in my environment/with my tools). Maybe I didn't look hard enough 
-but that's where I ended up. Having failed on Zeroconf I went looking for SSDP implementations that met the same goals, and have exactly the same problem. I then looked at implementing each protocol and while Zeroconf looked 
+but that's where I ended up. Having failed on Zeroconf I went looking for SSDP implementations that met the same goals, and had exactly the same problem. I then looked at implementing each protocol and while Zeroconf looked 
 better overall, it *seemed* less well documented and harder to implement. At the point where I decided this wheel needed reinventing** I chose SSDP.
 
  ** Have you ever thought about how many different, useful, kinds of wheel there are in the world? Train wheels won't work on a bicycle, and bicycle wheels won't work on a car etc. Often people who say don't re-invent the wheel 
