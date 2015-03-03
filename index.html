@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/pygment_trac.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/print.css" media="print">
+
+    <title>RSSDP by Yortw</title>
+  </head>
+
+  <body>
+
+    <header>
+      <div class="container">
+        <h1>RSSDP</h1>
+        <h2>Really Simple Service Discovery Protocol - a 100% .Net implementation of the SSDP protocol for publishing custom/basic devices, and discovering all device types on a network.</h2>
+
+        <section id="downloads">
+          <a href="https://github.com/Yortw/RSSDP/zipball/master" class="btn">Download as .zip</a>
+          <a href="https://github.com/Yortw/RSSDP/tarball/master" class="btn">Download as .tar.gz</a>
+          <a href="https://github.com/Yortw/RSSDP" class="btn btn-github"><span class="icon"></span>View on GitHub</a>
+        </section>
+      </div>
+    </header>
+
+    <div class="container">
+      <section id="main_content">
+        <h1>
+<a id="really-simple-service-discovery-protocol-for-net" class="anchor" href="#really-simple-service-discovery-protocol-for-net" aria-hidden="true"><span class="octicon octicon-link"></span></a>(Really) Simple Service Discovery Protocol For .Net</h1>
+
+<h2>
+<a id="what-is-rssdp-" class="anchor" href="#what-is-rssdp-" aria-hidden="true"><span class="octicon octicon-link"></span></a>What is RSSDP ?</h2>
+
+<p>RSSDP is a 100% .Net implementation of the Simple Service Discovery (SSDP) protocol that is part of the Universal Plug and Play (UPnP) standard. SSDP allows you
+to discover devices and services on a (local) network.</p>
+
+<p>RSSDP is designed primarily to publish and discover custom or 'basic' devices, and as such does not implement the full UPnP device architecture. If you are 
+looking to build a device for which a full UPnP device schema exists, this is not the library for you (sorry! though I guess you can fork and extend if you like).
+If you are looking for a way to discover a custom service (such as a proprietary REST or SOAP service) from a device, RSSDP might be the solution for you.</p>
+
+<h2>
+<a id="supported-platforms" class="anchor" href="#supported-platforms" aria-hidden="true"><span class="octicon octicon-link"></span></a>Supported Platforms</h2>
+
+<p>Currently;</p>
+
+<ul>
+<li>.Net Framework 4.0+</li>
+<li>Windows Phone Silverlight (8.0+) (works with Xamarin.Forms 1.3+ too)</li>
+<li>Xamarin.iOS Unified (works with Xamarin.Forms 1.3+  too)</li>
+</ul>
+
+<p>Planned;<br>
+<em>eventually</em></p>
+
+<ul>
+<li>Xamarin.Android (including Xamarin.Forms Android projects)</li>
+<li>Possibly WinRT (though it has it's own in-built API's for device location)</li>
+<li>Possibly Windows CE/Compact Framework (VS 2008 Smart Device Projects)</li>
+</ul>
+
+<h2>
+<a id="how-do-i-use-rssdp" class="anchor" href="#how-do-i-use-rssdp" aria-hidden="true"><span class="octicon octicon-link"></span></a>How do I use RSSDP?</h2>
+
+<p><em>We got your samples right here</em></p>
+
+<p>There is a sample console applicaton included in the repository. If you don't want to "read the source, Luke", then here's some tips and examples to get you started.</p>
+
+<p><strong>One common gotcha to look out for:</strong> SSDP root devices must publish an xml document describing themselves and any embedded devices, and this document must be published on a url that can be accessed via an HTTP GET.
+RSSDP will return devices in search results and notifications regardless of whether this document is actually accessible (it is up to you to retrieve the document if you care, and handle any exceptions that occur doing so).
+However, many other SSDP device locators (such as Intel's Device Spy application) will not report devices if the url cannot be accessed, the document is invalid, or data in the document (such as the UUID) does not 
+match the associated notification or search request. For this reason, if you are using another tool to locate devices published with RSSDP, ensure you are publishing a correct document on the url specified in the Location
+property of your root device, or else the device may not be found. </p>
+
+<p>Install the Nuget package like this;</p>
+
+<div class="highlight highlight-powershell"><pre>    PM<span class="pl-k">&gt;</span> <span class="pl-s3">Install-Package</span> Rssdp</pre></div>
+
+<p>Or reference the Rssdp.Portable.dll assembly AND the assembly that matches your app's platform, i.e Rssdp.NetFX40.dll for .Net 4+.</p>
+
+<h3>
+<a id="publishing-a-device" class="anchor" href="#publishing-a-device" aria-hidden="true"><span class="octicon octicon-link"></span></a>Publishing a Device</h3>
+
+<p>Only three steps to do this. Create a device definition, create a publisher, add the device to the publisher;</p>
+
+<div class="highlight highlight-C#"><pre>
+<span class="pl-k">using</span> Rssdp;
+<span class="pl-c">// Declare \_Publisher as a field somewhere, so it doesn't get GCed after the method finishes.</span>
+<span class="pl-s">private</span> SsdpDevicePublisher _Publisher;
+
+<span class="pl-c">// Call this method from somewhere to actually do the publish.</span>
+<span class="pl-s">public</span> <span class="pl-st">void</span> PublishDevice()
+{
+    <span class="pl-c">// As this is a sample, we are only setting the minimum required properties.</span>
+    <span class="pl-k">var</span> deviceDefinition = <span class="pl-s">new</span> SsdpRootDevice()
+    {
+        CacheLifetime = TimeSpan.FromMinutes(<span class="pl-c1">30</span>), <span class="pl-c">//How long SSDP clients can cache this info.</span>
+        Location = <span class="pl-s">new</span> Uri(<span class="pl-s1"><span class="pl-pds">"</span>http://mydevice/descriptiondocument.xml<span class="pl-pds">"</span></span>), <span class="pl-c">// Must point to the URL that serves your devices UPnP description document. </span>
+        DeviceTypeNamespace = <span class="pl-s1"><span class="pl-pds">"</span>my-namespace<span class="pl-pds">"</span></span>,
+        DeviceType = <span class="pl-s1"><span class="pl-pds">"</span>MyCustomDevice<span class="pl-pds">"</span></span>,
+        FriendlyName = <span class="pl-s1"><span class="pl-pds">"</span>Custom Device 1<span class="pl-pds">"</span></span>,
+        Manufacturer = <span class="pl-s1"><span class="pl-pds">"</span>Me<span class="pl-pds">"</span></span>,
+        ModelName = <span class="pl-s1"><span class="pl-pds">"</span>MyCustomDevice<span class="pl-pds">"</span></span>,
+        Uuid = GetPersistentUuid() <span class="pl-c">// This must be a globally unique value that survives reboots etc. Get from storage or embedded hardware etc.</span>
+    };
+}
+
+<span class="pl-c">//Note, you can use deviceDefinition.ToDescriptionDocumentText() to retrieve the data to </span>
+<span class="pl-c">//return from the Location end point, you just need to get that data to your service</span>
+<span class="pl-c">//implementation somehow. Depends on how you've implemented your service.</span>
+
+_Publisher = <span class="pl-s">new</span> SsdpDevicePublisher();
+_Publisher.AddDevice(deviceDefinition);    </pre></div>
+
+<h3>
+<a id="discovering-devices" class="anchor" href="#discovering-devices" aria-hidden="true"><span class="octicon octicon-link"></span></a>Discovering Devices</h3>
+
+<p>Basically, just create an SsdpDeviceLocator object and call the search method. By default the method will search for all devices, but you can specify a search target string in the following formats;</p>
+
+<ul>
+<li>ssdp:all</li>
+<li>upnp:rootdevice</li>
+<li>uuid:&lt;device's unique identifier&gt;</li>
+<li>urn:&lt;fully qualified device type&gt;</li>
+</ul>
+
+<p>The format of a fully qualified device type is;
+urn:&lt;device namespace&gt;:device:&lt;device type&gt;:&lt;device version&gt;</p>
+
+<p>i.e</p>
+
+<ul>
+<li>uuid:CAA42739-8F87-4463-B747-6F6DDB301A06</li>
+<li>urn:schemas-upnp-org:device:Basic:1</li>
+</ul>
+
+<h4>
+<a id="simple-search" class="anchor" href="#simple-search" aria-hidden="true"><span class="octicon octicon-link"></span></a>Simple Search</h4>
+
+<p>Simple search is easy but requires you to wait for the full search to finish before getting any results back. 
+This is asynchronous and  returns a task which you can choose to wait on (or not), but you must wait for the task to complete before accessing the results.</p>
+
+<div class="highlight highlight-C#"><pre><span class="pl-k">using</span> Rssdp;
+
+<span class="pl-c">//Call this method from somewhere to begin the search.</span>
+<span class="pl-s">public</span> <span class="pl-s">async</span> <span class="pl-st">void</span> SearchForDevices()
+{
+    <span class="pl-c">// This code goes in a method somewhere.</span>
+    <span class="pl-k">using</span> (<span class="pl-k">var</span> deviceLocator = <span class="pl-s">new</span> SsdpDeviceLocator())
+    {
+        <span class="pl-k">var</span> foundDevices = <span class="pl-k">await</span> deviceLocator.SearchAsync(); <span class="pl-c">// Can pass search arguments here (device type, uuid). No arguments means all devices.</span>
+
+        <span class="pl-k">foreach</span> (<span class="pl-k">var</span> foundDevice <span class="pl-k">in</span> foundDevices)
+        {
+            <span class="pl-c">// Device data returned only contains basic device details and location ]</span>
+            <span class="pl-c">// of full device description.</span>
+            Console.WriteLine(<span class="pl-s1"><span class="pl-pds">"</span>Found <span class="pl-pds">"</span></span> + foundDevice.Usn + <span class="pl-s1"><span class="pl-pds">"</span> at <span class="pl-pds">"</span></span> + foundDevice.DescriptionLocation.ToString());
+
+            <span class="pl-c">// Can retrieve the full device description easily though.</span>
+            <span class="pl-k">var</span> fullDevice = <span class="pl-k">await</span> foundDevice.GetDeviceInfo();
+            Console.WriteLine(fullDevice.FriendlyName);
+            Console.WriteLine();
+        }
+    }
+}</pre></div>
+
+<h4>
+<a id="event-driven-search--discovery-via-notifications" class="anchor" href="#event-driven-search--discovery-via-notifications" aria-hidden="true"><span class="octicon octicon-link"></span></a>Event Driven Search &amp; Discovery via Notifications</h4>
+
+<p>Event driven search is the same as 'simple' search but instead of looking at the task return value, you subscribe to the DeviceAvailable and DeviceUnavailable events to handle results.
+These events are raised each time a search response is received, as well as whenever a status notification is broadcast from a device. By responding to the events you 
+can process results sooner than waiting for all results to come back from a completed task. You can also monitor for new devices arriving on the network or existing devices disappearing 
+without having to repeatedly call search. Notifications can also be used in conjunction with simple search, just call the StartListeningForNotifications method before searching and handle the events.</p>
+
+<div class="highlight highlight-C#"><pre><span class="pl-k">using</span> Rssdp;
+<span class="pl-c">// Define _DeviceLocator as a field so it doesn't get GCed after the method ends, and it can</span>
+<span class="pl-c">// continue to listen for notifications until it is explicitly stopped </span>
+<span class="pl-c">// (with a call to _DeviceLocator.StopListeningForNotifications();)</span>
+<span class="pl-s">private</span> SsdpDeviceLocator _DeviceLocator;
+
+<span class="pl-c">// Call this method from somewhere in your code to start the search.</span>
+<span class="pl-s">public</span> <span class="pl-st">void</span> BeginSearch()
+{
+    _DeviceLocator = <span class="pl-s">new</span> SsdpDeviceLocator();
+
+    <span class="pl-c">// (Optional) Set the filter so we only see notifications for devices we care about </span>
+    <span class="pl-c">// (can be any search target value i.e device type, uuid value etc - any value that appears in the </span>
+    <span class="pl-c">// DiscoverdSsdpDevice.NotificationType property or that is used with the searchTarget parameter of the Search method).</span>
+    _DeviceLocator.NotificationFilter = <span class="pl-s1"><span class="pl-pds">"</span>upnp:rootdevice<span class="pl-pds">"</span></span>;
+
+    <span class="pl-c">// Connect our event handler so we process devices as they are found</span>
+    \_DeviceLocator.DeviceAvailable += deviceLocator_DeviceAvailable;
+
+    <span class="pl-c">// Enable listening for notifications (optional)</span>
+    _DeviceLocator.StartListeningForNotifications();
+
+    <span class="pl-c">// Perform a search so we don't have to wait for devices to broadcast notifications </span>
+    <span class="pl-c">// again to get any results right away (notifications are broadcast periodically).</span>
+    _DeviceLocator.SearchAsync();
+
+    Console.ReadLine();
+}
+
+<span class="pl-c">// Process each found device in the event handler</span>
+<span class="pl-s">async</span> <span class="pl-s">static</span> <span class="pl-st">void</span> deviceLocator_DeviceAvailable(<span class="pl-st">object</span> sender, DeviceAvailableEventArgs e)
+{
+    <span class="pl-c">//Device data returned only contains basic device details and location of full device description.</span>
+    Console.WriteLine(<span class="pl-s1"><span class="pl-pds">"</span>Found <span class="pl-pds">"</span></span> + e.DiscoveredDevice.Usn + <span class="pl-s1"><span class="pl-pds">"</span> at <span class="pl-pds">"</span></span> + e.DiscoveredDevice.DescriptionLocation.ToString());
+
+    <span class="pl-c">//Can retrieve the full device description easily though.</span>
+    <span class="pl-k">var</span> fullDevice = <span class="pl-k">await</span> e.DiscoveredDevice.GetDeviceInfo();
+    Console.WriteLine(fullDevice.FriendlyName);
+    Console.WriteLine();
+}</pre></div>
+
+<h2>
+<a id="why-rssdp" class="anchor" href="#why-rssdp" aria-hidden="true"><span class="octicon octicon-link"></span></a>Why RSSDP?</h2>
+
+<p><em>Aren't there already lots of SSDP implementations?</em></p>
+
+<p>I needed to find a custom/proprietary service on local networks from a mobile device. I decided this had been done before and I shouldn't re-invent the wheel so I started looking for 
+existing, standard protocols that did this. I decided Zeroconf and SSDP seemed like the best two, and Zeroconf looked like the more efficient, less overhead option. Unfortunately I also need a solution where</p>
+
+<ul>
+<li>I could publish a device. Many other libraries only focus on discovery.</li>
+<li>the publish component runs on (at least) .Net 4.0, without relying on any external services. Many other implementations are just wrappers around a Windows or Linux service, which I couldn't guarantee would be installed/enabled etc.</li>
+<li>the discovery component (at least) runs on Windows Phone and Xamarin.iOS. Preferably also .Net 4.0, Xamain.Android, WinRT and Compact Framework projects (I haven't yet done Android/WinRT/CF but they should be fairly easy when I get around to them). A lot of other implementations don't support the Xamarin platforms.</li>
+<li>the API was consistent across platforms so I can write as little code with as little conditional compilation as possible (especially in Xamarin Forms projects).</li>
+<li>the library wasn't massive and didn't have huge numbers of dependencies, I want to keep my deployment footprint as small as possible.</li>
+<li>the library guided me (at least a little) towards publishing devices correctly, i.e correct device types, not leaving out required fields etc.</li>
+</ul>
+
+<p>Sadly, I couldn't find a .Net implementation that met the criteria (I found some Node.Js and implementations in other languages that might have worked, but not in my environment/with my tools). Maybe I didn't look hard enough 
+but that's where I ended up. Having failed on Zeroconf I went looking for SSDP implementations that met the same goals, and had exactly the same problem. I then looked at implementing each protocol and while Zeroconf looked 
+better overall, it <em>seemed</em> less well documented and harder to implement. At the point where I decided this wheel needed reinventing** I chose SSDP.</p>
+
+<p>** Have you ever thought about how many different, useful, kinds of wheel there are in the world? Train wheels won't work on a bicycle, and bicycle wheels won't work on a car etc. Often people who say don't re-invent the wheel 
+haven't really considered how many variations of a wheel might be needed.</p>
+
+<h2>
+<a id="references" class="anchor" href="#references" aria-hidden="true"><span class="octicon octicon-link"></span></a>References</h2>
+
+<p>Reference materials used while writing this library, or that may be useful to people working with RSSDP who are not familiar with SSDP/UPnP device types and protocols.</p>
+
+<ul>
+<li><a href="http://tools.ietf.org/html/draft-cai-ssdp-v1-03" title="SSDP Draft Spec 1.03">SSDP Draft 1.03 Specification</a></li>
+<li><a href="http://tools.ietf.org/html/draft-cai-ssdp-v1-03" title="UPnP 1.0 Spec">UPnP 1.0 Specification</a></li>
+<li><a href="http://www.upnp.org/specs/arch/UPnP-arch-DeviceArchitecture-v1.0-20080424.pdf" title="UPnP 1.1 Spec">UPnP 1.1 Specification</a></li>
+<li><p><a href="http://tools.ietf.org/html/rfc2616" title="HTTP 1.1 Spec">HTTP 1.1 Specification</a></p></li>
+<li><p><a href="http://upnp.org/index.php/sdcps-and-certification/standards/sdcps/" title="UPnP Device Types">UPnP Device Types and Descriptions</a></p></li>
+<li><a href="http://opentools.homeip.net/dev-tools-for-upnp">UPnP Developer Tools</a></li>
+</ul>
+      </section>
+    </div>
+
+    
+  </body>
+</html>
