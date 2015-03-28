@@ -12,7 +12,7 @@ namespace Test.RssdpPortable
 	[TestClass]
 	public class DeviceLocatorTests
 	{
-		
+
 		#region Constructor Tests
 
 		[ExpectedException(typeof(System.ArgumentNullException))]
@@ -298,7 +298,7 @@ namespace Test.RssdpPortable
 
 			Assert.IsFalse(discoveredDevices.Any());
 		}
-		
+
 		[TestMethod]
 		public void DeviceLocator_Notifications_RaisesDeviceUnavailableWithMatchedNotificationFilter()
 		{
@@ -492,13 +492,45 @@ namespace Test.RssdpPortable
 		#endregion
 
 		#region Search Tests
-		
+
+		//Test we do throw an object disposed exception while listening
+		//if stop listening is called while a search is in progress, and not
+		//some other kind of exception such as null reference.
+		[TestMethod]
+		public void DeviceLocator_SearchAsync_HandlesConcurrentDispose()
+		{
+			using (var deviceLocator = new Rssdp.SsdpDeviceLocator()) 
+			{
+				System.Threading.ThreadPool.QueueUserWorkItem((reserved) =>
+					{
+						System.Threading.Thread.Sleep(50);
+						deviceLocator.Dispose();
+					});
+
+				var t = deviceLocator.SearchAsync();
+
+				AggregateException exception = null;
+				try
+				{
+					t.Wait();
+				}
+				catch (AggregateException aex)
+				{
+					exception = aex;
+				}
+
+				Assert.AreNotEqual(null, exception);
+				Assert.AreEqual(1, exception.InnerExceptions.Count);
+				Assert.AreEqual(typeof(System.ObjectDisposedException), exception.InnerExceptions.First().GetType());
+			}
+		}
+
 		[TestMethod]
 		public void DeviceLocator_SearchAsync_SearchesForAllDevices()
 		{
 			var server = new MockCommsServer();
 			var deviceLocator = new MockDeviceLocator(server);
-			
+
 			var t = deviceLocator.SearchAsync();
 			t.Wait();
 
@@ -678,7 +710,7 @@ namespace Test.RssdpPortable
 
 			DiscoveredSsdpDevice device = null;
 			var receivedNotification = false;
-			
+
 			using (var eventSignal = new System.Threading.AutoResetEvent(false))
 			{
 				deviceLocator.DeviceUnavailable += (sender, args) =>
@@ -1004,7 +1036,7 @@ LOCATION:{3}
 
 		private ReceivedUdpData GetMockAliveNotification()
 		{
-		var data = String.Format(@"NOTIFY * HTTP/1.1
+			var data = String.Format(@"NOTIFY * HTTP/1.1
 HOST: 239.255.255.250:1900
 Date: {0}
 NT: uuid: 1234
@@ -1015,13 +1047,14 @@ LOCATION: http://192.168.1.100:1701/devicedescription.xml
 CACHE-CONTROL: public, max-age=1800
 
 ",
- DateTime.UtcNow.ToString("r")
- );
+	 DateTime.UtcNow.ToString("r")
+	 );
 
-			var retVal = new ReceivedUdpData() 
+			var retVal = new ReceivedUdpData()
 			{
 				Buffer = System.Text.UTF8Encoding.UTF8.GetBytes(data),
-				ReceivedFrom = new UdpEndPoint() {
+				ReceivedFrom = new UdpEndPoint()
+				{
 					IPAddress = SsdpConstants.MulticastLocalAdminAddress,
 					Port = 1900
 				}
@@ -1091,7 +1124,7 @@ USN: {2}
 
 		private ReceivedUdpData GetMockNonNotifyRequest()
 		{
-		var data = String.Format(@"POST * HTTP/1.1
+			var data = String.Format(@"POST * HTTP/1.1
 HOST: 239.255.255.250:1900
 Date: {0}
 NT: uuid: 1234
@@ -1102,13 +1135,14 @@ LOCATION: http://192.168.1.100:1701/devicedescription.xml
 CACHE-CONTROL: public, max-age=1800
 
 ",
- DateTime.UtcNow.ToString("r")
- );
+	 DateTime.UtcNow.ToString("r")
+	 );
 
-			var retVal = new ReceivedUdpData() 
+			var retVal = new ReceivedUdpData()
 			{
 				Buffer = System.Text.UTF8Encoding.UTF8.GetBytes(data),
-				ReceivedFrom = new UdpEndPoint() {
+				ReceivedFrom = new UdpEndPoint()
+				{
 					IPAddress = SsdpConstants.MulticastLocalAdminAddress,
 					Port = 1900
 				}
@@ -1194,7 +1228,7 @@ CACHE-CONTROL: public, max-age={4}
 				Uuid = uuid
 			};
 			rootDevice.AddDevice(retVal);
-			
+
 			return retVal;
 		}
 

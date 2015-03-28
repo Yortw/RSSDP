@@ -72,7 +72,8 @@ namespace Rssdp.Infrastructure
 		/// </summary>
 		/// <param name="socketFactory">An implementation of the <see cref="ISocketFactory"/> interface that can be used to make new unicast and multicast sockets. Cannot be null.</param>
 		/// <exception cref="System.ArgumentNullException">The <paramref name="socketFactory"/> argument is null.</exception>
-		public SsdpCommunicationsServer(ISocketFactory socketFactory) : this(socketFactory, 0, SsdpConstants.SsdpDefaultMulticastTimeToLive)
+		public SsdpCommunicationsServer(ISocketFactory socketFactory)
+			: this(socketFactory, 0, SsdpConstants.SsdpDefaultMulticastTimeToLive)
 		{
 		}
 
@@ -170,7 +171,7 @@ namespace Rssdp.Infrastructure
 			// SSDP spec recommends sending messages multiple times (not more than 3) to account for possible packet loss over UDP.
 			Repeat(SsdpConstants.UdpResendCount, TimeSpan.FromMilliseconds(100), () =>
 				{
-					_SendSocket.SendTo(messageData, destination);
+					SendMessageIfSocketNotDisposed(messageData, destination);
 				});
 		}
 
@@ -192,8 +193,8 @@ namespace Rssdp.Infrastructure
 			Repeat(SsdpConstants.UdpResendCount, TimeSpan.FromMilliseconds(100),
 				() =>
 				{
-					_SendSocket.SendTo(messageData, new UdpEndPoint() { IPAddress = SsdpConstants.MulticastLocalAdminAddress, Port = SsdpConstants.MulticastPort });
-				});		
+					SendMessageIfSocketNotDisposed(messageData, new UdpEndPoint() { IPAddress = SsdpConstants.MulticastLocalAdminAddress, Port = SsdpConstants.MulticastPort });
+				});
 		}
 
 		/// <summary>
@@ -206,10 +207,10 @@ namespace Rssdp.Infrastructure
 
 			lock (_SendSocketSynchroniser)
 			{
-				if (_SendSocket != null)
-					_SendSocket.Dispose();
-
+				var socket = _SendSocket;
 				_SendSocket = null;
+				if (socket != null)
+					socket.Dispose();
 			}
 		}
 
@@ -258,6 +259,19 @@ namespace Rssdp.Infrastructure
 		#endregion
 
 		#region Private Methods
+
+		private void SendMessageIfSocketNotDisposed(byte[] messageData, UdpEndPoint destination)
+		{
+			var socket = _SendSocket;
+			if (socket != null)
+			{
+				_SendSocket.SendTo(messageData, destination);
+			}
+			else
+			{
+				ThrowIfDisposed();
+			}
+		}
 
 		private static void Repeat(int repetitions, TimeSpan delay, Action work)
 		{
