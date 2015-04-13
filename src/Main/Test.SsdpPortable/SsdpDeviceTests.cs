@@ -26,7 +26,7 @@ namespace Test.RssdpPortable
 		public void SsdpDevice_AddDevice_RaisesDeviceAdded()
 		{
 			var rootDevice = new SsdpRootDevice();
-			
+
 			bool eventRaised = false;
 			SsdpDevice eventDevice = null;
 			rootDevice.DeviceAdded += (sender, e) =>
@@ -67,7 +67,7 @@ namespace Test.RssdpPortable
 			Assert.AreEqual(rootDevice, embeddedDevice.RootDevice);
 			Assert.AreEqual(rootDevice, embeddedDevice2.RootDevice);
 		}
-		
+
 		[ExpectedException(typeof(InvalidOperationException))]
 		[TestMethod]
 		public void SsdpDevice_AddDevice_ThrowsAddingDeviceToSelf()
@@ -232,14 +232,14 @@ namespace Test.RssdpPortable
 
 			Assert.AreEqual(null, device.RootDevice);
 		}
-		
+
 		[TestMethod]
-	        public void SsdpDevice_RootDeviceFromDeviceDescriptionXml()
-	        {
-	        	var xml = "<?xml version=\"1.0\" encoding=\"UTF-8\"?><root xmlns=\"urn:schemas-upnp-org:device-1-0\"><specVersion><major>1</major><minor>0</minor></specVersion><URLBase>http://192.168.0.1:54243</URLBase><device><deviceType>urn:schemas-upnp-org:device:MediaRenderer:1</deviceType><friendlyName>Friendly Player</friendlyName><manufacturer>RSSDP</manufacturer><manufacturerURL>https://github.com/Yortw/RSSDP</manufacturerURL><modelDescription>UPnP Renderer</modelDescription><modelName>RSSDP</modelName><modelNumber>6</modelNumber><modelURL>https://github.com/Yortw/RSSDP</modelURL><serialNumber>0</serialNumber><UDN>uuid:uuid:4422acaa-c5b4-4a8e-a1ff-382656833d43</UDN><UPC>00000000</UPC><iconList><icon><mimetype>image/png</mimetype><url>/icons/sm.png</url><width>48</width><height>48</height><depth>24</depth></icon><icon><mimetype>image/png</mimetype><url>/icons/lrg.png</url><width>120</width><height>120</height><depth>24</depth></icon><icon><mimetype>image/jpeg</mimetype><url>/icons/sm.jpg</url><width>48</width><height>48</height><depth>24</depth></icon><icon><mimetype>image/jpeg</mimetype><url>/icons/lrg.jpg</url><width>120</width><height>120</height><depth>24</depth></icon></iconList><serviceList><service><serviceType>urn:schemas-upnp-org:service:ConnectionManager:1</serviceType><serviceId>urn:upnp-org:serviceId:ConnectionManager</serviceId><controlURL>/service/ConnectionManager/control</controlURL><eventSubURL>/service/ConnectionManager/event</eventSubURL><SCPDURL>/service/ConnectionManager/scpd</SCPDURL></service><service><serviceType>urn:schemas-upnp-org:service:AVTransport:1</serviceType><serviceId>urn:upnp-org:serviceId:AVTransport</serviceId><controlURL>/service/AVTransport/control</controlURL><eventSubURL>/service/AVTransport/event</eventSubURL><SCPDURL>/service/AVTransport/scpd</SCPDURL></service><service><serviceType>urn:schemas-upnp-org:service:RenderingControl:1</serviceType><serviceId>urn:upnp-org:serviceId:RenderingControl</serviceId><controlURL>/service/RenderingControl/control</controlURL><eventSubURL>/service/RenderingControl/event</eventSubURL><SCPDURL>/service/RenderingControl/scpd</SCPDURL></service></serviceList></device></root>";
-	            	var rootDevice = new SsdpRootDevice(new Uri("http://192.168.0.1:54243/device.xml"), TimeSpan.FromSeconds(30), xml);
-	            	Assert.AreEqual("Friendly Player", rootDevice.FriendlyName);
-	        }
+		public void SsdpDevice_RootDeviceFromDeviceDescriptionXml()
+		{
+			var xml = "<?xml version=\"1.0\" encoding=\"UTF-8\"?><root xmlns=\"urn:schemas-upnp-org:device-1-0\"><specVersion><major>1</major><minor>0</minor></specVersion><URLBase>http://192.168.0.1:54243</URLBase><device><deviceType>urn:schemas-upnp-org:device:MediaRenderer:1</deviceType><friendlyName>Friendly Player</friendlyName><manufacturer>RSSDP</manufacturer><manufacturerURL>https://github.com/Yortw/RSSDP</manufacturerURL><modelDescription>UPnP Renderer</modelDescription><modelName>RSSDP</modelName><modelNumber>6</modelNumber><modelURL>https://github.com/Yortw/RSSDP</modelURL><serialNumber>0</serialNumber><UDN>uuid:uuid:4422acaa-c5b4-4a8e-a1ff-382656833d43</UDN><UPC>00000000</UPC><iconList><icon><mimetype>image/png</mimetype><url>/icons/sm.png</url><width>48</width><height>48</height><depth>24</depth></icon><icon><mimetype>image/png</mimetype><url>/icons/lrg.png</url><width>120</width><height>120</height><depth>24</depth></icon><icon><mimetype>image/jpeg</mimetype><url>/icons/sm.jpg</url><width>48</width><height>48</height><depth>24</depth></icon><icon><mimetype>image/jpeg</mimetype><url>/icons/lrg.jpg</url><width>120</width><height>120</height><depth>24</depth></icon></iconList><serviceList><service><serviceType>urn:schemas-upnp-org:service:ConnectionManager:1</serviceType><serviceId>urn:upnp-org:serviceId:ConnectionManager</serviceId><controlURL>/service/ConnectionManager/control</controlURL><eventSubURL>/service/ConnectionManager/event</eventSubURL><SCPDURL>/service/ConnectionManager/scpd</SCPDURL></service><service><serviceType>urn:schemas-upnp-org:service:AVTransport:1</serviceType><serviceId>urn:upnp-org:serviceId:AVTransport</serviceId><controlURL>/service/AVTransport/control</controlURL><eventSubURL>/service/AVTransport/event</eventSubURL><SCPDURL>/service/AVTransport/scpd</SCPDURL></service><service><serviceType>urn:schemas-upnp-org:service:RenderingControl:1</serviceType><serviceId>urn:upnp-org:serviceId:RenderingControl</serviceId><controlURL>/service/RenderingControl/control</controlURL><eventSubURL>/service/RenderingControl/event</eventSubURL><SCPDURL>/service/RenderingControl/scpd</SCPDURL></service></serviceList></device></root>";
+			var rootDevice = new SsdpRootDevice(new Uri("http://192.168.0.1:54243/device.xml"), TimeSpan.FromSeconds(30), xml);
+			Assert.AreEqual("Friendly Player", rootDevice.FriendlyName);
+		}
 
 		#endregion
 

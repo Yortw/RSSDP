@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
     <metadata>
         <id>Rssdp</id>
-        <version>1.0.0.2</version>
+        <version>1.0.0.3</version>
         <title>Rssdp</title>
         <authors>Troy Willmot</authors>
         <owners>Yortw</owners>
@@ -12,7 +12,7 @@
         <requireLicenseAcceptance>false</requireLicenseAcceptance>
         <description>Really Simple Service Discovery Protocol - a 100% .Net implementation of the SSDP protocol for publishing custom/basic devices, and discovering all device types on a network.</description>
         <summary>A 100% .Net implementation of the SSDP protocol for basic and custom device types.</summary>
-        <releaseNotes>Concurrently disposing DeviceLocator while SearchAsync call is in progress now throws ObjectDisposedException not NullReferenceException.</releaseNotes>
+        <releaseNotes>Fix for deserialising some device documents (previously caused an exception reading the XML). Thanks to https://github.com/kakone for PR that fixes this.</releaseNotes>
         <copyright>Copyright 2015</copyright>
         <language>en-AU</language>
         <tags>portable xamarin ios windowsphone mobile ssdp discovery device service protocol upnp netfx40 .net4</tags>

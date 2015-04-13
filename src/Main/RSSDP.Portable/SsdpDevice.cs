@@ -160,12 +160,12 @@ namespace Rssdp
 		/// </remarks>
 		public string FullDeviceType
 		{
-			get 
-			{ 
-				return String.Format("urn:{0}:device:{1}:{2}", 
+			get
+			{
+				return String.Format("urn:{0}:device:{1}:{2}",
 				this.DeviceTypeNamespace ?? String.Empty,
-				this.DeviceType ?? String.Empty, 
-				this.DeviceVersion); 
+				this.DeviceType ?? String.Empty,
+				this.DeviceVersion);
 			}
 		}
 
@@ -507,17 +507,17 @@ namespace Rssdp
 		{
 			ReadUntilDeviceNode(reader);
 
-            		while (!reader.EOF)
-            		{
-                		if (reader.NodeType == XmlNodeType.EndElement && reader.Name == "device")
-                		{
-                    			reader.Read();
-                			 break;
-        			}
+			while (!reader.EOF)
+			{
+				if (reader.NodeType == XmlNodeType.EndElement && reader.Name == "device")
+				{
+					reader.Read();
+					break;
+				}
 
-                		if (!SetPropertyFromReader(reader, device))
-                    			reader.Read();
-            		}
+				if (!SetPropertyFromReader(reader, device))
+					reader.Read();
+			}
 		}
 
 		private static void ReadUntilDeviceNode(XmlReader reader)
