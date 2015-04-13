@@ -505,25 +505,19 @@ namespace Rssdp
 
 		private void LoadDeviceProperties(XmlReader reader, SsdpDevice device)
 		{
-			bool skipNextRead = false;
-
 			ReadUntilDeviceNode(reader);
 
-			while (!reader.EOF)
-			{
-				if (reader.NodeType == XmlNodeType.EndElement && reader.Name == "device")
-				{
-					reader.Read();
-					break;
-				}
+            		while (!reader.EOF)
+            		{
+                		if (reader.NodeType == XmlNodeType.EndElement && reader.Name == "device")
+                		{
+                    			reader.Read();
+                			 break;
+        			}
 
-				skipNextRead = SetPropertyFromReader(reader, device, skipNextRead);
-
-				if (!skipNextRead)
-					reader.Read();
-				else
-					skipNextRead = false;
-			}
+                		if (!SetPropertyFromReader(reader, device))
+                    			reader.Read();
+            		}
 		}
 
 		private static void ReadUntilDeviceNode(XmlReader reader)
@@ -534,7 +528,7 @@ namespace Rssdp
 			}
 		}
 
-		private bool SetPropertyFromReader(XmlReader reader, SsdpDevice device, bool skipNextRead)
+		private bool SetPropertyFromReader(XmlReader reader, SsdpDevice device)
 		{
 			switch (reader.LocalName)
 			{
@@ -590,13 +584,11 @@ namespace Rssdp
 				case "iconList":
 					reader.Read();
 					LoadIcons(reader, device);
-					skipNextRead = true;
 					break;
 
 				case "deviceList":
 					reader.Read();
 					LoadChildDevices(reader, device);
-					skipNextRead = true;
 					break;
 
 				case "serviceList":
@@ -605,10 +597,14 @@ namespace Rssdp
 
 				default:
 					if (reader.NodeType == XmlNodeType.Element && reader.Name != "device" && reader.Name != "icon")
+					{
 						AddCustomProperty(reader, device);
-					break;
+						break;
+					}
+					else
+						return false;
 			}
-			return skipNextRead;
+			return true;
 		}
 
 		private static void SetDeviceTypePropertiesFromFullDeviceType(SsdpDevice device, string value)
