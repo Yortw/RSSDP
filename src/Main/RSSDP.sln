@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
-VisualStudioVersion = 12.0.31101.0
+VisualStudioVersion = 12.0.40629.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RSSDP.Portable", "RSSDP.Portable\RSSDP.Portable.csproj", "{67F9D3A8-F71E-4428-913F-C37AE82CDB24}"
 EndProject
@@ -21,6 +21,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Test.RssdpPortable", "Test.SsdpPortable\Test.RssdpPortable.csproj", "{D8A7D9BA-96CF-47F0-BB66-01025A113F6D}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Rssdp.Samples", "Rssdp.Samples\Rssdp.Samples.csproj", "{650BA23B-C1BD-4B66-BEA1-8026F941D4ED}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Rssdp.WinRT", "Rssdp.WinRT\Rssdp.WinRT.csproj", "{62297236-0AD8-4E31-BE6C-91408852FC76}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -84,6 +86,14 @@ Global
 		{650BA23B-C1BD-4B66-BEA1-8026F941D4ED}.Release|Any CPU.Build.0 = Release|Any CPU
 		{650BA23B-C1BD-4B66-BEA1-8026F941D4ED}.Release|ARM.ActiveCfg = Release|Any CPU
 		{650BA23B-C1BD-4B66-BEA1-8026F941D4ED}.Release|x86.ActiveCfg = Release|Any CPU
+		{62297236-0AD8-4E31-BE6C-91408852FC76}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{62297236-0AD8-4E31-BE6C-91408852FC76}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{62297236-0AD8-4E31-BE6C-91408852FC76}.Debug|ARM.ActiveCfg = Debug|Any CPU
+		{62297236-0AD8-4E31-BE6C-91408852FC76}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{62297236-0AD8-4E31-BE6C-91408852FC76}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{62297236-0AD8-4E31-BE6C-91408852FC76}.Release|Any CPU.Build.0 = Release|Any CPU
+		{62297236-0AD8-4E31-BE6C-91408852FC76}.Release|ARM.ActiveCfg = Release|Any CPU
+		{62297236-0AD8-4E31-BE6C-91408852FC76}.Release|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
