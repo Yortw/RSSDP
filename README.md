@@ -14,13 +14,13 @@ Currently;
 * .Net Framework 4.0+
 * Windows Phone Silverlight (8.0+) (works with Xamarin.Forms 1.3+ too)
 * Xamarin.iOS Unified (works with Xamarin.Forms 1.3+  too)
+* WinRT (Windows Stores Apps 8.1)
+* UWP 10 (Windows 10 Universal Programs, through compatbility with WinRT assemblies)
 
 Planned;    
 *eventually*
 
 * Xamarin.Android (including Xamarin.Forms Android projects)
-* Possibly WinRT (though it has it's own in-built API's for device location)
-* Possibly Windows CE/Compact Framework (VS 2008 Smart Device Projects)
 
 ## How do I use RSSDP?
 *We got your samples right here*
