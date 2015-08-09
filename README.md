@@ -14,8 +14,8 @@ Currently;
 * .Net Framework 4.0+
 * Windows Phone Silverlight (8.0+) (works with Xamarin.Forms 1.3+ too)
 * Xamarin.iOS Unified (works with Xamarin.Forms 1.3+  too)
-* WinRT (Windows Stores Apps 8.1)
-* UWP 10 (Windows 10 Universal Programs, through compatbility with WinRT assemblies)
+* WinRT (Windows Store Apps 8.1)
+* UWP 10+ (Windows 10 Universal Programs)
 
 Planned;    
 *eventually*

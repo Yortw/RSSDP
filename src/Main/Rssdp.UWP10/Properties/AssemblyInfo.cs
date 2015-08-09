@@ -1,16 +1,14 @@
-﻿using System.Resources;
-using System.Reflection;
+﻿using System.Reflection;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("RSSDP.WinRT")]
-[assembly: AssemblyDescription("WinRT framework specific implementation for RSSDP library.")]
+[assembly: AssemblyTitle("Rssdp.UWP10")]
+[assembly: AssemblyDescription("Rssdp for Windows Universal Projects (10.0+)")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCulture("")]
-[assembly: NeutralResourcesLanguageAttribute("en-US")]
 
 // Version information for an assembly consists of the following four values:
 //
@@ -24,3 +22,4 @@ using System.Runtime.InteropServices;
 // [assembly: AssemblyVersion("1.0.*")]
 [assembly: AssemblyVersion("1.0.0.0")]
 [assembly: AssemblyFileVersion("1.0.0.0")]
+[assembly: ComVisible(false)]
