@@ -44,10 +44,16 @@
     <Compile Include="..\Shared\SsdpDeviceLocator.cs">
       <Link>SsdpDeviceLocator.cs</Link>
     </Compile>
+    <Compile Include="..\Shared\WinRTSockets\SocketsFactory.cs">
+      <Link>SocketsFactory.cs</Link>
+    </Compile>
+    <Compile Include="..\Shared\WinRTSockets\SsdpDevicePublisher.cs">
+      <Link>SsdpDevicePublisher.cs</Link>
+    </Compile>
+    <Compile Include="..\Shared\WinRTSockets\UdpSocket.cs">
+      <Link>UdpSocket.cs</Link>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SsdpDevicePublisher.cs" />
-    <Compile Include="UwaSocketsFactory.cs" />
-    <Compile Include="UwaUdpSocket.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="..\Shared\CodeAnalysisDictionary.xml">
