@@ -47,7 +47,7 @@ DATE: {7}
 ST:{1}
 SERVER: {4}/{5} UPnP/1.0 RSSDP/{6}
 USN:{2}
-LOCATION:{3}
+LOCATION:{3}{8}
 
 "; //Blank line at end important, do not remove.
 
@@ -361,6 +361,8 @@ USN: {1}
 		{
 			var rootDevice = device.ToRootDevice();
 
+            var additionalheaders = AdditionalHeaders(device);
+
 			var message = String.Format(DeviceSearchResponseMessageFormat,
 					CacheControlHeaderFromTimeSpan(rootDevice),
 					searchTarget,
@@ -369,7 +371,8 @@ USN: {1}
 					_OSName,
 					_OSVersion,
 					ServerVersion,
-					DateTime.UtcNow.ToString("r")
+					DateTime.UtcNow.ToString("r"),
+                    additionalheaders
 				);
 
 			_CommsServer.SendMessage(System.Text.UTF8Encoding.UTF8.GetBytes(message), endPoint);
@@ -650,11 +653,33 @@ USN: {1}
 			}
 		}
 
-		#endregion
+        private string AdditionalHeaders(SsdpDevice device)
+        {
+            if (device.additionalSearchResponseProperties.Count == 0)
+            {
+                return "";
+            }
 
-		#region Event Handlers
+            string returnString = "\r\n";
+            int i = 1;
+            foreach (SsdpDeviceProperty property in device.additionalSearchResponseProperties)
+            {
+                string value = property.Name + ":" + property.Value.ToString();
+                returnString += value;
+                if (i < device.additionalSearchResponseProperties.Count)
+                {
+                    returnString += "\r\n";
+                }
+                i++;
+            }
+            return returnString;
+        }
 
-		private void device_DeviceAdded(object sender, DeviceEventArgs e)
+        #endregion
+
+        #region Event Handlers
+
+        private void device_DeviceAdded(object sender, DeviceEventArgs e)
 		{
 			SendAliveNotifications(e.Device, false);
 			ConnectToDeviceEvents(e.Device);
