@@ -4,6 +4,7 @@ using System.Linq;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
+using System.Net.Http.Headers;
 
 namespace Rssdp
 {
@@ -62,6 +63,11 @@ namespace Rssdp
 			}
 		}
 
+        /// <summary>
+		/// Returns the headers from the SSDP device response message
+		/// </summary>
+        public HttpHeaders ResponseHeaders { get; set; }
+
 		#endregion
 
 		#region Public Methods
@@ -116,15 +122,15 @@ namespace Rssdp
 			return _Device;
 		}
 
-		#endregion
+        #endregion
 
-		#region Overrides
+        #region Overrides
 
-		/// <summary>
-		/// Returns the device's <see cref="Usn"/> value.
-		/// </summary>
-		/// <returns>A string containing the device's universal service name.</returns>
-		public override string ToString()
+        /// <summary>
+        /// Returns the device's <see cref="Usn"/> value.
+        /// </summary>
+        /// <returns>A string containing the device's universal service name.</returns>
+        public override string ToString()
 		{
 			return this.Usn;
 		}

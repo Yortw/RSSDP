@@ -295,10 +295,10 @@ namespace Rssdp
 				return _CustomProperties;
 			}
 		}
-       
+
         /// <summary>
-		/// Returns a dictionary of <see cref="SsdpDeviceProperty"/> objects keyed by <see cref="SsdpDeviceProperty.FullName"/>. Each value represents a custom property in the device description document.
-		/// </summary>
+        /// Returns a dictionary of <see cref="SsdpDeviceProperty"/> objects keyed by <see cref="SsdpDeviceProperty.FullName"/>. Optional. Each value represents a custom header value on the SSDP response message.
+        /// </summary>
         public SsdpDevicePropertiesCollection additionalSearchResponseProperties { get; set; }
 
         #endregion

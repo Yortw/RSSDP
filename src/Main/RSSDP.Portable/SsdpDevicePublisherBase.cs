@@ -660,19 +660,20 @@ USN: {1}
                 return "";
             }
 
-            string returnString = "\r\n";
+            StringBuilder returnValue = new StringBuilder("\r\n");
+
             int i = 1;
             foreach (SsdpDeviceProperty property in device.additionalSearchResponseProperties)
             {
                 string value = property.Name + ":" + property.Value.ToString();
-                returnString += value;
+                returnValue.Append(value);
                 if (i < device.additionalSearchResponseProperties.Count)
                 {
-                    returnString += "\r\n";
+                    returnValue.Append("\r\n");
                 }
                 i++;
             }
-            return returnString;
+            return returnValue.ToString();
         }
 
         #endregion

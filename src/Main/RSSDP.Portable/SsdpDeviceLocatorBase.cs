@@ -443,13 +443,14 @@ ST: {4}
 			var location = GetFirstHeaderUriValue("Location", message);
 			if (location != null)
 			{
-				var device = new DiscoveredSsdpDevice()
-				{
-					DescriptionLocation = location,
-					Usn = GetFirstHeaderStringValue("USN", message),
-					NotificationType = GetFirstHeaderStringValue("ST", message),
-					CacheLifetime = CacheAgeFromHeader(message.Headers.CacheControl),
-					AsAt = DateTimeOffset.Now
+                var device = new DiscoveredSsdpDevice()
+                {
+                    DescriptionLocation = location,
+                    Usn = GetFirstHeaderStringValue("USN", message),
+                    NotificationType = GetFirstHeaderStringValue("ST", message),
+                    CacheLifetime = CacheAgeFromHeader(message.Headers.CacheControl),
+                    AsAt = DateTimeOffset.Now,
+                    ResponseHeaders = message.Headers
 				};
 
 				AddOrUpdateDiscoveredDevice(device);
