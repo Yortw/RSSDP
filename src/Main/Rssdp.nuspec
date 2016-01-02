@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
     <metadata>
         <id>Rssdp</id>
-        <version>1.0.0.6</version>
+        <version>1.0.0.7</version>
         <title>Rssdp</title>
         <authors>Troy Willmot</authors>
         <owners>Yortw</owners>
@@ -13,9 +13,9 @@
         <description>Really Simple Service Discovery Protocol - a 100% .Net implementation of the SSDP protocol for publishing custom/basic devices, and discovering all device types on a network.</description>
         <summary>A 100% .Net implementation of the SSDP protocol for basic and custom device types.</summary>
         <releaseNotes>Add improved support for UWP (with socket sharing, not available on earlier WinRT versions).</releaseNotes>
-        <copyright>Copyright 2015</copyright>
+        <copyright>Copyright 2016</copyright>
         <language>en-AU</language>
-        <tags>portable xamarin ios windowsphone winrt uwp mobile ssdp discovery device service protocol upnp netfx40 .net4</tags>
+        <tags>portable xamarin ios android windowsphone winrt uwp mobile ssdp discovery device service protocol upnp netfx40 .net4</tags>
         <dependencies>
             <dependency id="Microsoft.Net.Http" version="2.2.29" />
             <dependency id="Microsoft.Bcl.Async" version="1.0.168" />
@@ -25,6 +25,9 @@
         <file src="lib\Xamarin.iOS10\Rssdp*.dll" target="lib\Xamarin.iOS10" />
         <file src="lib\Xamarin.iOS10\Rssdp*.xml" target="lib\Xamarin.iOS10" />
         <file src="lib\Xamarin.iOS10\Rssdp*.pdb" target="lib\Xamarin.iOS10" />
+        <file src="lib\monoandroid\Rssdp*.dll" target="lib\monoandroid" />
+        <file src="lib\monoandroid\Rssdp*.xml" target="lib\monoandroid" />
+        <file src="lib\monoandroid\Rssdp*.pdb" target="lib\monoandroid" />
         <file src="lib\net40\Rssdp*.dll" target="lib\net40" />
         <file src="lib\net40\Rssdp*.xml" target="lib\net40" />
         <file src="lib\net40\Rssdp*.pdb" target="lib\net40" />

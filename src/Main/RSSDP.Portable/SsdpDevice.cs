@@ -528,6 +528,7 @@ namespace Rssdp
 			}
 		}
 
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Maintainability", "CA1502:AvoidExcessiveComplexity")]
 		private bool SetPropertyFromReader(XmlReader reader, SsdpDevice device)
 		{
 			switch (reader.LocalName)
