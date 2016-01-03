@@ -22,14 +22,20 @@ namespace Rssdp
 
 		#region Constructors
 
-		public UdpSocket(System.Net.Sockets.Socket socket, int localPort)
+		public UdpSocket(System.Net.Sockets.Socket socket, int localPort, string ipAddress)
 		{
 			if (socket == null) throw new ArgumentNullException("socket");
 
 			_Socket = socket;
 			_LocalPort = localPort;
 
-			_Socket.Bind(new IPEndPoint(IPAddress.Any, localPort));
+			IPAddress localIP = null;
+			if (String.IsNullOrEmpty(ipAddress))
+				localIP = IPAddress.Any;
+			else
+				localIP = IPAddress.Parse(ipAddress);
+
+			_Socket.Bind(new IPEndPoint(localIP, localPort));
 			if (_LocalPort == 0)
 				_LocalPort = (_Socket.LocalEndPoint as IPEndPoint).Port;
 		}

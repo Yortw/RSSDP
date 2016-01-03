@@ -13,6 +13,14 @@ namespace Rssdp
 	// interfaces are a bit ugly, specific and make assumptions.
 	internal sealed class SocketFactory : ISocketFactory
 	{
+
+		private string _LocalIPAddress;
+
+		public SocketFactory(string localIPAddress)
+		{
+			_LocalIPAddress = localIPAddress;
+		}
+
 		#region ISocketFactory Members
 
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Reliability", "CA2000:Dispose objects before losing scope", Justification="The purpose of this method is to create and return a value that happens to be disposable, calling code is responsible for lifetime of result, not us.")]
@@ -21,7 +29,7 @@ namespace Rssdp
 			var netSocket = new Socket(System.Net.Sockets.AddressFamily.InterNetwork, System.Net.Sockets.SocketType.Dgram, System.Net.Sockets.ProtocolType.Udp);
 			try
 			{
-				return new UdpSocket(netSocket, localPort);
+				return new UdpSocket(netSocket, localPort, _LocalIPAddress);
 			}
 			catch
 			{

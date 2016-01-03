@@ -25,7 +25,7 @@ namespace Rssdp
 		/// </remarks>
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Reliability", "CA2000:Dispose objects before losing scope", Justification = "No way to do this here, and we don't want to dispose it except in the (rare) case of an exception anyway.")]
 		public SsdpDevicePublisher()
-			: this(new SsdpCommunicationsServer(new SocketFactory()))
+			: this(new SsdpCommunicationsServer(new SocketFactory(null)))
 		{
 
 		}
@@ -51,7 +51,7 @@ namespace Rssdp
 		/// </remarks>3
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Reliability", "CA2000:Dispose objects before losing scope", Justification = "No way to do this here, and we don't want to dispose it except in the (rare) case of an exception anyway.")]
 		public SsdpDevicePublisher(int localPort)
-			: this(new SsdpCommunicationsServer(new SocketFactory(), localPort))
+			: this(new SsdpCommunicationsServer(new SocketFactory(null), localPort))
 		{
 
 		}
@@ -68,7 +68,7 @@ namespace Rssdp
 		/// </remarks>
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Reliability", "CA2000:Dispose objects before losing scope", Justification = "No way to do this here, and we don't want to dispose it except in the (rare) case of an exception anyway.")]
 		public SsdpDevicePublisher(int localPort, int multicastTimeToLive)
-			: this(new SsdpCommunicationsServer(new SocketFactory(), localPort, multicastTimeToLive))
+			: this(new SsdpCommunicationsServer(new SocketFactory(null), localPort, multicastTimeToLive))
 		{
 		}
 
