@@ -22,7 +22,7 @@ namespace Rssdp.Samples
 			WriteOutOptions();
 
 			var key = new ConsoleKeyInfo();
-			
+
 			while (key.Key == 0 || String.Compare(key.KeyChar.ToString(), "X", true) != 0)
 			{
 				Console.WriteLine();
@@ -91,7 +91,7 @@ namespace Rssdp.Samples
 				Console.WriteLine("Closing previous listener...");
 				_BroadcastListener.DeviceAvailable -= _BroadcastListener_DeviceAvailable;
 				_BroadcastListener.DeviceUnavailable -= _BroadcastListener_DeviceUnavailable;
-				
+
 				_BroadcastListener.StopListeningForNotifications();
 				_BroadcastListener.Dispose();
 			}
@@ -128,7 +128,7 @@ namespace Rssdp.Samples
 
 			// Create a device publisher
 			_DevicePublisher = new SsdpDevicePublisher();
-			
+
 			// Create the device(s) we want to publish.
 			var rootDevice = new SsdpRootDevice()
 			{
@@ -208,7 +208,7 @@ namespace Rssdp.Samples
 
 		private static void WriteOutDevices(DiscoveredSsdpDevice device)
 		{
-			Console.WriteLine(device.Usn + " - " + device.NotificationType +  "\r\n\t @ " + device.DescriptionLocation);
+			Console.WriteLine(device.Usn + " - " + device.NotificationType + "\r\n\t @ " + device.DescriptionLocation);
 		}
 
 	}

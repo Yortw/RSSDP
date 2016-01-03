@@ -64,8 +64,8 @@ namespace Rssdp
 			this.Icons = new List<SsdpDeviceIcon>();
 			_Devices = new List<SsdpDevice>();
 			this.Devices = new ReadOnlyEnumerable<SsdpDevice>(_Devices);
-            this.additionalSearchResponseProperties = new SsdpDevicePropertiesCollection();
-            _CustomProperties = new SsdpDevicePropertiesCollection();
+			this.additionalSearchResponseProperties = new SsdpDevicePropertiesCollection();
+			_CustomProperties = new SsdpDevicePropertiesCollection();
 		}
 
 		/// <summary>
@@ -296,27 +296,27 @@ namespace Rssdp
 			}
 		}
 
-        /// <summary>
-        /// Returns a dictionary of <see cref="SsdpDeviceProperty"/> objects keyed by <see cref="SsdpDeviceProperty.FullName"/>. Optional. Each value represents a custom header value on the SSDP response message.
-        /// </summary>
-        public SsdpDevicePropertiesCollection additionalSearchResponseProperties { get; set; }
+		/// <summary>
+		/// Returns a dictionary of <see cref="SsdpDeviceProperty"/> objects keyed by <see cref="SsdpDeviceProperty.FullName"/>. Optional. Each value represents a custom header value on the SSDP response message.
+		/// </summary>
+		public SsdpDevicePropertiesCollection additionalSearchResponseProperties { get; set; }
 
-        #endregion
+		#endregion
 
-        #region Public Methods
+		#region Public Methods
 
-        /// <summary>
-        /// Adds a child device to the <see cref="Devices"/> collection.
-        /// </summary>
-        /// <param name="device">The <see cref="SsdpEmbeddedDevice"/> instance to add.</param>
-        /// <remarks>
-        /// <para>If the device is already a member of the <see cref="Devices"/> collection, this method does nothing.</para>
-        /// <para>Also sets the <see cref="SsdpEmbeddedDevice.RootDevice"/> property of the added device and all descendant devices to the relevant <see cref="SsdpRootDevice"/> instance.</para>
-        /// </remarks>
-        /// <exception cref="System.ArgumentNullException">Thrown if the <paramref name="device"/> argument is null.</exception>
-        /// <exception cref="System.InvalidOperationException">Thrown if the <paramref name="device"/> is already associated with a different <see cref="SsdpRootDevice"/> instance than used in this tree. Can occur if you try to add the same device instance to more than one tree. Also thrown if you try to add a device to itself.</exception>
-        /// <seealso cref="DeviceAdded"/>
-        public void AddDevice(SsdpEmbeddedDevice device)
+		/// <summary>
+		/// Adds a child device to the <see cref="Devices"/> collection.
+		/// </summary>
+		/// <param name="device">The <see cref="SsdpEmbeddedDevice"/> instance to add.</param>
+		/// <remarks>
+		/// <para>If the device is already a member of the <see cref="Devices"/> collection, this method does nothing.</para>
+		/// <para>Also sets the <see cref="SsdpEmbeddedDevice.RootDevice"/> property of the added device and all descendant devices to the relevant <see cref="SsdpRootDevice"/> instance.</para>
+		/// </remarks>
+		/// <exception cref="System.ArgumentNullException">Thrown if the <paramref name="device"/> argument is null.</exception>
+		/// <exception cref="System.InvalidOperationException">Thrown if the <paramref name="device"/> is already associated with a different <see cref="SsdpRootDevice"/> instance than used in this tree. Can occur if you try to add the same device instance to more than one tree. Also thrown if you try to add a device to itself.</exception>
+		/// <seealso cref="DeviceAdded"/>
+		public void AddDevice(SsdpEmbeddedDevice device)
 		{
 			if (device == null) throw new ArgumentNullException("device");
 			if (device.RootDevice != null && device.RootDevice != this.ToRootDevice()) throw new InvalidOperationException("This device is already associated with a different root device (has been added as a child in another branch).");

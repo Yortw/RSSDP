@@ -499,7 +499,7 @@ namespace Test.RssdpPortable
 		[TestMethod]
 		public void DeviceLocator_SearchAsync_HandlesConcurrentDispose()
 		{
-			using (var deviceLocator = new Rssdp.SsdpDeviceLocator()) 
+			using (var deviceLocator = new Rssdp.SsdpDeviceLocator())
 			{
 				System.Threading.ThreadPool.QueueUserWorkItem((reserved) =>
 					{
@@ -771,7 +771,7 @@ namespace Test.RssdpPortable
 			}
 		}
 
-        [TestMethod()]
+		[TestMethod()]
 		public void DeviceLocator_Notifications_SearchResponseMissingCacheHeaderIsNonCacheable()
 		{
 			var server = new MockCommsServer();
@@ -922,8 +922,8 @@ namespace Test.RssdpPortable
 				deviceLocator.DeviceAvailable += (sender, args) =>
 				{
 					device = args.DiscoveredDevice;
-                    
-                    newlyDiscovered = args.IsNewlyDiscovered;
+
+					newlyDiscovered = args.IsNewlyDiscovered;
 					receivedNotification = true;
 					eventSignal.Set();
 				};
@@ -1000,7 +1000,7 @@ namespace Test.RssdpPortable
 
 		private ReceivedUdpData GetMockSearchResponseWithCustomCacheHeader(SsdpDevice device, string stHeader, string cacheHeader)
 		{
-            string otherHeaders = AdditionalHeaders(device);
+			string otherHeaders = AdditionalHeaders(device);
 			var responseText = String.Format(@"HTTP/1.1 200 OK
 EXT:
 DATE: {4}{0}
@@ -1194,10 +1194,10 @@ CACHE-CONTROL: public, max-age={4}
 		private SsdpRootDevice CreateDeviceTree(SsdpDeviceProperty testHeader = null)
 		{
 			var retVal = CreateValidRootDevice();
-            if (testHeader != null)
-            {
-                retVal.additionalSearchResponseProperties.Add(testHeader);
-            }
+			if (testHeader != null)
+			{
+				retVal.additionalSearchResponseProperties.Add(testHeader);
+			}
 			retVal.AddDevice(CreateValidEmbeddedDevice(retVal));
 			retVal.Devices.First().AddDevice(CreateValidEmbeddedDevice(retVal));
 			return retVal;
@@ -1222,30 +1222,30 @@ CACHE-CONTROL: public, max-age={4}
 			return rootDevice;
 		}
 
-        private string AdditionalHeaders(SsdpDevice device)
-        {
-            if (device.additionalSearchResponseProperties.Count == 0)
-            {
-                return "";
-            }
+		private string AdditionalHeaders(SsdpDevice device)
+		{
+			if (device.additionalSearchResponseProperties.Count == 0)
+			{
+				return "";
+			}
 
-            StringBuilder returnValue = new StringBuilder("\r\n");
+			StringBuilder returnValue = new StringBuilder("\r\n");
 
-            int i = 1;
-            foreach (SsdpDeviceProperty property in device.additionalSearchResponseProperties)
-            {
-                string value = property.Name + ":" + property.Value.ToString();
-                returnValue.Append(value);
-                if (i < device.additionalSearchResponseProperties.Count)
-                {
-                    returnValue.Append("\r\n");
-                }
-                i++;
-            }
-            return returnValue.ToString();
-        }
+			int i = 1;
+			foreach (SsdpDeviceProperty property in device.additionalSearchResponseProperties)
+			{
+				string value = property.Name + ":" + property.Value.ToString();
+				returnValue.Append(value);
+				if (i < device.additionalSearchResponseProperties.Count)
+				{
+					returnValue.Append("\r\n");
+				}
+				i++;
+			}
+			return returnValue.ToString();
+		}
 
-        private SsdpEmbeddedDevice CreateValidEmbeddedDevice(SsdpRootDevice rootDevice)
+		private SsdpEmbeddedDevice CreateValidEmbeddedDevice(SsdpRootDevice rootDevice)
 		{
 			var uuid = Guid.NewGuid().ToString();
 

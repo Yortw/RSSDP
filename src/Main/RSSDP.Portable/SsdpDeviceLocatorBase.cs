@@ -406,8 +406,8 @@ ST: {4}
 
 		private bool NotificationTypeMatchesFilter(DiscoveredSsdpDevice device)
 		{
-			return String.IsNullOrEmpty(this.NotificationFilter) 
-				|| this.NotificationFilter == SsdpConstants.SsdpDiscoverAllSTHeader 
+			return String.IsNullOrEmpty(this.NotificationFilter)
+				|| this.NotificationFilter == SsdpConstants.SsdpDiscoverAllSTHeader
 				|| device.NotificationType == this.NotificationFilter;
 		}
 
@@ -443,14 +443,14 @@ ST: {4}
 			var location = GetFirstHeaderUriValue("Location", message);
 			if (location != null)
 			{
-                var device = new DiscoveredSsdpDevice()
-                {
-                    DescriptionLocation = location,
-                    Usn = GetFirstHeaderStringValue("USN", message),
-                    NotificationType = GetFirstHeaderStringValue("ST", message),
-                    CacheLifetime = CacheAgeFromHeader(message.Headers.CacheControl),
-                    AsAt = DateTimeOffset.Now,
-                    ResponseHeaders = message.Headers
+				var device = new DiscoveredSsdpDevice()
+				{
+					DescriptionLocation = location,
+					Usn = GetFirstHeaderStringValue("USN", message),
+					NotificationType = GetFirstHeaderStringValue("ST", message),
+					CacheLifetime = CacheAgeFromHeader(message.Headers.CacheControl),
+					AsAt = DateTimeOffset.Now,
+					ResponseHeaders = message.Headers
 				};
 
 				AddOrUpdateDiscoveredDevice(device);
@@ -494,7 +494,7 @@ ST: {4}
 			if (!String.IsNullOrEmpty(notficationType))
 			{
 				var usn = GetFirstHeaderStringValue("USN", message);
-				
+
 				if (!DeviceDied(usn, false))
 				{
 					var deadDevice = new DiscoveredSsdpDevice()
@@ -656,7 +656,7 @@ ST: {4}
 				existingDevices = FindExistingDeviceNotifications(_Devices, deviceUsn);
 				foreach (var existingDevice in existingDevices)
 				{
-					if (this.IsDisposed) return true; 
+					if (this.IsDisposed) return true;
 
 					_Devices.Remove(existingDevice);
 				}

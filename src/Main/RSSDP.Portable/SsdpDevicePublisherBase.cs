@@ -122,7 +122,7 @@ USN: {1}
 		/// <param name="device">The <see cref="SsdpDevice"/> instance to add.</param>
 		/// <exception cref="System.ArgumentNullException">Thrown if the <paramref name="device"/> argument is null.</exception>
 		/// <exception cref="System.InvalidOperationException">Thrown if the <paramref name="device"/> contains property values that are not acceptable to the UPnP 1.0 specification.</exception>
-		[System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Performance", "CA1804:RemoveUnusedLocals", MessageId = "t", Justification="Capture task to local variable supresses compiler warning, but task is not really needed.")]
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Performance", "CA1804:RemoveUnusedLocals", MessageId = "t", Justification = "Capture task to local variable supresses compiler warning, but task is not really needed.")]
 		public void AddDevice(SsdpRootDevice device)
 		{
 			if (device == null) throw new ArgumentNullException("device");
@@ -133,7 +133,8 @@ USN: {1}
 
 			TimeSpan minCacheTime;
 			bool wasAdded = false;
-			lock (_Devices){
+			lock (_Devices)
+			{
 				if (!_Devices.Contains(device))
 				{
 					_Devices.Add(device);
@@ -170,7 +171,7 @@ USN: {1}
 			if (device == null) throw new ArgumentNullException("device");
 
 			ThrowIfDisposed();
-			
+
 			bool wasRemoved = false;
 			TimeSpan minCacheTime;
 			lock (_Devices)
@@ -361,7 +362,7 @@ USN: {1}
 		{
 			var rootDevice = device.ToRootDevice();
 
-            var additionalheaders = AdditionalHeaders(device);
+			var additionalheaders = AdditionalHeaders(device);
 
 			var message = String.Format(DeviceSearchResponseMessageFormat,
 					CacheControlHeaderFromTimeSpan(rootDevice),
@@ -372,7 +373,7 @@ USN: {1}
 					_OSVersion,
 					ServerVersion,
 					DateTime.UtcNow.ToString("r"),
-                    additionalheaders
+										additionalheaders
 				);
 
 			_CommsServer.SendMessage(System.Text.UTF8Encoding.UTF8.GetBytes(message), endPoint);
@@ -560,7 +561,7 @@ USN: {1}
 			// which we broadcast notifications, to help with network congestion.
 			// Specs also advise to choose a random interval up to *half* the cache time.
 			// Here we do that, but using the minimum non-zero cache time of any device we are publishing.
-			var rebroadCastInterval = new TimeSpan(Convert.ToInt64((_Random.Next(1, 50) / 100D) *  (minCacheTime.Ticks / 2)));			
+			var rebroadCastInterval = new TimeSpan(Convert.ToInt64((_Random.Next(1, 50) / 100D) * (minCacheTime.Ticks / 2)));
 
 			// If we were already setup to rebroadcast someime in the future,
 			// don't just blindly reset the next broadcast time to the new interval
@@ -581,7 +582,7 @@ USN: {1}
 
 			WriteTrace(String.Format("Rebroadcast Interval = {0}, Next Broadcast At = {1}", rebroadCastInterval.ToString(), nextBroadcastInterval.ToString()));
 		}
-	
+
 		private TimeSpan GetMinimumNonZeroCacheLifetime()
 		{
 			var nonzeroCacheLifetimesQuery = (from device
@@ -594,7 +595,7 @@ USN: {1}
 			else
 				return TimeSpan.Zero;
 		}
-		
+
 		#endregion
 
 		#endregion
@@ -653,34 +654,34 @@ USN: {1}
 			}
 		}
 
-        private string AdditionalHeaders(SsdpDevice device)
-        {
-            if (device.additionalSearchResponseProperties.Count == 0)
-            {
-                return "";
-            }
+		private string AdditionalHeaders(SsdpDevice device)
+		{
+			if (device.additionalSearchResponseProperties.Count == 0)
+			{
+				return "";
+			}
 
-            StringBuilder returnValue = new StringBuilder("\r\n");
+			StringBuilder returnValue = new StringBuilder("\r\n");
 
-            int i = 1;
-            foreach (SsdpDeviceProperty property in device.additionalSearchResponseProperties)
-            {
-                string value = property.Name + ":" + property.Value.ToString();
-                returnValue.Append(value);
-                if (i < device.additionalSearchResponseProperties.Count)
-                {
-                    returnValue.Append("\r\n");
-                }
-                i++;
-            }
-            return returnValue.ToString();
-        }
+			int i = 1;
+			foreach (SsdpDeviceProperty property in device.additionalSearchResponseProperties)
+			{
+				string value = property.Name + ":" + property.Value.ToString();
+				returnValue.Append(value);
+				if (i < device.additionalSearchResponseProperties.Count)
+				{
+					returnValue.Append("\r\n");
+				}
+				i++;
+			}
+			return returnValue.ToString();
+		}
 
-        #endregion
+		#endregion
 
-        #region Event Handlers
+		#region Event Handlers
 
-        private void device_DeviceAdded(object sender, DeviceEventArgs e)
+		private void device_DeviceAdded(object sender, DeviceEventArgs e)
 		{
 			SendAliveNotifications(e.Device, false);
 			ConnectToDeviceEvents(e.Device);

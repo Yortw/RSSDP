@@ -63,10 +63,10 @@ namespace Rssdp
 			}
 		}
 
-        /// <summary>
+		/// <summary>
 		/// Returns the headers from the SSDP device response message
 		/// </summary>
-        public HttpHeaders ResponseHeaders { get; set; }
+		public HttpHeaders ResponseHeaders { get; set; }
 
 		#endregion
 
@@ -122,15 +122,15 @@ namespace Rssdp
 			return _Device;
 		}
 
-        #endregion
+		#endregion
 
-        #region Overrides
+		#region Overrides
 
-        /// <summary>
-        /// Returns the device's <see cref="Usn"/> value.
-        /// </summary>
-        /// <returns>A string containing the device's universal service name.</returns>
-        public override string ToString()
+		/// <summary>
+		/// Returns the device's <see cref="Usn"/> value.
+		/// </summary>
+		/// <returns>A string containing the device's universal service name.</returns>
+		public override string ToString()
 		{
 			return this.Usn;
 		}
@@ -140,7 +140,7 @@ namespace Rssdp
 		#region Private Methods
 
 
-		[System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Reliability", "CA2000:Dispose objects before losing scope", Justification="Can't call dispose on the handler since we pass it to the HttpClient, which outlives the scope of this method.")]
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Reliability", "CA2000:Dispose objects before losing scope", Justification = "Can't call dispose on the handler since we pass it to the HttpClient, which outlives the scope of this method.")]
 		private static HttpClient GetDefaultClient()
 		{
 			if (s_DefaultHttpClient == null)
