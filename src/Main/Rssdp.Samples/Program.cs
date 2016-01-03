@@ -21,7 +21,7 @@ namespace Rssdp.Samples
 			WriteOutOptions();
 
 			var key = new ConsoleKeyInfo();
-			
+
 			while (key.Key == 0 || String.Compare(key.KeyChar.ToString(), "X", true) != 0)
 			{
 				Console.WriteLine();
@@ -42,6 +42,7 @@ namespace Rssdp.Samples
 			Console.WriteLine("? to display menu");
 			Console.WriteLine("P to publish devices");
 			Console.WriteLine("R to search for root devices");
+			Console.WriteLine("A to search for all devices");
 			Console.WriteLine("B to search for basic devices");
 			Console.WriteLine("U to search for published device by UUID");
 			Console.WriteLine("L to listen for notifications");
@@ -55,6 +56,10 @@ namespace Rssdp.Samples
 			{
 				case "P":
 					PublishDevices();
+					break;
+
+				case "A":
+					SearchForAllDevices().Wait();
 					break;
 
 				case "R":
@@ -90,7 +95,7 @@ namespace Rssdp.Samples
 				Console.WriteLine("Closing previous listener...");
 				_BroadcastListener.DeviceAvailable -= _BroadcastListener_DeviceAvailable;
 				_BroadcastListener.DeviceUnavailable -= _BroadcastListener_DeviceUnavailable;
-				
+
 				_BroadcastListener.StopListeningForNotifications();
 				_BroadcastListener.Dispose();
 			}
@@ -127,7 +132,7 @@ namespace Rssdp.Samples
 
 			// Create a device publisher
 			_DevicePublisher = new SsdpDevicePublisher();
-			
+
 			// Create the device(s) we want to publish.
 			var rootDevice = new SsdpRootDevice()
 			{
@@ -171,6 +176,20 @@ namespace Rssdp.Samples
 			}
 		}
 
+		private static async Task SearchForAllDevices()
+		{
+			Console.WriteLine("Searching for all devices...");
+
+			using (var deviceLocator = new SsdpDeviceLocator())
+			{
+				var results = await deviceLocator.SearchAsync();
+				foreach (var device in results)
+				{
+					WriteOutDevices(device);
+				}
+			}
+		}
+
 		private static async Task SearchForDevicesByUuid()
 		{
 			if (_DevicePublisher == null || !_DevicePublisher.Devices.Any())
@@ -207,7 +226,7 @@ namespace Rssdp.Samples
 
 		private static void WriteOutDevices(DiscoveredSsdpDevice device)
 		{
-			Console.WriteLine(device.Usn + " - " + device.NotificationType +  "\r\n\t @ " + device.DescriptionLocation);
+			Console.WriteLine(device.Usn + " - " + device.NotificationType + "\r\n\t @ " + device.DescriptionLocation);
 		}
 
 	}
