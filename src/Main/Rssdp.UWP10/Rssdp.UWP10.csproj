@@ -116,6 +116,9 @@
     <Compile Include="..\Shared\AssemblyInfoCommon.cs">
       <Link>Properties\AssemblyInfoCommon.cs</Link>
     </Compile>
+    <Compile Include="..\Shared\SsdpDeviceLocator.cs">
+      <Link>SsdpDeviceLocator.cs</Link>
+    </Compile>
     <Compile Include="..\Shared\WinRTSockets\SocketsFactory.cs">
       <Link>SocketsFactory.cs</Link>
     </Compile>

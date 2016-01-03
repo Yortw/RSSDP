@@ -27,7 +27,7 @@ namespace Rssdp
 			this.localPort = localPort;
 
 			_Socket = new Windows.Networking.Sockets.DatagramSocket();
-			//_Socket.Control.MulticastOnly = true;
+			_Socket.Control.MulticastOnly = true;
 			_Socket.MessageReceived += _Socket_MessageReceived;
 			var t = _Socket.BindServiceNameAsync(this.localPort.ToString()).AsTask();
 			t.Wait();
