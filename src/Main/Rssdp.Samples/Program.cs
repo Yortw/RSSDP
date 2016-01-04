@@ -43,6 +43,7 @@ namespace Rssdp.Samples
 			Console.WriteLine("? to display menu");
 			Console.WriteLine("P to publish devices");
 			Console.WriteLine("R to search for root devices");
+			Console.WriteLine("A to search for all devices");
 			Console.WriteLine("B to search for basic devices");
 			Console.WriteLine("U to search for published device by UUID");
 			Console.WriteLine("L to listen for notifications");
@@ -56,6 +57,10 @@ namespace Rssdp.Samples
 			{
 				case "P":
 					PublishDevices();
+					break;
+
+				case "A":
+					SearchForAllDevices().Wait();
 					break;
 
 				case "R":
@@ -166,6 +171,20 @@ namespace Rssdp.Samples
 			using (var deviceLocator = new SsdpDeviceLocator())
 			{
 				var results = await deviceLocator.SearchAsync(Rssdp.Infrastructure.SsdpConstants.UpnpDeviceTypeRootDevice);
+				foreach (var device in results)
+				{
+					WriteOutDevices(device);
+				}
+			}
+		}
+
+		private static async Task SearchForAllDevices()
+		{
+			Console.WriteLine("Searching for all devices...");
+
+			using (var deviceLocator = new SsdpDeviceLocator())
+			{
+				var results = await deviceLocator.SearchAsync();
 				foreach (var device in results)
 				{
 					WriteOutDevices(device);
