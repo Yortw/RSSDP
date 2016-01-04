@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Rssdp;
 
 namespace Rssdp.Samples
 {
@@ -21,7 +22,7 @@ namespace Rssdp.Samples
 			WriteOutOptions();
 
 			var key = new ConsoleKeyInfo();
-			
+
 			while (key.Key == 0 || String.Compare(key.KeyChar.ToString(), "X", true) != 0)
 			{
 				Console.WriteLine();
@@ -42,6 +43,7 @@ namespace Rssdp.Samples
 			Console.WriteLine("? to display menu");
 			Console.WriteLine("P to publish devices");
 			Console.WriteLine("R to search for root devices");
+			Console.WriteLine("A to search for all devices");
 			Console.WriteLine("B to search for basic devices");
 			Console.WriteLine("U to search for published device by UUID");
 			Console.WriteLine("L to listen for notifications");
@@ -55,6 +57,10 @@ namespace Rssdp.Samples
 			{
 				case "P":
 					PublishDevices();
+					break;
+
+				case "A":
+					SearchForAllDevices().Wait();
 					break;
 
 				case "R":
@@ -90,7 +96,7 @@ namespace Rssdp.Samples
 				Console.WriteLine("Closing previous listener...");
 				_BroadcastListener.DeviceAvailable -= _BroadcastListener_DeviceAvailable;
 				_BroadcastListener.DeviceUnavailable -= _BroadcastListener_DeviceUnavailable;
-				
+
 				_BroadcastListener.StopListeningForNotifications();
 				_BroadcastListener.Dispose();
 			}
@@ -127,7 +133,7 @@ namespace Rssdp.Samples
 
 			// Create a device publisher
 			_DevicePublisher = new SsdpDevicePublisher();
-			
+
 			// Create the device(s) we want to publish.
 			var rootDevice = new SsdpRootDevice()
 			{
@@ -139,6 +145,7 @@ namespace Rssdp.Samples
 				SerialNumber = "123",
 				Uuid = System.Guid.NewGuid().ToString()
 			};
+			rootDevice.CustomResponseHeaders.Add(new CustomHttpHeader("X-MachineName", Environment.MachineName));
 
 			// Now publish by adding them to the publisher.
 			_DevicePublisher.AddDevice(rootDevice);
@@ -164,6 +171,20 @@ namespace Rssdp.Samples
 			using (var deviceLocator = new SsdpDeviceLocator())
 			{
 				var results = await deviceLocator.SearchAsync(Rssdp.Infrastructure.SsdpConstants.UpnpDeviceTypeRootDevice);
+				foreach (var device in results)
+				{
+					WriteOutDevices(device);
+				}
+			}
+		}
+
+		private static async Task SearchForAllDevices()
+		{
+			Console.WriteLine("Searching for all devices...");
+
+			using (var deviceLocator = new SsdpDeviceLocator())
+			{
+				var results = await deviceLocator.SearchAsync();
 				foreach (var device in results)
 				{
 					WriteOutDevices(device);
@@ -207,7 +228,7 @@ namespace Rssdp.Samples
 
 		private static void WriteOutDevices(DiscoveredSsdpDevice device)
 		{
-			Console.WriteLine(device.Usn + " - " + device.NotificationType +  "\r\n\t @ " + device.DescriptionLocation);
+			Console.WriteLine(device.Usn + " - " + device.NotificationType + "\r\n\t @ " + device.DescriptionLocation);
 		}
 
 	}

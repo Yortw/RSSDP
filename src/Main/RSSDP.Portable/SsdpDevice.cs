@@ -27,6 +27,7 @@ namespace Rssdp
 		private string _DeviceTypeNamespace;
 		private int _DeviceVersion;
 		private SsdpDevicePropertiesCollection _CustomProperties;
+		private CustomHttpHeadersCollection _CustomResponseHeaders;
 
 		private IList<SsdpDevice> _Devices;
 
@@ -64,7 +65,7 @@ namespace Rssdp
 			this.Icons = new List<SsdpDeviceIcon>();
 			_Devices = new List<SsdpDevice>();
 			this.Devices = new ReadOnlyEnumerable<SsdpDevice>(_Devices);
-
+			_CustomResponseHeaders = new CustomHttpHeadersCollection(); 
 			_CustomProperties = new SsdpDevicePropertiesCollection();
 		}
 
@@ -293,6 +294,21 @@ namespace Rssdp
 			get
 			{
 				return _CustomProperties;
+			}
+		}
+
+		/// <summary>
+		/// Provides a list of additional information to provide about this device in search response and notification messages.
+		/// </summary>
+		/// <remarks>
+		/// <para>The headers included here are included in the (HTTP headers) for search response and alive notifications sent in relation to this device.</para>
+		/// <para>Only values specified directly on this <see cref="SsdpDevice"/> instance will be included, headers from ancestors are not automatically included.</para>
+		/// </remarks>
+		public CustomHttpHeadersCollection CustomResponseHeaders
+		{
+			get
+			{
+				return _CustomResponseHeaders;
 			}
 		}
 

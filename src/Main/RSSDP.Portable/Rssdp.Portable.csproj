@@ -17,6 +17,7 @@
     <NuGetPackageImportStamp>1c5b2aa5</NuGetPackageImportStamp>
     <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
     <RestorePackages>true</RestorePackages>
+		<AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -45,6 +46,7 @@
     <Compile Include="..\Shared\AssemblyInfoCommon.cs">
       <Link>Properties\AssemblyInfoCommon.cs</Link>
     </Compile>
+    <Compile Include="CustomHttpHeaders.cs" />
     <Compile Include="DeviceAvailableEventArgs.cs" />
     <Compile Include="DeviceEventArgs.cs" />
     <Compile Include="DeviceUnavailableEventArgs.cs" />
