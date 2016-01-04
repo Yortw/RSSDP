@@ -83,3 +83,5 @@ TestResults
 /src/Main/.nuget
 /src/Main/lib
 /src/Main/packages/
+/src/Main/Rssdp.1.0.0.9.symbols.nupkg
+/src/Main/Rssdp.1.0.0.9.nupkg

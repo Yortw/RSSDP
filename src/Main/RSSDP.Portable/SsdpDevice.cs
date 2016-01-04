@@ -528,6 +528,7 @@ namespace Rssdp
 			}
 		}
 
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Maintainability", "CA1502:AvoidExcessiveComplexity", Justification="Yes, there is a large switch statement, not it's not really complex and doesn't really need to be rewritten at this point.")]
 		private bool SetPropertyFromReader(XmlReader reader, SsdpDevice device)
 		{
 			switch (reader.LocalName)
