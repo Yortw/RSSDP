@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Rssdp;
 
 namespace Rssdp.Samples
 {
@@ -21,7 +22,7 @@ namespace Rssdp.Samples
 			WriteOutOptions();
 
 			var key = new ConsoleKeyInfo();
-			
+
 			while (key.Key == 0 || String.Compare(key.KeyChar.ToString(), "X", true) != 0)
 			{
 				Console.WriteLine();
@@ -90,7 +91,7 @@ namespace Rssdp.Samples
 				Console.WriteLine("Closing previous listener...");
 				_BroadcastListener.DeviceAvailable -= _BroadcastListener_DeviceAvailable;
 				_BroadcastListener.DeviceUnavailable -= _BroadcastListener_DeviceUnavailable;
-				
+
 				_BroadcastListener.StopListeningForNotifications();
 				_BroadcastListener.Dispose();
 			}
@@ -127,7 +128,7 @@ namespace Rssdp.Samples
 
 			// Create a device publisher
 			_DevicePublisher = new SsdpDevicePublisher();
-			
+
 			// Create the device(s) we want to publish.
 			var rootDevice = new SsdpRootDevice()
 			{
@@ -139,6 +140,7 @@ namespace Rssdp.Samples
 				SerialNumber = "123",
 				Uuid = System.Guid.NewGuid().ToString()
 			};
+			rootDevice.CustomResponseHeaders.Add(new CustomHttpHeader("X-MachineName", Environment.MachineName));
 
 			// Now publish by adding them to the publisher.
 			_DevicePublisher.AddDevice(rootDevice);
@@ -207,7 +209,7 @@ namespace Rssdp.Samples
 
 		private static void WriteOutDevices(DiscoveredSsdpDevice device)
 		{
-			Console.WriteLine(device.Usn + " - " + device.NotificationType +  "\r\n\t @ " + device.DescriptionLocation);
+			Console.WriteLine(device.Usn + " - " + device.NotificationType + "\r\n\t @ " + device.DescriptionLocation);
 		}
 
 	}

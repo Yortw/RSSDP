@@ -47,7 +47,7 @@ DATE: {7}
 ST:{1}
 SERVER: {4}/{5} UPnP/1.0 RSSDP/{6}
 USN:{2}
-LOCATION:{3}
+LOCATION:{3}{8}
 
 "; //Blank line at end important, do not remove.
 
@@ -122,7 +122,7 @@ USN: {1}
 		/// <param name="device">The <see cref="SsdpDevice"/> instance to add.</param>
 		/// <exception cref="System.ArgumentNullException">Thrown if the <paramref name="device"/> argument is null.</exception>
 		/// <exception cref="System.InvalidOperationException">Thrown if the <paramref name="device"/> contains property values that are not acceptable to the UPnP 1.0 specification.</exception>
-		[System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Performance", "CA1804:RemoveUnusedLocals", MessageId = "t", Justification="Capture task to local variable supresses compiler warning, but task is not really needed.")]
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Performance", "CA1804:RemoveUnusedLocals", MessageId = "t", Justification = "Capture task to local variable supresses compiler warning, but task is not really needed.")]
 		public void AddDevice(SsdpRootDevice device)
 		{
 			if (device == null) throw new ArgumentNullException("device");
@@ -133,7 +133,8 @@ USN: {1}
 
 			TimeSpan minCacheTime;
 			bool wasAdded = false;
-			lock (_Devices){
+			lock (_Devices)
+			{
 				if (!_Devices.Contains(device))
 				{
 					_Devices.Add(device);
@@ -170,7 +171,7 @@ USN: {1}
 			if (device == null) throw new ArgumentNullException("device");
 
 			ThrowIfDisposed();
-			
+
 			bool wasRemoved = false;
 			TimeSpan minCacheTime;
 			lock (_Devices)
@@ -361,6 +362,8 @@ USN: {1}
 		{
 			var rootDevice = device.ToRootDevice();
 
+			var additionalheaders = FormatCustomHeadersForResponse(device);
+
 			var message = String.Format(DeviceSearchResponseMessageFormat,
 					CacheControlHeaderFromTimeSpan(rootDevice),
 					searchTarget,
@@ -369,7 +372,8 @@ USN: {1}
 					_OSName,
 					_OSVersion,
 					ServerVersion,
-					DateTime.UtcNow.ToString("r")
+					DateTime.UtcNow.ToString("r"),
+										additionalheaders
 				);
 
 			_CommsServer.SendMessage(System.Text.UTF8Encoding.UTF8.GetBytes(message), endPoint);
@@ -557,7 +561,7 @@ USN: {1}
 			// which we broadcast notifications, to help with network congestion.
 			// Specs also advise to choose a random interval up to *half* the cache time.
 			// Here we do that, but using the minimum non-zero cache time of any device we are publishing.
-			var rebroadCastInterval = new TimeSpan(Convert.ToInt64((_Random.Next(1, 50) / 100D) *  (minCacheTime.Ticks / 2)));			
+			var rebroadCastInterval = new TimeSpan(Convert.ToInt64((_Random.Next(1, 50) / 100D) * (minCacheTime.Ticks / 2)));
 
 			// If we were already setup to rebroadcast someime in the future,
 			// don't just blindly reset the next broadcast time to the new interval
@@ -578,7 +582,7 @@ USN: {1}
 
 			WriteTrace(String.Format("Rebroadcast Interval = {0}, Next Broadcast At = {1}", rebroadCastInterval.ToString(), nextBroadcastInterval.ToString()));
 		}
-	
+
 		private TimeSpan GetMinimumNonZeroCacheLifetime()
 		{
 			var nonzeroCacheLifetimesQuery = (from device
@@ -591,7 +595,7 @@ USN: {1}
 			else
 				return TimeSpan.Zero;
 		}
-		
+
 		#endregion
 
 		#endregion
@@ -648,6 +652,20 @@ USN: {1}
 			{
 				DisconnectFromDeviceEvents(childDevice);
 			}
+		}
+
+		private static string FormatCustomHeadersForResponse(SsdpDevice device)
+		{
+			if (device.CustomResponseHeaders.Count == 0) return String.Empty;
+
+			StringBuilder returnValue = new StringBuilder();
+			foreach (var header in device.CustomResponseHeaders)
+			{
+				returnValue.Append("\r\n");
+
+				returnValue.Append(header.ToString());
+			}
+			return returnValue.ToString();
 		}
 
 		#endregion

@@ -855,6 +855,38 @@ namespace Test.RssdpPortable
 		}
 
 		[TestMethod]
+		public void Publisher_SearchResponse_AddCustomHeaders()
+		{
+			var rootDevice = CreateValidRootDevice();
+
+			var testHeader = new CustomHttpHeader("machinename", Environment.MachineName);
+			rootDevice.CustomResponseHeaders.Add(testHeader);
+
+			var server = new MockCommsServer();
+			using (var publisher = new TestDevicePublisher(server))
+			{
+				publisher.SupportPnpRootDevice = false;
+				publisher.AddDevice(rootDevice);
+
+				ReceivedUdpData searchRequest = GetSearchRequestMessage(SsdpConstants.UpnpDeviceTypeRootDevice);
+
+				server.MockReceiveMessage(searchRequest);
+				server.WaitForMockMessage(1500);
+
+				var searchResponses = GetSentMessages(server.SentMessages);
+
+				Assert.AreEqual(0, searchResponses.Where((r) => !r.IsSuccessStatusCode).Count());
+				Assert.IsTrue(GetResponses(searchResponses, SsdpConstants.UpnpDeviceTypeRootDevice).Count() >= 1);
+				Assert.IsTrue(GetResponses(searchResponses, SsdpConstants.PnpDeviceTypeRootDevice).Count() == 0);
+				Assert.IsTrue(GetResponses(searchResponses, rootDevice.Udn).Count() >= 1);
+				Assert.IsTrue(GetResponses(searchResponses, rootDevice.FullDeviceType).Count() >= 1);
+				Assert.AreEqual(0, searchResponses.Where((r) => !r.Headers.GetValues("USN").First().StartsWith(rootDevice.Udn)).Count());
+				Assert.AreEqual(0, searchResponses.Where((r) => !r.Headers.GetValues(testHeader.Name).First().StartsWith(testHeader.Value)).Count());
+			}
+
+		}
+
+		[TestMethod]
 		public void Publisher_SearchResponse_RespondsToPnpRootDeviceSearch()
 		{
 			var rootDevice = CreateValidRootDevice();

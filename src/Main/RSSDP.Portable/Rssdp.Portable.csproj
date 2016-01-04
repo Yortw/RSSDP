@@ -45,6 +45,7 @@
     <Compile Include="..\Shared\AssemblyInfoCommon.cs">
       <Link>Properties\AssemblyInfoCommon.cs</Link>
     </Compile>
+    <Compile Include="CustomHttpHeaders.cs" />
     <Compile Include="DeviceAvailableEventArgs.cs" />
     <Compile Include="DeviceEventArgs.cs" />
     <Compile Include="DeviceUnavailableEventArgs.cs" />
