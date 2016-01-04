@@ -19,7 +19,8 @@
         <dependencies>
                 <dependency id="Microsoft.Net.Http" version="2.2.29" />
                 <dependency id="Microsoft.Bcl.Async" version="1.0.168" />
-        </dependencies>
+        	<dependency id="Microsoft.Bcl.Build" version="1.0.21" />     
+   	</dependencies>
     </metadata>
     <files>
         <file src="lib\Xamarin.iOS10\Rssdp*.dll" target="lib\Xamarin.iOS10" />
