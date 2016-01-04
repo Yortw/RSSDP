@@ -772,6 +772,46 @@ namespace Test.RssdpPortable
 		}
 
 		[TestMethod()]
+		public void DeviceLocator_Notifications_RetrievesCustomHeader()
+		{
+			var server = new MockCommsServer();
+			var deviceLocator = new MockDeviceLocator(server);
+
+			var publishedDevice = CreateDeviceTree(new CustomHttpHeader("machinename", Environment.MachineName));
+			DiscoveredSsdpDevice device = null;
+			var receivedNotification = false;
+
+			using (var eventSignal = new System.Threading.AutoResetEvent(false))
+			{
+				deviceLocator.DeviceAvailable += (sender, args) =>
+				{
+					device = args.DiscoveredDevice;
+					receivedNotification = true;
+					eventSignal.Set();
+				};
+
+				var t = deviceLocator.SearchAsync(TimeSpan.FromSeconds(3));
+				System.Threading.Thread.Sleep(500);
+				server.MockReceiveMessage(GetMockSearchResponse(publishedDevice, publishedDevice.Udn));
+				eventSignal.WaitOne(10000);
+				var results = t.GetAwaiter().GetResult();
+
+				Assert.IsNotNull(results);
+				Assert.IsTrue(results.Any());
+				Assert.IsTrue(receivedNotification);
+				Assert.IsNotNull(device);
+
+				foreach (var h1 in results.First().ResponseHeaders)
+				{
+					System.Diagnostics.Debug.WriteLine(h1.Key);
+				}
+				Assert.AreEqual(Environment.MachineName, (from h in results.First().ResponseHeaders where h.Key == "machinename" select h.Value.FirstOrDefault()).FirstOrDefault());
+				Assert.AreEqual(device.Usn, String.Format("{0}:{1}", publishedDevice.Udn, publishedDevice.FullDeviceType));
+				Assert.AreEqual(device.NotificationType, publishedDevice.Udn);
+			}
+		}
+
+		[TestMethod()]
 		public void DeviceLocator_Notifications_SearchResponseMissingCacheHeaderIsNonCacheable()
 		{
 			var server = new MockCommsServer();
@@ -1007,7 +1047,7 @@ DATE: {4}{0}
 ST:{1}
 SERVER: TestOS/1.0 UPnP/1.0 RSSDP/1.0
 USN:{2}
-LOCATION:{3}{4}
+LOCATION:{3}{5}
 
 ", //Blank line at end important, do not remove.
  String.IsNullOrEmpty(cacheHeader) ? String.Empty : Environment.NewLine + cacheHeader,
@@ -1191,12 +1231,12 @@ CACHE-CONTROL: public, max-age={4}
 			return retVal;
 		}
 
-		private SsdpRootDevice CreateDeviceTree(SsdpDeviceProperty testHeader = null)
+		private SsdpRootDevice CreateDeviceTree(CustomHttpHeader testHeader = null)
 		{
 			var retVal = CreateValidRootDevice();
 			if (testHeader != null)
 			{
-				retVal.additionalSearchResponseProperties.Add(testHeader);
+				retVal.CustomResponseHeaders.Add(testHeader);
 			}
 			retVal.AddDevice(CreateValidEmbeddedDevice(retVal));
 			retVal.Devices.First().AddDevice(CreateValidEmbeddedDevice(retVal));
@@ -1224,23 +1264,14 @@ CACHE-CONTROL: public, max-age={4}
 
 		private string AdditionalHeaders(SsdpDevice device)
 		{
-			if (device.additionalSearchResponseProperties.Count == 0)
-			{
-				return "";
-			}
+			if (device.CustomResponseHeaders.Count == 0) return String.Empty;
 
-			StringBuilder returnValue = new StringBuilder("\r\n");
-
-			int i = 1;
-			foreach (SsdpDeviceProperty property in device.additionalSearchResponseProperties)
+			StringBuilder returnValue = new StringBuilder();
+			foreach (var header in device.CustomResponseHeaders)
 			{
-				string value = property.Name + ":" + property.Value.ToString();
-				returnValue.Append(value);
-				if (i < device.additionalSearchResponseProperties.Count)
-				{
-					returnValue.Append("\r\n");
-				}
-				i++;
+				returnValue.Append("\r\n");
+
+				returnValue.Append(header.ToString());
 			}
 			return returnValue.ToString();
 		}

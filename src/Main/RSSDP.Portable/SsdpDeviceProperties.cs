@@ -66,7 +66,7 @@ namespace Rssdp
 		#region Remove Overloads
 
 		/// <summary>
-		/// Removes the specified property instance from teh collection.
+		/// Removes the specified property instance from the collection.
 		/// </summary>
 		/// <param name="customDeviceProperty">The <see cref="SsdpDeviceProperty"/> instance to remove from the collection.</param>
 		/// <remarks>

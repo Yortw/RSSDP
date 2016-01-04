@@ -859,10 +859,8 @@ namespace Test.RssdpPortable
 		{
 			var rootDevice = CreateValidRootDevice();
 
-			SsdpDeviceProperty testHeader = new SsdpDeviceProperty();
-			testHeader.Name = "machinename";
-			testHeader.Value = Environment.MachineName;
-			rootDevice.additionalSearchResponseProperties.Add(testHeader);
+			var testHeader = new CustomHttpHeader("machinename", Environment.MachineName);
+			rootDevice.CustomResponseHeaders.Add(testHeader);
 
 			var server = new MockCommsServer();
 			using (var publisher = new TestDevicePublisher(server))

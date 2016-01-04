@@ -362,7 +362,7 @@ USN: {1}
 		{
 			var rootDevice = device.ToRootDevice();
 
-			var additionalheaders = AdditionalHeaders(device);
+			var additionalheaders = FormatCustomHeadersForResponse(device);
 
 			var message = String.Format(DeviceSearchResponseMessageFormat,
 					CacheControlHeaderFromTimeSpan(rootDevice),
@@ -654,25 +654,16 @@ USN: {1}
 			}
 		}
 
-		private string AdditionalHeaders(SsdpDevice device)
+		private static string FormatCustomHeadersForResponse(SsdpDevice device)
 		{
-			if (device.additionalSearchResponseProperties.Count == 0)
-			{
-				return "";
-			}
+			if (device.CustomResponseHeaders.Count == 0) return String.Empty;
 
-			StringBuilder returnValue = new StringBuilder("\r\n");
-
-			int i = 1;
-			foreach (SsdpDeviceProperty property in device.additionalSearchResponseProperties)
+			StringBuilder returnValue = new StringBuilder();
+			foreach (var header in device.CustomResponseHeaders)
 			{
-				string value = property.Name + ":" + property.Value.ToString();
-				returnValue.Append(value);
-				if (i < device.additionalSearchResponseProperties.Count)
-				{
-					returnValue.Append("\r\n");
-				}
-				i++;
+				returnValue.Append("\r\n");
+
+				returnValue.Append(header.ToString());
 			}
 			return returnValue.ToString();
 		}

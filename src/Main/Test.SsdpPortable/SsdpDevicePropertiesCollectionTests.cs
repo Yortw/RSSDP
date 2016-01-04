@@ -40,7 +40,7 @@ namespace Test.RssdpPortable
 
 		[TestMethod]
 		[ExpectedException(typeof(System.ArgumentNullException))]
-		public void SsdpDevicePropertiesCollection_Add_NullDeviceThrows()
+		public void SsdpDevicePropertiesCollection_Add_NullThrows()
 		{
 			var properties = new SsdpDevicePropertiesCollection();
 
@@ -75,7 +75,7 @@ namespace Test.RssdpPortable
 
 		[TestMethod]
 		[ExpectedException(typeof(System.ArgumentNullException))]
-		public void SsdpDevicePropertiesCollection_Remove_NullDeviceThrows()
+		public void SsdpDevicePropertiesCollection_Remove_NullThrows()
 		{
 			var properties = new SsdpDevicePropertiesCollection();
 

@@ -140,6 +140,7 @@ namespace Rssdp.Samples
 				SerialNumber = "123",
 				Uuid = System.Guid.NewGuid().ToString()
 			};
+			rootDevice.CustomResponseHeaders.Add(new CustomHttpHeader("X-MachineName", Environment.MachineName));
 
 			// Now publish by adding them to the publisher.
 			_DevicePublisher.AddDevice(rootDevice);
