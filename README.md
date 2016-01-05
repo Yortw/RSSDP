@@ -18,6 +18,9 @@ Currently;
 * WinRT (Windows Store Apps 8.1)
 * UWP 10+ (Windows 10 Universal Programs)
 
+## Build Status
+[![Build status](https://ci.appveyor.com/api/projects/status/f4e33as09yx0lsn4?svg=true)](https://ci.appveyor.com/project/Yortw/rssdp)
+
 ## How do I use RSSDP?
 *We got your samples right here*
 
