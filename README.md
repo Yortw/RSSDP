@@ -38,6 +38,9 @@ Install the Nuget package like this;
     PM> Install-Package Rssdp
 ```
 
+[![NuGet Status](http://img.shields.io/nuget/v/RSSDP.svg?style=flat)](https://www.nuget.org/packages/RSSDP)
+[![Nuget](https://img.shields.io/nuget/dt/RSSDP.svg)](https://www.nuget.org/packages/RSSDP)
+
 Or reference the Rssdp.Portable.dll assembly AND the assembly that matches your app's platform, i.e Rssdp.NetFX40.dll for .Net 4+.
 
 ### Publishing a Device
