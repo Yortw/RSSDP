@@ -23,7 +23,6 @@ namespace Rssdp
 			_DataAvailableSignal = new System.Threading.ManualResetEvent(false);
 			_ReceivedData = new System.Collections.Concurrent.ConcurrentQueue<ReceivedUdpData>();
 
-			_LocalIPAddress = ipAddress;
 			_MulticastTimeToLive = multicastTimeToLive;
 			_LocalPort = localPort;
 
@@ -34,7 +33,7 @@ namespace Rssdp
 			_Socket.MessageReceived += _Socket_MessageReceived;
 
 			BindSocket();
-			_Socket.JoinMulticastGroup(new Windows.Networking.HostName(Rssdp.Infrastructure.SsdpConstants.MulticastLocalAdminAddress));
+			_Socket.JoinMulticastGroup(new Windows.Networking.HostName(ipAddress));
 		}
 
 		public UwaUdpSocket(int localPort, string localIPAddress)

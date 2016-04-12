@@ -8,6 +8,8 @@ RSSDP is designed primarily to publish and discover custom or 'basic' devices, a
 looking to build a device for which a full UPnP device schema exists, this is not the library for you (sorry! though I guess you can fork and extend if you like).
 If you are looking for a way to discover a custom service (such as a proprietary REST or SOAP service) from a device, RSSDP might be the solution for you.
 
+[![GitHub license](https://img.shields.io/github/license/mashape/apistatus.svg)](https://github.com/Yortw/RSSDP/blob/master/LICENSE.md) 
+
 ## Supported Platforms
 Currently;
 
