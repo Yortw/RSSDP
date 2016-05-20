@@ -745,7 +745,27 @@ namespace Rssdp
 
 		private static void AddCustomProperty(XmlReader reader, SsdpDevice device)
 		{
-			var newProp = new SsdpDeviceProperty() { Namespace = reader.Prefix, Name = reader.LocalName, Value = reader.ReadElementContentAsString() };
+			var newProp = new SsdpDeviceProperty() { Namespace = reader.Prefix, Name = reader.LocalName };
+			int depth = reader.Depth;
+			reader.Read();
+			while (reader.NodeType == XmlNodeType.Whitespace || reader.NodeType == XmlNodeType.Comment)
+			{
+				reader.Read();
+			}
+
+			if (reader.NodeType != XmlNodeType.CDATA && reader.NodeType != XmlNodeType.Text)
+			{
+				while (!reader.EOF && (reader.NodeType != XmlNodeType.EndElement || reader.Name != newProp.Name || reader.Prefix != newProp.Namespace || reader.Depth != depth))
+				{
+					reader.Read();
+				}
+				if (!reader.EOF)
+					reader.Read();
+				return;
+			}
+			
+			newProp.Value = reader.Value;
+
 			// We don't support complex nested types or repeat/multi-value properties
 			if (!device.CustomProperties.Contains(newProp.FullName))
 				device.CustomProperties.Add(newProp);

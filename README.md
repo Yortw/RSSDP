@@ -149,7 +149,7 @@ public void BeginSearch()
     _DeviceLocator.NotificationFilter = "upnp:rootdevice";
 
     // Connect our event handler so we process devices as they are found
-    \_DeviceLocator.DeviceAvailable += deviceLocator_DeviceAvailable;
+    _DeviceLocator.DeviceAvailable += deviceLocator_DeviceAvailable;
 
     // Enable listening for notifications (optional)
     _DeviceLocator.StartListeningForNotifications();
