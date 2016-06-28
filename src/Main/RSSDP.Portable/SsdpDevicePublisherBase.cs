@@ -453,6 +453,11 @@ USN: {1}
 					SendAliveNotifications(device, true);
 				}
 			}
+            catch (ObjectDisposedException ex)
+            {
+                WriteTrace("Publisher stopped, exception " + ex.Message);
+                Dispose();
+            }
 			finally
 			{
 				if (!this.IsDisposed)
