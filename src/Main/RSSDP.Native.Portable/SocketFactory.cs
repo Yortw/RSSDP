@@ -1,5 +1,4 @@
-﻿using System;
-using Rssdp.Infrastructure;
+﻿using Rssdp.Infrastructure;
 
 namespace Rssdp
 {
@@ -12,7 +11,7 @@ namespace Rssdp
 
         public SocketFactory(string localIP)
         {
-            throw new NotImplementedException();
+            throw PCL.StubException;
         }
 
        
@@ -24,7 +23,7 @@ namespace Rssdp
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Reliability", "CA2000:Dispose objects before losing scope", Justification = "The purpose of this method is to create and returns a disposable result, it is up to the caller to dispose it when they are done with it.")]
         public IUdpSocket CreateUdpSocket(int localPort)
         {
-            throw new NotImplementedException();
+            throw PCL.StubException;
         }
 
         /// <summary>
@@ -37,7 +36,7 @@ namespace Rssdp
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "ip"), System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Reliability", "CA2000:Dispose objects before losing scope", Justification = "The purpose of this method is to create and returns a disposable result, it is up to the caller to dispose it when they are done with it.")]
         public IUdpSocket CreateUdpMulticastSocket(string ipAddress, int multicastTimeToLive, int localPort)
         {
-            throw new NotImplementedException();
+            throw PCL.StubException;
         }
     }
 }

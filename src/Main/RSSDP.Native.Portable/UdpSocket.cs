@@ -1,5 +1,4 @@
-﻿using System;
-using Rssdp.Infrastructure;
+﻿using Rssdp.Infrastructure;
 
 namespace Rssdp
 {
@@ -9,17 +8,17 @@ namespace Rssdp
     {
         public System.Threading.Tasks.Task<ReceivedUdpData> ReceiveAsync()
         {
-            throw new NotImplementedException();
+            throw PCL.StubException;
         }
 
         public void SendTo(byte[] messageData, UdpEndPoint endPoint)
         {
-            throw new NotImplementedException();
+            throw PCL.StubException;
         }
 
         protected override void Dispose(bool disposing)
         {
-            throw new NotImplementedException();
+            throw PCL.StubException;
         }
     }
 }

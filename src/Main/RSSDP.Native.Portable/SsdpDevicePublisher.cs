@@ -1,11 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using Rssdp.Infrastructure;
+﻿using Rssdp.Infrastructure;
 
 namespace Rssdp
 {
+    /// THIS IS A STUB FILE
     /// <summary>
     /// Allows publishing devices both as notification and responses to search requests.
     /// </summary>
@@ -26,7 +23,7 @@ namespace Rssdp
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Reliability", "CA2000:Dispose objects before losing scope", Justification = "No way to do this here, and we don't want to dispose it except in the (rare) case of an exception anyway.")]
         public SsdpDevicePublisher() : base(null, null, null)
         {
-
+            throw PCL.StubException;
         }
 
         /// <summary>
@@ -38,7 +35,7 @@ namespace Rssdp
         public SsdpDevicePublisher(ISsdpCommunicationsServer communicationsServer)
             : base(communicationsServer, null, null)
         {
-
+            throw PCL.StubException;
         }
 
         /// <summary>
@@ -52,7 +49,7 @@ namespace Rssdp
         public SsdpDevicePublisher(int localPort)
             : this(new SsdpCommunicationsServer(null, localPort))
         {
-
+            throw PCL.StubException;
         }
 
         /// <summary>
@@ -69,6 +66,7 @@ namespace Rssdp
         public SsdpDevicePublisher(int localPort, int multicastTimeToLive)
             : this(new SsdpCommunicationsServer(null, localPort, multicastTimeToLive))
         {
+            throw PCL.StubException;
         }
 
         #endregion

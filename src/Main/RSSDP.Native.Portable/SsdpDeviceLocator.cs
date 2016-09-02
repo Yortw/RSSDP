@@ -1,5 +1,4 @@
-﻿using System;
-using Rssdp.Infrastructure;
+﻿using Rssdp.Infrastructure;
 
 namespace Rssdp
 {
@@ -16,7 +15,7 @@ namespace Rssdp
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Reliability", "CA2000:Dispose objects before losing scope", Justification = "Can't expose along exception paths here (exceptions should be very rare anyway, and probably fatal too) and we shouldn't dipose the items we pass to base in any other case.")]
         public SsdpDeviceLocator() : base(null)
         {
-            throw new NotImplementedException();
+            throw PCL.StubException;
         }
 
         /// <summary>
@@ -25,6 +24,7 @@ namespace Rssdp
         public SsdpDeviceLocator(ISsdpCommunicationsServer communicationsServer)
             : base(communicationsServer)
         {
+            throw PCL.StubException;
         }
 
     }
