@@ -40,7 +40,7 @@
     <CodesignKey>iPhone Developer</CodesignKey>
     <RunCodeAnalysis>true</RunCodeAnalysis>
     <CodeAnalysisRuleSet>..\RssdpRuleset.ruleset</CodeAnalysisRuleSet>
-    <DocumentationFile>C:\Projects\GitHub\RSSDP\src\Main\lib\Xamarin.iOS10\Rssdp.iOS.xml</DocumentationFile>
+    <DocumentationFile>..\lib\Xamarin.iOS10\Rssdp.Native.xml</DocumentationFile>
     <DebugSymbols>true</DebugSymbols>
   </PropertyGroup>
   <PropertyGroup>

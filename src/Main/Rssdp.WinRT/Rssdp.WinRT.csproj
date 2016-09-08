@@ -29,6 +29,7 @@
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>..\lib\netcore451\</OutputPath>
+	<DocumentationFile>..\lib\netcore451\Rssdp.Native.xml</DocumentationFile>
     <DefineConstants>TRACE;WINRT</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
