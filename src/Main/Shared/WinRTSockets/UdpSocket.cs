@@ -6,7 +6,7 @@ using System.Linq;
 
 namespace Rssdp
 {
-	public sealed class UwaUdpSocket : IUdpSocket
+	internal sealed class UwaUdpSocket : IUdpSocket
 	{
 		private string _LocalIPAddress;
 		private int _LocalPort;

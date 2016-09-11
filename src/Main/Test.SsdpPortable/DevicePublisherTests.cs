@@ -1094,7 +1094,7 @@ namespace Test.RssdpPortable
 				server.MockReceiveMessage(searchRequest);
 				server.WaitForMessageToProcess(5000);
 				server.WaitForMockMessage(2000);
-				System.Threading.Thread.Sleep(100);
+				System.Threading.Thread.Sleep(500);
 
 				var searchResponses = GetSentMessages(server.SentMessages);
 				Assert.AreEqual(0, searchResponses.Where((r) => !r.IsSuccessStatusCode).Count());

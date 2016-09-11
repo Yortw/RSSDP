@@ -2,7 +2,7 @@
 
 namespace Rssdp
 {
-    public static class PCL
+    internal static class PCL
     {
         public static Exception StubException => new NotImplementedException
             (

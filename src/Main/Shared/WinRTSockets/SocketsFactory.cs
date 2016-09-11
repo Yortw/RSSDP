@@ -20,7 +20,7 @@ namespace Rssdp
 		/// <summary>
 		/// Default constructor.
 		/// </summary>
-		/// <param name="localIP">A string containing the IP address of the local network adapter to bind sockets to. Null or empty string will use <see cref="IPAddress.Any"/>.</param>
+		/// <param name="localIP">A string containing the IP address of the local network adapter to bind sockets to. Null or empty string will use IPAddress.Any.</param>
 		public SocketFactory(string localIP)
 		{
 			_LocalIP = localIP;

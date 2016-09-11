@@ -1,5 +1,5 @@
 @echo off
 echo Press any key to publish
 pause
-".nuget\NuGet.exe" push Rssdp.1.0.0.12.nupkg
+".nuget\NuGet.exe" push Rssdp.2.0.0.0.nupkg
 pause

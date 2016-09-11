@@ -4,7 +4,7 @@ namespace Rssdp
 {
     // THIS IS A STUB FILE
 
-    internal sealed class UdpSocket : DisposableManagedObjectBase, IUdpSocket
+    public sealed class UdpSocket : DisposableManagedObjectBase, IUdpSocket
     {
         public System.Threading.Tasks.Task<ReceivedUdpData> ReceiveAsync()
         {
