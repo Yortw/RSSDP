@@ -10,7 +10,7 @@
     <OutputType>Library</OutputType>
     <RootNamespace>Rssdp</RootNamespace>
     <IPhoneResourcePrefix>Resources</IPhoneResourcePrefix>
-    <AssemblyName>Rssdp.iOS</AssemblyName>
+    <AssemblyName>Rssdp.Native</AssemblyName>
     <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
     <RestorePackages>true</RestorePackages>
     <NuGetPackageImportStamp>c08056b7</NuGetPackageImportStamp>
@@ -28,7 +28,7 @@
     <CodesignKey>iPhone Developer</CodesignKey>
     <RunCodeAnalysis>true</RunCodeAnalysis>
     <CodeAnalysisRuleSet>..\RssdpRuleset.ruleset</CodeAnalysisRuleSet>
-    <DocumentationFile>bin\iPhone\Debug\Rssdp.iOS.xml</DocumentationFile>
+    <DocumentationFile>bin\iPhone\Debug\Rssdp.Native.xml</DocumentationFile>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -40,7 +40,7 @@
     <CodesignKey>iPhone Developer</CodesignKey>
     <RunCodeAnalysis>true</RunCodeAnalysis>
     <CodeAnalysisRuleSet>..\RssdpRuleset.ruleset</CodeAnalysisRuleSet>
-    <DocumentationFile>C:\Projects\GitHub\RSSDP\src\Main\lib\Xamarin.iOS10\Rssdp.iOS.xml</DocumentationFile>
+    <DocumentationFile>..\lib\Xamarin.iOS10\Rssdp.Native.xml</DocumentationFile>
     <DebugSymbols>true</DebugSymbols>
   </PropertyGroup>
   <PropertyGroup>

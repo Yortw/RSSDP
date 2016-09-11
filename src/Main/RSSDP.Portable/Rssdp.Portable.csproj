@@ -39,7 +39,7 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <CodeAnalysisRuleSet>..\RssdpRuleset.ruleset</CodeAnalysisRuleSet>
-    <DocumentationFile>C:\Projects\GitHub\RSSDP\src\Main\lib\portable-net45+win+wpa81+wp80\Rssdp.Portable.XML</DocumentationFile>
+    <DocumentationFile>..\lib\portable-net45+win+wpa81+wp80\Rssdp.Portable.XML</DocumentationFile>
     <RunCodeAnalysis>true</RunCodeAnalysis>
   </PropertyGroup>
   <ItemGroup>
