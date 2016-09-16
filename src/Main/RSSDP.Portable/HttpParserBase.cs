@@ -41,7 +41,7 @@ namespace Rssdp.Infrastructure
 		{
 			if (data == null) throw new ArgumentNullException("data");
 			if (data.Length == 0) throw new ArgumentException("data cannot be an empty string.", "data");
-			if (!data.Contains("\r\n")) throw new ArgumentException("data is not a valid request, it does not contain any CRLF terminators.", "data");
+			if (!LineTerminators.Any(data.Contains)) throw new ArgumentException("data is not a valid request, it does not contain any CRLF/LF terminators.", "data");
 
 			HttpContent retVal = null;
 			try
