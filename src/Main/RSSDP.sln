@@ -30,6 +30,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Rssdp.Android", "Rssdp.Andr
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Rssdp.Native.Portable", "RSSDP.Native.Portable\Rssdp.Native.Portable.csproj", "{41B22288-FB96-451F-91B7-E278CD381DE5}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Rssdp.NetCore", "Rssdp.NetCore\Rssdp.NetCore.csproj", "{AB769ED2-0A3D-41B7-A702-0E5B08DA158E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -187,6 +189,22 @@ Global
 		{41B22288-FB96-451F-91B7-E278CD381DE5}.Release|x64.Build.0 = Release|Any CPU
 		{41B22288-FB96-451F-91B7-E278CD381DE5}.Release|x86.ActiveCfg = Release|Any CPU
 		{41B22288-FB96-451F-91B7-E278CD381DE5}.Release|x86.Build.0 = Release|Any CPU
+		{AB769ED2-0A3D-41B7-A702-0E5B08DA158E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AB769ED2-0A3D-41B7-A702-0E5B08DA158E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AB769ED2-0A3D-41B7-A702-0E5B08DA158E}.Debug|ARM.ActiveCfg = Debug|Any CPU
+		{AB769ED2-0A3D-41B7-A702-0E5B08DA158E}.Debug|ARM.Build.0 = Debug|Any CPU
+		{AB769ED2-0A3D-41B7-A702-0E5B08DA158E}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{AB769ED2-0A3D-41B7-A702-0E5B08DA158E}.Debug|x64.Build.0 = Debug|Any CPU
+		{AB769ED2-0A3D-41B7-A702-0E5B08DA158E}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{AB769ED2-0A3D-41B7-A702-0E5B08DA158E}.Debug|x86.Build.0 = Debug|Any CPU
+		{AB769ED2-0A3D-41B7-A702-0E5B08DA158E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AB769ED2-0A3D-41B7-A702-0E5B08DA158E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AB769ED2-0A3D-41B7-A702-0E5B08DA158E}.Release|ARM.ActiveCfg = Release|Any CPU
+		{AB769ED2-0A3D-41B7-A702-0E5B08DA158E}.Release|ARM.Build.0 = Release|Any CPU
+		{AB769ED2-0A3D-41B7-A702-0E5B08DA158E}.Release|x64.ActiveCfg = Release|Any CPU
+		{AB769ED2-0A3D-41B7-A702-0E5B08DA158E}.Release|x64.Build.0 = Release|Any CPU
+		{AB769ED2-0A3D-41B7-A702-0E5B08DA158E}.Release|x86.ActiveCfg = Release|Any CPU
+		{AB769ED2-0A3D-41B7-A702-0E5B08DA158E}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
