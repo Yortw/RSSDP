@@ -19,6 +19,7 @@ Currently;
 * Xamarin.Android (Only tested with emulator, should work with Xamarin.Forms 1.3+ too)
 * WinRT (Windows Store Apps 8.1)
 * UWP 10+ (Windows 10 Universal Programs)
+* .NET Core (ASP.NET Core 1.0+, .NET Standard 1.3+)
 
 ## Build Status
 [![Build status](https://ci.appveyor.com/api/projects/status/f4e33as09yx0lsn4?svg=true)](https://ci.appveyor.com/project/Yortw/rssdp)
