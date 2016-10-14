@@ -59,10 +59,10 @@ namespace Rssdp
 			state.TaskCompletionSource = tcs;
 #if NETSTANDARD1_3
 			_Socket.ReceiveFromAsync(new System.ArraySegment<Byte>(state.Buffer), System.Net.Sockets.SocketFlags.None, state.EndPoint)
-				.ContinueWith((task, asyncState) => this.ProcessResponse(asyncState as AsyncReceiveState, () => task.Result.ReceivedBytes), state);
+				.ContinueWith((task, asyncState) => ProcessResponse(asyncState as AsyncReceiveState, () => task.Result.ReceivedBytes), state);
 #else
 			_Socket.BeginReceiveFrom(state.Buffer, 0, state.Buffer.Length, System.Net.Sockets.SocketFlags.None, ref state.EndPoint, 
-				new AsyncCallback((result)=> this.ProcessResponse(state, () => state.Socket.EndReceiveFrom(result, ref state.EndPoint))), state);
+				new AsyncCallback((result)=> ProcessResponse(state, () => state.Socket.EndReceiveFrom(result, ref state.EndPoint))), state);
 #endif
 
 			return tcs.Task;
@@ -97,7 +97,7 @@ namespace Rssdp
 		#region Private Methods
 
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1031:DoNotCatchGeneralExceptionTypes", Justification="Exceptions via task methods should be reported by task completion source, so this should be ok.")]
-		private void ProcessResponse(AsyncReceiveState state, Func<int> receiveData)
+		private static void ProcessResponse(AsyncReceiveState state, Func<int> receiveData)
 		{
 			try
 			{
