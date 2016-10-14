@@ -93,3 +93,10 @@ TestResults
 /src/Main/Rssdp.1.0.0.12.nupkg
 /src/Main/Rssdp.2.0.0.1.symbols.nupkg
 /src/Main/Rssdp.2.0.0.1.nupkg
+/src/Main/Rssdp.2.0.0.2.symbols.nupkg
+/src/Main/Rssdp.2.0.0.2.nupkg
+/src/Main/NugetPackageTests/Rssdp.PackageTest.Net40/packages/Rssdp.2.0.0.2/Rssdp.2.0.0.2.nupkg
+/src/Main/NugetPackageTests/Rssdp.PackageTest.Net40/packages/Microsoft.Net.Http.2.2.29/Microsoft.Net.Http.2.2.29.nupkg
+/src/Main/NugetPackageTests/Rssdp.PackageTest.Net40/packages/Microsoft.Bcl.Build.1.0.21/Microsoft.Bcl.Build.1.0.21.nupkg
+/src/Main/NugetPackageTests/Rssdp.PackageTest.Net40/packages/Microsoft.Bcl.Async.1.0.168/Microsoft.Bcl.Async.1.0.168.nupkg
+/src/Main/NugetPackageTests/Rssdp.PackageTest.Net40/packages/Microsoft.Bcl.1.1.10/Microsoft.Bcl.1.1.10.nupkg
