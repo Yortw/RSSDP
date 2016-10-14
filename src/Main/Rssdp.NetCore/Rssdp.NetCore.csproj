@@ -1,0 +1,185 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <MinimumVisualStudioVersion>14.0</MinimumVisualStudioVersion>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{AB769ED2-0A3D-41B7-A702-0E5B08DA158E}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Rssdp</RootNamespace>
+    <AssemblyName>Rssdp.NetCore</AssemblyName>
+    <DefaultLanguage>en-US</DefaultLanguage>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{786C830F-07A1-408B-BD7F-6EE04809D6DB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <TargetFrameworkProfile>
+    </TargetFrameworkProfile>
+    <TargetFrameworkVersion>v5.0</TargetFrameworkVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>TRACE;DEBUG;NETSTANDARD;NETSTANDARD1_3;CODE_ANALYSIS</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DocumentationFile>bin\Debug\Rssdp.NetCore.XML</DocumentationFile>
+    <RunCodeAnalysis>true</RunCodeAnalysis>
+    <CodeAnalysisRuleSet>..\RssdpRuleset.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>..\lib\netstandard13\</OutputPath>
+    <DefineConstants>TRACE;NETSTANDARD;NETSTANDARD1_3;CODE_ANALYSIS</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DocumentationFile>..\lib\netstandard13\Rssdp.NetCore.XML</DocumentationFile>
+    <RunCodeAnalysis>true</RunCodeAnalysis>
+    <CodeAnalysisRuleSet>..\RssdpRuleset.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <ItemGroup>
+    <None Include="project.json" />
+    <!-- A reference to the entire .NET Framework is automatically included -->
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\RSSDP.Portable\CustomHttpHeaders.cs">
+      <Link>Portable\CustomHttpHeaders.cs</Link>
+    </Compile>
+    <Compile Include="..\RSSDP.Portable\DeviceAvailableEventArgs.cs">
+      <Link>Portable\DeviceAvailableEventArgs.cs</Link>
+    </Compile>
+    <Compile Include="..\RSSDP.Portable\DeviceEventArgs.cs">
+      <Link>Portable\DeviceEventArgs.cs</Link>
+    </Compile>
+    <Compile Include="..\RSSDP.Portable\DeviceUnavailableEventArgs.cs">
+      <Link>Portable\DeviceUnavailableEventArgs.cs</Link>
+    </Compile>
+    <Compile Include="..\RSSDP.Portable\DiscoveredSsdpDevice.cs">
+      <Link>Portable\DiscoveredSsdpDevice.cs</Link>
+    </Compile>
+    <Compile Include="..\RSSDP.Portable\DisposableManagedObjectBase.cs">
+      <Link>Portable\DisposableManagedObjectBase.cs</Link>
+    </Compile>
+    <Compile Include="..\RSSDP.Portable\GlobalSuppressions.cs">
+      <Link>Portable\GlobalSuppressions.cs</Link>
+    </Compile>
+    <Compile Include="..\RSSDP.Portable\HttpParserBase.cs">
+      <Link>Portable\HttpParserBase.cs</Link>
+    </Compile>
+    <Compile Include="..\RSSDP.Portable\HttpRequestParser.cs">
+      <Link>Portable\HttpRequestParser.cs</Link>
+    </Compile>
+    <Compile Include="..\RSSDP.Portable\HttpResponseParser.cs">
+      <Link>Portable\HttpResponseParser.cs</Link>
+    </Compile>
+    <Compile Include="..\RSSDP.Portable\IEnumerableExtensions.cs">
+      <Link>Portable\IEnumerableExtensions.cs</Link>
+    </Compile>
+    <Compile Include="..\RSSDP.Portable\ISocketFactory.cs">
+      <Link>Portable\ISocketFactory.cs</Link>
+    </Compile>
+    <Compile Include="..\RSSDP.Portable\ISsdpCommunicationsServer.cs">
+      <Link>Portable\ISsdpCommunicationsServer.cs</Link>
+    </Compile>
+    <Compile Include="..\RSSDP.Portable\ISsdpDeviceLocator.cs">
+      <Link>Portable\ISsdpDeviceLocator.cs</Link>
+    </Compile>
+    <Compile Include="..\RSSDP.Portable\ISsdpDevicePublisher.cs">
+      <Link>Portable\ISsdpDevicePublisher.cs</Link>
+    </Compile>
+    <Compile Include="..\RSSDP.Portable\IUdpSocket.cs">
+      <Link>Portable\IUdpSocket.cs</Link>
+    </Compile>
+    <Compile Include="..\RSSDP.Portable\IUPnPDeviceValidator.cs">
+      <Link>Portable\IUPnPDeviceValidator.cs</Link>
+    </Compile>
+    <Compile Include="..\RSSDP.Portable\ReadOnlyEnumerable.cs">
+      <Link>Portable\ReadOnlyEnumerable.cs</Link>
+    </Compile>
+    <Compile Include="..\RSSDP.Portable\ReceivedUdpData.cs">
+      <Link>Portable\ReceivedUdpData.cs</Link>
+    </Compile>
+    <Compile Include="..\RSSDP.Portable\RequestReceivedEventArgs.cs">
+      <Link>Portable\RequestReceivedEventArgs.cs</Link>
+    </Compile>
+    <Compile Include="..\RSSDP.Portable\ResponseReceivedEventArgs.cs">
+      <Link>Portable\ResponseReceivedEventArgs.cs</Link>
+    </Compile>
+    <Compile Include="..\RSSDP.Portable\SsdpCommunicationsServer.cs">
+      <Link>Portable\SsdpCommunicationsServer.cs</Link>
+    </Compile>
+    <Compile Include="..\RSSDP.Portable\SsdpConstants.cs">
+      <Link>Portable\SsdpConstants.cs</Link>
+    </Compile>
+    <Compile Include="..\RSSDP.Portable\SsdpDevice.cs">
+      <Link>Portable\SsdpDevice.cs</Link>
+    </Compile>
+    <Compile Include="..\RSSDP.Portable\SsdpDeviceExtensions.cs">
+      <Link>Portable\SsdpDeviceExtensions.cs</Link>
+    </Compile>
+    <Compile Include="..\RSSDP.Portable\SsdpDeviceIcon.cs">
+      <Link>Portable\SsdpDeviceIcon.cs</Link>
+    </Compile>
+    <Compile Include="..\RSSDP.Portable\SsdpDeviceLocatorBase.cs">
+      <Link>Portable\SsdpDeviceLocatorBase.cs</Link>
+    </Compile>
+    <Compile Include="..\RSSDP.Portable\SsdpDeviceProperties.cs">
+      <Link>Portable\SsdpDeviceProperties.cs</Link>
+    </Compile>
+    <Compile Include="..\RSSDP.Portable\SsdpDeviceProperty.cs">
+      <Link>Portable\SsdpDeviceProperty.cs</Link>
+    </Compile>
+    <Compile Include="..\RSSDP.Portable\SsdpDevicePublisherBase.cs">
+      <Link>Portable\SsdpDevicePublisherBase.cs</Link>
+    </Compile>
+    <Compile Include="..\RSSDP.Portable\SsdpEmbeddedDevice.cs">
+      <Link>Portable\SsdpEmbeddedDevice.cs</Link>
+    </Compile>
+    <Compile Include="..\RSSDP.Portable\SsdpRootDevice.cs">
+      <Link>Portable\SsdpRootDevice.cs</Link>
+    </Compile>
+    <Compile Include="..\RSSDP.Portable\TaskEx.cs">
+      <Link>Portable\TaskEx.cs</Link>
+    </Compile>
+    <Compile Include="..\RSSDP.Portable\UdpEndPoint.cs">
+      <Link>Portable\UdpEndPoint.cs</Link>
+    </Compile>
+    <Compile Include="..\RSSDP.Portable\UPnP10DeviceValidator.cs">
+      <Link>Portable\UPnP10DeviceValidator.cs</Link>
+    </Compile>
+    <Compile Include="..\Shared\AssemblyInfoCommon.cs">
+      <Link>Properties\AssemblyInfoCommon.cs</Link>
+    </Compile>
+    <Compile Include="..\Shared\ExceptionExtensions.cs">
+      <Link>ExceptionExtensions.cs</Link>
+    </Compile>
+    <Compile Include="..\Shared\SsdpDeviceLocator.cs">
+      <Link>SsdpDeviceLocator.cs</Link>
+    </Compile>
+    <Compile Include="..\Shared\SystemNetSockets\SocketFactory.cs">
+      <Link>SocketFactory.cs</Link>
+    </Compile>
+    <Compile Include="..\Shared\SystemNetSockets\UdpSocket.cs">
+      <Link>UdpSocket.cs</Link>
+    </Compile>
+    <Compile Include="GlobalSuppressions.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SsdpDevicePublisher.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <CodeAnalysisDictionary Include="..\Shared\CodeAnalysisDictionary.xml">
+      <Link>Properties\CodeAnalysisDictionary.xml</Link>
+    </CodeAnalysisDictionary>
+  </ItemGroup>
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

@@ -29,9 +29,17 @@ namespace Rssdp
 		/// <returns>True if the specified exception is considered critical and should be re-thrown and not otherwise handled by user code.</returns>
 		public static bool IsCritical(this Exception exception)
 		{
+#if NETSTANDARD
+			// Unrecoverable exceptions should not be getting caught and will be dealt with on a broad level by a high-level catch-all handler
+			// https://github.com/dotnet/corefx/blob/master/Documentation/coding-guidelines/breaking-change-rules.md#exceptions
+			return (exception is System.OutOfMemoryException)
+				|| (exception is System.InvalidProgramException);
+#else
 			return (exception is System.AccessViolationException)
 				|| (exception is System.OutOfMemoryException)
 				|| (exception is System.InvalidProgramException);
+
+#endif
 		}
 	}
 }

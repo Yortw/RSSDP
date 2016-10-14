@@ -3,7 +3,7 @@
   "version": 1,
   "targets": {
     "UAP,Version=v10.0": {
-      "Microsoft.Bcl/1.1.8": {
+      "Microsoft.Bcl/1.1.10": {
         "dependencies": {
           "Microsoft.Bcl.Build": "1.0.14"
         },
@@ -2058,7 +2058,7 @@
       }
     },
     "UAP,Version=v10.0/win10-arm": {
-      "Microsoft.Bcl/1.1.8": {
+      "Microsoft.Bcl/1.1.10": {
         "dependencies": {
           "Microsoft.Bcl.Build": "1.0.14"
         },
@@ -4193,7 +4193,7 @@
       }
     },
     "UAP,Version=v10.0/win10-arm-aot": {
-      "Microsoft.Bcl/1.1.8": {
+      "Microsoft.Bcl/1.1.10": {
         "dependencies": {
           "Microsoft.Bcl.Build": "1.0.14"
         },
@@ -6367,7 +6367,7 @@
       }
     },
     "UAP,Version=v10.0/win10-x64": {
-      "Microsoft.Bcl/1.1.8": {
+      "Microsoft.Bcl/1.1.10": {
         "dependencies": {
           "Microsoft.Bcl.Build": "1.0.14"
         },
@@ -8511,7 +8511,7 @@
       }
     },
     "UAP,Version=v10.0/win10-x64-aot": {
-      "Microsoft.Bcl/1.1.8": {
+      "Microsoft.Bcl/1.1.10": {
         "dependencies": {
           "Microsoft.Bcl.Build": "1.0.14"
         },
@@ -10694,7 +10694,7 @@
       }
     },
     "UAP,Version=v10.0/win10-x86": {
-      "Microsoft.Bcl/1.1.8": {
+      "Microsoft.Bcl/1.1.10": {
         "dependencies": {
           "Microsoft.Bcl.Build": "1.0.14"
         },
@@ -12838,7 +12838,7 @@
       }
     },
     "UAP,Version=v10.0/win10-x86-aot": {
-      "Microsoft.Bcl/1.1.8": {
+      "Microsoft.Bcl/1.1.10": {
         "dependencies": {
           "Microsoft.Bcl.Build": "1.0.14"
         },
@@ -15022,25 +15022,17 @@
     }
   },
   "libraries": {
-    "Microsoft.Bcl/1.1.8": {
-      "sha512": "gM+PUzd8ONxJpcPJeNppCJPklDhDuPUMVQkxvK4fe0rd9WyqBNPh4+UFx3Uv8zuG4C1Gapu1c25sfotE7TQtig==",
+    "Microsoft.Bcl/1.1.10": {
+      "sha512": "+tTqoh/M1pyL8El3qLy30EcwnAtyvFoDZJtdG9Cbg/WdFbh4N8kyrq198XHuEL7lnJbeD0DRO8jcX5IIOh05cQ==",
       "type": "package",
-      "path": "Microsoft.Bcl/1.1.8",
+      "path": "Microsoft.Bcl/1.1.10",
       "files": [
         "License-Stable.rtf",
-        "Microsoft.Bcl.1.1.8.nupkg.sha512",
+        "Microsoft.Bcl.1.1.10.nupkg.sha512",
         "Microsoft.Bcl.nuspec",
-        "content/net45/_._",
-        "content/portable-net45+win8+wp8+wpa81/_._",
-        "content/portable-net45+win8+wpa81/_._",
-        "content/portable-net451+win81+wpa81/_._",
-        "content/portable-net451+win81/_._",
-        "content/portable-win81+wp81+wpa81/_._",
-        "content/sl4/_._",
-        "content/sl5/_._",
-        "content/win8/_._",
-        "content/wp8/_._",
-        "content/wpa81/_._",
+        "lib/Xamarin.iOS10/_._",
+        "lib/monoandroid/_._",
+        "lib/monotouch/_._",
         "lib/net40/System.IO.dll",
         "lib/net40/System.IO.xml",
         "lib/net40/System.Runtime.dll",
@@ -21355,6 +21347,7 @@
   },
   "projectFileDependencyGroups": {
     "": [
+      "Microsoft.Bcl >= 1.1.10",
       "Microsoft.Bcl.Async >= 1.0.168",
       "Microsoft.Bcl.Build >= 1.0.21",
       "Microsoft.NETCore.UniversalWindowsPlatform >= 5.2.2"

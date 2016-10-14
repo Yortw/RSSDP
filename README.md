@@ -13,12 +13,13 @@ If you are looking for a way to discover a custom service (such as a proprietary
 ## Supported Platforms
 Currently;
 
-* .Net Framework 4.0+
-* Windows Phone Silverlight (8.0+) (works with Xamarin.Forms 1.3+ too)
-* Xamarin.iOS Unified (works with Xamarin.Forms 1.3+  too)
-* Xamarin.Android (Only tested with emulator, should work with Xamarin.Forms 1.3+ too)
+* .Net Framework 4.03+
+* Windows Phone Silverlight (8.0+) 
+* Xamarin.iOS Unified
+* Xamarin.Android (Only tested with emulator)
 * WinRT (Windows Store Apps 8.1)
 * UWP 10+ (Windows 10 Universal Programs)
+* .NET Core (ASP.NET Core 1.0+, .NET Standard 1.3+)
 
 ## Build Status
 [![Build status](https://ci.appveyor.com/api/projects/status/f4e33as09yx0lsn4?svg=true)](https://ci.appveyor.com/project/Yortw/rssdp)
@@ -40,7 +41,8 @@ Install the Nuget package like this;
     PM> Install-Package Rssdp
 ```
 
-[![NuGet Badge](https://buildstats.info/nuget/RSSDP)](https://www.nuget.org/packages/RSSDP/)
+[![NuGet Badge](https://buildstats.info/nuget/RSSDP)](https://www.nuget.org/packages/RSSDP/)
+
 Or reference the Rssdp.Portable.dll assembly AND the assembly that matches your app's platform, i.e Rssdp.NetFX40.dll for .Net 4+.
 
 ### Publishing a Device
