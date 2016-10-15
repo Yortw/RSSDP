@@ -1090,15 +1090,19 @@ namespace Test.RssdpPortable
 				server.WaitForMessageToProcess(5000);
 				server.WaitForMockMessage(1500);
 				server.SentMessages.Clear();
-				System.Threading.Thread.Sleep(500);
 				server.MockReceiveMessage(searchRequest);
-				server.WaitForMessageToProcess(5000);
-				server.WaitForMockMessage(2000);
-				System.Threading.Thread.Sleep(500);
+				var started = DateTime.Now;
+				var searchResponses = GetSentMessages(server.SentMessages).ToArray();
+				while (searchResponses.Length < 5 && DateTime.Now.Subtract(started).TotalSeconds < 10)
+				{
+					server.WaitForMessageToProcess(100);
+					server.WaitForMockMessage(100);
+					searchResponses = searchResponses.Union(GetSentMessages(server.SentMessages).ToArray()).ToArray();
+				}
+				//System.Threading.Thread.Sleep(1000);
 
-				var searchResponses = GetSentMessages(server.SentMessages);
 				Assert.AreEqual(0, searchResponses.Where((r) => !r.IsSuccessStatusCode).Count());
-				Assert.IsTrue(GetResponses(searchResponses, SsdpConstants.UpnpDeviceTypeRootDevice).Count() == 1);
+				Assert.AreEqual(1, GetResponses(searchResponses, SsdpConstants.UpnpDeviceTypeRootDevice).Count());
 			}
 		}
 
