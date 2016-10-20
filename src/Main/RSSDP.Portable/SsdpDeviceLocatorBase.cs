@@ -479,7 +479,8 @@ ST: {4}
 					Usn = GetFirstHeaderStringValue("USN", message),
 					NotificationType = GetFirstHeaderStringValue("NT", message),
 					CacheLifetime = CacheAgeFromHeader(message.Headers.CacheControl),
-					AsAt = DateTimeOffset.Now
+					AsAt = DateTimeOffset.Now,
+					ResponseHeaders = message.Headers
 				};
 
 				AddOrUpdateDiscoveredDevice(device);
@@ -503,7 +504,8 @@ ST: {4}
 						CacheLifetime = TimeSpan.Zero,
 						DescriptionLocation = null,
 						NotificationType = GetFirstHeaderStringValue("NT", message),
-						Usn = usn
+						Usn = usn,
+						ResponseHeaders = message.Headers
 					};
 
 					if (NotificationTypeMatchesFilter(deadDevice))
