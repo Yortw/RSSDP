@@ -59,7 +59,15 @@ namespace Rssdp
 			state.TaskCompletionSource = tcs;
 #if NETSTANDARD1_3
 			_Socket.ReceiveFromAsync(new System.ArraySegment<Byte>(state.Buffer), System.Net.Sockets.SocketFlags.None, state.EndPoint)
-				.ContinueWith((task, asyncState) => ProcessResponse(asyncState as AsyncReceiveState, () => task.Result.ReceivedBytes), state);
+				.ContinueWith((task, asyncState) =>
+				{
+					if (task.Status != TaskStatus.Faulted)
+					{
+						var receiveState = asyncState as AsyncReceiveState;
+						receiveState.EndPoint = task.Result.RemoteEndPoint;
+						ProcessResponse(receiveState, () => task.Result.ReceivedBytes);
+					}
+				}, state);
 #else
 			_Socket.BeginReceiveFrom(state.Buffer, 0, state.Buffer.Length, System.Net.Sockets.SocketFlags.None, ref state.EndPoint, 
 				new AsyncCallback((result)=> ProcessResponse(state, () => state.Socket.EndReceiveFrom(result, ref state.EndPoint))), state);

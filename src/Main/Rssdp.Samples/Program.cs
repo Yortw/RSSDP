@@ -197,6 +197,7 @@ namespace Rssdp.Samples
 			if (_DevicePublisher == null || !_DevicePublisher.Devices.Any())
 			{
 				Console.WriteLine("No devices being published. Use the (P)ublish command first.");
+				return;
 			}
 
 			var uuid = _DevicePublisher.Devices.First().Uuid;
