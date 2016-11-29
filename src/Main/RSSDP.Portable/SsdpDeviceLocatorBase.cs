@@ -164,22 +164,20 @@ ST: {4}
 			if (searchWaitTime > TimeSpan.Zero)
 				BroadcastDiscoverMessage(searchTarget, SearchTimeToMXValue(searchWaitTime));
 
-			await TaskEx.Run(() =>
+			lock (_SearchResultsSynchroniser)
+			{
+				foreach (var device in GetUnexpiredDevices().Where(NotificationTypeMatchesFilter))
 				{
-					lock (_SearchResultsSynchroniser)
-					{
-						foreach (var device in GetUnexpiredDevices().Where((d) => NotificationTypeMatchesFilter(d)))
-						{
-							if (this.IsDisposed) return;
+					if (this.IsDisposed) break;
 
-							DeviceFound(device, false);
-						}
-					}
-				}).ConfigureAwait(false);
+					DeviceFound(device, false);
+				}
+			}
 
-			if (searchWaitTime != TimeSpan.Zero)
-				await TaskEx.Delay(searchWaitTime);
 
+			if (searchWaitTime != TimeSpan.Zero && !this.IsDisposed)
+				await TaskEx.Delay(searchWaitTime).ConfigureAwait(false);
+			
 			IEnumerable<DiscoveredSsdpDevice> retVal = null;
 
 			try

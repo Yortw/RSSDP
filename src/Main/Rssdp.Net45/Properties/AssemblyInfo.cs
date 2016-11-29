@@ -7,8 +7,8 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("RSSDP.iOS")]
-[assembly: AssemblyDescription("iOS (Xamarin.iOS) specific implementation for RSSDP library.")]
+[assembly: AssemblyTitle("RSSDP.NetFx45")]
+[assembly: AssemblyDescription(".Net 4.5 Desktop Framework specific implementation for RSSDP library.")]
 [assembly: AssemblyConfiguration("")]
 
 // Setting ComVisible to false makes the types in this assembly not visible 
@@ -17,7 +17,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("8912c944-e0d7-424e-a373-1243ff2a9e08")]
+[assembly: Guid("f481f835-cd34-4d17-bf10-44ffd686cd94")]
 
 // Version information for an assembly consists of the following four values:
 //

@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
   <metadata>
     <id>Rssdp</id>
-    <version>2.0.0.5</version>
+    <version>2.0.0.6</version>
     <title>Rssdp</title>
     <authors>Troy Willmot</authors>
     <owners>Yortw</owners>
@@ -12,25 +12,22 @@
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>Really Simple Service Discovery Protocol - a 100% .Net implementation of the SSDP protocol for publishing custom/basic devices, and discovering all device types on a network.</description>
     <summary>A 100% .Net implementation of the SSDP protocol for basic and custom device types.</summary>
-    <releaseNotes>Fix for publisher on .Net Core platform.</releaseNotes>
+    <releaseNotes>Xamarin platforms now serviced by .Net Standard library, old Xamarin binaries dropped.
+Reduced dependencies for Xamarin/Net45+ projects.</releaseNotes>
     <copyright>Copyright 2016</copyright>
     <language>en-AU</language>
     <tags>portable xamarin ios android windowsphone winrt uwp mobile ssdp discovery device service protocol upnp netfx40 .net4</tags>
     <dependencies>
       <group targetFramework="Xamarin.iOS10">
-        <dependency id="Microsoft.Net.Http" version="2.2.29" />
-        <dependency id="Microsoft.Bcl.Async" version="1.0.168" />
-        <dependency id="Microsoft.Bcl.Build" version="1.0.21" />
       </group>
       <group targetFramework="MonoAndroid1.0">
-        <dependency id="Microsoft.Net.Http" version="2.2.29" />
-        <dependency id="Microsoft.Bcl.Async" version="1.0.168" />
-        <dependency id="Microsoft.Bcl.Build" version="1.0.21" />
       </group>
       <group targetFramework=".NetFramework4.0">
         <dependency id="Microsoft.Net.Http" version="2.2.29" />
         <dependency id="Microsoft.Bcl.Async" version="1.0.168" />
         <dependency id="Microsoft.Bcl.Build" version="1.0.21" />
+      </group>
+      <group targetFramework=".NetFramework4.5">
       </group>
       <group targetFramework="WindowsPhone8">
         <dependency id="Microsoft.Net.Http" version="2.2.29" />
@@ -73,15 +70,12 @@
     <file src="lib\netstandard13\Rssdp*.dll" target="lib\netstandard13" />
     <file src="lib\netstandard13\Rssdp*.xml" target="lib\netstandard13" />
     <file src="lib\netstandard13\Rssdp*.pdb" target="lib\netstandard13" />
-    <file src="lib\Xamarin.iOS10\Rssdp*.dll" target="lib\Xamarin.iOS10" />
-    <file src="lib\Xamarin.iOS10\Rssdp*.xml" target="lib\Xamarin.iOS10" />
-    <file src="lib\Xamarin.iOS10\Rssdp*.pdb" target="lib\Xamarin.iOS10" />
-    <file src="lib\monoandroid\Rssdp*.dll" target="lib\monoandroid" />
-    <file src="lib\monoandroid\Rssdp*.xml" target="lib\monoandroid" />
-    <file src="lib\monoandroid\Rssdp*.pdb" target="lib\monoandroid" />
     <file src="lib\net40\Rssdp*.dll" target="lib\net40" />
     <file src="lib\net40\Rssdp*.xml" target="lib\net40" />
     <file src="lib\net40\Rssdp*.pdb" target="lib\net40" />
+    <file src="lib\net45\Rssdp*.dll" target="lib\net45" />
+    <file src="lib\net45\Rssdp*.xml" target="lib\net45" />
+    <file src="lib\net45\Rssdp*.pdb" target="lib\net45" />
     <file src="lib\portable-net45+win+wpa81+wp80\Rssdp*.dll" target="lib\portable-net45+win+wpa81+wp80" />
     <file src="lib\portable-net45+win+wpa81+wp80\Rssdp*.xml" target="lib\portable-net45+win+wpa81+wp80" />
     <file src="lib\portable-net45+win+wpa81+wp80\Rssdp*.pdb" target="lib\portable-net45+win+wpa81+wp80" />

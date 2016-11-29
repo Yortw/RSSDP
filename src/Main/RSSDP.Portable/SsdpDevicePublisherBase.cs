@@ -131,7 +131,7 @@ USN: {1}
 
 			_DeviceValidator.ThrowIfDeviceInvalid(device);
 
-			TimeSpan minCacheTime;
+			TimeSpan minCacheTime = TimeSpan.Zero;
 			bool wasAdded = false;
 			lock (_Devices)
 			{
@@ -173,7 +173,7 @@ USN: {1}
 			ThrowIfDisposed();
 
 			bool wasRemoved = false;
-			TimeSpan minCacheTime;
+			TimeSpan minCacheTime = TimeSpan.Zero;
 			lock (_Devices)
 			{
 				if (_Devices.Contains(device))
@@ -683,7 +683,7 @@ USN: {1}
 			ConnectToDeviceEvents(e.Device);
 		}
 
-		private void device_DeviceRemoved(object sender, DeviceEventArgs e)
+		private void	device_DeviceRemoved(object sender, DeviceEventArgs e)
 		{
 			SendByeByeNotifications(e.Device, false);
 			DisconnectFromDeviceEvents(e.Device);

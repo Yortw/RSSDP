@@ -122,9 +122,6 @@
     <Compile Include="..\Shared\SsdpDeviceLocator.cs">
       <Link>SsdpDeviceLocator.cs</Link>
     </Compile>
-    <Compile Include="..\Shared\WinRTSockets\SocketsFactory.cs">
-      <Link>SocketsFactory.cs</Link>
-    </Compile>
     <Compile Include="..\Shared\WinRTSockets\SsdpDevicePublisher.cs">
       <Link>SsdpDevicePublisher.cs</Link>
     </Compile>
@@ -137,9 +134,9 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\RSSDP.Portable\RSSDP.Portable.csproj">
-      <Project>{67f9d3a8-f71e-4428-913f-c37ae82cdb24}</Project>
-      <Name>RSSDP.Portable</Name>
+    <ProjectReference Include="..\Rssdp.NetCore\Rssdp.NetCore.csproj">
+      <Project>{ab769ed2-0a3d-41b7-a702-0e5b08da158e}</Project>
+      <Name>Rssdp.NetCore</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">

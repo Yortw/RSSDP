@@ -314,7 +314,7 @@ namespace Rssdp.Infrastructure
 				{
 					try
 					{
-						var result = await socket.ReceiveAsync();
+						var result = await socket.ReceiveAsync().ConfigureAwait(false);
 
 						if (result.ReceivedBytes > 0)
 						{

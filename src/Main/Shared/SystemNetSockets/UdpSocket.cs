@@ -13,7 +13,6 @@ namespace Rssdp
 {
 	// THIS IS A LINKED FILE - SHARED AMONGST MULTIPLE PLATFORMS	
 	// Be careful to check any changes compile and work for all platform projects it is shared in.
-
 	internal sealed class UdpSocket : DisposableManagedObjectBase, IUdpSocket
 	{
 
@@ -29,7 +28,7 @@ namespace Rssdp
 		public UdpSocket(System.Net.Sockets.Socket socket, int localPort, string ipAddress)
 		{
 			if (socket == null) throw new ArgumentNullException("socket");
-
+			
 			_Socket = socket;
 			_LocalPort = localPort;
 

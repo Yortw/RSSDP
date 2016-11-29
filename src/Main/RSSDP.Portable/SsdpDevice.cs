@@ -365,16 +365,14 @@ namespace Rssdp
 			bool wasRemoved = false;
 			lock (_Devices)
 			{
-				if (ChildDeviceExists(device))
-				{
-					_Devices.Remove(device);
-					wasRemoved = true;
-					device.RootDevice = null;
-				}
+				wasRemoved = _Devices.Remove(device);
 			}
 
 			if (wasRemoved)
+			{
+				device.RootDevice = null;
 				OnDeviceRemoved(device);
+			}
 		}
 
 		/// <summary>
