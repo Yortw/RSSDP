@@ -765,6 +765,20 @@ namespace Test.RssdpPortable
 		#region Periodic Alive Notifications
 
 		[TestMethod]
+		[ExpectedException(typeof(ArgumentException))]
+		public void Publisher_NotificationBroadcastInterval_ThrowsOnNegativeTimeSpan()
+		{
+			var rootDevice = CreateValidRootDevice();
+			rootDevice.CacheLifetime = TimeSpan.FromMinutes(1);
+
+			var server = new MockCommsServer();
+			using (var publisher = new TestDevicePublisher(server))
+			{
+				publisher.NotificationBroadcastInterval = TimeSpan.FromSeconds(-1);
+			}
+		}
+
+		[TestMethod]
 		public void Publisher_SendsPeriodicAliveNotifications()
 		{
 			var rootDevice = CreateValidRootDevice();
@@ -783,6 +797,121 @@ namespace Test.RssdpPortable
 				server.SentBroadcasts.Clear();
 
 				server.WaitForMockBroadcast(35000);
+
+				var sentMessages = GetAllSentBroadcasts(server);
+				var aliveNotifications = GetNotificationsByType(sentMessages, "ssdp:alive");
+
+				var upnpRootDeviceNotifications = GetNotificationsForSearchTarget(aliveNotifications, SsdpConstants.UpnpDeviceTypeRootDevice);
+				var pnpRootDeviceNotifications = GetNotificationsForSearchTarget(aliveNotifications, SsdpConstants.PnpDeviceTypeRootDevice);
+				var udnDeviceNotifications = GetNotificationsForSearchTarget(aliveNotifications, rootDevice.Udn);
+				var deviceTypeNotifications = GetNotificationsForSearchTarget(aliveNotifications, rootDevice.FullDeviceType);
+
+				Assert.IsTrue(upnpRootDeviceNotifications.Count() >= 1);
+				Assert.AreEqual(0, pnpRootDeviceNotifications.Count());
+				Assert.IsTrue(udnDeviceNotifications.Count() >= 1);
+				Assert.IsTrue(deviceTypeNotifications.Count() >= 1);
+			}
+		}
+
+		[TestMethod]
+		public void Publisher_SendsPeriodicAliveNotifications_RepeatsNotifications()
+		{
+			var rootDevice = CreateValidRootDevice();
+			rootDevice.CacheLifetime = TimeSpan.FromMinutes(1);
+
+			var server = new MockCommsServer();
+			using (var publisher = new TestDevicePublisher(server))
+			{
+				publisher.AddDevice(rootDevice);
+				publisher.SupportPnpRootDevice = false;
+				server.WaitForMockBroadcast(10000);
+
+				System.Threading.Thread.Sleep(100);
+
+				Assert.IsTrue(server.SentBroadcasts.Any());
+				server.SentBroadcasts.Clear();
+
+				server.WaitForMockBroadcast(35000);
+				System.Threading.Thread.Sleep(100);
+				Assert.IsTrue(server.SentBroadcasts.Any());
+				server.SentBroadcasts.Clear();
+				server.WaitForMockBroadcast(35000);
+
+				var sentMessages = GetAllSentBroadcasts(server);
+				var aliveNotifications = GetNotificationsByType(sentMessages, "ssdp:alive");
+
+				var upnpRootDeviceNotifications = GetNotificationsForSearchTarget(aliveNotifications, SsdpConstants.UpnpDeviceTypeRootDevice);
+				var pnpRootDeviceNotifications = GetNotificationsForSearchTarget(aliveNotifications, SsdpConstants.PnpDeviceTypeRootDevice);
+				var udnDeviceNotifications = GetNotificationsForSearchTarget(aliveNotifications, rootDevice.Udn);
+				var deviceTypeNotifications = GetNotificationsForSearchTarget(aliveNotifications, rootDevice.FullDeviceType);
+
+				Assert.IsTrue(upnpRootDeviceNotifications.Count() >= 1);
+				Assert.AreEqual(0, pnpRootDeviceNotifications.Count());
+				Assert.IsTrue(udnDeviceNotifications.Count() >= 1);
+				Assert.IsTrue(deviceTypeNotifications.Count() >= 1);
+			}
+		}
+
+		[TestMethod]
+		public void Publisher_SendsPeriodicAliveNotifications_UsingConfiguredInterval()
+		{
+			var rootDevice = CreateValidRootDevice();
+			rootDevice.CacheLifetime = TimeSpan.FromMinutes(30);
+
+			var server = new MockCommsServer();
+			using (var publisher = new TestDevicePublisher(server))
+			{
+				publisher.NotificationBroadcastInterval = TimeSpan.FromSeconds(30);
+				
+				publisher.AddDevice(rootDevice);
+				publisher.SupportPnpRootDevice = false;
+				server.WaitForMockBroadcast(10000);
+
+				System.Threading.Thread.Sleep(100);
+
+				Assert.IsTrue(server.SentBroadcasts.Any());
+				server.SentBroadcasts.Clear();
+
+				server.WaitForMockBroadcast(35000);
+
+				var sentMessages = GetAllSentBroadcasts(server);
+				var aliveNotifications = GetNotificationsByType(sentMessages, "ssdp:alive");
+
+				var upnpRootDeviceNotifications = GetNotificationsForSearchTarget(aliveNotifications, SsdpConstants.UpnpDeviceTypeRootDevice);
+				var pnpRootDeviceNotifications = GetNotificationsForSearchTarget(aliveNotifications, SsdpConstants.PnpDeviceTypeRootDevice);
+				var udnDeviceNotifications = GetNotificationsForSearchTarget(aliveNotifications, rootDevice.Udn);
+				var deviceTypeNotifications = GetNotificationsForSearchTarget(aliveNotifications, rootDevice.FullDeviceType);
+
+				Assert.IsTrue(upnpRootDeviceNotifications.Count() >= 1);
+				Assert.AreEqual(0, pnpRootDeviceNotifications.Count());
+				Assert.IsTrue(udnDeviceNotifications.Count() >= 1);
+				Assert.IsTrue(deviceTypeNotifications.Count() >= 1);
+			}
+		}
+
+		[TestMethod]
+		public void Publisher_SendsRepeatPeriodicAliveNotifications_UsingConfiguredInterval()
+		{
+			var rootDevice = CreateValidRootDevice();
+			rootDevice.CacheLifetime = TimeSpan.FromMinutes(30);
+
+			var server = new MockCommsServer();
+			using (var publisher = new TestDevicePublisher(server))
+			{
+				publisher.NotificationBroadcastInterval = TimeSpan.FromSeconds(15);
+
+				publisher.AddDevice(rootDevice);
+				publisher.SupportPnpRootDevice = false;
+				server.WaitForMockBroadcast(10000);
+
+				System.Threading.Thread.Sleep(100);
+
+				Assert.IsTrue(server.SentBroadcasts.Any());
+				server.SentBroadcasts.Clear();
+
+				server.WaitForMockBroadcast(35000);
+				System.Threading.Thread.Sleep(100);
+
 
 				var sentMessages = GetAllSentBroadcasts(server);
 				var aliveNotifications = GetNotificationsByType(sentMessages, "ssdp:alive");

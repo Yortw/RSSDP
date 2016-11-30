@@ -15,6 +15,7 @@
     <releaseNotes>Xamarin platforms now serviced by .Net Standard library, old Xamarin binaries dropped.
 Reduced dependencies for Xamarin/Net45+ projects.
 Improvements to alive notifications to ensure compatibility with non-conforming devices.
+Added NotificationBroadcastInterval property to publisher to allow for configurable, fixed period, alive notification broadcasts.
 </releaseNotes>
     <copyright>Copyright 2016</copyright>
     <language>en-AU</language>

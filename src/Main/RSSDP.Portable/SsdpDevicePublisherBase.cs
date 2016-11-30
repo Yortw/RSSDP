@@ -33,6 +33,7 @@ namespace Rssdp.Infrastructure
 
 		private Random _Random;
 		private TimeSpan _MinCacheTime;
+		private TimeSpan _NotificationBroadcastInterval;
 
 		private const string ServerVersion = "1.0";
 
@@ -229,6 +230,31 @@ USN: {1}
 			}
 		}
 
+		/// <summary>
+		/// Sets or returns a fixed interval at which alive notifications for services exposed by this publisher instance are broadcast.
+		/// </summary>
+		/// <remarks>
+		/// <para>If this is set to <see cref="TimeSpan.Zero"/> then the system will follow the process recommended 
+		/// by the SSDP spec and calculate a randomised interval based on the cache life times of the published services.
+		/// The default and recommended value is TimeSpan.Zero.
+		/// </para>
+		/// <para>While (zero and) any positive <see cref="TimeSpan"/> value are allowed, the SSDP specification says 
+		/// notifications should not be broadcast more often than 15 minutes. If you wish to remain compatible with the SSDP
+		/// specification, do not set this property to a value greater than zero but less than 15 minutes.
+		/// </para>
+		/// </remarks>
+		public TimeSpan NotificationBroadcastInterval
+		{
+			get { return _NotificationBroadcastInterval; }
+			set
+			{
+				if (value.TotalSeconds < 0) throw new ArgumentException("Cannot be less than zero.", nameof(value));
+
+				_NotificationBroadcastInterval = value;
+				SetRebroadcastAliveNotificationsTimer(_MinCacheTime);
+			}
+		}
+
 		#endregion
 
 		#region Overrides
@@ -241,6 +267,8 @@ USN: {1}
 		{
 			if (disposing)
 			{
+				DisposeRebroadcastTimer();
+
 				var commsServer = _CommsServer;
 				_CommsServer = null;
 
@@ -250,8 +278,6 @@ USN: {1}
 					if (!commsServer.IsShared)
 						commsServer.Dispose();
 				}
-
-				DisposeRebroadcastTimer();
 
 				foreach (var device in this.Devices)
 				{
@@ -434,7 +460,25 @@ USN: {1}
 			{
 				if (IsDisposed) return;
 
-				DisposeRebroadcastTimer();
+				try
+				{
+					//Only dispose the timer so it gets re-created if we're following
+					//the SSDP Spec and randomising the broadcast interval.
+					//If we're using a fixed interval, no need to kill the timer as it's 
+					//already set to go off on the correct interval.
+					if (_NotificationBroadcastInterval == TimeSpan.Zero)
+						DisposeRebroadcastTimer();
+				}
+				finally
+				{
+					// Must reset this here, otherwise if the next reset interval
+					// is calculated to be the same as the previous one we won't
+					// reset the timer.
+					// Reset it to _NotificationBroadcastInterval which is either TimeSpan.Zero 
+					// which will cause the system to calculate a new random interval, or it's the 
+					// current fixed interval which is fine.
+					_RebroadcastAliveNotificationsTimeSpan = _NotificationBroadcastInterval;
+				}
 
 				WriteTrace("Sending Alive Notifications For All Devices");
 
@@ -556,19 +600,28 @@ USN: {1}
 
 		private void SetRebroadcastAliveNotificationsTimer(TimeSpan minCacheTime)
 		{
-			if (minCacheTime == _RebroadcastAliveNotificationsTimeSpan) return;
+			TimeSpan rebroadCastInterval = TimeSpan.Zero;
+			if (this.NotificationBroadcastInterval != TimeSpan.Zero)
+			{
+				if (_RebroadcastAliveNotificationsTimeSpan == this.NotificationBroadcastInterval) return;
+
+				rebroadCastInterval = this.NotificationBroadcastInterval;
+			}
+			else
+			{
+				if (minCacheTime == _RebroadcastAliveNotificationsTimeSpan) return;
+				if (minCacheTime == TimeSpan.Zero) return;
+
+				// According to UPnP/SSDP spec, we should randomise the interval at 
+				// which we broadcast notifications, to help with network congestion.
+				// Specs also advise to choose a random interval up to *half* the cache time.
+				// Here we do that, but using the minimum non-zero cache time of any device we are publishing.
+				rebroadCastInterval = new TimeSpan(Convert.ToInt64((_Random.Next(1, 50) / 100D) * (minCacheTime.Ticks / 2)));
+			}
 
 			DisposeRebroadcastTimer();
 
-			if (minCacheTime == TimeSpan.Zero) return;
-
-			// According to UPnP/SSDP spec, we should randomise the interval at 
-			// which we broadcast notifications, to help with network congestion.
-			// Specs also advise to choose a random interval up to *half* the cache time.
-			// Here we do that, but using the minimum non-zero cache time of any device we are publishing.
-			var rebroadCastInterval = new TimeSpan(Convert.ToInt64((_Random.Next(1, 50) / 100D) * (minCacheTime.Ticks / 2)));
-
-			// If we were already setup to rebroadcast someime in the future,
+			// If we were already setup to rebroadcast sometime in the future,
 			// don't just blindly reset the next broadcast time to the new interval
 			// as repeatedly changing the interval might end up causing us to over
 			// delay in sending the next one.
