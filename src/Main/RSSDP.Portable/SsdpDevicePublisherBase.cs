@@ -54,7 +54,7 @@ LOCATION:{3}{8}
 
 		private const string AliveNotificationMessageFormat = @"NOTIFY * HTTP/1.1
 HOST: 239.255.255.250:1900
-Date: {7}
+DATE: {7}
 NT: {0}
 NTS: ssdp:alive
 SERVER: {4}/{5} UPnP/1.0 RSSDP/{6}

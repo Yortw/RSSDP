@@ -13,7 +13,9 @@
     <description>Really Simple Service Discovery Protocol - a 100% .Net implementation of the SSDP protocol for publishing custom/basic devices, and discovering all device types on a network.</description>
     <summary>A 100% .Net implementation of the SSDP protocol for basic and custom device types.</summary>
     <releaseNotes>Xamarin platforms now serviced by .Net Standard library, old Xamarin binaries dropped.
-Reduced dependencies for Xamarin/Net45+ projects.</releaseNotes>
+Reduced dependencies for Xamarin/Net45+ projects.
+Improvements to alive notifications to ensure compatibility with non-conforming devices.
+</releaseNotes>
     <copyright>Copyright 2016</copyright>
     <language>en-AU</language>
     <tags>portable xamarin ios android windowsphone winrt uwp mobile ssdp discovery device service protocol upnp netfx40 .net4</tags>
