@@ -240,7 +240,9 @@ namespace Test.RssdpPortable
 			var server = new MockCommsServer();
 			using (var publisher = new TestDevicePublisher(server))
 			{
+#pragma warning disable CS0618 // Type or member is obsolete
 				publisher.SupportPnpRootDevice = false;
+#pragma warning restore CS0618 // Type or member is obsolete
 				publisher.AddDevice(rootDevice);
 				server.WaitForMockBroadcast(10000);
 
@@ -267,7 +269,9 @@ namespace Test.RssdpPortable
 			var server = new MockCommsServer();
 			using (var publisher = new TestDevicePublisher(server))
 			{
+#pragma warning disable CS0618 // Type or member is obsolete
 				publisher.SupportPnpRootDevice = true;
+#pragma warning restore CS0618 // Type or member is obsolete
 				publisher.AddDevice(rootDevice);
 				server.WaitForMockBroadcast(10000);
 
@@ -295,7 +299,9 @@ namespace Test.RssdpPortable
 			var server = new MockCommsServer();
 			using (var publisher = new TestDevicePublisher(server))
 			{
+#pragma warning disable CS0618 // Type or member is obsolete
 				publisher.SupportPnpRootDevice = true;
+#pragma warning restore CS0618 // Type or member is obsolete
 				publisher.AddDevice(rootDevice);
 				server.WaitForMockBroadcast(10000);
 
@@ -321,7 +327,9 @@ namespace Test.RssdpPortable
 			var server = new MockCommsServer();
 			using (var publisher = new TestDevicePublisher(server))
 			{
+#pragma warning disable CS0618 // Type or member is obsolete
 				publisher.SupportPnpRootDevice = true;
+#pragma warning restore CS0618 // Type or member is obsolete
 				publisher.AddDevice(rootDevice);
 				server.WaitForMockBroadcast(10000);
 
@@ -348,7 +356,9 @@ namespace Test.RssdpPortable
 			var server = new MockCommsServer();
 			using (var publisher = new TestDevicePublisher(server))
 			{
+#pragma warning disable CS0618 // Type or member is obsolete
 				publisher.SupportPnpRootDevice = true;
+#pragma warning restore CS0618 // Type or member is obsolete
 				publisher.AddDevice(rootDevice);
 				server.WaitForMockBroadcast(10000);
 
@@ -384,7 +394,9 @@ namespace Test.RssdpPortable
 			var server = new MockCommsServer();
 			using (var publisher = new TestDevicePublisher(server))
 			{
+#pragma warning disable CS0618 // Type or member is obsolete
 				publisher.SupportPnpRootDevice = true;
+#pragma warning restore CS0618 // Type or member is obsolete
 				publisher.AddDevice(rootDevice);
 				server.WaitForMockBroadcast(10000);
 
@@ -416,7 +428,9 @@ namespace Test.RssdpPortable
 			var server = new MockCommsServer();
 			using (var publisher = new TestDevicePublisher(server))
 			{
+#pragma warning disable CS0618 // Type or member is obsolete
 				publisher.SupportPnpRootDevice = true;
+#pragma warning restore CS0618 // Type or member is obsolete
 				publisher.AddDevice(rootDevice);
 
 				server.WaitForMockBroadcast(10000);
@@ -458,7 +472,9 @@ namespace Test.RssdpPortable
 			var server = new MockCommsServer();
 			using (var publisher = new TestDevicePublisher(server))
 			{
+#pragma warning disable CS0618 // Type or member is obsolete
 				publisher.SupportPnpRootDevice = true;
+#pragma warning restore CS0618 // Type or member is obsolete
 				publisher.AddDevice(rootDevice);
 
 				server.WaitForMockBroadcast(10000);
@@ -518,7 +534,9 @@ namespace Test.RssdpPortable
 			var server = new MockCommsServer();
 			using (var publisher = new TestDevicePublisher(server))
 			{
+#pragma warning disable CS0618 // Type or member is obsolete
 				publisher.SupportPnpRootDevice = false;
+#pragma warning restore CS0618 // Type or member is obsolete
 				publisher.AddDevice(rootDevice);
 				server.WaitForMockBroadcast(10000);
 
@@ -788,12 +806,14 @@ namespace Test.RssdpPortable
 			using (var publisher = new TestDevicePublisher(server))
 			{
 				publisher.AddDevice(rootDevice);
+#pragma warning disable CS0618 // Type or member is obsolete
 				publisher.SupportPnpRootDevice = false;
+#pragma warning restore CS0618 // Type or member is obsolete
 				server.WaitForMockBroadcast(10000);
 
 				System.Threading.Thread.Sleep(100);
 
-				Assert.IsTrue(server.SentBroadcasts.Any());
+				Assert.IsTrue(server.SentBroadcasts.Any(), "No broadcasts");
 				server.SentBroadcasts.Clear();
 
 				server.WaitForMockBroadcast(35000);
@@ -806,10 +826,10 @@ namespace Test.RssdpPortable
 				var udnDeviceNotifications = GetNotificationsForSearchTarget(aliveNotifications, rootDevice.Udn);
 				var deviceTypeNotifications = GetNotificationsForSearchTarget(aliveNotifications, rootDevice.FullDeviceType);
 
-				Assert.IsTrue(upnpRootDeviceNotifications.Count() >= 1);
-				Assert.AreEqual(0, pnpRootDeviceNotifications.Count());
-				Assert.IsTrue(udnDeviceNotifications.Count() >= 1);
-				Assert.IsTrue(deviceTypeNotifications.Count() >= 1);
+				Assert.IsTrue(upnpRootDeviceNotifications.Count() >= 1, "Incorrect number of upnp root device notifications");
+				Assert.AreEqual(0, pnpRootDeviceNotifications.Count(), "Incorrect number of pnp root device notifications");
+				Assert.IsTrue(udnDeviceNotifications.Count() >= 1, "Incorrect number of udn device notifications");
+				Assert.IsTrue(deviceTypeNotifications.Count() >= 1, "Incorrect number of device type notifications");
 			}
 		}
 
@@ -823,7 +843,11 @@ namespace Test.RssdpPortable
 			using (var publisher = new TestDevicePublisher(server))
 			{
 				publisher.AddDevice(rootDevice);
+
+				publisher.StandardsMode = SsdpStandardsMode.Strict;
+#pragma warning disable CS0618 // Type or member is obsolete
 				publisher.SupportPnpRootDevice = false;
+#pragma warning restore CS0618 // Type or member is obsolete
 				server.WaitForMockBroadcast(10000);
 
 				System.Threading.Thread.Sleep(100);
@@ -864,7 +888,9 @@ namespace Test.RssdpPortable
 				publisher.NotificationBroadcastInterval = TimeSpan.FromSeconds(30);
 				
 				publisher.AddDevice(rootDevice);
+#pragma warning disable CS0618 // Type or member is obsolete
 				publisher.SupportPnpRootDevice = false;
+#pragma warning restore CS0618 // Type or member is obsolete
 				server.WaitForMockBroadcast(10000);
 
 				System.Threading.Thread.Sleep(100);
@@ -901,7 +927,9 @@ namespace Test.RssdpPortable
 				publisher.NotificationBroadcastInterval = TimeSpan.FromSeconds(15);
 
 				publisher.AddDevice(rootDevice);
+#pragma warning disable CS0618 // Type or member is obsolete
 				publisher.SupportPnpRootDevice = false;
+#pragma warning restore CS0618 // Type or member is obsolete
 				server.WaitForMockBroadcast(10000);
 
 				System.Threading.Thread.Sleep(100);
@@ -958,6 +986,66 @@ namespace Test.RssdpPortable
 		#region Search Response Tests
 
 		[TestMethod]
+		public void Publisher_SearchResponse_RespondsToSearchWithoutMXHeaderInRelaxedMode()
+		{
+			var rootDevice = CreateValidRootDevice();
+
+			var server = new MockCommsServer();
+			using (var publisher = new TestDevicePublisher(server))
+			{
+#pragma warning disable CS0618 // Type or member is obsolete
+				publisher.SupportPnpRootDevice = false;
+#pragma warning restore CS0618 // Type or member is obsolete
+				publisher.StandardsMode = SsdpStandardsMode.Relaxed;
+
+				publisher.AddDevice(rootDevice);
+
+				ReceivedUdpData searchRequest = GetSearchRequestMessageWithoutMXHeader(rootDevice.FullDeviceType);
+
+				server.MockReceiveMessage(searchRequest);
+				server.WaitForMockMessage(1500);
+
+				var searchResponses = GetSentMessages(server.SentMessages);
+				Assert.AreEqual(0, searchResponses.Where((r) => !r.IsSuccessStatusCode).Count());
+				Assert.IsTrue(GetResponses(searchResponses, SsdpConstants.UpnpDeviceTypeRootDevice).Count() >= 1);
+				Assert.IsTrue(GetResponses(searchResponses, SsdpConstants.PnpDeviceTypeRootDevice).Count() >= 1);
+				Assert.IsTrue(GetResponses(searchResponses, rootDevice.Udn).Count() >= 1);
+				Assert.IsTrue(GetResponses(searchResponses, rootDevice.FullDeviceType).Count() >= 1);
+				Assert.AreEqual(0, searchResponses.Where((r) => !r.Headers.GetValues("USN").First().StartsWith(rootDevice.Udn)).Count());
+			}
+		}
+
+		[TestMethod]
+		public void Publisher_SearchResponse_RespondsToSearchWithoutMXHeaderInDefaultMode()
+		{
+			var rootDevice = CreateValidRootDevice();
+
+			var server = new MockCommsServer();
+			using (var publisher = new TestDevicePublisher(server))
+			{
+#pragma warning disable CS0618 // Type or member is obsolete
+				publisher.SupportPnpRootDevice = false;
+#pragma warning restore CS0618 // Type or member is obsolete
+				publisher.StandardsMode = SsdpStandardsMode.Default;
+
+				publisher.AddDevice(rootDevice);
+
+				ReceivedUdpData searchRequest = GetSearchRequestMessageWithoutMXHeader(rootDevice.FullDeviceType);
+
+				server.MockReceiveMessage(searchRequest);
+				server.WaitForMockMessage(1500);
+
+				var searchResponses = GetSentMessages(server.SentMessages);
+				Assert.AreEqual(0, searchResponses.Where((r) => !r.IsSuccessStatusCode).Count());
+				Assert.IsTrue(GetResponses(searchResponses, SsdpConstants.UpnpDeviceTypeRootDevice).Count() >= 1);
+				Assert.IsTrue(GetResponses(searchResponses, SsdpConstants.PnpDeviceTypeRootDevice).Count() >= 1);
+				Assert.IsTrue(GetResponses(searchResponses, rootDevice.Udn).Count() >= 1);
+				Assert.IsTrue(GetResponses(searchResponses, rootDevice.FullDeviceType).Count() >= 1);
+				Assert.AreEqual(0, searchResponses.Where((r) => !r.Headers.GetValues("USN").First().StartsWith(rootDevice.Udn)).Count());
+			}
+		}
+
+		[TestMethod]
 		public void Publisher_SearchResponse_RespondsToUpnpRootDeviceSearch()
 		{
 			var rootDevice = CreateValidRootDevice();
@@ -965,7 +1053,10 @@ namespace Test.RssdpPortable
 			var server = new MockCommsServer();
 			using (var publisher = new TestDevicePublisher(server))
 			{
+				publisher.StandardsMode = SsdpStandardsMode.Strict;
+#pragma warning disable CS0618 // Type or member is obsolete
 				publisher.SupportPnpRootDevice = false;
+#pragma warning restore CS0618 // Type or member is obsolete
 				publisher.AddDevice(rootDevice);
 
 				ReceivedUdpData searchRequest = GetSearchRequestMessage(SsdpConstants.UpnpDeviceTypeRootDevice);
@@ -994,7 +1085,10 @@ namespace Test.RssdpPortable
 			var server = new MockCommsServer();
 			using (var publisher = new TestDevicePublisher(server))
 			{
+				publisher.StandardsMode = SsdpStandardsMode.Strict;
+#pragma warning disable CS0618 // Type or member is obsolete
 				publisher.SupportPnpRootDevice = false;
+#pragma warning restore CS0618 // Type or member is obsolete
 				publisher.AddDevice(rootDevice);
 
 				ReceivedUdpData searchRequest = GetSearchRequestMessage(SsdpConstants.UpnpDeviceTypeRootDevice);
@@ -1133,14 +1227,76 @@ namespace Test.RssdpPortable
 		}
 
 		[TestMethod]
-		public void Publisher_SearchResponse_NoResponseWithMissngManHeader()
+		public void Publisher_SearchResponse_ResponseWithMissngManHeaderInDefaultMode()
 		{
 			var rootDevice = CreateValidRootDevice();
 
 			var server = new MockCommsServer();
 			using (var publisher = new TestDevicePublisher(server))
 			{
+#pragma warning disable CS0618 // Type or member is obsolete
 				publisher.SupportPnpRootDevice = false;
+#pragma warning restore CS0618 // Type or member is obsolete
+				publisher.StandardsMode = SsdpStandardsMode.Default;
+				publisher.AddDevice(rootDevice);
+
+				ReceivedUdpData searchRequest = GetSearchRequestMessageWithoutManHeader(SsdpConstants.UpnpDeviceTypeRootDevice);
+
+				server.MockReceiveMessage(searchRequest);
+				server.WaitForMockMessage(1500);
+
+				var searchResponses = GetSentMessages(server.SentMessages);
+
+				Assert.AreEqual(0, searchResponses.Where((r) => !r.IsSuccessStatusCode).Count());
+				Assert.IsTrue(GetResponses(searchResponses, SsdpConstants.UpnpDeviceTypeRootDevice).Count() >= 1);
+				Assert.IsTrue(GetResponses(searchResponses, SsdpConstants.PnpDeviceTypeRootDevice).Count() >= 1);
+				Assert.IsTrue(GetResponses(searchResponses, rootDevice.Udn).Count() >= 1);
+				Assert.IsTrue(GetResponses(searchResponses, rootDevice.FullDeviceType).Count() >= 1);
+				Assert.AreEqual(0, searchResponses.Where((r) => !r.Headers.GetValues("USN").First().StartsWith(rootDevice.Udn)).Count());
+			}
+		}
+
+		[TestMethod]
+		public void Publisher_SearchResponse_ResponseWithMissngManHeaderInRelaxedMode()
+		{
+			var rootDevice = CreateValidRootDevice();
+
+			var server = new MockCommsServer();
+			using (var publisher = new TestDevicePublisher(server))
+			{
+#pragma warning disable CS0618 // Type or member is obsolete
+				publisher.SupportPnpRootDevice = false;
+#pragma warning restore CS0618 // Type or member is obsolete
+				publisher.StandardsMode = SsdpStandardsMode.Relaxed;
+				publisher.AddDevice(rootDevice);
+
+				ReceivedUdpData searchRequest = GetSearchRequestMessageWithoutManHeader(SsdpConstants.UpnpDeviceTypeRootDevice);
+
+				server.MockReceiveMessage(searchRequest);
+				server.WaitForMockMessage(1500);
+
+				var searchResponses = GetSentMessages(server.SentMessages);
+				Assert.AreEqual(0, searchResponses.Where((r) => !r.IsSuccessStatusCode).Count());
+				Assert.IsTrue(GetResponses(searchResponses, SsdpConstants.UpnpDeviceTypeRootDevice).Count() >= 1);
+				Assert.IsTrue(GetResponses(searchResponses, SsdpConstants.PnpDeviceTypeRootDevice).Count() >= 1);
+				Assert.IsTrue(GetResponses(searchResponses, rootDevice.Udn).Count() >= 1);
+				Assert.IsTrue(GetResponses(searchResponses, rootDevice.FullDeviceType).Count() >= 1);
+				Assert.AreEqual(0, searchResponses.Where((r) => !r.Headers.GetValues("USN").First().StartsWith(rootDevice.Udn)).Count());
+			}
+		}
+
+		[TestMethod]
+		public void Publisher_SearchResponse_NoResponseWithMissngManHeaderInStrictMode()
+		{
+			var rootDevice = CreateValidRootDevice();
+
+			var server = new MockCommsServer();
+			using (var publisher = new TestDevicePublisher(server))
+			{
+				publisher.StandardsMode = SsdpStandardsMode.Strict;
+#pragma warning disable CS0618 // Type or member is obsolete
+				publisher.SupportPnpRootDevice = false;
+#pragma warning restore CS0618 // Type or member is obsolete
 				publisher.AddDevice(rootDevice);
 
 				ReceivedUdpData searchRequest = GetSearchRequestMessageWithoutManHeader(SsdpConstants.UpnpDeviceTypeRootDevice);
@@ -1161,7 +1317,9 @@ namespace Test.RssdpPortable
 			var server = new MockCommsServer();
 			using (var publisher = new TestDevicePublisher(server))
 			{
+#pragma warning disable CS0618 // Type or member is obsolete
 				publisher.SupportPnpRootDevice = false;
+#pragma warning restore CS0618 // Type or member is obsolete
 				publisher.AddDevice(rootDevice);
 
 				ReceivedUdpData searchRequest = GetSearchRequestMessage(SsdpConstants.UpnpDeviceTypeRootDevice);
@@ -1210,7 +1368,10 @@ namespace Test.RssdpPortable
 			var server = new MockCommsServer();
 			using (var publisher = new TestDevicePublisher(server))
 			{
+				publisher.StandardsMode = SsdpStandardsMode.Strict;
+#pragma warning disable CS0618 // Type or member is obsolete
 				publisher.SupportPnpRootDevice = false;
+#pragma warning restore CS0618 // Type or member is obsolete
 				publisher.AddDevice(rootDevice);
 
 				ReceivedUdpData searchRequest = GetSearchRequestMessage(SsdpConstants.UpnpDeviceTypeRootDevice);
@@ -1245,7 +1406,10 @@ namespace Test.RssdpPortable
 			var server = new MockCommsServer();
 			using (var publisher = new TestDevicePublisher(server))
 			{
+				publisher.StandardsMode = SsdpStandardsMode.Strict;
+#pragma warning disable CS0618 // Type or member is obsolete
 				publisher.SupportPnpRootDevice = false;
+#pragma warning restore CS0618 // Type or member is obsolete
 				publisher.AddDevice(rootDevice);
 
 				ReceivedUdpData searchRequest = GetSearchRequestMessage(childDevice.Udn);
@@ -1271,7 +1435,9 @@ namespace Test.RssdpPortable
 			var server = new MockCommsServer();
 			using (var publisher = new TestDevicePublisher(server))
 			{
+#pragma warning disable CS0618 // Type or member is obsolete
 				publisher.SupportPnpRootDevice = false;
+#pragma warning restore CS0618 // Type or member is obsolete
 				publisher.AddDevice(rootDevice);
 
 				ReceivedUdpData searchRequest = GetSearchRequestMessage(childDevice.Udn);
@@ -1298,7 +1464,9 @@ namespace Test.RssdpPortable
 			var server = new MockCommsServer();
 			using (var publisher = new TestDevicePublisher(server))
 			{
+#pragma warning disable CS0618 // Type or member is obsolete
 				publisher.SupportPnpRootDevice = false;
+#pragma warning restore CS0618 // Type or member is obsolete
 				publisher.AddDevice(rootDevice);
 
 				ReceivedUdpData searchRequest = GetSearchRequestMessage("ssdp:all");
@@ -1330,7 +1498,9 @@ namespace Test.RssdpPortable
 			var server = new MockCommsServer();
 			using (var publisher = new TestDevicePublisher(server))
 			{
+#pragma warning disable CS0618 // Type or member is obsolete
 				publisher.SupportPnpRootDevice = false;
+#pragma warning restore CS0618 // Type or member is obsolete
 				publisher.AddDevice(rootDevice);
 
 				ReceivedUdpData searchRequest = GetSearchRequestMessage("ssdp:all");
@@ -1352,7 +1522,9 @@ namespace Test.RssdpPortable
 			var server = new MockCommsServer();
 			using (var publisher = new TestDevicePublisher(server))
 			{
+#pragma warning disable CS0618 // Type or member is obsolete
 				publisher.SupportPnpRootDevice = false;
+#pragma warning restore CS0618 // Type or member is obsolete
 				publisher.AddDevice(rootDevice);
 
 				ReceivedUdpData searchRequest = GetSearchRequestMessage(childDevice.Udn);
@@ -1376,7 +1548,9 @@ namespace Test.RssdpPortable
 			var server = new MockCommsServer();
 			using (var publisher = new TestDevicePublisher(server))
 			{
+#pragma warning disable CS0618 // Type or member is obsolete
 				publisher.SupportPnpRootDevice = true;
+#pragma warning restore CS0618 // Type or member is obsolete
 				publisher.AddDevice(rootDevice);
 
 				ReceivedUdpData searchRequest = GetSearchRequestMessageWithCustomMXHeader(childDevice.Udn, String.Empty);
@@ -1391,41 +1565,17 @@ namespace Test.RssdpPortable
 		}
 
 		[TestMethod]
-		public void Publisher_SearchResponse_DoesNotRespondToRequestWithEmptyMXHeaderIfPnpSupportDisabled()
-		{
-			var rootDevice = CreateValidRootDevice();
-			var parentDevice = CreateValidEmbeddedDevice(rootDevice);
-			rootDevice.AddDevice(parentDevice);
-			var childDevice = CreateValidEmbeddedDevice(rootDevice);
-			parentDevice.AddDevice(childDevice);
-
-			var server = new MockCommsServer();
-			using (var publisher = new TestDevicePublisher(server))
-			{
-				publisher.SupportPnpRootDevice = false;
-				publisher.AddDevice(rootDevice);
-
-				ReceivedUdpData searchRequest = GetSearchRequestMessageWithCustomMXHeader(childDevice.Udn, String.Empty);
-				server.MockReceiveMessage(searchRequest);
-				server.MockReceiveMessage(searchRequest);
-				server.WaitForMockMessage(1500);
-				System.Threading.Thread.Sleep(500);
-
-				var searchResponses = GetSentMessages(server.SentMessages);
-				var uuidResponses = GetResponses(searchResponses, childDevice.Udn);
-				Assert.AreEqual(0, uuidResponses.Count());
-			}
-		}
-
-		[TestMethod]
-		public void Publisher_SearchResponse_NoResponseWithMissngMXHeader()
+		public void Publisher_SearchResponse_NoResponseWithMissngMXHeaderInStandardsMode()
 		{
 			var rootDevice = CreateValidRootDevice();
 
 			var server = new MockCommsServer();
 			using (var publisher = new TestDevicePublisher(server))
 			{
+				publisher.StandardsMode = SsdpStandardsMode.Strict;
+#pragma warning disable CS0618 // Type or member is obsolete
 				publisher.SupportPnpRootDevice = false;
+#pragma warning restore CS0618 // Type or member is obsolete
 				publisher.AddDevice(rootDevice);
 
 				ReceivedUdpData searchRequest = GetSearchRequestMessageWithoutMXHeader(SsdpConstants.UpnpDeviceTypeRootDevice);
@@ -1446,7 +1596,9 @@ namespace Test.RssdpPortable
 			var server = new MockCommsServer();
 			using (var publisher = new TestDevicePublisher(server))
 			{
+#pragma warning disable CS0618 // Type or member is obsolete
 				publisher.SupportPnpRootDevice = false;
+#pragma warning restore CS0618 // Type or member is obsolete
 				publisher.AddDevice(rootDevice);
 
 				ReceivedUdpData searchRequest = GetSearchRequestMessageWithCustomMXHeader(rootDevice.Udn, "A");
@@ -1467,7 +1619,9 @@ namespace Test.RssdpPortable
 			var server = new MockCommsServer();
 			using (var publisher = new TestDevicePublisher(server))
 			{
+#pragma warning disable CS0618 // Type or member is obsolete
 				publisher.SupportPnpRootDevice = false;
+#pragma warning restore CS0618 // Type or member is obsolete
 				publisher.AddDevice(rootDevice);
 
 				ReceivedUdpData searchRequest = GetSearchRequestMessageWithCustomMXHeader(rootDevice.Udn, "-1");
@@ -1488,7 +1642,10 @@ namespace Test.RssdpPortable
 			var server = new MockCommsServer();
 			using (var publisher = new TestDevicePublisher(server))
 			{
+				publisher.StandardsMode = SsdpStandardsMode.Strict;
+#pragma warning disable CS0618 // Type or member is obsolete
 				publisher.SupportPnpRootDevice = false;
+#pragma warning restore CS0618 // Type or member is obsolete
 				publisher.AddDevice(rootDevice);
 
 				ReceivedUdpData searchRequest = GetSearchRequestMessageWithCustomMXHeader(rootDevice.Udn, "125");

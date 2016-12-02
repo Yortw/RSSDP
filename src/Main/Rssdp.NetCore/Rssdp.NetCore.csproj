@@ -141,6 +141,9 @@
     <Compile Include="..\RSSDP.Portable\SsdpRootDevice.cs">
       <Link>Portable\SsdpRootDevice.cs</Link>
     </Compile>
+    <Compile Include="..\RSSDP.Portable\SsdpStandardsMode.cs">
+      <Link>Portable\SsdpStandardsMode.cs</Link>
+    </Compile>
     <Compile Include="..\RSSDP.Portable\TaskEx.cs">
       <Link>Portable\TaskEx.cs</Link>
     </Compile>

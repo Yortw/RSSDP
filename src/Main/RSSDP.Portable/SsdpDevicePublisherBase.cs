@@ -20,6 +20,7 @@ namespace Rssdp.Infrastructure
 		private string _OSVersion;
 
 		private bool _SupportPnpRootDevice;
+		private SsdpStandardsMode _StandardsMode;
 
 		private IList<SsdpRootDevice> _Devices;
 		private ReadOnlyEnumerable<SsdpRootDevice> _ReadOnlyDevices;
@@ -221,12 +222,28 @@ USN: {1}
 		/// <para>Enabling this option will cause devices to show up in Microsoft Windows Explorer's network screens (if discovery is enabled etc.). Windows Explorer appears to search only for pnp:rootdeivce and not upnp:rootdevice.</para>
 		/// <para>If false, the system will only use upnp:rootdevice for notifiation broadcasts and and search responses, which is correct according to the UPnP/SSDP spec.</para>
 		/// </remarks>
+		[Obsolete("Set StandardsMode to SsdpStandardsMode.Relaxed instead.")]
 		public bool SupportPnpRootDevice
 		{
 			get { return _SupportPnpRootDevice; }
 			set
 			{
 				_SupportPnpRootDevice = value;
+			}
+		}
+
+		/// <summary>
+		/// Sets or returns a value from the <see cref="SsdpStandardsMode"/> controlling how strictly the publisher obeys the SSDP standard.
+		/// </summary>
+		/// <remarks>
+		/// <para>Using relaxed mode will process search requests even if the MX header is missing.</para>
+		/// </remarks>
+		public SsdpStandardsMode StandardsMode
+		{
+			get { return _StandardsMode; }
+			set
+			{
+				_StandardsMode = value;
 			}
 		}
 
@@ -311,13 +328,15 @@ USN: {1}
 			}
 
 			//Wait on random interval up to MX, as per SSDP spec.
-			//Also, as per UPnP 1.1/SSDP spec ignore missing/bank MX header. If over 120, assume random value between 0 and 120.
+			//Also, as per UPnP 1.1/SSDP spec ignore missing/bank MX header (strict mode only). If over 120, assume random value between 0 and 120.
 			//Using 16 as minimum as that's often the minimum system clock frequency anyway.
 			int maxWaitInterval = 0;
 			if (String.IsNullOrEmpty(mx))
 			{
 				//Windows Explorer is poorly behaved and doesn't supply an MX header value.
-				if (this.SupportPnpRootDevice)
+#pragma warning disable CS0618 // Type or member is obsolete
+				if (this.SupportPnpRootDevice || this.StandardsMode != SsdpStandardsMode.Strict)
+#pragma warning restore CS0618 // Type or member is obsolete
 					mx = "1";
 				else
 					return;
@@ -337,7 +356,9 @@ USN: {1}
 					{
 						if (String.Compare(SsdpConstants.SsdpDiscoverAllSTHeader, searchTarget, StringComparison.OrdinalIgnoreCase) == 0)
 							devices = GetAllDevicesAsFlatEnumerable().ToArray();
-						else if (String.Compare(SsdpConstants.UpnpDeviceTypeRootDevice, searchTarget, StringComparison.OrdinalIgnoreCase) == 0 || (this.SupportPnpRootDevice && String.Compare(SsdpConstants.PnpDeviceTypeRootDevice, searchTarget, StringComparison.OrdinalIgnoreCase) == 0))
+#pragma warning disable CS0618 // Type or member is obsolete
+						else if (String.Compare(SsdpConstants.UpnpDeviceTypeRootDevice, searchTarget, StringComparison.OrdinalIgnoreCase) == 0 || ((SupportPnpRootDevice || this.StandardsMode != SsdpStandardsMode.Strict) && String.Compare(SsdpConstants.PnpDeviceTypeRootDevice, searchTarget, StringComparison.OrdinalIgnoreCase) == 0))
+#pragma warning restore CS0618 // Type or member is obsolete
 							devices = _Devices.ToArray();
 						else if (searchTarget.Trim().StartsWith("uuid:", StringComparison.OrdinalIgnoreCase))
 							devices = (from device in GetAllDevicesAsFlatEnumerable() where String.Compare(device.Uuid, searchTarget.Substring(5), StringComparison.OrdinalIgnoreCase) == 0 select device).ToArray();
@@ -370,7 +391,9 @@ USN: {1}
 			if (isRootDevice)
 			{
 				SendSearchResponse(SsdpConstants.UpnpDeviceTypeRootDevice, device, GetUsn(device.Udn, SsdpConstants.UpnpDeviceTypeRootDevice), endPoint);
-				if (this.SupportPnpRootDevice)
+#pragma warning disable CS0618 // Type or member is obsolete
+				if (this.SupportPnpRootDevice || this.StandardsMode != SsdpStandardsMode.Strict)
+#pragma warning restore CS0618 // Type or member is obsolete
 					SendSearchResponse(SsdpConstants.PnpDeviceTypeRootDevice, device, GetUsn(device.Udn, SsdpConstants.PnpDeviceTypeRootDevice), endPoint);
 			}
 
@@ -514,7 +537,9 @@ USN: {1}
 			if (isRoot)
 			{
 				SendAliveNotification(device, SsdpConstants.UpnpDeviceTypeRootDevice, GetUsn(device.Udn, SsdpConstants.UpnpDeviceTypeRootDevice));
+#pragma warning disable CS0618 // Type or member is obsolete
 				if (this.SupportPnpRootDevice)
+#pragma warning restore CS0618 // Type or member is obsolete
 					SendAliveNotification(device, SsdpConstants.PnpDeviceTypeRootDevice, GetUsn(device.Udn, SsdpConstants.PnpDeviceTypeRootDevice));
 			}
 
@@ -556,7 +581,9 @@ USN: {1}
 			if (isRoot)
 			{
 				SendByeByeNotification(device, SsdpConstants.UpnpDeviceTypeRootDevice, GetUsn(device.Udn, SsdpConstants.UpnpDeviceTypeRootDevice));
+#pragma warning disable CS0618 // Type or member is obsolete
 				if (this.SupportPnpRootDevice)
+#pragma warning restore CS0618 // Type or member is obsolete
 					SendByeByeNotification(device, "pnp:rootdevice", GetUsn(device.Udn, "pnp:rootdevice"));
 			}
 
@@ -749,9 +776,9 @@ USN: {1}
 			if (e.Message.Method.Method == SsdpConstants.MSearchMethod)
 			{
 				//According to SSDP/UPnP spec, ignore message if missing these headers.
-				if (!e.Message.Headers.Contains("MX"))
+				if (!e.Message.Headers.Contains("MX") && StandardsMode == SsdpStandardsMode.Strict)
 					WriteTrace("Ignoring search request - missing MX header.");
-				else if (!e.Message.Headers.Contains("MAN"))
+				else if (!e.Message.Headers.Contains("MAN") && StandardsMode == SsdpStandardsMode.Strict)
 					WriteTrace("Ignoring search request - missing MAN header.");
 				else
 					ProcessSearchRequest(GetFirstHeaderValue(e.Message.Headers, "MX"), GetFirstHeaderValue(e.Message.Headers, "ST"), e.ReceivedFrom);
