@@ -334,9 +334,7 @@ USN: {1}
 			if (String.IsNullOrEmpty(mx))
 			{
 				//Windows Explorer is poorly behaved and doesn't supply an MX header value.
-#pragma warning disable CS0618 // Type or member is obsolete
-				if (this.SupportPnpRootDevice || this.StandardsMode != SsdpStandardsMode.Strict)
-#pragma warning restore CS0618 // Type or member is obsolete
+				if (EnableWindowsExplorerSupport)
 					mx = "1";
 				else
 					return;
@@ -356,9 +354,7 @@ USN: {1}
 					{
 						if (String.Compare(SsdpConstants.SsdpDiscoverAllSTHeader, searchTarget, StringComparison.OrdinalIgnoreCase) == 0)
 							devices = GetAllDevicesAsFlatEnumerable().ToArray();
-#pragma warning disable CS0618 // Type or member is obsolete
-						else if (String.Compare(SsdpConstants.UpnpDeviceTypeRootDevice, searchTarget, StringComparison.OrdinalIgnoreCase) == 0 || ((SupportPnpRootDevice || this.StandardsMode != SsdpStandardsMode.Strict) && String.Compare(SsdpConstants.PnpDeviceTypeRootDevice, searchTarget, StringComparison.OrdinalIgnoreCase) == 0))
-#pragma warning restore CS0618 // Type or member is obsolete
+						else if (String.Compare(SsdpConstants.UpnpDeviceTypeRootDevice, searchTarget, StringComparison.OrdinalIgnoreCase) == 0 || (EnableWindowsExplorerSupport && String.Compare(SsdpConstants.PnpDeviceTypeRootDevice, searchTarget, StringComparison.OrdinalIgnoreCase) == 0))
 							devices = _Devices.ToArray();
 						else if (searchTarget.Trim().StartsWith("uuid:", StringComparison.OrdinalIgnoreCase))
 							devices = (from device in GetAllDevicesAsFlatEnumerable() where String.Compare(device.Uuid, searchTarget.Substring(5), StringComparison.OrdinalIgnoreCase) == 0 select device).ToArray();
@@ -380,6 +376,24 @@ USN: {1}
 				});
 		}
 
+		private bool EnableWindowsExplorerSupport
+		{
+			get
+			{
+#pragma warning disable CS0618 // Type or member is obsolete
+				return SupportPnpRootDevice || IsRelaxedStandardsMode;
+#pragma warning restore CS0618 // Type or member is obsolete
+			}
+		}
+
+		private bool IsRelaxedStandardsMode
+		{
+			get
+			{
+				return this.StandardsMode != SsdpStandardsMode.Strict;
+			}
+		}
+
 		private IEnumerable<SsdpDevice> GetAllDevicesAsFlatEnumerable()
 		{
 			return _Devices.Union(_Devices.SelectManyRecursive<SsdpDevice>((d) => d.Devices));
@@ -391,9 +405,7 @@ USN: {1}
 			if (isRootDevice)
 			{
 				SendSearchResponse(SsdpConstants.UpnpDeviceTypeRootDevice, device, GetUsn(device.Udn, SsdpConstants.UpnpDeviceTypeRootDevice), endPoint);
-#pragma warning disable CS0618 // Type or member is obsolete
-				if (this.SupportPnpRootDevice || this.StandardsMode != SsdpStandardsMode.Strict)
-#pragma warning restore CS0618 // Type or member is obsolete
+				if (EnableWindowsExplorerSupport)
 					SendSearchResponse(SsdpConstants.PnpDeviceTypeRootDevice, device, GetUsn(device.Udn, SsdpConstants.PnpDeviceTypeRootDevice), endPoint);
 			}
 
@@ -763,7 +775,7 @@ USN: {1}
 			ConnectToDeviceEvents(e.Device);
 		}
 
-		private void	device_DeviceRemoved(object sender, DeviceEventArgs e)
+		private void device_DeviceRemoved(object sender, DeviceEventArgs e)
 		{
 			SendByeByeNotifications(e.Device, false);
 			DisconnectFromDeviceEvents(e.Device);
@@ -776,9 +788,9 @@ USN: {1}
 			if (e.Message.Method.Method == SsdpConstants.MSearchMethod)
 			{
 				//According to SSDP/UPnP spec, ignore message if missing these headers.
-				if (!e.Message.Headers.Contains("MX") && StandardsMode == SsdpStandardsMode.Strict)
+				if (!e.Message.Headers.Contains("MX") && !IsRelaxedStandardsMode)
 					WriteTrace("Ignoring search request - missing MX header.");
-				else if (!e.Message.Headers.Contains("MAN") && StandardsMode == SsdpStandardsMode.Strict)
+				else if (!e.Message.Headers.Contains("MAN") && !IsRelaxedStandardsMode)
 					WriteTrace("Ignoring search request - missing MAN header.");
 				else
 					ProcessSearchRequest(GetFirstHeaderValue(e.Message.Headers, "MX"), GetFirstHeaderValue(e.Message.Headers, "ST"), e.ReceivedFrom);
