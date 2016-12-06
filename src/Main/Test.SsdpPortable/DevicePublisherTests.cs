@@ -1037,10 +1037,10 @@ namespace Test.RssdpPortable
 
 				var searchResponses = GetSentMessages(server.SentMessages);
 				Assert.AreEqual(0, searchResponses.Where((r) => !r.IsSuccessStatusCode).Count());
-				Assert.IsTrue(GetResponses(searchResponses, SsdpConstants.UpnpDeviceTypeRootDevice).Count() >= 1);
-				Assert.IsTrue(GetResponses(searchResponses, SsdpConstants.PnpDeviceTypeRootDevice).Count() >= 1);
-				Assert.IsTrue(GetResponses(searchResponses, rootDevice.Udn).Count() >= 1);
-				Assert.IsTrue(GetResponses(searchResponses, rootDevice.FullDeviceType).Count() >= 1);
+				Assert.IsTrue(GetResponses(searchResponses, SsdpConstants.UpnpDeviceTypeRootDevice).Count() >= 1, "Incorrect number of upnp root device responses");
+				Assert.IsTrue(GetResponses(searchResponses, SsdpConstants.PnpDeviceTypeRootDevice).Count() >= 1, "Incorrect number of pnp root device responses");
+				Assert.IsTrue(GetResponses(searchResponses, rootDevice.Udn).Count() >= 1, "No response for UDN");
+				Assert.IsTrue(GetResponses(searchResponses, rootDevice.FullDeviceType).Count() >= 1, "No response for full device type");
 				Assert.AreEqual(0, searchResponses.Where((r) => !r.Headers.GetValues("USN").First().StartsWith(rootDevice.Udn)).Count());
 			}
 		}
