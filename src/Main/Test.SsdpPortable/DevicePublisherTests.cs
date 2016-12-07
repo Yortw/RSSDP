@@ -246,7 +246,7 @@ namespace Test.RssdpPortable
 				publisher.AddDevice(rootDevice);
 				server.WaitForMockBroadcast(10000);
 
-				System.Threading.Thread.Sleep(100);
+				//System.Threading.Thread.Sleep(100);
 				Assert.IsTrue(server.SentBroadcasts.Any());
 
 				var sentMessages = GetAllSentBroadcasts(server);
@@ -275,7 +275,7 @@ namespace Test.RssdpPortable
 				publisher.AddDevice(rootDevice);
 				server.WaitForMockBroadcast(10000);
 
-				System.Threading.Thread.Sleep(100);
+				//System.Threading.Thread.Sleep(100);
 
 				Assert.IsTrue(server.SentBroadcasts.Any());
 
@@ -307,7 +307,7 @@ namespace Test.RssdpPortable
 
 				//Initial signal is just for first broadcast,
 				//wait for others to be sent.
-				System.Threading.Thread.Sleep(100);
+				//System.Threading.Thread.Sleep(100);
 				Assert.IsTrue(server.SentBroadcasts.Any());
 
 				var sentMessages = GetAllSentBroadcasts(server);
@@ -333,7 +333,7 @@ namespace Test.RssdpPortable
 				publisher.AddDevice(rootDevice);
 				server.WaitForMockBroadcast(10000);
 
-				System.Threading.Thread.Sleep(100);
+				//System.Threading.Thread.Sleep(100);
 
 				Assert.IsTrue(server.SentBroadcasts.Any());
 
@@ -362,7 +362,7 @@ namespace Test.RssdpPortable
 				publisher.AddDevice(rootDevice);
 				server.WaitForMockBroadcast(10000);
 
-				System.Threading.Thread.Sleep(100);
+				//System.Threading.Thread.Sleep(100);
 				Assert.IsTrue(server.SentBroadcasts.Any());
 
 				var sentMessages = GetAllSentBroadcasts(server);
@@ -434,7 +434,7 @@ namespace Test.RssdpPortable
 				publisher.AddDevice(rootDevice);
 
 				server.WaitForMockBroadcast(10000);
-				System.Threading.Thread.Sleep(100);
+				//System.Threading.Thread.Sleep(100);
 				Assert.IsTrue(server.SentBroadcasts.Any());
 
 				server.SentBroadcasts.Clear();
@@ -443,7 +443,7 @@ namespace Test.RssdpPortable
 				rootDevice.AddDevice(embeddedDevice);
 
 				server.WaitForMockBroadcast(10000);
-				System.Threading.Thread.Sleep(100);
+				//System.Threading.Thread.Sleep(100);
 				Assert.IsTrue(server.SentBroadcasts.Any());
 
 				var sentMessages = GetAllSentBroadcasts(server);
@@ -478,7 +478,7 @@ namespace Test.RssdpPortable
 				publisher.AddDevice(rootDevice);
 
 				server.WaitForMockBroadcast(10000);
-				System.Threading.Thread.Sleep(100);
+				//System.Threading.Thread.Sleep(100);
 				Assert.IsTrue(server.SentBroadcasts.Any());
 
 				server.SentBroadcasts.Clear();
@@ -487,7 +487,7 @@ namespace Test.RssdpPortable
 				parentDevice.AddDevice(embeddedDevice);
 
 				server.WaitForMockBroadcast(10000);
-				System.Threading.Thread.Sleep(100);
+				//System.Threading.Thread.Sleep(100);
 				Assert.IsTrue(server.SentBroadcasts.Any());
 
 				var sentMessages = GetAllSentBroadcasts(server);
@@ -540,7 +540,7 @@ namespace Test.RssdpPortable
 				publisher.AddDevice(rootDevice);
 				server.WaitForMockBroadcast(10000);
 
-				System.Threading.Thread.Sleep(100);
+				//System.Threading.Thread.Sleep(100);
 
 				Assert.IsTrue(server.SentBroadcasts.Any());
 				server.SentBroadcasts.Clear();
@@ -570,7 +570,7 @@ namespace Test.RssdpPortable
 				publisher.AddDevice(rootDevice);
 				server.WaitForMockBroadcast(10000);
 
-				System.Threading.Thread.Sleep(100);
+				//System.Threading.Thread.Sleep(100);
 
 				Assert.IsTrue(server.SentBroadcasts.Any());
 				server.SentBroadcasts.Clear();
@@ -600,7 +600,7 @@ namespace Test.RssdpPortable
 				publisher.AddDevice(rootDevice);
 				server.WaitForMockBroadcast(10000);
 
-				System.Threading.Thread.Sleep(100);
+				//System.Threading.Thread.Sleep(100);
 
 				Assert.IsTrue(server.SentBroadcasts.Any());
 				server.SentBroadcasts.Clear();
@@ -627,7 +627,7 @@ namespace Test.RssdpPortable
 				publisher.AddDevice(rootDevice);
 				server.WaitForMockBroadcast(10000);
 
-				System.Threading.Thread.Sleep(100);
+				//System.Threading.Thread.Sleep(100);
 
 				Assert.IsTrue(server.SentBroadcasts.Any());
 				server.SentBroadcasts.Clear();
@@ -655,7 +655,7 @@ namespace Test.RssdpPortable
 				publisher.AddDevice(rootDevice);
 				server.WaitForMockBroadcast(10000);
 
-				System.Threading.Thread.Sleep(100);
+				//System.Threading.Thread.Sleep(100);
 				Assert.IsTrue(server.SentBroadcasts.Any());
 				server.SentBroadcasts.Clear();
 
@@ -687,7 +687,7 @@ namespace Test.RssdpPortable
 				publisher.AddDevice(rootDevice);
 				server.WaitForMockBroadcast(10000);
 
-				System.Threading.Thread.Sleep(100);
+				//System.Threading.Thread.Sleep(100);
 				Assert.IsTrue(server.SentBroadcasts.Any());
 				server.SentBroadcasts.Clear();
 
@@ -717,7 +717,7 @@ namespace Test.RssdpPortable
 				publisher.AddDevice(rootDevice);
 
 				server.WaitForMockBroadcast(10000);
-				System.Threading.Thread.Sleep(100);
+				//System.Threading.Thread.Sleep(100);
 				Assert.IsTrue(server.SentBroadcasts.Any());
 
 				server.SentBroadcasts.Clear();
@@ -755,7 +755,7 @@ namespace Test.RssdpPortable
 				publisher.AddDevice(rootDevice);
 
 				server.WaitForMockBroadcast(10000);
-				System.Threading.Thread.Sleep(100);
+				//System.Threading.Thread.Sleep(100);
 				Assert.IsTrue(server.SentBroadcasts.Any());
 
 				server.SentBroadcasts.Clear();
@@ -811,7 +811,7 @@ namespace Test.RssdpPortable
 #pragma warning restore CS0618 // Type or member is obsolete
 				server.WaitForMockBroadcast(10000);
 
-				System.Threading.Thread.Sleep(100);
+				//System.Threading.Thread.Sleep(100);
 
 				Assert.IsTrue(server.SentBroadcasts.Any(), "No broadcasts");
 				server.SentBroadcasts.Clear();
@@ -850,13 +850,13 @@ namespace Test.RssdpPortable
 #pragma warning restore CS0618 // Type or member is obsolete
 				server.WaitForMockBroadcast(10000);
 
-				System.Threading.Thread.Sleep(100);
+				//System.Threading.Thread.Sleep(100);
 
 				Assert.IsTrue(server.SentBroadcasts.Any());
 				server.SentBroadcasts.Clear();
 
 				server.WaitForMockBroadcast(35000);
-				System.Threading.Thread.Sleep(100);
+				//System.Threading.Thread.Sleep(100);
 				Assert.IsTrue(server.SentBroadcasts.Any());
 				server.SentBroadcasts.Clear();
 				server.WaitForMockBroadcast(35000);
@@ -893,7 +893,7 @@ namespace Test.RssdpPortable
 #pragma warning restore CS0618 // Type or member is obsolete
 				server.WaitForMockBroadcast(10000);
 
-				System.Threading.Thread.Sleep(100);
+				//System.Threading.Thread.Sleep(100);
 
 				Assert.IsTrue(server.SentBroadcasts.Any());
 				server.SentBroadcasts.Clear();
@@ -932,13 +932,13 @@ namespace Test.RssdpPortable
 #pragma warning restore CS0618 // Type or member is obsolete
 				server.WaitForMockBroadcast(10000);
 
-				System.Threading.Thread.Sleep(100);
+				//System.Threading.Thread.Sleep(100);
 
 				Assert.IsTrue(server.SentBroadcasts.Any());
 				server.SentBroadcasts.Clear();
 
 				server.WaitForMockBroadcast(35000);
-				System.Threading.Thread.Sleep(100);
+				//System.Threading.Thread.Sleep(100);
 
 
 				var sentMessages = GetAllSentBroadcasts(server);
@@ -968,7 +968,7 @@ namespace Test.RssdpPortable
 				publisher.AddDevice(rootDevice);
 				server.WaitForMockBroadcast(10000);
 
-				System.Threading.Thread.Sleep(100);
+				//System.Threading.Thread.Sleep(100);
 
 				Assert.IsTrue(server.SentBroadcasts.Any());
 				publisher.RemoveDevice(rootDevice);
@@ -1123,7 +1123,7 @@ namespace Test.RssdpPortable
 
 				server.MockReceiveMessage(searchRequest);
 				server.WaitForMockMessage(1500);
-				System.Threading.Thread.Sleep(100);
+				//System.Threading.Thread.Sleep(100);
 
 				var searchResponses = GetSentMessages(server.SentMessages);
 				Assert.AreEqual(0, searchResponses.Where((r) => !r.IsSuccessStatusCode).Count());
@@ -1149,7 +1149,7 @@ namespace Test.RssdpPortable
 
 				server.MockReceiveMessage(searchRequest);
 				server.WaitForMockMessage(1500);
-				System.Threading.Thread.Sleep(100);
+				//System.Threading.Thread.Sleep(100);
 
 				var searchResponses = GetSentMessages(server.SentMessages);
 				Assert.AreEqual(0, searchResponses.Where((r) => !r.IsSuccessStatusCode).Count());
@@ -1327,7 +1327,7 @@ namespace Test.RssdpPortable
 				server.MockReceiveMessage(searchRequest);
 				server.MockReceiveMessage(searchRequest);
 				server.WaitForMockMessage(1500);
-				System.Threading.Thread.Sleep(500);
+				//System.Threading.Thread.Sleep(500);
 
 				var searchResponses = GetSentMessages(server.SentMessages);
 				Assert.AreEqual(0, searchResponses.Where((r) => !r.IsSuccessStatusCode).Count());
@@ -1349,9 +1349,9 @@ namespace Test.RssdpPortable
 				ReceivedUdpData searchRequest2 = GetSearchRequestMessage(SsdpConstants.PnpDeviceTypeRootDevice);
 
 				server.MockReceiveMessage(searchRequest);
+				server.WaitForMockMessage(1500);
 				server.MockReceiveMessage(searchRequest2);
 				server.WaitForMockMessage(1500);
-				System.Threading.Thread.Sleep(1000);
 
 				var searchResponses = GetSentMessages(server.SentMessages);
 				Assert.AreEqual(0, searchResponses.Where((r) => !r.IsSuccessStatusCode).Count());
@@ -1380,7 +1380,10 @@ namespace Test.RssdpPortable
 				server.WaitForMessageToProcess(5000);
 				server.WaitForMockMessage(1500);
 				server.SentMessages.Clear();
+
+				System.Threading.Thread.Sleep(500); //Delay the second message
 				server.MockReceiveMessage(searchRequest);
+
 				var started = DateTime.Now;
 				var searchResponses = GetSentMessages(server.SentMessages).ToArray();
 				while (searchResponses.Length < 5 && DateTime.Now.Subtract(started).TotalSeconds < 10)
@@ -1392,7 +1395,7 @@ namespace Test.RssdpPortable
 				//System.Threading.Thread.Sleep(1000);
 
 				Assert.AreEqual(0, searchResponses.Where((r) => !r.IsSuccessStatusCode).Count());
-				Assert.AreEqual(1, GetResponses(searchResponses, SsdpConstants.UpnpDeviceTypeRootDevice).Count());
+				Assert.IsTrue(GetResponses(searchResponses, SsdpConstants.UpnpDeviceTypeRootDevice).Count() > 0);
 			}
 		}
 
@@ -1444,7 +1447,7 @@ namespace Test.RssdpPortable
 
 				server.MockReceiveMessage(searchRequest);
 				server.WaitForMockMessage(1500);
-				System.Threading.Thread.Sleep(100);
+				//System.Threading.Thread.Sleep(100);
 
 				var searchResponses = GetSentMessages(server.SentMessages);
 				var uuidResponses = GetResponses(searchResponses, childDevice.Udn);
@@ -1473,7 +1476,7 @@ namespace Test.RssdpPortable
 
 				server.MockReceiveMessage(searchRequest);
 				server.WaitForMockMessage(1500);
-				System.Threading.Thread.Sleep(500);
+				//System.Threading.Thread.Sleep(500);
 
 				var searchResponses = GetSentMessages(server.SentMessages);
 				var rootUuidResponses = GetResponses(searchResponses, childDevice.Udn);
@@ -1556,7 +1559,7 @@ namespace Test.RssdpPortable
 				ReceivedUdpData searchRequest = GetSearchRequestMessageWithCustomMXHeader(childDevice.Udn, String.Empty);
 				server.MockReceiveMessage(searchRequest);
 				server.WaitForMockMessage(1500);
-				System.Threading.Thread.Sleep(500);
+				//System.Threading.Thread.Sleep(500);
 
 				var searchResponses = GetSentMessages(server.SentMessages);
 				var uuidResponses = GetResponses(searchResponses, childDevice.Udn);
@@ -1652,7 +1655,7 @@ namespace Test.RssdpPortable
 
 				server.MockReceiveMessage(searchRequest);
 				Assert.IsTrue(server.WaitForMockMessage(120000));
-				System.Threading.Thread.Sleep(500);
+				//System.Threading.Thread.Sleep(500);
 
 				var searchResponses = GetSentMessages(server.SentMessages);
 				Assert.AreEqual(3, searchResponses.Count());

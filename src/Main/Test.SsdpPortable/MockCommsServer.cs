@@ -29,7 +29,16 @@ namespace Test.RssdpPortable
 		private System.Threading.ManualResetEvent _SentBroadcastSignal = new System.Threading.ManualResetEvent(false);
 		private System.Threading.ManualResetEvent _SentMessageSignal = new System.Threading.ManualResetEvent(false);
 
+		private System.Threading.Timer _MessageSentSignalTimer;
+		private System.Threading.Timer _BroadcastSentSignalTimer;
+
 		private System.Threading.Tasks.Task _ListenTask;
+
+		public MockCommsServer()
+		{
+			_MessageSentSignalTimer = new System.Threading.Timer((reserved) => _SentMessageSignal.Set(), null, System.Threading.Timeout.Infinite, System.Threading.Timeout.Infinite);
+			_BroadcastSentSignalTimer = new System.Threading.Timer((reserved) => _SentBroadcastSignal.Set(), null, System.Threading.Timeout.Infinite, System.Threading.Timeout.Infinite);
+		}
 
 		protected override void Dispose(bool disposing)
 		{
@@ -101,7 +110,12 @@ namespace Test.RssdpPortable
 		public void SendMessage(byte[] messageData, UdpEndPoint destination)
 		{
 			SentMessages.Enqueue(new ReceivedUdpData() { Buffer = messageData, ReceivedBytes = messageData.Length, ReceivedFrom = destination });
-			_SentMessageSignal.Set();
+			SetMessageSentSignal();
+		}
+
+		private void SetMessageSentSignal()
+		{
+			_MessageSentSignalTimer.Change(40, System.Threading.Timeout.Infinite);
 		}
 
 		public void SendMulticastMessage(byte[] messageData)
@@ -148,7 +162,8 @@ namespace Test.RssdpPortable
 				});
 			}
 
-			_SentBroadcastSignal.Set();
+			_BroadcastSentSignalTimer.Change(50, System.Threading.Timeout.Infinite);
+			//_SentBroadcastSignal.Set();
 		}
 
 		public bool IsShared
