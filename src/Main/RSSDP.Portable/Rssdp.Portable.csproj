@@ -79,6 +79,7 @@
     <Compile Include="SsdpDevicePublisherBase.cs" />
     <Compile Include="SsdpEmbeddedDevice.cs" />
     <Compile Include="SsdpRootDevice.cs" />
+    <Compile Include="SsdpService.cs" />
     <Compile Include="SsdpStandardsMode.cs" />
     <Compile Include="TaskEx.cs" />
     <Compile Include="UdpEndPoint.cs" />

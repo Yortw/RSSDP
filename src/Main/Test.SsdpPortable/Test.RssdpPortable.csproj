@@ -92,6 +92,7 @@
     <Compile Include="CustomHttpHeadersCollectionTests.cs" />
     <Compile Include="SsdpDevicePropertiesCollectionTests.cs" />
     <Compile Include="SsdpDeviceTests.cs" />
+    <Compile Include="SsdpServiceTests.cs" />
     <Compile Include="TestDevicePublisher.cs" />
     <Compile Include="UPnP10DeviceValidatorTests.cs" />
   </ItemGroup>
