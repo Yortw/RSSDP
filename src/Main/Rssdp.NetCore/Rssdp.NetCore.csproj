@@ -108,6 +108,9 @@
     <Compile Include="..\RSSDP.Portable\ResponseReceivedEventArgs.cs">
       <Link>Portable\ResponseReceivedEventArgs.cs</Link>
     </Compile>
+    <Compile Include="..\RSSDP.Portable\ServiceEventArgs.cs">
+      <Link>Portable\ServiceEventArgs.cs</Link>
+    </Compile>
     <Compile Include="..\RSSDP.Portable\SsdpCommunicationsServer.cs">
       <Link>Portable\SsdpCommunicationsServer.cs</Link>
     </Compile>
@@ -140,6 +143,9 @@
     </Compile>
     <Compile Include="..\RSSDP.Portable\SsdpRootDevice.cs">
       <Link>Portable\SsdpRootDevice.cs</Link>
+    </Compile>
+    <Compile Include="..\RSSDP.Portable\SsdpService.cs">
+      <Link>Portable\SsdpService.cs</Link>
     </Compile>
     <Compile Include="..\RSSDP.Portable\SsdpStandardsMode.cs">
       <Link>Portable\SsdpStandardsMode.cs</Link>

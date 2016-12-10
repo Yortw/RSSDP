@@ -48,6 +48,7 @@
     </Compile>
     <Compile Include="CustomHttpHeaders.cs" />
     <Compile Include="DeviceAvailableEventArgs.cs" />
+    <Compile Include="ServiceEventArgs.cs" />
     <Compile Include="DeviceEventArgs.cs" />
     <Compile Include="DeviceUnavailableEventArgs.cs" />
     <Compile Include="DisposableManagedObjectBase.cs" />

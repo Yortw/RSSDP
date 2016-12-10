@@ -463,5 +463,89 @@ namespace Test.RssdpPortable
 
 		#endregion
 
+		#region Service Tests
+
+		[ExpectedException(typeof(System.ArgumentNullException))]
+		[TestMethod]
+		public void SsdpDevice_AddService_ThrowsArgumentNullOnNullService()
+		{
+			var rootDevice = new SsdpRootDevice();
+			rootDevice.AddService(null);
+		}
+
+		[TestMethod]
+		public void SsdpDevice_AddService_RaisesServiceAdded()
+		{
+			var rootDevice = new SsdpRootDevice();
+
+			bool eventRaised = false;
+			SsdpService eventService = null;
+			rootDevice.ServiceAdded += (sender, e) =>
+			{
+				eventRaised = true;
+				eventService = e.Service;
+			};
+
+			var service = new SsdpService();
+			rootDevice.AddService(service);
+			Assert.IsTrue(eventRaised);
+			Assert.AreEqual(service, eventService);
+		}
+
+		[TestMethod]
+		public void SsdpDevice_AddService_DuplicateAddDoesNothing()
+		{
+			var rootDevice = new SsdpRootDevice();
+
+			var service = new SsdpService();
+			rootDevice.AddService(service);
+			rootDevice.AddService(service);
+			Assert.AreEqual(1, rootDevice.Services.Count());
+		}
+
+		[ExpectedException(typeof(System.ArgumentNullException))]
+		[TestMethod]
+		public void SsdpDevice_RemoveService_ThrowsArgumentNullOnNullService()
+		{
+			var rootDevice = new SsdpRootDevice();
+			rootDevice.AddService(null);
+		}
+
+		[TestMethod]
+		public void SsdpDevice_RemoveService_RaisesServiceRemoved()
+		{
+			var rootDevice = new SsdpRootDevice();
+
+			bool eventRaised = false;
+			SsdpService eventService = null;
+			rootDevice.ServiceRemoved += (sender, e) =>
+			{
+				eventRaised = true;
+				eventService = e.Service;
+			};
+
+			var service = new SsdpService();
+			rootDevice.AddService(service);
+
+			rootDevice.RemoveService(service);
+			Assert.IsTrue(eventRaised);
+			Assert.AreEqual(service, eventService);
+		}
+
+		[TestMethod]
+		public void SsdpDevice_RemoveService_DuplicateRemoveDoesNothing()
+		{
+			var rootDevice = new SsdpRootDevice();
+
+			var service = new SsdpService();
+			rootDevice.AddService(service);
+			Assert.AreEqual(1, rootDevice.Services.Count());
+			rootDevice.RemoveService(service);
+			rootDevice.RemoveService(service);
+			Assert.AreEqual(0, rootDevice.Devices.Count());
+		}
+
+		#endregion
+
 	}
 }

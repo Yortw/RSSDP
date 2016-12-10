@@ -113,6 +113,8 @@ namespace Rssdp.Infrastructure
 			if (device.Icons.Any())
 				ValidateIcons(device, retVal);
 
+			ValidateChildServices(device, retVal);
+
 			ValidateChildDevices(device, retVal);
 
 			return retVal;
@@ -180,12 +182,39 @@ namespace Rssdp.Infrastructure
 				{
 					retVal.Add("Embedded Device : " + childDevice.Uuid + ": " + validationError);
 				}
+
+				ValidateChildServices(childDevice, retVal);
 			}
 		}
 		
 		private static bool IsOverLength(string value, int maxLength)
 		{
 			return !String.IsNullOrEmpty(value) && value.Length > maxLength;
+		}
+
+		private static void ValidateChildServices(SsdpDevice device, List<string> retVal)
+		{
+			foreach (var service in device.Services)
+			{
+				ValidateService(service, retVal);
+			}
+		}
+
+		private static void ValidateService(SsdpService service, List<string> retVal)
+		{
+			if (String.IsNullOrEmpty(service.ServiceType))
+				retVal.Add("ServiceType is missing");
+			else if (service.ServiceType.Contains("#"))
+				retVal.Add("ServiceType cannot contain #");
+
+			if (String.IsNullOrEmpty(service.Uuid))
+				retVal.Add("ServiceId is missing");
+
+			if (service.ScpdUrl == null)
+				retVal.Add("ScpdUrl is missing");
+
+			if (service.ControlUrl == null)
+				retVal.Add("ControlUrl is missing");
 		}
 
 		#endregion

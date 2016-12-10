@@ -1782,6 +1782,306 @@ namespace Test.RssdpPortable
 
 		#endregion
 
+		#region Service Validations
+
+		[TestMethod]
+		public void UPnP10DeviceValidator_PassesCorrectServiceDevice()
+		{
+			var rootDevice = new SsdpRootDevice()
+			{
+				FriendlyName = "Basic Device 1",
+				Manufacturer = "Test Manufacturer",
+				ManufacturerUrl = new Uri("http://testmanufacturer.com"),
+				ModelDescription = "A test model device",
+				ModelName = "Test Model",
+				ModelNumber = "Model #1234",
+				ModelUrl = new Uri("http://modelurl.com"),
+				SerialNumber = "SN-123",
+				Uuid = System.Guid.NewGuid().ToString(),
+				Location = new Uri("http://testdevice:1700/xml")
+			};
+
+			var testDevice = new SsdpEmbeddedDevice()
+			{
+				DeviceType = "TestEmbeddedDevice",
+				FriendlyName = "Embedded Device 1",
+				Manufacturer = "Test Manufacturer",
+				ManufacturerUrl = new Uri("http://testmanufacturer.com"),
+				ModelDescription = "A test model device",
+				ModelName = "Test Model",
+				ModelNumber = "Model #1234",
+				ModelUrl = new Uri("http://modelurl.com"),
+				SerialNumber = "SN-123",
+				Uuid = System.Guid.NewGuid().ToString(),
+			};
+			rootDevice.AddDevice(testDevice);
+
+			var service = new SsdpService()
+			{
+				Uuid = System.Guid.NewGuid().ToString(),
+				ControlUrl = new Uri("http://192.168.1.1/control"),
+				ScpdUrl = new Uri("http://192.168.1.1/scpd"),
+				ServiceType = "TestServiceType",
+				ServiceTypeNamespace = "my-test-namespace",
+				ServiceVersion = 1
+			};
+			rootDevice.AddService(service);
+
+			var validator = new Upnp10DeviceValidator();
+			var results = validator.GetValidationErrors(rootDevice);
+			Assert.IsNotNull(results);
+			Assert.AreEqual(0, results.Count());
+		}
+
+		[TestMethod]
+		public void UPnP10DeviceValidator_FailsOnMissingServiceId()
+		{
+			var rootDevice = new SsdpRootDevice()
+			{
+				FriendlyName = "Basic Device 1",
+				Manufacturer = "Test Manufacturer",
+				ManufacturerUrl = new Uri("http://testmanufacturer.com"),
+				ModelDescription = "A test model device",
+				ModelName = "Test Model",
+				ModelNumber = "Model #1234",
+				ModelUrl = new Uri("http://modelurl.com"),
+				SerialNumber = "SN-123",
+				Uuid = System.Guid.NewGuid().ToString(),
+				Location = new Uri("http://testdevice:1700/xml")
+			};
+
+			var testDevice = new SsdpEmbeddedDevice()
+			{
+				DeviceType = "TestEmbeddedDevice",
+				FriendlyName = "Embedded Device 1",
+				Manufacturer = "Test Manufacturer",
+				ManufacturerUrl = new Uri("http://testmanufacturer.com"),
+				ModelDescription = "A test model device",
+				ModelName = "Test Model",
+				ModelNumber = "Model #1234",
+				ModelUrl = new Uri("http://modelurl.com"),
+				SerialNumber = "SN-123",
+				Uuid = System.Guid.NewGuid().ToString(),
+			};
+			rootDevice.AddDevice(testDevice);
+
+			var service = new SsdpService()
+			{
+				ControlUrl = new Uri("http://192.168.1.1/control"),
+				ScpdUrl = new Uri("http://192.168.1.1/scpd"),
+				ServiceType = "TestServiceType",
+				ServiceTypeNamespace = "my-test-namespace",
+				ServiceVersion = 1
+			};
+			rootDevice.AddService(service);
+
+			var validator = new Upnp10DeviceValidator();
+			var results = validator.GetValidationErrors(rootDevice);
+			Assert.IsNotNull(results);
+			Assert.AreEqual(1, results.Count());
+			Assert.AreEqual("ServiceId is missing", results.First());
+		}
+
+		[TestMethod]
+		public void UPnP10DeviceValidator_FailsOnMissingServiceType()
+		{
+			var rootDevice = new SsdpRootDevice()
+			{
+				FriendlyName = "Basic Device 1",
+				Manufacturer = "Test Manufacturer",
+				ManufacturerUrl = new Uri("http://testmanufacturer.com"),
+				ModelDescription = "A test model device",
+				ModelName = "Test Model",
+				ModelNumber = "Model #1234",
+				ModelUrl = new Uri("http://modelurl.com"),
+				SerialNumber = "SN-123",
+				Uuid = System.Guid.NewGuid().ToString(),
+				Location = new Uri("http://testdevice:1700/xml")
+			};
+
+			var testDevice = new SsdpEmbeddedDevice()
+			{
+				DeviceType = "TestEmbeddedDevice",
+				FriendlyName = "Embedded Device 1",
+				Manufacturer = "Test Manufacturer",
+				ManufacturerUrl = new Uri("http://testmanufacturer.com"),
+				ModelDescription = "A test model device",
+				ModelName = "Test Model",
+				ModelNumber = "Model #1234",
+				ModelUrl = new Uri("http://modelurl.com"),
+				SerialNumber = "SN-123",
+				Uuid = System.Guid.NewGuid().ToString(),
+			};
+			rootDevice.AddDevice(testDevice);
+
+			var service = new SsdpService()
+			{
+				Uuid = System.Guid.NewGuid().ToString(),
+				ControlUrl = new Uri("http://192.168.1.1/control"),
+				ScpdUrl = new Uri("http://192.168.1.1/scpd"),
+				ServiceType = null,
+				ServiceTypeNamespace = "my-test-namespace",
+				ServiceVersion = 1
+			};
+			rootDevice.AddService(service);
+
+			var validator = new Upnp10DeviceValidator();
+			var results = validator.GetValidationErrors(rootDevice);
+			Assert.IsNotNull(results);
+			Assert.AreEqual(1, results.Count());
+			Assert.AreEqual("ServiceType is missing", results.First());
+		}
+
+		[TestMethod]
+		public void UPnP10DeviceValidator_FailsOnServiceTypeWithHash()
+		{
+			var rootDevice = new SsdpRootDevice()
+			{
+				FriendlyName = "Basic Device 1",
+				Manufacturer = "Test Manufacturer",
+				ManufacturerUrl = new Uri("http://testmanufacturer.com"),
+				ModelDescription = "A test model device",
+				ModelName = "Test Model",
+				ModelNumber = "Model #1234",
+				ModelUrl = new Uri("http://modelurl.com"),
+				SerialNumber = "SN-123",
+				Uuid = System.Guid.NewGuid().ToString(),
+				Location = new Uri("http://testdevice:1700/xml")
+			};
+
+			var testDevice = new SsdpEmbeddedDevice()
+			{
+				DeviceType = "TestEmbeddedDevice",
+				FriendlyName = "Embedded Device 1",
+				Manufacturer = "Test Manufacturer",
+				ManufacturerUrl = new Uri("http://testmanufacturer.com"),
+				ModelDescription = "A test model device",
+				ModelName = "Test Model",
+				ModelNumber = "Model #1234",
+				ModelUrl = new Uri("http://modelurl.com"),
+				SerialNumber = "SN-123",
+				Uuid = System.Guid.NewGuid().ToString(),
+			};
+			rootDevice.AddDevice(testDevice);
+
+			var service = new SsdpService()
+			{
+				Uuid = System.Guid.NewGuid().ToString(),
+				ControlUrl = new Uri("http://192.168.1.1/control"),
+				ScpdUrl = new Uri("http://192.168.1.1/scpd"),
+				ServiceType = "My#TestServiceType",
+				ServiceTypeNamespace = "my-test-namespace",
+				ServiceVersion = 1
+			};
+			rootDevice.AddService(service);
+
+			var validator = new Upnp10DeviceValidator();
+			var results = validator.GetValidationErrors(rootDevice);
+			Assert.IsNotNull(results);
+			Assert.AreEqual(1, results.Count());
+			Assert.AreEqual("ServiceType cannot contain #", results.First());
+		}
+
+		[TestMethod]
+		public void UPnP10DeviceValidator_FailsOnMissingScpdUrl()
+		{
+			var rootDevice = new SsdpRootDevice()
+			{
+				FriendlyName = "Basic Device 1",
+				Manufacturer = "Test Manufacturer",
+				ManufacturerUrl = new Uri("http://testmanufacturer.com"),
+				ModelDescription = "A test model device",
+				ModelName = "Test Model",
+				ModelNumber = "Model #1234",
+				ModelUrl = new Uri("http://modelurl.com"),
+				SerialNumber = "SN-123",
+				Uuid = System.Guid.NewGuid().ToString(),
+				Location = new Uri("http://testdevice:1700/xml")
+			};
+
+			var testDevice = new SsdpEmbeddedDevice()
+			{
+				DeviceType = "TestEmbeddedDevice",
+				FriendlyName = "Embedded Device 1",
+				Manufacturer = "Test Manufacturer",
+				ManufacturerUrl = new Uri("http://testmanufacturer.com"),
+				ModelDescription = "A test model device",
+				ModelName = "Test Model",
+				ModelNumber = "Model #1234",
+				ModelUrl = new Uri("http://modelurl.com"),
+				SerialNumber = "SN-123",
+				Uuid = System.Guid.NewGuid().ToString(),
+			};
+			rootDevice.AddDevice(testDevice);
+
+			var service = new SsdpService()
+			{
+				Uuid = System.Guid.NewGuid().ToString(),
+				ControlUrl = new Uri("http://192.168.1.1/control"),
+				ServiceType = "TestServiceType",
+				ServiceTypeNamespace = "my-test-namespace",
+				ServiceVersion = 1
+			};
+			rootDevice.AddService(service);
+
+			var validator = new Upnp10DeviceValidator();
+			var results = validator.GetValidationErrors(rootDevice);
+			Assert.IsNotNull(results);
+			Assert.AreEqual(1, results.Count());
+			Assert.AreEqual("ScpdUrl is missing", results.First());
+		}
+
+		[TestMethod]
+		public void UPnP10DeviceValidator_FailsOnMissingControlUrl()
+		{
+			var rootDevice = new SsdpRootDevice()
+			{
+				FriendlyName = "Basic Device 1",
+				Manufacturer = "Test Manufacturer",
+				ManufacturerUrl = new Uri("http://testmanufacturer.com"),
+				ModelDescription = "A test model device",
+				ModelName = "Test Model",
+				ModelNumber = "Model #1234",
+				ModelUrl = new Uri("http://modelurl.com"),
+				SerialNumber = "SN-123",
+				Uuid = System.Guid.NewGuid().ToString(),
+				Location = new Uri("http://testdevice:1700/xml")
+			};
+
+			var testDevice = new SsdpEmbeddedDevice()
+			{
+				DeviceType = "TestEmbeddedDevice",
+				FriendlyName = "Embedded Device 1",
+				Manufacturer = "Test Manufacturer",
+				ManufacturerUrl = new Uri("http://testmanufacturer.com"),
+				ModelDescription = "A test model device",
+				ModelName = "Test Model",
+				ModelNumber = "Model #1234",
+				ModelUrl = new Uri("http://modelurl.com"),
+				SerialNumber = "SN-123",
+				Uuid = System.Guid.NewGuid().ToString(),
+			};
+			rootDevice.AddDevice(testDevice);
+
+			var service = new SsdpService()
+			{
+				Uuid = System.Guid.NewGuid().ToString(),
+				ScpdUrl = new Uri("http://192.168.1.1/scpd"),
+				ServiceType = "TestServiceType",
+				ServiceTypeNamespace = "my-test-namespace",
+				ServiceVersion = 1
+			};
+			rootDevice.AddService(service);
+
+			var validator = new Upnp10DeviceValidator();
+			var results = validator.GetValidationErrors(rootDevice);
+			Assert.IsNotNull(results);
+			Assert.AreEqual(1, results.Count());
+			Assert.AreEqual("ControlUrl is missing", results.First());
+		}
+
+		#endregion
+
 		#region ThrowIfInvalidTests
 
 		[ExpectedException(typeof(System.ArgumentNullException))]

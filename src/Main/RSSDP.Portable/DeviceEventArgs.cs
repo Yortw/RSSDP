@@ -36,7 +36,7 @@ namespace Rssdp
 		#region Public Properties
 
 		/// <summary>
-		/// Returns the <see cref="SsdpDevice"/> instance the event being raised for.
+		/// Returns the <see cref="SsdpDevice"/> instance the event is being raised for.
 		/// </summary>
 		public SsdpDevice Device
 		{

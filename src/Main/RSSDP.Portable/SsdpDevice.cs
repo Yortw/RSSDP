@@ -30,6 +30,7 @@ namespace Rssdp
 		private CustomHttpHeadersCollection _CustomResponseHeaders;
 
 		private IList<SsdpDevice> _Devices;
+		private IList<SsdpService> _Services;
 
 		#endregion
 
@@ -49,6 +50,20 @@ namespace Rssdp
 		/// <seealso cref="DeviceRemoved"/>
 		public event EventHandler<DeviceEventArgs> DeviceRemoved;
 
+		/// <summary>
+		/// Raised when a new service is added.
+		/// </summary>
+		/// <seealso cref="AddService"/>
+		/// <seealso cref="ServiceAdded"/>
+		public event EventHandler<ServiceEventArgs> ServiceAdded;
+
+		/// <summary>
+		/// Raised when a service is removed.
+		/// </summary>
+		/// <seealso cref="RemoveService"/>
+		/// <seealso cref="OnServiceRemoved"/>
+		public event EventHandler<ServiceEventArgs> ServiceRemoved;
+
 		#endregion
 
 		#region Constructors
@@ -65,8 +80,10 @@ namespace Rssdp
 			this.Icons = new List<SsdpDeviceIcon>();
 			_Devices = new List<SsdpDevice>();
 			this.Devices = new ReadOnlyEnumerable<SsdpDevice>(_Devices);
-			_CustomResponseHeaders = new CustomHttpHeadersCollection(); 
+			_CustomResponseHeaders = new CustomHttpHeadersCollection();
 			_CustomProperties = new SsdpDevicePropertiesCollection();
+			_Services = new List<SsdpService>();
+			this.Services =  new ReadOnlyEnumerable<SsdpService>(_Services);
 		}
 
 		/// <summary>
@@ -312,9 +329,22 @@ namespace Rssdp
 			}
 		}
 
+		/// <summary>
+		/// Returns a read-only enumerable set of <see cref="SsdpService"/> objects representing services associated with this device.
+		/// </summary>
+		/// <seealso cref="AddService"/>
+		/// <seealso cref="RemoveService"/>
+		public IEnumerable<SsdpService> Services
+		{
+			get;
+			private set;
+		}
+
 		#endregion
 
 		#region Public Methods
+
+		#region Child Device Methods
 
 		/// <summary>
 		/// Adds a child device to the <see cref="Devices"/> collection.
@@ -400,6 +430,88 @@ namespace Rssdp
 			if (handlers != null)
 				handlers(this, new DeviceEventArgs(device));
 		}
+
+		#endregion
+
+		#region Service Methods
+
+		/// <summary>
+		/// Adds a service to the <see cref="Services"/> collection.
+		/// </summary>
+		/// <param name="service">The <see cref="SsdpService"/> instance to add.</param>
+		/// <remarks>
+		/// <para>If the service is already a member of the <see cref="Services"/> collection, this method does nothing.</para>
+		/// </remarks>
+		/// <exception cref="System.ArgumentNullException">Thrown if the <paramref name="service"/> argument is null.</exception>
+		/// <seealso cref="ServiceAdded"/>
+		public void AddService(SsdpService service)
+		{
+			if (service == null) throw new ArgumentNullException(nameof(service));
+
+			bool wasAdded = false;
+			lock (_Services)
+			{
+				if (!ChildServiceExists(service))
+				{
+					_Services.Add(service);
+					wasAdded = true;
+				}
+			}
+
+			if (wasAdded)
+				OnServiceAdded(service);
+		}
+
+		/// <summary>
+		/// Removes a service from the <see cref="Services"/> collection.
+		/// </summary>
+		/// <param name="service">The <see cref="SsdpService"/> instance to remove.</param>
+		/// <remarks>
+		/// <para>If the service is not a member of the <see cref="Services"/> collection, this method does nothing.</para>
+		/// </remarks>
+		/// <exception cref="System.ArgumentNullException">Thrown if the <paramref name="service"/> argument is null.</exception>
+		/// <seealso cref="ServiceRemoved"/>
+		public void RemoveService(SsdpService service)
+		{
+			if (service == null) throw new ArgumentNullException(nameof(service));
+
+			bool wasRemoved = false;
+			lock (_Services)
+			{
+				wasRemoved = _Services.Remove(service);
+			}
+
+			if (wasRemoved)
+				OnServiceRemoved(service);
+		}
+
+		/// <summary>
+		/// Raises the <see cref="ServiceAdded"/> event.
+		/// </summary>
+		/// <param name="service">The <see cref="SsdpService"/> instance added to the <see cref="Services"/> collection.</param>
+		/// <seealso cref="AddService"/>
+		/// <seealso cref="ServiceAdded"/>		
+		protected virtual void OnServiceAdded(SsdpService service)
+		{
+			var handlers = this.ServiceAdded;
+			if (handlers != null)
+				handlers(this, new ServiceEventArgs(service));
+		}
+
+		/// <summary>
+		/// Raises the <see cref="ServiceRemoved"/> event.
+		/// </summary>
+		/// <param name="service">The <see cref="SsdpService"/> instance removed from the <see cref="Services"/> collection.</param>
+		/// <seealso cref="RemoveService"/>
+		/// <see cref="ServiceRemoved"/>
+		protected virtual void OnServiceRemoved(SsdpService service)
+		{
+			var handlers = this.ServiceRemoved;
+			if (handlers != null)
+				handlers(this, new ServiceEventArgs(service));
+		}
+
+		#endregion
 
 		/// <summary>
 		/// Writes this device to the specified <see cref="System.Xml.XmlWriter"/> as a device node and it's content.
@@ -542,7 +654,7 @@ namespace Rssdp
 			}
 		}
 
-		[System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Maintainability", "CA1502:AvoidExcessiveComplexity", Justification="Yes, there is a large switch statement, not it's not really complex and doesn't really need to be rewritten at this point.")]
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Maintainability", "CA1502:AvoidExcessiveComplexity", Justification = "Yes, there is a large switch statement, not it's not really complex and doesn't really need to be rewritten at this point.")]
 		private bool SetPropertyFromReader(XmlReader reader, SsdpDevice device)
 		{
 			switch (reader.LocalName)
@@ -761,7 +873,7 @@ namespace Rssdp
 					reader.Read();
 				return;
 			}
-			
+
 			newProp.Value = reader.Value;
 
 			// We don't support complex nested types or repeat/multi-value properties
@@ -774,6 +886,11 @@ namespace Rssdp
 		private bool ChildDeviceExists(SsdpDevice device)
 		{
 			return (from d in _Devices where device.Uuid == d.Uuid select d).Any();
+		}
+
+		private bool ChildServiceExists(SsdpService service)
+		{
+			return (from s in _Services where service.Uuid == s.Uuid select s).Any();
 		}
 
 		#endregion
