@@ -544,6 +544,7 @@ namespace Rssdp
 			WriteCustomProperties(writer, device);
 			WriteIcons(writer, device);
 			WriteChildDevices(writer, device);
+			WriteServices(writer, device);
 
 			writer.WriteEndElement();
 		}
@@ -623,6 +624,32 @@ namespace Rssdp
 		{
 			if (value != null)
 				writer.WriteElementString(nodeName, value.ToString());
+		}
+
+		private static void WriteServices(XmlWriter writer, SsdpDevice device)
+		{
+			if (device.Services.Any())
+			{
+				writer.WriteStartElement("serviceList");
+				foreach (var service in device.Services)
+				{
+					WriteService(writer, service);
+				}
+				writer.WriteEndElement();
+			}
+		}
+
+		private static void WriteService(XmlWriter writer, SsdpService service)
+		{
+			writer.WriteStartElement("service");
+
+			WriteNodeIfNotEmpty(writer, "serviceType", service.FullServiceType);
+			WriteNodeIfNotEmpty(writer, "serviceId", service.ServiceId);
+			WriteNodeIfNotEmpty(writer, "SCPDURL", service.ScpdUrl);
+			WriteNodeIfNotEmpty(writer, "controlURL", service.ControlUrl);
+			WriteNodeIfNotEmpty(writer, "eventSubURL", service.EventSubUrl);
+
+			writer.WriteEndElement();
 		}
 
 		#endregion
@@ -719,7 +746,10 @@ namespace Rssdp
 					break;
 
 				case "serviceList":
-					reader.Skip();
+					reader.Read();
+					LoadServices(reader, device);
+					if (!reader.EOF && reader.NodeType == XmlNodeType.EndElement && reader.Name == "serviceList")
+						reader.Read();
 					break;
 
 				default:
@@ -732,6 +762,30 @@ namespace Rssdp
 						return false;
 			}
 			return true;
+		}
+
+		private static void LoadServices(XmlReader reader, SsdpDevice device)
+		{
+			while (!reader.EOF && reader.NodeType != XmlNodeType.Element)
+			{
+				reader.Read();
+			}
+
+			while (!reader.EOF)
+			{
+				while (!reader.EOF && reader.NodeType != XmlNodeType.Element && !(reader.NodeType == XmlNodeType.EndElement && reader.Name == "serviceList")) 
+				{
+					reader.Read();
+				}
+
+				if (reader.LocalName == "service")
+				{
+					var service = new SsdpService(reader.ReadOuterXml());
+					device.AddService(service);
+				}
+				else
+					break;
+			}
 		}
 
 		private static void SetDeviceTypePropertiesFromFullDeviceType(SsdpDevice device, string value)

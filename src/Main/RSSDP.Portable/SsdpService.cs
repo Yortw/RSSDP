@@ -83,8 +83,9 @@ namespace Rssdp
 		{
 			get
 			{
+				//From the spec; Period characters in the Vendor Domain Name MUST be replaced with hyphens in accordance with RFC 2141
 				return String.Format("urn:{0}:service:{1}:{2}",
-				this.ServiceTypeNamespace ?? String.Empty,
+				(this.ServiceTypeNamespace ?? String.Empty).Replace(".", "-"),
 				this.ServiceType ?? String.Empty,
 				this.ServiceVersion);
 			}
@@ -110,11 +111,12 @@ namespace Rssdp
 		{
 			get
 			{
+				//From the spec; Period characters in the Vendor Domain Name MUST be replaced with hyphens in accordance with RFC 2141
 				return String.Format
 				(
 					"urn:{0}:serviceId:{1}",
-					this.ServiceTypeNamespace == SsdpConstants.UpnpDeviceTypeNamespace ? "upnp-org" : this.ServiceTypeNamespace,
-					this.ServiceType ?? String.Empty
+					(this.ServiceTypeNamespace == SsdpConstants.UpnpDeviceTypeNamespace ? "upnp-org" : this.ServiceTypeNamespace).Replace(".", "-"),
+					this.Uuid ?? String.Empty
 				);
 			}
 		}

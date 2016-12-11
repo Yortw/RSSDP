@@ -558,6 +558,11 @@ USN: {1}
 			SendAliveNotification(device, device.Udn, device.Udn);
 			SendAliveNotification(device, device.FullDeviceType, GetUsn(device.Udn, device.FullDeviceType));
 
+			foreach (var service in device.Services)
+			{
+				SendAliveNotification(device, service);
+			}
+
 			foreach (var childDevice in device.Devices)
 			{
 				SendAliveNotifications(childDevice, false);
@@ -584,6 +589,11 @@ USN: {1}
 			WriteTrace(String.Format("Sent alive notification"), device);
 		}
 
+		private void SendAliveNotification(SsdpDevice device, SsdpService service)
+		{
+			SendAliveNotification(device, service.FullServiceType, device.Udn + "::" + service.FullServiceType);
+		}
+
 		#endregion
 
 		#region ByeBye
@@ -601,6 +611,11 @@ USN: {1}
 
 			SendByeByeNotification(device, device.Udn, device.Udn);
 			SendByeByeNotification(device, String.Format("urn:{0}", device.FullDeviceType), GetUsn(device.Udn, device.FullDeviceType));
+
+			foreach (var service in device.Services)
+			{
+				SendByeByeNotification(device, service);
+			}
 
 			foreach (var childDevice in device.Devices)
 			{
@@ -623,6 +638,11 @@ USN: {1}
 			_CommsServer.SendMulticastMessage(System.Text.UTF8Encoding.UTF8.GetBytes(message));
 
 			WriteTrace(String.Format("Sent byebye notification"), device);
+		}
+
+		private void SendByeByeNotification(SsdpDevice device, SsdpService service)
+		{
+			SendByeByeNotification(device, service.FullServiceType, device.Udn + "::" + service.FullServiceType);
 		}
 
 		#endregion
@@ -733,6 +753,8 @@ USN: {1}
 		{
 			device.DeviceAdded += device_DeviceAdded;
 			device.DeviceRemoved += device_DeviceRemoved;
+			device.ServiceAdded += device_ServiceAdded;
+			device.ServiceRemoved += device_ServiceRemoved;
 
 			foreach (var childDevice in device.Devices)
 			{
@@ -744,6 +766,8 @@ USN: {1}
 		{
 			device.DeviceAdded -= device_DeviceAdded;
 			device.DeviceRemoved -= device_DeviceRemoved;
+			device.ServiceAdded -= device_ServiceAdded;
+			device.ServiceRemoved -= device_ServiceRemoved;
 
 			foreach (var childDevice in device.Devices)
 			{
@@ -765,6 +789,24 @@ USN: {1}
 			return returnValue.ToString();
 		}
 
+		private static bool DeviceHasServiceOfType(SsdpDevice device, string fullServiceType)
+		{
+			int retries = 0;
+			while (retries < 5)
+			{
+				try
+				{
+					return (from s in device.Services where s.FullServiceType == fullServiceType select s).Any();
+				}
+				catch (InvalidOperationException) // Collection modified during enumeration
+				{
+					retries++;
+				}
+			}
+
+			return true;
+		}
+
 		#endregion
 
 		#region Event Handlers
@@ -779,6 +821,23 @@ USN: {1}
 		{
 			SendByeByeNotifications(e.Device, false);
 			DisconnectFromDeviceEvents(e.Device);
+		}
+
+		private void device_ServiceAdded(object sender, ServiceEventArgs e)
+		{
+			//Technically we should only do this once per service type,
+			//but if we add services during runtime there is no way to
+			//notify anyone except by resending this notification.
+			SendAliveNotification((SsdpDevice)sender, e.Service);
+		}
+
+		private void device_ServiceRemoved(object sender, ServiceEventArgs e)
+		{
+			var device = (SsdpDevice)sender;
+			//Only say this service type has disappeared if there are no 
+			//services of this type left.
+			if (!DeviceHasServiceOfType(device, e.Service.FullServiceType))
+				SendByeByeNotification(device, e.Service);
 		}
 
 		private void CommsServer_RequestReceived(object sender, RequestReceivedEventArgs e)

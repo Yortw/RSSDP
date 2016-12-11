@@ -780,6 +780,193 @@ namespace Test.RssdpPortable
 
 		#endregion
 
+		#region AddService Tests
+
+		[TestMethod]
+		public void Publisher_AddSevice_BroadcastsServiceTypeNotification()
+		{
+			var rootDevice = CreateValidRootDevice();
+
+			var server = new MockCommsServer();
+			using (var publisher = new TestDevicePublisher(server))
+			{
+#pragma warning disable CS0618 // Type or member is obsolete
+				publisher.SupportPnpRootDevice = false;
+#pragma warning restore CS0618 // Type or member is obsolete
+				publisher.AddDevice(rootDevice);
+				server.WaitForMockBroadcast(10000);
+
+				//System.Threading.Thread.Sleep(100);
+				Assert.IsTrue(server.SentBroadcasts.Any());
+				server.SentBroadcasts.Clear();
+
+				var service = new SsdpService()
+				{
+					ControlUrl = new Uri("/test/control", UriKind.Relative),
+					ScpdUrl = new Uri("/test", UriKind.Relative),
+					EventSubUrl = new Uri("/test/events", UriKind.Relative),
+					ServiceType = "testservicetype",
+					ServiceTypeNamespace = "my-namespace",
+					ServiceVersion = 1,
+					Uuid = System.Guid.NewGuid().ToString()
+				};
+
+				rootDevice.AddService(service);
+				server.WaitForMockBroadcast(5000);
+
+				var sentMessages = GetAllSentBroadcasts(server);
+				var aliveNotifications = GetNotificationsByType(sentMessages, "ssdp:alive");
+
+				var serviceTypeNotifications = GetNotificationsForSearchTarget(aliveNotifications, service.FullServiceType);
+
+				Assert.AreEqual(1, serviceTypeNotifications.Count());
+			}
+		}
+
+		[TestMethod]
+		public void Publisher_AddSevice_ChildDeviceBroadcastsServiceTypeNotification()
+		{
+			var rootDevice = CreateValidRootDevice();
+
+			var server = new MockCommsServer();
+			using (var publisher = new TestDevicePublisher(server))
+			{
+#pragma warning disable CS0618 // Type or member is obsolete
+				publisher.SupportPnpRootDevice = false;
+#pragma warning restore CS0618 // Type or member is obsolete
+				publisher.AddDevice(rootDevice);
+				var embeddedDevice = CreateValidEmbeddedDevice(rootDevice);
+				server.WaitForMockBroadcast(10000);
+
+				//System.Threading.Thread.Sleep(100);
+				Assert.IsTrue(server.SentBroadcasts.Any());
+				server.SentBroadcasts.Clear();
+
+				var service = new SsdpService()
+				{
+					ControlUrl = new Uri("/test/control", UriKind.Relative),
+					ScpdUrl = new Uri("/test", UriKind.Relative),
+					EventSubUrl = new Uri("/test/events", UriKind.Relative),
+					ServiceType = "testservicetype",
+					ServiceTypeNamespace = "my-namespace",
+					ServiceVersion = 1,
+					Uuid = System.Guid.NewGuid().ToString()
+				};
+
+				embeddedDevice.AddService(service);
+				server.WaitForMockBroadcast(5000);
+
+				var sentMessages = GetAllSentBroadcasts(server);
+				var aliveNotifications = GetNotificationsByType(sentMessages, "ssdp:alive");
+
+				var serviceTypeNotifications = GetNotificationsForSearchTarget(aliveNotifications, service.FullServiceType);
+
+				Assert.AreEqual(1, serviceTypeNotifications.Count());
+			}
+		}
+
+		#endregion
+
+		#region RemoveService Tests
+
+		[TestMethod]
+		public void Publisher_RemoveService_SendsServiceTypeUpnpByeByeNotification()
+		{
+			var rootDevice = CreateValidRootDevice();
+			rootDevice.CacheLifetime = TimeSpan.FromMinutes(1);
+
+			var server = new MockCommsServer();
+			using (var publisher = new TestDevicePublisher(server))
+			{
+#pragma warning disable CS0618 // Type or member is obsolete
+				publisher.SupportPnpRootDevice = false;
+#pragma warning restore CS0618 // Type or member is obsolete
+				publisher.AddDevice(rootDevice);
+				server.WaitForMockBroadcast(10000);
+
+				var service = new SsdpService()
+				{
+					ControlUrl = new Uri("/test/control", UriKind.Relative),
+					ScpdUrl = new Uri("/test", UriKind.Relative),
+					EventSubUrl = new Uri("/test/events", UriKind.Relative),
+					ServiceType = "testservicetype",
+					ServiceTypeNamespace = "my-namespace",
+					ServiceVersion = 1,
+					Uuid = System.Guid.NewGuid().ToString()
+				};
+
+				rootDevice.AddService(service);
+				server.WaitForMockBroadcast(1000);
+
+				Assert.IsTrue(server.SentBroadcasts.Any());
+				server.SentBroadcasts.Clear();
+				rootDevice.RemoveService(service);
+
+				var sentMessages = GetAllSentBroadcasts(server);
+				var byebyeNotifications = GetNotificationsByType(sentMessages, "ssdp:byebye");
+
+				var serviceNotifications = GetNotificationsForSearchTarget(byebyeNotifications, service.FullServiceType);
+
+				Assert.AreEqual(1, serviceNotifications.Count());
+			}
+		}
+
+		[TestMethod]
+		public void Publisher_RemoveService_DoesNotSendByeByeWhenServiceOfSameTypeRemains()
+		{
+			var rootDevice = CreateValidRootDevice();
+			rootDevice.CacheLifetime = TimeSpan.FromMinutes(1);
+
+			var server = new MockCommsServer();
+			using (var publisher = new TestDevicePublisher(server))
+			{
+#pragma warning disable CS0618 // Type or member is obsolete
+				publisher.SupportPnpRootDevice = false;
+#pragma warning restore CS0618 // Type or member is obsolete
+				publisher.AddDevice(rootDevice);
+				server.WaitForMockBroadcast(10000);
+
+				var service = new SsdpService()
+				{
+					ControlUrl = new Uri("/test/control", UriKind.Relative),
+					ScpdUrl = new Uri("/test", UriKind.Relative),
+					EventSubUrl = new Uri("/test/events", UriKind.Relative),
+					ServiceType = "testservicetype",
+					ServiceTypeNamespace = "my-namespace",
+					ServiceVersion = 1,
+					Uuid = System.Guid.NewGuid().ToString()
+				};
+
+				var service2 = new SsdpService()
+				{
+					ControlUrl = new Uri("/test/control", UriKind.Relative),
+					ScpdUrl = new Uri("/test", UriKind.Relative),
+					EventSubUrl = new Uri("/test/events", UriKind.Relative),
+					ServiceType = "testservicetype",
+					ServiceTypeNamespace = "my-namespace",
+					ServiceVersion = 1,
+					Uuid = System.Guid.NewGuid().ToString()
+				};
+
+				rootDevice.AddService(service);
+				rootDevice.AddService(service2);
+
+				Assert.IsTrue(server.SentBroadcasts.Any());
+				server.SentBroadcasts.Clear();
+				rootDevice.RemoveService(service);
+				server.WaitForMockBroadcast(1000);
+
+				var sentMessages = GetAllSentBroadcasts(server);
+				var byebyeNotifications = GetNotificationsByType(sentMessages, "ssdp:byebye");
+
+				var serviceNotifications = GetNotificationsForSearchTarget(byebyeNotifications, service.FullServiceType);
+
+				Assert.AreEqual(0, serviceNotifications.Count());
+			}
+		}
+
+		#endregion
+
 		#region Periodic Alive Notifications
 
 		[TestMethod]

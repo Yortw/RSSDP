@@ -83,6 +83,24 @@ namespace Test.RssdpPortable
 			Assert.AreEqual("urn::service::1", service.FullServiceType);
 		}
 
+		[TestMethod]
+		public void SsdpService_FullServiceTypesReturnsExpectedString()
+		{
+			var service = new SsdpService();
+			service.ServiceType = "testservicetype";
+			service.ServiceTypeNamespace = "my-test-namespace";
+			Assert.AreEqual("urn:my-test-namespace:service:testservicetype:1", service.FullServiceType);
+		}
+
+		[TestMethod]
+		public void SsdpService_FullServiceTypesReplacesDotsInVendorNamespace()
+		{
+			var service = new SsdpService();
+			service.ServiceType = "testservicetype";
+			service.ServiceTypeNamespace = "my.test.namespace.org";
+			Assert.AreEqual("urn:my-test-namespace-org:service:testservicetype:1", service.FullServiceType);
+		}
+
 		#endregion
 
 		#region Device Document Deserialisation Tests
