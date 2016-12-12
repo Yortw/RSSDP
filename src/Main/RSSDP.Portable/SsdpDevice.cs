@@ -441,6 +441,7 @@ namespace Rssdp
 		/// <param name="service">The <see cref="SsdpService"/> instance to add.</param>
 		/// <remarks>
 		/// <para>If the service is already a member of the <see cref="Services"/> collection, this method does nothing.</para>
+		/// <para>Services should be added to the device before it is added to a publisher.</para>
 		/// </remarks>
 		/// <exception cref="System.ArgumentNullException">Thrown if the <paramref name="service"/> argument is null.</exception>
 		/// <seealso cref="ServiceAdded"/>

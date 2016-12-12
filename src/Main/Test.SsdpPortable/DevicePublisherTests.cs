@@ -13,6 +13,9 @@ namespace Test.RssdpPortable
 	public class DevicePublisherTests
 	{
 
+		// "urn:rssdp-test-namespace:service:test-service-type:1"
+
+
 		#region Argument Checking
 
 		#region Constructors
@@ -1721,6 +1724,88 @@ namespace Test.RssdpPortable
 				searchRequest.Buffer = new byte[] { };
 
 				server.MockReceiveMessage(searchRequest);
+			}
+		}
+
+		[TestMethod]
+		public void Publisher_SearchResponse_RespondsToServiceTypeDeviceSearch()
+		{
+			var rootDevice = CreateValidRootDevice();
+
+			var server = new MockCommsServer();
+			using (var publisher = new TestDevicePublisher(server))
+			{
+				publisher.StandardsMode = SsdpStandardsMode.Strict;
+#pragma warning disable CS0618 // Type or member is obsolete
+				publisher.SupportPnpRootDevice = false;
+#pragma warning restore CS0618 // Type or member is obsolete
+
+				var service = new SsdpService()
+				{
+					ControlUrl = new Uri("/test/control", UriKind.Relative),
+					ScpdUrl = new Uri("/test", UriKind.Relative),
+					EventSubUrl = new Uri("/test/events", UriKind.Relative),
+					ServiceType = "testservicetype",
+					ServiceTypeNamespace = "my-namespace",
+					ServiceVersion = 1,
+					Uuid = System.Guid.NewGuid().ToString()
+				};
+
+				rootDevice.AddService(service);
+				publisher.AddDevice(rootDevice);
+				server.WaitForMockBroadcast(1000);
+				server.SentBroadcasts.Clear();
+				server.SentMessages.Clear();
+
+				ReceivedUdpData searchRequest = GetSearchRequestMessage(service.FullServiceType);
+
+				server.MockReceiveMessage(searchRequest);
+				server.WaitForMockMessage(1500);
+
+				var searchResponses = GetSentMessages(server.SentMessages);
+				Assert.AreEqual(1, GetResponses(searchResponses, service.FullServiceType).Count());
+			}
+		}
+		[TestMethod]
+		public void Publisher_SearchResponse_RespondsToServiceTypeDeviceSearch_WithEmbeddedDeviceService()
+		{
+			var rootDevice = CreateValidRootDevice();
+
+			var server = new MockCommsServer();
+			using (var publisher = new TestDevicePublisher(server))
+			{
+				publisher.StandardsMode = SsdpStandardsMode.Strict;
+#pragma warning disable CS0618 // Type or member is obsolete
+				publisher.SupportPnpRootDevice = false;
+#pragma warning restore CS0618 // Type or member is obsolete
+
+				var edevice = CreateValidEmbeddedDevice(rootDevice);
+				rootDevice.AddDevice(edevice);
+
+				var service = new SsdpService()
+				{
+					ControlUrl = new Uri("/test/control", UriKind.Relative),
+					ScpdUrl = new Uri("/test", UriKind.Relative),
+					EventSubUrl = new Uri("/test/events", UriKind.Relative),
+					ServiceType = "testservicetype",
+					ServiceTypeNamespace = "my-namespace",
+					ServiceVersion = 1,
+					Uuid = System.Guid.NewGuid().ToString()
+				};
+
+				edevice.AddService(service);
+				publisher.AddDevice(rootDevice);
+				server.WaitForMockBroadcast(1000);
+				server.SentBroadcasts.Clear();
+				server.SentMessages.Clear();
+
+				ReceivedUdpData searchRequest = GetSearchRequestMessage(service.FullServiceType);
+
+				server.MockReceiveMessage(searchRequest);
+				server.WaitForMockMessage(1500);
+
+				var searchResponses = GetSentMessages(server.SentMessages);
+				Assert.AreEqual(1, GetResponses(searchResponses, service.FullServiceType).Count());
 			}
 		}
 

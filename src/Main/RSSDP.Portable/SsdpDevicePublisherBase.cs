@@ -347,33 +347,82 @@ USN: {1}
 
 			//Do not block synchronously as that may tie up a threadpool thread for several seconds.
 			TaskEx.Delay(_Random.Next(16, (maxWaitInterval * 1000))).ContinueWith((parentTask) =>
+			{
+				//Copying devices to local array here to avoid threading issues/enumerator exceptions.
+				IEnumerable<SsdpDevice> devices = null;
+				devices = GetDevicesMatchingSearchTarget(searchTarget, devices);
+
+				if (devices != null)
 				{
-					//Copying devices to local array here to avoid threading issues/enumerator exceptions.
-					IEnumerable<SsdpDevice> devices = null;
-					lock (_Devices)
+					WriteTrace(String.Format("Sending {0} search responses", devices.Count()));
+
+					if (searchTarget.Contains(":service:"))
 					{
-						if (String.Compare(SsdpConstants.SsdpDiscoverAllSTHeader, searchTarget, StringComparison.OrdinalIgnoreCase) == 0)
-							devices = GetAllDevicesAsFlatEnumerable().ToArray();
-						else if (String.Compare(SsdpConstants.UpnpDeviceTypeRootDevice, searchTarget, StringComparison.OrdinalIgnoreCase) == 0 || (EnableWindowsExplorerSupport && String.Compare(SsdpConstants.PnpDeviceTypeRootDevice, searchTarget, StringComparison.OrdinalIgnoreCase) == 0))
-							devices = _Devices.ToArray();
-						else if (searchTarget.Trim().StartsWith("uuid:", StringComparison.OrdinalIgnoreCase))
-							devices = (from device in GetAllDevicesAsFlatEnumerable() where String.Compare(device.Uuid, searchTarget.Substring(5), StringComparison.OrdinalIgnoreCase) == 0 select device).ToArray();
-						else if (searchTarget.StartsWith("urn:", StringComparison.OrdinalIgnoreCase))
-							devices = (from device in GetAllDevicesAsFlatEnumerable() where String.Compare(device.FullDeviceType, searchTarget, StringComparison.OrdinalIgnoreCase) == 0 select device).ToArray();
+						foreach (var device in devices)
+						{
+							SendServiceSearchResponses(device, searchTarget, endPoint);
+						}
 					}
-
-					if (devices != null)
+					else
 					{
-						WriteTrace(String.Format("Sending {0} search responses", devices.Count()));
-
 						foreach (var device in devices)
 						{
 							SendDeviceSearchResponses(device, endPoint);
 						}
 					}
+				}
+				else
+					WriteTrace(String.Format("Sending 0 search responses."));
+			});
+		}
+
+		private IEnumerable<SsdpDevice> GetDevicesMatchingSearchTarget(string searchTarget, IEnumerable<SsdpDevice> devices)
+		{
+			lock (_Devices)
+			{
+				if (String.Compare(SsdpConstants.SsdpDiscoverAllSTHeader, searchTarget, StringComparison.OrdinalIgnoreCase) == 0)
+					devices = GetAllDevicesAsFlatEnumerable().ToArray();
+				else if (String.Compare(SsdpConstants.UpnpDeviceTypeRootDevice, searchTarget, StringComparison.OrdinalIgnoreCase) == 0 || (EnableWindowsExplorerSupport && String.Compare(SsdpConstants.PnpDeviceTypeRootDevice, searchTarget, StringComparison.OrdinalIgnoreCase) == 0))
+					devices = _Devices.ToArray();
+				else if (searchTarget.Trim().StartsWith("uuid:", StringComparison.OrdinalIgnoreCase))
+				{
+					devices = (
+											from device
+											in GetAllDevicesAsFlatEnumerable()
+											where String.Compare(device.Uuid, searchTarget.Substring(5), StringComparison.OrdinalIgnoreCase) == 0
+											select device
+										).ToArray();
+				}
+				else if (searchTarget.StartsWith("urn:", StringComparison.OrdinalIgnoreCase))
+				{
+					if (searchTarget.Contains(":service:"))
+					{
+						devices = (from
+											 device in GetAllDevicesAsFlatEnumerable()
+											 where
+													(
+														from s in
+														device.Services
+														where String.Compare(s.FullServiceType, searchTarget, StringComparison.OrdinalIgnoreCase) == 0
+														select s
+													).Any()
+											 select device
+											).ToArray();
+					}
 					else
-						WriteTrace(String.Format("Sending 0 search responses."));
-				});
+					{
+						devices =
+						(
+							from device
+							in GetAllDevicesAsFlatEnumerable()
+							where String.Compare(device.FullDeviceType, searchTarget, StringComparison.OrdinalIgnoreCase) == 0
+							select device
+						).ToArray();
+					}
+				}
+			}
+
+			return devices;
 		}
 
 		private bool EnableWindowsExplorerSupport
@@ -412,6 +461,12 @@ USN: {1}
 			SendSearchResponse(device.Udn, device, device.Udn, endPoint);
 
 			SendSearchResponse(device.FullDeviceType, device, GetUsn(device.Udn, device.FullDeviceType), endPoint);
+		}
+
+		private void SendServiceSearchResponses(SsdpDevice device, string searchTarget, UdpEndPoint endPoint)
+		{
+			//uuid:device-UUID::urn:domain-name:service:serviceType:ver 
+			SendSearchResponse(searchTarget, device, device.Udn + "::" + searchTarget, endPoint);
 		}
 
 		private static string GetUsn(string udn, string fullDeviceType)
