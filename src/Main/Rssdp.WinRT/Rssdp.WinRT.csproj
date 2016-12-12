@@ -102,6 +102,9 @@
     <Compile Include="..\Shared\SsdpDeviceLocator.cs">
       <Link>SsdpDeviceLocator.cs</Link>
     </Compile>
+    <Compile Include="..\Shared\SsdpTraceLogger.cs">
+      <Link>SsdpTraceLogger.cs</Link>
+    </Compile>
     <Compile Include="..\Shared\WinRTSockets\SocketsFactory.cs">
       <Link>SocketsFactory.cs</Link>
     </Compile>

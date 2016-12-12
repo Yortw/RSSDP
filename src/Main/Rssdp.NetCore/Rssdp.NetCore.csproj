@@ -22,7 +22,7 @@
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
     <OutputPath>bin\Debug\</OutputPath>
-    <DefineConstants>TRACE;DEBUG;NETSTANDARD;NETSTANDARD1_3;CODE_ANALYSIS</DefineConstants>
+    <DefineConstants>TRACE;DEBUG;CODE_ANALYSIS;NETSTANDARD;NETSTANDARD1_3;CODE_ANALYSIS</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <DocumentationFile>bin\Debug\Rssdp.NetCore.XML</DocumentationFile>
@@ -33,7 +33,7 @@
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>..\lib\netstandard13\</OutputPath>
-    <DefineConstants>TRACE;NETSTANDARD;NETSTANDARD1_3;CODE_ANALYSIS</DefineConstants>
+    <DefineConstants>TRACE;CODE_ANALYSIS;NETSTANDARD;NETSTANDARD1_3;CODE_ANALYSIS</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <DocumentationFile>..\lib\netstandard13\Rssdp.NetCore.XML</DocumentationFile>
@@ -89,6 +89,9 @@
     </Compile>
     <Compile Include="..\RSSDP.Portable\ISsdpDevicePublisher.cs">
       <Link>Portable\ISsdpDevicePublisher.cs</Link>
+    </Compile>
+    <Compile Include="..\RSSDP.Portable\ISsdpLogger.cs">
+      <Link>Portable\ISsdpLogger.cs</Link>
     </Compile>
     <Compile Include="..\RSSDP.Portable\IUdpSocket.cs">
       <Link>Portable\IUdpSocket.cs</Link>
@@ -167,6 +170,9 @@
     </Compile>
     <Compile Include="..\Shared\SsdpDeviceLocator.cs">
       <Link>SsdpDeviceLocator.cs</Link>
+    </Compile>
+    <Compile Include="..\Shared\SsdpTraceLogger.cs">
+      <Link>Portable\SsdpTraceLogger.cs</Link>
     </Compile>
     <Compile Include="..\Shared\SystemNetSockets\SocketFactory.cs">
       <Link>SocketFactory.cs</Link>

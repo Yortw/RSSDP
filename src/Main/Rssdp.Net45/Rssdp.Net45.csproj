@@ -18,7 +18,7 @@
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
     <OutputPath>bin\Debug\</OutputPath>
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DefineConstants>TRACE;DEBUG;CODE_ANALYSIS;SUPPORTS_TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <Prefer32Bit>false</Prefer32Bit>
@@ -29,7 +29,7 @@
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>..\lib\net45\</OutputPath>
-    <DefineConstants>TRACE</DefineConstants>
+    <DefineConstants>TRACE;CODE_ANALYSIS;SUPPORTS_TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <Prefer32Bit>false</Prefer32Bit>
@@ -93,6 +93,9 @@
     </Compile>
     <Compile Include="..\RSSDP.Portable\ISsdpDevicePublisher.cs">
       <Link>ISsdpDevicePublisher.cs</Link>
+    </Compile>
+    <Compile Include="..\RSSDP.Portable\ISsdpLogger.cs">
+      <Link>ISsdpLogger.cs</Link>
     </Compile>
     <Compile Include="..\RSSDP.Portable\IUdpSocket.cs">
       <Link>IUdpSocket.cs</Link>
@@ -171,6 +174,9 @@
     </Compile>
     <Compile Include="..\Shared\SsdpDeviceLocator.cs">
       <Link>SsdpDeviceLocator.cs</Link>
+    </Compile>
+    <Compile Include="..\Shared\SsdpTraceLogger.cs">
+      <Link>SsdpTraceLogger.cs</Link>
     </Compile>
     <Compile Include="..\Shared\SystemNetSockets\SocketFactory.cs">
       <Link>SocketFactory.cs</Link>

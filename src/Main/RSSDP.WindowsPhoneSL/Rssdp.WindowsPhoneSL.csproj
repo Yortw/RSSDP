@@ -27,7 +27,7 @@
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
     <OutputPath>Bin\Debug</OutputPath>
-    <DefineConstants>DEBUG;TRACE;SILVERLIGHT;WINDOWS_PHONE</DefineConstants>
+    <DefineConstants>TRACE;DEBUG;CODE_ANALYSIS;SILVERLIGHT;WINDOWS_PHONE</DefineConstants>
     <NoStdLib>true</NoStdLib>
     <NoConfig>true</NoConfig>
     <ErrorReport>prompt</ErrorReport>
@@ -40,7 +40,7 @@
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>..\lib\WP8\</OutputPath>
-    <DefineConstants>TRACE;SILVERLIGHT;WINDOWS_PHONE</DefineConstants>
+    <DefineConstants>TRACE;CODE_ANALYSIS;SILVERLIGHT;WINDOWS_PHONE</DefineConstants>
     <NoStdLib>true</NoStdLib>
     <NoConfig>true</NoConfig>
     <ErrorReport>prompt</ErrorReport>
@@ -97,6 +97,9 @@
     </Compile>
     <Compile Include="..\Shared\SsdpDeviceLocator.cs">
       <Link>SsdpDeviceLocator.cs</Link>
+    </Compile>
+    <Compile Include="..\Shared\SsdpTraceLogger.cs">
+      <Link>SsdpTraceLogger.cs</Link>
     </Compile>
     <Compile Include="GlobalSuppressions.cs" />
     <Compile Include="MulticastUdpSocket.cs" />

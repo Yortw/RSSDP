@@ -52,6 +52,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SsdpDeviceLocator.cs" />
     <Compile Include="SsdpDevicePublisher.cs" />
+    <Compile Include="SsdpTraceLogger.cs" />
   </ItemGroup>
   <ItemGroup>
     <CodeAnalysisDictionary Include="..\Shared\CodeAnalysisDictionary.xml">
