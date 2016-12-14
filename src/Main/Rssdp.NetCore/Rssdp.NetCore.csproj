@@ -99,6 +99,9 @@
     <Compile Include="..\RSSDP.Portable\IUPnPDeviceValidator.cs">
       <Link>Portable\IUPnPDeviceValidator.cs</Link>
     </Compile>
+    <Compile Include="..\RSSDP.Portable\NullLogger.cs">
+      <Link>Portable\NullLogger.cs</Link>
+    </Compile>
     <Compile Include="..\RSSDP.Portable\ReadOnlyEnumerable.cs">
       <Link>Portable\ReadOnlyEnumerable.cs</Link>
     </Compile>

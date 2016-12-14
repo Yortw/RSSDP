@@ -49,6 +49,7 @@
     <Compile Include="CustomHttpHeaders.cs" />
     <Compile Include="DeviceAvailableEventArgs.cs" />
     <Compile Include="ISsdpLogger.cs" />
+    <Compile Include="NullLogger.cs" />
     <Compile Include="ServiceEventArgs.cs" />
     <Compile Include="DeviceEventArgs.cs" />
     <Compile Include="DeviceUnavailableEventArgs.cs" />

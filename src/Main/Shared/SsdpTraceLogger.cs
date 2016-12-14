@@ -8,6 +8,9 @@ namespace Rssdp
 	/// <summary>
 	/// Implementation of <see cref="ISsdpLogger"/> that writes to the .Net tracing system on platforms that support it, or <see cref="System.Diagnostics.Debug"/> on those that don't.
 	/// </summary>
+	/// <remarks>
+	/// <para>On platforms that only support <see cref="System.Diagnostics.Debug"/> no log entries will be output unless running a debug build, and this effectively becomes a null logger for release builds.</para>
+	/// </remarks>
 	public class SsdpTraceLogger : ISsdpLogger
 	{
 		/// <summary>
@@ -49,7 +52,7 @@ namespace Rssdp
 		private static void WriteLogMessage(string category, string message)
 		{
 #if SUPPORTS_TRACE
-			System.Diagnostics.Trace.Write(DateTime.Now.ToString("G") + " " + message, category);
+			System.Diagnostics.Trace.WriteLine(DateTime.Now.ToString("G") + " " + message, category);
 #else
 			System.Diagnostics.Debug.WriteLine(DateTime.Now.ToString("G") + " [" + category + "] " + message);
 #endif
