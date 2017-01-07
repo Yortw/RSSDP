@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
   <metadata>
     <id>Rssdp</id>
-    <version>2.0.7-beta</version>
+    <version>2.0.7</version>
     <title>Rssdp</title>
     <authors>Troy Willmot</authors>
     <owners>Yortw</owners>
@@ -16,8 +16,11 @@
 Reduced dependencies for Xamarin/Net45+ projects.
 Improvements to alive notifications to ensure compatibility with non-conforming devices.
 Added NotificationBroadcastInterval property to publisher to allow for configurable, fixed period, alive notification broadcasts.
+Improved handling of unexpectedly closed sockets.
+Improved logging capability.
+Support for publishing UPnP services (previously only devices supported)
 </releaseNotes>
-    <copyright>Copyright 2016</copyright>
+    <copyright>Copyright 2017</copyright>
     <language>en-AU</language>
     <tags>portable xamarin ios android windowsphone winrt uwp mobile ssdp discovery device service protocol upnp netfx40 .net4</tags>
     <dependencies>

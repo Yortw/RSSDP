@@ -33,7 +33,7 @@
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>..\lib\netstandard13\</OutputPath>
-    <DefineConstants>TRACE;CODE_ANALYSIS;NETSTANDARD;NETSTANDARD1_3;CODE_ANALYSIS</DefineConstants>
+    <DefineConstants>TRACE;CODE_ANALYSIS;CODE_ANALYSIS;NETSTANDARD;NETSTANDARD1_3;CODE_ANALYSIS;</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <DocumentationFile>..\lib\netstandard13\Rssdp.NetCore.XML</DocumentationFile>

@@ -33,7 +33,7 @@
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>..\lib\net40\</OutputPath>
-    <DefineConstants>TRACE;CODE_ANALYSIS;SUPPORTS_TRACE</DefineConstants>
+    <DefineConstants>TRACE;CODE_ANALYSIS;CODE_ANALYSIS;SUPPORTS_TRACE;SUPPORTS_SERIALISATION</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <Prefer32Bit>false</Prefer32Bit>
