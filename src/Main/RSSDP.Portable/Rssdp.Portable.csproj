@@ -61,6 +61,7 @@
     <Compile Include="ISsdpDevicePublisher.cs" />
     <Compile Include="IUPnPDeviceValidator.cs" />
     <Compile Include="ReadOnlyEnumerable.cs" />
+    <Compile Include="SocketClosedException.cs" />
     <Compile Include="SsdpDeviceExtensions.cs" />
     <Compile Include="SsdpDeviceLocatorBase.cs" />
     <Compile Include="DiscoveredSsdpDevice.cs" />

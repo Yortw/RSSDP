@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Rssdp.Infrastructure;
+using Rssdp;
 
 namespace Test.RssdpPortable
 {
@@ -79,6 +80,59 @@ namespace Test.RssdpPortable
 		#endregion
 
 		#region Listen Tests
+
+		[TestMethod]
+		public void CommsServer_ReconnectsOnClosedSocket()
+		{
+			var socketFactory = new MockSocketFactory();
+			var server = new SsdpCommunicationsServer(socketFactory);
+			server.BeginListeningForBroadcasts();
+
+			var socket1 = socketFactory.MulticastSocket;
+			System.Threading.Thread.Sleep(500);
+
+			socketFactory.ThrowSocketClosedException();
+			System.Threading.Thread.Sleep(2000);
+
+			var requestReceived = false;
+			using (var eventReceivedSignal = new System.Threading.ManualResetEvent(false))
+			{
+				System.Net.Http.HttpRequestMessage receivedMessage = null;
+				server.RequestReceived += (sender, e) =>
+				{
+					receivedMessage = e.Message;
+					requestReceived = true;
+					eventReceivedSignal.Set();
+				};
+
+				var message = String.Format(@"M-SEARCH * HTTP/1.1
+HOST: {0}:{1}
+MAN: ""ssdp:discover""
+MX: {3}
+ST: {2}
+CONTENT-ENCODING:UTF8
+
+some content here
+",
+SsdpConstants.MulticastLocalAdminAddress,
+SsdpConstants.MulticastPort,
+"test search target",
+"1"
+);
+
+				socketFactory.MulticastSocket.MockReceive(System.Text.UTF8Encoding.UTF8.GetBytes(message), 
+					new UdpEndPoint()
+					{
+						IPAddress = SsdpConstants.MulticastLocalAdminAddress,
+						Port = SsdpConstants.MulticastPort
+					}
+				);
+
+				eventReceivedSignal.WaitOne(120000);
+				Assert.AreNotEqual(socket1, socketFactory.MulticastSocket);
+				Assert.IsTrue(requestReceived);
+			}
+		}
 
 		[ExpectedException(typeof(System.ObjectDisposedException))]
 		[TestMethod]
@@ -275,7 +329,8 @@ namespace Test.RssdpPortable
 
 			var mockSocket = socketFactory.MulticastSocket as MockSocket;
 			mockSocket.MockReceive(System.Text.UTF8Encoding.UTF8.GetBytes("Not an HTTP message"), new
-				UdpEndPoint() { IPAddress = SsdpConstants.MulticastLocalAdminAddress, Port = SsdpConstants.MulticastPort });
+				UdpEndPoint()
+			{ IPAddress = SsdpConstants.MulticastLocalAdminAddress, Port = SsdpConstants.MulticastPort });
 
 			Assert.IsFalse(requestReceived);
 			Assert.IsFalse(responseReceived);
@@ -313,7 +368,8 @@ SsdpConstants.MulticastPort,
 
 			var mockSocket = socketFactory.MulticastSocket as MockSocket;
 			mockSocket.MockReceive(System.Text.UTF8Encoding.UTF8.GetBytes(message), new
-				UdpEndPoint() { IPAddress = SsdpConstants.MulticastLocalAdminAddress, Port = SsdpConstants.MulticastPort });
+				UdpEndPoint()
+			{ IPAddress = SsdpConstants.MulticastLocalAdminAddress, Port = SsdpConstants.MulticastPort });
 
 			Assert.IsFalse(requestReceived);
 			Assert.IsFalse(responseReceived);
@@ -345,7 +401,8 @@ SsdpConstants.MulticastPort,
 
 			var mockSocket = socketFactory.MulticastSocket as MockSocket;
 			mockSocket.MockReceive(System.Text.UTF8Encoding.UTF8.GetBytes(message), new
-				UdpEndPoint() { IPAddress = SsdpConstants.MulticastLocalAdminAddress, Port = SsdpConstants.MulticastPort });
+				UdpEndPoint()
+			{ IPAddress = SsdpConstants.MulticastLocalAdminAddress, Port = SsdpConstants.MulticastPort });
 
 			Assert.IsFalse(requestReceived);
 			Assert.IsFalse(responseReceived);
@@ -383,7 +440,8 @@ SsdpConstants.MulticastPort,
 
 			var mockSocket = socketFactory.MulticastSocket as MockSocket;
 			mockSocket.MockReceive(System.Text.UTF8Encoding.UTF8.GetBytes(message), new
-				UdpEndPoint() { IPAddress = SsdpConstants.MulticastLocalAdminAddress, Port = SsdpConstants.MulticastPort });
+				UdpEndPoint()
+			{ IPAddress = SsdpConstants.MulticastLocalAdminAddress, Port = SsdpConstants.MulticastPort });
 
 			Assert.IsFalse(requestReceived);
 			Assert.IsFalse(responseReceived);
@@ -416,7 +474,8 @@ SsdpConstants.MulticastPort,
 
 			var mockSocket = socketFactory.MulticastSocket as MockSocket;
 			mockSocket.MockReceive(System.Text.UTF8Encoding.UTF8.GetBytes(message), new
-				UdpEndPoint() { IPAddress = SsdpConstants.MulticastLocalAdminAddress, Port = SsdpConstants.MulticastPort });
+				UdpEndPoint()
+			{ IPAddress = SsdpConstants.MulticastLocalAdminAddress, Port = SsdpConstants.MulticastPort });
 
 			Assert.IsFalse(requestReceived);
 			Assert.IsFalse(responseReceived);
@@ -448,7 +507,8 @@ SsdpConstants.MulticastPort,
 
 			var mockSocket = socketFactory.MulticastSocket as MockSocket;
 			mockSocket.MockReceive(System.Text.UTF8Encoding.UTF8.GetBytes(message), new
-				UdpEndPoint() { IPAddress = SsdpConstants.MulticastLocalAdminAddress, Port = SsdpConstants.MulticastPort });
+				UdpEndPoint()
+			{ IPAddress = SsdpConstants.MulticastLocalAdminAddress, Port = SsdpConstants.MulticastPort });
 
 			Assert.IsFalse(requestReceived);
 			Assert.IsFalse(responseReceived);
@@ -480,7 +540,8 @@ SsdpConstants.MulticastPort,
 
 			var mockSocket = socketFactory.MulticastSocket as MockSocket;
 			mockSocket.MockReceive(System.Text.UTF8Encoding.UTF8.GetBytes(message), new
-				UdpEndPoint() { IPAddress = SsdpConstants.MulticastLocalAdminAddress, Port = SsdpConstants.MulticastPort });
+				UdpEndPoint()
+			{ IPAddress = SsdpConstants.MulticastLocalAdminAddress, Port = SsdpConstants.MulticastPort });
 
 			Assert.IsFalse(requestReceived);
 			Assert.IsFalse(responseReceived);
@@ -513,7 +574,8 @@ SsdpConstants.MulticastPort,
 
 			var mockSocket = socketFactory.MulticastSocket as MockSocket;
 			mockSocket.MockReceive(System.Text.UTF8Encoding.UTF8.GetBytes(message), new
-				UdpEndPoint() { IPAddress = SsdpConstants.MulticastLocalAdminAddress, Port = SsdpConstants.MulticastPort });
+				UdpEndPoint()
+			{ IPAddress = SsdpConstants.MulticastLocalAdminAddress, Port = SsdpConstants.MulticastPort });
 
 			Assert.IsFalse(requestReceived);
 			Assert.IsFalse(responseReceived);
@@ -533,11 +595,11 @@ SsdpConstants.MulticastPort,
 
 				System.Net.Http.HttpRequestMessage receivedMessage = null;
 				server.RequestReceived += (sender, e) =>
-			{
-				receivedMessage = e.Message;
-				requestReceived = true;
-				eventReceivedSignal.Set();
-			};
+				{
+					receivedMessage = e.Message;
+					requestReceived = true;
+					eventReceivedSignal.Set();
+				};
 
 				server.ResponseReceived += (sender, e) =>
 				{
@@ -563,8 +625,9 @@ some content here
 
 				var mockSocket = socketFactory.MulticastSocket as MockSocket;
 				mockSocket.MockReceive(System.Text.UTF8Encoding.UTF8.GetBytes(message), new
-					UdpEndPoint() { IPAddress = SsdpConstants.MulticastLocalAdminAddress, Port = SsdpConstants.MulticastPort });
-				
+					UdpEndPoint()
+				{ IPAddress = SsdpConstants.MulticastLocalAdminAddress, Port = SsdpConstants.MulticastPort });
+
 				eventReceivedSignal.WaitOne(10000);
 				Assert.IsTrue(requestReceived);
 				Assert.IsFalse(responseReceived);
@@ -614,7 +677,8 @@ some content here
 
 			var mockSocket = socketFactory.MulticastSocket as MockSocket;
 			mockSocket.MockReceive(System.Text.UTF8Encoding.UTF8.GetBytes(message), new
-				UdpEndPoint() { IPAddress = SsdpConstants.MulticastLocalAdminAddress, Port = SsdpConstants.MulticastPort });
+				UdpEndPoint()
+			{ IPAddress = SsdpConstants.MulticastLocalAdminAddress, Port = SsdpConstants.MulticastPort });
 
 			eventReceivedSignal.WaitOne(10000);
 
@@ -664,7 +728,8 @@ ST: {2}
 
 			var mockSocket = socketFactory.MulticastSocket as MockSocket;
 			mockSocket.MockReceive(System.Text.UTF8Encoding.UTF8.GetBytes(message), new
-				UdpEndPoint() { IPAddress = SsdpConstants.MulticastLocalAdminAddress, Port = SsdpConstants.MulticastPort });
+				UdpEndPoint()
+			{ IPAddress = SsdpConstants.MulticastLocalAdminAddress, Port = SsdpConstants.MulticastPort });
 
 			eventReceivedSignal.WaitOne(1000);
 
@@ -721,7 +786,8 @@ ST: {2}
 
 			var mockSocket = socketFactory.MulticastSocket as MockSocket;
 			mockSocket.MockReceive(System.Text.UTF8Encoding.UTF8.GetBytes(message), new
-				UdpEndPoint() { IPAddress = SsdpConstants.MulticastLocalAdminAddress, Port = SsdpConstants.MulticastPort });
+				UdpEndPoint()
+			{ IPAddress = SsdpConstants.MulticastLocalAdminAddress, Port = SsdpConstants.MulticastPort });
 
 			eventReceivedSignal.WaitOne(10000);
 
@@ -777,7 +843,8 @@ LOCATION:http://somedevice:1700
 
 			var mockSocket = socketFactory.MulticastSocket as MockSocket;
 			mockSocket.MockReceive(System.Text.UTF8Encoding.UTF8.GetBytes(message), new
-				UdpEndPoint() { IPAddress = SsdpConstants.MulticastLocalAdminAddress, Port = SsdpConstants.MulticastPort });
+				UdpEndPoint()
+			{ IPAddress = SsdpConstants.MulticastLocalAdminAddress, Port = SsdpConstants.MulticastPort });
 
 			eventReceivedSignal.WaitOne(10000);
 
@@ -807,29 +874,34 @@ LOCATION:http://somedevice:1700
 		private class MockSocketFactory : ISocketFactory
 		{
 
-			private IUdpSocket _UnicastSocket;
-			private IUdpSocket _MulticastSocket;
+			private MockSocket _UnicastSocket;
+			private MockSocket _MulticastSocket;
 
 			#region ISocketFactory Members
 
 			public IUdpSocket CreateUdpSocket(int localPort)
 			{
-				return _UnicastSocket ?? (_UnicastSocket = new MockSocket(localPort));
+				return (_UnicastSocket = new MockSocket(localPort));
 			}
 
 			public IUdpSocket CreateUdpMulticastSocket(string ipAddress, int multicastTimeToLive, int localPort)
 			{
-				return _MulticastSocket ?? (_MulticastSocket = new MockSocket(ipAddress, multicastTimeToLive, localPort));
+				return (_MulticastSocket = new MockSocket(ipAddress, multicastTimeToLive, localPort));
 			}
 
 			#endregion
 
-			public IUdpSocket UnicastSocket
+			public void ThrowSocketClosedException()
+			{
+				_MulticastSocket.ThrowSocketClosedException();
+			}
+
+			public MockSocket UnicastSocket
 			{
 				get { return _UnicastSocket; }
 			}
 
-			public IUdpSocket MulticastSocket
+			public MockSocket MulticastSocket
 			{
 				get { return _MulticastSocket; }
 			}
@@ -887,7 +959,9 @@ LOCATION:http://somedevice:1700
 			{
 				var tcs = new TaskCompletionSource<ReceivedUdpData>();
 
-				Task.Run(() =>
+				Task.Run
+				(
+					() =>
 					{
 						try
 						{
@@ -899,16 +973,22 @@ LOCATION:http://somedevice:1700
 								tcs.SetCanceled();
 							else
 							{
-								tcs.SetResult(_ReceiveQueue.Dequeue());
+								var message = _ReceiveQueue.Dequeue();
+								if (message.Buffer == null && message.ReceivedBytes == 0 && message.ReceivedFrom == null)
+									tcs.SetException(new SocketClosedException());
+								else
+									tcs.SetResult(message);
 
 								signal.Reset();
 							}
 						}
 						catch (ObjectDisposedException)
 						{
-							tcs.SetCanceled();
+							if (!tcs.Task.IsCompleted)
+								tcs.SetCanceled();
 						}
-					});
+					}
+				);
 
 				return tcs.Task;
 			}
@@ -927,6 +1007,12 @@ LOCATION:http://somedevice:1700
 				var data = _DataAvailableSignal;
 				_DataAvailableSignal = null;
 				data.Dispose();
+			}
+
+			public void ThrowSocketClosedException()
+			{
+				_ReceiveQueue.Enqueue(new ReceivedUdpData() { Buffer = null, ReceivedFrom = null, ReceivedBytes = 0 });
+				_DataAvailableSignal.Set();
 			}
 		}
 

@@ -121,6 +121,9 @@
     <Compile Include="..\RSSDP.Portable\ServiceEventArgs.cs">
       <Link>ServiceEventArgs.cs</Link>
     </Compile>
+    <Compile Include="..\RSSDP.Portable\SocketClosedException.cs">
+      <Link>SocketClosedException.cs</Link>
+    </Compile>
     <Compile Include="..\RSSDP.Portable\SsdpCommunicationsServer.cs">
       <Link>SsdpCommunicationsServer.cs</Link>
     </Compile>

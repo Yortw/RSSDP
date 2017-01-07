@@ -54,18 +54,28 @@ namespace Rssdp
 			var socketEventArg = new SocketAsyncEventArgs();
 			try
 			{
-				socketEventArg.RemoteEndPoint = new IPEndPoint(IPAddress.Any, 0);
-				socketEventArg.UserToken = tcs;
+				try
+				{
+					socketEventArg.RemoteEndPoint = new IPEndPoint(IPAddress.Any, 0);
+					socketEventArg.UserToken = tcs;
 
-				socketEventArg.SetBuffer(new Byte[SsdpConstants.DefaultUdpSocketBufferSize], 0, SsdpConstants.DefaultUdpSocketBufferSize);
+					socketEventArg.SetBuffer(new Byte[SsdpConstants.DefaultUdpSocketBufferSize], 0, SsdpConstants.DefaultUdpSocketBufferSize);
 
-				socketEventArg.Completed += socketEventArg_ReceiveCompleted;
+					socketEventArg.Completed += socketEventArg_ReceiveCompleted;
 
-				_Socket.ReceiveAsync(socketEventArg);
+					_Socket.ReceiveAsync(socketEventArg);
+				}
+				catch
+				{
+					socketEventArg.Dispose();
+
+					throw;
+				}
 			}
-			catch
+			catch (SocketException se)
 			{
-				socketEventArg.Dispose();
+				if (se.SocketErrorCode == SocketError.Shutdown || se.SocketErrorCode == SocketError.OperationAborted || se.SocketErrorCode == SocketError.NotConnected)
+					throw new SocketClosedException(se.Message, se);
 
 				throw;
 			}

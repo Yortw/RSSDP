@@ -16,8 +16,7 @@ namespace Rssdp.Infrastructure
 
 		#region Fields
 
-		/* 
-		  
+		/* 		  
 		 We could technically use one socket listening on port 1900 for everything.
 		 This should get both multicast (notifications) and unicast (search response) messages, however 
 		 this often doesn't work under Windows because the MS SSDP service is running. If that service 
@@ -303,38 +302,84 @@ namespace Rssdp.Infrastructure
 		}
 
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Performance", "CA1804:RemoveUnusedLocals", MessageId = "t", Justification = "Capturing task to local variable removes compiler warning, task is not otherwise required.")]
-		private void ListenToSocket(IUdpSocket socket)
+		private async void ListenToSocket(IUdpSocket socket)
 		{
 			// Tasks are captured to local variables even if we don't use them just to avoid compiler warnings.
-			var t = TaskEx.Run(async () =>
+			try
 			{
-
-				var cancelled = false;
-				while (!cancelled)
+				await TaskEx.Run(async () =>
 				{
-					try
-					{
-						var result = await socket.ReceiveAsync().ConfigureAwait(false);
 
-						if (result.ReceivedBytes > 0)
+					var cancelled = false;
+					while (!cancelled)
+					{
+						try
 						{
-							// Strange cannot convert compiler error here if I don't explicitly
-							// assign or cast to Action first. Assignment is easier to read,
-							// so went with that.
-							Action processWork = () => ProcessMessage(System.Text.UTF8Encoding.UTF8.GetString(result.Buffer, 0, result.ReceivedBytes), result.ReceivedFrom);
-							var processTask = TaskEx.Run(processWork);
+							var result = await socket.ReceiveAsync().ConfigureAwait(false);
+
+							if (result.ReceivedBytes > 0)
+							{
+								// Strange cannot convert compiler error here if I don't explicitly
+								// assign or cast to Action first. Assignment is easier to read,
+								// so went with that.
+								Action processWork = () => ProcessMessage(System.Text.UTF8Encoding.UTF8.GetString(result.Buffer, 0, result.ReceivedBytes), result.ReceivedFrom);
+								var processTask = TaskEx.Run(processWork);
+							}
+						}
+						catch (SocketClosedException)
+						{
+							if (this.IsDisposed) return; //No error or reconnect if we're shutdown.
+
+							await ReconnectBroadcastListeningSocket();
+							cancelled = true;
+							break;
+						}
+						catch (ObjectDisposedException)
+						{
+							cancelled = true;
+						}
+						catch (TaskCanceledException)
+						{
+							cancelled = true;
 						}
 					}
-					catch (ObjectDisposedException)
+				});
+			}
+			catch
+			{
+				if (this.IsDisposed) return;
+
+				await ReconnectBroadcastListeningSocket();
+			}
+		}
+
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1031:DoNotCatchGeneralExceptionTypes")]
+		private async Task ReconnectBroadcastListeningSocket()
+		{
+			var success = false;
+			while (!success)
+			{
+				try
+				{
+					var oldSocket = _BroadcastListenSocket;
+
+					_BroadcastListenSocket = null;
+					BeginListeningForBroadcasts();
+
+					try
 					{
-						cancelled = true;
+						oldSocket?.Dispose();
 					}
-					catch (TaskCanceledException)
-					{
-						cancelled = true;
-					}
+					catch { }
+
+					success = true;
+					break;
 				}
-			});
+				catch
+				{
+					await TaskEx.Delay(30000);
+				}
+			}
 		}
 
 		private void EnsureSendSocketCreated()
