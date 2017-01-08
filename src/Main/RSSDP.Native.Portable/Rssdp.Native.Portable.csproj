@@ -47,6 +47,9 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="..\Shared\AssemblyInfoCommon.cs">
+      <Link>Properties\AssemblyInfoCommon.cs</Link>
+    </Compile>
     <Compile Include="PCL.cs" />
     <Compile Include="SocketFactory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
