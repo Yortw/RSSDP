@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
   <metadata>
     <id>Rssdp</id>
-    <version>2.0.8</version>
+    <version>2.0.10</version>
     <title>Rssdp</title>
     <authors>Troy Willmot</authors>
     <owners>Yortw</owners>
@@ -13,7 +13,7 @@
     <description>Really Simple Service Discovery Protocol - a 100% .Net implementation of the SSDP protocol for publishing custom/basic devices, and discovering all device types on a network.</description>
     <summary>A 100% .Net implementation of the SSDP protocol for basic and custom device types.</summary>
     <releaseNotes>Fix for .Net 4.5 projects so SsdpDevicePublisher is included.
-Changed assembly versions to match package version.
+Package fix for UWP projects so only one assembly is referenced.
 Previously:
 Xamarin platforms now serviced by .Net Standard library, old Xamarin binaries dropped.
 Reduced dependencies for Xamarin/Net45+ projects.
@@ -91,12 +91,6 @@ Support for publishing UPnP services (previously only devices supported)
     <file src="lib\wp8\Rssdp*.dll" target="lib\wp8" />
     <file src="lib\wp8\Rssdp*.xml" target="lib\wp8" />
     <file src="lib\wp8\Rssdp*.pdb" target="lib\wp8" />
-    <file src="lib\netcore451\Rssdp*.dll" target="lib\netcore451" />
-    <file src="lib\netcore451\Rssdp*.xml" target="lib\netcore451" />
-    <file src="lib\netcore451\Rssdp*.pdb" target="lib\netcore451" />
-    <file src="lib\netcore451\Rssdp*.dll" target="lib\wpa81" />
-    <file src="lib\netcore451\Rssdp*.xml" target="lib\wpa81" />
-    <file src="lib\netcore451\Rssdp*.pdb" target="lib\wpa81" />
     <file src="lib\uap10.0\Rssdp*.dll" target="lib\uap10.0" />
     <file src="lib\uap10.0\Rssdp*.xml" target="lib\uap10.0" />
     <file src="lib\uap10.0\Rssdp*.pdb" target="lib\uap10.0" />

@@ -119,14 +119,8 @@
     <Compile Include="..\Shared\AssemblyInfoCommon.cs">
       <Link>Properties\AssemblyInfoCommon.cs</Link>
     </Compile>
-    <Compile Include="..\Shared\SsdpDeviceLocator.cs">
-      <Link>SsdpDeviceLocator.cs</Link>
-    </Compile>
     <Compile Include="..\Shared\SsdpTraceLogger.cs">
       <Link>SsdpTraceLogger.cs</Link>
-    </Compile>
-    <Compile Include="..\Shared\WinRTSockets\SsdpDevicePublisher.cs">
-      <Link>SsdpDevicePublisher.cs</Link>
     </Compile>
     <Compile Include="..\Shared\WinRTSockets\UdpSocket.cs">
       <Link>UdpSocket.cs</Link>
