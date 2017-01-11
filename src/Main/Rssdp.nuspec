@@ -64,26 +64,8 @@ Support for publishing UPnP services (previously only devices supported)
         <dependency id="System.Threading.Timer" version="4.0.1" />
         <dependency id="System.Xml.ReaderWriter" version="4.0.11" />
       </group>
-       <group targetFramework="uap10.0">
-        <dependency id="System.Collections" version="4.0.11" />
-        <dependency id="System.Diagnostics.Debug" version="4.0.11" />
-        <dependency id="System.Diagnostics.Tools" version="4.0.1" />
-        <dependency id="System.IO" version="4.1.0" />
-        <dependency id="System.Linq" version="4.1.0" />
-        <dependency id="System.Net.Http" version="4.1.0" />
-        <dependency id="System.Net.Primitives" version="4.0.11" />
-        <dependency id="System.Net.Sockets" version="4.1.0" />
-        <dependency id="System.Resources.ResourceManager" version="4.0.1" />
-        <dependency id="System.Runtime" version="4.1.0" />
-        <dependency id="System.Runtime.Extensions" version="4.1.0" />
-        <dependency id="System.Runtime.InteropServices.RuntimeInformation" version="4.0.0" />
-        <dependency id="System.Text.Encoding" version="4.0.11" />
-        <dependency id="System.Text.Encoding.Extensions" version="4.0.11" />
-        <dependency id="System.Threading" version="4.0.11" />
-        <dependency id="System.Threading.Tasks" version="4.0.11" />
-        <dependency id="System.Threading.Timer" version="4.0.1" />
-        <dependency id="System.Xml.ReaderWriter" version="4.0.11" />
-      </group>  
+      <group targetFramework="uap10.0">
+      </group>
     </dependencies>
   </metadata>
   <files>
@@ -105,6 +87,9 @@ Support for publishing UPnP services (previously only devices supported)
     <file src="lib\netcore451\Rssdp*.dll" target="lib\wpa81" />
     <file src="lib\netcore451\Rssdp*.xml" target="lib\wpa81" />
     <file src="lib\netcore451\Rssdp*.pdb" target="lib\wpa81" />
+    <file src="lib\uap10.0\Rssdp*.dll" target="lib\uap10.0" />
+    <file src="lib\uap10.0\Rssdp*.xml" target="lib\uap10.0" />
+    <file src="lib\uap10.0\Rssdp*.pdb" target="lib\uap10.0" />
     <file src="**\*.cs" target="src" />
   </files>
 </package>
