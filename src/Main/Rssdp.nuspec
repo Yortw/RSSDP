@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
   <metadata>
     <id>Rssdp</id>
-    <version>2.0.10</version>
+    <version>2.0.9</version>
     <title>Rssdp</title>
     <authors>Troy Willmot</authors>
     <owners>Yortw</owners>
@@ -13,7 +13,7 @@
     <description>Really Simple Service Discovery Protocol - a 100% .Net implementation of the SSDP protocol for publishing custom/basic devices, and discovering all device types on a network.</description>
     <summary>A 100% .Net implementation of the SSDP protocol for basic and custom device types.</summary>
     <releaseNotes>Fix for .Net 4.5 projects so SsdpDevicePublisher is included.
-Package fix for UWP projects so only one assembly is referenced.
+Package fix for UWP and WPA8.1 projects so only one (correct) assembly is referenced.
 Previously:
 Xamarin platforms now serviced by .Net Standard library, old Xamarin binaries dropped.
 Reduced dependencies for Xamarin/Net45+ projects.
@@ -27,10 +27,6 @@ Support for publishing UPnP services (previously only devices supported)
     <language>en-AU</language>
     <tags>portable xamarin ios android windowsphone winrt uwp mobile ssdp discovery device service protocol upnp netfx40 .net4</tags>
     <dependencies>
-      <group targetFramework="Xamarin.iOS10">
-      </group>
-      <group targetFramework="MonoAndroid1.0">
-      </group>
       <group targetFramework=".NetFramework4.0">
         <dependency id="Microsoft.Net.Http" version="2.2.29" />
         <dependency id="Microsoft.Bcl.Async" version="1.0.168" />
@@ -39,11 +35,6 @@ Support for publishing UPnP services (previously only devices supported)
       <group targetFramework=".NetFramework4.5">
       </group>
       <group targetFramework="WindowsPhone8">
-        <dependency id="Microsoft.Net.Http" version="2.2.29" />
-        <dependency id="Microsoft.Bcl.Async" version="1.0.168" />
-        <dependency id="Microsoft.Bcl.Build" version="1.0.21" />
-      </group>
-      <group targetFramework=".NetCore4.5.1">
         <dependency id="Microsoft.Net.Http" version="2.2.29" />
         <dependency id="Microsoft.Bcl.Async" version="1.0.168" />
         <dependency id="Microsoft.Bcl.Build" version="1.0.21" />
@@ -73,6 +64,26 @@ Support for publishing UPnP services (previously only devices supported)
         <dependency id="System.Threading.Timer" version="4.0.1" />
         <dependency id="System.Xml.ReaderWriter" version="4.0.11" />
       </group>
+       <group targetFramework="uap10.0">
+        <dependency id="System.Collections" version="4.0.11" />
+        <dependency id="System.Diagnostics.Debug" version="4.0.11" />
+        <dependency id="System.Diagnostics.Tools" version="4.0.1" />
+        <dependency id="System.IO" version="4.1.0" />
+        <dependency id="System.Linq" version="4.1.0" />
+        <dependency id="System.Net.Http" version="4.1.0" />
+        <dependency id="System.Net.Primitives" version="4.0.11" />
+        <dependency id="System.Net.Sockets" version="4.1.0" />
+        <dependency id="System.Resources.ResourceManager" version="4.0.1" />
+        <dependency id="System.Runtime" version="4.1.0" />
+        <dependency id="System.Runtime.Extensions" version="4.1.0" />
+        <dependency id="System.Runtime.InteropServices.RuntimeInformation" version="4.0.0" />
+        <dependency id="System.Text.Encoding" version="4.0.11" />
+        <dependency id="System.Text.Encoding.Extensions" version="4.0.11" />
+        <dependency id="System.Threading" version="4.0.11" />
+        <dependency id="System.Threading.Tasks" version="4.0.11" />
+        <dependency id="System.Threading.Timer" version="4.0.1" />
+        <dependency id="System.Xml.ReaderWriter" version="4.0.11" />
+      </group>  
     </dependencies>
   </metadata>
   <files>
@@ -91,9 +102,9 @@ Support for publishing UPnP services (previously only devices supported)
     <file src="lib\wp8\Rssdp*.dll" target="lib\wp8" />
     <file src="lib\wp8\Rssdp*.xml" target="lib\wp8" />
     <file src="lib\wp8\Rssdp*.pdb" target="lib\wp8" />
-    <file src="lib\uap10.0\Rssdp*.dll" target="lib\uap10.0" />
-    <file src="lib\uap10.0\Rssdp*.xml" target="lib\uap10.0" />
-    <file src="lib\uap10.0\Rssdp*.pdb" target="lib\uap10.0" />
+    <file src="lib\netcore451\Rssdp*.dll" target="lib\wpa81" />
+    <file src="lib\netcore451\Rssdp*.xml" target="lib\wpa81" />
+    <file src="lib\netcore451\Rssdp*.pdb" target="lib\wpa81" />
     <file src="**\*.cs" target="src" />
   </files>
 </package>

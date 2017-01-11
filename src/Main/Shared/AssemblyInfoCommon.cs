@@ -5,5 +5,5 @@
 [assembly: AssemblyCopyright("Released under the MIT license; http://choosealicense.com/licenses/mit/; https://github.com/Yortw/RSSDP")]
 [assembly: AssemblyTrademark("")]
 
-[assembly: AssemblyVersion("2.0.10.0")]
-[assembly: AssemblyFileVersion("2.0.10.0")]
+[assembly: AssemblyVersion("2.0.9.0")]
+[assembly: AssemblyFileVersion("2.0.9.0")]
