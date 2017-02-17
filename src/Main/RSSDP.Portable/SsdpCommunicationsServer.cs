@@ -175,28 +175,6 @@ namespace Rssdp.Infrastructure
 		}
 
 		/// <summary>
-		/// Sends a message to the SSDP multicast address and port.
-		/// </summary>
-		/// <param name="messageData">A byte array containing the data to send.</param>
-		/// <exception cref="System.ArgumentNullException">Thrown if the <paramref name="messageData"/> argument is null.</exception>
-		/// <exception cref="System.ObjectDisposedException">Thrown if the <see cref="DisposableManagedObjectBase.IsDisposed"/> property is true (because <seealso cref="DisposableManagedObjectBase.Dispose()" /> has been called previously).</exception>
-		public void SendMulticastMessage(byte[] messageData)
-		{
-			if (messageData == null) throw new ArgumentNullException("messageData");
-
-			ThrowIfDisposed();
-
-			EnsureSendSocketCreated();
-
-			// SSDP spec recommends sending messages multiple times (not more than 3) to account for possible packet loss over UDP.
-			Repeat(SsdpConstants.UdpResendCount, TimeSpan.FromMilliseconds(100),
-				() =>
-				{
-					SendMessageIfSocketNotDisposed(messageData, new UdpEndPoint() { IPAddress = SsdpConstants.MulticastLocalAdminAddress, Port = SsdpConstants.MulticastPort });
-				});
-		}
-
-		/// <summary>
 		/// Stops listening for search responses on the local, unicast socket.
 		/// </summary>
 		/// <exception cref="System.ObjectDisposedException">Thrown if the <see cref="DisposableManagedObjectBase.IsDisposed"/> property is true (because <seealso cref="DisposableManagedObjectBase.Dispose()" /> has been called previously).</exception>
@@ -228,6 +206,11 @@ namespace Rssdp.Infrastructure
 			get { return _IsShared; }
 			set { _IsShared = value; }
 		}
+
+		/// <summary>
+		/// What type of sockets will be created: ipv6 or ipv4
+		/// </summary>
+		public DeviceNetworkType DeviceNetworkType { get { return _SocketFactory.DeviceNetworkType; } }
 
 		#endregion
 
@@ -285,7 +268,7 @@ namespace Rssdp.Infrastructure
 
 		private IUdpSocket ListenForBroadcastsAsync()
 		{
-			var socket = _SocketFactory.CreateUdpMulticastSocket(SsdpConstants.MulticastLocalAdminAddress, _MulticastTtl, SsdpConstants.MulticastPort);
+			var socket = _SocketFactory.CreateUdpMulticastSocket(_MulticastTtl, SsdpConstants.MulticastPort);
 
 			ListenToSocket(socket);
 

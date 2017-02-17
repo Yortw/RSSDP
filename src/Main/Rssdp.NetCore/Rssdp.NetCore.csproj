@@ -54,6 +54,9 @@
     <Compile Include="..\RSSDP.Portable\DeviceEventArgs.cs">
       <Link>Portable\DeviceEventArgs.cs</Link>
     </Compile>
+    <Compile Include="..\RSSDP.Portable\DeviceNetworkType.cs">
+      <Link>DeviceNetworkType.cs</Link>
+    </Compile>
     <Compile Include="..\RSSDP.Portable\DeviceUnavailableEventArgs.cs">
       <Link>Portable\DeviceUnavailableEventArgs.cs</Link>
     </Compile>

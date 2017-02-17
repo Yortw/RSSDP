@@ -25,22 +25,18 @@ namespace Rssdp
 
 		#region Constructors
 
-		public UdpSocket(System.Net.Sockets.Socket socket, int localPort, string ipAddress)
+		public UdpSocket(Socket socket, string ipAddress, int localPort)
 		{
 			if (socket == null) throw new ArgumentNullException("socket");
-			
+
 			_Socket = socket;
 			_LocalPort = localPort;
 
-			IPAddress ip = null;
-			if (String.IsNullOrEmpty(ipAddress))
-				ip = IPAddress.Any;
-			else
-				ip = IPAddress.Parse(ipAddress);
-			
+			var ip = String.IsNullOrEmpty(ipAddress) ? GetDefaultIpAddress(socket) : IPAddress.Parse(ipAddress);
+
 			_Socket.Bind(new IPEndPoint(ip, _LocalPort));
 			if (_LocalPort == 0)
-				_LocalPort = (_Socket.LocalEndPoint as IPEndPoint).Port;
+				_LocalPort = ((IPEndPoint) _Socket.LocalEndPoint).Port;
 		}
 
 		#endregion
@@ -53,7 +49,7 @@ namespace Rssdp
 
 			var tcs = new TaskCompletionSource<ReceivedUdpData>();
 
-			System.Net.EndPoint receivedFromEndPoint = new IPEndPoint(IPAddress.Any, 0);
+			System.Net.EndPoint receivedFromEndPoint = new IPEndPoint(GetDefaultIpAddress(_Socket), 0);
 			var state = new AsyncReceiveState(_Socket, receivedFromEndPoint);
 			state.TaskCompletionSource = tcs;
 #if NETSTANDARD1_3
@@ -68,8 +64,8 @@ namespace Rssdp
 					}
 				}, state);
 #else
-			_Socket.BeginReceiveFrom(state.Buffer, 0, state.Buffer.Length, System.Net.Sockets.SocketFlags.None, ref state.EndPoint, 
-				new AsyncCallback((result)=> ProcessResponse(state, () => state.Socket.EndReceiveFrom(result, ref state.EndPoint))), state);
+			_Socket.BeginReceiveFrom(state.Buffer, 0, state.Buffer.Length, System.Net.Sockets.SocketFlags.None, ref state.EndPoint,
+				new AsyncCallback((result) => ProcessResponse(state, () => state.Socket.EndReceiveFrom(result, ref state.EndPoint))), state);
 #endif
 
 			return tcs.Task;
@@ -103,7 +99,7 @@ namespace Rssdp
 
 		#region Private Methods
 
-		[System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1031:DoNotCatchGeneralExceptionTypes", Justification="Exceptions via task methods should be reported by task completion source, so this should be ok.")]
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1031:DoNotCatchGeneralExceptionTypes", Justification = "Exceptions via task methods should be reported by task completion source, so this should be ok.")]
 		private static void ProcessResponse(AsyncReceiveState state, Func<int> receiveData)
 		{
 			try
@@ -112,19 +108,19 @@ namespace Rssdp
 
 				var ipEndPoint = state.EndPoint as IPEndPoint;
 				state.TaskCompletionSource.SetResult(
-					new ReceivedUdpData() 
+					new ReceivedUdpData()
 					{
 						Buffer = state.Buffer,
 						ReceivedBytes = bytesRead,
-						ReceivedFrom = new UdpEndPoint() 
-						{  
+						ReceivedFrom = new UdpEndPoint()
+						{
 							IPAddress = ipEndPoint.Address.ToString(),
 							Port = ipEndPoint.Port
 						}
 					}
 				);
 			}
-			catch (ObjectDisposedException) 
+			catch (ObjectDisposedException)
 			{
 				state.TaskCompletionSource.SetCanceled();
 			}
@@ -170,10 +166,22 @@ namespace Rssdp
 
 			public System.Net.Sockets.Socket Socket { get; private set; }
 
-			public TaskCompletionSource<ReceivedUdpData> TaskCompletionSource { get; set; } 
- 
+			public TaskCompletionSource<ReceivedUdpData> TaskCompletionSource { get; set; }
+
 		}
 
+		private static IPAddress GetDefaultIpAddress(Socket socket)
+		{
+			switch (socket.AddressFamily)
+			{
+				case AddressFamily.InterNetwork:
+					return IPAddress.Any;
+				case AddressFamily.InterNetworkV6:
+					return IPAddress.IPv6Any;
+			}
+
+			return IPAddress.None;
+		}
 		#endregion
 
 	}
