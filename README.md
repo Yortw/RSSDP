@@ -174,6 +174,16 @@ async static void deviceLocator_DeviceAvailable(object sender, DeviceAvailableEv
 }
 ```
 
+#### IPV6 support
+
+```C#
+var devicePublisher = new SsdpDevicePublisher(IPAddress.IPv6Any.ToString());
+var devicePublisher = new SsdpDevicePublisher("fe80::dc06:c198:7078:afdd");
+var deviceLocator = new SsdpDeviceLocator("fe80::dc06:c198:7078:afdd");
+```
+
+##### For projects: UWP10, WindowsPhoneSL and WinRT ipv6 support is not implemented
+
 ## Why RSSDP?
 *Aren't there already lots of SSDP implementations?*
 
