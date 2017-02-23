@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Net.Http;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace Rssdp.Infrastructure
@@ -673,31 +675,15 @@ USN: {1}
 
 		private void SendAliveNotification(SsdpDevice device, string notificationType, string uniqueServiceName)
 		{
-			switch (_CommsServer.DeviceNetworkType)
-			{
-				case DeviceNetworkType.Ipv4:
-					var multicastMessage = BuildAliveMessage(device, notificationType, uniqueServiceName,
-						SsdpConstants.MulticastLocalAdminAddress);
-					_CommsServer.SendMessage(multicastMessage, new UdpEndPoint
-					{
-						IPAddress = SsdpConstants.MulticastLocalAdminAddress,
-						Port = SsdpConstants.MulticastPort
-					});
-					break;
+			string multicastIpAddress = _CommsServer.DeviceNetworkType.GetMulticastIpAddress();
 
-				case DeviceNetworkType.Ipv6:
-					foreach (var addressV6 in SsdpConstants.MulticastAdminLocalAddressV6)
-					{
-						var multicastMessageV6 = BuildAliveMessage(device, notificationType, uniqueServiceName,
-							addressV6);
-						_CommsServer.SendMessage(multicastMessageV6, new UdpEndPoint
-						{
-							IPAddress = addressV6,
-							Port = SsdpConstants.MulticastPort
-						});
-					}
-					break;
-			}
+			var multicastMessage = BuildAliveMessage(device, notificationType, uniqueServiceName, multicastIpAddress);
+
+			_CommsServer.SendMessage(multicastMessage, new UdpEndPoint
+			{
+				IPAddress = multicastIpAddress,
+				Port = SsdpConstants.MulticastPort
+			});
 
 			LogDeviceEvent(String.Format("Sent alive notification NT={0}, USN={1}", notificationType, uniqueServiceName), device);
 		}
@@ -757,31 +743,15 @@ USN: {1}
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", "CA2204:Literals should be spelled correctly", MessageId = "byebye", Justification = "Correct value for this type of notification in SSDP.")]
 		private void SendByeByeNotification(SsdpDevice device, string notificationType, string uniqueServiceName)
 		{
-			switch (_CommsServer.DeviceNetworkType)
-			{
-				case DeviceNetworkType.Ipv4:
-					var multicastMessage = BuildByeByeMessage(notificationType, uniqueServiceName,
-						SsdpConstants.MulticastLocalAdminAddress);
-					_CommsServer.SendMessage(multicastMessage, new UdpEndPoint
-					{
-						IPAddress = SsdpConstants.MulticastLocalAdminAddress,
-						Port = SsdpConstants.MulticastPort
-					});
-					break;
+			string multicastIpAddress = _CommsServer.DeviceNetworkType.GetMulticastIpAddress();
 
-				case DeviceNetworkType.Ipv6:
-					foreach (var addressV6 in SsdpConstants.MulticastAdminLocalAddressV6)
-					{
-						var multicastMessageV6 = BuildByeByeMessage(notificationType, uniqueServiceName,
-							addressV6);
-						_CommsServer.SendMessage(multicastMessageV6, new UdpEndPoint
-						{
-							IPAddress = addressV6,
-							Port = SsdpConstants.MulticastPort
-						});
-					}
-					break;
-			}
+			var multicastMessage = BuildByeByeMessage(notificationType, uniqueServiceName, multicastIpAddress);
+
+			_CommsServer.SendMessage(multicastMessage, new UdpEndPoint
+			{
+				IPAddress = multicastIpAddress,
+				Port = SsdpConstants.MulticastPort
+			});
 
 			LogDeviceEvent(String.Format("Sent byebye notification, NT={0}, USN={1}", notificationType, uniqueServiceName), device);
 		}

@@ -135,19 +135,23 @@ namespace Rssdp
 		/// <returns></returns>
 		private void SetMulticastSocketOptions(Socket retVal, int multicastTimeToLive)
 		{
+			string multicastIpAddress = _deviceNetworkType.GetMulticastIpAddress();
+			IPAddress ipAddress = IPAddress.Parse(multicastIpAddress);
+
 			switch (_deviceNetworkType)
 			{
 				case DeviceNetworkType.Ipv4:
-					var ipAddress = IPAddress.Parse(SsdpConstants.MulticastLocalAdminAddress);
 					retVal.SetSocketOption(SocketOptionLevel.IP, SocketOptionName.MulticastTimeToLive, multicastTimeToLive);
 					retVal.SetSocketOption(SocketOptionLevel.IP, SocketOptionName.AddMembership, new MulticastOption(ipAddress));
 					break;
 
 				case DeviceNetworkType.Ipv6:
 					retVal.SetSocketOption(SocketOptionLevel.IPv6, SocketOptionName.MulticastTimeToLive, multicastTimeToLive);
-					foreach (var ipAddressV6 in SsdpConstants.MulticastAdminLocalAddressV6)
-						retVal.SetSocketOption(SocketOptionLevel.IPv6, SocketOptionName.AddMembership, new IPv6MulticastOption(IPAddress.Parse(ipAddressV6)));
+					retVal.SetSocketOption(SocketOptionLevel.IPv6, SocketOptionName.AddMembership, new IPv6MulticastOption(ipAddress));
 					break;
+
+				default:
+					throw new InvalidOperationException($"{nameof(_deviceNetworkType)} is not equal to Ipv4 or Ipv6");
 			}
 		}
 

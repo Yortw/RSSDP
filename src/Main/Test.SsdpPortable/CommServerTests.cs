@@ -333,7 +333,7 @@ SsdpConstants.MulticastPort,
 		}
 
 		[TestMethod]
-		public void CommsServer_SendMessageV6SendsToSsdpMulticastGroupOnUnicastSoket6()
+		public void CommsServer_SendMessageV6SendsToSsdpMulticastGroupOnUnicastSoket()
 		{
 			var socketFactory = new MockSocketFactory();
 			var server = new SsdpCommunicationsServer(socketFactory);
@@ -341,7 +341,7 @@ SsdpConstants.MulticastPort,
 			string message = "Hello Everyone!";
 			server.SendMessage(System.Text.UTF8Encoding.UTF8.GetBytes(message), new UdpEndPoint
 			{
-				IPAddress = SsdpConstants.MulticastAdminLocalAddressV6[0],
+				IPAddress = SsdpConstants.MulticastLinkLocalAddressV6,
 				Port = SsdpConstants.MulticastPort
 			});
 
@@ -349,49 +349,7 @@ SsdpConstants.MulticastPort,
 
 			var mockSocket = socketFactory.UnicastSocket as MockSocket;
 			Assert.AreEqual(message, System.Text.UTF8Encoding.UTF8.GetString(mockSocket.LastMessage));
-			Assert.AreEqual(SsdpConstants.MulticastAdminLocalAddressV6[0], mockSocket.LastSentTo.IPAddress);
-			Assert.AreEqual(SsdpConstants.MulticastPort, mockSocket.LastSentTo.Port);
-		}
-
-		[TestMethod]
-		public void CommsServer_SendMessageV6SendsToSsdpMulticastGroupOnUnicastSoket2()
-		{
-			var socketFactory = new MockSocketFactory();
-			var server = new SsdpCommunicationsServer(socketFactory);
-
-			string message = "Hello Everyone!";
-			server.SendMessage(System.Text.UTF8Encoding.UTF8.GetBytes(message), new UdpEndPoint
-			{
-				IPAddress = SsdpConstants.MulticastAdminLocalAddressV6[1],
-				Port = SsdpConstants.MulticastPort
-			});
-
-			Assert.IsNotNull(socketFactory.UnicastSocket);
-
-			var mockSocket = socketFactory.UnicastSocket as MockSocket;
-			Assert.AreEqual(message, System.Text.UTF8Encoding.UTF8.GetString(mockSocket.LastMessage));
-			Assert.AreEqual(SsdpConstants.MulticastAdminLocalAddressV6[1], mockSocket.LastSentTo.IPAddress);
-			Assert.AreEqual(SsdpConstants.MulticastPort, mockSocket.LastSentTo.Port);
-		}
-
-		[TestMethod]
-		public void CommsServer_SendMessageV6SendsToSsdpMulticastGroupOnUnicastSoket3()
-		{
-			var socketFactory = new MockSocketFactory();
-			var server = new SsdpCommunicationsServer(socketFactory);
-
-			string message = "Hello Everyone!";
-			server.SendMessage(System.Text.UTF8Encoding.UTF8.GetBytes(message), new UdpEndPoint
-			{
-				IPAddress = SsdpConstants.MulticastAdminLocalAddressV6[2],
-				Port = SsdpConstants.MulticastPort
-			});
-
-			Assert.IsNotNull(socketFactory.UnicastSocket);
-
-			var mockSocket = socketFactory.UnicastSocket as MockSocket;
-			Assert.AreEqual(message, System.Text.UTF8Encoding.UTF8.GetString(mockSocket.LastMessage));
-			Assert.AreEqual(SsdpConstants.MulticastAdminLocalAddressV6[2], mockSocket.LastSentTo.IPAddress);
+			Assert.AreEqual(SsdpConstants.MulticastLinkLocalAddressV6, mockSocket.LastSentTo.IPAddress);
 			Assert.AreEqual(SsdpConstants.MulticastPort, mockSocket.LastSentTo.Port);
 		}
 

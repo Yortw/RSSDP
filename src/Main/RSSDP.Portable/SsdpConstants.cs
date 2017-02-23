@@ -11,18 +11,12 @@ namespace Rssdp.Infrastructure
 	/// </summary>
 	public static class SsdpConstants
 	{
-
 		/// <summary>
-		/// Multicast IPV6 Addresses used for SSDP multicast messages. Values are FF02::C, FF05::C and FF0E::C
+		/// Multicast IPV6 Address used for SSDP multicast messages. Value is FF02::C.
 		/// </summary>
-		public static readonly List<string> MulticastAdminLocalAddressV6 = new List<string>
-		{
-			"FF02::C", //(IPv6 link-local)
-			"FF05::C", //(IPv6 site-local)
-			"FF0E::C"  //(IPv6 global)
-		};
+		public const string MulticastLinkLocalAddressV6 = "FF02::C";  //(IPv6 link-local)
 		/// <summary>
-		/// Multicast IP Address used for SSDP multicast messages. Values is 239.255.255.250.
+		/// Multicast IP Address used for SSDP multicast messages. Value is 239.255.255.250.
 		/// </summary>
 		public const string MulticastLocalAdminAddress = "239.255.255.250";
 		/// <summary>

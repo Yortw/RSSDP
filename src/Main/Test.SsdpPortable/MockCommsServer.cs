@@ -112,7 +112,7 @@ namespace Test.RssdpPortable
 		public void SendMessage(byte[] messageData, UdpEndPoint destination)
 		{
 			if (SsdpConstants.MulticastLocalAdminAddress.Equals(destination.IPAddress) ||
-			    SsdpConstants.MulticastAdminLocalAddressV6.Any(a => a.Equals(destination.IPAddress)))
+				SsdpConstants.MulticastLinkLocalAddressV6.Equals(destination.IPAddress))
 				SendMulticastMessage(messageData);
 			else
 			{
