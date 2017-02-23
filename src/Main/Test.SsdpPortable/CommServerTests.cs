@@ -312,7 +312,7 @@ SsdpConstants.MulticastPort,
 		}
 
 		[TestMethod]
-		public void CommsServer_SendMessageV4SendsToSsdpMulticastGroupOnUnicastSoket()
+		public void CommsServer_SendMessageV4SendsToSsdpMulticastGroupOnUnicastSocket()
 		{
 			var socketFactory = new MockSocketFactory();
 			var server = new SsdpCommunicationsServer(socketFactory);
