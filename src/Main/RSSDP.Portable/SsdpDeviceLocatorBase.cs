@@ -431,7 +431,9 @@ ST: {4}
 		{
 			var multicastIpAddress = _CommunicationsServer.DeviceNetworkType.GetMulticastIpAddress();
 
+			var multicastMessage = BuildDiscoverMessage(serviceType, mxValue, multicastIpAddress);
 
+			_CommunicationsServer.SendMessage(multicastMessage, new UdpEndPoint
 			{
 				IPAddress = multicastIpAddress,
 				Port = SsdpConstants.MulticastPort
