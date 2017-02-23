@@ -312,7 +312,7 @@ SsdpConstants.MulticastPort,
 		}
 
 		[TestMethod]
-		public void CommsServer_SendMessageV4SendsToSsdpMulticastGroupOnUnicastSoket()
+		public void CommsServer_SendMessageV4SendsToSsdpMulticastGroupOnUnicastSocket()
 		{
 			var socketFactory = new MockSocketFactory();
 			var server = new SsdpCommunicationsServer(socketFactory);
@@ -333,7 +333,7 @@ SsdpConstants.MulticastPort,
 		}
 
 		[TestMethod]
-		public void CommsServer_SendMessageV6SendsToSsdpMulticastGroupOnUnicastSoket6()
+		public void CommsServer_SendMessageV6SendsToSsdpMulticastGroupOnUnicastSocket6()
 		{
 			var socketFactory = new MockSocketFactory();
 			var server = new SsdpCommunicationsServer(socketFactory);
@@ -354,7 +354,7 @@ SsdpConstants.MulticastPort,
 		}
 
 		[TestMethod]
-		public void CommsServer_SendMessageV6SendsToSsdpMulticastGroupOnUnicastSoket2()
+		public void CommsServer_SendMessageV6SendsToSsdpMulticastGroupOnUnicastSocket2()
 		{
 			var socketFactory = new MockSocketFactory();
 			var server = new SsdpCommunicationsServer(socketFactory);
@@ -375,7 +375,7 @@ SsdpConstants.MulticastPort,
 		}
 
 		[TestMethod]
-		public void CommsServer_SendMessageV6SendsToSsdpMulticastGroupOnUnicastSoket3()
+		public void CommsServer_SendMessageV6SendsToSsdpMulticastGroupOnUnicastSocket3()
 		{
 			var socketFactory = new MockSocketFactory();
 			var server = new SsdpCommunicationsServer(socketFactory);
