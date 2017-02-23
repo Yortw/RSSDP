@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
@@ -77,6 +78,42 @@ namespace Test.RssdpPortable
 			var server = new SsdpCommunicationsServer(socketFactory, 1701, 0);
 		}
 
+		[TestMethod]
+		public void Ctor_WhenIpAddressIsV6_DeviceNetworkTypeEqualsV61()
+		{
+			var socketFactory = new SocketFactory(IPAddress.IPv6Any.ToString());
+			var communicationServer = new SsdpCommunicationsServer(socketFactory);
+
+			Assert.AreEqual(DeviceNetworkType.Ipv6, communicationServer.DeviceNetworkType);
+		}
+
+		[TestMethod]
+		public void Ctor_WhenIpAddressIsV6_DeviceNetworkTypeEqualsV62()
+		{
+			var socketFactory = new SocketFactory("::1");
+			var communicationServer = new SsdpCommunicationsServer(socketFactory);
+
+			Assert.AreEqual(DeviceNetworkType.Ipv6, communicationServer.DeviceNetworkType);
+		}
+
+		[TestMethod]
+		public void Ctor_WhenIpAddressIsV4_DeviceNetworkTypeEqualsV41()
+		{
+			var socketFactory = new SocketFactory(IPAddress.Any.ToString());
+			var communicationServer = new SsdpCommunicationsServer(socketFactory);
+
+			Assert.AreEqual(DeviceNetworkType.Ipv4, communicationServer.DeviceNetworkType);
+		}
+
+		[TestMethod]
+		public void Ctor_WhenIpAddressIsV4_DeviceNetworkTypeEqualsV42()
+		{
+			var socketFactory = new SocketFactory("127.0.0.1");
+			var communicationServer = new SsdpCommunicationsServer(socketFactory);
+
+			Assert.AreEqual(DeviceNetworkType.Ipv4, communicationServer.DeviceNetworkType);
+		}
+
 		#endregion
 
 		#region Listen Tests
@@ -120,7 +157,7 @@ SsdpConstants.MulticastPort,
 "1"
 );
 
-				socketFactory.MulticastSocket.MockReceive(System.Text.UTF8Encoding.UTF8.GetBytes(message), 
+				socketFactory.MulticastSocket.MockReceive(System.Text.UTF8Encoding.UTF8.GetBytes(message),
 					new UdpEndPoint()
 					{
 						IPAddress = SsdpConstants.MulticastLocalAdminAddress,
@@ -274,31 +311,87 @@ SsdpConstants.MulticastPort,
 			server.SendMessage(null, destination);
 		}
 
-		[ExpectedException(typeof(System.ArgumentNullException))]
 		[TestMethod]
-		public void CommsServer_SendNullMulticastMessageThrowsException()
-		{
-			var socketFactory = new MockSocketFactory();
-			var server = new SsdpCommunicationsServer(socketFactory);
-
-			UdpEndPoint destination = new UdpEndPoint() { IPAddress = "192.168.1.100", Port = 1701 };
-			server.SendMulticastMessage(null);
-		}
-
-		[TestMethod]
-		public void CommsServer_SendMulticastMessageSendsToSsdpMulticastGroupOnUnicastSoket()
+		public void CommsServer_SendMessageV4SendsToSsdpMulticastGroupOnUnicastSoket()
 		{
 			var socketFactory = new MockSocketFactory();
 			var server = new SsdpCommunicationsServer(socketFactory);
 
 			string message = "Hello Everyone!";
-			server.SendMulticastMessage(System.Text.UTF8Encoding.UTF8.GetBytes(message));
+			server.SendMessage(System.Text.UTF8Encoding.UTF8.GetBytes(message), new UdpEndPoint
+			{
+				IPAddress = SsdpConstants.MulticastLocalAdminAddress,
+				Port = SsdpConstants.MulticastPort
+			});
 
 			Assert.IsNotNull(socketFactory.UnicastSocket);
 
 			var mockSocket = socketFactory.UnicastSocket as MockSocket;
 			Assert.AreEqual(message, System.Text.UTF8Encoding.UTF8.GetString(mockSocket.LastMessage));
 			Assert.AreEqual(SsdpConstants.MulticastLocalAdminAddress, mockSocket.LastSentTo.IPAddress);
+			Assert.AreEqual(SsdpConstants.MulticastPort, mockSocket.LastSentTo.Port);
+		}
+
+		[TestMethod]
+		public void CommsServer_SendMessageV6SendsToSsdpMulticastGroupOnUnicastSoket6()
+		{
+			var socketFactory = new MockSocketFactory();
+			var server = new SsdpCommunicationsServer(socketFactory);
+
+			string message = "Hello Everyone!";
+			server.SendMessage(System.Text.UTF8Encoding.UTF8.GetBytes(message), new UdpEndPoint
+			{
+				IPAddress = SsdpConstants.MulticastAdminLocalAddressV6[0],
+				Port = SsdpConstants.MulticastPort
+			});
+
+			Assert.IsNotNull(socketFactory.UnicastSocket);
+
+			var mockSocket = socketFactory.UnicastSocket as MockSocket;
+			Assert.AreEqual(message, System.Text.UTF8Encoding.UTF8.GetString(mockSocket.LastMessage));
+			Assert.AreEqual(SsdpConstants.MulticastAdminLocalAddressV6[0], mockSocket.LastSentTo.IPAddress);
+			Assert.AreEqual(SsdpConstants.MulticastPort, mockSocket.LastSentTo.Port);
+		}
+
+		[TestMethod]
+		public void CommsServer_SendMessageV6SendsToSsdpMulticastGroupOnUnicastSoket2()
+		{
+			var socketFactory = new MockSocketFactory();
+			var server = new SsdpCommunicationsServer(socketFactory);
+
+			string message = "Hello Everyone!";
+			server.SendMessage(System.Text.UTF8Encoding.UTF8.GetBytes(message), new UdpEndPoint
+			{
+				IPAddress = SsdpConstants.MulticastAdminLocalAddressV6[1],
+				Port = SsdpConstants.MulticastPort
+			});
+
+			Assert.IsNotNull(socketFactory.UnicastSocket);
+
+			var mockSocket = socketFactory.UnicastSocket as MockSocket;
+			Assert.AreEqual(message, System.Text.UTF8Encoding.UTF8.GetString(mockSocket.LastMessage));
+			Assert.AreEqual(SsdpConstants.MulticastAdminLocalAddressV6[1], mockSocket.LastSentTo.IPAddress);
+			Assert.AreEqual(SsdpConstants.MulticastPort, mockSocket.LastSentTo.Port);
+		}
+
+		[TestMethod]
+		public void CommsServer_SendMessageV6SendsToSsdpMulticastGroupOnUnicastSoket3()
+		{
+			var socketFactory = new MockSocketFactory();
+			var server = new SsdpCommunicationsServer(socketFactory);
+
+			string message = "Hello Everyone!";
+			server.SendMessage(System.Text.UTF8Encoding.UTF8.GetBytes(message), new UdpEndPoint
+			{
+				IPAddress = SsdpConstants.MulticastAdminLocalAddressV6[2],
+				Port = SsdpConstants.MulticastPort
+			});
+
+			Assert.IsNotNull(socketFactory.UnicastSocket);
+
+			var mockSocket = socketFactory.UnicastSocket as MockSocket;
+			Assert.AreEqual(message, System.Text.UTF8Encoding.UTF8.GetString(mockSocket.LastMessage));
+			Assert.AreEqual(SsdpConstants.MulticastAdminLocalAddressV6[2], mockSocket.LastSentTo.IPAddress);
 			Assert.AreEqual(SsdpConstants.MulticastPort, mockSocket.LastSentTo.Port);
 		}
 
@@ -873,7 +966,6 @@ LOCATION:http://somedevice:1700
 
 		private class MockSocketFactory : ISocketFactory
 		{
-
 			private MockSocket _UnicastSocket;
 			private MockSocket _MulticastSocket;
 
@@ -884,9 +976,14 @@ LOCATION:http://somedevice:1700
 				return (_UnicastSocket = new MockSocket(localPort));
 			}
 
-			public IUdpSocket CreateUdpMulticastSocket(string ipAddress, int multicastTimeToLive, int localPort)
+			public IUdpSocket CreateUdpMulticastSocket(int multicastTimeToLive, int localPort)
 			{
-				return (_MulticastSocket = new MockSocket(ipAddress, multicastTimeToLive, localPort));
+				return (_MulticastSocket = new MockSocket(null, multicastTimeToLive, localPort));
+			}
+
+			public DeviceNetworkType DeviceNetworkType
+			{
+				get { throw new NotImplementedException(); }
 			}
 
 			#endregion

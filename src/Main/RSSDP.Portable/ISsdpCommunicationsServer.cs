@@ -46,12 +46,6 @@ namespace Rssdp.Infrastructure
 		/// <param name="destination">A <see cref="UdpEndPoint"/> representing the destination address for the data. Can be either a multicast or unicast destination.</param>
 		void SendMessage(byte[] messageData, UdpEndPoint destination);
 
-		/// <summary>
-		/// Sends a message to the SSDP multicast address and port.
-		/// </summary>
-		/// <param name="messageData">A byte array containing the data to send.</param>
-		void SendMulticastMessage(byte[] messageData);
-
 		#endregion
 
 		#region Properties
@@ -63,6 +57,11 @@ namespace Rssdp.Infrastructure
 		/// <para>If true, disposing an instance of a <see cref="SsdpDeviceLocatorBase"/>or a <see cref="ISsdpDevicePublisher"/> will not dispose this comms server instance. The calling code is responsible for managing the lifetime of the server.</para>
 		/// </remarks>
 		bool IsShared { get; set; }
+
+		/// <summary>
+		/// 
+		/// </summary>
+		DeviceNetworkType DeviceNetworkType { get; }
 
 		#endregion
 

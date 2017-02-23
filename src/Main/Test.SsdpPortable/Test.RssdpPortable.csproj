@@ -90,6 +90,7 @@
     <Compile Include="MockDeviceLocator.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="CustomHttpHeadersCollectionTests.cs" />
+    <Compile Include="SocketFactoryTests.cs" />
     <Compile Include="SsdpDevicePropertiesCollectionTests.cs" />
     <Compile Include="SsdpDeviceTests.cs" />
     <Compile Include="SsdpServiceTests.cs" />

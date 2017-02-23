@@ -56,7 +56,7 @@ LOCATION:{3}{8}
 
 
 		private const string AliveNotificationMessageFormat = @"NOTIFY * HTTP/1.1
-HOST: 239.255.255.250:1900
+HOST: {8}:{9}
 DATE: {7}
 NT: {0}
 NTS: ssdp:alive
@@ -68,7 +68,7 @@ LOCATION: {2}
 "; //Blank line at end important, do not remove.
 
 		private const string ByeByeNotificationMessageFormat = @"NOTIFY * HTTP/1.1
-HOST: 239.255.255.250:1900
+HOST: {6}:{7}
 DATE: {5}
 NT: {0}
 NTS: ssdp:byebye
@@ -118,7 +118,7 @@ USN: {1}
 			_CommsServer.RequestReceived += CommsServer_RequestReceived;
 			_OSName = osName;
 			_OSVersion = osVersion;
-			
+
 			_Log.LogInfo("Publisher started.");
 			_CommsServer.BeginListeningForBroadcasts();
 			_Log.LogInfo("Publisher started listening for broadcasts.");
@@ -446,14 +446,14 @@ USN: {1}
 					{
 						devices = (from
 											 device in GetAllDevicesAsFlatEnumerable()
-											 where
-													(
-														from s in
-														device.Services
-														where String.Compare(s.FullServiceType, searchTarget, StringComparison.OrdinalIgnoreCase) == 0
-														select s
-													).Any()
-											 select device
+								   where
+										  (
+											  from s in
+											  device.Services
+											  where String.Compare(s.FullServiceType, searchTarget, StringComparison.OrdinalIgnoreCase) == 0
+											  select s
+										  ).Any()
+								   select device
 											).ToArray();
 					}
 					else
@@ -673,20 +673,31 @@ USN: {1}
 
 		private void SendAliveNotification(SsdpDevice device, string notificationType, string uniqueServiceName)
 		{
-			var rootDevice = device.ToRootDevice();
+			switch (_CommsServer.DeviceNetworkType)
+			{
+				case DeviceNetworkType.Ipv4:
+					var multicastMessage = BuildAliveMessage(device, notificationType, uniqueServiceName,
+						SsdpConstants.MulticastLocalAdminAddress);
+					_CommsServer.SendMessage(multicastMessage, new UdpEndPoint
+					{
+						IPAddress = SsdpConstants.MulticastLocalAdminAddress,
+						Port = SsdpConstants.MulticastPort
+					});
+					break;
 
-			var message = String.Format(AliveNotificationMessageFormat,
-					notificationType,
-					uniqueServiceName,
-					rootDevice.Location,
-					CacheControlHeaderFromTimeSpan(rootDevice),
-					_OSName,
-					_OSVersion,
-					ServerVersion,
-					DateTime.UtcNow.ToString("r")
-				);
-
-			_CommsServer.SendMulticastMessage(System.Text.UTF8Encoding.UTF8.GetBytes(message));
+				case DeviceNetworkType.Ipv6:
+					foreach (var addressV6 in SsdpConstants.MulticastAdminLocalAddressV6)
+					{
+						var multicastMessageV6 = BuildAliveMessage(device, notificationType, uniqueServiceName,
+							addressV6);
+						_CommsServer.SendMessage(multicastMessageV6, new UdpEndPoint
+						{
+							IPAddress = addressV6,
+							Port = SsdpConstants.MulticastPort
+						});
+					}
+					break;
+			}
 
 			LogDeviceEvent(String.Format("Sent alive notification NT={0}, USN={1}", notificationType, uniqueServiceName), device);
 		}
@@ -694,6 +705,24 @@ USN: {1}
 		private void SendAliveNotification(SsdpDevice device, SsdpService service)
 		{
 			SendAliveNotification(device, service.FullServiceType, device.Udn + "::" + service.FullServiceType);
+		}
+
+		private byte[] BuildAliveMessage(SsdpDevice device, string notificationType, string uniqueServiceName, string hostAddress)
+		{
+			var rootDevice = device.ToRootDevice();
+
+			return System.Text.UTF8Encoding.UTF8.GetBytes(String.Format(AliveNotificationMessageFormat,
+				notificationType,
+				uniqueServiceName,
+				rootDevice.Location,
+				CacheControlHeaderFromTimeSpan(rootDevice),
+				_OSName,
+				_OSVersion,
+				ServerVersion,
+				DateTime.UtcNow.ToString("r"),
+				hostAddress,
+				SsdpConstants.MulticastPort
+				));
 		}
 
 		#endregion
@@ -728,16 +757,31 @@ USN: {1}
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", "CA2204:Literals should be spelled correctly", MessageId = "byebye", Justification = "Correct value for this type of notification in SSDP.")]
 		private void SendByeByeNotification(SsdpDevice device, string notificationType, string uniqueServiceName)
 		{
-			var message = String.Format(ByeByeNotificationMessageFormat,
-					notificationType,
-					uniqueServiceName,
-					_OSName,
-					_OSVersion,
-					ServerVersion,
-					DateTime.UtcNow.ToString("r")
-				);
+			switch (_CommsServer.DeviceNetworkType)
+			{
+				case DeviceNetworkType.Ipv4:
+					var multicastMessage = BuildByeByeMessage(notificationType, uniqueServiceName,
+						SsdpConstants.MulticastLocalAdminAddress);
+					_CommsServer.SendMessage(multicastMessage, new UdpEndPoint
+					{
+						IPAddress = SsdpConstants.MulticastLocalAdminAddress,
+						Port = SsdpConstants.MulticastPort
+					});
+					break;
 
-			_CommsServer.SendMulticastMessage(System.Text.UTF8Encoding.UTF8.GetBytes(message));
+				case DeviceNetworkType.Ipv6:
+					foreach (var addressV6 in SsdpConstants.MulticastAdminLocalAddressV6)
+					{
+						var multicastMessageV6 = BuildByeByeMessage(notificationType, uniqueServiceName,
+							SsdpConstants.MulticastLocalAdminAddress);
+						_CommsServer.SendMessage(multicastMessageV6, new UdpEndPoint
+						{
+							IPAddress = addressV6,
+							Port = SsdpConstants.MulticastPort
+						});
+					}
+					break;
+			}
 
 			LogDeviceEvent(String.Format("Sent byebye notification, NT={0}, USN={1}", notificationType, uniqueServiceName), device);
 		}
@@ -745,6 +789,22 @@ USN: {1}
 		private void SendByeByeNotification(SsdpDevice device, SsdpService service)
 		{
 			SendByeByeNotification(device, service.FullServiceType, device.Udn + "::" + service.FullServiceType);
+		}
+
+		private byte[] BuildByeByeMessage(string notificationType, string uniqueServiceName, string hostAddress)
+		{
+			var message = String.Format(ByeByeNotificationMessageFormat,
+					notificationType,
+					uniqueServiceName,
+					_OSName,
+					_OSVersion,
+					ServerVersion,
+					DateTime.UtcNow.ToString("r"),
+					hostAddress,
+					SsdpConstants.MulticastPort
+				);
+
+			return System.Text.UTF8Encoding.UTF8.GetBytes(message);
 		}
 
 		#endregion
@@ -806,8 +866,8 @@ USN: {1}
 		{
 			var nonzeroCacheLifetimesQuery = (from device
 																				in _Devices
-																				where device.CacheLifetime != TimeSpan.Zero
-																				select device.CacheLifetime);
+											  where device.CacheLifetime != TimeSpan.Zero
+											  select device.CacheLifetime);
 
 			if (nonzeroCacheLifetimesQuery.Any())
 				return nonzeroCacheLifetimesQuery.Min();

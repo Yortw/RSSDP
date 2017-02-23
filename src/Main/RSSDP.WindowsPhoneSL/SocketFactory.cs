@@ -23,10 +23,10 @@ namespace Rssdp
 		/// <summary>
 		/// Default constructor.
 		/// </summary>
-		/// <param name="localIP">A string containing the IP address of the local network adapter to bind sockets to. Null or empty string will use <see cref="IPAddress.Any"/>.</param>
-		public SocketFactory(string localIP)
+		/// <param name="ipAddress">A string containing the IP address of the local network adapter to bind sockets to. Null or empty string will use <see cref="IPAddress.Any"/>.</param>
+		public SocketFactory(string ipAddress)
 		{
-			_LocalIPAddress = localIP;
+			_LocalIPAddress = ipAddress;
 		}
 
 		#region ISocketFactory Members
@@ -36,7 +36,7 @@ namespace Rssdp
 		/// </summary>
 		/// <param name="localPort">An integer specifying the local port to bind the socket to.</param>
 		/// <returns>An implementation of the <see cref="IUdpSocket"/> interface used by RSSDP components to perform socket operations.</returns>
-		[System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Reliability", "CA2000:Dispose objects before losing scope", Justification="The purpose of this method is to create and return a value that happens to be disposable, calling code is responsible for lifetime of result, not us.")]
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Reliability", "CA2000:Dispose objects before losing scope", Justification = "The purpose of this method is to create and return a value that happens to be disposable, calling code is responsible for lifetime of result, not us.")]
 		public IUdpSocket CreateUdpSocket(int localPort)
 		{
 			var netSocket = new Socket(System.Net.Sockets.AddressFamily.InterNetwork, System.Net.Sockets.SocketType.Dgram, System.Net.Sockets.ProtocolType.Udp);
@@ -54,15 +54,41 @@ namespace Rssdp
 		}
 
 		/// <summary>
+		/// What type of sockets will be created: ipv6 or ipv4
+		/// For PhoneSL it will be IPv4
+		/// </summary>
+		public DeviceNetworkType DeviceNetworkType
+		{
+			get
+			{
+				return DeviceNetworkType.Ipv4;
+			}
+		}
+
+		/// <summary>
 		/// Creates a new UDP socket that is a member of the specified multicast IP address, and binds it to the specified local port.
 		/// </summary>
 		/// <param name="ipAddress">The multicast IP address to make the socket a member of.</param>
 		/// <param name="multicastTimeToLive">The multicase time to live value for the socket.</param>
 		/// <param name="localPort">The number of the local port to bind to.</param>
 		/// <returns></returns>
-		[System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "ip", Justification="Well understood and known abbreviation, it's ok, really it is."), System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Reliability", "CA2000:Dispose objects before losing scope", Justification = "The purpose of this method is to create and return a value that happens to be disposable, calling code is responsible for lifetime of result, not us.")]
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "ip", Justification = "Well understood and known abbreviation, it's ok, really it is."), System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Reliability", "CA2000:Dispose objects before losing scope", Justification = "The purpose of this method is to create and return a value that happens to be disposable, calling code is responsible for lifetime of result, not us.")]
+		public IUdpSocket CreateUdpMulticastSocket(int multicastTimeToLive, int localPort)
+		{
+			//Can't set multicast timeout on WP AnySourceUdpClient, so don't bother passing it (still required as argument to method by interface though).
+			return new MulticastUdpSocket(localPort);
+		}
+
+		/// <summary>
+		/// Creates a new UDP socket that is a member of the specified multicast IP address, and binds it to the specified local port.
+		/// </summary>
+		/// <param name="ipAddress">The multicast IP address to make the socket a member of.</param>
+		/// <param name="multicastTimeToLive">The multicase time to live value for the socket.</param>
+		/// <param name="localPort">The number of the local port to bind to.</param>
+		/// <returns></returns>
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "ip", Justification = "Well understood and known abbreviation, it's ok, really it is."), System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Reliability", "CA2000:Dispose objects before losing scope", Justification = "The purpose of this method is to create and return a value that happens to be disposable, calling code is responsible for lifetime of result, not us.")]
 		public IUdpSocket CreateUdpMulticastSocket(string ipAddress, int multicastTimeToLive, int localPort)
-		{ 
+		{
 			//Can't set multicast timeout on WP AnySourceUdpClient, so don't bother passing it (still required as argument to method by interface though).
 			return new MulticastUdpSocket(localPort);
 		}

@@ -177,7 +177,7 @@ ST: {4}
 
 			if (searchWaitTime != TimeSpan.Zero && !this.IsDisposed)
 				await TaskEx.Delay(searchWaitTime).ConfigureAwait(false);
-			
+
 			IEnumerable<DiscoveredSsdpDevice> retVal = null;
 
 			try
@@ -413,12 +413,12 @@ ST: {4}
 
 		#region Network Message Processing
 
-		private static byte[] BuildDiscoverMessage(string serviceType, TimeSpan mxValue)
+		private static byte[] BuildDiscoverMessage(string serviceType, TimeSpan mxValue, string multicastLocalAdminAddress)
 		{
 			return System.Text.UTF8Encoding.UTF8.GetBytes(
 				String.Format(HttpURequestMessageFormat,
 					SsdpConstants.MSearchMethod,
-					SsdpConstants.MulticastLocalAdminAddress,
+					multicastLocalAdminAddress,
 					SsdpConstants.MulticastPort,
 					SsdpConstants.SsdpDiscoverMessage,
 					serviceType,
@@ -429,9 +429,31 @@ ST: {4}
 
 		private void BroadcastDiscoverMessage(string serviceType, TimeSpan mxValue)
 		{
-			var broadcastMessage = BuildDiscoverMessage(serviceType, mxValue);
+			var deviceNetworkType = _CommunicationsServer.DeviceNetworkType;
 
-			_CommunicationsServer.SendMulticastMessage(broadcastMessage);
+			switch (deviceNetworkType)
+			{
+				case DeviceNetworkType.Ipv4:
+					var broadcastMessage = BuildDiscoverMessage(serviceType, mxValue, SsdpConstants.MulticastLocalAdminAddress);
+					_CommunicationsServer.SendMessage(broadcastMessage, new UdpEndPoint
+					{
+						IPAddress = SsdpConstants.MulticastLocalAdminAddress,
+						Port = SsdpConstants.MulticastPort
+					});
+					break;
+
+				case DeviceNetworkType.Ipv6:
+					foreach (var addressV6 in SsdpConstants.MulticastAdminLocalAddressV6)
+					{
+						var multicastMessageV6 = BuildDiscoverMessage(serviceType, mxValue, addressV6);
+						_CommunicationsServer.SendMessage(multicastMessageV6, new UdpEndPoint
+						{
+							IPAddress = addressV6,
+							Port = SsdpConstants.MulticastPort
+						});
+					}
+					break;
+			}
 		}
 
 		private void ProcessSearchResponseMessage(HttpResponseMessage message)

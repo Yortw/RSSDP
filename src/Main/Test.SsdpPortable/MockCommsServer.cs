@@ -34,6 +34,8 @@ namespace Test.RssdpPortable
 
 		private System.Threading.Tasks.Task _ListenTask;
 
+		private readonly DeviceNetworkType _deviceNetworkType = DeviceNetworkType.Ipv4;
+
 		public MockCommsServer()
 		{
 			_MessageSentSignalTimer = new System.Threading.Timer((reserved) => _SentMessageSignal.Set(), null, System.Threading.Timeout.Infinite, System.Threading.Timeout.Infinite);
@@ -51,7 +53,7 @@ namespace Test.RssdpPortable
 			}
 
 			signal = _MessageAvailableSignal;
-			_MessageAvailableSignal = null; 
+			_MessageAvailableSignal = null;
 			if (signal != null)
 			{
 				signal.Set();
@@ -109,8 +111,14 @@ namespace Test.RssdpPortable
 
 		public void SendMessage(byte[] messageData, UdpEndPoint destination)
 		{
-			SentMessages.Enqueue(new ReceivedUdpData() { Buffer = messageData, ReceivedBytes = messageData.Length, ReceivedFrom = destination });
-			SetMessageSentSignal();
+			if (SsdpConstants.MulticastLocalAdminAddress.Equals(destination.IPAddress) ||
+			    SsdpConstants.MulticastAdminLocalAddressV6.Any(a => a.Equals(destination.IPAddress)))
+				SendMulticastMessage(messageData);
+			else
+			{
+				SentMessages.Enqueue(new ReceivedUdpData() { Buffer = messageData, ReceivedBytes = messageData.Length, ReceivedFrom = destination });
+				SetMessageSentSignal();
+			}
 		}
 
 		private void SetMessageSentSignal()
@@ -170,6 +178,11 @@ namespace Test.RssdpPortable
 		{
 			get;
 			set;
+		}
+
+		public DeviceNetworkType DeviceNetworkType
+		{
+			get { return _deviceNetworkType; }
 		}
 
 		#endregion
