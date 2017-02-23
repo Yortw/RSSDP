@@ -15,7 +15,7 @@ namespace Rssdp.Infrastructure
 		/// <summary>
 		/// Multicast IPV6 Addresses used for SSDP multicast messages. Values are FF02::C, FF05::C and FF0E::C
 		/// </summary>
-		public static readonly List<string> MulticastAdminLocalAddressV6 = new List<string>
+		public static readonly List<string>  MulticastAdminLocalAddressV6 = new List<string>
 		{
 			"FF02::C", //(IPv6 link-local)
 			"FF05::C", //(IPv6 site-local)
