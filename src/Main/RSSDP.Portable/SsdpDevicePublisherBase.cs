@@ -773,7 +773,7 @@ USN: {1}
 					foreach (var addressV6 in SsdpConstants.MulticastAdminLocalAddressV6)
 					{
 						var multicastMessageV6 = BuildByeByeMessage(notificationType, uniqueServiceName,
-							SsdpConstants.MulticastLocalAdminAddress);
+							addressV6);
 						_CommsServer.SendMessage(multicastMessageV6, new UdpEndPoint
 						{
 							IPAddress = addressV6,
