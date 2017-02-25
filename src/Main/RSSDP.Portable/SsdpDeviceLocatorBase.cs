@@ -429,31 +429,15 @@ ST: {4}
 
 		private void BroadcastDiscoverMessage(string serviceType, TimeSpan mxValue)
 		{
-			var deviceNetworkType = _CommunicationsServer.DeviceNetworkType;
+			var multicastIpAddress = _CommunicationsServer.DeviceNetworkType.GetMulticastIpAddress();
 
-			switch (deviceNetworkType)
+			var multicastMessage = BuildDiscoverMessage(serviceType, mxValue, multicastIpAddress);
+
+			_CommunicationsServer.SendMessage(multicastMessage, new UdpEndPoint
 			{
-				case DeviceNetworkType.Ipv4:
-					var broadcastMessage = BuildDiscoverMessage(serviceType, mxValue, SsdpConstants.MulticastLocalAdminAddress);
-					_CommunicationsServer.SendMessage(broadcastMessage, new UdpEndPoint
-					{
-						IPAddress = SsdpConstants.MulticastLocalAdminAddress,
-						Port = SsdpConstants.MulticastPort
-					});
-					break;
-
-				case DeviceNetworkType.Ipv6:
-					foreach (var addressV6 in SsdpConstants.MulticastAdminLocalAddressV6)
-					{
-						var multicastMessageV6 = BuildDiscoverMessage(serviceType, mxValue, addressV6);
-						_CommunicationsServer.SendMessage(multicastMessageV6, new UdpEndPoint
-						{
-							IPAddress = addressV6,
-							Port = SsdpConstants.MulticastPort
-						});
-					}
-					break;
-			}
+				IPAddress = multicastIpAddress,
+				Port = SsdpConstants.MulticastPort
+			});
 		}
 
 		private void ProcessSearchResponseMessage(HttpResponseMessage message)
