@@ -429,7 +429,7 @@ ST: {4}
 
 		private void BroadcastDiscoverMessage(string serviceType, TimeSpan mxValue)
 		{
-			var multicastIpAddress = _CommunicationsServer.DeviceNetworkType.GetMulticastIpAddress();
+			var multicastIpAddress = _CommunicationsServer.DeviceNetworkType.GetMulticastIPAddress();
 
 			var multicastMessage = BuildDiscoverMessage(serviceType, mxValue, multicastIpAddress);
 

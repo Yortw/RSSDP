@@ -22,7 +22,7 @@ namespace Rssdp
 	/// </summary>
 	public sealed class SocketFactory : ISocketFactory
 	{
-		private readonly DeviceNetworkType _deviceNetworkType;
+		private readonly DeviceNetworkType _DeviceNetworkType;
 		private IPAddress _LocalIP;
 
 		/// <summary>
@@ -37,7 +37,7 @@ namespace Rssdp
 			else
 				_LocalIP = IPAddress.Parse(ipAddress);
 
-			_deviceNetworkType = GetDeviceNetworkType(_LocalIP.AddressFamily);
+			_DeviceNetworkType = GetDeviceNetworkType(_LocalIP.AddressFamily);
 		}
 
 		#region ISocketFactory Members
@@ -120,7 +120,7 @@ namespace Rssdp
 		{
 			get
 			{
-				return _deviceNetworkType;
+				return _DeviceNetworkType;
 			}
 		}
 
@@ -134,23 +134,23 @@ namespace Rssdp
 		/// <returns></returns>
 		private void SetMulticastSocketOptions(Socket retVal, int multicastTimeToLive)
 		{
-			string multicastIpAddress = _deviceNetworkType.GetMulticastIpAddress();
+			string multicastIpAddress = _DeviceNetworkType.GetMulticastIPAddress();
 			IPAddress ipAddress = IPAddress.Parse(multicastIpAddress);
 
-			switch (_deviceNetworkType)
+			switch (_DeviceNetworkType)
 			{
-				case DeviceNetworkType.Ipv4:
+				case DeviceNetworkType.IPv4:
 					retVal.SetSocketOption(SocketOptionLevel.IP, SocketOptionName.MulticastTimeToLive, multicastTimeToLive);
 					retVal.SetSocketOption(SocketOptionLevel.IP, SocketOptionName.AddMembership, new MulticastOption(ipAddress));
 					break;
 
-				case DeviceNetworkType.Ipv6:
+				case DeviceNetworkType.IPv6:
 					retVal.SetSocketOption(SocketOptionLevel.IPv6, SocketOptionName.MulticastTimeToLive, multicastTimeToLive);
 					retVal.SetSocketOption(SocketOptionLevel.IPv6, SocketOptionName.AddMembership, new IPv6MulticastOption(ipAddress));
 					break;
 
 				default:
-					throw new InvalidOperationException($"{nameof(_deviceNetworkType)} is not equal to Ipv4 or Ipv6");
+					throw new InvalidOperationException($"{nameof(_DeviceNetworkType)} is not equal to Ipv4 or Ipv6");
 			}
 		}
 
@@ -159,9 +159,9 @@ namespace Rssdp
 			switch (addressFamily)
 			{
 				case AddressFamily.InterNetwork:
-					return DeviceNetworkType.Ipv4;
+					return DeviceNetworkType.IPv4;
 				case AddressFamily.InterNetworkV6:
-					return DeviceNetworkType.Ipv6;
+					return DeviceNetworkType.IPv6;
 				default:
 					throw new ArgumentOutOfRangeException(nameof(addressFamily), addressFamily, null);
 			}

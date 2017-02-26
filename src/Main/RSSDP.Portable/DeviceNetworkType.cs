@@ -8,10 +8,10 @@
 		/// <summary>
 		/// Equals to AddressFamily.InternetNetwork
 		/// </summary>
-		Ipv4,
+		IPv4,
 		/// <summary>
 		/// Equals to AddressFamily.InternetNetworkV6
 		/// </summary>
-		Ipv6
+		IPv6
 	}
 }

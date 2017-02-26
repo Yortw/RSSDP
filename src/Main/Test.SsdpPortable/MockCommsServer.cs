@@ -34,7 +34,7 @@ namespace Test.RssdpPortable
 
 		private System.Threading.Tasks.Task _ListenTask;
 
-		private readonly DeviceNetworkType _deviceNetworkType = DeviceNetworkType.Ipv4;
+		private readonly DeviceNetworkType _deviceNetworkType = DeviceNetworkType.IPv4;
 
 		public MockCommsServer()
 		{

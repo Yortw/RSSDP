@@ -61,14 +61,13 @@ namespace Rssdp
 		{
 			get
 			{
-				return DeviceNetworkType.Ipv4;
+				return DeviceNetworkType.IPv4;
 			}
 		}
 
 		/// <summary>
 		/// Creates a new UDP socket that is a member of the specified multicast IP address, and binds it to the specified local port.
 		/// </summary>
-		/// <param name="ipAddress">The multicast IP address to make the socket a member of.</param>
 		/// <param name="multicastTimeToLive">The multicase time to live value for the socket.</param>
 		/// <param name="localPort">The number of the local port to bind to.</param>
 		/// <returns></returns>

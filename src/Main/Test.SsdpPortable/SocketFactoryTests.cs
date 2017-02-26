@@ -12,7 +12,7 @@ namespace Test.RssdpPortable
 		{
 			var socketFactory = new SocketFactory(IPAddress.IPv6Any.ToString());
 
-			Assert.AreEqual(DeviceNetworkType.Ipv6, socketFactory.DeviceNetworkType);
+			Assert.AreEqual(DeviceNetworkType.IPv6, socketFactory.DeviceNetworkType);
 		}
 
 		[TestMethod]
@@ -20,7 +20,7 @@ namespace Test.RssdpPortable
 		{
 			var socketFactory = new SocketFactory("::1");
 
-			Assert.AreEqual(DeviceNetworkType.Ipv6, socketFactory.DeviceNetworkType);
+			Assert.AreEqual(DeviceNetworkType.IPv6, socketFactory.DeviceNetworkType);
 		}
 
 		[TestMethod]
@@ -28,7 +28,7 @@ namespace Test.RssdpPortable
 		{
 			var socketFactory = new SocketFactory(IPAddress.Any.ToString());
 
-			Assert.AreEqual(DeviceNetworkType.Ipv4, socketFactory.DeviceNetworkType);
+			Assert.AreEqual(DeviceNetworkType.IPv4, socketFactory.DeviceNetworkType);
 		}
 
 		[TestMethod]
@@ -36,7 +36,7 @@ namespace Test.RssdpPortable
 		{
 			var socketFactory = new SocketFactory("127.0.0.1");
 
-			Assert.AreEqual(DeviceNetworkType.Ipv4, socketFactory.DeviceNetworkType);
+			Assert.AreEqual(DeviceNetworkType.IPv4, socketFactory.DeviceNetworkType);
 		}
 	}
 }

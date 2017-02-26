@@ -84,7 +84,7 @@ namespace Test.RssdpPortable
 			var socketFactory = new SocketFactory(IPAddress.IPv6Any.ToString());
 			var communicationServer = new SsdpCommunicationsServer(socketFactory);
 
-			Assert.AreEqual(DeviceNetworkType.Ipv6, communicationServer.DeviceNetworkType);
+			Assert.AreEqual(DeviceNetworkType.IPv6, communicationServer.DeviceNetworkType);
 		}
 
 		[TestMethod]
@@ -93,7 +93,7 @@ namespace Test.RssdpPortable
 			var socketFactory = new SocketFactory("::1");
 			var communicationServer = new SsdpCommunicationsServer(socketFactory);
 
-			Assert.AreEqual(DeviceNetworkType.Ipv6, communicationServer.DeviceNetworkType);
+			Assert.AreEqual(DeviceNetworkType.IPv6, communicationServer.DeviceNetworkType);
 		}
 
 		[TestMethod]
@@ -102,7 +102,7 @@ namespace Test.RssdpPortable
 			var socketFactory = new SocketFactory(IPAddress.Any.ToString());
 			var communicationServer = new SsdpCommunicationsServer(socketFactory);
 
-			Assert.AreEqual(DeviceNetworkType.Ipv4, communicationServer.DeviceNetworkType);
+			Assert.AreEqual(DeviceNetworkType.IPv4, communicationServer.DeviceNetworkType);
 		}
 
 		[TestMethod]
@@ -111,7 +111,7 @@ namespace Test.RssdpPortable
 			var socketFactory = new SocketFactory("127.0.0.1");
 			var communicationServer = new SsdpCommunicationsServer(socketFactory);
 
-			Assert.AreEqual(DeviceNetworkType.Ipv4, communicationServer.DeviceNetworkType);
+			Assert.AreEqual(DeviceNetworkType.IPv4, communicationServer.DeviceNetworkType);
 		}
 
 		#endregion

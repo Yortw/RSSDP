@@ -24,12 +24,12 @@ namespace Rssdp
 		/// <param name="localIP">A string containing the IP address of the local network adapter to bind sockets to. Null or empty string will use IPAddress.Any.</param>
 		public SocketFactory(string localIP)
 		{
-			_DeviceNetworkType = DeviceNetworkType.Ipv4;
+			_DeviceNetworkType = DeviceNetworkType.IPv4;
 			_LocalIP = localIP;
 			if (!String.IsNullOrEmpty(localIP))
 			{
 				var hostName = new Windows.Networking.HostName(localIP);
-				if (hostName.Type == Windows.Networking.HostNameType.Ipv6) _DeviceNetworkType = DeviceNetworkType.Ipv6;
+				if (hostName.Type == Windows.Networking.HostNameType.Ipv6) _DeviceNetworkType = DeviceNetworkType.IPv6;
 			}
 		}
 

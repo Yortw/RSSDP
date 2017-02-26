@@ -36,7 +36,8 @@ namespace Rssdp
 		/// Partial constructor. 
 		/// </summary>
 		/// <param name="ipAddress">The IP address of the local network adapter to bind sockets to. 
-		/// Null or empty string will use <see cref="IPAddress.Any"/>.</param>
+		/// Null or empty string will use an IP address selected by the OS or runtime.
+		/// </param>
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Reliability", "CA2000:Dispose objects before losing scope", Justification = "Can't expose along exception paths here (exceptions should be very rare anyway, and probably fatal too) and we shouldn't dipose the items we pass to base in any other case.")]
 		public SsdpDeviceLocator(string ipAddress) : base(new SsdpCommunicationsServer(new SocketFactory(ipAddress)))
 		{
