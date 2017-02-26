@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
   <metadata>
     <id>Rssdp</id>
-    <version>2.0.9</version>
+    <version>3.0.0</version>
     <title>Rssdp</title>
     <authors>Troy Willmot</authors>
     <owners>Yortw</owners>
@@ -12,17 +12,8 @@
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>Really Simple Service Discovery Protocol - a 100% .Net implementation of the SSDP protocol for publishing custom/basic devices, and discovering all device types on a network.</description>
     <summary>A 100% .Net implementation of the SSDP protocol for basic and custom device types.</summary>
-    <releaseNotes>Fix for .Net 4.5 projects so SsdpDevicePublisher is included.
-Package fix for UWP and WPA8.1 projects so only one (correct) assembly is referenced.
-Previously:
-Xamarin platforms now serviced by .Net Standard library, old Xamarin binaries dropped.
-Reduced dependencies for Xamarin/Net45+ projects.
-Improvements to alive notifications to ensure compatibility with non-conforming devices.
-Added NotificationBroadcastInterval property to publisher to allow for configurable, fixed period, alive notification broadcasts.
-Improved handling of unexpectedly closed sockets.
-Improved logging capability.
-Support for publishing UPnP services (previously only devices supported)
-</releaseNotes>
+    <releaseNotes>Thanks to @qine RSSDP now supports Ipv6 (except on WPSL and WinRT 8/8.1).
+		There are some breaking interfaces changes, but these are unlikely to affect client code unless you have implemented your own communication server/socket factory.</releaseNotes>
     <copyright>Copyright 2017</copyright>
     <language>en-AU</language>
     <tags>portable xamarin ios android windowsphone winrt uwp mobile ssdp discovery device service protocol upnp netfx40 .net4</tags>
@@ -65,6 +56,24 @@ Support for publishing UPnP services (previously only devices supported)
         <dependency id="System.Xml.ReaderWriter" version="4.0.11" />
       </group>
       <group targetFramework="uap10.0">
+        <dependency id="System.Collections" version="4.0.11" />
+        <dependency id="System.Diagnostics.Debug" version="4.0.11" />
+        <dependency id="System.Diagnostics.Tools" version="4.0.1" />
+        <dependency id="System.IO" version="4.1.0" />
+        <dependency id="System.Linq" version="4.1.0" />
+        <dependency id="System.Net.Http" version="4.1.0" />
+        <dependency id="System.Net.Primitives" version="4.0.11" />
+        <dependency id="System.Net.Sockets" version="4.1.0" />
+        <dependency id="System.Resources.ResourceManager" version="4.0.1" />
+        <dependency id="System.Runtime" version="4.1.0" />
+        <dependency id="System.Runtime.Extensions" version="4.1.0" />
+        <dependency id="System.Runtime.InteropServices.RuntimeInformation" version="4.0.0" />
+        <dependency id="System.Text.Encoding" version="4.0.11" />
+        <dependency id="System.Text.Encoding.Extensions" version="4.0.11" />
+        <dependency id="System.Threading" version="4.0.11" />
+        <dependency id="System.Threading.Tasks" version="4.0.11" />
+        <dependency id="System.Threading.Timer" version="4.0.1" />
+        <dependency id="System.Xml.ReaderWriter" version="4.0.11" />
       </group>
     </dependencies>
   </metadata>
@@ -87,9 +96,9 @@ Support for publishing UPnP services (previously only devices supported)
     <file src="lib\netcore451\Rssdp*.dll" target="lib\wpa81" />
     <file src="lib\netcore451\Rssdp*.xml" target="lib\wpa81" />
     <file src="lib\netcore451\Rssdp*.pdb" target="lib\wpa81" />
-    <file src="lib\uap10.0\Rssdp*.dll" target="lib\uap10.0" />
-    <file src="lib\uap10.0\Rssdp*.xml" target="lib\uap10.0" />
-    <file src="lib\uap10.0\Rssdp*.pdb" target="lib\uap10.0" />
+    <file src="lib\netstandard13\Rssdp*.dll" target="lib\uap10.0" />
+    <file src="lib\netstandard13\Rssdp*.xml" target="lib\uap10.0" />
+    <file src="lib\netstandard13\Rssdp*.pdb" target="lib\uap10.0" />
     <file src="**\*.cs" target="src" />
   </files>
 </package>

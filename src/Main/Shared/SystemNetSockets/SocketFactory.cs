@@ -32,13 +32,12 @@ namespace Rssdp
 		/// Null or empty string will use <see cref="IPAddress.Any"/>.</param>
 		public SocketFactory(string ipAddress)
 		{
-			if (string.IsNullOrEmpty(ipAddress))
+			if (String.IsNullOrEmpty(ipAddress))
 				_LocalIP = IPAddress.Any;
 			else
-			{
 				_LocalIP = IPAddress.Parse(ipAddress);
-				_deviceNetworkType = GetDeviceNetworkType(_LocalIP.AddressFamily);
-			}
+
+			_deviceNetworkType = GetDeviceNetworkType(_LocalIP.AddressFamily);
 		}
 
 		#region ISocketFactory Members
