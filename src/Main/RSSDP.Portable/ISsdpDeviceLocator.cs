@@ -11,7 +11,7 @@ namespace Rssdp.Infrastructure
 	/// <seealso cref="DiscoveredSsdpDevice"/>
 	/// <seealso cref="SsdpDevice"/>
 	/// <seealso cref="ISsdpDevicePublisher"/>
-	public interface ISsdpDeviceLocator
+	public interface ISsdpDeviceLocator : IDisposable
 	{
 
 		#region Events
