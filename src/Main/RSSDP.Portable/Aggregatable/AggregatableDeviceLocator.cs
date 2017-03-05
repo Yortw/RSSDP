@@ -7,19 +7,19 @@ using Rssdp.Network;
 namespace Rssdp.Aggregatable
 {
 	/// <summary>
-	/// 
+	/// Creates a device locators for each available network interface
 	/// </summary>
+	[System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "Aggregatable")]
 	public sealed class AggregatableDeviceLocator : IAggregatableDeviceLocator
 	{
 		private readonly IList<ISsdpDeviceLocator> _ssdpDeviceLocators = new List<ISsdpDeviceLocator>();
 
-		/// <summary>
-		/// 
-		/// </summary>
 		/// <param name="networkInfoProvider"></param>
 		/// <param name="ssdpDeviceLocatorFactory"></param>
-		/// <param name="port"></param>
-		public AggregatableDeviceLocator(INetworkInfoProvider networkInfoProvider, ISsdpDeviceLocatorFactory ssdpDeviceLocatorFactory, int port=0)
+		/// <param name="port">local port for each locators</param>
+		public AggregatableDeviceLocator(INetworkInfoProvider networkInfoProvider,
+			ISsdpDeviceLocatorFactory ssdpDeviceLocatorFactory,
+			int port)
 		{
 			if (networkInfoProvider == null) throw new ArgumentNullException(nameof(networkInfoProvider));
 			if (ssdpDeviceLocatorFactory == null) throw new ArgumentNullException(nameof(ssdpDeviceLocatorFactory));
@@ -28,13 +28,12 @@ namespace Rssdp.Aggregatable
 			AddLocator(ssdpDeviceLocatorFactory, unicastAddresses, port);
 		}
 
-		/// <summary>
-		/// 
-		/// </summary>
-		/// <param name="unicastAddresses"></param>
+		/// <param name="unicastAddresses">list of unicast addresses for create locators</param>
 		/// <param name="ssdpDeviceLocatorFactory"></param>
-		/// <param name="port"></param>
-		public AggregatableDeviceLocator(IEnumerable<string> unicastAddresses, ISsdpDeviceLocatorFactory ssdpDeviceLocatorFactory, int port = 0)
+		/// <param name="port">local port for each locators</param>
+		public AggregatableDeviceLocator(IEnumerable<string> unicastAddresses,
+			ISsdpDeviceLocatorFactory ssdpDeviceLocatorFactory,
+			int port)
 		{
 			if (unicastAddresses == null) throw new ArgumentNullException(nameof(unicastAddresses));
 			if (ssdpDeviceLocatorFactory == null) throw new ArgumentNullException(nameof(ssdpDeviceLocatorFactory));
@@ -42,7 +41,10 @@ namespace Rssdp.Aggregatable
 			AddLocator(ssdpDeviceLocatorFactory, unicastAddresses, port);
 		}
 
-		void IDisposable.Dispose()
+		/// <summary>
+		/// Dispose all created <see cref="ISsdpDeviceLocator"/>
+		/// </summary>
+		public void Dispose()
 		{
 			foreach (var ssdpDeviceLocator in _ssdpDeviceLocators)
 			{
@@ -54,17 +56,17 @@ namespace Rssdp.Aggregatable
 		}
 
 		/// <summary>
-		/// 
+		/// Event raised when a device becomes available
 		/// </summary>
 		public event EventHandler<DeviceAvailableEventArgs> DeviceAvailable;
 
 		/// <summary>
-		/// 
+		/// Event raised when a device explicitly notifies of shutdown or a device expires from the cache.
 		/// </summary>
 		public event EventHandler<DeviceUnavailableEventArgs> DeviceUnavailable;
 
 		/// <summary>
-		/// 
+		/// Provides all instances of created <see cref="ISsdpDeviceLocator"/>
 		/// </summary>
 		public IEnumerable<ISsdpDeviceLocator> Locators
 		{
@@ -72,9 +74,9 @@ namespace Rssdp.Aggregatable
 		}
 
 		/// <summary>
-		/// 
+		/// Aynchronously performs a search for all devices using the default search timeout, and returns an awaitable task that can be used to retrieve the results.
+		/// <remarks>All locators doing search</remarks>
 		/// </summary>
-		/// <returns></returns>
 		public async Task<IEnumerable<DiscoveredSsdpDevice>> SearchAsync()
 		{
 			var allDevices = new List<DiscoveredSsdpDevice>();
@@ -87,17 +89,24 @@ namespace Rssdp.Aggregatable
 		}
 
 		/// <summary>
-		/// 
+		/// Starts listening for broadcast notifications of service availability on all locators
 		/// </summary>
-		public void StartListening()
+		/// <remarks>
+		/// <para>When called the system will listen for 'alive' and 'byebye' notifications. This can speed up searching, as well as provide dynamic notification of new devices appearing on the network, and previously discovered devices disappearing.</para>
+		/// </remarks>
+		public void StartListeningForNotifications()
 		{
 			foreach (var ssdpDeviceLocator in _ssdpDeviceLocators)
 				ssdpDeviceLocator.StartListeningForNotifications();
 		}
 
 		/// <summary>
-		/// 
+		/// Stops listening for broadcast notifications of service availability on all locators
 		/// </summary>
+		/// <remarks>
+		/// <para>Does nothing if this instance is not already listening for notifications.</para>
+		/// </remarks>
+		/// <exception cref="System.ObjectDisposedException">Throw if the <see cref="DisposableManagedObjectBase.IsDisposed"/> property is true.</exception>
 		public void StopListening()
 		{
 			foreach (var ssdpDeviceLocator in _ssdpDeviceLocators)

@@ -11,14 +11,14 @@ namespace Rssdp
 	// Be careful to check any changes compile and work for all platform projects it is shared in.
 
 	/// <summary>
-	/// 
+	/// Provides a list of addresses for creating publishers and locators
 	/// </summary>
 	public sealed class NetworkInfoProvider : INetworkInfoProvider
 	{
 		/// <summary>
-		/// 
+		/// Provides a list of addresses
 		/// </summary>
-		/// <returns></returns>
+		/// <remarks> Only if the adapter supports multicast and for the following types: Ethernet, Wireless80211</remarks>
 		public IEnumerable<string> GetIpAddressesFromAdapters()
 		{
 			var networkInterfaces = NetworkInterface.GetAllNetworkInterfaces();
@@ -50,7 +50,8 @@ namespace Rssdp
 			var interfaceProperties = networkInterface.GetIPProperties();
 			var unicastAddresses = interfaceProperties.UnicastAddresses;
 
-			return unicastAddresses.Where(ipAddressInfo => ipAddressInfo.Address.AddressFamily == addressFamily)
+			return unicastAddresses.Where(ipAddressInfo => ipAddressInfo.Address.AddressFamily == addressFamily &&
+			!IPAddress.IsLoopback(ipAddressInfo.Address))
 				.Select(addressInfo => addressInfo.Address)
 				.FirstOrDefault();
 		}

@@ -140,7 +140,7 @@ namespace Rssdp.Samples
 
 			// Create a device publisher
 			_aggregatableDevicePublisher = new AggregatableDevicePublisher(
-				new NetworkInfoProvider(), 
+				new NetworkInfoProvider(),
 				new SsdpDevicePublisherFactory(),
 				45454);
 
@@ -191,10 +191,10 @@ namespace Rssdp.Samples
 			}
 
 			Console.WriteLine("Starting broadcast listener on all interfaces");
-			_aggregatableDeviceLocator = new AggregatableDeviceLocator();
+			_aggregatableDeviceLocator = new AggregatableDeviceLocator(new NetworkInfoProvider(), new SsdpDeviceLocatorFactory(), 0);
 			_aggregatableDeviceLocator.DeviceAvailable += _AggregatableListener_DeviceAvailable;
 			_aggregatableDeviceLocator.DeviceUnavailable += _AggregatableListener_DeviceUnavailable;
-			_aggregatableDeviceLocator.StartListening();
+			_aggregatableDeviceLocator.StartListeningForNotifications();
 			Console.WriteLine("Now listening for broadcasts on all interfaces");
 		}
 
@@ -310,7 +310,7 @@ namespace Rssdp.Samples
 		{
 			Console.WriteLine("Searching for all devices on all interfaces...");
 
-			using (var deviceLocator = new AggregatableDeviceLocator())
+			using (var deviceLocator = new AggregatableDeviceLocator(new NetworkInfoProvider(), new SsdpDeviceLocatorFactory(), 0))
 			{
 				var results = await deviceLocator.SearchAsync();
 				foreach (var device in results)

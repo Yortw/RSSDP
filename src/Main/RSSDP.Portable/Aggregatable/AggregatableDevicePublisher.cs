@@ -6,21 +6,19 @@ using Rssdp.Network;
 namespace Rssdp.Aggregatable
 {
 	/// <summary>
-	/// 
+	/// Creates a <see cref="ISsdpDevicePublisher"/> for each available network interface
 	/// </summary>
+	[System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "Aggregatable")]
 	public sealed class AggregatableDevicePublisher : IAggregatableDevicePublisher
 	{
 		private readonly IList<ISsdpDevicePublisher> _ssdpDevicePublisherses = new List<ISsdpDevicePublisher>();
 
-		/// <summary>
-		/// 
-		/// </summary>
 		/// <param name="networkInfoProvider"></param>
 		/// <param name="ssdpDevicePublisherFactory"></param>
 		/// <param name="port"></param>
 		public AggregatableDevicePublisher(INetworkInfoProvider networkInfoProvider,
 			ISsdpDevicePublisherFactory ssdpDevicePublisherFactory,
-			int port = 0)
+			int port)
 		{
 			if (networkInfoProvider == null) throw new ArgumentNullException(nameof(networkInfoProvider));
 			if (ssdpDevicePublisherFactory == null) throw new ArgumentNullException(nameof(ssdpDevicePublisherFactory));
@@ -30,16 +28,13 @@ namespace Rssdp.Aggregatable
 			AddPublisher(ssdpDevicePublisherFactory, unicastAddresses, port);
 		}
 
-		/// <summary>
-		/// 
-		/// </summary>
 		/// <param name="unicastAddresses"></param>
 		/// <param name="ssdpDevicePublisherFactory"></param>
 		/// <param name="port"></param>
 		/// <exception cref="ArgumentNullException"></exception>
 		public AggregatableDevicePublisher(IEnumerable<string> unicastAddresses,
 			ISsdpDevicePublisherFactory ssdpDevicePublisherFactory,
-			int port = 0)
+			int port)
 		{
 			if (unicastAddresses == null) throw new ArgumentNullException(nameof(unicastAddresses));
 			if (ssdpDevicePublisherFactory == null) throw new ArgumentNullException(nameof(ssdpDevicePublisherFactory));
@@ -47,7 +42,10 @@ namespace Rssdp.Aggregatable
 			AddPublisher(ssdpDevicePublisherFactory, unicastAddresses, port);
 		}
 
-		void IDisposable.Dispose()
+		/// <summary>
+		/// Dispose all created <see cref="ISsdpDevicePublisher"/>
+		/// </summary>
+		public void Dispose()
 		{
 			foreach (var ssdpDevicePublisher in _ssdpDevicePublisherses)
 			{
@@ -58,12 +56,12 @@ namespace Rssdp.Aggregatable
 		}
 
 		/// <summary>
-		/// 
+		/// Provides all instances of created <see cref="ISsdpDevicePublisher"/>
 		/// </summary>
 		public IEnumerable<ISsdpDevicePublisher> Publishers { get { return _ssdpDevicePublisherses; } }
 
 		/// <summary>
-		/// 
+		/// Provides all added <see cref="SsdpRootDevice"/> for each <see cref="ISsdpDevicePublisher"/>
 		/// </summary>
 		public IEnumerable<SsdpRootDevice> Devices
 		{
@@ -79,7 +77,7 @@ namespace Rssdp.Aggregatable
 		}
 
 		/// <summary>
-		/// 
+		/// Add <see cref="SsdpRootDevice"/> to each <see cref="ISsdpDevicePublisher"/>
 		/// </summary>
 		/// <param name="ssdpRootDevice"></param>
 		public void AddDevice(SsdpRootDevice ssdpRootDevice)
@@ -89,7 +87,7 @@ namespace Rssdp.Aggregatable
 		}
 
 		/// <summary>
-		/// 
+		/// Remove <see cref="SsdpRootDevice"/> from each <see cref="ISsdpDevicePublisher"/>
 		/// </summary>
 		/// <param name="ssdpRootDevice"></param>
 		public void RemoveDevice(SsdpRootDevice ssdpRootDevice)

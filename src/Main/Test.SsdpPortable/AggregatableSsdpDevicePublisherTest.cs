@@ -19,7 +19,7 @@ namespace Test.RssdpPortable.DevicePublisher
 		{
 			INetworkInfoProvider networkInfoProvider = null;
 			var ssdpDevicePublisherFactoryMock = new Mock<ISsdpDevicePublisherFactory>();
-			var aggregatablePublisher = new AggregatableDevicePublisher(networkInfoProvider, ssdpDevicePublisherFactoryMock.Object);
+			var aggregatablePublisher = new AggregatableDevicePublisher(networkInfoProvider, ssdpDevicePublisherFactoryMock.Object, 0);
 		}
 
 		[TestMethod]
@@ -28,7 +28,7 @@ namespace Test.RssdpPortable.DevicePublisher
 		{
 			var networkInfoProvider = new Mock<INetworkInfoProvider>();
 			ISsdpDevicePublisherFactory ssdpDevicePublisherFactory = null;
-			var aggregatablePublisher = new AggregatableDevicePublisher(networkInfoProvider.Object, ssdpDevicePublisherFactory);
+			var aggregatablePublisher = new AggregatableDevicePublisher(networkInfoProvider.Object, ssdpDevicePublisherFactory, 0);
 		}
 
 		[TestMethod]
@@ -37,7 +37,7 @@ namespace Test.RssdpPortable.DevicePublisher
 		{
 			List<string> unicastAddresses = null;
 			var ssdpDevicePublisherFactory = new Mock<ISsdpDevicePublisherFactory>();
-			var aggregatablePublisher = new AggregatableDevicePublisher(unicastAddresses, ssdpDevicePublisherFactory.Object);
+			var aggregatablePublisher = new AggregatableDevicePublisher(unicastAddresses, ssdpDevicePublisherFactory.Object, 0);
 		}
 
 		[TestMethod]
@@ -46,7 +46,7 @@ namespace Test.RssdpPortable.DevicePublisher
 		{
 			var unicastAddresses = new List<string>();
 			ISsdpDevicePublisherFactory ssdpDevicePublisherFactory = null;
-			var aggregatablePublisher = new AggregatableDevicePublisher(unicastAddresses, ssdpDevicePublisherFactory);
+			var aggregatablePublisher = new AggregatableDevicePublisher(unicastAddresses, ssdpDevicePublisherFactory, 0);
 		}
 
 		[TestMethod]
@@ -58,7 +58,7 @@ namespace Test.RssdpPortable.DevicePublisher
 			var ssdpDevicePublisherFactoryMock = new Mock<ISsdpDevicePublisherFactory>();
 
 			//# Act
-			var aggregatablePublisher = new AggregatableDevicePublisher(networkInfoProviderMock.Object, ssdpDevicePublisherFactoryMock.Object);
+			var aggregatablePublisher = new AggregatableDevicePublisher(networkInfoProviderMock.Object, ssdpDevicePublisherFactoryMock.Object, 0);
 
 			//# Assert
 			Assert.IsTrue(!aggregatablePublisher.Publishers.Any());
@@ -73,7 +73,7 @@ namespace Test.RssdpPortable.DevicePublisher
 			var ssdpDevicePublisherFactoryMock = new Mock<ISsdpDevicePublisherFactory>();
 
 			//# Act
-			var aggregatablePublisher = new AggregatableDevicePublisher(networkInfoProviderMock.Object, ssdpDevicePublisherFactoryMock.Object);
+			var aggregatablePublisher = new AggregatableDevicePublisher(networkInfoProviderMock.Object, ssdpDevicePublisherFactoryMock.Object, 0);
 
 			//# Assert
 			ssdpDevicePublisherFactoryMock.Verify(f => f.Create(It.IsAny<string>(), It.IsAny<int>()), Times.Never);
@@ -92,7 +92,7 @@ namespace Test.RssdpPortable.DevicePublisher
 			var ssdpDevicePublisherFactoryMock = new Mock<ISsdpDevicePublisherFactory>();
 
 			//# Act
-			var aggregatablePublisher = new AggregatableDevicePublisher(networkInfoProviderMock.Object, ssdpDevicePublisherFactoryMock.Object);
+			var aggregatablePublisher = new AggregatableDevicePublisher(networkInfoProviderMock.Object, ssdpDevicePublisherFactoryMock.Object, 0);
 
 			//# Assert
 			ssdpDevicePublisherFactoryMock.Verify(f => f.Create("127.0.0.1", 0), Times.Once);
@@ -111,7 +111,7 @@ namespace Test.RssdpPortable.DevicePublisher
 			var ssdpDevicePublisherFactoryMock = new Mock<ISsdpDevicePublisherFactory>();
 
 			//# Act
-			var aggregatablePublisher = new AggregatableDevicePublisher(unicastAddresses, ssdpDevicePublisherFactoryMock.Object);
+			var aggregatablePublisher = new AggregatableDevicePublisher(unicastAddresses, ssdpDevicePublisherFactoryMock.Object, 0);
 
 			//# Assert
 			ssdpDevicePublisherFactoryMock.Verify(f => f.Create("127.0.0.1", 0), Times.Once);
@@ -137,7 +137,7 @@ namespace Test.RssdpPortable.DevicePublisher
 				.Returns(devicePublisherFirstMock.Object)
 				.Returns(devicePublisherSecondMock.Object);
 
-			IAggregatableDevicePublisher aggregatablePublisher = new AggregatableDevicePublisher(networkInfoProviderMock.Object, ssdpDevicePublisherFactoryMock.Object);
+			IAggregatableDevicePublisher aggregatablePublisher = new AggregatableDevicePublisher(networkInfoProviderMock.Object, ssdpDevicePublisherFactoryMock.Object, 0);
 
 			//# Act
 			aggregatablePublisher.Dispose();
@@ -168,7 +168,7 @@ namespace Test.RssdpPortable.DevicePublisher
 				.Returns(devicePublisherFirstMock.Object)
 				.Returns(devicePublisherSecondMock.Object);
 
-			var aggregatablePublisher = new AggregatableDevicePublisher(networkInfoProviderMock.Object, ssdpDevicePublisherFactoryMock.Object);
+			var aggregatablePublisher = new AggregatableDevicePublisher(networkInfoProviderMock.Object, ssdpDevicePublisherFactoryMock.Object, 0);
 
 			//# Act
 			aggregatablePublisher.AddDevice(ssdpRootDevice);
@@ -199,7 +199,7 @@ namespace Test.RssdpPortable.DevicePublisher
 				.Returns(devicePublisherFirstMock.Object)
 				.Returns(devicePublisherSecondMock.Object);
 
-			var aggregatablePublisher = new AggregatableDevicePublisher(networkInfoProviderMock.Object, ssdpDevicePublisherFactoryMock.Object);
+			var aggregatablePublisher = new AggregatableDevicePublisher(networkInfoProviderMock.Object, ssdpDevicePublisherFactoryMock.Object, 0);
 
 			//# Act
 			aggregatablePublisher.RemoveDevice(ssdpRootDevice);
@@ -232,7 +232,7 @@ namespace Test.RssdpPortable.DevicePublisher
 				.Returns(devicePublisherFirstMock.Object)
 				.Returns(devicePublisherSecondMock.Object);
 
-			var aggregatablePublisher = new AggregatableDevicePublisher(networkInfoProviderMock.Object, ssdpDevicePublisherFactoryMock.Object);
+			var aggregatablePublisher = new AggregatableDevicePublisher(networkInfoProviderMock.Object, ssdpDevicePublisherFactoryMock.Object, 0);
 
 			//# Act
 			aggregatablePublisher.AddDevice(ssdpRootDevice);
@@ -262,7 +262,7 @@ namespace Test.RssdpPortable.DevicePublisher
 
 
 			//# Act
-			var aggregatablePublisher = new AggregatableDevicePublisher(networkInfoProviderMock.Object, ssdpDevicePublisherFactoryMock.Object);
+			var aggregatablePublisher = new AggregatableDevicePublisher(networkInfoProviderMock.Object, ssdpDevicePublisherFactoryMock.Object, 0);
 
 			//# Assert
 			Assert.AreEqual(2, aggregatablePublisher.Publishers.Count());

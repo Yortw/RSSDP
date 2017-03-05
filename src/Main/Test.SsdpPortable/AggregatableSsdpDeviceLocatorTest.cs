@@ -20,7 +20,7 @@ namespace Test.RssdpPortable.DeviceLocator
 		{
 			INetworkInfoProvider networkInfoProvider = null;
 			var deviceLocatorFactoryMock = new Mock<ISsdpDeviceLocatorFactory>();
-			var aggregatableLocator = new AggregatableDeviceLocator(networkInfoProvider, deviceLocatorFactoryMock.Object);
+			var aggregatableLocator = new AggregatableDeviceLocator(networkInfoProvider, deviceLocatorFactoryMock.Object, 0);
 		}
 
 		[TestMethod]
@@ -29,7 +29,7 @@ namespace Test.RssdpPortable.DeviceLocator
 		{
 			var networkInfoProvider = new Mock<INetworkInfoProvider>();
 			ISsdpDeviceLocatorFactory deviceLocatorFactoryMock = null;
-			var aggregatableLocator = new AggregatableDeviceLocator(networkInfoProvider.Object, deviceLocatorFactoryMock);
+			var aggregatableLocator = new AggregatableDeviceLocator(networkInfoProvider.Object, deviceLocatorFactoryMock, 0);
 		}
 
 		[TestMethod]
@@ -38,7 +38,7 @@ namespace Test.RssdpPortable.DeviceLocator
 		{
 			List<string> unicastAddresses = null;
 			var devicePublisherFactory = new Mock<ISsdpDeviceLocatorFactory>();
-			var aggregatableLocator = new AggregatableDeviceLocator(unicastAddresses, devicePublisherFactory.Object);
+			var aggregatableLocator = new AggregatableDeviceLocator(unicastAddresses, devicePublisherFactory.Object, 0);
 		}
 
 		[TestMethod]
@@ -47,7 +47,7 @@ namespace Test.RssdpPortable.DeviceLocator
 		{
 			var unicastAddresses = new List<string>();
 			ISsdpDeviceLocatorFactory deviceLocatorFactory = null;
-			var aggregatableLocator = new AggregatableDeviceLocator(unicastAddresses, deviceLocatorFactory);
+			var aggregatableLocator = new AggregatableDeviceLocator(unicastAddresses, deviceLocatorFactory, 0);
 		}
 
 		[TestMethod]
@@ -59,7 +59,7 @@ namespace Test.RssdpPortable.DeviceLocator
 			var deviceLocatorFactoryMock = new Mock<ISsdpDeviceLocatorFactory>();
 
 			//# Act
-			var aggregatableLocator = new AggregatableDeviceLocator(networkInfoProviderMock.Object, deviceLocatorFactoryMock.Object);
+			var aggregatableLocator = new AggregatableDeviceLocator(networkInfoProviderMock.Object, deviceLocatorFactoryMock.Object, 0);
 
 			//# Assert
 			Assert.IsTrue(!aggregatableLocator.Locators.Any());
@@ -74,7 +74,7 @@ namespace Test.RssdpPortable.DeviceLocator
 			var deviceLocatorFactoryMock = new Mock<ISsdpDeviceLocatorFactory>();
 
 			//# Act
-			var aggregatableLocator = new AggregatableDeviceLocator(networkInfoProviderMock.Object, deviceLocatorFactoryMock.Object);
+			var aggregatableLocator = new AggregatableDeviceLocator(networkInfoProviderMock.Object, deviceLocatorFactoryMock.Object, 0);
 
 			//# Assert
 			deviceLocatorFactoryMock.Verify(f => f.Create(It.IsAny<string>(), It.IsAny<int>()), Times.Never);
@@ -94,7 +94,7 @@ namespace Test.RssdpPortable.DeviceLocator
 			deviceLocatorFactoryMock.Setup(f => f.Create(It.IsAny<string>(), It.IsAny<int>())).Returns(new SsdpDeviceLocator());
 
 			//# Act
-			var aggregatableLocator = new AggregatableDeviceLocator(networkInfoProviderMock.Object, deviceLocatorFactoryMock.Object);
+			var aggregatableLocator = new AggregatableDeviceLocator(networkInfoProviderMock.Object, deviceLocatorFactoryMock.Object, 0);
 
 			//# Assert
 			deviceLocatorFactoryMock.Verify(f => f.Create("127.0.0.1", 0), Times.Once);
@@ -114,7 +114,7 @@ namespace Test.RssdpPortable.DeviceLocator
 			deviceLocatorFactoryMock.Setup(f => f.Create(It.IsAny<string>(), It.IsAny<int>())).Returns(new SsdpDeviceLocator());
 
 			//# Act
-			var aggregatableLocator = new AggregatableDeviceLocator(unicastAddresses, deviceLocatorFactoryMock.Object);
+			var aggregatableLocator = new AggregatableDeviceLocator(unicastAddresses, deviceLocatorFactoryMock.Object, 0);
 
 			//# Assert
 			deviceLocatorFactoryMock.Verify(f => f.Create("127.0.0.1", 0), Times.Once);
@@ -142,7 +142,7 @@ namespace Test.RssdpPortable.DeviceLocator
 
 			deviceLocatorFactoryMock.Setup(f => f.Create(It.IsAny<string>(), It.IsAny<int>())).Returns(deviceLocatorMock.Object);
 
-			var aggregatableLocator = new AggregatableDeviceLocator(unicastAddresses, deviceLocatorFactoryMock.Object);
+			var aggregatableLocator = new AggregatableDeviceLocator(unicastAddresses, deviceLocatorFactoryMock.Object, 0);
 			
 			//# Act
 			deviceLocatorMock.Raise(l=>l.DeviceAvailable += null, new DeviceAvailableEventArgs(new DiscoveredSsdpDevice(), true));
@@ -172,7 +172,7 @@ namespace Test.RssdpPortable.DeviceLocator
 
 			deviceLocatorFactoryMock.Setup(f => f.Create(It.IsAny<string>(), It.IsAny<int>())).Returns(deviceLocatorMock.Object);
 
-			var aggregatableLocator = new AggregatableDeviceLocator(unicastAddresses, deviceLocatorFactoryMock.Object);
+			var aggregatableLocator = new AggregatableDeviceLocator(unicastAddresses, deviceLocatorFactoryMock.Object, 0);
 
 			//# Act
 			deviceLocatorMock.Raise(l => l.DeviceUnavailable += null, new DeviceUnavailableEventArgs(new DiscoveredSsdpDevice(), true));
@@ -200,7 +200,7 @@ namespace Test.RssdpPortable.DeviceLocator
 				.Returns(deviceLocatorFirstMock.Object)
 				.Returns(deviceLocatorSecondMock.Object);
 
-			IAggregatableDeviceLocator aggregatableLocator = new AggregatableDeviceLocator(networkInfoProviderMock.Object, deviceLocatorFactoryMock.Object);
+			IAggregatableDeviceLocator aggregatableLocator = new AggregatableDeviceLocator(networkInfoProviderMock.Object, deviceLocatorFactoryMock.Object, 0);
 
 			//# Act
 			aggregatableLocator.Dispose();
@@ -233,7 +233,7 @@ namespace Test.RssdpPortable.DeviceLocator
 				.Returns(deviceLocatorSecondMock.Object);
 
 			//# Act
-			var aggregatableLocator = new AggregatableDeviceLocator(networkInfoProviderMock.Object, deviceLocatorFactoryMock.Object);
+			var aggregatableLocator = new AggregatableDeviceLocator(networkInfoProviderMock.Object, deviceLocatorFactoryMock.Object, 0);
 
 			//# Assert
 			Assert.AreEqual(2, aggregatableLocator.Locators.Count());
@@ -260,10 +260,10 @@ namespace Test.RssdpPortable.DeviceLocator
 				.Returns(deviceLocatorFirstMock.Object)
 				.Returns(deviceLocatorSecondMock.Object);
 
-			var aggregatableLocator = new AggregatableDeviceLocator(networkInfoProviderMock.Object, deviceLocatorFactoryMock.Object);
+			var aggregatableLocator = new AggregatableDeviceLocator(networkInfoProviderMock.Object, deviceLocatorFactoryMock.Object, 0);
 			
 			//# Act
-			aggregatableLocator.StartListening();
+			aggregatableLocator.StartListeningForNotifications();
 
 			//# Assert
 			deviceLocatorFirstMock.Verify(l=>l.StartListeningForNotifications());
@@ -288,7 +288,7 @@ namespace Test.RssdpPortable.DeviceLocator
 				.Returns(deviceLocatorFirstMock.Object)
 				.Returns(deviceLocatorSecondMock.Object);
 
-			var aggregatableLocator = new AggregatableDeviceLocator(networkInfoProviderMock.Object, deviceLocatorFactoryMock.Object);
+			var aggregatableLocator = new AggregatableDeviceLocator(networkInfoProviderMock.Object, deviceLocatorFactoryMock.Object, 0);
 
 			//# Act
 			aggregatableLocator.StopListening();
@@ -331,7 +331,7 @@ namespace Test.RssdpPortable.DeviceLocator
 				.Returns(deviceLocatorFirstMock.Object)
 				.Returns(deviceLocatorSecondMock.Object);
 
-			var aggregatableLocator = new AggregatableDeviceLocator(networkInfoProviderMock.Object, deviceLocatorFactoryMock.Object);
+			var aggregatableLocator = new AggregatableDeviceLocator(networkInfoProviderMock.Object, deviceLocatorFactoryMock.Object, 0);
 
 			//# Act
 			var devices = await aggregatableLocator.SearchAsync();

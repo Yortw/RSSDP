@@ -87,6 +87,7 @@ namespace Rssdp
 		/// <param name="ipAddress">The IP address of the local network adapter to bind sockets to. 
 		/// Null or empty string will use <see cref="IPAddress.Any"/>.</param>
 		/// <param name="port"></param>
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "ip")]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Reliability", "CA2000:Dispose objects before losing scope", Justification = "No way to do this here, and we don't want to dispose it except in the (rare) case of an exception anyway.")]
 		public SsdpDevicePublisher(string ipAddress, int port)
 			: this(new SsdpCommunicationsServer(new SocketFactory(ipAddress), port))
