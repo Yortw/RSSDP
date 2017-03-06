@@ -7,7 +7,6 @@ namespace Rssdp.Aggregatable
 	/// <summary>
 	/// Creates a <see cref="ISsdpDevicePublisher"/> for each available network interface
 	/// </summary>
-	[System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "Aggregatable")]
 	public interface IAggregatableDevicePublisher : IDisposable
 	{
 		/// <summary>

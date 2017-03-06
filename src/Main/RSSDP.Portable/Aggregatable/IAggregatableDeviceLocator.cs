@@ -8,7 +8,6 @@ namespace Rssdp.Aggregatable
 	/// <summary>
 	/// Creates a <see cref="ISsdpDeviceLocator"/> for each available network interface
 	/// </summary>
-	[System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "Aggregatable")]
 	public interface IAggregatableDeviceLocator : IDisposable
 	{
 		/// <summary>

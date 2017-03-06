@@ -8,7 +8,6 @@ namespace Rssdp.Aggregatable
 	/// <summary>
 	/// Creates a <see cref="ISsdpDevicePublisher"/> for each available network interface
 	/// </summary>
-	[System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "Aggregatable")]
 	public sealed class AggregatableDevicePublisher : IAggregatableDevicePublisher
 	{
 		private readonly IList<ISsdpDevicePublisher> _ssdpDevicePublisherses = new List<ISsdpDevicePublisher>();

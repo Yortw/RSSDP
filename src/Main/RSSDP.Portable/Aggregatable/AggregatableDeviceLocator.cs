@@ -9,7 +9,6 @@ namespace Rssdp.Aggregatable
 	/// <summary>
 	/// Creates a device locators for each available network interface
 	/// </summary>
-	[System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "Aggregatable")]
 	public sealed class AggregatableDeviceLocator : IAggregatableDeviceLocator
 	{
 		private readonly IList<ISsdpDeviceLocator> _ssdpDeviceLocators = new List<ISsdpDeviceLocator>();
