@@ -14,15 +14,9 @@ namespace Rssdp
 		/// <param name="ipAddress">local ip address</param>
 		/// <param name="port">local port</param>
 		/// <exception cref="InvalidOperationException">If ip address is null or empty</exception>
-		[System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Reliability", "CA2000:Dispose objects before losing scope")]
 		public ISsdpDevicePublisher Create(string ipAddress, int port)
 		{
-			if (string.IsNullOrEmpty(ipAddress)) throw new InvalidOperationException("ipAddress");
-
-			var socketFactory = new SocketFactory(ipAddress);
-			var ssdpCommunicationsServer = new SsdpCommunicationsServer(socketFactory, port);
-			var ssdpDevicePublisher = new SsdpDevicePublisher(ssdpCommunicationsServer);
-			return ssdpDevicePublisher;
+			throw PCL.StubException;
 		}
 	}
 }

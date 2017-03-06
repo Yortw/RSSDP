@@ -14,7 +14,6 @@ namespace Rssdp
 		/// <param name="ipAddress">local ip address</param>
 		/// <param name="port">local port</param>
 		/// <exception cref="InvalidOperationException">If ip address is null or empty</exception>
-		[System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "ip")]
 		ISsdpDeviceLocator Create(string ipAddress, int port);
 	}
 }

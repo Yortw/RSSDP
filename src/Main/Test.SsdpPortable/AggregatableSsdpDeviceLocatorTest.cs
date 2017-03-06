@@ -9,7 +9,7 @@ using Rssdp.Aggregatable;
 using Rssdp.Infrastructure;
 using Rssdp.Network;
 
-namespace Test.RssdpPortable.DeviceLocator
+namespace Test.RssdpPortable
 {
 	[TestClass]
 	public class AggregatableSsdpDeviceLocatorTest

@@ -8,7 +8,7 @@ using Rssdp.Aggregatable;
 using Rssdp.Infrastructure;
 using Rssdp.Network;
 
-namespace Test.RssdpPortable.DevicePublisher
+namespace Test.RssdpPortable
 {
 	[TestClass]
 	public class AggregatableSsdpDevicePublisherTest

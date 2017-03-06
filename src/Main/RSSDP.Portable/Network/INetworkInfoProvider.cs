@@ -11,8 +11,6 @@ namespace Rssdp.Network
 		/// Provides a list of addresses
 		/// </summary>
 		/// <remarks> Only if the adapter supports multicast and for the following types: Ethernet, Wireless80211</remarks>
-		[System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", "CA1709:IdentifiersShouldBeCasedCorrectly", MessageId = "Ip")]
-		[System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "Ip")]
 		IEnumerable<string> GetIpAddressesFromAdapters();
 	}
 }

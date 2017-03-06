@@ -17,12 +17,7 @@ namespace Rssdp
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Reliability", "CA2000:Dispose objects before losing scope")]
 		public ISsdpDeviceLocator Create(string ipAddress, int port)
 		{
-			if (string.IsNullOrEmpty(ipAddress)) throw new InvalidOperationException("ipAddress");
-
-			var socketFactory = new SocketFactory(ipAddress);
-			var ssdpCommunicationsServer = new SsdpCommunicationsServer(socketFactory, port);
-			var deviceLocator = new SsdpDeviceLocator(ssdpCommunicationsServer);
-			return deviceLocator;
+			throw PCL.StubException;
 		}
 	}
 }
