@@ -79,6 +79,23 @@ _Publisher = new SsdpDevicePublisher();
 _Publisher.AddDevice(deviceDefinition);    
 ```
 
+#### Publishing a Device via AggregatablePublisher
+
+Aggregatable publisher creates several publishers on each available network adapter which support multicast.
+
+Or you can use the list of ip addresses.
+
+The device will be published on each publisher
+
+```C#
+var aggregatableDevicePublisher = new AggregatableDevicePublisher(
+				new NetworkInfoProvider(),
+				new SsdpDevicePublisherFactory(),
+				45454);
+				
+aggregatableDevicePublisher.AddDevice(rootDevice);
+```
+
 ### Discovering Devices
 Basically, just create an SsdpDeviceLocator object and call the search method. By default the method will search for all devices, but you can specify a search target string in the following formats;
 
@@ -172,6 +189,24 @@ async static void deviceLocator_DeviceAvailable(object sender, DeviceAvailableEv
 	Console.WriteLine(fullDevice.FriendlyName);
 	Console.WriteLine();
 }
+```
+### Discovering Devices and Search via AggregatableLocator
+#### 
+
+Aggregatable locator creates several locators on each available network adapter which support multicast.
+
+Or you can use the list of ip addresses.
+
+The devices will be searched by each locator and returning the aggregate result.
+
+```C#
+var aggregatableDeviceLocator = new AggregatableDeviceLocator(new NetworkInfoProvider(), new SsdpDeviceLocatorFactory(), 0);
+aggregatableDeviceLocator.DeviceAvailable += OnDeviceAvailable;
+aggregatableDeviceLocator.DeviceUnavailable += OnDeviceUnavailable;
+
+aggregatableDeviceLocator.StartListeningForNotifications();
+
+var devices = await aggregatableDeviceLocator.SearchAsync();
 ```
 
 #### IPV6 support
