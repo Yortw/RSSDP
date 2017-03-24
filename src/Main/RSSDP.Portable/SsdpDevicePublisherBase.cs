@@ -641,6 +641,11 @@ USN: {1}
 				_Log.LogWarning("Publisher stopped, exception " + ex.Message);
 				Dispose();
 			}
+			catch (Exception ex)
+			{
+				_Log.LogWarning("Publisher stopped, exception " + ex.Message);
+				Dispose();
+			}
 			finally
 			{
 				if (!this.IsDisposed)
