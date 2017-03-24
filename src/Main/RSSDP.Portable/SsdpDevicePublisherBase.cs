@@ -593,6 +593,7 @@ USN: {1}
 
 		#region Alive
 
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1031:DoNotCatchGeneralExceptionTypes")]
 		private void SendAllAliveNotifications(object state)
 		{
 			try
