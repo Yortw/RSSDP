@@ -593,6 +593,7 @@ USN: {1}
 
 		#region Alive
 
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1031:DoNotCatchGeneralExceptionTypes")]
 		private void SendAllAliveNotifications(object state)
 		{
 			try
@@ -637,6 +638,11 @@ USN: {1}
 				}
 			}
 			catch (ObjectDisposedException ex)
+			{
+				_Log.LogWarning("Publisher stopped, exception " + ex.Message);
+				Dispose();
+			}
+			catch (Exception ex)
 			{
 				_Log.LogWarning("Publisher stopped, exception " + ex.Message);
 				Dispose();
