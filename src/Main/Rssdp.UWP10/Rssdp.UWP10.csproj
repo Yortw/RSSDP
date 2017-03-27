@@ -130,12 +130,6 @@
       <SubType>Designer</SubType>
     </Content>
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Rssdp.NetCore\Rssdp.NetCore.csproj">
-      <Project>{ab769ed2-0a3d-41b7-a702-0e5b08da158e}</Project>
-      <Name>Rssdp.NetCore</Name>
-    </ProjectReference>
-  </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>
   </PropertyGroup>

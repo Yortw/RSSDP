@@ -644,7 +644,7 @@ USN: {1}
 			}
 			catch (Exception ex)
 			{
-				_Log.LogWarning("Publisher stopped, exception " + ex.Message);
+				_Log.LogError("Publisher stopped, exception " + ex.Message);
 				Dispose();
 			}
 			finally
