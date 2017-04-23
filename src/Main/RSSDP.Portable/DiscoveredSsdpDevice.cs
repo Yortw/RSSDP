@@ -87,6 +87,9 @@ namespace Rssdp
 		/// <remarks>
 		/// <para>This method may choose to cache (or return cached) information if called multiple times within the <see cref="CacheLifetime"/> period.</para>
 		/// </remarks>
+		/// <exception cref="System.Exception">This method using an HttpClient instance to retrieve the device description document, and as such any exception that can be thrown by HttpClient may be rethrown by this method.
+		/// On the UWP platform this is likely to be a <see cref="System.Exception"/> instance and the hresult can be checked to determine the exact nature of the error. On other platforms it is likely to be a System.Net.WebException or System.Net.Http.HttpRequestException.
+		/// Check the documentation for HttpClient on the platform(s) you're using.</exception> 
 		/// <returns>An <see cref="SsdpDevice"/> instance describing the full device details.</returns>
 		public async Task<SsdpDevice> GetDeviceInfo()
 		{
@@ -105,6 +108,9 @@ namespace Rssdp
 		/// <para>This method performs no error handling, if an exception occurs downloading or parsing the document it will be thrown to the calling code. Ensure you setup correct error handling for these scenarios.</para>
 		/// </remarks>
 		/// <param name="downloadHttpClient">A <see cref="System.Net.Http.HttpClient"/> to use when downloading the document data.</param>
+		/// <exception cref="System.Exception">This method using an HttpClient instance to retrieve the device description document, and as such any exception that can be thrown by HttpClient may be rethrown by this method.
+		/// On the UWP platform this is likely to be a <see cref="System.Exception"/> instance and the hresult can be checked to determine the exact nature of the error. On other platforms it is likely to be a System.Net.WebException or System.Net.Http.HttpRequestException.
+		/// Check the documentation for HttpClient on the platform(s) you're using.</exception> 
 		/// <returns>An <see cref="SsdpDevice"/> instance describing the full device details.</returns>
 		public async Task<SsdpRootDevice> GetDeviceInfo(HttpClient downloadHttpClient)
 		{
