@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
   <metadata>
     <id>Rssdp</id>
-    <version>3.0.1</version>
+    <version>3.0.2</version>
     <title>Rssdp</title>
     <authors>Troy Willmot</authors>
     <owners>Yortw</owners>
@@ -12,7 +12,7 @@
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>Really Simple Service Discovery Protocol - a 100% .Net implementation of the SSDP protocol for publishing custom/basic devices, and discovering all device types on a network.</description>
     <summary>A 100% .Net implementation of the SSDP protocol for basic and custom device types.</summary>
-    <releaseNotes>Prevent unhandled/uncatchable background thread exceptions crashing calling app.</releaseNotes>
+    <releaseNotes>Fix for deserialisation problems when a custom property with an empty value exists in the device description document.</releaseNotes>
     <copyright>Copyright 2017</copyright>
     <language>en-AU</language>
     <tags>portable xamarin ios android windowsphone winrt uwp mobile ssdp discovery device service protocol upnp netfx40 .net4</tags>

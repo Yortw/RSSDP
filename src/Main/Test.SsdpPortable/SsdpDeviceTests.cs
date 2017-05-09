@@ -461,6 +461,45 @@ namespace Test.RssdpPortable
 			Assert.IsFalse(subDevice.CustomProperties.Contains("X_Rhapsody-Extension"));
 		}
 
+		[TestMethod]
+		public void DeserialisationHandlesEmptyCustomProperties()
+		{
+			//See issue #70 in repo - empty custom properties would cause
+			//all following properties to be skipped.
+
+			var docString = @"<?xml version=""1.0"" encoding=""UTF-8""?>
+<root xmlns=""urn:schemas-upnp-org:device-1-0"">
+  <specVersion>
+    <major>1</major>
+    <minor>0</minor>
+  </specVersion>
+  <device>
+    <deviceType>urn:schemas-upnp-org:device:MediaServer:1</deviceType>
+    <UDN>uuid:55076f6e-6b79-1d65-a472-00059a3c7a00</UDN>
+    <friendlyName>Twonky :)</friendlyName>
+    <pv:extension xmlns:pv=""http://www.pv.com/pvns/""></pv:extension>
+    <manufacturer>PacketVideo</manufacturer>
+    <manufacturerURL>http://www.pv.com</manufacturerURL>
+    <modelName>TwonkyServer</modelName>
+    <modelURL>http://www.twonky.com</modelURL>
+    <modelDescription>TwonkyServer (Windows, T-206)</modelDescription>
+    <modelNumber>8.4</modelNumber>
+    <serialNumber>8.4</serialNumber>
+  </device>
+</root>";
+
+
+			var device = new SsdpRootDevice(new Uri("http://192.168.1.11/UPnP/DeviceDescription"), TimeSpan.FromMinutes(30), docString);
+			Assert.IsFalse(device.CustomProperties.Contains("pv:extension"));
+			Assert.AreEqual(device.Manufacturer, "PacketVideo");
+			Assert.AreEqual(device.ManufacturerUrl, "http://www.pv.com");
+			Assert.AreEqual(device.ModelName, "TwonkyServer");
+			Assert.AreEqual(device.ModelUrl, "http://www.twonky.com");
+			Assert.AreEqual(device.ModelDescription, "TwonkyServer (Windows, T-206)");
+			Assert.AreEqual(device.ModelNumber, "8.4");
+			Assert.AreEqual(device.SerialNumber, "8.4");
+		}
+
 		#endregion
 
 		#region Service Tests

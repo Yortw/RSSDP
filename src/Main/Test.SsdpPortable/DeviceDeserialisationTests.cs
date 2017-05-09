@@ -240,7 +240,7 @@ namespace Test.RssdpPortable
 		{
 			var rootDevice = new SsdpRootDevice(null, TimeSpan.FromMinutes(30), "<root />");
 		}
-	
+
 		private void AssertDevicesAreSame(SsdpRootDevice originalDevice, SsdpRootDevice deserialisedDevice)
 		{
 			Assert.AreEqual(originalDevice.CacheLifetime, deserialisedDevice.CacheLifetime);
