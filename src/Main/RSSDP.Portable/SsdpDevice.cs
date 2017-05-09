@@ -920,7 +920,7 @@ namespace Rssdp
 
 			if (reader.NodeType != XmlNodeType.CDATA && reader.NodeType != XmlNodeType.Text)
 			{
-				while (!reader.EOF && (reader.NodeType != XmlNodeType.EndElement || reader.Name != newProp.Name || reader.Prefix != newProp.Namespace || reader.Depth != depth))
+				while (!reader.EOF && (reader.NodeType != XmlNodeType.EndElement || reader.LocalName != newProp.Name || reader.Prefix != newProp.Namespace || reader.Depth != depth))
 				{
 					reader.Read();
 				}
