@@ -9,7 +9,7 @@
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Rssdp</RootNamespace>
-    <AssemblyName>Rssdp.NetCore</AssemblyName>
+    <AssemblyName>Rssdp.Native</AssemblyName>
     <DefaultLanguage>en-US</DefaultLanguage>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{786C830F-07A1-408B-BD7F-6EE04809D6DB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
@@ -25,7 +25,7 @@
     <DefineConstants>TRACE;DEBUG;CODE_ANALYSIS;NETSTANDARD;NETSTANDARD1_3;CODE_ANALYSIS</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <DocumentationFile>bin\Debug\Rssdp.NetCore.XML</DocumentationFile>
+    <DocumentationFile>bin\Debug\Rssdp.Native.xml</DocumentationFile>
     <RunCodeAnalysis>true</RunCodeAnalysis>
     <CodeAnalysisRuleSet>..\RssdpRuleset.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
@@ -36,7 +36,7 @@
     <DefineConstants>TRACE;CODE_ANALYSIS;CODE_ANALYSIS;NETSTANDARD;NETSTANDARD1_3;CODE_ANALYSIS;</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <DocumentationFile>..\lib\netstandard13\Rssdp.NetCore.XML</DocumentationFile>
+    <DocumentationFile>..\lib\netstandard13\Rssdp.Native.xml</DocumentationFile>
     <RunCodeAnalysis>true</RunCodeAnalysis>
     <CodeAnalysisRuleSet>..\RssdpRuleset.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
