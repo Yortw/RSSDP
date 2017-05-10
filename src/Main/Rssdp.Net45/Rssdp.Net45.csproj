@@ -52,6 +52,18 @@
     <Compile Include="..\RSSDP.NetFx40\SsdpDevicePublisher.cs">
       <Link>SsdpDevicePublisher.cs</Link>
     </Compile>
+    <Compile Include="..\RSSDP.Portable\Aggregatable\AggregatableDeviceLocator.cs">
+      <Link>AggregatableDeviceLocator.cs</Link>
+    </Compile>
+    <Compile Include="..\RSSDP.Portable\Aggregatable\AggregatableDevicePublisher.cs">
+      <Link>AggregatableDevicePublisher.cs</Link>
+    </Compile>
+    <Compile Include="..\RSSDP.Portable\Aggregatable\IAggregatableDeviceLocator.cs">
+      <Link>IAggregatableDeviceLocator.cs</Link>
+    </Compile>
+    <Compile Include="..\RSSDP.Portable\Aggregatable\IAggregatableDevicePublisher.cs">
+      <Link>IAggregatableDevicePublisher.cs</Link>
+    </Compile>
     <Compile Include="..\RSSDP.Portable\CustomHttpHeaders.cs">
       <Link>CustomHttpHeaders.cs</Link>
     </Compile>
@@ -100,8 +112,14 @@
     <Compile Include="..\RSSDP.Portable\ISsdpDeviceLocator.cs">
       <Link>ISsdpDeviceLocator.cs</Link>
     </Compile>
+    <Compile Include="..\RSSDP.Portable\ISsdpDeviceLocatorFactory.cs">
+      <Link>ISsdpDeviceLocatorFactory.cs</Link>
+    </Compile>
     <Compile Include="..\RSSDP.Portable\ISsdpDevicePublisher.cs">
       <Link>ISsdpDevicePublisher.cs</Link>
+    </Compile>
+    <Compile Include="..\RSSDP.Portable\ISsdpDevicePublisherFactory.cs">
+      <Link>ISsdpDevicePublisherFactory.cs</Link>
     </Compile>
     <Compile Include="..\RSSDP.Portable\ISsdpLogger.cs">
       <Link>ISsdpLogger.cs</Link>
@@ -111,6 +129,9 @@
     </Compile>
     <Compile Include="..\RSSDP.Portable\IUPnPDeviceValidator.cs">
       <Link>IUPnPDeviceValidator.cs</Link>
+    </Compile>
+    <Compile Include="..\RSSDP.Portable\Network\INetworkInfoProvider.cs">
+      <Link>INetworkInfoProvider.cs</Link>
     </Compile>
     <Compile Include="..\RSSDP.Portable\NullLogger.cs">
       <Link>NullLogger.cs</Link>
@@ -187,8 +208,17 @@
     <Compile Include="..\Shared\ExceptionExtensions.cs">
       <Link>ExceptionExtensions.cs</Link>
     </Compile>
+    <Compile Include="..\Shared\NetworkInfoProvider.cs">
+      <Link>NetworkInfoProvider.cs</Link>
+    </Compile>
     <Compile Include="..\Shared\SsdpDeviceLocator.cs">
       <Link>SsdpDeviceLocator.cs</Link>
+    </Compile>
+    <Compile Include="..\Shared\SsdpDeviceLocatorFactory.cs">
+      <Link>SsdpDeviceLocatorFactory.cs</Link>
+    </Compile>
+    <Compile Include="..\Shared\SsdpDevicePublisherFactory.cs">
+      <Link>SsdpDevicePublisherFactory.cs</Link>
     </Compile>
     <Compile Include="..\Shared\SsdpTraceLogger.cs">
       <Link>SsdpTraceLogger.cs</Link>

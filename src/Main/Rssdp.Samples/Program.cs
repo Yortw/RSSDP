@@ -4,13 +4,17 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Rssdp;
+using Rssdp.Aggregatable;
+using Rssdp.Infrastructure;
 
 namespace Rssdp.Samples
 {
 	class Program
 	{
-		private static SsdpDevicePublisher _DevicePublisher;
-		private static SsdpDeviceLocator _BroadcastListener;
+		private static SsdpDevicePublisher _devicePublisher;
+		private static SsdpDeviceLocator _broadcastListener;
+		private static IAggregatableDevicePublisher _aggregatableDevicePublisher;
+		private static IAggregatableDeviceLocator _aggregatableDeviceLocator;
 
 		static void Main(string[] args)
 		{
@@ -47,6 +51,11 @@ namespace Rssdp.Samples
 			Console.WriteLine("B to search for basic devices");
 			Console.WriteLine("U to search for published device by UUID");
 			Console.WriteLine("L to listen for notifications");
+			Console.WriteLine("--------------------------------");
+			Console.WriteLine("Q to publish device on all interfaces (aggregatable publisher)");
+			Console.WriteLine("W to listen for notifications on all interfaces (aggregatable locator)");
+			Console.WriteLine("E to search for all devices on all interfaces (aggregatable locator)");
+			Console.WriteLine("--------------------------------");
 			Console.WriteLine("X to exit");
 			Console.WriteLine();
 		}
@@ -79,6 +88,18 @@ namespace Rssdp.Samples
 					ListenForBroadcasts();
 					break;
 
+				case "Q":
+					PublishOnAllInterfaces();
+					break;
+
+				case "W":
+					ListenForBroadcastsOnAllInterfaces();
+					break;
+
+				case "E":
+					SearchForAllDevicesOnAllInterfaces().Wait();
+					break;
+
 				case "?":
 					WriteOutOptions();
 					break;
@@ -91,22 +112,104 @@ namespace Rssdp.Samples
 
 		private static void ListenForBroadcasts()
 		{
-			if (_BroadcastListener != null)
+			if (_broadcastListener != null)
 			{
 				Console.WriteLine("Closing previous listener...");
-				_BroadcastListener.DeviceAvailable -= _BroadcastListener_DeviceAvailable;
-				_BroadcastListener.DeviceUnavailable -= _BroadcastListener_DeviceUnavailable;
+				_broadcastListener.DeviceAvailable -= _BroadcastListener_DeviceAvailable;
+				_broadcastListener.DeviceUnavailable -= _BroadcastListener_DeviceUnavailable;
 
-				_BroadcastListener.StopListeningForNotifications();
-				_BroadcastListener.Dispose();
+				_broadcastListener.StopListeningForNotifications();
+				_broadcastListener.Dispose();
 			}
 
 			Console.WriteLine("Starting broadcast listener");
-			_BroadcastListener = new SsdpDeviceLocator();
-			_BroadcastListener.DeviceAvailable += _BroadcastListener_DeviceAvailable;
-			_BroadcastListener.DeviceUnavailable += _BroadcastListener_DeviceUnavailable;
-			_BroadcastListener.StartListeningForNotifications();
+			_broadcastListener = new SsdpDeviceLocator();
+			_broadcastListener.DeviceAvailable += _BroadcastListener_DeviceAvailable;
+			_broadcastListener.DeviceUnavailable += _BroadcastListener_DeviceUnavailable;
+			_broadcastListener.StartListeningForNotifications();
 			Console.WriteLine("Now listening for broadcasts");
+		}
+
+		private static void PublishOnAllInterfaces()
+		{
+			if (_aggregatableDevicePublisher != null)
+			{
+				Console.WriteLine("Stopping previous publisher.");
+				_aggregatableDevicePublisher.Dispose();
+			}
+
+			// Create a device publisher
+			_aggregatableDevicePublisher = new AggregatableDevicePublisher(
+				new NetworkInfoProvider(),
+				new SsdpDevicePublisherFactory(),
+				45454);
+
+			// Create the device(s) we want to publish.
+			var rootDevice = new SsdpRootDevice
+			{
+				CacheLifetime = TimeSpan.FromMinutes(30),
+				FriendlyName = "Sample RSSDP Device",
+				Manufacturer = "RSSDP",
+				ModelNumber = "123",
+				ModelName = "RSSDP Sample Device",
+				SerialNumber = "123",
+				Uuid = System.Guid.NewGuid().ToString()
+			};
+			rootDevice.CustomResponseHeaders.Add(new CustomHttpHeader("X-MachineName", Environment.MachineName));
+
+			var service = new SsdpService()
+			{
+				Uuid = System.Guid.NewGuid().ToString(),
+				ServiceType = "test-service-type",
+				ServiceTypeNamespace = "rssdp-test-namespace",
+				ControlUrl = new Uri("/test/control", UriKind.Relative),
+				EventSubUrl = new Uri("/test/event", UriKind.Relative),
+				ScpdUrl = new Uri("/test", UriKind.Relative)
+			};
+			rootDevice.AddService(service);
+
+			// Now publish by adding them to the all publishers.
+			_aggregatableDevicePublisher.AddDevice(rootDevice);
+
+			Console.WriteLine($"Has been created a {_aggregatableDevicePublisher.Publishers.Count()} publishers");
+
+			Console.WriteLine("Publishing devices: ");
+			WriteOutDevices(rootDevice);
+			Console.WriteLine();
+		}
+
+		private static void ListenForBroadcastsOnAllInterfaces()
+		{
+			if (_aggregatableDeviceLocator != null)
+			{
+				Console.WriteLine("Closing previous listener...");
+				_aggregatableDeviceLocator.DeviceAvailable -= _AggregatableListener_DeviceAvailable;
+				_aggregatableDeviceLocator.DeviceUnavailable -= _AggregatableListener_DeviceUnavailable;
+
+				_aggregatableDeviceLocator.StopListening();
+				_aggregatableDeviceLocator.Dispose();
+			}
+
+			Console.WriteLine("Starting broadcast listener on all interfaces");
+			_aggregatableDeviceLocator = new AggregatableDeviceLocator(new NetworkInfoProvider(), new SsdpDeviceLocatorFactory(), 0);
+			_aggregatableDeviceLocator.DeviceAvailable += _AggregatableListener_DeviceAvailable;
+			_aggregatableDeviceLocator.DeviceUnavailable += _AggregatableListener_DeviceUnavailable;
+			_aggregatableDeviceLocator.StartListeningForNotifications();
+			Console.WriteLine("Now listening for broadcasts on all interfaces");
+		}
+
+		static void _AggregatableListener_DeviceAvailable(object sender, DeviceAvailableEventArgs e)
+		{
+			Console.ForegroundColor = ConsoleColor.Cyan;
+			Console.WriteLine("Alive Broadcast: " + e.DiscoveredDevice.Usn + " @ " + e.DiscoveredDevice.DescriptionLocation);
+			Console.ForegroundColor = ConsoleColor.Gray;
+		}
+
+		static void _AggregatableListener_DeviceUnavailable(object sender, DeviceUnavailableEventArgs e)
+		{
+			Console.ForegroundColor = ConsoleColor.Cyan;
+			Console.WriteLine("ByeBye Broadcast: " + e.DiscoveredDevice.Usn + " @ " + e.DiscoveredDevice.DescriptionLocation);
+			Console.ForegroundColor = ConsoleColor.Gray;
 		}
 
 		static void _BroadcastListener_DeviceUnavailable(object sender, DeviceUnavailableEventArgs e)
@@ -125,14 +228,14 @@ namespace Rssdp.Samples
 
 		private static void PublishDevices()
 		{
-			if (_DevicePublisher != null)
+			if (_devicePublisher != null)
 			{
 				Console.WriteLine("Stopping previous publisher.");
-				_DevicePublisher.Dispose();
+				_devicePublisher.Dispose();
 			}
 
 			// Create a device publisher
-			_DevicePublisher = new SsdpDevicePublisher();
+			_devicePublisher = new SsdpDevicePublisher("100.72.6.253");
 
 			// Create the device(s) we want to publish.
 			var rootDevice = new SsdpRootDevice()
@@ -159,7 +262,7 @@ namespace Rssdp.Samples
 			rootDevice.AddService(service);
 
 			// Now publish by adding them to the publisher.
-			_DevicePublisher.AddDevice(rootDevice);
+			_devicePublisher.AddDevice(rootDevice);
 
 			Console.WriteLine("Publishing devices: ");
 			WriteOutDevices(rootDevice);
@@ -203,15 +306,27 @@ namespace Rssdp.Samples
 			}
 		}
 
+		private static async Task SearchForAllDevicesOnAllInterfaces()
+		{
+			Console.WriteLine("Searching for all devices on all interfaces...");
+
+			using (var deviceLocator = new AggregatableDeviceLocator(new NetworkInfoProvider(), new SsdpDeviceLocatorFactory(), 0))
+			{
+				var results = await deviceLocator.SearchAsync();
+				foreach (var device in results)
+					WriteOutDevices(device);
+			}
+		}
+
 		private static async Task SearchForDevicesByUuid()
 		{
-			if (_DevicePublisher == null || !_DevicePublisher.Devices.Any())
+			if (_devicePublisher == null || !_devicePublisher.Devices.Any())
 			{
 				Console.WriteLine("No devices being published. Use the (P)ublish command first.");
 				return;
 			}
 
-			var uuid = _DevicePublisher.Devices.First().Uuid;
+			var uuid = _devicePublisher.Devices.First().Uuid;
 			Console.WriteLine("Searching for device with uuid of " + uuid);
 
 			using (var deviceLocator = new SsdpDeviceLocator())

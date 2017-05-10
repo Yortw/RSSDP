@@ -50,6 +50,13 @@
     <Compile Include="DeviceAvailableEventArgs.cs" />
     <Compile Include="DeviceNetworkType.cs" />
     <Compile Include="DeviceNetworkTypeExtensions.cs" />
+    <Compile Include="Aggregatable\AggregatableDeviceLocator.cs" />
+    <Compile Include="Aggregatable\AggregatableDevicePublisher.cs" />
+    <Compile Include="Aggregatable\IAggregatableDeviceLocator.cs" />
+    <Compile Include="Aggregatable\IAggregatableDevicePublisher.cs" />
+    <Compile Include="Network\INetworkInfoProvider.cs" />
+    <Compile Include="ISsdpDeviceLocatorFactory.cs" />
+    <Compile Include="ISsdpDevicePublisherFactory.cs" />
     <Compile Include="ISsdpLogger.cs" />
     <Compile Include="NullLogger.cs" />
     <Compile Include="ServiceEventArgs.cs" />

@@ -11,7 +11,7 @@ namespace Rssdp.Infrastructure
 	/// </remarks>
 	/// <seealso cref="SsdpRootDevice"/>
 	/// <seealso cref="ISsdpDeviceLocator"/>
-	public interface ISsdpDevicePublisher
+	public interface ISsdpDevicePublisher : IDisposable
 	{
 		/// <summary>
 		/// Adds a device (and it's children) to the list of devices being published by this server, making them discoverable to SSDP clients.
@@ -32,6 +32,5 @@ namespace Rssdp.Infrastructure
 		/// </summary>
 		/// <seealso cref="SsdpDevice"/>
 		System.Collections.Generic.IEnumerable<SsdpRootDevice> Devices { get; }
-		
 	}
 }

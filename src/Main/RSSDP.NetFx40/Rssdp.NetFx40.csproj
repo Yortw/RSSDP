@@ -141,8 +141,17 @@
     <Compile Include="..\Shared\ExceptionExtensions.cs">
       <Link>ExceptionExtensions.cs</Link>
     </Compile>
+    <Compile Include="..\Shared\NetworkInfoProvider.cs">
+      <Link>NetworkInfoProvider.cs</Link>
+    </Compile>
     <Compile Include="..\Shared\SsdpDeviceLocator.cs">
       <Link>SsdpDeviceLocator.cs</Link>
+    </Compile>
+    <Compile Include="..\Shared\SsdpDeviceLocatorFactory.cs">
+      <Link>SsdpDeviceLocatorFactory.cs</Link>
+    </Compile>
+    <Compile Include="..\Shared\SsdpDevicePublisherFactory.cs">
+      <Link>SsdpDevicePublisherFactory.cs</Link>
     </Compile>
     <Compile Include="..\Shared\SsdpTraceLogger.cs">
       <Link>SsdpTraceLogger.cs</Link>
@@ -175,6 +184,7 @@
       <Name>RSSDP.Portable</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>

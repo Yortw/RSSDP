@@ -84,6 +84,20 @@ namespace Rssdp
 		/// <summary>
 		/// Partial constructor. 
 		/// </summary>
+		/// <param name="ipAddress">The IP address of the local network adapter to bind sockets to. 
+		/// Null or empty string will use <see cref="IPAddress.Any"/>.</param>
+		/// <param name="port"></param>
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "ip")]
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Reliability", "CA2000:Dispose objects before losing scope", Justification = "No way to do this here, and we don't want to dispose it except in the (rare) case of an exception anyway.")]
+		public SsdpDevicePublisher(string ipAddress, int port)
+			: this(new SsdpCommunicationsServer(new SocketFactory(ipAddress), port))
+		{
+
+		}
+
+		/// <summary>
+		/// Partial constructor. 
+		/// </summary>
 		/// <param name="localPort">The local port to use for socket communications, specify 0 to have the system choose it's own.</param>
 		/// <param name="multicastTimeToLive">The number of hops a multicast packet can make before it expires. Must be 1 or greater.</param>
 		/// <remarks>
