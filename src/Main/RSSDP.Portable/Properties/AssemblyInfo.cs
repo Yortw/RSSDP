@@ -7,9 +7,10 @@ using System;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("Really Simple Service Discovery Protocol")]
-[assembly: AssemblyDescription("Platform independent implementation/types for RSSDP library.")]
+[assembly: AssemblyTitle("RSSDP.Native.Portable")]
+[assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
+[assembly: AssemblyCulture("")]
 [assembly: NeutralResourcesLanguage("en")]
 
 [assembly: CLSCompliant(false)]

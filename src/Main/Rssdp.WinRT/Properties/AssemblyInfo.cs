@@ -8,7 +8,7 @@ using System.Runtime.InteropServices;
 // associated with an assembly.
 [assembly: AssemblyTitle("RSSDP.WinRT")]
 [assembly: AssemblyDescription("WinRT framework specific implementation for RSSDP library.")]
-[assembly: AssemblyConfiguration("")]
+
 [assembly: AssemblyCulture("")]
 [assembly: NeutralResourcesLanguageAttribute("en-US")]
 

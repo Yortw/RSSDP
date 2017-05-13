@@ -9,7 +9,6 @@ using System.Runtime.InteropServices;
 // associated with an assembly.
 [assembly: AssemblyTitle("RSSDP.NetFx40")]
 [assembly: AssemblyDescription(".Net 4 Desktop Framework specific implementation for RSSDP library.")]
-[assembly: AssemblyConfiguration("")]
 
 // Setting ComVisible to false makes the types in this assembly not visible 
 // to COM components.  If you need to access a type in this assembly from 
