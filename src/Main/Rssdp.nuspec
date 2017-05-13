@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
   <metadata>
     <id>Rssdp</id>
-    <version>3.0.3</version>
+    <version>3.5.0-beta</version>
     <title>Rssdp</title>
     <authors>Troy Willmot</authors>
     <owners>Yortw</owners>
@@ -81,9 +81,9 @@
     </dependencies>
   </metadata>
   <files>
-    <file src="lib\monodroid\Rssdp*.dll" target="lib\monodroid" />
-    <file src="lib\monodroid\Rssdp*.xml" target="lib\monodroid" />
-    <file src="lib\monodroid\Rssdp*.pdb" target="lib\monodroid" />
+    <file src="lib\monoandroid\Rssdp*.dll" target="lib\monoandroid" />
+    <file src="lib\monoandroid\Rssdp*.xml" target="lib\monoandroid" />
+    <file src="lib\monoandroid\Rssdp*.pdb" target="lib\monoandroid" />
     <file src="lib\net40\Rssdp*.dll" target="lib\net40" />
     <file src="lib\net40\Rssdp*.xml" target="lib\net40" />
     <file src="lib\net40\Rssdp*.pdb" target="lib\net40" />
