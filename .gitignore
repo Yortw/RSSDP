@@ -82,3 +82,4 @@ TestResults
 /src/Main/.nuget
 /src/Main/lib
 /src/Main/packages/
+/src/RssdpPackageTests/packages

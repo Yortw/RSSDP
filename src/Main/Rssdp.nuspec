@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
   <metadata>
     <id>Rssdp</id>
-    <version>3.5.0-beta</version>
+    <version>3.5.1-beta</version>
     <title>Rssdp</title>
     <authors>Troy Willmot</authors>
     <owners>Yortw</owners>
@@ -93,6 +93,9 @@
     <file src="lib\netcore451\Rssdp*.dll" target="lib\wpa81" />
     <file src="lib\netcore451\Rssdp*.xml" target="lib\wpa81" />
     <file src="lib\netcore451\Rssdp*.pdb" target="lib\wpa81" />
+    <file src="lib\netcore451\Rssdp*.dll" target="lib\netcore451" />
+    <file src="lib\netcore451\Rssdp*.xml" target="lib\netcore451" />
+    <file src="lib\netcore451\Rssdp*.pdb" target="lib\netcore451" />
     <file src="lib\netstandard13\Rssdp*.dll" target="lib\netstandard13" />
     <file src="lib\netstandard13\Rssdp*.xml" target="lib\netstandard13" />
     <file src="lib\netstandard13\Rssdp*.pdb" target="lib\netstandard13" />
