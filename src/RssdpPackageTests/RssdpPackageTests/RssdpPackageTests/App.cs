@@ -9,9 +9,11 @@ namespace RssdpPackageTests
 {
 	public class App : Application
 	{
+		private ListView listView;
+
 		public App()
 		{
-			var listView = new ListView();
+			listView = new ListView();
 
 			// The root page of your application
 			var content = new ContentPage
@@ -22,7 +24,6 @@ namespace RssdpPackageTests
 
 			MainPage = new NavigationPage(content);
 
-			var t = SearchAsync(listView);
 		}
 
 		private async Task SearchAsync(ListView listView)
@@ -39,6 +40,7 @@ namespace RssdpPackageTests
 		protected override void OnStart()
 		{
 			// Handle when your app starts
+			var t = SearchAsync(listView);
 		}
 
 		protected override void OnSleep()
