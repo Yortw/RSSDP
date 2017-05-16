@@ -56,12 +56,18 @@ namespace Rssdp
 			_Socket.ReceiveFromAsync(new System.ArraySegment<Byte>(state.Buffer), System.Net.Sockets.SocketFlags.None, state.EndPoint)
 				.ContinueWith((task, asyncState) =>
 				{
-					if (task.Status != TaskStatus.Faulted)
+					if (this.IsDisposed) return;
+
+					try
 					{
-						var receiveState = asyncState as AsyncReceiveState;
-						receiveState.EndPoint = task.Result.RemoteEndPoint;
-						ProcessResponse(receiveState, () => task.Result.ReceivedBytes);
+						if (task.Status != TaskStatus.Faulted)
+						{
+							var receiveState = asyncState as AsyncReceiveState;
+							receiveState.EndPoint = task.Result.RemoteEndPoint;
+							ProcessResponse(receiveState, () => task.Result.ReceivedBytes);
+						}
 					}
+					catch (ObjectDisposedException) { if (!this.IsDisposed) throw; } //Only rethrow disposed exceptions if we're NOT disposed, because then they are unexpected.
 				}, state);
 #else
 			_Socket.BeginReceiveFrom(state.Buffer, 0, state.Buffer.Length, System.Net.Sockets.SocketFlags.None, ref state.EndPoint,
