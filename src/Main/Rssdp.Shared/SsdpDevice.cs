@@ -821,69 +821,76 @@ namespace Rssdp
 				device.Uuid = device.Udn;
 		}
 
-		private static void LoadIcons(XmlReader reader, SsdpDevice device)
-		{
-			while (!reader.EOF)
-			{
-				while (!reader.EOF && reader.NodeType != XmlNodeType.Element)
-				{
-					reader.Read();
-				}
+	    private static void LoadIcons(XmlReader reader, SsdpDevice device)
+        {
+	        while (!reader.EOF && reader.NodeType != XmlNodeType.Element)
+	        {
+	            reader.Read();
+	        }
 
-				if (reader.LocalName != "icon") break;
+	        while (!reader.EOF)
+	        {
+	            while (!reader.EOF && reader.NodeType != XmlNodeType.Element && !(reader.NodeType == XmlNodeType.EndElement && reader.Name == "isonList"))
+	            {
+	                reader.Read();
+	            }
 
-				while (reader.Name == "icon")
-				{
-					var icon = new SsdpDeviceIcon();
-					LoadIconProperties(reader, icon);
-					device.Icons.Add(icon);
+	            if (reader.LocalName == "icon")
+	            {
+	                var icon = new SsdpDeviceIcon();
+	                LoadIconProperties(reader, icon);
+	                device.Icons.Add(icon);
+	            }
+	            else
+	                break;
+	        }
+	    }
 
-					reader.Read();
-				}
-			}
-		}
+	    private static void LoadIconProperties(XmlReader reader, SsdpDeviceIcon icon)
+	    {
+	        while (!reader.EOF && (reader.LocalName != "icon" || reader.NodeType != XmlNodeType.Element))
+	        {
+	            reader.Read();
+	        }
 
-		private static void LoadIconProperties(XmlReader reader, SsdpDeviceIcon icon)
-		{
-			while (!reader.EOF)
-			{
-				if (reader.NodeType != XmlNodeType.Element)
-				{
-					if (reader.NodeType == XmlNodeType.EndElement && reader.Name == "icon") break;
+	        while (!reader.EOF)
+	        {
+	            if (reader.NodeType == XmlNodeType.EndElement && reader.Name == "icon")
+	            {
+	                reader.Read();
+	                break;
+	            }
 
-					reader.Read();
-					continue;
-				}
+	            switch (reader.LocalName)
+	            {
+	                case "depth":
+	                    icon.ColorDepth = reader.ReadElementContentAsInt();
+	                    break;
 
-				switch (reader.LocalName)
-				{
-					case "depth":
-						icon.ColorDepth = reader.ReadElementContentAsInt();
-						break;
+	                case "height":
+	                    icon.Height = reader.ReadElementContentAsInt();
+	                    break;
 
-					case "height":
-						icon.Height = reader.ReadElementContentAsInt();
-						break;
+	                case "width":
+	                    icon.Width = reader.ReadElementContentAsInt();
+	                    break;
 
-					case "width":
-						icon.Width = reader.ReadElementContentAsInt();
-						break;
+	                case "mimetype":
+	                    icon.MimeType = reader.ReadElementContentAsString();
+	                    break;
 
-					case "mimetype":
-						icon.MimeType = reader.ReadElementContentAsString();
-						break;
+	                case "url":
+	                    icon.Url = StringToUri(reader.ReadElementContentAsString());
+	                    break;
 
-					case "url":
-						icon.Url = StringToUri(reader.ReadElementContentAsString());
-						break;
+	                default:
+	                    reader.Read();
+	                    break;
+	            }
+	        }
+	    }
 
-				}
-
-				reader.Read();
-			}
-		}
-
-		private void LoadChildDevices(XmlReader reader, SsdpDevice device)
+	    private void LoadChildDevices(XmlReader reader, SsdpDevice device)
 		{
 			while (!reader.EOF && reader.NodeType != XmlNodeType.Element)
 			{
