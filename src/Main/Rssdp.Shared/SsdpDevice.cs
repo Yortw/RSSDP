@@ -830,7 +830,7 @@ namespace Rssdp
 
 	        while (!reader.EOF)
 	        {
-	            while (!reader.EOF && reader.NodeType != XmlNodeType.Element && !(reader.NodeType == XmlNodeType.EndElement && reader.Name == "isonList"))
+	            while (!reader.EOF && reader.NodeType != XmlNodeType.Element && !(reader.NodeType == XmlNodeType.EndElement && reader.Name == "iconList"))
 	            {
 	                reader.Read();
 	            }
