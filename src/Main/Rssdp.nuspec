@@ -1,52 +1,116 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
-    <metadata>
-        <id>Rssdp</id>
-        <version>1.0.0.11</version>
-        <title>Rssdp</title>
-        <authors>Troy Willmot</authors>
-        <owners>Yortw</owners>
-        <licenseUrl>https://github.com/Yortw/RSSDP/blob/master/LICENSE</licenseUrl>
-        <projectUrl>https://github.com/Yortw/RSSDP</projectUrl>
-        <iconUrl>https://raw.githubusercontent.com/Yortw/RSSDP/master/RssdpIcon.png</iconUrl>
-        <requireLicenseAcceptance>false</requireLicenseAcceptance>
-        <description>Really Simple Service Discovery Protocol - a 100% .Net implementation of the SSDP protocol for publishing custom/basic devices, and discovering all device types on a network.</description>
-        <summary>A 100% .Net implementation of the SSDP protocol for basic and custom device types.</summary>
-        <releaseNotes>Fix crash during deserialisation of device description documents containing custom properties with complex xml values.</releaseNotes>
-        <copyright>Copyright 2016</copyright>
-        <language>en-AU</language>
-        <tags>portable xamarin ios android windowsphone winrt uwp mobile ssdp discovery device service protocol upnp netfx40 .net4</tags>
-        <dependencies>
-                <dependency id="Microsoft.Net.Http" version="2.2.29" />
-                <dependency id="Microsoft.Bcl.Async" version="1.0.168" />
-        	<dependency id="Microsoft.Bcl.Build" version="1.0.21" />     
-   	</dependencies>
-    </metadata>
-    <files>
-        <file src="lib\Xamarin.iOS10\Rssdp*.dll" target="lib\Xamarin.iOS10" />
-        <file src="lib\Xamarin.iOS10\Rssdp*.xml" target="lib\Xamarin.iOS10" />
-        <file src="lib\Xamarin.iOS10\Rssdp*.pdb" target="lib\Xamarin.iOS10" />
-        <file src="lib\monoandroid\Rssdp*.dll" target="lib\monoandroid" />
-        <file src="lib\monoandroid\Rssdp*.xml" target="lib\monoandroid" />
-        <file src="lib\monoandroid\Rssdp*.pdb" target="lib\monoandroid" />
-        <file src="lib\net40\Rssdp*.dll" target="lib\net40" />
-        <file src="lib\net40\Rssdp*.xml" target="lib\net40" />
-        <file src="lib\net40\Rssdp*.pdb" target="lib\net40" />
-        <file src="lib\portable-net45+win+wpa81+wp80\Rssdp*.dll" target="lib\portable-net45+win+wpa81+wp80" />
-        <file src="lib\portable-net45+win+wpa81+wp80\Rssdp*.xml" target="lib\portable-net45+win+wpa81+wp80" />
-        <file src="lib\portable-net45+win+wpa81+wp80\Rssdp*.pdb" target="lib\portable-net45+win+wpa81+wp80" />
-        <file src="lib\wp8\Rssdp*.dll" target="lib\wp8" />
-        <file src="lib\wp8\Rssdp*.xml" target="lib\wp8" />
-        <file src="lib\wp8\Rssdp*.pdb" target="lib\wp8" />
-        <file src="lib\netcore451\Rssdp*.dll" target="lib\netcore451" />
-        <file src="lib\netcore451\Rssdp*.xml" target="lib\netcore451" />
-        <file src="lib\netcore451\Rssdp*.pdb" target="lib\netcore451" />
-        <file src="lib\netcore451\Rssdp*.dll" target="lib\wpa81" />
-        <file src="lib\netcore451\Rssdp*.xml" target="lib\wpa81" />
-        <file src="lib\netcore451\Rssdp*.pdb" target="lib\wpa81" />
-        <file src="lib\uap10.0\Rssdp*.dll" target="lib\uap10.0" />
-        <file src="lib\uap10.0\Rssdp*.xml" target="lib\uap10.0" />
-        <file src="lib\uap10.0\Rssdp*.pdb" target="lib\uap10.0" />
-        <file src="**\*.cs" target="src" />
-    </files>
+  <metadata>
+    <id>Rssdp</id>
+    <version>3.5.4</version>
+    <title>Rssdp</title>
+    <authors>Troy Willmot</authors>
+    <owners>Yortw</owners>
+    <licenseUrl>https://github.com/Yortw/RSSDP/blob/master/LICENSE</licenseUrl>
+    <projectUrl>https://github.com/Yortw/RSSDP</projectUrl>
+    <iconUrl>https://raw.githubusercontent.com/Yortw/RSSDP/master/RssdpIcon.png</iconUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>Really Simple Service Discovery Protocol - a 100% .Net implementation of the SSDP protocol for publishing custom/basic devices, and discovering all device types on a network.</description>
+    <summary>A 100% .Net implementation of the SSDP protocol for basic and custom device types.</summary>
+    <releaseNotes>Fix for deserialisation problems when a document is not prettified/lacks whitespace between nodes.</releaseNotes>
+    <copyright>Copyright 2017</copyright>
+    <language>en-AU</language>
+    <tags>portable xamarin ios android windowsphone winrt uwp mobile ssdp discovery device service protocol upnp netfx40 .net4</tags>
+    <dependencies>
+      <group targetFramework=".NetFramework4.0">
+        <dependency id="Microsoft.Net.Http" version="2.2.29" />
+        <dependency id="Microsoft.Bcl.Async" version="1.0.168" />
+        <dependency id="Microsoft.Bcl.Build" version="1.0.21" />
+      </group>
+      <group targetFramework=".NetFramework4.5">
+      </group>
+      <group targetFramework="monodroid">
+      </group>
+      <group targetFramework="Xamarin.iOS10">
+      </group>
+      <group targetFramework="WindowsPhone8">
+        <dependency id="Microsoft.Net.Http" version="2.2.29" />
+        <dependency id="Microsoft.Bcl.Async" version="1.0.168" />
+        <dependency id="Microsoft.Bcl.Build" version="1.0.21" />
+      </group>
+      <group targetFramework="WindowsPhoneApp8.1">
+        <dependency id="Microsoft.Net.Http" version="2.2.29" />
+        <dependency id="Microsoft.Bcl.Async" version="1.0.168" />
+        <dependency id="Microsoft.Bcl.Build" version="1.0.21" />
+      </group>
+      <group targetFramework=".NETStandard1.3">
+        <dependency id="System.Collections" version="4.0.11" />
+        <dependency id="System.Diagnostics.Debug" version="4.0.11" />
+        <dependency id="System.Diagnostics.Tools" version="4.0.1" />
+        <dependency id="System.IO" version="4.1.0" />
+        <dependency id="System.Linq" version="4.1.0" />
+        <dependency id="System.Net.Http" version="4.1.0" />
+        <dependency id="System.Net.Primitives" version="4.0.11" />
+        <dependency id="System.Net.Sockets" version="4.1.0" />
+        <dependency id="System.Resources.ResourceManager" version="4.0.1" />
+        <dependency id="System.Runtime" version="4.1.0" />
+        <dependency id="System.Runtime.Extensions" version="4.1.0" />
+        <dependency id="System.Runtime.InteropServices.RuntimeInformation" version="4.0.0" />
+        <dependency id="System.Text.Encoding" version="4.0.11" />
+        <dependency id="System.Text.Encoding.Extensions" version="4.0.11" />
+        <dependency id="System.Threading" version="4.0.11" />
+        <dependency id="System.Threading.Tasks" version="4.0.11" />
+        <dependency id="System.Threading.Timer" version="4.0.1" />
+        <dependency id="System.Xml.ReaderWriter" version="4.0.11" />
+      </group>
+      <group targetFramework="uap10.0">
+        <dependency id="System.Collections" version="4.0.11" />
+        <dependency id="System.Diagnostics.Debug" version="4.0.11" />
+        <dependency id="System.Diagnostics.Tools" version="4.0.1" />
+        <dependency id="System.IO" version="4.1.0" />
+        <dependency id="System.Linq" version="4.1.0" />
+        <dependency id="System.Net.Http" version="4.3.2" />
+        <dependency id="System.Net.Primitives" version="4.0.11" />
+        <dependency id="System.Net.Sockets" version="4.1.0" />
+        <dependency id="System.Resources.ResourceManager" version="4.0.1" />
+        <dependency id="System.Runtime" version="4.1.0" />
+        <dependency id="System.Runtime.Extensions" version="4.1.0" />
+        <dependency id="System.Runtime.InteropServices.RuntimeInformation" version="4.0.0" />
+        <dependency id="System.Text.Encoding" version="4.0.11" />
+        <dependency id="System.Text.Encoding.Extensions" version="4.0.11" />
+        <dependency id="System.Threading" version="4.0.11" />
+        <dependency id="System.Threading.Tasks" version="4.0.11" />
+        <dependency id="System.Threading.Timer" version="4.0.1" />
+        <dependency id="System.Xml.ReaderWriter" version="4.0.11" />
+      </group>
+    </dependencies>
+  </metadata>
+  <files>
+    <file src="lib\monoandroid\Rssdp*.dll" target="lib\monoandroid" />
+    <file src="lib\monoandroid\Rssdp*.xml" target="lib\monoandroid" />
+    <file src="lib\monoandroid\Rssdp*.pdb" target="lib\monoandroid" />
+    <file src="lib\net40\Rssdp*.dll" target="lib\net40" />
+    <file src="lib\net40\Rssdp*.xml" target="lib\net40" />
+    <file src="lib\net40\Rssdp*.pdb" target="lib\net40" />
+    <file src="lib\net45\Rssdp*.dll" target="lib\net45" />
+    <file src="lib\net45\Rssdp*.xml" target="lib\net45" />
+    <file src="lib\net45\Rssdp*.pdb" target="lib\net45" />
+    <file src="lib\netcore451\Rssdp*.dll" target="lib\wpa81" />
+    <file src="lib\netcore451\Rssdp*.xml" target="lib\wpa81" />
+    <file src="lib\netcore451\Rssdp*.pdb" target="lib\wpa81" />
+    <file src="lib\netcore451\Rssdp*.dll" target="lib\netcore451" />
+    <file src="lib\netcore451\Rssdp*.xml" target="lib\netcore451" />
+    <file src="lib\netcore451\Rssdp*.pdb" target="lib\netcore451" />
+    <file src="lib\netstandard13\Rssdp*.dll" target="lib\netstandard13" />
+    <file src="lib\netstandard13\Rssdp*.xml" target="lib\netstandard13" />
+    <file src="lib\netstandard13\Rssdp*.pdb" target="lib\netstandard13" />
+    <file src="lib\portable-net45+win+wpa81+wp80\Rssdp*.dll" target="lib\portable-net45+win+wpa81+wp80" />
+    <file src="lib\portable-net45+win+wpa81+wp80\Rssdp*.xml" target="lib\portable-net45+win+wpa81+wp80" />
+    <file src="lib\portable-net45+win+wpa81+wp80\Rssdp*.pdb" target="lib\portable-net45+win+wpa81+wp80" />
+    <file src="lib\wp8\Rssdp*.dll" target="lib\wp8" />
+    <file src="lib\wp8\Rssdp*.xml" target="lib\wp8" />
+    <file src="lib\wp8\Rssdp*.pdb" target="lib\wp8" />
+    <file src="lib\netstandard13\Rssdp*.dll" target="lib\uap10.0" />
+    <file src="lib\netstandard13\Rssdp*.xml" target="lib\uap10.0" />
+    <file src="lib\netstandard13\Rssdp*.pdb" target="lib\uap10.0" />
+    <file src="lib\Xamarin.iOS10\Rssdp*.dll" target="lib\Xamarin.iOS10" />
+    <file src="lib\Xamarin.iOS10\Rssdp*.xml" target="lib\Xamarin.iOS10" />
+    <file src="lib\Xamarin.iOS10\Rssdp*.pdb" target="lib\Xamarin.iOS10" />
+    <file src="**\*.cs" target="src" />
+  </files>
 </package>

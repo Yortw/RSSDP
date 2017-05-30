@@ -461,6 +461,218 @@ namespace Test.RssdpPortable
 			Assert.IsFalse(subDevice.CustomProperties.Contains("X_Rhapsody-Extension"));
 		}
 
+	    [TestMethod]
+	    public void Deserialisation_XmlWithNewlines_HandlesIconListAndFollowingProperties()
+	    {
+	        var docString = @"<?xml version=""1.0"" encoding=""utf-8""?>
+<root xmlns=""urn:schemas-upnp-org:device-1-0"">
+    <specVersion>
+        <major>1</major>
+        <minor>1</minor>
+    </specVersion>
+    <device>
+        <deviceType>urn:schemas-upnp-org:device:MediaServer:1</deviceType>
+        <iconList>
+            <icon>
+                <mimetype>image/png</mimetype>
+                <width>120</width>
+                <height>120</height>
+                <depth>24</depth>
+                <url>/df5bda28-1b1a-4a62-89ed-0acc041ee8e4/Upnp/resource/minimicon-120.png</url>
+            </icon>
+            <icon>
+                <mimetype>image/png</mimetype>
+                <width>48</width>
+                <height>48</height>
+                <depth>24</depth>
+                <url>/df5bda28-1b1a-4a62-89ed-0acc041ee8e4/Upnp/resource/minimicon-48.png</url>
+            </icon>
+            <icon>
+                <mimetype>image/jpeg</mimetype>
+                <width>120</width>
+                <height>120</height>
+                <depth>24</depth>
+                <url>/df5bda28-1b1a-4a62-89ed-0acc041ee8e4/Upnp/resource/minimicon-120.jpg</url>
+            </icon>
+            <icon>
+                <mimetype>image/jpeg</mimetype>
+                <width>48</width>
+                <height>48</height>
+                <depth>24</depth>
+                <url>/df5bda28-1b1a-4a62-89ed-0acc041ee8e4/Upnp/resource/minimicon-48.jpg</url>
+            </icon>
+        </iconList>
+        <friendlyName>MinimServer[RIEMANN]</friendlyName>
+        <manufacturer>minimserver.com</manufacturer>
+        <modelName>MinimServer</modelName>
+        <UDN>uuid:df5bda28-1b1a-4a62-89ed-0acc041ee8e4</UDN>
+        <serviceList>
+            <service>
+                <serviceType>urn:schemas-upnp-org:service:ConnectionManager:1</serviceType>
+                <serviceId>urn:upnp-org:serviceId:ConnectionManager</serviceId>
+                <SCPDURL>/df5bda28-1b1a-4a62-89ed-0acc041ee8e4/Upnp/upnp.org-ConnectionManager-1/service.xml</SCPDURL>
+                <controlURL>/df5bda28-1b1a-4a62-89ed-0acc041ee8e4/upnp.org-ConnectionManager-1/control</controlURL>
+                <eventSubURL>/df5bda28-1b1a-4a62-89ed-0acc041ee8e4/upnp.org-ConnectionManager-1/event</eventSubURL>
+            </service>
+            <service>
+                <serviceType>urn:schemas-upnp-org:service:ContentDirectory:1</serviceType>
+                <serviceId>urn:upnp-org:serviceId:ContentDirectory</serviceId>
+                <SCPDURL>/df5bda28-1b1a-4a62-89ed-0acc041ee8e4/Upnp/upnp.org-ContentDirectory-1/service.xml</SCPDURL>
+                <controlURL>/df5bda28-1b1a-4a62-89ed-0acc041ee8e4/upnp.org-ContentDirectory-1/control</controlURL>
+                <eventSubURL>/df5bda28-1b1a-4a62-89ed-0acc041ee8e4/upnp.org-ContentDirectory-1/event</eventSubURL>
+            </service>
+        </serviceList>
+        <presentationURL>http://127.0.0.1:9790/</presentationURL>
+    </device>
+</root>";
+
+	        var device = new SsdpRootDevice(new Uri("http://192.168.1.11/UPnP/DeviceDescription"), TimeSpan.FromMinutes(30), docString);
+	        Assert.AreEqual("MinimServer[RIEMANN]", device.FriendlyName);
+	        Assert.AreEqual("minimserver.com", device.Manufacturer);
+	        Assert.AreEqual("MinimServer", device.ModelName);
+	        Assert.AreEqual("uuid:df5bda28-1b1a-4a62-89ed-0acc041ee8e4", device.Udn);
+	        Assert.AreEqual(4, device.Icons.Count);
+	        Assert.AreEqual(4, device.Icons.Select(icon => icon.Url.ToString()).Distinct().Count());
+        }
+
+	    [TestMethod]
+	    public void Deserialisation_XmlWithoutNewlines_HandlesIconListAndFollowingProperties()
+	    {
+	        var docString = @"<?xml version=""1.0"" encoding=""utf-8""?><root xmlns=""urn:schemas-upnp-org:device-1-0""><specVersion><major>1</major><minor>1</minor></specVersion><device><deviceType>urn:schemas-upnp-org:device:MediaServer:1</deviceType><iconList><icon><mimetype>image/png</mimetype><width>120</width><height>120</height><depth>24</depth><url>/df5bda28-1b1a-4a62-89ed-0acc041ee8e4/Upnp/resource/minimicon-120.png</url></icon><icon><mimetype>image/png</mimetype><width>48</width><height>48</height><depth>24</depth><url>/df5bda28-1b1a-4a62-89ed-0acc041ee8e4/Upnp/resource/minimicon-48.png</url></icon><icon><mimetype>image/jpeg</mimetype><width>120</width><height>120</height><depth>24</depth><url>/df5bda28-1b1a-4a62-89ed-0acc041ee8e4/Upnp/resource/minimicon-120.jpg</url></icon><icon><mimetype>image/jpeg</mimetype><width>48</width><height>48</height><depth>24</depth><url>/df5bda28-1b1a-4a62-89ed-0acc041ee8e4/Upnp/resource/minimicon-48.jpg</url></icon></iconList><friendlyName>MinimServer[RIEMANN]</friendlyName><manufacturer>minimserver.com</manufacturer><modelName>MinimServer</modelName><UDN>uuid:df5bda28-1b1a-4a62-89ed-0acc041ee8e4</UDN><serviceList><service><serviceType>urn:schemas-upnp-org:service:ConnectionManager:1</serviceType><serviceId>urn:upnp-org:serviceId:ConnectionManager</serviceId><SCPDURL>/df5bda28-1b1a-4a62-89ed-0acc041ee8e4/Upnp/upnp.org-ConnectionManager-1/service.xml</SCPDURL><controlURL>/df5bda28-1b1a-4a62-89ed-0acc041ee8e4/upnp.org-ConnectionManager-1/control</controlURL><eventSubURL>/df5bda28-1b1a-4a62-89ed-0acc041ee8e4/upnp.org-ConnectionManager-1/event</eventSubURL></service><service><serviceType>urn:schemas-upnp-org:service:ContentDirectory:1</serviceType><serviceId>urn:upnp-org:serviceId:ContentDirectory</serviceId><SCPDURL>/df5bda28-1b1a-4a62-89ed-0acc041ee8e4/Upnp/upnp.org-ContentDirectory-1/service.xml</SCPDURL><controlURL>/df5bda28-1b1a-4a62-89ed-0acc041ee8e4/upnp.org-ContentDirectory-1/control</controlURL><eventSubURL>/df5bda28-1b1a-4a62-89ed-0acc041ee8e4/upnp.org-ContentDirectory-1/event</eventSubURL></service></serviceList><presentationURL>http://127.0.0.1:9790/</presentationURL></device></root>";
+
+	        var device = new SsdpRootDevice(new Uri("http://192.168.1.11/UPnP/DeviceDescription"), TimeSpan.FromMinutes(30), docString);
+	        Assert.AreEqual("MinimServer[RIEMANN]", device.FriendlyName);
+	        Assert.AreEqual("minimserver.com", device.Manufacturer);
+	        Assert.AreEqual("MinimServer", device.ModelName);
+	        Assert.AreEqual("uuid:df5bda28-1b1a-4a62-89ed-0acc041ee8e4", device.Udn);
+	        Assert.AreEqual(4, device.Icons.Count);
+	        var d = device.Icons.Select(icon => icon.Url.ToString()).Distinct();
+	        Assert.AreEqual(4, device.Icons.Select(icon => icon.Url.ToString()).Distinct().Count());
+	    }
+
+        [TestMethod]
+		public void DeserialisationHandlesEmptyCustomProperties()
+		{
+			//See issue #70 in repo - empty custom properties would cause
+			//all following properties to be skipped.
+
+			var docString = @"<?xml version=""1.0"" encoding=""UTF-8""?>
+<root xmlns=""urn:schemas-upnp-org:device-1-0"">
+  <specVersion>
+    <major>1</major>
+    <minor>0</minor>
+  </specVersion>
+  <device>
+    <deviceType>urn:schemas-upnp-org:device:MediaServer:1</deviceType>
+    <UDN>uuid:55076f6e-6b79-1d65-a472-00059a3c7a00</UDN>
+    <friendlyName>Twonky :)</friendlyName>
+    <pv:extension xmlns:pv=""http://www.pv.com/pvns/""></pv:extension>
+    <manufacturer>PacketVideo</manufacturer>
+    <manufacturerURL>http://www.pv.com</manufacturerURL>
+    <modelName>TwonkyServer</modelName>
+    <modelURL>http://www.twonky.com</modelURL>
+    <modelDescription>TwonkyServer (Windows, T-206)</modelDescription>
+    <modelNumber>8.4</modelNumber>
+    <serialNumber>8.4</serialNumber>
+  </device>
+</root>";
+
+
+			var device = new SsdpRootDevice(new Uri("http://192.168.1.11/UPnP/DeviceDescription"), TimeSpan.FromMinutes(30), docString);
+			Assert.IsFalse(device.CustomProperties.Contains("pv:extension"));
+			Assert.AreEqual(device.Manufacturer, "PacketVideo");
+			Assert.AreEqual(device.ManufacturerUrl, "http://www.pv.com");
+			Assert.AreEqual(device.ModelName, "TwonkyServer");
+			Assert.AreEqual(device.ModelUrl, "http://www.twonky.com");
+			Assert.AreEqual(device.ModelDescription, "TwonkyServer (Windows, T-206)");
+			Assert.AreEqual(device.ModelNumber, "8.4");
+			Assert.AreEqual(device.SerialNumber, "8.4");
+		}
+
+		#endregion
+
+		#region Service Tests
+
+		[ExpectedException(typeof(System.ArgumentNullException))]
+		[TestMethod]
+		public void SsdpDevice_AddService_ThrowsArgumentNullOnNullService()
+		{
+			var rootDevice = new SsdpRootDevice();
+			rootDevice.AddService(null);
+		}
+
+		[TestMethod]
+		public void SsdpDevice_AddService_RaisesServiceAdded()
+		{
+			var rootDevice = new SsdpRootDevice();
+
+			bool eventRaised = false;
+			SsdpService eventService = null;
+			rootDevice.ServiceAdded += (sender, e) =>
+			{
+				eventRaised = true;
+				eventService = e.Service;
+			};
+
+			var service = new SsdpService();
+			rootDevice.AddService(service);
+			Assert.IsTrue(eventRaised);
+			Assert.AreEqual(service, eventService);
+		}
+
+		[TestMethod]
+		public void SsdpDevice_AddService_DuplicateAddDoesNothing()
+		{
+			var rootDevice = new SsdpRootDevice();
+
+			var service = new SsdpService();
+			rootDevice.AddService(service);
+			rootDevice.AddService(service);
+			Assert.AreEqual(1, rootDevice.Services.Count());
+		}
+
+		[ExpectedException(typeof(System.ArgumentNullException))]
+		[TestMethod]
+		public void SsdpDevice_RemoveService_ThrowsArgumentNullOnNullService()
+		{
+			var rootDevice = new SsdpRootDevice();
+			rootDevice.AddService(null);
+		}
+
+		[TestMethod]
+		public void SsdpDevice_RemoveService_RaisesServiceRemoved()
+		{
+			var rootDevice = new SsdpRootDevice();
+
+			bool eventRaised = false;
+			SsdpService eventService = null;
+			rootDevice.ServiceRemoved += (sender, e) =>
+			{
+				eventRaised = true;
+				eventService = e.Service;
+			};
+
+			var service = new SsdpService();
+			rootDevice.AddService(service);
+
+			rootDevice.RemoveService(service);
+			Assert.IsTrue(eventRaised);
+			Assert.AreEqual(service, eventService);
+		}
+
+		[TestMethod]
+		public void SsdpDevice_RemoveService_DuplicateRemoveDoesNothing()
+		{
+			var rootDevice = new SsdpRootDevice();
+
+			var service = new SsdpService();
+			rootDevice.AddService(service);
+			Assert.AreEqual(1, rootDevice.Services.Count());
+			rootDevice.RemoveService(service);
+			rootDevice.RemoveService(service);
+			Assert.AreEqual(0, rootDevice.Devices.Count());
+		}
+
 		#endregion
 
 	}

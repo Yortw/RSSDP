@@ -8,7 +8,7 @@
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Rssdp</RootNamespace>
-    <AssemblyName>Rssdp.UWP10</AssemblyName>
+    <AssemblyName>Rssdp.Native</AssemblyName>
     <DefaultLanguage>en-US</DefaultLanguage>
     <TargetPlatformIdentifier>UAP</TargetPlatformIdentifier>
     <TargetPlatformVersion>10.0.10240.0</TargetPlatformVersion>
@@ -32,6 +32,7 @@
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>..\lib\uap10.0\</OutputPath>
+    <DocumentationFile>..\lib\uap10.0\Rssdp.Native.xml</DocumentationFile>
     <DefineConstants>TRACE;NETFX_CORE;WINDOWS_UWP</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -110,20 +111,16 @@
   </PropertyGroup>
   <ItemGroup>
     <!-- A reference to the entire .Net Framework and Windows SDK are automatically included -->
+    <None Include="app.config" />
+    <None Include="packages.config" />
     <None Include="project.json" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="..\Shared\AssemblyInfoCommon.cs">
       <Link>Properties\AssemblyInfoCommon.cs</Link>
     </Compile>
-    <Compile Include="..\Shared\SsdpDeviceLocator.cs">
-      <Link>SsdpDeviceLocator.cs</Link>
-    </Compile>
-    <Compile Include="..\Shared\WinRTSockets\SocketsFactory.cs">
-      <Link>SocketsFactory.cs</Link>
-    </Compile>
-    <Compile Include="..\Shared\WinRTSockets\SsdpDevicePublisher.cs">
-      <Link>SsdpDevicePublisher.cs</Link>
+    <Compile Include="..\Shared\SsdpTraceLogger.cs">
+      <Link>SsdpTraceLogger.cs</Link>
     </Compile>
     <Compile Include="..\Shared\WinRTSockets\UdpSocket.cs">
       <Link>UdpSocket.cs</Link>
@@ -132,12 +129,6 @@
     <Content Include="Properties\Rssdp.UWP10.rd.xml">
       <SubType>Designer</SubType>
     </Content>
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\RSSDP.Portable\RSSDP.Portable.csproj">
-      <Project>{67f9d3a8-f71e-4428-913f-c37ae82cdb24}</Project>
-      <Name>RSSDP.Portable</Name>
-    </ProjectReference>
   </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>

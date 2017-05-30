@@ -447,6 +447,37 @@ namespace Test.RssdpPortable
 		}
 
 		[TestMethod()]
+		public void DeviceLocator_Notifications_ContainHeaders()
+		{
+            var publishedDevice = CreateDeviceTree();
+
+            var server = new MockCommsServer();
+            using (var deviceLocator = new MockDeviceLocator(server))
+            {
+                var discoveredDevices = new List<DiscoveredSsdpDevice>();
+
+                using (var signal = new System.Threading.AutoResetEvent(false))
+                {
+                    deviceLocator.DeviceAvailable += (sender, args) =>
+                    {
+                        discoveredDevices.Add(args.DiscoveredDevice);
+                        signal.Set();
+                    };
+                    deviceLocator.StartListeningForNotifications();
+
+                    server.MockReceiveBroadcast(GetMockAliveNotification(publishedDevice));
+                    signal.WaitOne(10000);
+                }
+
+                var first = discoveredDevices.First();
+
+                Assert.IsTrue(discoveredDevices.Any());
+                Assert.IsNotNull(first.ResponseHeaders);
+                Assert.AreEqual(first.ResponseHeaders.GetValues("NTS").FirstOrDefault(), "ssdp:alive");
+            }
+        }
+
+		[TestMethod()]
 		public void DeviceLocator_Notifications_SubsequentNotificationsUpdatesCachedCacheTime()
 		{
 			var publishedDevice = CreateDeviceTree();

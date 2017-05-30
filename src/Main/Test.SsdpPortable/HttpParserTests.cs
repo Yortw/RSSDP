@@ -101,6 +101,18 @@ ST: {2}
 		}
 
 		[TestMethod]
+		public void HttpRequestParser_ParsesMultilineHeadersWithLFLineTermination()
+		{
+			var parser = new HttpRequestParser();
+			var message = parser.Parse(String.Format("M-SEARCH * HTTP/1.1\nHOST: {0}:{1}\nMAN: \"ssdp:discover\"\nMX: 1\nST: {2}\n\tssdp:all\n",
+ SsdpConstants.MulticastLocalAdminAddress,
+ SsdpConstants.MulticastPort,
+ SsdpConstants.UpnpDeviceTypeRootDevice));
+
+			Assert.AreEqual(2, message.Headers.GetValues("ST").Count());
+		}
+
+		[TestMethod]
 		public void HttpRequestParser_ParsesHeaderWithQuotedValues()
 		{
 			var parser = new HttpRequestParser();

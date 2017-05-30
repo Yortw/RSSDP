@@ -1,6 +1,9 @@
 ﻿{
   "dependencies": {
-    "Microsoft.NETCore.UniversalWindowsPlatform": "5.0.0"
+    "Microsoft.Bcl": "1.1.10",
+    "Microsoft.Bcl.Async": "1.0.168",
+    "Microsoft.Bcl.Build": "1.0.21",
+    "Microsoft.NETCore.UniversalWindowsPlatform": "5.2.2"
   },
   "frameworks": {
     "uap10.0": {}

@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Text;
 using Rssdp.Infrastructure;
 
@@ -31,13 +32,25 @@ namespace Rssdp
 		}
 
 		/// <summary>
-		/// Full constructor. 
+		/// Partial constructor. 
 		/// </summary>
 		/// <remarks>
 		/// <para>Allows the caller to specify their own <see cref="ISsdpCommunicationsServer"/> implementation for full control over the networking, or for mocking/testing purposes..</para>
 		/// </remarks>
 		public SsdpDevicePublisher(ISsdpCommunicationsServer communicationsServer)
-			: base(communicationsServer, GetOSName(), GetOSVersion())
+			: base(communicationsServer, GetOSName(), GetOSVersion(), new SsdpTraceLogger())
+		{
+
+		}
+
+		/// <summary>
+		/// Full constructor. 
+		/// </summary>
+		/// <remarks>
+		/// <para>Allows the caller to specify their own <see cref="ISsdpCommunicationsServer"/> implementation for full control over the networking, or for mocking/testing purposes..</para>
+		/// </remarks>
+		public SsdpDevicePublisher(ISsdpCommunicationsServer communicationsServer, ISsdpLogger log)
+			: base(communicationsServer, GetOSName(), GetOSVersion(), log ?? new SsdpTraceLogger())
 		{
 
 		}
@@ -51,7 +64,19 @@ namespace Rssdp
 		/// </remarks>
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Reliability", "CA2000:Dispose objects before losing scope", Justification = "No way to do this here, and we don't want to dispose it except in the (rare) case of an exception anyway.")]
 		public SsdpDevicePublisher(int localPort)
-			: this(new SsdpCommunicationsServer(new SocketFactory(null), localPort))
+			: this(new SsdpCommunicationsServer(new SocketFactory(null), localPort), new SsdpTraceLogger())
+		{
+
+		}
+
+		/// <summary>
+		/// Partial constructor. 
+		/// </summary>
+		/// <param name="ipAddress">The IP address of the local network adapter to bind sockets to. 
+		/// Null or empty string will use <see cref="IPAddress.Any"/>.</param>
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Reliability", "CA2000:Dispose objects before losing scope", Justification = "No way to do this here, and we don't want to dispose it except in the (rare) case of an exception anyway.")]
+		public SsdpDevicePublisher(string ipAddress)
+			: this(new SsdpCommunicationsServer(new SocketFactory(ipAddress)))
 		{
 
 		}

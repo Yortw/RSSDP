@@ -11,7 +11,7 @@
     <AssemblyName>Rssdp.Samples</AssemblyName>
     <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <AutoGenerateBindingRedirects>false</AutoGenerateBindingRedirects>
     <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
     <RestorePackages>true</RestorePackages>
     <NuGetPackageImportStamp>55c5f5b1</NuGetPackageImportStamp>
@@ -117,10 +117,6 @@
     <ProjectReference Include="..\RSSDP.NetFx40\Rssdp.NetFx40.csproj">
       <Project>{b74c6f04-6516-4597-bda1-023036f80095}</Project>
       <Name>Rssdp.NetFx40</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\RSSDP.Portable\RSSDP.Portable.csproj">
-      <Project>{67f9d3a8-f71e-4428-913f-c37ae82cdb24}</Project>
-      <Name>RSSDP.Portable</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

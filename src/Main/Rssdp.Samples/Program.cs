@@ -147,6 +147,17 @@ namespace Rssdp.Samples
 			};
 			rootDevice.CustomResponseHeaders.Add(new CustomHttpHeader("X-MachineName", Environment.MachineName));
 
+			var service = new SsdpService()
+			{
+				Uuid = System.Guid.NewGuid().ToString(),
+				ServiceType = "test-service-type",
+				ServiceTypeNamespace = "rssdp-test-namespace",
+				ControlUrl = new Uri("/test/control", UriKind.Relative),
+				EventSubUrl = new Uri("/test/event", UriKind.Relative),
+				ScpdUrl = new Uri("/test", UriKind.Relative)
+			};
+			rootDevice.AddService(service);
+
 			// Now publish by adding them to the publisher.
 			_DevicePublisher.AddDevice(rootDevice);
 
@@ -197,6 +208,7 @@ namespace Rssdp.Samples
 			if (_DevicePublisher == null || !_DevicePublisher.Devices.Any())
 			{
 				Console.WriteLine("No devices being published. Use the (P)ublish command first.");
+				return;
 			}
 
 			var uuid = _DevicePublisher.Devices.First().Uuid;

@@ -29,7 +29,18 @@ namespace Test.RssdpPortable
 		private System.Threading.ManualResetEvent _SentBroadcastSignal = new System.Threading.ManualResetEvent(false);
 		private System.Threading.ManualResetEvent _SentMessageSignal = new System.Threading.ManualResetEvent(false);
 
+		private System.Threading.Timer _MessageSentSignalTimer;
+		private System.Threading.Timer _BroadcastSentSignalTimer;
+
 		private System.Threading.Tasks.Task _ListenTask;
+
+		private readonly DeviceNetworkType _deviceNetworkType = DeviceNetworkType.IPv4;
+
+		public MockCommsServer()
+		{
+			_MessageSentSignalTimer = new System.Threading.Timer((reserved) => _SentMessageSignal.Set(), null, System.Threading.Timeout.Infinite, System.Threading.Timeout.Infinite);
+			_BroadcastSentSignalTimer = new System.Threading.Timer((reserved) => _SentBroadcastSignal.Set(), null, System.Threading.Timeout.Infinite, System.Threading.Timeout.Infinite);
+		}
 
 		protected override void Dispose(bool disposing)
 		{
@@ -42,7 +53,7 @@ namespace Test.RssdpPortable
 			}
 
 			signal = _MessageAvailableSignal;
-			_MessageAvailableSignal = null; 
+			_MessageAvailableSignal = null;
 			if (signal != null)
 			{
 				signal.Set();
@@ -100,8 +111,19 @@ namespace Test.RssdpPortable
 
 		public void SendMessage(byte[] messageData, UdpEndPoint destination)
 		{
-			SentMessages.Enqueue(new ReceivedUdpData() { Buffer = messageData, ReceivedBytes = messageData.Length, ReceivedFrom = destination });
-			_SentMessageSignal.Set();
+			if (SsdpConstants.MulticastLocalAdminAddress.Equals(destination.IPAddress) ||
+				SsdpConstants.MulticastLinkLocalAddressV6.Equals(destination.IPAddress))
+				SendMulticastMessage(messageData);
+			else
+			{
+				SentMessages.Enqueue(new ReceivedUdpData() { Buffer = messageData, ReceivedBytes = messageData.Length, ReceivedFrom = destination });
+				SetMessageSentSignal();
+			}
+		}
+
+		private void SetMessageSentSignal()
+		{
+			_MessageSentSignalTimer.Change(40, System.Threading.Timeout.Infinite);
 		}
 
 		public void SendMulticastMessage(byte[] messageData)
@@ -148,13 +170,19 @@ namespace Test.RssdpPortable
 				});
 			}
 
-			_SentBroadcastSignal.Set();
+			_BroadcastSentSignalTimer.Change(50, System.Threading.Timeout.Infinite);
+			//_SentBroadcastSignal.Set();
 		}
 
 		public bool IsShared
 		{
 			get;
 			set;
+		}
+
+		public DeviceNetworkType DeviceNetworkType
+		{
+			get { return _deviceNetworkType; }
 		}
 
 		#endregion

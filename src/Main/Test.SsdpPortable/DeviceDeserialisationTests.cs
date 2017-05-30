@@ -44,23 +44,59 @@ namespace Test.RssdpPortable
 		}
 
 		[TestMethod]
-		public void ToDescriptionDocument_DeserialiseIgnoresServiceList()
+		public void ToDescriptionDocument_DeserialiseServiceList()
 		{
 			var rootDevice = CreateSampleRootDevice();
 			rootDevice.AddDevice(CreateEmbeddedDevice(rootDevice));
 			rootDevice.AddDevice(CreateEmbeddedDevice(rootDevice));
 
+			var service = new SsdpService()
+			{
+				ControlUrl = new Uri("/test/control", UriKind.Relative),
+				EventSubUrl = new Uri("/test/events", UriKind.Relative),
+				ScpdUrl = new Uri("/test", UriKind.Relative),
+				ServiceType = "mytestservicetype",
+				ServiceTypeNamespace = "my-test-namespace",
+				ServiceVersion = 1,
+				Uuid = System.Guid.NewGuid().ToString()
+			};
+			rootDevice.AddService(service);
+			var service2 = new SsdpService()
+			{
+				ControlUrl = new Uri("/test/control", UriKind.Relative),
+				EventSubUrl = new Uri("/test/events", UriKind.Relative),
+				ScpdUrl = new Uri("/test", UriKind.Relative),
+				ServiceType = "mytestservicetype",
+				ServiceTypeNamespace = "my-test-namespace",
+				ServiceVersion = 1,
+				Uuid = System.Guid.NewGuid().ToString()
+			};
+			rootDevice.AddService(service2);
+
+			var service3 = new SsdpService()
+			{
+				ControlUrl = new Uri("/test/control", UriKind.Relative),
+				EventSubUrl = new Uri("/test/events", UriKind.Relative),
+				ScpdUrl = new Uri("/test", UriKind.Relative),
+				ServiceType = "mytestservicetype",
+				ServiceTypeNamespace = "my-test-namespace",
+				ServiceVersion = 1,
+				Uuid = System.Guid.NewGuid().ToString()
+			};
+			rootDevice.Devices.First().AddService(service3);
+
 			var descriptionDocument = rootDevice.ToDescriptionDocument();
 			var doc = XDocument.Parse(descriptionDocument);
-			var deviceNode = doc.Descendants(XName.Get("device", UpnpDeviceXmlNamespace)).First();
-			var serviceListNode = new XElement("serviceList");
-			serviceListNode.Add(new XElement("service"));
-			deviceNode.Add(serviceListNode);
 
 			var deserialisedDevice = new SsdpRootDevice(rootDevice.Location, rootDevice.CacheLifetime, doc.ToString());
 
 			AssertDevicesAreSame(rootDevice.Devices.First(), deserialisedDevice.Devices.First());
 			AssertDevicesAreSame(rootDevice.Devices.Last(), deserialisedDevice.Devices.Last());
+			Assert.AreEqual(2, deserialisedDevice.Services.Count());
+			Assert.AreEqual(1, deserialisedDevice.Devices.First().Services.Count());
+			AssertServicesAreSame(service, deserialisedDevice.Services.First());
+			AssertServicesAreSame(service2, deserialisedDevice.Services.Last());
+			AssertServicesAreSame(service3, deserialisedDevice.Devices.First().Services.First());
 
 			Assert.AreEqual(descriptionDocument, deserialisedDevice.ToDescriptionDocument());
 		}
@@ -204,7 +240,7 @@ namespace Test.RssdpPortable
 		{
 			var rootDevice = new SsdpRootDevice(null, TimeSpan.FromMinutes(30), "<root />");
 		}
-	
+
 		private void AssertDevicesAreSame(SsdpRootDevice originalDevice, SsdpRootDevice deserialisedDevice)
 		{
 			Assert.AreEqual(originalDevice.CacheLifetime, deserialisedDevice.CacheLifetime);
@@ -232,6 +268,20 @@ namespace Test.RssdpPortable
 			Assert.AreEqual(originalDevice.Udn, deserialisedDevice.Udn);
 			Assert.AreEqual(originalDevice.Upc, deserialisedDevice.Upc);
 			Assert.AreEqual(originalDevice.Uuid, deserialisedDevice.Uuid);
+		}
+
+
+		private void AssertServicesAreSame(SsdpService service, SsdpService service2)
+		{
+			Assert.AreEqual(service.ControlUrl, service2.ControlUrl);
+			Assert.AreEqual(service.EventSubUrl, service2.EventSubUrl);
+			Assert.AreEqual(service.FullServiceType, service2.FullServiceType);
+			Assert.AreEqual(service.ScpdUrl, service2.ScpdUrl);
+			Assert.AreEqual(service.ServiceId, service2.ServiceId);
+			Assert.AreEqual(service.ServiceType, service2.ServiceType);
+			Assert.AreEqual(service.ServiceTypeNamespace, service2.ServiceTypeNamespace);
+			Assert.AreEqual(service.ServiceVersion, service2.ServiceVersion);
+			Assert.AreEqual(service.Uuid, service2.Uuid);
 		}
 
 		private SsdpRootDevice CreateSampleRootDevice()
