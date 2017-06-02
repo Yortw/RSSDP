@@ -146,13 +146,49 @@ namespace Rssdp
 
 				case DeviceNetworkType.IPv6:
 					retVal.SetSocketOption(SocketOptionLevel.IPv6, SocketOptionName.MulticastTimeToLive, multicastTimeToLive);
-					retVal.SetSocketOption(SocketOptionLevel.IPv6, SocketOptionName.AddMembership, new IPv6MulticastOption(ipAddress));
+					long interfaceIndex = -1;
+
+#if !NETSTANDARD
+					if (_LocalIP != null & _LocalIP != IPAddress.IPv6Any)
+						interfaceIndex = GetInterfaceIndexFromIPAddress(_LocalIP);
+#endif
+
+					if (interfaceIndex >= 0)
+						retVal.SetSocketOption(SocketOptionLevel.IPv6, SocketOptionName.AddMembership, new IPv6MulticastOption(ipAddress, interfaceIndex));
+					else
+						retVal.SetSocketOption(SocketOptionLevel.IPv6, SocketOptionName.AddMembership, new IPv6MulticastOption(ipAddress));
 					break;
 
 				default:
 					throw new InvalidOperationException($"{nameof(_DeviceNetworkType)} is not equal to Ipv4 or Ipv6");
 			}
 		}
+
+#if !NETSTANDARD
+		private static long GetInterfaceIndexFromIPAddress(IPAddress ipAddress)
+		{
+			foreach (var networkInterface in System.Net.NetworkInformation.NetworkInterface.GetAllNetworkInterfaces())
+			{
+				if (networkInterface.Supports(NetworkInterfaceComponent.IPv6))
+				{
+					var ipProperties = networkInterface.GetIPProperties();
+					if (ipProperties != null)
+					{
+						foreach (var address in ipProperties.UnicastAddresses)
+						{
+							if (address.Address?.ToString() == ipAddress.ToString())
+							{
+								var ipv6Properties = ipProperties?.GetIPv6Properties();
+								return ipv6Properties?.Index ?? -1;
+							}
+						}
+					}
+				}
+			}
+
+			return -1;
+		}
+#endif
 
 		private static DeviceNetworkType GetDeviceNetworkType(AddressFamily addressFamily)
 		{
