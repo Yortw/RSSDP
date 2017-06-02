@@ -141,7 +141,7 @@ namespace Rssdp
 			{
 				case DeviceNetworkType.IPv4:
 					retVal.SetSocketOption(SocketOptionLevel.IP, SocketOptionName.MulticastTimeToLive, multicastTimeToLive);
-					retVal.SetSocketOption(SocketOptionLevel.IP, SocketOptionName.AddMembership, new MulticastOption(ipAddress));
+					retVal.SetSocketOption(SocketOptionLevel.IP, SocketOptionName.AddMembership, new MulticastOption(ipAddress, _LocalIP));
 					break;
 
 				case DeviceNetworkType.IPv6:
