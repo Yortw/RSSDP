@@ -216,15 +216,4 @@ Reference materials used while writing this library, or that may be useful to pe
 * [UPnP Developer Tools](http://opentools.homeip.net/dev-tools-for-upnp)
 
 ## Contributing
-Contributing is encouraged! Please submit pull requests, open issues etc. However, to ensure we end up with a good result and to make my life a little easier, could I please request that;
-
-* All changes be made in a feature branch, not in master, and please don't submit PR's directly against master.
-* Make sure any PR contains (well named) new and/or updated unit tests to prove the new feature or bug fix. Failing this, please include enough sample data/problem description that I can write the tests myself.
-  
-Also, not required, but would be really great if;
-
-* You could use tabs instead of spaces (and not argue about it).
-* You could write the code in a similar style as what already exists. I'm not OCD about this so some deviation is fine, we all have different styles and I'm not suggesting mine is 'right', but it helps everybody 
-undertand and maintain the code base when it is at least mostly uniform.
-
-Thanks! I look forward to merging your awesomesauce.
+We'd love your assistance! Please see the [CONTRIBUTING.md](CONTRIBUTING.md) file for information on how to contribute.
