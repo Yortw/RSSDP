@@ -1,3 +1,4 @@
+
 Thank you for considering contributing to this project! Help is always appreciated, though it's best to check in via an issue before starting any major work.
 
 Following these guidelines helps to communicate that you respect the time of the developers managing and developing this open source project. 
@@ -36,7 +37,8 @@ platform then it may be ok to support it on only some platforms, but agreement m
 We endeavour to respond to pull requests quickly, but the project is unpaid and run on the personal time of our contributors (of whom there are few, possibly only one). 
 We have day jobs, as well as lives, so while we will respond as soon as possible, it might take several days or a week before we can even start looking. We will need to review the code 
 before deciding whether or not to merge it in it's current state (if at all), and will then need time to merge, test and prepare a release. Again, we'll do this as quickly as we can, but it 
-is more important that it is done well, and we cannot make promises about timeframes.
+is more important that it is done well, and we cannot make promises about timeframes. 
+* Thanks! I look forward to merging your awesomesauce.
 
 # Wiki and Documentation
 * We'd love to have **great** documentation. We're not experts at it. If your can help, please do so - again, raising an issue with an offer of help/suggestion is a great way to get 
