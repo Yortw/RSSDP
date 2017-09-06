@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Rssdp;
+using System.Net;
 
 namespace Rssdp.Samples
 {
@@ -11,6 +12,7 @@ namespace Rssdp.Samples
 	{
 		private static SsdpDevicePublisher _DevicePublisher;
 		private static SsdpDeviceLocator _BroadcastListener;
+		private static HttpListener _HttpServer;
 
 		static void Main(string[] args)
 		{
@@ -131,10 +133,21 @@ namespace Rssdp.Samples
 				_DevicePublisher.Dispose();
 			}
 
+			if (_HttpServer != null)
+			{
+				_HttpServer.Close();
+			}
+
 			// Create a device publisher
 			_DevicePublisher = new SsdpDevicePublisher();
 
+			//These settings make RSSDP play nicely with Windows Explorer
+			//and some badly behaved clients.
+			_DevicePublisher.StandardsMode = SsdpStandardsMode.Relaxed;
+
 			// Create the device(s) we want to publish.
+			var url = new Uri("http://" + Environment.MachineName + ":8181/");
+
 			var rootDevice = new SsdpRootDevice()
 			{
 				CacheLifetime = TimeSpan.FromMinutes(30),
@@ -142,8 +155,11 @@ namespace Rssdp.Samples
 				Manufacturer = "RSSDP",
 				ModelNumber = "123",
 				ModelName = "RSSDP Sample Device",
+				ModelDescription = "Test Device from RSSDP Console App",
+				ManufacturerUrl = new Uri("https://github.com/Yortw/RSSDP"),
 				SerialNumber = "123",
-				Uuid = System.Guid.NewGuid().ToString()
+				Uuid = System.Guid.NewGuid().ToString(),
+				UrlBase = url
 			};
 			rootDevice.CustomResponseHeaders.Add(new CustomHttpHeader("X-MachineName", Environment.MachineName));
 
@@ -158,6 +174,13 @@ namespace Rssdp.Samples
 			};
 			rootDevice.AddService(service);
 
+			rootDevice.Location = new Uri(url, "ddd");
+
+			//Some 3rd party tools won't show the device unless they can get
+			//the device description document, so this sample uses a really simple HTTP
+			//server just to serve that.
+			StartHttpServerForDdd(rootDevice, url);
+
 			// Now publish by adding them to the publisher.
 			_DevicePublisher.AddDevice(rootDevice);
 
@@ -166,12 +189,52 @@ namespace Rssdp.Samples
 			Console.WriteLine();
 		}
 
+		private static void StartHttpServerForDdd(SsdpRootDevice rootDevice, Uri url)
+		{
+			_HttpServer = new HttpListener();
+			var t = new System.Threading.Thread(ServeDeviceDescriptionDocument);
+			t.IsBackground = true;
+			t.Start(rootDevice);
+
+			rootDevice.UrlBase = url;
+			_HttpServer.Prefixes.Add("http://+:8181/");
+			try
+			{
+				_HttpServer.Start();
+				Console.WriteLine("DDD Published at " + url.ToString());
+			}
+			catch (Exception)
+			{
+				Console.WriteLine("Permission denied starting http listener. Please run app as elevated admin, or run the following command from elevated command prompt, changing domain\\user to be a valid Windows user account");
+				Console.WriteLine("netsh http add urlacl url=http://+:8181/MyUri user=DOMAIN\\user");
+			}
+		}
+
+		private static void ServeDeviceDescriptionDocument(object rootDevice)
+		{
+			try
+			{
+				var device = rootDevice as SsdpRootDevice;
+				var dddBuffer = System.Text.UTF8Encoding.UTF8.GetBytes(device.ToDescriptionDocument());
+
+				while (device != null && _HttpServer != null)
+				{
+					var context = _HttpServer.GetContext();
+					context.Response.OutputStream.Write(dddBuffer, 0, dddBuffer.Length);
+					context.Response.OutputStream.Flush();
+					context.Response.OutputStream.Close();
+				}
+			}
+			catch
+			{ }
+		}
+
 		private static void WriteOutDevices(SsdpDevice device)
 		{
 			Console.WriteLine(device.Udn + " - " + device.FullDeviceType);
 			foreach (var childDevice in device.Devices)
 			{
-				WriteOutDevices(device);
+				WriteOutDevices(childDevice);
 			}
 		}
 
