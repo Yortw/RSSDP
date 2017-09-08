@@ -27,7 +27,7 @@ Currently;
 ## How do I use RSSDP?
 *We got your samples right here*
 
-There is a sample console applicaton included in the repository. If you don't want to "read the source, Luke", then here's some tips and examples to get you started.
+There is a sample console applicaton included in the repository. If you don't want to "read the source, Luke", then here's some tips and examples to get you started. You can also check out our [FAQ](https://github.com/Yortw/RSSDP/wiki/Frequently-Asked-Questions).
 
 **One common gotcha to look out for:** SSDP root devices must publish an xml document describing themselves and any embedded devices, and this document must be published on a url that can be accessed via an HTTP GET.
 RSSDP will return devices in search results and notifications regardless of whether this document is actually accessible (it is up to you to retrieve the document if you care, and handle any exceptions that occur doing so).
