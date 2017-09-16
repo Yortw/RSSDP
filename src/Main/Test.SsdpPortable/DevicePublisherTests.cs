@@ -13,9 +13,6 @@ namespace Test.RssdpPortable
 	public class DevicePublisherTests
 	{
 
-		// "urn:rssdp-test-namespace:service:test-service-type:1"
-
-
 		#region Argument Checking
 
 		#region Constructors
@@ -1197,9 +1194,6 @@ namespace Test.RssdpPortable
 
 				var searchResponses = GetSentMessages(server.SentMessages);
 				Assert.AreEqual(0, searchResponses.Where((r) => !r.IsSuccessStatusCode).Count());
-				Assert.IsTrue(GetResponses(searchResponses, SsdpConstants.UpnpDeviceTypeRootDevice).Count() >= 1);
-				Assert.IsTrue(GetResponses(searchResponses, SsdpConstants.PnpDeviceTypeRootDevice).Count() >= 1);
-				Assert.IsTrue(GetResponses(searchResponses, rootDevice.Udn).Count() >= 1);
 				Assert.IsTrue(GetResponses(searchResponses, rootDevice.FullDeviceType).Count() >= 1);
 				Assert.AreEqual(0, searchResponses.Where((r) => !r.Headers.GetValues("USN").First().StartsWith(rootDevice.Udn)).Count());
 			}
@@ -1227,9 +1221,6 @@ namespace Test.RssdpPortable
 
 				var searchResponses = GetSentMessages(server.SentMessages);
 				Assert.AreEqual(0, searchResponses.Where((r) => !r.IsSuccessStatusCode).Count());
-				Assert.IsTrue(GetResponses(searchResponses, SsdpConstants.UpnpDeviceTypeRootDevice).Count() >= 1, "Incorrect number of upnp root device responses");
-				Assert.IsTrue(GetResponses(searchResponses, SsdpConstants.PnpDeviceTypeRootDevice).Count() >= 1, "Incorrect number of pnp root device responses");
-				Assert.IsTrue(GetResponses(searchResponses, rootDevice.Udn).Count() >= 1, "No response for UDN");
 				Assert.IsTrue(GetResponses(searchResponses, rootDevice.FullDeviceType).Count() >= 1, "No response for full device type");
 				Assert.AreEqual(0, searchResponses.Where((r) => !r.Headers.GetValues("USN").First().StartsWith(rootDevice.Udn)).Count());
 			}
@@ -1256,11 +1247,8 @@ namespace Test.RssdpPortable
 
 				var searchResponses = GetSentMessages(server.SentMessages);
 				Assert.AreEqual(0, searchResponses.Where((r) => !r.IsSuccessStatusCode).Count());
-				Assert.IsTrue(GetResponses(searchResponses, SsdpConstants.UpnpDeviceTypeRootDevice).Count() >= 1);
-				Assert.IsTrue(GetResponses(searchResponses, SsdpConstants.PnpDeviceTypeRootDevice).Count() == 0);
-				Assert.IsTrue(GetResponses(searchResponses, rootDevice.Udn).Count() >= 1);
-				Assert.IsTrue(GetResponses(searchResponses, rootDevice.FullDeviceType).Count() >= 1);
-				Assert.AreEqual(0, searchResponses.Where((r) => !r.Headers.GetValues("USN").First().StartsWith(rootDevice.Udn)).Count());
+				Assert.AreEqual(1, GetResponses(searchResponses, SsdpConstants.UpnpDeviceTypeRootDevice).Count());
+				Assert.AreEqual(0, GetResponsesNotMatchingTarget(searchResponses, SsdpConstants.PnpDeviceTypeRootDevice).Count());
 			}
 		}
 
@@ -1289,10 +1277,8 @@ namespace Test.RssdpPortable
 				var searchResponses = GetSentMessages(server.SentMessages);
 
 				Assert.AreEqual(0, searchResponses.Where((r) => !r.IsSuccessStatusCode).Count());
-				Assert.IsTrue(GetResponses(searchResponses, SsdpConstants.UpnpDeviceTypeRootDevice).Count() >= 1);
+				Assert.IsTrue(GetResponses(searchResponses, SsdpConstants.UpnpDeviceTypeRootDevice).Count() == 1);
 				Assert.IsTrue(GetResponses(searchResponses, SsdpConstants.PnpDeviceTypeRootDevice).Count() == 0);
-				Assert.IsTrue(GetResponses(searchResponses, rootDevice.Udn).Count() >= 1);
-				Assert.IsTrue(GetResponses(searchResponses, rootDevice.FullDeviceType).Count() >= 1);
 				Assert.AreEqual(0, searchResponses.Where((r) => !r.Headers.GetValues("USN").First().StartsWith(rootDevice.Udn)).Count());
 				Assert.AreEqual(0, searchResponses.Where((r) => !r.Headers.GetValues(testHeader.Name).First().StartsWith(testHeader.Value)).Count());
 			}
@@ -1317,11 +1303,9 @@ namespace Test.RssdpPortable
 
 				var searchResponses = GetSentMessages(server.SentMessages);
 				Assert.AreEqual(0, searchResponses.Where((r) => !r.IsSuccessStatusCode).Count());
-				Assert.IsTrue(GetResponses(searchResponses, SsdpConstants.UpnpDeviceTypeRootDevice).Count() >= 1);
-				Assert.IsTrue(GetResponses(searchResponses, SsdpConstants.PnpDeviceTypeRootDevice).Count() >= 1);
-				Assert.IsTrue(GetResponses(searchResponses, rootDevice.Udn).Count() >= 1);
-				Assert.IsTrue(GetResponses(searchResponses, rootDevice.FullDeviceType).Count() >= 1);
-				Assert.AreEqual(0, searchResponses.Where((r) => !r.Headers.GetValues("USN").First().StartsWith(rootDevice.Udn)).Count());
+				Assert.AreEqual(2, searchResponses.Count());
+				Assert.AreEqual(1, GetResponses(searchResponses, SsdpConstants.UpnpDeviceTypeRootDevice).Count());
+				Assert.AreEqual(1, GetResponses(searchResponses, SsdpConstants.PnpDeviceTypeRootDevice).Count());
 			}
 		}
 
@@ -1343,11 +1327,8 @@ namespace Test.RssdpPortable
 
 				var searchResponses = GetSentMessages(server.SentMessages);
 				Assert.AreEqual(0, searchResponses.Where((r) => !r.IsSuccessStatusCode).Count());
-				Assert.IsTrue(GetResponses(searchResponses, SsdpConstants.UpnpDeviceTypeRootDevice).Count() >= 1);
-				Assert.IsTrue(GetResponses(searchResponses, SsdpConstants.PnpDeviceTypeRootDevice).Count() >= 1);
-				Assert.IsTrue(GetResponses(searchResponses, rootDevice.Udn).Count() >= 1);
-				Assert.IsTrue(GetResponses(searchResponses, rootDevice.FullDeviceType).Count() >= 1);
-				Assert.AreEqual(0, searchResponses.Where((r) => !r.Headers.GetValues("USN").First().StartsWith(rootDevice.Udn)).Count());
+				Assert.AreEqual(1, searchResponses.Count());
+				Assert.AreEqual(1, GetResponses(searchResponses, rootDevice.Udn).Count());
 			}
 		}
 
@@ -1368,11 +1349,8 @@ namespace Test.RssdpPortable
 
 				var searchResponses = GetSentMessages(server.SentMessages);
 				Assert.AreEqual(0, searchResponses.Where((r) => !r.IsSuccessStatusCode).Count());
-				Assert.IsTrue(GetResponses(searchResponses, SsdpConstants.UpnpDeviceTypeRootDevice).Count() >= 1);
-				Assert.IsTrue(GetResponses(searchResponses, SsdpConstants.PnpDeviceTypeRootDevice).Count() >= 1);
-				Assert.IsTrue(GetResponses(searchResponses, rootDevice.Udn).Count() >= 1);
-				Assert.IsTrue(GetResponses(searchResponses, rootDevice.FullDeviceType).Count() >= 1);
-				Assert.AreEqual(0, searchResponses.Where((r) => !r.Headers.GetValues("USN").First().StartsWith(rootDevice.Udn)).Count());
+				Assert.AreEqual(1, searchResponses.Count());
+				Assert.AreEqual(1, GetResponses(searchResponses, rootDevice.FullDeviceType).Count());
 			}
 		}
 
@@ -1438,11 +1416,8 @@ namespace Test.RssdpPortable
 				var searchResponses = GetSentMessages(server.SentMessages);
 
 				Assert.AreEqual(0, searchResponses.Where((r) => !r.IsSuccessStatusCode).Count());
-				Assert.IsTrue(GetResponses(searchResponses, SsdpConstants.UpnpDeviceTypeRootDevice).Count() >= 1);
-				Assert.IsTrue(GetResponses(searchResponses, SsdpConstants.PnpDeviceTypeRootDevice).Count() >= 1);
-				Assert.IsTrue(GetResponses(searchResponses, rootDevice.Udn).Count() >= 1);
-				Assert.IsTrue(GetResponses(searchResponses, rootDevice.FullDeviceType).Count() >= 1);
-				Assert.AreEqual(0, searchResponses.Where((r) => !r.Headers.GetValues("USN").First().StartsWith(rootDevice.Udn)).Count());
+				Assert.AreEqual(1, GetResponses(searchResponses, SsdpConstants.UpnpDeviceTypeRootDevice).Count());
+				Assert.AreEqual(1, GetResponses(searchResponses, SsdpConstants.PnpDeviceTypeRootDevice).Count());
 			}
 		}
 
@@ -1467,11 +1442,8 @@ namespace Test.RssdpPortable
 
 				var searchResponses = GetSentMessages(server.SentMessages);
 				Assert.AreEqual(0, searchResponses.Where((r) => !r.IsSuccessStatusCode).Count());
-				Assert.IsTrue(GetResponses(searchResponses, SsdpConstants.UpnpDeviceTypeRootDevice).Count() >= 1);
-				Assert.IsTrue(GetResponses(searchResponses, SsdpConstants.PnpDeviceTypeRootDevice).Count() >= 1);
-				Assert.IsTrue(GetResponses(searchResponses, rootDevice.Udn).Count() >= 1);
-				Assert.IsTrue(GetResponses(searchResponses, rootDevice.FullDeviceType).Count() >= 1);
-				Assert.AreEqual(0, searchResponses.Where((r) => !r.Headers.GetValues("USN").First().StartsWith(rootDevice.Udn)).Count());
+				Assert.AreEqual(1, GetResponses(searchResponses, SsdpConstants.UpnpDeviceTypeRootDevice).Count());
+				Assert.AreEqual(1, GetResponses(searchResponses, SsdpConstants.PnpDeviceTypeRootDevice).Count());
 			}
 		}
 
@@ -1545,7 +1517,7 @@ namespace Test.RssdpPortable
 
 				var searchResponses = GetSentMessages(server.SentMessages);
 				Assert.AreEqual(0, searchResponses.Where((r) => !r.IsSuccessStatusCode).Count());
-				Assert.IsTrue(searchResponses.Count() == 8);
+				Assert.IsTrue(searchResponses.Count() == 4);
 				Assert.IsTrue(GetResponses(searchResponses, SsdpConstants.UpnpDeviceTypeRootDevice).Count() == 2);
 			}
 		}
@@ -1649,6 +1621,18 @@ namespace Test.RssdpPortable
 		public void Publisher_SearchResponse_RespondsToAllSearch()
 		{
 			var rootDevice = CreateValidRootDevice();
+			var service = new SsdpService()
+			{
+				ControlUrl = new Uri("/test/control", UriKind.Relative),
+				ScpdUrl = new Uri("/test", UriKind.Relative),
+				EventSubUrl = new Uri("/test/events", UriKind.Relative),
+				ServiceType = "testservicetype",
+				ServiceTypeNamespace = "my-namespace",
+				ServiceVersion = 1,
+				Uuid = System.Guid.NewGuid().ToString()
+			};
+			rootDevice.AddService(service);
+
 			var parentDevice = CreateValidEmbeddedDevice(rootDevice);
 			rootDevice.AddDevice(parentDevice);
 			var childDevice = CreateValidEmbeddedDevice(rootDevice);
@@ -1672,10 +1656,18 @@ namespace Test.RssdpPortable
 				var rootUuidResponses = GetResponses(searchResponses, childDevice.Udn);
 				var parentUuidResponses = GetResponses(searchResponses, childDevice.Udn);
 				var childUuidResponses = GetResponses(searchResponses, childDevice.Udn);
+				var deviceTypeResponses = GetResponses(searchResponses, childDevice.FullDeviceType).Union(GetResponses(searchResponses, rootDevice.DeviceType));
+				var rootDeviceResponses = GetResponses(searchResponses, SsdpConstants.UpnpDeviceTypeRootDevice);
+				var pnpRootDeviceResponses = GetResponses(searchResponses, SsdpConstants.UpnpDeviceTypeRootDevice);
+				var serviceResponses = GetResponses(searchResponses, service.FullServiceType);
 
 				Assert.AreEqual(1, rootUuidResponses.Count());
 				Assert.AreEqual(1, parentUuidResponses.Count());
 				Assert.AreEqual(1, childUuidResponses.Count());
+				Assert.AreEqual(2, deviceTypeResponses.Count());
+				Assert.AreEqual(1, rootDeviceResponses.Count());
+				Assert.AreEqual(1, pnpRootDeviceResponses.Count());
+				Assert.AreEqual(1, serviceResponses.Count());
 			}
 		}
 
@@ -1764,8 +1756,10 @@ namespace Test.RssdpPortable
 
 				var searchResponses = GetSentMessages(server.SentMessages);
 				Assert.AreEqual(1, GetResponses(searchResponses, service.FullServiceType).Count());
+				Assert.AreEqual(1, searchResponses.Count());
 			}
 		}
+
 		[TestMethod]
 		public void Publisher_SearchResponse_RespondsToServiceTypeDeviceSearch_WithEmbeddedDeviceService()
 		{
@@ -1806,6 +1800,60 @@ namespace Test.RssdpPortable
 
 				var searchResponses = GetSentMessages(server.SentMessages);
 				Assert.AreEqual(1, GetResponses(searchResponses, service.FullServiceType).Count());
+				Assert.AreEqual(1, searchResponses.Count());
+			}
+		}
+
+		[TestMethod]
+		public void Publisher_SearchResponse_RespondsToServiceTypeDeviceSearchOncePerServiceType()
+		{
+			var rootDevice = CreateValidRootDevice();
+
+			var server = new MockCommsServer();
+			using (var publisher = new TestDevicePublisher(server))
+			{
+				publisher.StandardsMode = SsdpStandardsMode.Strict;
+#pragma warning disable CS0618 // Type or member is obsolete
+				publisher.SupportPnpRootDevice = false;
+#pragma warning restore CS0618 // Type or member is obsolete
+
+				var service = new SsdpService()
+				{
+					ControlUrl = new Uri("/test/control", UriKind.Relative),
+					ScpdUrl = new Uri("/test", UriKind.Relative),
+					EventSubUrl = new Uri("/test/events", UriKind.Relative),
+					ServiceType = "testservicetype",
+					ServiceTypeNamespace = "my-namespace",
+					ServiceVersion = 1,
+					Uuid = System.Guid.NewGuid().ToString()
+				};
+
+				var service2 = new SsdpService()
+				{
+					ControlUrl = new Uri("/test2/control", UriKind.Relative),
+					ScpdUrl = new Uri("/test2", UriKind.Relative),
+					EventSubUrl = new Uri("/test2/events", UriKind.Relative),
+					ServiceType = "testservicetype",
+					ServiceTypeNamespace = "my-namespace",
+					ServiceVersion = 1,
+					Uuid = System.Guid.NewGuid().ToString()
+				};
+
+				rootDevice.AddService(service);
+				rootDevice.AddService(service2);
+				publisher.AddDevice(rootDevice);
+				server.WaitForMockBroadcast(1000);
+				server.SentBroadcasts.Clear();
+				server.SentMessages.Clear();
+
+				ReceivedUdpData searchRequest = GetSearchRequestMessage(service.FullServiceType);
+
+				server.MockReceiveMessage(searchRequest);
+				server.WaitForMockMessage(1500);
+
+				var searchResponses = GetSentMessages(server.SentMessages);
+				Assert.AreEqual(1, GetResponses(searchResponses, service.FullServiceType).Count());
+				Assert.AreEqual(1, searchResponses.Count());
 			}
 		}
 
@@ -1930,7 +1978,7 @@ namespace Test.RssdpPortable
 				//System.Threading.Thread.Sleep(500);
 
 				var searchResponses = GetSentMessages(server.SentMessages);
-				Assert.AreEqual(3, searchResponses.Count());
+				Assert.AreEqual(1, searchResponses.Count());
 			}
 		}
 
@@ -2111,6 +2159,11 @@ ST: {2}
 		}
 
 		private IEnumerable<System.Net.Http.HttpResponseMessage> GetResponses(IEnumerable<System.Net.Http.HttpResponseMessage> searchResponses, string searchTarget)
+		{
+			return (from r in searchResponses where r.Headers.GetValues("ST").First() == searchTarget select r);
+		}
+
+		private IEnumerable<System.Net.Http.HttpResponseMessage> GetResponsesNotMatchingTarget(IEnumerable<System.Net.Http.HttpResponseMessage> searchResponses, string searchTarget)
 		{
 			return (from r in searchResponses where r.Headers.GetValues("ST").First() == searchTarget select r);
 		}

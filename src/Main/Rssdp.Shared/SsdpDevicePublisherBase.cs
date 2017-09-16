@@ -402,24 +402,7 @@ USN: {1}
 				devices = GetDevicesMatchingSearchTarget(searchTarget, devices);
 
 				if (devices != null)
-				{
-					_Log.LogInfo(String.Format("Sending search responses for {0} devices", devices.Count()));
-
-					if (searchTarget.Contains(":service:"))
-					{
-						foreach (var device in devices)
-						{
-							SendServiceSearchResponses(device, searchTarget, endPoint);
-						}
-					}
-					else
-					{
-						foreach (var device in devices)
-						{
-							SendDeviceSearchResponses(device, endPoint);
-						}
-					}
-				}
+					SendSearchResponses(searchTarget, endPoint, devices);
 				else
 					_Log.LogWarning("Sending search responses for 0 devices (no matching targets).");
 			});
@@ -446,17 +429,18 @@ USN: {1}
 				{
 					if (searchTarget.Contains(":service:"))
 					{
-						devices = (from
-											 device in GetAllDevicesAsFlatEnumerable()
-								   where
-										  (
-											  from s in
-											  device.Services
-											  where String.Compare(s.FullServiceType, searchTarget, StringComparison.OrdinalIgnoreCase) == 0
-											  select s
-										  ).Any()
-								   select device
-											).ToArray();
+						devices = 
+						(
+							from device in GetAllDevicesAsFlatEnumerable()
+							where
+							(
+								from s in
+								device.Services
+								where String.Compare(s.FullServiceType, searchTarget, StringComparison.OrdinalIgnoreCase) == 0
+								select s
+							).Any()
+							select device
+						).ToArray();
 					}
 					else
 					{
@@ -497,19 +481,67 @@ USN: {1}
 			return _Devices.Union(_Devices.SelectManyRecursive<SsdpDevice>((d) => d.Devices));
 		}
 
-		private void SendDeviceSearchResponses(SsdpDevice device, UdpEndPoint endPoint)
+		private void SendSearchResponses(string searchTarget, UdpEndPoint endPoint, IEnumerable<SsdpDevice> devices)
 		{
+			_Log.LogInfo(String.Format("Sending search (target = {1}) responses for {0} devices", devices.Count(), searchTarget));
+
+			if (searchTarget.Contains(":service:"))
+			{
+				foreach (var device in devices)
+				{
+					SendServiceSearchResponses(device, searchTarget, endPoint);
+				}
+			}
+			else
+			{
+				foreach (var device in devices)
+				{
+					SendDeviceSearchResponses(device, searchTarget, endPoint);
+				}
+			}
+		}
+
+		private void SendDeviceSearchResponses(SsdpDevice device, string searchTarget, UdpEndPoint endPoint)
+		{
+			//http://www.upnp.org/specs/arch/UPnP-arch-DeviceArchitecture-v1.0-20080424.pdf - page 21
+			//For ssdp:all - Respond 3+2d+k times for a root device with d embedded devices and s embedded services but only k distinct service types 
+			//Root devices - Respond once (special handling when in related/Win Explorer support mode)
+			//Udn (uuid) - Response once
+			//Device type - response once
+			//Service type - respond once per service type 
+
 			bool isRootDevice = (device as SsdpRootDevice) != null;
-			if (isRootDevice)
+			bool sendAll = searchTarget == SsdpConstants.SsdpDiscoverAllSTHeader;
+			bool sendRootDevices = searchTarget == SsdpConstants.UpnpDeviceTypeRootDevice || searchTarget == SsdpConstants.PnpDeviceTypeRootDevice;
+
+			if (isRootDevice && (sendAll || sendRootDevices))
 			{
 				SendSearchResponse(SsdpConstants.UpnpDeviceTypeRootDevice, device, GetUsn(device.Udn, SsdpConstants.UpnpDeviceTypeRootDevice), endPoint);
 				if (IsWindowsExplorerSupportEnabled)
 					SendSearchResponse(SsdpConstants.PnpDeviceTypeRootDevice, device, GetUsn(device.Udn, SsdpConstants.PnpDeviceTypeRootDevice), endPoint);
 			}
 
-			SendSearchResponse(device.Udn, device, device.Udn, endPoint);
+			if (sendAll || searchTarget.StartsWith("uuid:"))
+				SendSearchResponse(device.Udn, device, device.Udn, endPoint);
 
-			SendSearchResponse(device.FullDeviceType, device, GetUsn(device.Udn, device.FullDeviceType), endPoint);
+			if (sendAll || searchTarget.Contains(":device:"))
+				SendSearchResponse(device.FullDeviceType, device, GetUsn(device.Udn, device.FullDeviceType), endPoint);
+
+			if (searchTarget == SsdpConstants.SsdpDiscoverAllSTHeader)
+			{
+				//Send 1 search response for each unique service type for all devices found
+				var serviceTypes =
+					(
+						from s
+						in device.Services
+						select s.FullServiceType
+					).Distinct().ToArray();
+
+				foreach (var st in serviceTypes)
+				{
+					SendServiceSearchResponses(device, st, endPoint);
+				}
+			}
 		}
 
 		private void SendServiceSearchResponses(SsdpDevice device, string searchTarget, UdpEndPoint endPoint)
