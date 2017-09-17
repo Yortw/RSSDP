@@ -208,8 +208,8 @@ haven't really considered how many variations of a wheel might be needed.
 Reference materials used while writing this library, or that may be useful to people working with RSSDP who are not familiar with SSDP/UPnP device types and protocols.
 
 * [SSDP Draft 1.03 Specification](http://tools.ietf.org/html/draft-cai-ssdp-v1-03 "SSDP Draft Spec 1.03")
-* [UPnP 1.0 Specification](http://tools.ietf.org/html/draft-cai-ssdp-v1-03 "UPnP 1.0 Spec")
-* [UPnP 1.1 Specification](http://www.upnp.org/specs/arch/UPnP-arch-DeviceArchitecture-v1.0-20080424.pdf "UPnP 1.1 Spec")
+* [UPnP 1.0 Specification](http://upnp.org/specs/arch/UPnP-arch-DeviceArchitecture-v1.0-20080424.pdf "UPnP 1.0 Spec")
+* [UPnP 1.1 Specification](http://upnp.org/specs/arch/UPnP-arch-DeviceArchitecture-v1.1.pdf "UPnP 1.1 Spec")
 * [HTTP 1.1 Specification](http://tools.ietf.org/html/rfc2616 "HTTP 1.1 Spec")
 
 * [UPnP Device Types and Descriptions](http://upnp.org/index.php/sdcps-and-certification/standards/sdcps/ "UPnP Device Types")
