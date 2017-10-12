@@ -1,0 +1,91 @@
+### YamlMime:ManagedReference
+items:
+- uid: Rssdp.PackageTest.Uwp.MainPage
+  commentId: T:Rssdp.PackageTest.Uwp.MainPage
+  id: MainPage
+  parent: Rssdp.PackageTest.Uwp
+  children:
+  - Rssdp.PackageTest.Uwp.MainPage.#ctor
+  langs:
+  - csharp
+  - vb
+  name: MainPage
+  nameWithType: MainPage
+  fullName: Rssdp.PackageTest.Uwp.MainPage
+  type: Class
+  source:
+    id: MainPage
+    path: ''
+    startLine: 500
+  assemblies:
+  - cs.temp.dll
+  namespace: Rssdp.PackageTest.Uwp
+  summary: "\nAn empty page that can be used on its own or navigated to within a Frame.\n"
+  example: []
+  syntax:
+    content: 'public sealed class MainPage : Page'
+    content.vb: >-
+      Public NotInheritable Class MainPage
+          Inherits Page
+  inheritance:
+  - System.Object
+  modifiers.csharp:
+  - public
+  - sealed
+  - class
+  modifiers.vb:
+  - Public
+  - NotInheritable
+  - Class
+- uid: Rssdp.PackageTest.Uwp.MainPage.#ctor
+  commentId: M:Rssdp.PackageTest.Uwp.MainPage.#ctor
+  id: '#ctor'
+  parent: Rssdp.PackageTest.Uwp.MainPage
+  langs:
+  - csharp
+  - vb
+  name: MainPage()
+  nameWithType: MainPage.MainPage()
+  fullName: Rssdp.PackageTest.Uwp.MainPage.MainPage()
+  type: Constructor
+  source:
+    id: .ctor
+    path: ''
+    startLine: 502
+  assemblies:
+  - cs.temp.dll
+  namespace: Rssdp.PackageTest.Uwp
+  syntax:
+    content: public MainPage()
+    content.vb: Public Sub New
+  overload: Rssdp.PackageTest.Uwp.MainPage.#ctor*
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+references:
+- uid: Rssdp.PackageTest.Uwp
+  commentId: N:Rssdp.PackageTest.Uwp
+  isExternal: false
+  name: Rssdp.PackageTest.Uwp
+  nameWithType: Rssdp.PackageTest.Uwp
+  fullName: Rssdp.PackageTest.Uwp
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  name: Object
+  nameWithType: Object
+  fullName: System.Object
+- uid: System
+  commentId: N:System
+  isExternal: false
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Rssdp.PackageTest.Uwp.MainPage.#ctor*
+  commentId: Overload:Rssdp.PackageTest.Uwp.MainPage.#ctor
+  isExternal: false
+  name: MainPage
+  nameWithType: MainPage.MainPage
+  fullName: Rssdp.PackageTest.Uwp.MainPage.MainPage

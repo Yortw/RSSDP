@@ -1,0 +1,240 @@
+### YamlMime:ManagedReference
+items:
+- uid: Rssdp.SsdpDeviceLocator
+  commentId: T:Rssdp.SsdpDeviceLocator
+  id: SsdpDeviceLocator
+  parent: Rssdp
+  children:
+  - Rssdp.SsdpDeviceLocator.#ctor
+  - Rssdp.SsdpDeviceLocator.#ctor
+  - Rssdp.SsdpDeviceLocator.#ctor(ISsdpCommunicationsServer)
+  - Rssdp.SsdpDeviceLocator.#ctor(ISsdpCommunicationsServer)
+  - Rssdp.SsdpDeviceLocator.#ctor(System.String)
+  langs:
+  - csharp
+  - vb
+  name: SsdpDeviceLocator
+  nameWithType: SsdpDeviceLocator
+  fullName: Rssdp.SsdpDeviceLocator
+  type: Class
+  source:
+    id: SsdpDeviceLocator
+    path: ''
+    startLine: 9307
+  assemblies:
+  - cs.temp.dll
+  namespace: Rssdp
+  summary: "\nAllows you to search the network for a particular device, device types, or UPnP service types. Also listenings for broadcast notifications of device availability and raises events to indicate changes in status.\n"
+  example: []
+  syntax:
+    content: 'public sealed class SsdpDeviceLocator : SsdpDeviceLocatorBase, SsdpDeviceLocatorBase'
+    content.vb: >-
+      Public NotInheritable Class SsdpDeviceLocator
+          Inherits SsdpDeviceLocatorBase
+          Implements SsdpDeviceLocatorBase
+  inheritance:
+  - System.Object
+  implements:
+  - SsdpDeviceLocatorBase
+  modifiers.csharp:
+  - public
+  - sealed
+  - class
+  modifiers.vb:
+  - Public
+  - NotInheritable
+  - Class
+- uid: Rssdp.SsdpDeviceLocator.#ctor
+  commentId: M:Rssdp.SsdpDeviceLocator.#ctor
+  id: '#ctor'
+  parent: Rssdp.SsdpDeviceLocator
+  langs:
+  - csharp
+  - vb
+  name: SsdpDeviceLocator()
+  nameWithType: SsdpDeviceLocator.SsdpDeviceLocator()
+  fullName: Rssdp.SsdpDeviceLocator.SsdpDeviceLocator()
+  type: Constructor
+  source:
+    id: .ctor
+    path: ''
+    startLine: 1546
+  assemblies:
+  - cs.temp.dll
+  namespace: Rssdp
+  summary: "\nDefault constructor. Constructs a new instance using the default <see cref=\"!:ISsdpCommunicationsServer\"></see> and <see cref=\"!:ISocketFactory\"></see> implementations for this platform.\n"
+  example: []
+  syntax:
+    content: public SsdpDeviceLocator()
+    content.vb: Public Sub New
+  overload: Rssdp.SsdpDeviceLocator.#ctor*
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+- uid: Rssdp.SsdpDeviceLocator.#ctor(ISsdpCommunicationsServer)
+  commentId: M:Rssdp.SsdpDeviceLocator.#ctor(ISsdpCommunicationsServer)
+  id: '#ctor(ISsdpCommunicationsServer)'
+  parent: Rssdp.SsdpDeviceLocator
+  langs:
+  - csharp
+  - vb
+  name: SsdpDeviceLocator(ISsdpCommunicationsServer)
+  nameWithType: SsdpDeviceLocator.SsdpDeviceLocator(ISsdpCommunicationsServer)
+  fullName: Rssdp.SsdpDeviceLocator.SsdpDeviceLocator(ISsdpCommunicationsServer)
+  type: Constructor
+  source:
+    id: .ctor
+    path: ''
+    startLine: 1555
+  assemblies:
+  - cs.temp.dll
+  namespace: Rssdp
+  summary: "\nFull constructor. Constructs a new instance using the provided <see cref=\"!:ISsdpCommunicationsServer\"></see> implementation.\n"
+  example: []
+  syntax:
+    content: public SsdpDeviceLocator(ISsdpCommunicationsServer communicationsServer)
+    parameters:
+    - id: communicationsServer
+      type: ISsdpCommunicationsServer
+    content.vb: Public Sub New(communicationsServer As ISsdpCommunicationsServer)
+  overload: Rssdp.SsdpDeviceLocator.#ctor*
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+- uid: Rssdp.SsdpDeviceLocator.#ctor
+  commentId: M:Rssdp.SsdpDeviceLocator.#ctor
+  id: '#ctor'
+  parent: Rssdp.SsdpDeviceLocator
+  langs:
+  - csharp
+  - vb
+  name: SsdpDeviceLocator()
+  nameWithType: SsdpDeviceLocator.SsdpDeviceLocator()
+  fullName: Rssdp.SsdpDeviceLocator.SsdpDeviceLocator()
+  type: Constructor
+  source:
+    id: .ctor
+    path: ''
+    startLine: 9313
+  assemblies:
+  - cs.temp.dll
+  namespace: Rssdp
+  summary: "\nDefault constructor. Constructs a new instance using the default <see cref=\"!:ISsdpCommunicationsServer\"></see> and <see cref=\"!:ISocketFactory\"></see> implementations for this platform.\n"
+  example: []
+  syntax:
+    content: public SsdpDeviceLocator()
+    content.vb: Public Sub New
+  overload: Rssdp.SsdpDeviceLocator.#ctor*
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+- uid: Rssdp.SsdpDeviceLocator.#ctor(System.String)
+  commentId: M:Rssdp.SsdpDeviceLocator.#ctor(System.String)
+  id: '#ctor(System.String)'
+  parent: Rssdp.SsdpDeviceLocator
+  langs:
+  - csharp
+  - vb
+  name: SsdpDeviceLocator(String)
+  nameWithType: SsdpDeviceLocator.SsdpDeviceLocator(String)
+  fullName: Rssdp.SsdpDeviceLocator.SsdpDeviceLocator(System.String)
+  type: Constructor
+  source:
+    id: .ctor
+    path: ''
+    startLine: 9332
+  assemblies:
+  - cs.temp.dll
+  namespace: Rssdp
+  summary: "\nPartial constructor. \n"
+  example: []
+  syntax:
+    content: public SsdpDeviceLocator(string ipAddress)
+    parameters:
+    - id: ipAddress
+      type: System.String
+      description: "The IP address of the local network adapter to bind sockets to. \nNull or empty string will use an IP address selected by the OS or runtime.\n"
+    content.vb: Public Sub New(ipAddress As String)
+  overload: Rssdp.SsdpDeviceLocator.#ctor*
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+- uid: Rssdp.SsdpDeviceLocator.#ctor(ISsdpCommunicationsServer)
+  commentId: M:Rssdp.SsdpDeviceLocator.#ctor(ISsdpCommunicationsServer)
+  id: '#ctor(ISsdpCommunicationsServer)'
+  parent: Rssdp.SsdpDeviceLocator
+  langs:
+  - csharp
+  - vb
+  name: SsdpDeviceLocator(ISsdpCommunicationsServer)
+  nameWithType: SsdpDeviceLocator.SsdpDeviceLocator(ISsdpCommunicationsServer)
+  fullName: Rssdp.SsdpDeviceLocator.SsdpDeviceLocator(ISsdpCommunicationsServer)
+  type: Constructor
+  source:
+    id: .ctor
+    path: ''
+    startLine: 9348
+  assemblies:
+  - cs.temp.dll
+  namespace: Rssdp
+  summary: "\nFull constructor. Constructs a new instance using the provided <see cref=\"!:ISsdpCommunicationsServer\"></see> implementation.\n"
+  example: []
+  syntax:
+    content: public SsdpDeviceLocator(ISsdpCommunicationsServer communicationsServer)
+    parameters:
+    - id: communicationsServer
+      type: ISsdpCommunicationsServer
+    content.vb: Public Sub New(communicationsServer As ISsdpCommunicationsServer)
+  overload: Rssdp.SsdpDeviceLocator.#ctor*
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+references:
+- uid: Rssdp
+  commentId: N:Rssdp
+  isExternal: false
+  name: Rssdp
+  nameWithType: Rssdp
+  fullName: Rssdp
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  name: Object
+  nameWithType: Object
+  fullName: System.Object
+- uid: SsdpDeviceLocatorBase
+  commentId: '!:SsdpDeviceLocatorBase'
+  isExternal: true
+  name: SsdpDeviceLocatorBase
+  nameWithType: SsdpDeviceLocatorBase
+  fullName: SsdpDeviceLocatorBase
+- uid: System
+  commentId: N:System
+  isExternal: false
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Rssdp.SsdpDeviceLocator.#ctor*
+  commentId: Overload:Rssdp.SsdpDeviceLocator.#ctor
+  isExternal: false
+  name: SsdpDeviceLocator
+  nameWithType: SsdpDeviceLocator.SsdpDeviceLocator
+  fullName: Rssdp.SsdpDeviceLocator.SsdpDeviceLocator
+- uid: ISsdpCommunicationsServer
+  isExternal: true
+  name: ISsdpCommunicationsServer
+  nameWithType: ISsdpCommunicationsServer
+  fullName: ISsdpCommunicationsServer
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  name: String
+  nameWithType: String
+  fullName: System.String

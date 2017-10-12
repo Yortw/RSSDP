@@ -1,0 +1,2578 @@
+### YamlMime:ManagedReference
+items:
+- uid: Rssdp.SsdpDevice
+  commentId: T:Rssdp.SsdpDevice
+  id: SsdpDevice
+  parent: Rssdp
+  children:
+  - Rssdp.SsdpDevice.#ctor
+  - Rssdp.SsdpDevice.#ctor(System.String)
+  - Rssdp.SsdpDevice.AddDevice(Rssdp.SsdpEmbeddedDevice)
+  - Rssdp.SsdpDevice.AddService(Rssdp.SsdpService)
+  - Rssdp.SsdpDevice.CustomProperties
+  - Rssdp.SsdpDevice.CustomResponseHeaders
+  - Rssdp.SsdpDevice.DeviceAdded
+  - Rssdp.SsdpDevice.DeviceRemoved
+  - Rssdp.SsdpDevice.Devices
+  - Rssdp.SsdpDevice.DeviceType
+  - Rssdp.SsdpDevice.DeviceTypeNamespace
+  - Rssdp.SsdpDevice.DeviceVersion
+  - Rssdp.SsdpDevice.FriendlyName
+  - Rssdp.SsdpDevice.FullDeviceType
+  - Rssdp.SsdpDevice.Icons
+  - Rssdp.SsdpDevice.Manufacturer
+  - Rssdp.SsdpDevice.ManufacturerUrl
+  - Rssdp.SsdpDevice.ModelDescription
+  - Rssdp.SsdpDevice.ModelName
+  - Rssdp.SsdpDevice.ModelNumber
+  - Rssdp.SsdpDevice.ModelUrl
+  - Rssdp.SsdpDevice.OnDeviceAdded(Rssdp.SsdpEmbeddedDevice)
+  - Rssdp.SsdpDevice.OnDeviceRemoved(Rssdp.SsdpEmbeddedDevice)
+  - Rssdp.SsdpDevice.OnServiceAdded(Rssdp.SsdpService)
+  - Rssdp.SsdpDevice.OnServiceRemoved(Rssdp.SsdpService)
+  - Rssdp.SsdpDevice.PresentationUrl
+  - Rssdp.SsdpDevice.RemoveDevice(Rssdp.SsdpEmbeddedDevice)
+  - Rssdp.SsdpDevice.RemoveService(Rssdp.SsdpService)
+  - Rssdp.SsdpDevice.SerialNumber
+  - Rssdp.SsdpDevice.ServiceAdded
+  - Rssdp.SsdpDevice.ServiceRemoved
+  - Rssdp.SsdpDevice.Services
+  - Rssdp.SsdpDevice.StringToUri(System.String)
+  - Rssdp.SsdpDevice.Udn
+  - Rssdp.SsdpDevice.Upc
+  - Rssdp.SsdpDevice.Uuid
+  - Rssdp.SsdpDevice.WriteDeviceDescriptionXml(XmlWriter,Rssdp.SsdpDevice)
+  langs:
+  - csharp
+  - vb
+  name: SsdpDevice
+  nameWithType: SsdpDevice
+  fullName: Rssdp.SsdpDevice
+  type: Class
+  source:
+    id: SsdpDevice
+    path: ''
+    startLine: 4665
+  assemblies:
+  - cs.temp.dll
+  namespace: Rssdp
+  summary: "\nBase class representing the common details of a (root or embedded) device, either to be published or that has been located.\n"
+  remarks: "\n<p>Do not derive new types directly from this class. New device classes should derive from either <xref href=\"Rssdp.SsdpRootDevice\" data-throw-if-not-resolved=\"false\"></xref> or <xref href=\"Rssdp.SsdpEmbeddedDevice\" data-throw-if-not-resolved=\"false\"></xref>.</p>\n"
+  example: []
+  syntax:
+    content: public abstract class SsdpDevice
+    content.vb: Public MustInherit Class SsdpDevice
+  seealso:
+  - linkId: Rssdp.SsdpRootDevice
+    commentId: T:Rssdp.SsdpRootDevice
+  - linkId: Rssdp.SsdpEmbeddedDevice
+    commentId: T:Rssdp.SsdpEmbeddedDevice
+  inheritance:
+  - System.Object
+  derivedClasses:
+  - Rssdp.SsdpEmbeddedDevice
+  - Rssdp.SsdpRootDevice
+  inheritedMembers:
+  - System.Object.ToString
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  modifiers.csharp:
+  - public
+  - abstract
+  - class
+  modifiers.vb:
+  - Public
+  - MustInherit
+  - Class
+- uid: Rssdp.SsdpDevice.DeviceAdded
+  commentId: E:Rssdp.SsdpDevice.DeviceAdded
+  id: DeviceAdded
+  parent: Rssdp.SsdpDevice
+  langs:
+  - csharp
+  - vb
+  name: DeviceAdded
+  nameWithType: SsdpDevice.DeviceAdded
+  fullName: Rssdp.SsdpDevice.DeviceAdded
+  type: Event
+  source:
+    id: DeviceAdded
+    path: ''
+    startLine: 4689
+  assemblies:
+  - cs.temp.dll
+  namespace: Rssdp
+  summary: "\nRaised when a new child device is added.\n"
+  example: []
+  syntax:
+    content: public event EventHandler<DeviceEventArgs> DeviceAdded
+    return:
+      type: EventHandler{Rssdp.DeviceEventArgs}
+    content.vb: Public Event DeviceAdded As EventHandler(Of DeviceEventArgs)
+  seealso:
+  - linkId: Rssdp.SsdpDevice.AddDevice(Rssdp.SsdpEmbeddedDevice)
+    commentId: M:Rssdp.SsdpDevice.AddDevice(Rssdp.SsdpEmbeddedDevice)
+  - linkId: Rssdp.SsdpDevice.DeviceAdded
+    commentId: E:Rssdp.SsdpDevice.DeviceAdded
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+- uid: Rssdp.SsdpDevice.DeviceRemoved
+  commentId: E:Rssdp.SsdpDevice.DeviceRemoved
+  id: DeviceRemoved
+  parent: Rssdp.SsdpDevice
+  langs:
+  - csharp
+  - vb
+  name: DeviceRemoved
+  nameWithType: SsdpDevice.DeviceRemoved
+  fullName: Rssdp.SsdpDevice.DeviceRemoved
+  type: Event
+  source:
+    id: DeviceRemoved
+    path: ''
+    startLine: 4696
+  assemblies:
+  - cs.temp.dll
+  namespace: Rssdp
+  summary: "\nRaised when a child device is removed.\n"
+  example: []
+  syntax:
+    content: public event EventHandler<DeviceEventArgs> DeviceRemoved
+    return:
+      type: EventHandler{Rssdp.DeviceEventArgs}
+    content.vb: Public Event DeviceRemoved As EventHandler(Of DeviceEventArgs)
+  seealso:
+  - linkId: Rssdp.SsdpDevice.RemoveDevice(Rssdp.SsdpEmbeddedDevice)
+    commentId: M:Rssdp.SsdpDevice.RemoveDevice(Rssdp.SsdpEmbeddedDevice)
+  - linkId: Rssdp.SsdpDevice.DeviceRemoved
+    commentId: E:Rssdp.SsdpDevice.DeviceRemoved
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+- uid: Rssdp.SsdpDevice.ServiceAdded
+  commentId: E:Rssdp.SsdpDevice.ServiceAdded
+  id: ServiceAdded
+  parent: Rssdp.SsdpDevice
+  langs:
+  - csharp
+  - vb
+  name: ServiceAdded
+  nameWithType: SsdpDevice.ServiceAdded
+  fullName: Rssdp.SsdpDevice.ServiceAdded
+  type: Event
+  source:
+    id: ServiceAdded
+    path: ''
+    startLine: 4703
+  assemblies:
+  - cs.temp.dll
+  namespace: Rssdp
+  summary: "\nRaised when a new service is added.\n"
+  example: []
+  syntax:
+    content: public event EventHandler<ServiceEventArgs> ServiceAdded
+    return:
+      type: EventHandler{Rssdp.ServiceEventArgs}
+    content.vb: Public Event ServiceAdded As EventHandler(Of ServiceEventArgs)
+  seealso:
+  - linkId: Rssdp.SsdpDevice.AddService(Rssdp.SsdpService)
+    commentId: M:Rssdp.SsdpDevice.AddService(Rssdp.SsdpService)
+  - linkId: Rssdp.SsdpDevice.ServiceAdded
+    commentId: E:Rssdp.SsdpDevice.ServiceAdded
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+- uid: Rssdp.SsdpDevice.ServiceRemoved
+  commentId: E:Rssdp.SsdpDevice.ServiceRemoved
+  id: ServiceRemoved
+  parent: Rssdp.SsdpDevice
+  langs:
+  - csharp
+  - vb
+  name: ServiceRemoved
+  nameWithType: SsdpDevice.ServiceRemoved
+  fullName: Rssdp.SsdpDevice.ServiceRemoved
+  type: Event
+  source:
+    id: ServiceRemoved
+    path: ''
+    startLine: 4710
+  assemblies:
+  - cs.temp.dll
+  namespace: Rssdp
+  summary: "\nRaised when a service is removed.\n"
+  example: []
+  syntax:
+    content: public event EventHandler<ServiceEventArgs> ServiceRemoved
+    return:
+      type: EventHandler{Rssdp.ServiceEventArgs}
+    content.vb: Public Event ServiceRemoved As EventHandler(Of ServiceEventArgs)
+  seealso:
+  - linkId: Rssdp.SsdpDevice.RemoveService(Rssdp.SsdpService)
+    commentId: M:Rssdp.SsdpDevice.RemoveService(Rssdp.SsdpService)
+  - linkId: Rssdp.SsdpDevice.OnServiceRemoved(Rssdp.SsdpService)
+    commentId: M:Rssdp.SsdpDevice.OnServiceRemoved(Rssdp.SsdpService)
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+- uid: Rssdp.SsdpDevice.#ctor
+  commentId: M:Rssdp.SsdpDevice.#ctor
+  id: '#ctor'
+  parent: Rssdp.SsdpDevice
+  langs:
+  - csharp
+  - vb
+  name: SsdpDevice()
+  nameWithType: SsdpDevice.SsdpDevice()
+  fullName: Rssdp.SsdpDevice.SsdpDevice()
+  type: Constructor
+  source:
+    id: .ctor
+    path: ''
+    startLine: 4719
+  assemblies:
+  - cs.temp.dll
+  namespace: Rssdp
+  summary: "\nDerived type constructor, allows constructing a device with no parent. Should only be used from derived types that are or inherit from <xref href=\"Rssdp.SsdpRootDevice\" data-throw-if-not-resolved=\"false\"></xref>.\n"
+  example: []
+  syntax:
+    content: protected SsdpDevice()
+    content.vb: Protected Sub New
+  overload: Rssdp.SsdpDevice.#ctor*
+  modifiers.csharp:
+  - protected
+  modifiers.vb:
+  - Protected
+- uid: Rssdp.SsdpDevice.#ctor(System.String)
+  commentId: M:Rssdp.SsdpDevice.#ctor(System.String)
+  id: '#ctor(System.String)'
+  parent: Rssdp.SsdpDevice
+  langs:
+  - csharp
+  - vb
+  name: SsdpDevice(String)
+  nameWithType: SsdpDevice.SsdpDevice(String)
+  fullName: Rssdp.SsdpDevice.SsdpDevice(System.String)
+  type: Constructor
+  source:
+    id: .ctor
+    path: ''
+    startLine: 4741
+  assemblies:
+  - cs.temp.dll
+  namespace: Rssdp
+  summary: "\nDeserialisation constructor.\n"
+  remarks: <p>Uses the provided XML string and parent device properties to set the properties of the object. The XML provided must be a valid UPnP device description document.</p>
+  example: []
+  syntax:
+    content: protected SsdpDevice(string deviceDescriptionXml)
+    parameters:
+    - id: deviceDescriptionXml
+      type: System.String
+      description: A UPnP device description XML document.
+    content.vb: Protected Sub New(deviceDescriptionXml As String)
+  overload: Rssdp.SsdpDevice.#ctor*
+  exceptions:
+  - type: System.ArgumentNullException
+    commentId: T:System.ArgumentNullException
+    description: Thrown if the <code data-dev-comment-type="paramref" class="paramref">deviceDescriptionXml</code> argument is null.
+  - type: System.ArgumentException
+    commentId: T:System.ArgumentException
+    description: Thrown if the <code data-dev-comment-type="paramref" class="paramref">deviceDescriptionXml</code> argument is empty.
+  modifiers.csharp:
+  - protected
+  modifiers.vb:
+  - Protected
+- uid: Rssdp.SsdpDevice.DeviceType
+  commentId: P:Rssdp.SsdpDevice.DeviceType
+  id: DeviceType
+  parent: Rssdp.SsdpDevice
+  langs:
+  - csharp
+  - vb
+  name: DeviceType
+  nameWithType: SsdpDevice.DeviceType
+  fullName: Rssdp.SsdpDevice.DeviceType
+  type: Property
+  source:
+    id: DeviceType
+    path: ''
+    startLine: 4768
+  assemblies:
+  - cs.temp.dll
+  namespace: Rssdp
+  summary: "\nSets or returns the core device type (not including namespace, version etc.). Required.\n"
+  remarks: <p>Defaults to the UPnP basic device type.</p>
+  example: []
+  syntax:
+    content: public string DeviceType { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Property DeviceType As String
+  overload: Rssdp.SsdpDevice.DeviceType*
+  seealso:
+  - linkId: Rssdp.SsdpDevice.DeviceTypeNamespace
+    commentId: P:Rssdp.SsdpDevice.DeviceTypeNamespace
+  - linkId: Rssdp.SsdpDevice.DeviceVersion
+    commentId: P:Rssdp.SsdpDevice.DeviceVersion
+  - linkId: Rssdp.SsdpDevice.FullDeviceType
+    commentId: P:Rssdp.SsdpDevice.FullDeviceType
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: Rssdp.SsdpDevice.DeviceTypeNamespace
+  commentId: P:Rssdp.SsdpDevice.DeviceTypeNamespace
+  id: DeviceTypeNamespace
+  parent: Rssdp.SsdpDevice
+  langs:
+  - csharp
+  - vb
+  name: DeviceTypeNamespace
+  nameWithType: SsdpDevice.DeviceTypeNamespace
+  fullName: Rssdp.SsdpDevice.DeviceTypeNamespace
+  type: Property
+  source:
+    id: DeviceTypeNamespace
+    path: ''
+    startLine: 4787
+  assemblies:
+  - cs.temp.dll
+  namespace: Rssdp
+  summary: "\nSets or returns the namespace for the <xref href=\"Rssdp.SsdpDevice.DeviceType\" data-throw-if-not-resolved=\"false\"></xref> of this device. Optional, but defaults to UPnP schema so should be changed if <xref href=\"Rssdp.SsdpDevice.DeviceType\" data-throw-if-not-resolved=\"false\"></xref> is not a UPnP device type.\n"
+  remarks: <p>Defaults to the UPnP standard namespace.</p>
+  example: []
+  syntax:
+    content: public string DeviceTypeNamespace { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Property DeviceTypeNamespace As String
+  overload: Rssdp.SsdpDevice.DeviceTypeNamespace*
+  seealso:
+  - linkId: Rssdp.SsdpDevice.DeviceType
+    commentId: P:Rssdp.SsdpDevice.DeviceType
+  - linkId: Rssdp.SsdpDevice.DeviceVersion
+    commentId: P:Rssdp.SsdpDevice.DeviceVersion
+  - linkId: Rssdp.SsdpDevice.FullDeviceType
+    commentId: P:Rssdp.SsdpDevice.FullDeviceType
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: Rssdp.SsdpDevice.DeviceVersion
+  commentId: P:Rssdp.SsdpDevice.DeviceVersion
+  id: DeviceVersion
+  parent: Rssdp.SsdpDevice
+  langs:
+  - csharp
+  - vb
+  name: DeviceVersion
+  nameWithType: SsdpDevice.DeviceVersion
+  fullName: Rssdp.SsdpDevice.DeviceVersion
+  type: Property
+  source:
+    id: DeviceVersion
+    path: ''
+    startLine: 4806
+  assemblies:
+  - cs.temp.dll
+  namespace: Rssdp
+  summary: "\nSets or returns the version of the device type. Optional, defaults to 1.\n"
+  remarks: <p>Defaults to a value of 1.</p>
+  example: []
+  syntax:
+    content: public int DeviceVersion { get; set; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public Property DeviceVersion As Integer
+  overload: Rssdp.SsdpDevice.DeviceVersion*
+  seealso:
+  - linkId: Rssdp.SsdpDevice.DeviceType
+    commentId: P:Rssdp.SsdpDevice.DeviceType
+  - linkId: Rssdp.SsdpDevice.DeviceTypeNamespace
+    commentId: P:Rssdp.SsdpDevice.DeviceTypeNamespace
+  - linkId: Rssdp.SsdpDevice.FullDeviceType
+    commentId: P:Rssdp.SsdpDevice.FullDeviceType
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: Rssdp.SsdpDevice.FullDeviceType
+  commentId: P:Rssdp.SsdpDevice.FullDeviceType
+  id: FullDeviceType
+  parent: Rssdp.SsdpDevice
+  langs:
+  - csharp
+  - vb
+  name: FullDeviceType
+  nameWithType: SsdpDevice.FullDeviceType
+  fullName: Rssdp.SsdpDevice.FullDeviceType
+  type: Property
+  source:
+    id: FullDeviceType
+    path: ''
+    startLine: 4824
+  assemblies:
+  - cs.temp.dll
+  namespace: Rssdp
+  summary: "\nReturns the full device type string.\n"
+  remarks: "\n<p>The format used is urn:<xref href=\"Rssdp.SsdpDevice.DeviceTypeNamespace\" data-throw-if-not-resolved=\"false\"></xref>:device:<xref href=\"Rssdp.SsdpDevice.DeviceType\" data-throw-if-not-resolved=\"false\"></xref>:<xref href=\"Rssdp.SsdpDevice.DeviceVersion\" data-throw-if-not-resolved=\"false\"></xref></p>\n"
+  example: []
+  syntax:
+    content: public string FullDeviceType { get; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public ReadOnly Property FullDeviceType As String
+  overload: Rssdp.SsdpDevice.FullDeviceType*
+  modifiers.csharp:
+  - public
+  - get
+  modifiers.vb:
+  - Public
+  - ReadOnly
+- uid: Rssdp.SsdpDevice.Uuid
+  commentId: P:Rssdp.SsdpDevice.Uuid
+  id: Uuid
+  parent: Rssdp.SsdpDevice
+  langs:
+  - csharp
+  - vb
+  name: Uuid
+  nameWithType: SsdpDevice.Uuid
+  fullName: Rssdp.SsdpDevice.Uuid
+  type: Property
+  source:
+    id: Uuid
+    path: ''
+    startLine: 4843
+  assemblies:
+  - cs.temp.dll
+  namespace: Rssdp
+  summary: "\nSets or returns the universally unique identifier for this device (without the uuid: prefix). Required.\n"
+  remarks: "\n<p>Must be the same over time for a specific device instance (i.e. must survive reboots).</p>\n<p>For UPnP 1.0 this can be any unique string. For UPnP 1.1 this should be a 128 bit number formatted in a specific way, preferably generated using the time and MAC based algorithm. See section 1.1.4 of http://upnp.org/specs/arch/UPnP-arch-DeviceArchitecture-v1.1.pdf for details.</p>\n<p>Technically this library implements UPnP 1.0, so any value is allowed, but we advise using UPnP 1.1 compatible values for good behaviour and forward compatibility with future versions.</p>\n"
+  example: []
+  syntax:
+    content: public string Uuid { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Property Uuid As String
+  overload: Rssdp.SsdpDevice.Uuid*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: Rssdp.SsdpDevice.Udn
+  commentId: P:Rssdp.SsdpDevice.Udn
+  id: Udn
+  parent: Rssdp.SsdpDevice
+  langs:
+  - csharp
+  - vb
+  name: Udn
+  nameWithType: SsdpDevice.Udn
+  fullName: Rssdp.SsdpDevice.Udn
+  type: Property
+  source:
+    id: Udn
+    path: ''
+    startLine: 4853
+  assemblies:
+  - cs.temp.dll
+  namespace: Rssdp
+  summary: "\nReturns (or sets*) a unique device name for this device. Optional, not recommended to be explicitly set.\n"
+  remarks: "\n<p>* In general you should not explicitly set this property. If it is not set (or set to null/empty string) the property will return a UDN value that is correct as per the UPnP specification, based on the other device properties.</p>\n<p>The setter is provided to allow for devices that do not correctly follow the specification (when we discover them), rather than to intentionally deviate from the specification.</p>\n<p>If a value is explicitly set, it is used verbatim, and so any prefix (such as uuid:) must be provided in the value.</p>\n"
+  example: []
+  syntax:
+    content: public string Udn { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Property Udn As String
+  overload: Rssdp.SsdpDevice.Udn*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: Rssdp.SsdpDevice.FriendlyName
+  commentId: P:Rssdp.SsdpDevice.FriendlyName
+  id: FriendlyName
+  parent: Rssdp.SsdpDevice
+  langs:
+  - csharp
+  - vb
+  name: FriendlyName
+  nameWithType: SsdpDevice.FriendlyName
+  fullName: Rssdp.SsdpDevice.FriendlyName
+  type: Property
+  source:
+    id: FriendlyName
+    path: ''
+    startLine: 4872
+  assemblies:
+  - cs.temp.dll
+  namespace: Rssdp
+  summary: "\nSets or returns a friendly/display name for this device on the network. Something the user can identify the device/instance by, i.e Lounge Main Light. Required.\n"
+  remarks: <p>A short description for the end user. </p>
+  example: []
+  syntax:
+    content: public string FriendlyName { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Property FriendlyName As String
+  overload: Rssdp.SsdpDevice.FriendlyName*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: Rssdp.SsdpDevice.Manufacturer
+  commentId: P:Rssdp.SsdpDevice.Manufacturer
+  id: Manufacturer
+  parent: Rssdp.SsdpDevice
+  langs:
+  - csharp
+  - vb
+  name: Manufacturer
+  nameWithType: SsdpDevice.Manufacturer
+  fullName: Rssdp.SsdpDevice.Manufacturer
+  type: Property
+  source:
+    id: Manufacturer
+    path: ''
+    startLine: 4877
+  assemblies:
+  - cs.temp.dll
+  namespace: Rssdp
+  summary: "\nSets or returns the name of the manufacturer of this device. Required.\n"
+  example: []
+  syntax:
+    content: public string Manufacturer { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Property Manufacturer As String
+  overload: Rssdp.SsdpDevice.Manufacturer*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: Rssdp.SsdpDevice.ManufacturerUrl
+  commentId: P:Rssdp.SsdpDevice.ManufacturerUrl
+  id: ManufacturerUrl
+  parent: Rssdp.SsdpDevice
+  langs:
+  - csharp
+  - vb
+  name: ManufacturerUrl
+  nameWithType: SsdpDevice.ManufacturerUrl
+  fullName: Rssdp.SsdpDevice.ManufacturerUrl
+  type: Property
+  source:
+    id: ManufacturerUrl
+    path: ''
+    startLine: 4882
+  assemblies:
+  - cs.temp.dll
+  namespace: Rssdp
+  summary: "\nSets or returns a URL to the manufacturers web site. Optional.\n"
+  example: []
+  syntax:
+    content: public Uri ManufacturerUrl { get; set; }
+    parameters: []
+    return:
+      type: Uri
+    content.vb: Public Property ManufacturerUrl As Uri
+  overload: Rssdp.SsdpDevice.ManufacturerUrl*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: Rssdp.SsdpDevice.ModelDescription
+  commentId: P:Rssdp.SsdpDevice.ModelDescription
+  id: ModelDescription
+  parent: Rssdp.SsdpDevice
+  langs:
+  - csharp
+  - vb
+  name: ModelDescription
+  nameWithType: SsdpDevice.ModelDescription
+  fullName: Rssdp.SsdpDevice.ModelDescription
+  type: Property
+  source:
+    id: ModelDescription
+    path: ''
+    startLine: 4888
+  assemblies:
+  - cs.temp.dll
+  namespace: Rssdp
+  summary: "\nSets or returns a description of this device model. Recommended.\n"
+  remarks: <p>A long description for the end user.</p>
+  example: []
+  syntax:
+    content: public string ModelDescription { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Property ModelDescription As String
+  overload: Rssdp.SsdpDevice.ModelDescription*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: Rssdp.SsdpDevice.ModelName
+  commentId: P:Rssdp.SsdpDevice.ModelName
+  id: ModelName
+  parent: Rssdp.SsdpDevice
+  langs:
+  - csharp
+  - vb
+  name: ModelName
+  nameWithType: SsdpDevice.ModelName
+  fullName: Rssdp.SsdpDevice.ModelName
+  type: Property
+  source:
+    id: ModelName
+    path: ''
+    startLine: 4893
+  assemblies:
+  - cs.temp.dll
+  namespace: Rssdp
+  summary: "\nSets or returns the name of this model. Required.\n"
+  example: []
+  syntax:
+    content: public string ModelName { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Property ModelName As String
+  overload: Rssdp.SsdpDevice.ModelName*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: Rssdp.SsdpDevice.ModelNumber
+  commentId: P:Rssdp.SsdpDevice.ModelNumber
+  id: ModelNumber
+  parent: Rssdp.SsdpDevice
+  langs:
+  - csharp
+  - vb
+  name: ModelNumber
+  nameWithType: SsdpDevice.ModelNumber
+  fullName: Rssdp.SsdpDevice.ModelNumber
+  type: Property
+  source:
+    id: ModelNumber
+    path: ''
+    startLine: 4898
+  assemblies:
+  - cs.temp.dll
+  namespace: Rssdp
+  summary: "\nSets or returns the number of this model. Recommended.\n"
+  example: []
+  syntax:
+    content: public string ModelNumber { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Property ModelNumber As String
+  overload: Rssdp.SsdpDevice.ModelNumber*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: Rssdp.SsdpDevice.ModelUrl
+  commentId: P:Rssdp.SsdpDevice.ModelUrl
+  id: ModelUrl
+  parent: Rssdp.SsdpDevice
+  langs:
+  - csharp
+  - vb
+  name: ModelUrl
+  nameWithType: SsdpDevice.ModelUrl
+  fullName: Rssdp.SsdpDevice.ModelUrl
+  type: Property
+  source:
+    id: ModelUrl
+    path: ''
+    startLine: 4906
+  assemblies:
+  - cs.temp.dll
+  namespace: Rssdp
+  summary: "\nSets or returns a URL to a web page with details of this device model. Optional.\n"
+  remarks: "\n<p>Optional. May be relative to base URL.</p>\n"
+  example: []
+  syntax:
+    content: public Uri ModelUrl { get; set; }
+    parameters: []
+    return:
+      type: Uri
+    content.vb: Public Property ModelUrl As Uri
+  overload: Rssdp.SsdpDevice.ModelUrl*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: Rssdp.SsdpDevice.SerialNumber
+  commentId: P:Rssdp.SsdpDevice.SerialNumber
+  id: SerialNumber
+  parent: Rssdp.SsdpDevice
+  langs:
+  - csharp
+  - vb
+  name: SerialNumber
+  nameWithType: SsdpDevice.SerialNumber
+  fullName: Rssdp.SsdpDevice.SerialNumber
+  type: Property
+  source:
+    id: SerialNumber
+    path: ''
+    startLine: 4911
+  assemblies:
+  - cs.temp.dll
+  namespace: Rssdp
+  summary: "\nSets or returns the serial number for this device. Recommended.\n"
+  example: []
+  syntax:
+    content: public string SerialNumber { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Property SerialNumber As String
+  overload: Rssdp.SsdpDevice.SerialNumber*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: Rssdp.SsdpDevice.Upc
+  commentId: P:Rssdp.SsdpDevice.Upc
+  id: Upc
+  parent: Rssdp.SsdpDevice
+  langs:
+  - csharp
+  - vb
+  name: Upc
+  nameWithType: SsdpDevice.Upc
+  fullName: Rssdp.SsdpDevice.Upc
+  type: Property
+  source:
+    id: Upc
+    path: ''
+    startLine: 4919
+  assemblies:
+  - cs.temp.dll
+  namespace: Rssdp
+  summary: "\nSets or returns the universal product code of the device, if any. Optional.\n"
+  remarks: "\n<p>If not blank, must be exactly 12 numeric digits.</p>\n"
+  example: []
+  syntax:
+    content: public string Upc { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Property Upc As String
+  overload: Rssdp.SsdpDevice.Upc*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: Rssdp.SsdpDevice.PresentationUrl
+  commentId: P:Rssdp.SsdpDevice.PresentationUrl
+  id: PresentationUrl
+  parent: Rssdp.SsdpDevice
+  langs:
+  - csharp
+  - vb
+  name: PresentationUrl
+  nameWithType: SsdpDevice.PresentationUrl
+  fullName: Rssdp.SsdpDevice.PresentationUrl
+  type: Property
+  source:
+    id: PresentationUrl
+    path: ''
+    startLine: 4927
+  assemblies:
+  - cs.temp.dll
+  namespace: Rssdp
+  summary: "\nSets or returns the URL to a web page that can be used to configure/manager/use the device. Recommended.\n"
+  remarks: "\n<p>May be relative to base URL. </p>\n"
+  example: []
+  syntax:
+    content: public Uri PresentationUrl { get; set; }
+    parameters: []
+    return:
+      type: Uri
+    content.vb: Public Property PresentationUrl As Uri
+  overload: Rssdp.SsdpDevice.PresentationUrl*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: Rssdp.SsdpDevice.Icons
+  commentId: P:Rssdp.SsdpDevice.Icons
+  id: Icons
+  parent: Rssdp.SsdpDevice
+  langs:
+  - csharp
+  - vb
+  name: Icons
+  nameWithType: SsdpDevice.Icons
+  fullName: Rssdp.SsdpDevice.Icons
+  type: Property
+  source:
+    id: Icons
+    path: ''
+    startLine: 4934
+  assemblies:
+  - cs.temp.dll
+  namespace: Rssdp
+  summary: "\nReturns a list of icons (images) that can be used to display this device. Optional, but recommended you provide at least one at 48x48 pixels.\n"
+  example: []
+  syntax:
+    content: public IList<SsdpDeviceIcon> Icons { get; }
+    parameters: []
+    return:
+      type: IList{Rssdp.SsdpDeviceIcon}
+    content.vb: Public ReadOnly Property Icons As IList(Of SsdpDeviceIcon)
+  overload: Rssdp.SsdpDevice.Icons*
+  modifiers.csharp:
+  - public
+  - get
+  modifiers.vb:
+  - Public
+  - ReadOnly
+- uid: Rssdp.SsdpDevice.Devices
+  commentId: P:Rssdp.SsdpDevice.Devices
+  id: Devices
+  parent: Rssdp.SsdpDevice
+  langs:
+  - csharp
+  - vb
+  name: Devices
+  nameWithType: SsdpDevice.Devices
+  fullName: Rssdp.SsdpDevice.Devices
+  type: Property
+  source:
+    id: Devices
+    path: ''
+    startLine: 4945
+  assemblies:
+  - cs.temp.dll
+  namespace: Rssdp
+  summary: "\nReturns a read-only enumerable set of <xref href=\"Rssdp.SsdpDevice\" data-throw-if-not-resolved=\"false\"></xref> objects representing children of this device. Child devices are optional.\n"
+  example: []
+  syntax:
+    content: public IEnumerable<SsdpDevice> Devices { get; }
+    parameters: []
+    return:
+      type: IEnumerable{Rssdp.SsdpDevice}
+    content.vb: Public ReadOnly Property Devices As IEnumerable(Of SsdpDevice)
+  overload: Rssdp.SsdpDevice.Devices*
+  seealso:
+  - linkId: Rssdp.SsdpDevice.AddDevice(Rssdp.SsdpEmbeddedDevice)
+    commentId: M:Rssdp.SsdpDevice.AddDevice(Rssdp.SsdpEmbeddedDevice)
+  - linkId: Rssdp.SsdpDevice.RemoveDevice(Rssdp.SsdpEmbeddedDevice)
+    commentId: M:Rssdp.SsdpDevice.RemoveDevice(Rssdp.SsdpEmbeddedDevice)
+  modifiers.csharp:
+  - public
+  - get
+  modifiers.vb:
+  - Public
+  - ReadOnly
+- uid: Rssdp.SsdpDevice.CustomProperties
+  commentId: P:Rssdp.SsdpDevice.CustomProperties
+  id: CustomProperties
+  parent: Rssdp.SsdpDevice
+  langs:
+  - csharp
+  - vb
+  name: CustomProperties
+  nameWithType: SsdpDevice.CustomProperties
+  fullName: Rssdp.SsdpDevice.CustomProperties
+  type: Property
+  source:
+    id: CustomProperties
+    path: ''
+    startLine: 4954
+  assemblies:
+  - cs.temp.dll
+  namespace: Rssdp
+  summary: "\nReturns a dictionary of <xref href=\"Rssdp.SsdpDeviceProperty\" data-throw-if-not-resolved=\"false\"></xref> objects keyed by <xref href=\"Rssdp.SsdpDeviceProperty.FullName\" data-throw-if-not-resolved=\"false\"></xref>. Each value represents a custom property in the device description document.\n"
+  example: []
+  syntax:
+    content: public SsdpDevicePropertiesCollection CustomProperties { get; }
+    parameters: []
+    return:
+      type: Rssdp.SsdpDevicePropertiesCollection
+    content.vb: Public ReadOnly Property CustomProperties As SsdpDevicePropertiesCollection
+  overload: Rssdp.SsdpDevice.CustomProperties*
+  modifiers.csharp:
+  - public
+  - get
+  modifiers.vb:
+  - Public
+  - ReadOnly
+- uid: Rssdp.SsdpDevice.CustomResponseHeaders
+  commentId: P:Rssdp.SsdpDevice.CustomResponseHeaders
+  id: CustomResponseHeaders
+  parent: Rssdp.SsdpDevice
+  langs:
+  - csharp
+  - vb
+  name: CustomResponseHeaders
+  nameWithType: SsdpDevice.CustomResponseHeaders
+  fullName: Rssdp.SsdpDevice.CustomResponseHeaders
+  type: Property
+  source:
+    id: CustomResponseHeaders
+    path: ''
+    startLine: 4969
+  assemblies:
+  - cs.temp.dll
+  namespace: Rssdp
+  summary: "\nProvides a list of additional information to provide about this device in search response and notification messages.\n"
+  remarks: "\n<p>The headers included here are included in the (HTTP headers) for search response and alive notifications sent in relation to this device.</p>\n<p>Only values specified directly on this <xref href=\"Rssdp.SsdpDevice\" data-throw-if-not-resolved=\"false\"></xref> instance will be included, headers from ancestors are not automatically included.</p>\n"
+  example: []
+  syntax:
+    content: public CustomHttpHeadersCollection CustomResponseHeaders { get; }
+    parameters: []
+    return:
+      type: Rssdp.CustomHttpHeadersCollection
+    content.vb: Public ReadOnly Property CustomResponseHeaders As CustomHttpHeadersCollection
+  overload: Rssdp.SsdpDevice.CustomResponseHeaders*
+  modifiers.csharp:
+  - public
+  - get
+  modifiers.vb:
+  - Public
+  - ReadOnly
+- uid: Rssdp.SsdpDevice.Services
+  commentId: P:Rssdp.SsdpDevice.Services
+  id: Services
+  parent: Rssdp.SsdpDevice
+  langs:
+  - csharp
+  - vb
+  name: Services
+  nameWithType: SsdpDevice.Services
+  fullName: Rssdp.SsdpDevice.Services
+  type: Property
+  source:
+    id: Services
+    path: ''
+    startLine: 4982
+  assemblies:
+  - cs.temp.dll
+  namespace: Rssdp
+  summary: "\nReturns a read-only enumerable set of <xref href=\"Rssdp.SsdpService\" data-throw-if-not-resolved=\"false\"></xref> objects representing services associated with this device.\n"
+  example: []
+  syntax:
+    content: public IEnumerable<SsdpService> Services { get; }
+    parameters: []
+    return:
+      type: IEnumerable{Rssdp.SsdpService}
+    content.vb: Public ReadOnly Property Services As IEnumerable(Of SsdpService)
+  overload: Rssdp.SsdpDevice.Services*
+  seealso:
+  - linkId: Rssdp.SsdpDevice.AddService(Rssdp.SsdpService)
+    commentId: M:Rssdp.SsdpDevice.AddService(Rssdp.SsdpService)
+  - linkId: Rssdp.SsdpDevice.RemoveService(Rssdp.SsdpService)
+    commentId: M:Rssdp.SsdpDevice.RemoveService(Rssdp.SsdpService)
+  modifiers.csharp:
+  - public
+  - get
+  modifiers.vb:
+  - Public
+  - ReadOnly
+- uid: Rssdp.SsdpDevice.AddDevice(Rssdp.SsdpEmbeddedDevice)
+  commentId: M:Rssdp.SsdpDevice.AddDevice(Rssdp.SsdpEmbeddedDevice)
+  id: AddDevice(Rssdp.SsdpEmbeddedDevice)
+  parent: Rssdp.SsdpDevice
+  langs:
+  - csharp
+  - vb
+  name: AddDevice(SsdpEmbeddedDevice)
+  nameWithType: SsdpDevice.AddDevice(SsdpEmbeddedDevice)
+  fullName: Rssdp.SsdpDevice.AddDevice(Rssdp.SsdpEmbeddedDevice)
+  type: Method
+  source:
+    id: AddDevice
+    path: ''
+    startLine: 5005
+  assemblies:
+  - cs.temp.dll
+  namespace: Rssdp
+  summary: "\nAdds a child device to the <xref href=\"Rssdp.SsdpDevice.Devices\" data-throw-if-not-resolved=\"false\"></xref> collection.\n"
+  remarks: "\n<p>If the device is already a member of the <xref href=\"Rssdp.SsdpDevice.Devices\" data-throw-if-not-resolved=\"false\"></xref> collection, this method does nothing.</p>\n<p>Also sets the <xref href=\"Rssdp.SsdpEmbeddedDevice.RootDevice\" data-throw-if-not-resolved=\"false\"></xref> property of the added device and all descendant devices to the relevant <xref href=\"Rssdp.SsdpRootDevice\" data-throw-if-not-resolved=\"false\"></xref> instance.</p>\n"
+  example: []
+  syntax:
+    content: public void AddDevice(SsdpEmbeddedDevice device)
+    parameters:
+    - id: device
+      type: Rssdp.SsdpEmbeddedDevice
+      description: The <xref href="Rssdp.SsdpEmbeddedDevice" data-throw-if-not-resolved="false"></xref> instance to add.
+    content.vb: Public Sub AddDevice(device As SsdpEmbeddedDevice)
+  overload: Rssdp.SsdpDevice.AddDevice*
+  exceptions:
+  - type: System.ArgumentNullException
+    commentId: T:System.ArgumentNullException
+    description: Thrown if the <code data-dev-comment-type="paramref" class="paramref">device</code> argument is null.
+  - type: System.InvalidOperationException
+    commentId: T:System.InvalidOperationException
+    description: Thrown if the <code data-dev-comment-type="paramref" class="paramref">device</code> is already associated with a different <xref href="Rssdp.SsdpRootDevice" data-throw-if-not-resolved="false"></xref> instance than used in this tree. Can occur if you try to add the same device instance to more than one tree. Also thrown if you try to add a device to itself.
+  seealso:
+  - linkId: Rssdp.SsdpDevice.DeviceAdded
+    commentId: E:Rssdp.SsdpDevice.DeviceAdded
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+- uid: Rssdp.SsdpDevice.RemoveDevice(Rssdp.SsdpEmbeddedDevice)
+  commentId: M:Rssdp.SsdpDevice.RemoveDevice(Rssdp.SsdpEmbeddedDevice)
+  id: RemoveDevice(Rssdp.SsdpEmbeddedDevice)
+  parent: Rssdp.SsdpDevice
+  langs:
+  - csharp
+  - vb
+  name: RemoveDevice(SsdpEmbeddedDevice)
+  nameWithType: SsdpDevice.RemoveDevice(SsdpEmbeddedDevice)
+  fullName: Rssdp.SsdpDevice.RemoveDevice(Rssdp.SsdpEmbeddedDevice)
+  type: Method
+  source:
+    id: RemoveDevice
+    path: ''
+    startLine: 5036
+  assemblies:
+  - cs.temp.dll
+  namespace: Rssdp
+  summary: "\nRemoves a child device from the <xref href=\"Rssdp.SsdpDevice.Devices\" data-throw-if-not-resolved=\"false\"></xref> collection.\n"
+  remarks: "\n<p>If the device is not a member of the <xref href=\"Rssdp.SsdpDevice.Devices\" data-throw-if-not-resolved=\"false\"></xref> collection, this method does nothing.</p>\n<p>Also sets the <xref href=\"Rssdp.SsdpEmbeddedDevice.RootDevice\" data-throw-if-not-resolved=\"false\"></xref> property to null for the removed device and all descendant devices.</p>\n"
+  example: []
+  syntax:
+    content: public void RemoveDevice(SsdpEmbeddedDevice device)
+    parameters:
+    - id: device
+      type: Rssdp.SsdpEmbeddedDevice
+      description: The <xref href="Rssdp.SsdpEmbeddedDevice" data-throw-if-not-resolved="false"></xref> instance to remove.
+    content.vb: Public Sub RemoveDevice(device As SsdpEmbeddedDevice)
+  overload: Rssdp.SsdpDevice.RemoveDevice*
+  exceptions:
+  - type: System.ArgumentNullException
+    commentId: T:System.ArgumentNullException
+    description: Thrown if the <code data-dev-comment-type="paramref" class="paramref">device</code> argument is null.
+  seealso:
+  - linkId: Rssdp.SsdpDevice.DeviceRemoved
+    commentId: E:Rssdp.SsdpDevice.DeviceRemoved
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+- uid: Rssdp.SsdpDevice.OnDeviceAdded(Rssdp.SsdpEmbeddedDevice)
+  commentId: M:Rssdp.SsdpDevice.OnDeviceAdded(Rssdp.SsdpEmbeddedDevice)
+  id: OnDeviceAdded(Rssdp.SsdpEmbeddedDevice)
+  parent: Rssdp.SsdpDevice
+  langs:
+  - csharp
+  - vb
+  name: OnDeviceAdded(SsdpEmbeddedDevice)
+  nameWithType: SsdpDevice.OnDeviceAdded(SsdpEmbeddedDevice)
+  fullName: Rssdp.SsdpDevice.OnDeviceAdded(Rssdp.SsdpEmbeddedDevice)
+  type: Method
+  source:
+    id: OnDeviceAdded
+    path: ''
+    startLine: 5059
+  assemblies:
+  - cs.temp.dll
+  namespace: Rssdp
+  summary: "\nRaises the <xref href=\"Rssdp.SsdpDevice.DeviceAdded\" data-throw-if-not-resolved=\"false\"></xref> event.\n"
+  example: []
+  syntax:
+    content: protected virtual void OnDeviceAdded(SsdpEmbeddedDevice device)
+    parameters:
+    - id: device
+      type: Rssdp.SsdpEmbeddedDevice
+      description: The <xref href="Rssdp.SsdpEmbeddedDevice" data-throw-if-not-resolved="false"></xref> instance added to the <xref href="Rssdp.SsdpDevice.Devices" data-throw-if-not-resolved="false"></xref> collection.
+    content.vb: Protected Overridable Sub OnDeviceAdded(device As SsdpEmbeddedDevice)
+  overload: Rssdp.SsdpDevice.OnDeviceAdded*
+  seealso:
+  - linkId: Rssdp.SsdpDevice.AddDevice(Rssdp.SsdpEmbeddedDevice)
+    commentId: M:Rssdp.SsdpDevice.AddDevice(Rssdp.SsdpEmbeddedDevice)
+  - linkId: Rssdp.SsdpDevice.DeviceAdded
+    commentId: E:Rssdp.SsdpDevice.DeviceAdded
+  modifiers.csharp:
+  - protected
+  - virtual
+  modifiers.vb:
+  - Protected
+  - Overridable
+- uid: Rssdp.SsdpDevice.OnDeviceRemoved(Rssdp.SsdpEmbeddedDevice)
+  commentId: M:Rssdp.SsdpDevice.OnDeviceRemoved(Rssdp.SsdpEmbeddedDevice)
+  id: OnDeviceRemoved(Rssdp.SsdpEmbeddedDevice)
+  parent: Rssdp.SsdpDevice
+  langs:
+  - csharp
+  - vb
+  name: OnDeviceRemoved(SsdpEmbeddedDevice)
+  nameWithType: SsdpDevice.OnDeviceRemoved(SsdpEmbeddedDevice)
+  fullName: Rssdp.SsdpDevice.OnDeviceRemoved(Rssdp.SsdpEmbeddedDevice)
+  type: Method
+  source:
+    id: OnDeviceRemoved
+    path: ''
+    startLine: 5072
+  assemblies:
+  - cs.temp.dll
+  namespace: Rssdp
+  summary: "\nRaises the <xref href=\"Rssdp.SsdpDevice.DeviceRemoved\" data-throw-if-not-resolved=\"false\"></xref> event.\n"
+  example: []
+  syntax:
+    content: protected virtual void OnDeviceRemoved(SsdpEmbeddedDevice device)
+    parameters:
+    - id: device
+      type: Rssdp.SsdpEmbeddedDevice
+      description: The <xref href="Rssdp.SsdpEmbeddedDevice" data-throw-if-not-resolved="false"></xref> instance removed from the <xref href="Rssdp.SsdpDevice.Devices" data-throw-if-not-resolved="false"></xref> collection.
+    content.vb: Protected Overridable Sub OnDeviceRemoved(device As SsdpEmbeddedDevice)
+  overload: Rssdp.SsdpDevice.OnDeviceRemoved*
+  seealso:
+  - linkId: Rssdp.SsdpDevice.RemoveDevice(Rssdp.SsdpEmbeddedDevice)
+    commentId: M:Rssdp.SsdpDevice.RemoveDevice(Rssdp.SsdpEmbeddedDevice)
+  see:
+  - linkId: Rssdp.SsdpDevice.DeviceRemoved
+    commentId: E:Rssdp.SsdpDevice.DeviceRemoved
+  modifiers.csharp:
+  - protected
+  - virtual
+  modifiers.vb:
+  - Protected
+  - Overridable
+- uid: Rssdp.SsdpDevice.AddService(Rssdp.SsdpService)
+  commentId: M:Rssdp.SsdpDevice.AddService(Rssdp.SsdpService)
+  id: AddService(Rssdp.SsdpService)
+  parent: Rssdp.SsdpDevice
+  langs:
+  - csharp
+  - vb
+  name: AddService(SsdpService)
+  nameWithType: SsdpDevice.AddService(SsdpService)
+  fullName: Rssdp.SsdpDevice.AddService(Rssdp.SsdpService)
+  type: Method
+  source:
+    id: AddService
+    path: ''
+    startLine: 5093
+  assemblies:
+  - cs.temp.dll
+  namespace: Rssdp
+  summary: "\nAdds a service to the <xref href=\"Rssdp.SsdpDevice.Services\" data-throw-if-not-resolved=\"false\"></xref> collection.\n"
+  remarks: "\n<p>If the service is already a member of the <xref href=\"Rssdp.SsdpDevice.Services\" data-throw-if-not-resolved=\"false\"></xref> collection, this method does nothing.</p>\n<p>Services should be added to the device before it is added to a publisher.</p>\n"
+  example: []
+  syntax:
+    content: public void AddService(SsdpService service)
+    parameters:
+    - id: service
+      type: Rssdp.SsdpService
+      description: The <xref href="Rssdp.SsdpService" data-throw-if-not-resolved="false"></xref> instance to add.
+    content.vb: Public Sub AddService(service As SsdpService)
+  overload: Rssdp.SsdpDevice.AddService*
+  exceptions:
+  - type: System.ArgumentNullException
+    commentId: T:System.ArgumentNullException
+    description: Thrown if the <code data-dev-comment-type="paramref" class="paramref">service</code> argument is null.
+  seealso:
+  - linkId: Rssdp.SsdpDevice.ServiceAdded
+    commentId: E:Rssdp.SsdpDevice.ServiceAdded
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+- uid: Rssdp.SsdpDevice.RemoveService(Rssdp.SsdpService)
+  commentId: M:Rssdp.SsdpDevice.RemoveService(Rssdp.SsdpService)
+  id: RemoveService(Rssdp.SsdpService)
+  parent: Rssdp.SsdpDevice
+  langs:
+  - csharp
+  - vb
+  name: RemoveService(SsdpService)
+  nameWithType: SsdpDevice.RemoveService(SsdpService)
+  fullName: Rssdp.SsdpDevice.RemoveService(Rssdp.SsdpService)
+  type: Method
+  source:
+    id: RemoveService
+    path: ''
+    startLine: 5120
+  assemblies:
+  - cs.temp.dll
+  namespace: Rssdp
+  summary: "\nRemoves a service from the <xref href=\"Rssdp.SsdpDevice.Services\" data-throw-if-not-resolved=\"false\"></xref> collection.\n"
+  remarks: "\n<p>If the service is not a member of the <xref href=\"Rssdp.SsdpDevice.Services\" data-throw-if-not-resolved=\"false\"></xref> collection, this method does nothing.</p>\n"
+  example: []
+  syntax:
+    content: public void RemoveService(SsdpService service)
+    parameters:
+    - id: service
+      type: Rssdp.SsdpService
+      description: The <xref href="Rssdp.SsdpService" data-throw-if-not-resolved="false"></xref> instance to remove.
+    content.vb: Public Sub RemoveService(service As SsdpService)
+  overload: Rssdp.SsdpDevice.RemoveService*
+  exceptions:
+  - type: System.ArgumentNullException
+    commentId: T:System.ArgumentNullException
+    description: Thrown if the <code data-dev-comment-type="paramref" class="paramref">service</code> argument is null.
+  seealso:
+  - linkId: Rssdp.SsdpDevice.ServiceRemoved
+    commentId: E:Rssdp.SsdpDevice.ServiceRemoved
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+- uid: Rssdp.SsdpDevice.OnServiceAdded(Rssdp.SsdpService)
+  commentId: M:Rssdp.SsdpDevice.OnServiceAdded(Rssdp.SsdpService)
+  id: OnServiceAdded(Rssdp.SsdpService)
+  parent: Rssdp.SsdpDevice
+  langs:
+  - csharp
+  - vb
+  name: OnServiceAdded(SsdpService)
+  nameWithType: SsdpDevice.OnServiceAdded(SsdpService)
+  fullName: Rssdp.SsdpDevice.OnServiceAdded(Rssdp.SsdpService)
+  type: Method
+  source:
+    id: OnServiceAdded
+    path: ''
+    startLine: 5140
+  assemblies:
+  - cs.temp.dll
+  namespace: Rssdp
+  summary: "\nRaises the <xref href=\"Rssdp.SsdpDevice.ServiceAdded\" data-throw-if-not-resolved=\"false\"></xref> event.\n"
+  example: []
+  syntax:
+    content: protected virtual void OnServiceAdded(SsdpService service)
+    parameters:
+    - id: service
+      type: Rssdp.SsdpService
+      description: The <xref href="Rssdp.SsdpService" data-throw-if-not-resolved="false"></xref> instance added to the <xref href="Rssdp.SsdpDevice.Services" data-throw-if-not-resolved="false"></xref> collection.
+    content.vb: Protected Overridable Sub OnServiceAdded(service As SsdpService)
+  overload: Rssdp.SsdpDevice.OnServiceAdded*
+  seealso:
+  - linkId: Rssdp.SsdpDevice.AddService(Rssdp.SsdpService)
+    commentId: M:Rssdp.SsdpDevice.AddService(Rssdp.SsdpService)
+  - linkId: Rssdp.SsdpDevice.ServiceAdded
+    commentId: E:Rssdp.SsdpDevice.ServiceAdded
+  modifiers.csharp:
+  - protected
+  - virtual
+  modifiers.vb:
+  - Protected
+  - Overridable
+- uid: Rssdp.SsdpDevice.OnServiceRemoved(Rssdp.SsdpService)
+  commentId: M:Rssdp.SsdpDevice.OnServiceRemoved(Rssdp.SsdpService)
+  id: OnServiceRemoved(Rssdp.SsdpService)
+  parent: Rssdp.SsdpDevice
+  langs:
+  - csharp
+  - vb
+  name: OnServiceRemoved(SsdpService)
+  nameWithType: SsdpDevice.OnServiceRemoved(SsdpService)
+  fullName: Rssdp.SsdpDevice.OnServiceRemoved(Rssdp.SsdpService)
+  type: Method
+  source:
+    id: OnServiceRemoved
+    path: ''
+    startLine: 5153
+  assemblies:
+  - cs.temp.dll
+  namespace: Rssdp
+  summary: "\nRaises the <xref href=\"Rssdp.SsdpDevice.ServiceRemoved\" data-throw-if-not-resolved=\"false\"></xref> event.\n"
+  example: []
+  syntax:
+    content: protected virtual void OnServiceRemoved(SsdpService service)
+    parameters:
+    - id: service
+      type: Rssdp.SsdpService
+      description: The <xref href="Rssdp.SsdpService" data-throw-if-not-resolved="false"></xref> instance removed from the <xref href="Rssdp.SsdpDevice.Services" data-throw-if-not-resolved="false"></xref> collection.
+    content.vb: Protected Overridable Sub OnServiceRemoved(service As SsdpService)
+  overload: Rssdp.SsdpDevice.OnServiceRemoved*
+  seealso:
+  - linkId: Rssdp.SsdpDevice.RemoveService(Rssdp.SsdpService)
+    commentId: M:Rssdp.SsdpDevice.RemoveService(Rssdp.SsdpService)
+  see:
+  - linkId: Rssdp.SsdpDevice.ServiceRemoved
+    commentId: E:Rssdp.SsdpDevice.ServiceRemoved
+  modifiers.csharp:
+  - protected
+  - virtual
+  modifiers.vb:
+  - Protected
+  - Overridable
+- uid: Rssdp.SsdpDevice.WriteDeviceDescriptionXml(XmlWriter,Rssdp.SsdpDevice)
+  commentId: M:Rssdp.SsdpDevice.WriteDeviceDescriptionXml(XmlWriter,Rssdp.SsdpDevice)
+  id: WriteDeviceDescriptionXml(XmlWriter,Rssdp.SsdpDevice)
+  parent: Rssdp.SsdpDevice
+  langs:
+  - csharp
+  - vb
+  name: WriteDeviceDescriptionXml(XmlWriter, SsdpDevice)
+  nameWithType: SsdpDevice.WriteDeviceDescriptionXml(XmlWriter, SsdpDevice)
+  fullName: Rssdp.SsdpDevice.WriteDeviceDescriptionXml(XmlWriter, Rssdp.SsdpDevice)
+  type: Method
+  source:
+    id: WriteDeviceDescriptionXml
+    path: ''
+    startLine: 5168
+  assemblies:
+  - cs.temp.dll
+  namespace: Rssdp
+  summary: "\nWrites this device to the specified <see cref=\"!:System.Xml.XmlWriter\"></see> as a device node and it&apos;s content.\n"
+  example: []
+  syntax:
+    content: protected virtual void WriteDeviceDescriptionXml(XmlWriter writer, SsdpDevice device)
+    parameters:
+    - id: writer
+      type: XmlWriter
+      description: The <see cref="!:System.Xml.XmlWriter"></see> to output to.
+    - id: device
+      type: Rssdp.SsdpDevice
+      description: The <xref href="Rssdp.SsdpDevice" data-throw-if-not-resolved="false"></xref> to write out.
+    content.vb: Protected Overridable Sub WriteDeviceDescriptionXml(writer As XmlWriter, device As SsdpDevice)
+  overload: Rssdp.SsdpDevice.WriteDeviceDescriptionXml*
+  exceptions:
+  - type: System.ArgumentNullException
+    commentId: T:System.ArgumentNullException
+    description: Thrown if the <code data-dev-comment-type="paramref" class="paramref">writer</code> or <code data-dev-comment-type="paramref" class="paramref">device</code> argument is null.
+  modifiers.csharp:
+  - protected
+  - virtual
+  modifiers.vb:
+  - Protected
+  - Overridable
+- uid: Rssdp.SsdpDevice.StringToUri(System.String)
+  commentId: M:Rssdp.SsdpDevice.StringToUri(System.String)
+  id: StringToUri(System.String)
+  parent: Rssdp.SsdpDevice
+  langs:
+  - csharp
+  - vb
+  name: StringToUri(String)
+  nameWithType: SsdpDevice.StringToUri(String)
+  fullName: Rssdp.SsdpDevice.StringToUri(System.String)
+  type: Method
+  source:
+    id: StringToUri
+    path: ''
+    startLine: 5203
+  assemblies:
+  - cs.temp.dll
+  namespace: Rssdp
+  summary: "\nConverts a string to a <see cref=\"!:Uri\"></see>, or returns null if the string provided is null.\n"
+  example: []
+  syntax:
+    content: protected static Uri StringToUri(string value)
+    parameters:
+    - id: value
+      type: System.String
+      description: The string value to convert.
+    return:
+      type: Uri
+      description: A <see cref="!:Uri"></see>.
+    content.vb: Protected Shared Function StringToUri(value As String) As Uri
+  overload: Rssdp.SsdpDevice.StringToUri*
+  modifiers.csharp:
+  - protected
+  - static
+  modifiers.vb:
+  - Protected
+  - Shared
+references:
+- uid: Rssdp.SsdpRootDevice
+  commentId: T:Rssdp.SsdpRootDevice
+  parent: Rssdp
+  isExternal: false
+  name: SsdpRootDevice
+  nameWithType: SsdpRootDevice
+  fullName: Rssdp.SsdpRootDevice
+- uid: Rssdp.SsdpEmbeddedDevice
+  commentId: T:Rssdp.SsdpEmbeddedDevice
+  parent: Rssdp
+  isExternal: false
+  name: SsdpEmbeddedDevice
+  nameWithType: SsdpEmbeddedDevice
+  fullName: Rssdp.SsdpEmbeddedDevice
+- uid: Rssdp
+  commentId: N:Rssdp
+  isExternal: false
+  name: Rssdp
+  nameWithType: Rssdp
+  fullName: Rssdp
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  name: Object
+  nameWithType: Object
+  fullName: System.Object
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  name: ToString()
+  nameWithType: Object.ToString()
+  fullName: System.Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    nameWithType: Object.ToString
+    fullName: System.Object.ToString
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    nameWithType: Object.ToString
+    fullName: System.Object.ToString
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  name: Equals(Object)
+  nameWithType: Object.Equals(Object)
+  fullName: System.Object.Equals(System.Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  name: Equals(Object, Object)
+  nameWithType: Object.Equals(Object, Object)
+  fullName: System.Object.Equals(System.Object, System.Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  name: ReferenceEquals(Object, Object)
+  nameWithType: Object.ReferenceEquals(Object, Object)
+  fullName: System.Object.ReferenceEquals(System.Object, System.Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    nameWithType: Object.ReferenceEquals
+    fullName: System.Object.ReferenceEquals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    nameWithType: Object.ReferenceEquals
+    fullName: System.Object.ReferenceEquals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  name: GetHashCode()
+  nameWithType: Object.GetHashCode()
+  fullName: System.Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    nameWithType: Object.GetHashCode
+    fullName: System.Object.GetHashCode
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    nameWithType: Object.GetHashCode
+    fullName: System.Object.GetHashCode
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  name: GetType()
+  nameWithType: Object.GetType()
+  fullName: System.Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    nameWithType: Object.GetType
+    fullName: System.Object.GetType
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    nameWithType: Object.GetType
+    fullName: System.Object.GetType
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  name: MemberwiseClone()
+  nameWithType: Object.MemberwiseClone()
+  fullName: System.Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    nameWithType: Object.MemberwiseClone
+    fullName: System.Object.MemberwiseClone
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    nameWithType: Object.MemberwiseClone
+    fullName: System.Object.MemberwiseClone
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System
+  commentId: N:System
+  isExternal: false
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Rssdp.SsdpDevice.AddDevice(Rssdp.SsdpEmbeddedDevice)
+  commentId: M:Rssdp.SsdpDevice.AddDevice(Rssdp.SsdpEmbeddedDevice)
+  parent: Rssdp.SsdpDevice
+  isExternal: false
+  name: AddDevice(SsdpEmbeddedDevice)
+  nameWithType: SsdpDevice.AddDevice(SsdpEmbeddedDevice)
+  fullName: Rssdp.SsdpDevice.AddDevice(Rssdp.SsdpEmbeddedDevice)
+  spec.csharp:
+  - uid: Rssdp.SsdpDevice.AddDevice(Rssdp.SsdpEmbeddedDevice)
+    name: AddDevice
+    nameWithType: SsdpDevice.AddDevice
+    fullName: Rssdp.SsdpDevice.AddDevice
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: Rssdp.SsdpEmbeddedDevice
+    name: SsdpEmbeddedDevice
+    nameWithType: SsdpEmbeddedDevice
+    fullName: Rssdp.SsdpEmbeddedDevice
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: Rssdp.SsdpDevice.AddDevice(Rssdp.SsdpEmbeddedDevice)
+    name: AddDevice
+    nameWithType: SsdpDevice.AddDevice
+    fullName: Rssdp.SsdpDevice.AddDevice
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: Rssdp.SsdpEmbeddedDevice
+    name: SsdpEmbeddedDevice
+    nameWithType: SsdpEmbeddedDevice
+    fullName: Rssdp.SsdpEmbeddedDevice
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: Rssdp.SsdpDevice.DeviceAdded
+  commentId: E:Rssdp.SsdpDevice.DeviceAdded
+  parent: Rssdp.SsdpDevice
+  isExternal: false
+  name: DeviceAdded
+  nameWithType: SsdpDevice.DeviceAdded
+  fullName: Rssdp.SsdpDevice.DeviceAdded
+- uid: EventHandler{Rssdp.DeviceEventArgs}
+  commentId: '!:EventHandler{Rssdp.DeviceEventArgs}'
+  definition: EventHandler`1
+  name: EventHandler<DeviceEventArgs>
+  nameWithType: EventHandler<DeviceEventArgs>
+  fullName: EventHandler<Rssdp.DeviceEventArgs>
+  nameWithType.vb: EventHandler(Of DeviceEventArgs)
+  fullName.vb: EventHandler(Of Rssdp.DeviceEventArgs)
+  name.vb: EventHandler(Of DeviceEventArgs)
+  spec.csharp:
+  - uid: EventHandler`1
+    name: EventHandler
+    nameWithType: EventHandler
+    fullName: EventHandler
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: Rssdp.DeviceEventArgs
+    name: DeviceEventArgs
+    nameWithType: DeviceEventArgs
+    fullName: Rssdp.DeviceEventArgs
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: EventHandler`1
+    name: EventHandler
+    nameWithType: EventHandler
+    fullName: EventHandler
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: Rssdp.DeviceEventArgs
+    name: DeviceEventArgs
+    nameWithType: DeviceEventArgs
+    fullName: Rssdp.DeviceEventArgs
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: Rssdp.SsdpDevice
+  commentId: T:Rssdp.SsdpDevice
+  parent: Rssdp
+  isExternal: false
+  name: SsdpDevice
+  nameWithType: SsdpDevice
+  fullName: Rssdp.SsdpDevice
+- uid: EventHandler`1
+  isExternal: true
+  name: EventHandler<>
+  nameWithType: EventHandler<>
+  fullName: EventHandler<>
+  nameWithType.vb: EventHandler(Of )
+  fullName.vb: EventHandler(Of )
+  name.vb: EventHandler(Of )
+  spec.csharp:
+  - uid: EventHandler`1
+    name: EventHandler
+    nameWithType: EventHandler
+    fullName: EventHandler
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - name: ''
+    nameWithType: ''
+    fullName: ''
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: EventHandler`1
+    name: EventHandler
+    nameWithType: EventHandler
+    fullName: EventHandler
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - name: ''
+    nameWithType: ''
+    fullName: ''
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: Rssdp.SsdpDevice.RemoveDevice(Rssdp.SsdpEmbeddedDevice)
+  commentId: M:Rssdp.SsdpDevice.RemoveDevice(Rssdp.SsdpEmbeddedDevice)
+  parent: Rssdp.SsdpDevice
+  isExternal: false
+  name: RemoveDevice(SsdpEmbeddedDevice)
+  nameWithType: SsdpDevice.RemoveDevice(SsdpEmbeddedDevice)
+  fullName: Rssdp.SsdpDevice.RemoveDevice(Rssdp.SsdpEmbeddedDevice)
+  spec.csharp:
+  - uid: Rssdp.SsdpDevice.RemoveDevice(Rssdp.SsdpEmbeddedDevice)
+    name: RemoveDevice
+    nameWithType: SsdpDevice.RemoveDevice
+    fullName: Rssdp.SsdpDevice.RemoveDevice
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: Rssdp.SsdpEmbeddedDevice
+    name: SsdpEmbeddedDevice
+    nameWithType: SsdpEmbeddedDevice
+    fullName: Rssdp.SsdpEmbeddedDevice
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: Rssdp.SsdpDevice.RemoveDevice(Rssdp.SsdpEmbeddedDevice)
+    name: RemoveDevice
+    nameWithType: SsdpDevice.RemoveDevice
+    fullName: Rssdp.SsdpDevice.RemoveDevice
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: Rssdp.SsdpEmbeddedDevice
+    name: SsdpEmbeddedDevice
+    nameWithType: SsdpEmbeddedDevice
+    fullName: Rssdp.SsdpEmbeddedDevice
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: Rssdp.SsdpDevice.DeviceRemoved
+  commentId: E:Rssdp.SsdpDevice.DeviceRemoved
+  parent: Rssdp.SsdpDevice
+  isExternal: false
+  name: DeviceRemoved
+  nameWithType: SsdpDevice.DeviceRemoved
+  fullName: Rssdp.SsdpDevice.DeviceRemoved
+- uid: Rssdp.SsdpDevice.AddService(Rssdp.SsdpService)
+  commentId: M:Rssdp.SsdpDevice.AddService(Rssdp.SsdpService)
+  parent: Rssdp.SsdpDevice
+  isExternal: false
+  name: AddService(SsdpService)
+  nameWithType: SsdpDevice.AddService(SsdpService)
+  fullName: Rssdp.SsdpDevice.AddService(Rssdp.SsdpService)
+  spec.csharp:
+  - uid: Rssdp.SsdpDevice.AddService(Rssdp.SsdpService)
+    name: AddService
+    nameWithType: SsdpDevice.AddService
+    fullName: Rssdp.SsdpDevice.AddService
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: Rssdp.SsdpService
+    name: SsdpService
+    nameWithType: SsdpService
+    fullName: Rssdp.SsdpService
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: Rssdp.SsdpDevice.AddService(Rssdp.SsdpService)
+    name: AddService
+    nameWithType: SsdpDevice.AddService
+    fullName: Rssdp.SsdpDevice.AddService
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: Rssdp.SsdpService
+    name: SsdpService
+    nameWithType: SsdpService
+    fullName: Rssdp.SsdpService
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: Rssdp.SsdpDevice.ServiceAdded
+  commentId: E:Rssdp.SsdpDevice.ServiceAdded
+  parent: Rssdp.SsdpDevice
+  isExternal: false
+  name: ServiceAdded
+  nameWithType: SsdpDevice.ServiceAdded
+  fullName: Rssdp.SsdpDevice.ServiceAdded
+- uid: EventHandler{Rssdp.ServiceEventArgs}
+  commentId: '!:EventHandler{Rssdp.ServiceEventArgs}'
+  definition: EventHandler`1
+  name: EventHandler<ServiceEventArgs>
+  nameWithType: EventHandler<ServiceEventArgs>
+  fullName: EventHandler<Rssdp.ServiceEventArgs>
+  nameWithType.vb: EventHandler(Of ServiceEventArgs)
+  fullName.vb: EventHandler(Of Rssdp.ServiceEventArgs)
+  name.vb: EventHandler(Of ServiceEventArgs)
+  spec.csharp:
+  - uid: EventHandler`1
+    name: EventHandler
+    nameWithType: EventHandler
+    fullName: EventHandler
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: Rssdp.ServiceEventArgs
+    name: ServiceEventArgs
+    nameWithType: ServiceEventArgs
+    fullName: Rssdp.ServiceEventArgs
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: EventHandler`1
+    name: EventHandler
+    nameWithType: EventHandler
+    fullName: EventHandler
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: Rssdp.ServiceEventArgs
+    name: ServiceEventArgs
+    nameWithType: ServiceEventArgs
+    fullName: Rssdp.ServiceEventArgs
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: Rssdp.SsdpDevice.RemoveService(Rssdp.SsdpService)
+  commentId: M:Rssdp.SsdpDevice.RemoveService(Rssdp.SsdpService)
+  parent: Rssdp.SsdpDevice
+  isExternal: false
+  name: RemoveService(SsdpService)
+  nameWithType: SsdpDevice.RemoveService(SsdpService)
+  fullName: Rssdp.SsdpDevice.RemoveService(Rssdp.SsdpService)
+  spec.csharp:
+  - uid: Rssdp.SsdpDevice.RemoveService(Rssdp.SsdpService)
+    name: RemoveService
+    nameWithType: SsdpDevice.RemoveService
+    fullName: Rssdp.SsdpDevice.RemoveService
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: Rssdp.SsdpService
+    name: SsdpService
+    nameWithType: SsdpService
+    fullName: Rssdp.SsdpService
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: Rssdp.SsdpDevice.RemoveService(Rssdp.SsdpService)
+    name: RemoveService
+    nameWithType: SsdpDevice.RemoveService
+    fullName: Rssdp.SsdpDevice.RemoveService
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: Rssdp.SsdpService
+    name: SsdpService
+    nameWithType: SsdpService
+    fullName: Rssdp.SsdpService
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: Rssdp.SsdpDevice.OnServiceRemoved(Rssdp.SsdpService)
+  commentId: M:Rssdp.SsdpDevice.OnServiceRemoved(Rssdp.SsdpService)
+  parent: Rssdp.SsdpDevice
+  isExternal: false
+  name: OnServiceRemoved(SsdpService)
+  nameWithType: SsdpDevice.OnServiceRemoved(SsdpService)
+  fullName: Rssdp.SsdpDevice.OnServiceRemoved(Rssdp.SsdpService)
+  spec.csharp:
+  - uid: Rssdp.SsdpDevice.OnServiceRemoved(Rssdp.SsdpService)
+    name: OnServiceRemoved
+    nameWithType: SsdpDevice.OnServiceRemoved
+    fullName: Rssdp.SsdpDevice.OnServiceRemoved
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: Rssdp.SsdpService
+    name: SsdpService
+    nameWithType: SsdpService
+    fullName: Rssdp.SsdpService
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: Rssdp.SsdpDevice.OnServiceRemoved(Rssdp.SsdpService)
+    name: OnServiceRemoved
+    nameWithType: SsdpDevice.OnServiceRemoved
+    fullName: Rssdp.SsdpDevice.OnServiceRemoved
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: Rssdp.SsdpService
+    name: SsdpService
+    nameWithType: SsdpService
+    fullName: Rssdp.SsdpService
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: Rssdp.SsdpDevice.#ctor*
+  commentId: Overload:Rssdp.SsdpDevice.#ctor
+  isExternal: false
+  name: SsdpDevice
+  nameWithType: SsdpDevice.SsdpDevice
+  fullName: Rssdp.SsdpDevice.SsdpDevice
+- uid: System.ArgumentNullException
+  commentId: T:System.ArgumentNullException
+- uid: System.ArgumentException
+  commentId: T:System.ArgumentException
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  name: String
+  nameWithType: String
+  fullName: System.String
+- uid: Rssdp.SsdpDevice.DeviceTypeNamespace
+  commentId: P:Rssdp.SsdpDevice.DeviceTypeNamespace
+  parent: Rssdp.SsdpDevice
+  isExternal: false
+  name: DeviceTypeNamespace
+  nameWithType: SsdpDevice.DeviceTypeNamespace
+  fullName: Rssdp.SsdpDevice.DeviceTypeNamespace
+- uid: Rssdp.SsdpDevice.DeviceVersion
+  commentId: P:Rssdp.SsdpDevice.DeviceVersion
+  parent: Rssdp.SsdpDevice
+  isExternal: false
+  name: DeviceVersion
+  nameWithType: SsdpDevice.DeviceVersion
+  fullName: Rssdp.SsdpDevice.DeviceVersion
+- uid: Rssdp.SsdpDevice.FullDeviceType
+  commentId: P:Rssdp.SsdpDevice.FullDeviceType
+  parent: Rssdp.SsdpDevice
+  isExternal: false
+  name: FullDeviceType
+  nameWithType: SsdpDevice.FullDeviceType
+  fullName: Rssdp.SsdpDevice.FullDeviceType
+- uid: Rssdp.SsdpDevice.DeviceType*
+  commentId: Overload:Rssdp.SsdpDevice.DeviceType
+  isExternal: false
+  name: DeviceType
+  nameWithType: SsdpDevice.DeviceType
+  fullName: Rssdp.SsdpDevice.DeviceType
+- uid: Rssdp.SsdpDevice.DeviceType
+  commentId: P:Rssdp.SsdpDevice.DeviceType
+  parent: Rssdp.SsdpDevice
+  isExternal: false
+  name: DeviceType
+  nameWithType: SsdpDevice.DeviceType
+  fullName: Rssdp.SsdpDevice.DeviceType
+- uid: Rssdp.SsdpDevice.DeviceTypeNamespace*
+  commentId: Overload:Rssdp.SsdpDevice.DeviceTypeNamespace
+  isExternal: false
+  name: DeviceTypeNamespace
+  nameWithType: SsdpDevice.DeviceTypeNamespace
+  fullName: Rssdp.SsdpDevice.DeviceTypeNamespace
+- uid: Rssdp.SsdpDevice.DeviceVersion*
+  commentId: Overload:Rssdp.SsdpDevice.DeviceVersion
+  isExternal: false
+  name: DeviceVersion
+  nameWithType: SsdpDevice.DeviceVersion
+  fullName: Rssdp.SsdpDevice.DeviceVersion
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  name: Int32
+  nameWithType: Int32
+  fullName: System.Int32
+- uid: Rssdp.SsdpDevice.FullDeviceType*
+  commentId: Overload:Rssdp.SsdpDevice.FullDeviceType
+  isExternal: false
+  name: FullDeviceType
+  nameWithType: SsdpDevice.FullDeviceType
+  fullName: Rssdp.SsdpDevice.FullDeviceType
+- uid: Rssdp.SsdpDevice.Uuid*
+  commentId: Overload:Rssdp.SsdpDevice.Uuid
+  isExternal: false
+  name: Uuid
+  nameWithType: SsdpDevice.Uuid
+  fullName: Rssdp.SsdpDevice.Uuid
+- uid: Rssdp.SsdpDevice.Udn*
+  commentId: Overload:Rssdp.SsdpDevice.Udn
+  isExternal: false
+  name: Udn
+  nameWithType: SsdpDevice.Udn
+  fullName: Rssdp.SsdpDevice.Udn
+- uid: Rssdp.SsdpDevice.FriendlyName*
+  commentId: Overload:Rssdp.SsdpDevice.FriendlyName
+  isExternal: false
+  name: FriendlyName
+  nameWithType: SsdpDevice.FriendlyName
+  fullName: Rssdp.SsdpDevice.FriendlyName
+- uid: Rssdp.SsdpDevice.Manufacturer*
+  commentId: Overload:Rssdp.SsdpDevice.Manufacturer
+  isExternal: false
+  name: Manufacturer
+  nameWithType: SsdpDevice.Manufacturer
+  fullName: Rssdp.SsdpDevice.Manufacturer
+- uid: Rssdp.SsdpDevice.ManufacturerUrl*
+  commentId: Overload:Rssdp.SsdpDevice.ManufacturerUrl
+  isExternal: false
+  name: ManufacturerUrl
+  nameWithType: SsdpDevice.ManufacturerUrl
+  fullName: Rssdp.SsdpDevice.ManufacturerUrl
+- uid: Uri
+  isExternal: true
+  name: Uri
+  nameWithType: Uri
+  fullName: Uri
+- uid: Rssdp.SsdpDevice.ModelDescription*
+  commentId: Overload:Rssdp.SsdpDevice.ModelDescription
+  isExternal: false
+  name: ModelDescription
+  nameWithType: SsdpDevice.ModelDescription
+  fullName: Rssdp.SsdpDevice.ModelDescription
+- uid: Rssdp.SsdpDevice.ModelName*
+  commentId: Overload:Rssdp.SsdpDevice.ModelName
+  isExternal: false
+  name: ModelName
+  nameWithType: SsdpDevice.ModelName
+  fullName: Rssdp.SsdpDevice.ModelName
+- uid: Rssdp.SsdpDevice.ModelNumber*
+  commentId: Overload:Rssdp.SsdpDevice.ModelNumber
+  isExternal: false
+  name: ModelNumber
+  nameWithType: SsdpDevice.ModelNumber
+  fullName: Rssdp.SsdpDevice.ModelNumber
+- uid: Rssdp.SsdpDevice.ModelUrl*
+  commentId: Overload:Rssdp.SsdpDevice.ModelUrl
+  isExternal: false
+  name: ModelUrl
+  nameWithType: SsdpDevice.ModelUrl
+  fullName: Rssdp.SsdpDevice.ModelUrl
+- uid: Rssdp.SsdpDevice.SerialNumber*
+  commentId: Overload:Rssdp.SsdpDevice.SerialNumber
+  isExternal: false
+  name: SerialNumber
+  nameWithType: SsdpDevice.SerialNumber
+  fullName: Rssdp.SsdpDevice.SerialNumber
+- uid: Rssdp.SsdpDevice.Upc*
+  commentId: Overload:Rssdp.SsdpDevice.Upc
+  isExternal: false
+  name: Upc
+  nameWithType: SsdpDevice.Upc
+  fullName: Rssdp.SsdpDevice.Upc
+- uid: Rssdp.SsdpDevice.PresentationUrl*
+  commentId: Overload:Rssdp.SsdpDevice.PresentationUrl
+  isExternal: false
+  name: PresentationUrl
+  nameWithType: SsdpDevice.PresentationUrl
+  fullName: Rssdp.SsdpDevice.PresentationUrl
+- uid: Rssdp.SsdpDevice.Icons*
+  commentId: Overload:Rssdp.SsdpDevice.Icons
+  isExternal: false
+  name: Icons
+  nameWithType: SsdpDevice.Icons
+  fullName: Rssdp.SsdpDevice.Icons
+- uid: IList{Rssdp.SsdpDeviceIcon}
+  commentId: '!:IList{Rssdp.SsdpDeviceIcon}'
+  definition: IList`1
+  name: IList<SsdpDeviceIcon>
+  nameWithType: IList<SsdpDeviceIcon>
+  fullName: IList<Rssdp.SsdpDeviceIcon>
+  nameWithType.vb: IList(Of SsdpDeviceIcon)
+  fullName.vb: IList(Of Rssdp.SsdpDeviceIcon)
+  name.vb: IList(Of SsdpDeviceIcon)
+  spec.csharp:
+  - uid: IList`1
+    name: IList
+    nameWithType: IList
+    fullName: IList
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: Rssdp.SsdpDeviceIcon
+    name: SsdpDeviceIcon
+    nameWithType: SsdpDeviceIcon
+    fullName: Rssdp.SsdpDeviceIcon
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: IList`1
+    name: IList
+    nameWithType: IList
+    fullName: IList
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: Rssdp.SsdpDeviceIcon
+    name: SsdpDeviceIcon
+    nameWithType: SsdpDeviceIcon
+    fullName: Rssdp.SsdpDeviceIcon
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: IList`1
+  commentId: '!:IList`1'
+  isExternal: true
+  name: IList<>
+  nameWithType: IList<>
+  fullName: IList<>
+  nameWithType.vb: IList(Of )
+  fullName.vb: IList(Of )
+  name.vb: IList(Of )
+  spec.csharp:
+  - uid: IList`1
+    name: IList
+    nameWithType: IList
+    fullName: IList
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - name: ''
+    nameWithType: ''
+    fullName: ''
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: IList`1
+    name: IList
+    nameWithType: IList
+    fullName: IList
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - name: ''
+    nameWithType: ''
+    fullName: ''
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: Rssdp.SsdpDevice.Devices*
+  commentId: Overload:Rssdp.SsdpDevice.Devices
+  isExternal: false
+  name: Devices
+  nameWithType: SsdpDevice.Devices
+  fullName: Rssdp.SsdpDevice.Devices
+- uid: IEnumerable{Rssdp.SsdpDevice}
+  commentId: '!:IEnumerable{Rssdp.SsdpDevice}'
+  definition: IEnumerable`1
+  name: IEnumerable<SsdpDevice>
+  nameWithType: IEnumerable<SsdpDevice>
+  fullName: IEnumerable<Rssdp.SsdpDevice>
+  nameWithType.vb: IEnumerable(Of SsdpDevice)
+  fullName.vb: IEnumerable(Of Rssdp.SsdpDevice)
+  name.vb: IEnumerable(Of SsdpDevice)
+  spec.csharp:
+  - uid: IEnumerable`1
+    name: IEnumerable
+    nameWithType: IEnumerable
+    fullName: IEnumerable
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: Rssdp.SsdpDevice
+    name: SsdpDevice
+    nameWithType: SsdpDevice
+    fullName: Rssdp.SsdpDevice
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: IEnumerable`1
+    name: IEnumerable
+    nameWithType: IEnumerable
+    fullName: IEnumerable
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: Rssdp.SsdpDevice
+    name: SsdpDevice
+    nameWithType: SsdpDevice
+    fullName: Rssdp.SsdpDevice
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: IEnumerable`1
+  isExternal: true
+  name: IEnumerable<>
+  nameWithType: IEnumerable<>
+  fullName: IEnumerable<>
+  nameWithType.vb: IEnumerable(Of )
+  fullName.vb: IEnumerable(Of )
+  name.vb: IEnumerable(Of )
+  spec.csharp:
+  - uid: IEnumerable`1
+    name: IEnumerable
+    nameWithType: IEnumerable
+    fullName: IEnumerable
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - name: ''
+    nameWithType: ''
+    fullName: ''
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: IEnumerable`1
+    name: IEnumerable
+    nameWithType: IEnumerable
+    fullName: IEnumerable
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - name: ''
+    nameWithType: ''
+    fullName: ''
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: Rssdp.SsdpDeviceProperty
+  commentId: T:Rssdp.SsdpDeviceProperty
+  parent: Rssdp
+  isExternal: false
+  name: SsdpDeviceProperty
+  nameWithType: SsdpDeviceProperty
+  fullName: Rssdp.SsdpDeviceProperty
+- uid: Rssdp.SsdpDeviceProperty.FullName
+  commentId: P:Rssdp.SsdpDeviceProperty.FullName
+- uid: Rssdp.SsdpDevice.CustomProperties*
+  commentId: Overload:Rssdp.SsdpDevice.CustomProperties
+  isExternal: false
+  name: CustomProperties
+  nameWithType: SsdpDevice.CustomProperties
+  fullName: Rssdp.SsdpDevice.CustomProperties
+- uid: Rssdp.SsdpDevicePropertiesCollection
+  commentId: T:Rssdp.SsdpDevicePropertiesCollection
+  parent: Rssdp
+  isExternal: false
+  name: SsdpDevicePropertiesCollection
+  nameWithType: SsdpDevicePropertiesCollection
+  fullName: Rssdp.SsdpDevicePropertiesCollection
+- uid: Rssdp.SsdpDevice.CustomResponseHeaders*
+  commentId: Overload:Rssdp.SsdpDevice.CustomResponseHeaders
+  isExternal: false
+  name: CustomResponseHeaders
+  nameWithType: SsdpDevice.CustomResponseHeaders
+  fullName: Rssdp.SsdpDevice.CustomResponseHeaders
+- uid: Rssdp.CustomHttpHeadersCollection
+  commentId: T:Rssdp.CustomHttpHeadersCollection
+  parent: Rssdp
+  isExternal: false
+  name: CustomHttpHeadersCollection
+  nameWithType: CustomHttpHeadersCollection
+  fullName: Rssdp.CustomHttpHeadersCollection
+- uid: Rssdp.SsdpService
+  commentId: T:Rssdp.SsdpService
+  parent: Rssdp
+  isExternal: false
+  name: SsdpService
+  nameWithType: SsdpService
+  fullName: Rssdp.SsdpService
+- uid: Rssdp.SsdpDevice.Services*
+  commentId: Overload:Rssdp.SsdpDevice.Services
+  isExternal: false
+  name: Services
+  nameWithType: SsdpDevice.Services
+  fullName: Rssdp.SsdpDevice.Services
+- uid: IEnumerable{Rssdp.SsdpService}
+  commentId: '!:IEnumerable{Rssdp.SsdpService}'
+  definition: IEnumerable`1
+  name: IEnumerable<SsdpService>
+  nameWithType: IEnumerable<SsdpService>
+  fullName: IEnumerable<Rssdp.SsdpService>
+  nameWithType.vb: IEnumerable(Of SsdpService)
+  fullName.vb: IEnumerable(Of Rssdp.SsdpService)
+  name.vb: IEnumerable(Of SsdpService)
+  spec.csharp:
+  - uid: IEnumerable`1
+    name: IEnumerable
+    nameWithType: IEnumerable
+    fullName: IEnumerable
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: Rssdp.SsdpService
+    name: SsdpService
+    nameWithType: SsdpService
+    fullName: Rssdp.SsdpService
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: IEnumerable`1
+    name: IEnumerable
+    nameWithType: IEnumerable
+    fullName: IEnumerable
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: Rssdp.SsdpService
+    name: SsdpService
+    nameWithType: SsdpService
+    fullName: Rssdp.SsdpService
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: Rssdp.SsdpDevice.Devices
+  commentId: P:Rssdp.SsdpDevice.Devices
+  parent: Rssdp.SsdpDevice
+  isExternal: false
+  name: Devices
+  nameWithType: SsdpDevice.Devices
+  fullName: Rssdp.SsdpDevice.Devices
+- uid: Rssdp.SsdpEmbeddedDevice.RootDevice
+  commentId: P:Rssdp.SsdpEmbeddedDevice.RootDevice
+- uid: Rssdp.SsdpDevice.AddDevice*
+  commentId: Overload:Rssdp.SsdpDevice.AddDevice
+  isExternal: false
+  name: AddDevice
+  nameWithType: SsdpDevice.AddDevice
+  fullName: Rssdp.SsdpDevice.AddDevice
+- uid: System.InvalidOperationException
+  commentId: T:System.InvalidOperationException
+- uid: Rssdp.SsdpDevice.RemoveDevice*
+  commentId: Overload:Rssdp.SsdpDevice.RemoveDevice
+  isExternal: false
+  name: RemoveDevice
+  nameWithType: SsdpDevice.RemoveDevice
+  fullName: Rssdp.SsdpDevice.RemoveDevice
+- uid: Rssdp.SsdpDevice.OnDeviceAdded*
+  commentId: Overload:Rssdp.SsdpDevice.OnDeviceAdded
+  isExternal: false
+  name: OnDeviceAdded
+  nameWithType: SsdpDevice.OnDeviceAdded
+  fullName: Rssdp.SsdpDevice.OnDeviceAdded
+- uid: Rssdp.SsdpDevice.OnDeviceRemoved*
+  commentId: Overload:Rssdp.SsdpDevice.OnDeviceRemoved
+  isExternal: false
+  name: OnDeviceRemoved
+  nameWithType: SsdpDevice.OnDeviceRemoved
+  fullName: Rssdp.SsdpDevice.OnDeviceRemoved
+- uid: Rssdp.SsdpDevice.Services
+  commentId: P:Rssdp.SsdpDevice.Services
+  parent: Rssdp.SsdpDevice
+  isExternal: false
+  name: Services
+  nameWithType: SsdpDevice.Services
+  fullName: Rssdp.SsdpDevice.Services
+- uid: Rssdp.SsdpDevice.AddService*
+  commentId: Overload:Rssdp.SsdpDevice.AddService
+  isExternal: false
+  name: AddService
+  nameWithType: SsdpDevice.AddService
+  fullName: Rssdp.SsdpDevice.AddService
+- uid: Rssdp.SsdpDevice.ServiceRemoved
+  commentId: E:Rssdp.SsdpDevice.ServiceRemoved
+  parent: Rssdp.SsdpDevice
+  isExternal: false
+  name: ServiceRemoved
+  nameWithType: SsdpDevice.ServiceRemoved
+  fullName: Rssdp.SsdpDevice.ServiceRemoved
+- uid: Rssdp.SsdpDevice.RemoveService*
+  commentId: Overload:Rssdp.SsdpDevice.RemoveService
+  isExternal: false
+  name: RemoveService
+  nameWithType: SsdpDevice.RemoveService
+  fullName: Rssdp.SsdpDevice.RemoveService
+- uid: Rssdp.SsdpDevice.OnServiceAdded*
+  commentId: Overload:Rssdp.SsdpDevice.OnServiceAdded
+  isExternal: false
+  name: OnServiceAdded
+  nameWithType: SsdpDevice.OnServiceAdded
+  fullName: Rssdp.SsdpDevice.OnServiceAdded
+- uid: Rssdp.SsdpDevice.OnServiceRemoved*
+  commentId: Overload:Rssdp.SsdpDevice.OnServiceRemoved
+  isExternal: false
+  name: OnServiceRemoved
+  nameWithType: SsdpDevice.OnServiceRemoved
+  fullName: Rssdp.SsdpDevice.OnServiceRemoved
+- uid: Rssdp.SsdpDevice.WriteDeviceDescriptionXml*
+  commentId: Overload:Rssdp.SsdpDevice.WriteDeviceDescriptionXml
+  isExternal: false
+  name: WriteDeviceDescriptionXml
+  nameWithType: SsdpDevice.WriteDeviceDescriptionXml
+  fullName: Rssdp.SsdpDevice.WriteDeviceDescriptionXml
+- uid: XmlWriter
+  isExternal: true
+  name: XmlWriter
+  nameWithType: XmlWriter
+  fullName: XmlWriter
+- uid: Rssdp.SsdpDevice.StringToUri*
+  commentId: Overload:Rssdp.SsdpDevice.StringToUri
+  isExternal: false
+  name: StringToUri
+  nameWithType: SsdpDevice.StringToUri
+  fullName: Rssdp.SsdpDevice.StringToUri

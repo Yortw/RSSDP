@@ -1,0 +1,37 @@
+### YamlMime:ManagedReference
+items:
+- uid: Rssdp.PackageTest.WpSl
+  commentId: N:Rssdp.PackageTest.WpSl
+  id: Rssdp.PackageTest.WpSl
+  children:
+  - Rssdp.PackageTest.WpSl.App
+  - Rssdp.PackageTest.WpSl.LocalizedStrings
+  - Rssdp.PackageTest.WpSl.MainPage
+  langs:
+  - csharp
+  - vb
+  name: Rssdp.PackageTest.WpSl
+  nameWithType: Rssdp.PackageTest.WpSl
+  fullName: Rssdp.PackageTest.WpSl
+  type: Namespace
+  assemblies:
+  - cs.temp.dll
+references:
+- uid: Rssdp.PackageTest.WpSl.App
+  commentId: T:Rssdp.PackageTest.WpSl.App
+  isExternal: false
+  name: App
+  nameWithType: App
+  fullName: Rssdp.PackageTest.WpSl.App
+- uid: Rssdp.PackageTest.WpSl.LocalizedStrings
+  commentId: T:Rssdp.PackageTest.WpSl.LocalizedStrings
+  isExternal: false
+  name: LocalizedStrings
+  nameWithType: LocalizedStrings
+  fullName: Rssdp.PackageTest.WpSl.LocalizedStrings
+- uid: Rssdp.PackageTest.WpSl.MainPage
+  commentId: T:Rssdp.PackageTest.WpSl.MainPage
+  isExternal: false
+  name: MainPage
+  nameWithType: MainPage
+  fullName: Rssdp.PackageTest.WpSl.MainPage

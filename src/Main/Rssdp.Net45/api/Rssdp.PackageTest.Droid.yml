@@ -1,0 +1,58 @@
+### YamlMime:ManagedReference
+items:
+- uid: Rssdp.PackageTest.Droid
+  commentId: N:Rssdp.PackageTest.Droid
+  id: Rssdp.PackageTest.Droid
+  children:
+  - Rssdp.PackageTest.Droid.MainActivity
+  - Rssdp.PackageTest.Droid.Resource
+  - Rssdp.PackageTest.Droid.Resource.Attribute
+  - Rssdp.PackageTest.Droid.Resource.Drawable
+  - Rssdp.PackageTest.Droid.Resource.Layout
+  - Rssdp.PackageTest.Droid.Resource.String
+  langs:
+  - csharp
+  - vb
+  name: Rssdp.PackageTest.Droid
+  nameWithType: Rssdp.PackageTest.Droid
+  fullName: Rssdp.PackageTest.Droid
+  type: Namespace
+  assemblies:
+  - cs.temp.dll
+references:
+- uid: Rssdp.PackageTest.Droid.MainActivity
+  commentId: T:Rssdp.PackageTest.Droid.MainActivity
+  isExternal: false
+  name: MainActivity
+  nameWithType: MainActivity
+  fullName: Rssdp.PackageTest.Droid.MainActivity
+- uid: Rssdp.PackageTest.Droid.Resource
+  commentId: T:Rssdp.PackageTest.Droid.Resource
+  isExternal: false
+  name: Resource
+  nameWithType: Resource
+  fullName: Rssdp.PackageTest.Droid.Resource
+- uid: Rssdp.PackageTest.Droid.Resource.Attribute
+  commentId: T:Rssdp.PackageTest.Droid.Resource.Attribute
+  isExternal: false
+  name: Resource.Attribute
+  nameWithType: Resource.Attribute
+  fullName: Rssdp.PackageTest.Droid.Resource.Attribute
+- uid: Rssdp.PackageTest.Droid.Resource.Drawable
+  commentId: T:Rssdp.PackageTest.Droid.Resource.Drawable
+  isExternal: false
+  name: Resource.Drawable
+  nameWithType: Resource.Drawable
+  fullName: Rssdp.PackageTest.Droid.Resource.Drawable
+- uid: Rssdp.PackageTest.Droid.Resource.Layout
+  commentId: T:Rssdp.PackageTest.Droid.Resource.Layout
+  isExternal: false
+  name: Resource.Layout
+  nameWithType: Resource.Layout
+  fullName: Rssdp.PackageTest.Droid.Resource.Layout
+- uid: Rssdp.PackageTest.Droid.Resource.String
+  commentId: T:Rssdp.PackageTest.Droid.Resource.String
+  isExternal: false
+  name: Resource.String
+  nameWithType: Resource.String
+  fullName: Rssdp.PackageTest.Droid.Resource.String

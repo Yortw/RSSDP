@@ -1,0 +1,189 @@
+### YamlMime:ManagedReference
+items:
+- uid: Rssdp.Infrastructure.ISocketFactory
+  commentId: T:Rssdp.Infrastructure.ISocketFactory
+  id: ISocketFactory
+  parent: Rssdp.Infrastructure
+  children:
+  - Rssdp.Infrastructure.ISocketFactory.CreateUdpMulticastSocket(System.Int32,System.Int32)
+  - Rssdp.Infrastructure.ISocketFactory.CreateUdpSocket(System.Int32)
+  - Rssdp.Infrastructure.ISocketFactory.DeviceNetworkType
+  langs:
+  - csharp
+  - vb
+  name: ISocketFactory
+  nameWithType: ISocketFactory
+  fullName: Rssdp.Infrastructure.ISocketFactory
+  type: Interface
+  source:
+    id: ISocketFactory
+    path: ''
+    startLine: 3414
+  assemblies:
+  - cs.temp.dll
+  namespace: Rssdp.Infrastructure
+  summary: "\nImplemented by components that can create a platform specific UDP socket implementation, and wrap it in the cross platform <xref href=\"Rssdp.Infrastructure.IUdpSocket\" data-throw-if-not-resolved=\"false\"></xref> interface.\n"
+  example: []
+  syntax:
+    content: public interface ISocketFactory
+    content.vb: Public Interface ISocketFactory
+  modifiers.csharp:
+  - public
+  - interface
+  modifiers.vb:
+  - Public
+  - Interface
+- uid: Rssdp.Infrastructure.ISocketFactory.CreateUdpSocket(System.Int32)
+  commentId: M:Rssdp.Infrastructure.ISocketFactory.CreateUdpSocket(System.Int32)
+  id: CreateUdpSocket(System.Int32)
+  parent: Rssdp.Infrastructure.ISocketFactory
+  langs:
+  - csharp
+  - vb
+  name: CreateUdpSocket(Int32)
+  nameWithType: ISocketFactory.CreateUdpSocket(Int32)
+  fullName: Rssdp.Infrastructure.ISocketFactory.CreateUdpSocket(System.Int32)
+  type: Method
+  source:
+    id: CreateUdpSocket
+    path: ''
+    startLine: 3422
+  assemblies:
+  - cs.temp.dll
+  namespace: Rssdp.Infrastructure
+  summary: "\nCreates a new unicast socket using the specified local port number.\n"
+  example: []
+  syntax:
+    content: IUdpSocket CreateUdpSocket(int localPort)
+    parameters:
+    - id: localPort
+      type: System.Int32
+      description: The local port to bind to.
+    return:
+      type: Rssdp.Infrastructure.IUdpSocket
+      description: A <xref href="Rssdp.Infrastructure.IUdpSocket" data-throw-if-not-resolved="false"></xref> implementation.
+    content.vb: Function CreateUdpSocket(localPort As Integer) As IUdpSocket
+  overload: Rssdp.Infrastructure.ISocketFactory.CreateUdpSocket*
+- uid: Rssdp.Infrastructure.ISocketFactory.CreateUdpMulticastSocket(System.Int32,System.Int32)
+  commentId: M:Rssdp.Infrastructure.ISocketFactory.CreateUdpMulticastSocket(System.Int32,System.Int32)
+  id: CreateUdpMulticastSocket(System.Int32,System.Int32)
+  parent: Rssdp.Infrastructure.ISocketFactory
+  langs:
+  - csharp
+  - vb
+  name: CreateUdpMulticastSocket(Int32, Int32)
+  nameWithType: ISocketFactory.CreateUdpMulticastSocket(Int32, Int32)
+  fullName: Rssdp.Infrastructure.ISocketFactory.CreateUdpMulticastSocket(System.Int32, System.Int32)
+  type: Method
+  source:
+    id: CreateUdpMulticastSocket
+    path: ''
+    startLine: 3430
+  assemblies:
+  - cs.temp.dll
+  namespace: Rssdp.Infrastructure
+  summary: "\nCreates a new multicast socket using the specified multicast IP address, multicast time to live and local port.\n"
+  example: []
+  syntax:
+    content: IUdpSocket CreateUdpMulticastSocket(int multicastTimeToLive, int localPort)
+    parameters:
+    - id: multicastTimeToLive
+      type: System.Int32
+      description: The multicast time to live value. Actually a maximum number of network hops for UDP packets.
+    - id: localPort
+      type: System.Int32
+      description: The local port to bind to.
+    return:
+      type: Rssdp.Infrastructure.IUdpSocket
+      description: A <xref href="Rssdp.Infrastructure.IUdpSocket" data-throw-if-not-resolved="false"></xref> implementation.
+    content.vb: Function CreateUdpMulticastSocket(multicastTimeToLive As Integer, localPort As Integer) As IUdpSocket
+  overload: Rssdp.Infrastructure.ISocketFactory.CreateUdpMulticastSocket*
+- uid: Rssdp.Infrastructure.ISocketFactory.DeviceNetworkType
+  commentId: P:Rssdp.Infrastructure.ISocketFactory.DeviceNetworkType
+  id: DeviceNetworkType
+  parent: Rssdp.Infrastructure.ISocketFactory
+  langs:
+  - csharp
+  - vb
+  name: DeviceNetworkType
+  nameWithType: ISocketFactory.DeviceNetworkType
+  fullName: Rssdp.Infrastructure.ISocketFactory.DeviceNetworkType
+  type: Property
+  source:
+    id: DeviceNetworkType
+    path: ''
+    startLine: 3436
+  assemblies:
+  - cs.temp.dll
+  namespace: Rssdp.Infrastructure
+  summary: "\nWhat type of sockets will be created: ipv6 or ipv4\n"
+  example: []
+  syntax:
+    content: DeviceNetworkType DeviceNetworkType { get; }
+    parameters: []
+    return:
+      type: Rssdp.DeviceNetworkType
+    content.vb: ReadOnly Property DeviceNetworkType As DeviceNetworkType
+  overload: Rssdp.Infrastructure.ISocketFactory.DeviceNetworkType*
+  modifiers.csharp:
+  - get
+  modifiers.vb:
+  - ReadOnly
+references:
+- uid: Rssdp.Infrastructure.IUdpSocket
+  commentId: T:Rssdp.Infrastructure.IUdpSocket
+  parent: Rssdp.Infrastructure
+  isExternal: false
+  name: IUdpSocket
+  nameWithType: IUdpSocket
+  fullName: Rssdp.Infrastructure.IUdpSocket
+- uid: Rssdp.Infrastructure
+  commentId: N:Rssdp.Infrastructure
+  isExternal: false
+  name: Rssdp.Infrastructure
+  nameWithType: Rssdp.Infrastructure
+  fullName: Rssdp.Infrastructure
+- uid: Rssdp.Infrastructure.ISocketFactory.CreateUdpSocket*
+  commentId: Overload:Rssdp.Infrastructure.ISocketFactory.CreateUdpSocket
+  isExternal: false
+  name: CreateUdpSocket
+  nameWithType: ISocketFactory.CreateUdpSocket
+  fullName: Rssdp.Infrastructure.ISocketFactory.CreateUdpSocket
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  name: Int32
+  nameWithType: Int32
+  fullName: System.Int32
+- uid: System
+  commentId: N:System
+  isExternal: false
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Rssdp.Infrastructure.ISocketFactory.CreateUdpMulticastSocket*
+  commentId: Overload:Rssdp.Infrastructure.ISocketFactory.CreateUdpMulticastSocket
+  isExternal: false
+  name: CreateUdpMulticastSocket
+  nameWithType: ISocketFactory.CreateUdpMulticastSocket
+  fullName: Rssdp.Infrastructure.ISocketFactory.CreateUdpMulticastSocket
+- uid: Rssdp.Infrastructure.ISocketFactory.DeviceNetworkType*
+  commentId: Overload:Rssdp.Infrastructure.ISocketFactory.DeviceNetworkType
+  isExternal: false
+  name: DeviceNetworkType
+  nameWithType: ISocketFactory.DeviceNetworkType
+  fullName: Rssdp.Infrastructure.ISocketFactory.DeviceNetworkType
+- uid: Rssdp.DeviceNetworkType
+  commentId: T:Rssdp.DeviceNetworkType
+  parent: Rssdp
+  isExternal: false
+  name: DeviceNetworkType
+  nameWithType: DeviceNetworkType
+  fullName: Rssdp.DeviceNetworkType
+- uid: Rssdp
+  commentId: N:Rssdp
+  isExternal: false
+  name: Rssdp
+  nameWithType: Rssdp
+  fullName: Rssdp

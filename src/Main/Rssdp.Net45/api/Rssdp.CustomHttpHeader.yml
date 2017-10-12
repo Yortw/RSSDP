@@ -1,0 +1,524 @@
+### YamlMime:ManagedReference
+items:
+- uid: Rssdp.CustomHttpHeader
+  commentId: T:Rssdp.CustomHttpHeader
+  id: CustomHttpHeader
+  parent: Rssdp
+  children:
+  - Rssdp.CustomHttpHeader.#ctor(System.String,System.String)
+  - Rssdp.CustomHttpHeader.Name
+  - Rssdp.CustomHttpHeader.ToString
+  - Rssdp.CustomHttpHeader.Value
+  langs:
+  - csharp
+  - vb
+  name: CustomHttpHeader
+  nameWithType: CustomHttpHeader
+  fullName: Rssdp.CustomHttpHeader
+  type: Class
+  source:
+    id: CustomHttpHeader
+    path: ''
+    startLine: 2093
+  assemblies:
+  - cs.temp.dll
+  namespace: Rssdp
+  summary: "\nRepresents a custom HTTP header sent on device search response or notification messages.\n"
+  example: []
+  syntax:
+    content: public sealed class CustomHttpHeader
+    content.vb: Public NotInheritable Class CustomHttpHeader
+  inheritance:
+  - System.Object
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  modifiers.csharp:
+  - public
+  - sealed
+  - class
+  modifiers.vb:
+  - Public
+  - NotInheritable
+  - Class
+- uid: Rssdp.CustomHttpHeader.#ctor(System.String,System.String)
+  commentId: M:Rssdp.CustomHttpHeader.#ctor(System.String,System.String)
+  id: '#ctor(System.String,System.String)'
+  parent: Rssdp.CustomHttpHeader
+  langs:
+  - csharp
+  - vb
+  name: CustomHttpHeader(String, String)
+  nameWithType: CustomHttpHeader.CustomHttpHeader(String, String)
+  fullName: Rssdp.CustomHttpHeader.CustomHttpHeader(System.String, System.String)
+  type: Constructor
+  source:
+    id: .ctor
+    path: ''
+    startLine: 2115
+  assemblies:
+  - cs.temp.dll
+  namespace: Rssdp
+  summary: "\nFull constructor.\n"
+  remarks: "\n<p>As per RFC 822 and 2616, the name must contain only printable ASCII characters (33-126) excluding colon (:). The value may contain any ASCII characters except carriage return or line feed.</p>\n"
+  example: []
+  syntax:
+    content: public CustomHttpHeader(string name, string value)
+    parameters:
+    - id: name
+      type: System.String
+      description: The field name of the header.
+    - id: value
+      type: System.String
+      description: The value of the header
+    content.vb: Public Sub New(name As String, value As String)
+  overload: Rssdp.CustomHttpHeader.#ctor*
+  exceptions:
+  - type: System.ArgumentNullException
+    commentId: T:System.ArgumentNullException
+    description: Thrown if the name is null.
+  - type: System.ArgumentException
+    commentId: T:System.ArgumentException
+    description: Thrown if the name is an empty value, or contains an invalid character. Also thrown if the value contains a \r or \n character.
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+- uid: Rssdp.CustomHttpHeader.Name
+  commentId: P:Rssdp.CustomHttpHeader.Name
+  id: Name
+  parent: Rssdp.CustomHttpHeader
+  langs:
+  - csharp
+  - vb
+  name: Name
+  nameWithType: CustomHttpHeader.Name
+  fullName: Rssdp.CustomHttpHeader.Name
+  type: Property
+  source:
+    id: Name
+    path: ''
+    startLine: 2128
+  assemblies:
+  - cs.temp.dll
+  namespace: Rssdp
+  summary: "\nReturn the name of this header.\n"
+  example: []
+  syntax:
+    content: public string Name { get; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public ReadOnly Property Name As String
+  overload: Rssdp.CustomHttpHeader.Name*
+  modifiers.csharp:
+  - public
+  - get
+  modifiers.vb:
+  - Public
+  - ReadOnly
+- uid: Rssdp.CustomHttpHeader.Value
+  commentId: P:Rssdp.CustomHttpHeader.Value
+  id: Value
+  parent: Rssdp.CustomHttpHeader
+  langs:
+  - csharp
+  - vb
+  name: Value
+  nameWithType: CustomHttpHeader.Value
+  fullName: Rssdp.CustomHttpHeader.Value
+  type: Property
+  source:
+    id: Value
+    path: ''
+    startLine: 2141
+  assemblies:
+  - cs.temp.dll
+  namespace: Rssdp
+  summary: "\nReturns the value of this header.\n"
+  example: []
+  syntax:
+    content: public string Value { get; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public ReadOnly Property Value As String
+  overload: Rssdp.CustomHttpHeader.Value*
+  modifiers.csharp:
+  - public
+  - get
+  modifiers.vb:
+  - Public
+  - ReadOnly
+- uid: Rssdp.CustomHttpHeader.ToString
+  commentId: M:Rssdp.CustomHttpHeader.ToString
+  id: ToString
+  parent: Rssdp.CustomHttpHeader
+  langs:
+  - csharp
+  - vb
+  name: ToString()
+  nameWithType: CustomHttpHeader.ToString()
+  fullName: Rssdp.CustomHttpHeader.ToString()
+  type: Method
+  source:
+    id: ToString
+    path: ''
+    startLine: 2159
+  assemblies:
+  - cs.temp.dll
+  namespace: Rssdp
+  summary: "\nReturns the header formatted for use in an HTTP message.\n"
+  example: []
+  syntax:
+    content: public override string ToString()
+    return:
+      type: System.String
+      description: 'A string representing this header in the format of  &apos;name: value&apos;.'
+    content.vb: Public Overrides Function ToString As String
+  overridden: System.Object.ToString
+  overload: Rssdp.CustomHttpHeader.ToString*
+  modifiers.csharp:
+  - public
+  - override
+  modifiers.vb:
+  - Public
+  - Overrides
+references:
+- uid: Rssdp
+  commentId: N:Rssdp
+  isExternal: false
+  name: Rssdp
+  nameWithType: Rssdp
+  fullName: Rssdp
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  name: Object
+  nameWithType: Object
+  fullName: System.Object
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  name: Equals(Object)
+  nameWithType: Object.Equals(Object)
+  fullName: System.Object.Equals(System.Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  name: Equals(Object, Object)
+  nameWithType: Object.Equals(Object, Object)
+  fullName: System.Object.Equals(System.Object, System.Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  name: ReferenceEquals(Object, Object)
+  nameWithType: Object.ReferenceEquals(Object, Object)
+  fullName: System.Object.ReferenceEquals(System.Object, System.Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    nameWithType: Object.ReferenceEquals
+    fullName: System.Object.ReferenceEquals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    nameWithType: Object.ReferenceEquals
+    fullName: System.Object.ReferenceEquals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  name: GetHashCode()
+  nameWithType: Object.GetHashCode()
+  fullName: System.Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    nameWithType: Object.GetHashCode
+    fullName: System.Object.GetHashCode
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    nameWithType: Object.GetHashCode
+    fullName: System.Object.GetHashCode
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  name: GetType()
+  nameWithType: Object.GetType()
+  fullName: System.Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    nameWithType: Object.GetType
+    fullName: System.Object.GetType
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    nameWithType: Object.GetType
+    fullName: System.Object.GetType
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  name: MemberwiseClone()
+  nameWithType: Object.MemberwiseClone()
+  fullName: System.Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    nameWithType: Object.MemberwiseClone
+    fullName: System.Object.MemberwiseClone
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    nameWithType: Object.MemberwiseClone
+    fullName: System.Object.MemberwiseClone
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System
+  commentId: N:System
+  isExternal: false
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Rssdp.CustomHttpHeader.#ctor*
+  commentId: Overload:Rssdp.CustomHttpHeader.#ctor
+  isExternal: false
+  name: CustomHttpHeader
+  nameWithType: CustomHttpHeader.CustomHttpHeader
+  fullName: Rssdp.CustomHttpHeader.CustomHttpHeader
+- uid: System.ArgumentNullException
+  commentId: T:System.ArgumentNullException
+- uid: System.ArgumentException
+  commentId: T:System.ArgumentException
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  name: String
+  nameWithType: String
+  fullName: System.String
+- uid: Rssdp.CustomHttpHeader.Name*
+  commentId: Overload:Rssdp.CustomHttpHeader.Name
+  isExternal: false
+  name: Name
+  nameWithType: CustomHttpHeader.Name
+  fullName: Rssdp.CustomHttpHeader.Name
+- uid: Rssdp.CustomHttpHeader.Value*
+  commentId: Overload:Rssdp.CustomHttpHeader.Value
+  isExternal: false
+  name: Value
+  nameWithType: CustomHttpHeader.Value
+  fullName: Rssdp.CustomHttpHeader.Value
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  name: ToString()
+  nameWithType: Object.ToString()
+  fullName: System.Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    nameWithType: Object.ToString
+    fullName: System.Object.ToString
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    nameWithType: Object.ToString
+    fullName: System.Object.ToString
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: Rssdp.CustomHttpHeader.ToString*
+  commentId: Overload:Rssdp.CustomHttpHeader.ToString
+  isExternal: false
+  name: ToString
+  nameWithType: CustomHttpHeader.ToString
+  fullName: Rssdp.CustomHttpHeader.ToString

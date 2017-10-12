@@ -1,0 +1,631 @@
+### YamlMime:ManagedReference
+items:
+- uid: Rssdp.Infrastructure.Upnp10DeviceValidator
+  commentId: T:Rssdp.Infrastructure.Upnp10DeviceValidator
+  id: Upnp10DeviceValidator
+  parent: Rssdp.Infrastructure
+  children:
+  - Rssdp.Infrastructure.Upnp10DeviceValidator.GetValidationErrors(Rssdp.SsdpDevice)
+  - Rssdp.Infrastructure.Upnp10DeviceValidator.GetValidationErrors(Rssdp.SsdpRootDevice)
+  - Rssdp.Infrastructure.Upnp10DeviceValidator.ThrowIfDeviceInvalid(Rssdp.SsdpDevice)
+  langs:
+  - csharp
+  - vb
+  name: Upnp10DeviceValidator
+  nameWithType: Upnp10DeviceValidator
+  fullName: Rssdp.Infrastructure.Upnp10DeviceValidator
+  type: Class
+  source:
+    id: Upnp10DeviceValidator
+    path: ''
+    startLine: 8412
+  assemblies:
+  - cs.temp.dll
+  namespace: Rssdp.Infrastructure
+  summary: "\nValidates a <xref href=\"Rssdp.SsdpDevice\" data-throw-if-not-resolved=\"false\"></xref> object&apos;s properties meet the UPnP 1.0 specification.\n"
+  remarks: "\n<p>This is a best effort validation for known rules, it doesn&apos;t guarantee 100% compatibility with the specification. Reading the specification yourself is the best way to ensure compatibility.</p>\n"
+  example: []
+  syntax:
+    content: 'public class Upnp10DeviceValidator : IUpnpDeviceValidator'
+    content.vb: >-
+      Public Class Upnp10DeviceValidator
+          Implements IUpnpDeviceValidator
+  inheritance:
+  - System.Object
+  implements:
+  - Rssdp.Infrastructure.IUpnpDeviceValidator
+  inheritedMembers:
+  - System.Object.ToString
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  modifiers.csharp:
+  - public
+  - class
+  modifiers.vb:
+  - Public
+  - Class
+- uid: Rssdp.Infrastructure.Upnp10DeviceValidator.GetValidationErrors(Rssdp.SsdpRootDevice)
+  commentId: M:Rssdp.Infrastructure.Upnp10DeviceValidator.GetValidationErrors(Rssdp.SsdpRootDevice)
+  id: GetValidationErrors(Rssdp.SsdpRootDevice)
+  parent: Rssdp.Infrastructure.Upnp10DeviceValidator
+  langs:
+  - csharp
+  - vb
+  name: GetValidationErrors(SsdpRootDevice)
+  nameWithType: Upnp10DeviceValidator.GetValidationErrors(SsdpRootDevice)
+  fullName: Rssdp.Infrastructure.Upnp10DeviceValidator.GetValidationErrors(Rssdp.SsdpRootDevice)
+  type: Method
+  source:
+    id: GetValidationErrors
+    path: ''
+    startLine: 8426
+  assemblies:
+  - cs.temp.dll
+  namespace: Rssdp.Infrastructure
+  summary: "\nReturns an enumerable set of strings, each one being a description of an invalid property on the specified root device.\n"
+  remarks: "\n<p>If no errors are found, an empty (but non-null) enumerable is returned.</p>\n"
+  example: []
+  syntax:
+    content: public IEnumerable<string> GetValidationErrors(SsdpRootDevice device)
+    parameters:
+    - id: device
+      type: Rssdp.SsdpRootDevice
+      description: The <xref href="Rssdp.SsdpRootDevice" data-throw-if-not-resolved="false"></xref> to validate.
+    return:
+      type: IEnumerable{System.String}
+      description: A non-null enumerable set of strings, empty if there are no validation errors, otherwise each string represents a discrete problem.
+    content.vb: Public Function GetValidationErrors(device As SsdpRootDevice) As IEnumerable(Of String)
+  overload: Rssdp.Infrastructure.Upnp10DeviceValidator.GetValidationErrors*
+  exceptions:
+  - type: System.ArgumentNullException
+    commentId: T:System.ArgumentNullException
+    description: Thrown if the <code data-dev-comment-type="paramref" class="paramref">device</code> argument is null.
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+- uid: Rssdp.Infrastructure.Upnp10DeviceValidator.GetValidationErrors(Rssdp.SsdpDevice)
+  commentId: M:Rssdp.Infrastructure.Upnp10DeviceValidator.GetValidationErrors(Rssdp.SsdpDevice)
+  id: GetValidationErrors(Rssdp.SsdpDevice)
+  parent: Rssdp.Infrastructure.Upnp10DeviceValidator
+  langs:
+  - csharp
+  - vb
+  name: GetValidationErrors(SsdpDevice)
+  nameWithType: Upnp10DeviceValidator.GetValidationErrors(SsdpDevice)
+  fullName: Rssdp.Infrastructure.Upnp10DeviceValidator.GetValidationErrors(Rssdp.SsdpDevice)
+  type: Method
+  source:
+    id: GetValidationErrors
+    path: ''
+    startLine: 8449
+  assemblies:
+  - cs.temp.dll
+  namespace: Rssdp.Infrastructure
+  summary: "\nReturns an enumerable set of strings, each one being a description of an invalid property on the specified device.\n"
+  remarks: "\n<p>If no errors are found, an empty (but non-null) enumerable is returned.</p>\n"
+  example: []
+  syntax:
+    content: public IEnumerable<string> GetValidationErrors(SsdpDevice device)
+    parameters:
+    - id: device
+      type: Rssdp.SsdpDevice
+      description: The <xref href="Rssdp.SsdpDevice" data-throw-if-not-resolved="false"></xref> to validate.
+    return:
+      type: IEnumerable{System.String}
+      description: A non-null enumerable set of strings, empty if there are no validation errors, otherwise each string represents a discrete problem.
+    content.vb: Public Function GetValidationErrors(device As SsdpDevice) As IEnumerable(Of String)
+  overload: Rssdp.Infrastructure.Upnp10DeviceValidator.GetValidationErrors*
+  exceptions:
+  - type: System.ArgumentNullException
+    commentId: T:System.ArgumentNullException
+    description: Thrown if the <code data-dev-comment-type="paramref" class="paramref">device</code> argument is null.
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+- uid: Rssdp.Infrastructure.Upnp10DeviceValidator.ThrowIfDeviceInvalid(Rssdp.SsdpDevice)
+  commentId: M:Rssdp.Infrastructure.Upnp10DeviceValidator.ThrowIfDeviceInvalid(Rssdp.SsdpDevice)
+  id: ThrowIfDeviceInvalid(Rssdp.SsdpDevice)
+  parent: Rssdp.Infrastructure.Upnp10DeviceValidator
+  langs:
+  - csharp
+  - vb
+  name: ThrowIfDeviceInvalid(SsdpDevice)
+  nameWithType: Upnp10DeviceValidator.ThrowIfDeviceInvalid(SsdpDevice)
+  fullName: Rssdp.Infrastructure.Upnp10DeviceValidator.ThrowIfDeviceInvalid(Rssdp.SsdpDevice)
+  type: Method
+  source:
+    id: ThrowIfDeviceInvalid
+    path: ''
+    startLine: 8526
+  assemblies:
+  - cs.temp.dll
+  namespace: Rssdp.Infrastructure
+  summary: "\nValidates the specified device and throws an <xref href=\"System.InvalidOperationException\" data-throw-if-not-resolved=\"false\"></xref> if there are any validation errors.\n"
+  example: []
+  syntax:
+    content: public void ThrowIfDeviceInvalid(SsdpDevice device)
+    parameters:
+    - id: device
+      type: Rssdp.SsdpDevice
+      description: The <xref href="Rssdp.SsdpDevice" data-throw-if-not-resolved="false"></xref> to validate.
+    content.vb: Public Sub ThrowIfDeviceInvalid(device As SsdpDevice)
+  overload: Rssdp.Infrastructure.Upnp10DeviceValidator.ThrowIfDeviceInvalid*
+  exceptions:
+  - type: System.ArgumentNullException
+    commentId: T:System.ArgumentNullException
+    description: Thrown if the <code data-dev-comment-type="paramref" class="paramref">device</code> argument is null.
+  - type: System.InvalidOperationException
+    commentId: T:System.InvalidOperationException
+    description: Thrown if the device object does not pass validation.
+  implements:
+  - Rssdp.Infrastructure.IUpnpDeviceValidator.ThrowIfDeviceInvalid(Rssdp.SsdpDevice)
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+references:
+- uid: Rssdp.SsdpDevice
+  commentId: T:Rssdp.SsdpDevice
+  parent: Rssdp
+  isExternal: false
+  name: SsdpDevice
+  nameWithType: SsdpDevice
+  fullName: Rssdp.SsdpDevice
+- uid: Rssdp.Infrastructure
+  commentId: N:Rssdp.Infrastructure
+  isExternal: false
+  name: Rssdp.Infrastructure
+  nameWithType: Rssdp.Infrastructure
+  fullName: Rssdp.Infrastructure
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  name: Object
+  nameWithType: Object
+  fullName: System.Object
+- uid: Rssdp.Infrastructure.IUpnpDeviceValidator
+  commentId: T:Rssdp.Infrastructure.IUpnpDeviceValidator
+  parent: Rssdp.Infrastructure
+  isExternal: false
+  name: IUpnpDeviceValidator
+  nameWithType: IUpnpDeviceValidator
+  fullName: Rssdp.Infrastructure.IUpnpDeviceValidator
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  name: ToString()
+  nameWithType: Object.ToString()
+  fullName: System.Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    nameWithType: Object.ToString
+    fullName: System.Object.ToString
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    nameWithType: Object.ToString
+    fullName: System.Object.ToString
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  name: Equals(Object)
+  nameWithType: Object.Equals(Object)
+  fullName: System.Object.Equals(System.Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  name: Equals(Object, Object)
+  nameWithType: Object.Equals(Object, Object)
+  fullName: System.Object.Equals(System.Object, System.Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  name: ReferenceEquals(Object, Object)
+  nameWithType: Object.ReferenceEquals(Object, Object)
+  fullName: System.Object.ReferenceEquals(System.Object, System.Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    nameWithType: Object.ReferenceEquals
+    fullName: System.Object.ReferenceEquals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    nameWithType: Object.ReferenceEquals
+    fullName: System.Object.ReferenceEquals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  name: GetHashCode()
+  nameWithType: Object.GetHashCode()
+  fullName: System.Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    nameWithType: Object.GetHashCode
+    fullName: System.Object.GetHashCode
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    nameWithType: Object.GetHashCode
+    fullName: System.Object.GetHashCode
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  name: GetType()
+  nameWithType: Object.GetType()
+  fullName: System.Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    nameWithType: Object.GetType
+    fullName: System.Object.GetType
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    nameWithType: Object.GetType
+    fullName: System.Object.GetType
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  name: MemberwiseClone()
+  nameWithType: Object.MemberwiseClone()
+  fullName: System.Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    nameWithType: Object.MemberwiseClone
+    fullName: System.Object.MemberwiseClone
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    nameWithType: Object.MemberwiseClone
+    fullName: System.Object.MemberwiseClone
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: Rssdp
+  commentId: N:Rssdp
+  isExternal: false
+  name: Rssdp
+  nameWithType: Rssdp
+  fullName: Rssdp
+- uid: System
+  commentId: N:System
+  isExternal: false
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Rssdp.SsdpRootDevice
+  commentId: T:Rssdp.SsdpRootDevice
+  parent: Rssdp
+  isExternal: false
+  name: SsdpRootDevice
+  nameWithType: SsdpRootDevice
+  fullName: Rssdp.SsdpRootDevice
+- uid: Rssdp.Infrastructure.Upnp10DeviceValidator.GetValidationErrors*
+  commentId: Overload:Rssdp.Infrastructure.Upnp10DeviceValidator.GetValidationErrors
+  isExternal: false
+  name: GetValidationErrors
+  nameWithType: Upnp10DeviceValidator.GetValidationErrors
+  fullName: Rssdp.Infrastructure.Upnp10DeviceValidator.GetValidationErrors
+- uid: System.ArgumentNullException
+  commentId: T:System.ArgumentNullException
+- uid: IEnumerable{System.String}
+  commentId: '!:IEnumerable{System.String}'
+  definition: IEnumerable`1
+  name: IEnumerable<String>
+  nameWithType: IEnumerable<String>
+  fullName: IEnumerable<System.String>
+  nameWithType.vb: IEnumerable(Of String)
+  fullName.vb: IEnumerable(Of System.String)
+  name.vb: IEnumerable(Of String)
+  spec.csharp:
+  - uid: IEnumerable`1
+    name: IEnumerable
+    nameWithType: IEnumerable
+    fullName: IEnumerable
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: IEnumerable`1
+    name: IEnumerable
+    nameWithType: IEnumerable
+    fullName: IEnumerable
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: IEnumerable`1
+  isExternal: true
+  name: IEnumerable<>
+  nameWithType: IEnumerable<>
+  fullName: IEnumerable<>
+  nameWithType.vb: IEnumerable(Of )
+  fullName.vb: IEnumerable(Of )
+  name.vb: IEnumerable(Of )
+  spec.csharp:
+  - uid: IEnumerable`1
+    name: IEnumerable
+    nameWithType: IEnumerable
+    fullName: IEnumerable
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - name: ''
+    nameWithType: ''
+    fullName: ''
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: IEnumerable`1
+    name: IEnumerable
+    nameWithType: IEnumerable
+    fullName: IEnumerable
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - name: ''
+    nameWithType: ''
+    fullName: ''
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.InvalidOperationException
+  commentId: T:System.InvalidOperationException
+- uid: Rssdp.Infrastructure.Upnp10DeviceValidator.ThrowIfDeviceInvalid*
+  commentId: Overload:Rssdp.Infrastructure.Upnp10DeviceValidator.ThrowIfDeviceInvalid
+  isExternal: false
+  name: ThrowIfDeviceInvalid
+  nameWithType: Upnp10DeviceValidator.ThrowIfDeviceInvalid
+  fullName: Rssdp.Infrastructure.Upnp10DeviceValidator.ThrowIfDeviceInvalid
+- uid: Rssdp.Infrastructure.IUpnpDeviceValidator.ThrowIfDeviceInvalid(Rssdp.SsdpDevice)
+  commentId: M:Rssdp.Infrastructure.IUpnpDeviceValidator.ThrowIfDeviceInvalid(Rssdp.SsdpDevice)
+  parent: Rssdp.Infrastructure.IUpnpDeviceValidator
+  isExternal: false
+  name: ThrowIfDeviceInvalid(SsdpDevice)
+  nameWithType: IUpnpDeviceValidator.ThrowIfDeviceInvalid(SsdpDevice)
+  fullName: Rssdp.Infrastructure.IUpnpDeviceValidator.ThrowIfDeviceInvalid(Rssdp.SsdpDevice)
+  spec.csharp:
+  - uid: Rssdp.Infrastructure.IUpnpDeviceValidator.ThrowIfDeviceInvalid(Rssdp.SsdpDevice)
+    name: ThrowIfDeviceInvalid
+    nameWithType: IUpnpDeviceValidator.ThrowIfDeviceInvalid
+    fullName: Rssdp.Infrastructure.IUpnpDeviceValidator.ThrowIfDeviceInvalid
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: Rssdp.SsdpDevice
+    name: SsdpDevice
+    nameWithType: SsdpDevice
+    fullName: Rssdp.SsdpDevice
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: Rssdp.Infrastructure.IUpnpDeviceValidator.ThrowIfDeviceInvalid(Rssdp.SsdpDevice)
+    name: ThrowIfDeviceInvalid
+    nameWithType: IUpnpDeviceValidator.ThrowIfDeviceInvalid
+    fullName: Rssdp.Infrastructure.IUpnpDeviceValidator.ThrowIfDeviceInvalid
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: Rssdp.SsdpDevice
+    name: SsdpDevice
+    nameWithType: SsdpDevice
+    fullName: Rssdp.SsdpDevice
+  - name: )
+    nameWithType: )
+    fullName: )

@@ -1,0 +1,883 @@
+### YamlMime:ManagedReference
+items:
+- uid: Rssdp.SsdpService
+  commentId: T:Rssdp.SsdpService
+  id: SsdpService
+  parent: Rssdp
+  children:
+  - Rssdp.SsdpService.#ctor
+  - Rssdp.SsdpService.#ctor(System.String)
+  - Rssdp.SsdpService.ControlUrl
+  - Rssdp.SsdpService.EventSubUrl
+  - Rssdp.SsdpService.FullServiceType
+  - Rssdp.SsdpService.ScpdUrl
+  - Rssdp.SsdpService.ServiceId
+  - Rssdp.SsdpService.ServiceType
+  - Rssdp.SsdpService.ServiceTypeNamespace
+  - Rssdp.SsdpService.ServiceVersion
+  - Rssdp.SsdpService.Uuid
+  - Rssdp.SsdpService.WriteServiceDescriptionXml(XmlWriter)
+  langs:
+  - csharp
+  - vb
+  name: SsdpService
+  nameWithType: SsdpService
+  fullName: Rssdp.SsdpService
+  type: Class
+  source:
+    id: SsdpService
+    path: ''
+    startLine: 8003
+  assemblies:
+  - cs.temp.dll
+  namespace: Rssdp
+  summary: "\nRepresents an SSDP service to be published.\n"
+  example: []
+  syntax:
+    content: public class SsdpService
+    content.vb: Public Class SsdpService
+  inheritance:
+  - System.Object
+  inheritedMembers:
+  - System.Object.ToString
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  modifiers.csharp:
+  - public
+  - class
+  modifiers.vb:
+  - Public
+  - Class
+- uid: Rssdp.SsdpService.#ctor
+  commentId: M:Rssdp.SsdpService.#ctor
+  id: '#ctor'
+  parent: Rssdp.SsdpService
+  langs:
+  - csharp
+  - vb
+  name: SsdpService()
+  nameWithType: SsdpService.SsdpService()
+  fullName: Rssdp.SsdpService.SsdpService()
+  type: Constructor
+  source:
+    id: .ctor
+    path: ''
+    startLine: 8011
+  assemblies:
+  - cs.temp.dll
+  namespace: Rssdp
+  summary: "\nDefault constructor.\n"
+  example: []
+  syntax:
+    content: public SsdpService()
+    content.vb: Public Sub New
+  overload: Rssdp.SsdpService.#ctor*
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+- uid: Rssdp.SsdpService.#ctor(System.String)
+  commentId: M:Rssdp.SsdpService.#ctor(System.String)
+  id: '#ctor(System.String)'
+  parent: Rssdp.SsdpService
+  langs:
+  - csharp
+  - vb
+  name: SsdpService(String)
+  nameWithType: SsdpService.SsdpService(String)
+  fullName: Rssdp.SsdpService.SsdpService(System.String)
+  type: Constructor
+  source:
+    id: .ctor
+    path: ''
+    startLine: 8024
+  assemblies:
+  - cs.temp.dll
+  namespace: Rssdp
+  summary: "\nDeserialisation constructor.\n"
+  remarks: <p>Uses the provided XML string to set the properties of the object. The XML provided must be a valid UPnP service description document.</p>
+  example: []
+  syntax:
+    content: public SsdpService(string serviceDescriptionXml)
+    parameters:
+    - id: serviceDescriptionXml
+      type: System.String
+      description: A UPnP service description XML document.
+    content.vb: Public Sub New(serviceDescriptionXml As String)
+  overload: Rssdp.SsdpService.#ctor*
+  exceptions:
+  - type: System.ArgumentNullException
+    commentId: T:System.ArgumentNullException
+    description: Thrown if the <code data-dev-comment-type="paramref" class="paramref">serviceDescriptionXml</code> argument is null.
+  - type: System.ArgumentException
+    commentId: T:System.ArgumentException
+    description: Thrown if the <code data-dev-comment-type="paramref" class="paramref">serviceDescriptionXml</code> argument is empty.
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+- uid: Rssdp.SsdpService.ServiceType
+  commentId: P:Rssdp.SsdpService.ServiceType
+  id: ServiceType
+  parent: Rssdp.SsdpService
+  langs:
+  - csharp
+  - vb
+  name: ServiceType
+  nameWithType: SsdpService.ServiceType
+  fullName: Rssdp.SsdpService.ServiceType
+  type: Property
+  source:
+    id: ServiceType
+    path: ''
+    startLine: 8047
+  assemblies:
+  - cs.temp.dll
+  namespace: Rssdp
+  summary: "\nSets or returns the service type (not including namespace, version etc) of the exposed service. Required.\n"
+  example: []
+  syntax:
+    content: public string ServiceType { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Property ServiceType As String
+  overload: Rssdp.SsdpService.ServiceType*
+  seealso:
+  - linkId: Rssdp.SsdpService.ServiceTypeNamespace
+    commentId: P:Rssdp.SsdpService.ServiceTypeNamespace
+  - linkId: Rssdp.SsdpService.ServiceVersion
+    commentId: P:Rssdp.SsdpService.ServiceVersion
+  - linkId: Rssdp.SsdpService.FullServiceType
+    commentId: P:Rssdp.SsdpService.FullServiceType
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: Rssdp.SsdpService.ServiceTypeNamespace
+  commentId: P:Rssdp.SsdpService.ServiceTypeNamespace
+  id: ServiceTypeNamespace
+  parent: Rssdp.SsdpService
+  langs:
+  - csharp
+  - vb
+  name: ServiceTypeNamespace
+  nameWithType: SsdpService.ServiceTypeNamespace
+  fullName: Rssdp.SsdpService.ServiceTypeNamespace
+  type: Property
+  source:
+    id: ServiceTypeNamespace
+    path: ''
+    startLine: 8055
+  assemblies:
+  - cs.temp.dll
+  namespace: Rssdp
+  summary: "\nSets or returns the namespace for the <xref href=\"Rssdp.SsdpService.ServiceType\" data-throw-if-not-resolved=\"false\"></xref> of this service. Optional but defaults to the UPnP schema so should be changed if <xref href=\"Rssdp.SsdpService.ServiceType\" data-throw-if-not-resolved=\"false\"></xref> is not an official UPnP service type.\n"
+  example: []
+  syntax:
+    content: public string ServiceTypeNamespace { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Property ServiceTypeNamespace As String
+  overload: Rssdp.SsdpService.ServiceTypeNamespace*
+  seealso:
+  - linkId: Rssdp.SsdpService.ServiceType
+    commentId: P:Rssdp.SsdpService.ServiceType
+  - linkId: Rssdp.SsdpService.ServiceVersion
+    commentId: P:Rssdp.SsdpService.ServiceVersion
+  - linkId: Rssdp.SsdpService.FullServiceType
+    commentId: P:Rssdp.SsdpService.FullServiceType
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: Rssdp.SsdpService.ServiceVersion
+  commentId: P:Rssdp.SsdpService.ServiceVersion
+  id: ServiceVersion
+  parent: Rssdp.SsdpService
+  langs:
+  - csharp
+  - vb
+  name: ServiceVersion
+  nameWithType: SsdpService.ServiceVersion
+  fullName: Rssdp.SsdpService.ServiceVersion
+  type: Property
+  source:
+    id: ServiceVersion
+    path: ''
+    startLine: 8064
+  assemblies:
+  - cs.temp.dll
+  namespace: Rssdp
+  summary: "\nSets or returns the version of the service type. Optional, defaults to 1.\n"
+  remarks: <p>Defaults to a value of 1.</p>
+  example: []
+  syntax:
+    content: public int ServiceVersion { get; set; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public Property ServiceVersion As Integer
+  overload: Rssdp.SsdpService.ServiceVersion*
+  seealso:
+  - linkId: Rssdp.SsdpService.ServiceType
+    commentId: P:Rssdp.SsdpService.ServiceType
+  - linkId: Rssdp.SsdpService.ServiceTypeNamespace
+    commentId: P:Rssdp.SsdpService.ServiceTypeNamespace
+  - linkId: Rssdp.SsdpService.FullServiceType
+    commentId: P:Rssdp.SsdpService.FullServiceType
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: Rssdp.SsdpService.FullServiceType
+  commentId: P:Rssdp.SsdpService.FullServiceType
+  id: FullServiceType
+  parent: Rssdp.SsdpService
+  langs:
+  - csharp
+  - vb
+  name: FullServiceType
+  nameWithType: SsdpService.FullServiceType
+  fullName: Rssdp.SsdpService.FullServiceType
+  type: Property
+  source:
+    id: FullServiceType
+    path: ''
+    startLine: 8072
+  assemblies:
+  - cs.temp.dll
+  namespace: Rssdp
+  summary: "\nReturns the full service type string.\n"
+  remarks: "\n<p>The format used is urn:<xref href=\"Rssdp.SsdpService.ServiceTypeNamespace\" data-throw-if-not-resolved=\"false\"></xref>:service:<xref href=\"Rssdp.SsdpService.ServiceType\" data-throw-if-not-resolved=\"false\"></xref>:<xref href=\"Rssdp.SsdpService.ServiceVersion\" data-throw-if-not-resolved=\"false\"></xref></p>\n"
+  example: []
+  syntax:
+    content: public string FullServiceType { get; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public ReadOnly Property FullServiceType As String
+  overload: Rssdp.SsdpService.FullServiceType*
+  modifiers.csharp:
+  - public
+  - get
+  modifiers.vb:
+  - Public
+  - ReadOnly
+- uid: Rssdp.SsdpService.Uuid
+  commentId: P:Rssdp.SsdpService.Uuid
+  id: Uuid
+  parent: Rssdp.SsdpService
+  langs:
+  - csharp
+  - vb
+  name: Uuid
+  nameWithType: SsdpService.Uuid
+  fullName: Rssdp.SsdpService.Uuid
+  type: Property
+  source:
+    id: Uuid
+    path: ''
+    startLine: 8092
+  assemblies:
+  - cs.temp.dll
+  namespace: Rssdp
+  summary: "\nSets or returns the universally unique identifier for this service (without the uuid: prefix). Required.\n"
+  remarks: "\n<p>Must be the same over time for a specific service instance (i.e. must survive reboots).</p>\n<p>For UPnP 1.0 this can be any unique string. For UPnP 1.1 this should be a 128 bit number formatted in a specific way, preferably generated using the time and MAC based algorithm. See section 1.1.4 of http://upnp.org/specs/arch/UPnP-arch-DeviceArchitecture-v1.1.pdf for details.</p>\n<p>Technically this library implements UPnP 1.0, so any value is allowed, but we advise using UPnP 1.1 compatible values for good behaviour and forward compatibility with future versions.</p>\n"
+  example: []
+  syntax:
+    content: public string Uuid { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Property Uuid As String
+  overload: Rssdp.SsdpService.Uuid*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: Rssdp.SsdpService.ServiceId
+  commentId: P:Rssdp.SsdpService.ServiceId
+  id: ServiceId
+  parent: Rssdp.SsdpService
+  langs:
+  - csharp
+  - vb
+  name: ServiceId
+  nameWithType: SsdpService.ServiceId
+  fullName: Rssdp.SsdpService.ServiceId
+  type: Property
+  source:
+    id: ServiceId
+    path: ''
+    startLine: 8100
+  assemblies:
+  - cs.temp.dll
+  namespace: Rssdp
+  summary: "\nReturns the full service type string.\n"
+  remarks: "\n<p>The format used is urn:<xref href=\"Rssdp.SsdpService.ServiceTypeNamespace\" data-throw-if-not-resolved=\"false\"></xref>:serviceid:<xref href=\"Rssdp.SsdpService.ServiceType\" data-throw-if-not-resolved=\"false\"></xref></p>\n"
+  example: []
+  syntax:
+    content: public string ServiceId { get; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public ReadOnly Property ServiceId As String
+  overload: Rssdp.SsdpService.ServiceId*
+  modifiers.csharp:
+  - public
+  - get
+  modifiers.vb:
+  - Public
+  - ReadOnly
+- uid: Rssdp.SsdpService.ScpdUrl
+  commentId: P:Rssdp.SsdpService.ScpdUrl
+  id: ScpdUrl
+  parent: Rssdp.SsdpService
+  langs:
+  - csharp
+  - vb
+  name: ScpdUrl
+  nameWithType: SsdpService.ScpdUrl
+  fullName: Rssdp.SsdpService.ScpdUrl
+  type: Property
+  source:
+    id: ScpdUrl
+    path: ''
+    startLine: 8117
+  assemblies:
+  - cs.temp.dll
+  namespace: Rssdp
+  summary: "\nREQUIRED. URL for service description. (See section  2.5, “Service description” below.) MUST be relative to the URL at which the device description is located in accordance with section 5 of RFC 3986. Specified by UPnP vendor. Single URL. \n"
+  example: []
+  syntax:
+    content: public Uri ScpdUrl { get; set; }
+    parameters: []
+    return:
+      type: Uri
+    content.vb: Public Property ScpdUrl As Uri
+  overload: Rssdp.SsdpService.ScpdUrl*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: Rssdp.SsdpService.ControlUrl
+  commentId: P:Rssdp.SsdpService.ControlUrl
+  id: ControlUrl
+  parent: Rssdp.SsdpService
+  langs:
+  - csharp
+  - vb
+  name: ControlUrl
+  nameWithType: SsdpService.ControlUrl
+  fullName: Rssdp.SsdpService.ControlUrl
+  type: Property
+  source:
+    id: ControlUrl
+    path: ''
+    startLine: 8121
+  assemblies:
+  - cs.temp.dll
+  namespace: Rssdp
+  summary: "\nREQUIRED. URL for control (see section  3, “Control”). MUST be relative to the URL at which the device description is located in accordance with section 5 of RFC 3986. Specified by UPnP vendor. Single URL. \n"
+  example: []
+  syntax:
+    content: public Uri ControlUrl { get; set; }
+    parameters: []
+    return:
+      type: Uri
+    content.vb: Public Property ControlUrl As Uri
+  overload: Rssdp.SsdpService.ControlUrl*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: Rssdp.SsdpService.EventSubUrl
+  commentId: P:Rssdp.SsdpService.EventSubUrl
+  id: EventSubUrl
+  parent: Rssdp.SsdpService
+  langs:
+  - csharp
+  - vb
+  name: EventSubUrl
+  nameWithType: SsdpService.EventSubUrl
+  fullName: Rssdp.SsdpService.EventSubUrl
+  type: Property
+  source:
+    id: EventSubUrl
+    path: ''
+    startLine: 8125
+  assemblies:
+  - cs.temp.dll
+  namespace: Rssdp
+  summary: "\nURL for eventing (see section  4, “Eventing”). MUST be relative to the URL at which the device description is located in accordance with section 5 of RFC 3986. MUST be unique within the device; any two services MUST NOT have the same URL for eventing. If the service has no evented variables, this element MUST be present but MUST be empty(i.e., <eventSubURL></eventSubURL>.) Specified by UPnP vendor.Single URL.\n"
+  example: []
+  syntax:
+    content: public Uri EventSubUrl { get; set; }
+    parameters: []
+    return:
+      type: Uri
+    content.vb: Public Property EventSubUrl As Uri
+  overload: Rssdp.SsdpService.EventSubUrl*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: Rssdp.SsdpService.WriteServiceDescriptionXml(XmlWriter)
+  commentId: M:Rssdp.SsdpService.WriteServiceDescriptionXml(XmlWriter)
+  id: WriteServiceDescriptionXml(XmlWriter)
+  parent: Rssdp.SsdpService
+  langs:
+  - csharp
+  - vb
+  name: WriteServiceDescriptionXml(XmlWriter)
+  nameWithType: SsdpService.WriteServiceDescriptionXml(XmlWriter)
+  fullName: Rssdp.SsdpService.WriteServiceDescriptionXml(XmlWriter)
+  type: Method
+  source:
+    id: WriteServiceDescriptionXml
+    path: ''
+    startLine: 8136
+  assemblies:
+  - cs.temp.dll
+  namespace: Rssdp
+  summary: "\nWrites this service to the specified <see cref=\"!:System.Xml.XmlWriter\"></see> as a service node and it&apos;s content.\n"
+  example: []
+  syntax:
+    content: public virtual void WriteServiceDescriptionXml(XmlWriter writer)
+    parameters:
+    - id: writer
+      type: XmlWriter
+      description: The <see cref="!:System.Xml.XmlWriter"></see> to output to.
+    content.vb: Public Overridable Sub WriteServiceDescriptionXml(writer As XmlWriter)
+  overload: Rssdp.SsdpService.WriteServiceDescriptionXml*
+  exceptions:
+  - type: System.ArgumentNullException
+    commentId: T:System.ArgumentNullException
+    description: Thrown if the <code data-dev-comment-type="paramref" class="paramref">writer</code> argument is null.
+  modifiers.csharp:
+  - public
+  - virtual
+  modifiers.vb:
+  - Public
+  - Overridable
+references:
+- uid: Rssdp
+  commentId: N:Rssdp
+  isExternal: false
+  name: Rssdp
+  nameWithType: Rssdp
+  fullName: Rssdp
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  name: Object
+  nameWithType: Object
+  fullName: System.Object
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  name: ToString()
+  nameWithType: Object.ToString()
+  fullName: System.Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    nameWithType: Object.ToString
+    fullName: System.Object.ToString
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    nameWithType: Object.ToString
+    fullName: System.Object.ToString
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  name: Equals(Object)
+  nameWithType: Object.Equals(Object)
+  fullName: System.Object.Equals(System.Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  name: Equals(Object, Object)
+  nameWithType: Object.Equals(Object, Object)
+  fullName: System.Object.Equals(System.Object, System.Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  name: ReferenceEquals(Object, Object)
+  nameWithType: Object.ReferenceEquals(Object, Object)
+  fullName: System.Object.ReferenceEquals(System.Object, System.Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    nameWithType: Object.ReferenceEquals
+    fullName: System.Object.ReferenceEquals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    nameWithType: Object.ReferenceEquals
+    fullName: System.Object.ReferenceEquals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  name: GetHashCode()
+  nameWithType: Object.GetHashCode()
+  fullName: System.Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    nameWithType: Object.GetHashCode
+    fullName: System.Object.GetHashCode
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    nameWithType: Object.GetHashCode
+    fullName: System.Object.GetHashCode
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  name: GetType()
+  nameWithType: Object.GetType()
+  fullName: System.Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    nameWithType: Object.GetType
+    fullName: System.Object.GetType
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    nameWithType: Object.GetType
+    fullName: System.Object.GetType
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  name: MemberwiseClone()
+  nameWithType: Object.MemberwiseClone()
+  fullName: System.Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    nameWithType: Object.MemberwiseClone
+    fullName: System.Object.MemberwiseClone
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    nameWithType: Object.MemberwiseClone
+    fullName: System.Object.MemberwiseClone
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System
+  commentId: N:System
+  isExternal: false
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Rssdp.SsdpService.#ctor*
+  commentId: Overload:Rssdp.SsdpService.#ctor
+  isExternal: false
+  name: SsdpService
+  nameWithType: SsdpService.SsdpService
+  fullName: Rssdp.SsdpService.SsdpService
+- uid: System.ArgumentNullException
+  commentId: T:System.ArgumentNullException
+- uid: System.ArgumentException
+  commentId: T:System.ArgumentException
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  name: String
+  nameWithType: String
+  fullName: System.String
+- uid: Rssdp.SsdpService.ServiceTypeNamespace
+  commentId: P:Rssdp.SsdpService.ServiceTypeNamespace
+- uid: Rssdp.SsdpService.ServiceVersion
+  commentId: P:Rssdp.SsdpService.ServiceVersion
+- uid: Rssdp.SsdpService.FullServiceType
+  commentId: P:Rssdp.SsdpService.FullServiceType
+- uid: Rssdp.SsdpService.ServiceType*
+  commentId: Overload:Rssdp.SsdpService.ServiceType
+  isExternal: false
+  name: ServiceType
+  nameWithType: SsdpService.ServiceType
+  fullName: Rssdp.SsdpService.ServiceType
+- uid: Rssdp.SsdpService.ServiceType
+  commentId: P:Rssdp.SsdpService.ServiceType
+- uid: Rssdp.SsdpService.ServiceTypeNamespace*
+  commentId: Overload:Rssdp.SsdpService.ServiceTypeNamespace
+  isExternal: false
+  name: ServiceTypeNamespace
+  nameWithType: SsdpService.ServiceTypeNamespace
+  fullName: Rssdp.SsdpService.ServiceTypeNamespace
+- uid: Rssdp.SsdpService.ServiceVersion*
+  commentId: Overload:Rssdp.SsdpService.ServiceVersion
+  isExternal: false
+  name: ServiceVersion
+  nameWithType: SsdpService.ServiceVersion
+  fullName: Rssdp.SsdpService.ServiceVersion
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  name: Int32
+  nameWithType: Int32
+  fullName: System.Int32
+- uid: Rssdp.SsdpService.FullServiceType*
+  commentId: Overload:Rssdp.SsdpService.FullServiceType
+  isExternal: false
+  name: FullServiceType
+  nameWithType: SsdpService.FullServiceType
+  fullName: Rssdp.SsdpService.FullServiceType
+- uid: Rssdp.SsdpService.Uuid*
+  commentId: Overload:Rssdp.SsdpService.Uuid
+  isExternal: false
+  name: Uuid
+  nameWithType: SsdpService.Uuid
+  fullName: Rssdp.SsdpService.Uuid
+- uid: Rssdp.SsdpService.ServiceId*
+  commentId: Overload:Rssdp.SsdpService.ServiceId
+  isExternal: false
+  name: ServiceId
+  nameWithType: SsdpService.ServiceId
+  fullName: Rssdp.SsdpService.ServiceId
+- uid: Rssdp.SsdpService.ScpdUrl*
+  commentId: Overload:Rssdp.SsdpService.ScpdUrl
+  isExternal: false
+  name: ScpdUrl
+  nameWithType: SsdpService.ScpdUrl
+  fullName: Rssdp.SsdpService.ScpdUrl
+- uid: Uri
+  isExternal: true
+  name: Uri
+  nameWithType: Uri
+  fullName: Uri
+- uid: Rssdp.SsdpService.ControlUrl*
+  commentId: Overload:Rssdp.SsdpService.ControlUrl
+  isExternal: false
+  name: ControlUrl
+  nameWithType: SsdpService.ControlUrl
+  fullName: Rssdp.SsdpService.ControlUrl
+- uid: Rssdp.SsdpService.EventSubUrl*
+  commentId: Overload:Rssdp.SsdpService.EventSubUrl
+  isExternal: false
+  name: EventSubUrl
+  nameWithType: SsdpService.EventSubUrl
+  fullName: Rssdp.SsdpService.EventSubUrl
+- uid: Rssdp.SsdpService.WriteServiceDescriptionXml*
+  commentId: Overload:Rssdp.SsdpService.WriteServiceDescriptionXml
+  isExternal: false
+  name: WriteServiceDescriptionXml
+  nameWithType: SsdpService.WriteServiceDescriptionXml
+  fullName: Rssdp.SsdpService.WriteServiceDescriptionXml
+- uid: XmlWriter
+  isExternal: true
+  name: XmlWriter
+  nameWithType: XmlWriter
+  fullName: XmlWriter

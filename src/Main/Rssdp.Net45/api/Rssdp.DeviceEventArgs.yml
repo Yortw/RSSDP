@@ -1,0 +1,164 @@
+### YamlMime:ManagedReference
+items:
+- uid: Rssdp.DeviceEventArgs
+  commentId: T:Rssdp.DeviceEventArgs
+  id: DeviceEventArgs
+  parent: Rssdp
+  children:
+  - Rssdp.DeviceEventArgs.#ctor(Rssdp.SsdpDevice)
+  - Rssdp.DeviceEventArgs.Device
+  langs:
+  - csharp
+  - vb
+  name: DeviceEventArgs
+  nameWithType: DeviceEventArgs
+  fullName: Rssdp.DeviceEventArgs
+  type: Class
+  source:
+    id: DeviceEventArgs
+    path: ''
+    startLine: 2448
+  assemblies:
+  - cs.temp.dll
+  namespace: Rssdp
+  summary: "\nEvent arguments for the <xref href=\"Rssdp.SsdpDevice.DeviceAdded\" data-throw-if-not-resolved=\"false\"></xref> and <xref href=\"Rssdp.SsdpDevice.DeviceRemoved\" data-throw-if-not-resolved=\"false\"></xref> events.\n"
+  example: []
+  syntax:
+    content: 'public sealed class DeviceEventArgs : EventArgs'
+    content.vb: >-
+      Public NotInheritable Class DeviceEventArgs
+          Inherits EventArgs
+  inheritance:
+  - System.Object
+  modifiers.csharp:
+  - public
+  - sealed
+  - class
+  modifiers.vb:
+  - Public
+  - NotInheritable
+  - Class
+- uid: Rssdp.DeviceEventArgs.#ctor(Rssdp.SsdpDevice)
+  commentId: M:Rssdp.DeviceEventArgs.#ctor(Rssdp.SsdpDevice)
+  id: '#ctor(Rssdp.SsdpDevice)'
+  parent: Rssdp.DeviceEventArgs
+  langs:
+  - csharp
+  - vb
+  name: DeviceEventArgs(SsdpDevice)
+  nameWithType: DeviceEventArgs.DeviceEventArgs(SsdpDevice)
+  fullName: Rssdp.DeviceEventArgs.DeviceEventArgs(Rssdp.SsdpDevice)
+  type: Constructor
+  source:
+    id: .ctor
+    path: ''
+    startLine: 2464
+  assemblies:
+  - cs.temp.dll
+  namespace: Rssdp
+  summary: "\nConstructs a new instance for the specified <xref href=\"Rssdp.SsdpDevice\" data-throw-if-not-resolved=\"false\"></xref>.\n"
+  example: []
+  syntax:
+    content: public DeviceEventArgs(SsdpDevice device)
+    parameters:
+    - id: device
+      type: Rssdp.SsdpDevice
+      description: The <xref href="Rssdp.SsdpDevice" data-throw-if-not-resolved="false"></xref> associated with the event this argument class is being used for.
+    content.vb: Public Sub New(device As SsdpDevice)
+  overload: Rssdp.DeviceEventArgs.#ctor*
+  exceptions:
+  - type: System.ArgumentNullException
+    commentId: T:System.ArgumentNullException
+    description: Thrown if the <code data-dev-comment-type="paramref" class="paramref">device</code> argument is null.
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+- uid: Rssdp.DeviceEventArgs.Device
+  commentId: P:Rssdp.DeviceEventArgs.Device
+  id: Device
+  parent: Rssdp.DeviceEventArgs
+  langs:
+  - csharp
+  - vb
+  name: Device
+  nameWithType: DeviceEventArgs.Device
+  fullName: Rssdp.DeviceEventArgs.Device
+  type: Property
+  source:
+    id: Device
+    path: ''
+    startLine: 2478
+  assemblies:
+  - cs.temp.dll
+  namespace: Rssdp
+  summary: "\nReturns the <xref href=\"Rssdp.SsdpDevice\" data-throw-if-not-resolved=\"false\"></xref> instance the event is being raised for.\n"
+  example: []
+  syntax:
+    content: public SsdpDevice Device { get; }
+    parameters: []
+    return:
+      type: Rssdp.SsdpDevice
+    content.vb: Public ReadOnly Property Device As SsdpDevice
+  overload: Rssdp.DeviceEventArgs.Device*
+  modifiers.csharp:
+  - public
+  - get
+  modifiers.vb:
+  - Public
+  - ReadOnly
+references:
+- uid: Rssdp.SsdpDevice.DeviceAdded
+  commentId: E:Rssdp.SsdpDevice.DeviceAdded
+  parent: Rssdp.SsdpDevice
+  isExternal: false
+  name: DeviceAdded
+  nameWithType: SsdpDevice.DeviceAdded
+  fullName: Rssdp.SsdpDevice.DeviceAdded
+- uid: Rssdp.SsdpDevice.DeviceRemoved
+  commentId: E:Rssdp.SsdpDevice.DeviceRemoved
+  parent: Rssdp.SsdpDevice
+  isExternal: false
+  name: DeviceRemoved
+  nameWithType: SsdpDevice.DeviceRemoved
+  fullName: Rssdp.SsdpDevice.DeviceRemoved
+- uid: Rssdp
+  commentId: N:Rssdp
+  isExternal: false
+  name: Rssdp
+  nameWithType: Rssdp
+  fullName: Rssdp
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  name: Object
+  nameWithType: Object
+  fullName: System.Object
+- uid: Rssdp.SsdpDevice
+  commentId: T:Rssdp.SsdpDevice
+  parent: Rssdp
+  isExternal: false
+  name: SsdpDevice
+  nameWithType: SsdpDevice
+  fullName: Rssdp.SsdpDevice
+- uid: System
+  commentId: N:System
+  isExternal: false
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Rssdp.DeviceEventArgs.#ctor*
+  commentId: Overload:Rssdp.DeviceEventArgs.#ctor
+  isExternal: false
+  name: DeviceEventArgs
+  nameWithType: DeviceEventArgs.DeviceEventArgs
+  fullName: Rssdp.DeviceEventArgs.DeviceEventArgs
+- uid: System.ArgumentNullException
+  commentId: T:System.ArgumentNullException
+- uid: Rssdp.DeviceEventArgs.Device*
+  commentId: Overload:Rssdp.DeviceEventArgs.Device
+  isExternal: false
+  name: Device
+  nameWithType: DeviceEventArgs.Device
+  fullName: Rssdp.DeviceEventArgs.Device

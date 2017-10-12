@@ -12,6 +12,8 @@
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -71,8 +73,53 @@
       <Link>Properties\CodeAnalysisDictionary.xml</Link>
     </CodeAnalysisDictionary>
   </ItemGroup>
+  <ItemGroup>
+    <None Include="api\index.md" />
+    <None Include="articles\intro.md" />
+    <None Include="articles\toc.md" />
+    <None Include="docfx.json" />
+    <None Include="index.md" />
+    <None Include="packages.config" />
+    <None Include="partials\class.tmpl.partial" />
+    <None Include="partials\collection.tmpl.partial" />
+    <None Include="partials\customMREFContent.tmpl.partial" />
+    <None Include="partials\item.tmpl.partial" />
+    <None Include="toc.yml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="ManagedReference.extension.js" />
+    <Content Include="ManagedReference.overwrite.js" />
+    <Content Include="plugins\HtmlAgilityPack.dll" />
+    <Content Include="plugins\Microsoft.DocAsCode.Build.Common.dll" />
+    <Content Include="plugins\Microsoft.DocAsCode.Build.MemberLevelManagedReference.dll" />
+    <Content Include="plugins\Microsoft.DocAsCode.Common.dll" />
+    <Content Include="plugins\Microsoft.DocAsCode.DataContracts.Common.dll" />
+    <Content Include="plugins\Microsoft.DocAsCode.DataContracts.ManagedReference.dll" />
+    <Content Include="plugins\Microsoft.DocAsCode.MarkdownLite.dll" />
+    <Content Include="plugins\Microsoft.DocAsCode.Plugins.dll" />
+    <Content Include="plugins\Microsoft.DocAsCode.YamlSerialization.dll" />
+    <Content Include="plugins\Newtonsoft.Json.dll" />
+    <Content Include="plugins\System.Collections.Immutable.dll" />
+    <Content Include="plugins\System.Composition.AttributedModel.dll" />
+    <Content Include="plugins\System.Composition.Convention.dll" />
+    <Content Include="plugins\System.Composition.Hosting.dll" />
+    <Content Include="plugins\System.Composition.Runtime.dll" />
+    <Content Include="plugins\System.Composition.TypedParts.dll" />
+    <Content Include="plugins\YamlDotNet.dll" />
+    <Content Include="toc.html.js" />
+  </ItemGroup>
   <Import Project="..\Rssdp.Shared\Rssdp.Shared.projitems" Label="Shared" />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="..\packages\docfx.console.2.24.0\build\docfx.console.targets" Condition="Exists('..\packages\docfx.console.2.24.0\build\docfx.console.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\docfx.console.2.24.0\build\docfx.console.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\docfx.console.2.24.0\build\docfx.console.targets'))" />
+  </Target>
+  <PropertyGroup>
+    <PreBuildEvent>xcopy "$(SolutionDir)..\..\README.md" "$(ProjectDir)\index.md" /Y</PreBuildEvent>
+  </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

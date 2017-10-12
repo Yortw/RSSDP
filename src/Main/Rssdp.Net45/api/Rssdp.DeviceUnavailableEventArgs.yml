@@ -1,0 +1,204 @@
+### YamlMime:ManagedReference
+items:
+- uid: Rssdp.DeviceUnavailableEventArgs
+  commentId: T:Rssdp.DeviceUnavailableEventArgs
+  id: DeviceUnavailableEventArgs
+  parent: Rssdp
+  children:
+  - Rssdp.DeviceUnavailableEventArgs.#ctor(Rssdp.DiscoveredSsdpDevice,System.Boolean)
+  - Rssdp.DeviceUnavailableEventArgs.DiscoveredDevice
+  - Rssdp.DeviceUnavailableEventArgs.Expired
+  langs:
+  - csharp
+  - vb
+  name: DeviceUnavailableEventArgs
+  nameWithType: DeviceUnavailableEventArgs
+  fullName: Rssdp.DeviceUnavailableEventArgs
+  type: Class
+  source:
+    id: DeviceUnavailableEventArgs
+    path: ''
+    startLine: 2554
+  assemblies:
+  - cs.temp.dll
+  namespace: Rssdp
+  summary: "\nEvent arguments for the <xref href=\"Rssdp.Infrastructure.SsdpDeviceLocatorBase.DeviceUnavailable\" data-throw-if-not-resolved=\"false\"></xref> event.\n"
+  example: []
+  syntax:
+    content: 'public sealed class DeviceUnavailableEventArgs : EventArgs'
+    content.vb: >-
+      Public NotInheritable Class DeviceUnavailableEventArgs
+          Inherits EventArgs
+  inheritance:
+  - System.Object
+  modifiers.csharp:
+  - public
+  - sealed
+  - class
+  modifiers.vb:
+  - Public
+  - NotInheritable
+  - Class
+- uid: Rssdp.DeviceUnavailableEventArgs.#ctor(Rssdp.DiscoveredSsdpDevice,System.Boolean)
+  commentId: M:Rssdp.DeviceUnavailableEventArgs.#ctor(Rssdp.DiscoveredSsdpDevice,System.Boolean)
+  id: '#ctor(Rssdp.DiscoveredSsdpDevice,System.Boolean)'
+  parent: Rssdp.DeviceUnavailableEventArgs
+  langs:
+  - csharp
+  - vb
+  name: DeviceUnavailableEventArgs(DiscoveredSsdpDevice, Boolean)
+  nameWithType: DeviceUnavailableEventArgs.DeviceUnavailableEventArgs(DiscoveredSsdpDevice, Boolean)
+  fullName: Rssdp.DeviceUnavailableEventArgs.DeviceUnavailableEventArgs(Rssdp.DiscoveredSsdpDevice, System.Boolean)
+  type: Constructor
+  source:
+    id: .ctor
+    path: ''
+    startLine: 2572
+  assemblies:
+  - cs.temp.dll
+  namespace: Rssdp
+  summary: "\nFull constructor.\n"
+  example: []
+  syntax:
+    content: public DeviceUnavailableEventArgs(DiscoveredSsdpDevice discoveredDevice, bool expired)
+    parameters:
+    - id: discoveredDevice
+      type: Rssdp.DiscoveredSsdpDevice
+      description: A <xref href="Rssdp.DiscoveredSsdpDevice" data-throw-if-not-resolved="false"></xref> instance representing the device that has become unavailable.
+    - id: expired
+      type: System.Boolean
+      description: A boolean value indicating whether this device is unavailable because it expired, or because it explicitly sent a byebye notification.. See <xref href="Rssdp.DeviceUnavailableEventArgs.Expired" data-throw-if-not-resolved="false"></xref> for more detail.
+    content.vb: Public Sub New(discoveredDevice As DiscoveredSsdpDevice, expired As Boolean)
+  overload: Rssdp.DeviceUnavailableEventArgs.#ctor*
+  exceptions:
+  - type: System.ArgumentNullException
+    commentId: T:System.ArgumentNullException
+    description: Thrown if the <code data-dev-comment-type="paramref" class="paramref">discoveredDevice</code> parameter is null.
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+- uid: Rssdp.DeviceUnavailableEventArgs.Expired
+  commentId: P:Rssdp.DeviceUnavailableEventArgs.Expired
+  id: Expired
+  parent: Rssdp.DeviceUnavailableEventArgs
+  langs:
+  - csharp
+  - vb
+  name: Expired
+  nameWithType: DeviceUnavailableEventArgs.Expired
+  fullName: Rssdp.DeviceUnavailableEventArgs.Expired
+  type: Property
+  source:
+    id: Expired
+    path: ''
+    startLine: 2587
+  assemblies:
+  - cs.temp.dll
+  namespace: Rssdp
+  summary: "\nReturns true if the device is considered unavailable because it&apos;s cached information expired before a new alive notification or search result was received. Returns false if the device is unavailable because it sent an explicit notification of it&apos;s unavailability.\n"
+  example: []
+  syntax:
+    content: public bool Expired { get; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Public ReadOnly Property Expired As Boolean
+  overload: Rssdp.DeviceUnavailableEventArgs.Expired*
+  modifiers.csharp:
+  - public
+  - get
+  modifiers.vb:
+  - Public
+  - ReadOnly
+- uid: Rssdp.DeviceUnavailableEventArgs.DiscoveredDevice
+  commentId: P:Rssdp.DeviceUnavailableEventArgs.DiscoveredDevice
+  id: DiscoveredDevice
+  parent: Rssdp.DeviceUnavailableEventArgs
+  langs:
+  - csharp
+  - vb
+  name: DiscoveredDevice
+  nameWithType: DeviceUnavailableEventArgs.DiscoveredDevice
+  fullName: Rssdp.DeviceUnavailableEventArgs.DiscoveredDevice
+  type: Property
+  source:
+    id: DiscoveredDevice
+    path: ''
+    startLine: 2595
+  assemblies:
+  - cs.temp.dll
+  namespace: Rssdp
+  summary: "\nA reference to a <xref href=\"Rssdp.DiscoveredSsdpDevice\" data-throw-if-not-resolved=\"false\"></xref> instance containing the discovery details of the removed device.\n"
+  example: []
+  syntax:
+    content: public DiscoveredSsdpDevice DiscoveredDevice { get; }
+    parameters: []
+    return:
+      type: Rssdp.DiscoveredSsdpDevice
+    content.vb: Public ReadOnly Property DiscoveredDevice As DiscoveredSsdpDevice
+  overload: Rssdp.DeviceUnavailableEventArgs.DiscoveredDevice*
+  modifiers.csharp:
+  - public
+  - get
+  modifiers.vb:
+  - Public
+  - ReadOnly
+references:
+- uid: Rssdp.Infrastructure.SsdpDeviceLocatorBase.DeviceUnavailable
+  commentId: E:Rssdp.Infrastructure.SsdpDeviceLocatorBase.DeviceUnavailable
+- uid: Rssdp
+  commentId: N:Rssdp
+  isExternal: false
+  name: Rssdp
+  nameWithType: Rssdp
+  fullName: Rssdp
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  name: Object
+  nameWithType: Object
+  fullName: System.Object
+- uid: System
+  commentId: N:System
+  isExternal: false
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Rssdp.DiscoveredSsdpDevice
+  commentId: T:Rssdp.DiscoveredSsdpDevice
+  parent: Rssdp
+  isExternal: false
+  name: DiscoveredSsdpDevice
+  nameWithType: DiscoveredSsdpDevice
+  fullName: Rssdp.DiscoveredSsdpDevice
+- uid: Rssdp.DeviceUnavailableEventArgs.Expired
+  commentId: P:Rssdp.DeviceUnavailableEventArgs.Expired
+- uid: Rssdp.DeviceUnavailableEventArgs.#ctor*
+  commentId: Overload:Rssdp.DeviceUnavailableEventArgs.#ctor
+  isExternal: false
+  name: DeviceUnavailableEventArgs
+  nameWithType: DeviceUnavailableEventArgs.DeviceUnavailableEventArgs
+  fullName: Rssdp.DeviceUnavailableEventArgs.DeviceUnavailableEventArgs
+- uid: System.ArgumentNullException
+  commentId: T:System.ArgumentNullException
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  name: Boolean
+  nameWithType: Boolean
+  fullName: System.Boolean
+- uid: Rssdp.DeviceUnavailableEventArgs.Expired*
+  commentId: Overload:Rssdp.DeviceUnavailableEventArgs.Expired
+  isExternal: false
+  name: Expired
+  nameWithType: DeviceUnavailableEventArgs.Expired
+  fullName: Rssdp.DeviceUnavailableEventArgs.Expired
+- uid: Rssdp.DeviceUnavailableEventArgs.DiscoveredDevice*
+  commentId: Overload:Rssdp.DeviceUnavailableEventArgs.DiscoveredDevice
+  isExternal: false
+  name: DiscoveredDevice
+  nameWithType: DeviceUnavailableEventArgs.DiscoveredDevice
+  fullName: Rssdp.DeviceUnavailableEventArgs.DiscoveredDevice

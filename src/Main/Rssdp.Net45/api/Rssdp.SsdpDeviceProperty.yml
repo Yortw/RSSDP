@@ -1,0 +1,517 @@
+### YamlMime:ManagedReference
+items:
+- uid: Rssdp.SsdpDeviceProperty
+  commentId: T:Rssdp.SsdpDeviceProperty
+  id: SsdpDeviceProperty
+  parent: Rssdp
+  children:
+  - Rssdp.SsdpDeviceProperty.FullName
+  - Rssdp.SsdpDeviceProperty.Name
+  - Rssdp.SsdpDeviceProperty.Namespace
+  - Rssdp.SsdpDeviceProperty.Value
+  langs:
+  - csharp
+  - vb
+  name: SsdpDeviceProperty
+  nameWithType: SsdpDeviceProperty
+  fullName: Rssdp.SsdpDeviceProperty
+  type: Class
+  source:
+    id: SsdpDeviceProperty
+    path: ''
+    startLine: 6651
+  assemblies:
+  - cs.temp.dll
+  namespace: Rssdp
+  summary: "\nRepresents a custom property of an <xref href=\"Rssdp.SsdpDevice\" data-throw-if-not-resolved=\"false\"></xref>.\n"
+  example: []
+  syntax:
+    content: public sealed class SsdpDeviceProperty
+    content.vb: Public NotInheritable Class SsdpDeviceProperty
+  inheritance:
+  - System.Object
+  inheritedMembers:
+  - System.Object.ToString
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  modifiers.csharp:
+  - public
+  - sealed
+  - class
+  modifiers.vb:
+  - Public
+  - NotInheritable
+  - Class
+- uid: Rssdp.SsdpDeviceProperty.Namespace
+  commentId: P:Rssdp.SsdpDeviceProperty.Namespace
+  id: Namespace
+  parent: Rssdp.SsdpDeviceProperty
+  langs:
+  - csharp
+  - vb
+  name: Namespace
+  nameWithType: SsdpDeviceProperty.Namespace
+  fullName: Rssdp.SsdpDeviceProperty.Namespace
+  type: Property
+  source:
+    id: Namespace
+    path: ''
+    startLine: 6657
+  assemblies:
+  - cs.temp.dll
+  namespace: Rssdp
+  summary: "\nSets or returns the namespace this property exists in.\n"
+  example: []
+  syntax:
+    content: public string Namespace { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Property Namespace As String
+  overload: Rssdp.SsdpDeviceProperty.Namespace*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: Rssdp.SsdpDeviceProperty.Name
+  commentId: P:Rssdp.SsdpDeviceProperty.Name
+  id: Name
+  parent: Rssdp.SsdpDeviceProperty
+  langs:
+  - csharp
+  - vb
+  name: Name
+  nameWithType: SsdpDeviceProperty.Name
+  fullName: Rssdp.SsdpDeviceProperty.Name
+  type: Property
+  source:
+    id: Name
+    path: ''
+    startLine: 6662
+  assemblies:
+  - cs.temp.dll
+  namespace: Rssdp
+  summary: "\nSets or returns the name of this property.\n"
+  example: []
+  syntax:
+    content: public string Name { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Property Name As String
+  overload: Rssdp.SsdpDeviceProperty.Name*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: Rssdp.SsdpDeviceProperty.FullName
+  commentId: P:Rssdp.SsdpDeviceProperty.FullName
+  id: FullName
+  parent: Rssdp.SsdpDeviceProperty
+  langs:
+  - csharp
+  - vb
+  name: FullName
+  nameWithType: SsdpDeviceProperty.FullName
+  fullName: Rssdp.SsdpDeviceProperty.FullName
+  type: Property
+  source:
+    id: FullName
+    path: ''
+    startLine: 6667
+  assemblies:
+  - cs.temp.dll
+  namespace: Rssdp
+  summary: "\nReturns the full name of this property (namespace and name).\n"
+  example: []
+  syntax:
+    content: public string FullName { get; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public ReadOnly Property FullName As String
+  overload: Rssdp.SsdpDeviceProperty.FullName*
+  modifiers.csharp:
+  - public
+  - get
+  modifiers.vb:
+  - Public
+  - ReadOnly
+- uid: Rssdp.SsdpDeviceProperty.Value
+  commentId: P:Rssdp.SsdpDeviceProperty.Value
+  id: Value
+  parent: Rssdp.SsdpDeviceProperty
+  langs:
+  - csharp
+  - vb
+  name: Value
+  nameWithType: SsdpDeviceProperty.Value
+  fullName: Rssdp.SsdpDeviceProperty.Value
+  type: Property
+  source:
+    id: Value
+    path: ''
+    startLine: 6672
+  assemblies:
+  - cs.temp.dll
+  namespace: Rssdp
+  summary: "\nSets or returns the value of this property.\n"
+  example: []
+  syntax:
+    content: public string Value { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Property Value As String
+  overload: Rssdp.SsdpDeviceProperty.Value*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+references:
+- uid: Rssdp.SsdpDevice
+  commentId: T:Rssdp.SsdpDevice
+  parent: Rssdp
+  isExternal: false
+  name: SsdpDevice
+  nameWithType: SsdpDevice
+  fullName: Rssdp.SsdpDevice
+- uid: Rssdp
+  commentId: N:Rssdp
+  isExternal: false
+  name: Rssdp
+  nameWithType: Rssdp
+  fullName: Rssdp
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  name: Object
+  nameWithType: Object
+  fullName: System.Object
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  name: ToString()
+  nameWithType: Object.ToString()
+  fullName: System.Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    nameWithType: Object.ToString
+    fullName: System.Object.ToString
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    nameWithType: Object.ToString
+    fullName: System.Object.ToString
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  name: Equals(Object)
+  nameWithType: Object.Equals(Object)
+  fullName: System.Object.Equals(System.Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  name: Equals(Object, Object)
+  nameWithType: Object.Equals(Object, Object)
+  fullName: System.Object.Equals(System.Object, System.Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  name: ReferenceEquals(Object, Object)
+  nameWithType: Object.ReferenceEquals(Object, Object)
+  fullName: System.Object.ReferenceEquals(System.Object, System.Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    nameWithType: Object.ReferenceEquals
+    fullName: System.Object.ReferenceEquals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    nameWithType: Object.ReferenceEquals
+    fullName: System.Object.ReferenceEquals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  name: GetHashCode()
+  nameWithType: Object.GetHashCode()
+  fullName: System.Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    nameWithType: Object.GetHashCode
+    fullName: System.Object.GetHashCode
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    nameWithType: Object.GetHashCode
+    fullName: System.Object.GetHashCode
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  name: GetType()
+  nameWithType: Object.GetType()
+  fullName: System.Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    nameWithType: Object.GetType
+    fullName: System.Object.GetType
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    nameWithType: Object.GetType
+    fullName: System.Object.GetType
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  name: MemberwiseClone()
+  nameWithType: Object.MemberwiseClone()
+  fullName: System.Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    nameWithType: Object.MemberwiseClone
+    fullName: System.Object.MemberwiseClone
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    nameWithType: Object.MemberwiseClone
+    fullName: System.Object.MemberwiseClone
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System
+  commentId: N:System
+  isExternal: false
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Rssdp.SsdpDeviceProperty.Namespace*
+  commentId: Overload:Rssdp.SsdpDeviceProperty.Namespace
+  isExternal: false
+  name: Namespace
+  nameWithType: SsdpDeviceProperty.Namespace
+  fullName: Rssdp.SsdpDeviceProperty.Namespace
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  name: String
+  nameWithType: String
+  fullName: System.String
+- uid: Rssdp.SsdpDeviceProperty.Name*
+  commentId: Overload:Rssdp.SsdpDeviceProperty.Name
+  isExternal: false
+  name: Name
+  nameWithType: SsdpDeviceProperty.Name
+  fullName: Rssdp.SsdpDeviceProperty.Name
+- uid: Rssdp.SsdpDeviceProperty.FullName*
+  commentId: Overload:Rssdp.SsdpDeviceProperty.FullName
+  isExternal: false
+  name: FullName
+  nameWithType: SsdpDeviceProperty.FullName
+  fullName: Rssdp.SsdpDeviceProperty.FullName
+- uid: Rssdp.SsdpDeviceProperty.Value*
+  commentId: Overload:Rssdp.SsdpDeviceProperty.Value
+  isExternal: false
+  name: Value
+  nameWithType: SsdpDeviceProperty.Value
+  fullName: Rssdp.SsdpDeviceProperty.Value

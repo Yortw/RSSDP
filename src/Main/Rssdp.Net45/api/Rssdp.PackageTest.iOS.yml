@@ -1,0 +1,30 @@
+### YamlMime:ManagedReference
+items:
+- uid: Rssdp.PackageTest.iOS
+  commentId: N:Rssdp.PackageTest.iOS
+  id: Rssdp.PackageTest.iOS
+  children:
+  - Rssdp.PackageTest.iOS.AppDelegate
+  - Rssdp.PackageTest.iOS.Application
+  langs:
+  - csharp
+  - vb
+  name: Rssdp.PackageTest.iOS
+  nameWithType: Rssdp.PackageTest.iOS
+  fullName: Rssdp.PackageTest.iOS
+  type: Namespace
+  assemblies:
+  - cs.temp.dll
+references:
+- uid: Rssdp.PackageTest.iOS.AppDelegate
+  commentId: T:Rssdp.PackageTest.iOS.AppDelegate
+  isExternal: false
+  name: AppDelegate
+  nameWithType: AppDelegate
+  fullName: Rssdp.PackageTest.iOS.AppDelegate
+- uid: Rssdp.PackageTest.iOS.Application
+  commentId: T:Rssdp.PackageTest.iOS.Application
+  isExternal: false
+  name: Application
+  nameWithType: Application
+  fullName: Rssdp.PackageTest.iOS.Application

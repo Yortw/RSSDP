@@ -1,0 +1,277 @@
+### YamlMime:ManagedReference
+items:
+- uid: Rssdp.Infrastructure.DisposableManagedObjectBase
+  commentId: T:Rssdp.Infrastructure.DisposableManagedObjectBase
+  id: DisposableManagedObjectBase
+  parent: Rssdp.Infrastructure
+  children:
+  - Rssdp.Infrastructure.DisposableManagedObjectBase.Dispose
+  - Rssdp.Infrastructure.DisposableManagedObjectBase.Dispose(System.Boolean)
+  - Rssdp.Infrastructure.DisposableManagedObjectBase.IsDisposed
+  - Rssdp.Infrastructure.DisposableManagedObjectBase.ThrowIfDisposed
+  langs:
+  - csharp
+  - vb
+  name: DisposableManagedObjectBase
+  nameWithType: DisposableManagedObjectBase
+  fullName: Rssdp.Infrastructure.DisposableManagedObjectBase
+  type: Class
+  source:
+    id: DisposableManagedObjectBase
+    path: ''
+    startLine: 2791
+  assemblies:
+  - cs.temp.dll
+  namespace: Rssdp.Infrastructure
+  summary: "\nCorreclty implements the <see cref=\"!:IDisposable\"></see> interface and pattern for an object containing only managed resources, and adds a few common niceities not on the interface such as an <xref href=\"Rssdp.Infrastructure.DisposableManagedObjectBase.IsDisposed\" data-throw-if-not-resolved=\"false\"></xref> property.\n"
+  example: []
+  syntax:
+    content: 'public abstract class DisposableManagedObjectBase : IDisposable'
+    content.vb: >-
+      Public MustInherit Class DisposableManagedObjectBase
+          Inherits IDisposable
+  inheritance:
+  - System.Object
+  derivedClasses:
+  - Rssdp.Infrastructure.SsdpCommunicationsServer
+  - Rssdp.Infrastructure.SsdpDeviceLocatorBase
+  - Rssdp.Infrastructure.SsdpDevicePublisherBase
+  modifiers.csharp:
+  - public
+  - abstract
+  - class
+  modifiers.vb:
+  - Public
+  - MustInherit
+  - Class
+- uid: Rssdp.Infrastructure.DisposableManagedObjectBase.Dispose(System.Boolean)
+  commentId: M:Rssdp.Infrastructure.DisposableManagedObjectBase.Dispose(System.Boolean)
+  id: Dispose(System.Boolean)
+  parent: Rssdp.Infrastructure.DisposableManagedObjectBase
+  langs:
+  - csharp
+  - vb
+  name: Dispose(Boolean)
+  nameWithType: DisposableManagedObjectBase.Dispose(Boolean)
+  fullName: Rssdp.Infrastructure.DisposableManagedObjectBase.Dispose(System.Boolean)
+  type: Method
+  source:
+    id: Dispose
+    path: ''
+    startLine: 2800
+  assemblies:
+  - cs.temp.dll
+  namespace: Rssdp.Infrastructure
+  summary: "\nOverride this method and dispose any objects you own the lifetime of if disposing is true;\n"
+  example: []
+  syntax:
+    content: protected abstract void Dispose(bool disposing)
+    parameters:
+    - id: disposing
+      type: System.Boolean
+      description: True if managed objects should be disposed, if false, only unmanaged resources should be released.
+    content.vb: Protected MustOverride Sub Dispose(disposing As Boolean)
+  overload: Rssdp.Infrastructure.DisposableManagedObjectBase.Dispose*
+  modifiers.csharp:
+  - protected
+  - abstract
+  modifiers.vb:
+  - Protected
+  - MustOverride
+- uid: Rssdp.Infrastructure.DisposableManagedObjectBase.ThrowIfDisposed
+  commentId: M:Rssdp.Infrastructure.DisposableManagedObjectBase.ThrowIfDisposed
+  id: ThrowIfDisposed
+  parent: Rssdp.Infrastructure.DisposableManagedObjectBase
+  langs:
+  - csharp
+  - vb
+  name: ThrowIfDisposed()
+  nameWithType: DisposableManagedObjectBase.ThrowIfDisposed()
+  fullName: Rssdp.Infrastructure.DisposableManagedObjectBase.ThrowIfDisposed()
+  type: Method
+  source:
+    id: ThrowIfDisposed
+    path: ''
+    startLine: 2808
+  assemblies:
+  - cs.temp.dll
+  namespace: Rssdp.Infrastructure
+  summary: "\nThrows and <xref href=\"System.ObjectDisposedException\" data-throw-if-not-resolved=\"false\"></xref> if the <xref href=\"Rssdp.Infrastructure.DisposableManagedObjectBase.IsDisposed\" data-throw-if-not-resolved=\"false\"></xref> property is true.\n"
+  example: []
+  syntax:
+    content: protected virtual void ThrowIfDisposed()
+    content.vb: Protected Overridable Sub ThrowIfDisposed
+  overload: Rssdp.Infrastructure.DisposableManagedObjectBase.ThrowIfDisposed*
+  exceptions:
+  - type: System.ObjectDisposedException
+    commentId: T:System.ObjectDisposedException
+    description: Thrown if the <xref href="Rssdp.Infrastructure.DisposableManagedObjectBase.IsDisposed" data-throw-if-not-resolved="false"></xref> property is true.
+  seealso:
+  - linkId: Rssdp.Infrastructure.DisposableManagedObjectBase.IsDisposed
+    commentId: P:Rssdp.Infrastructure.DisposableManagedObjectBase.IsDisposed
+  - linkId: Rssdp.Infrastructure.DisposableManagedObjectBase.Dispose
+    commentId: M:Rssdp.Infrastructure.DisposableManagedObjectBase.Dispose
+  modifiers.csharp:
+  - protected
+  - virtual
+  modifiers.vb:
+  - Protected
+  - Overridable
+- uid: Rssdp.Infrastructure.DisposableManagedObjectBase.IsDisposed
+  commentId: P:Rssdp.Infrastructure.DisposableManagedObjectBase.IsDisposed
+  id: IsDisposed
+  parent: Rssdp.Infrastructure.DisposableManagedObjectBase
+  langs:
+  - csharp
+  - vb
+  name: IsDisposed
+  nameWithType: DisposableManagedObjectBase.IsDisposed
+  fullName: Rssdp.Infrastructure.DisposableManagedObjectBase.IsDisposed
+  type: Property
+  source:
+    id: IsDisposed
+    path: ''
+    startLine: 2821
+  assemblies:
+  - cs.temp.dll
+  namespace: Rssdp.Infrastructure
+  summary: "\nSets or returns a boolean indicating whether or not this instance has been disposed.\n"
+  example: []
+  syntax:
+    content: public bool IsDisposed { get; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Public ReadOnly Property IsDisposed As Boolean
+  overload: Rssdp.Infrastructure.DisposableManagedObjectBase.IsDisposed*
+  seealso:
+  - linkId: Rssdp.Infrastructure.DisposableManagedObjectBase.Dispose
+    commentId: M:Rssdp.Infrastructure.DisposableManagedObjectBase.Dispose
+  modifiers.csharp:
+  - public
+  - get
+  modifiers.vb:
+  - Public
+  - ReadOnly
+- uid: Rssdp.Infrastructure.DisposableManagedObjectBase.Dispose
+  commentId: M:Rssdp.Infrastructure.DisposableManagedObjectBase.Dispose
+  id: Dispose
+  parent: Rssdp.Infrastructure.DisposableManagedObjectBase
+  langs:
+  - csharp
+  - vb
+  name: Dispose()
+  nameWithType: DisposableManagedObjectBase.Dispose()
+  fullName: Rssdp.Infrastructure.DisposableManagedObjectBase.Dispose()
+  type: Method
+  source:
+    id: Dispose
+    path: ''
+    startLine: 2838
+  assemblies:
+  - cs.temp.dll
+  namespace: Rssdp.Infrastructure
+  summary: "\nDisposes this object instance and all internally managed resources.\n"
+  remarks: "\n<p>Sets the <xref href=\"Rssdp.Infrastructure.DisposableManagedObjectBase.IsDisposed\" data-throw-if-not-resolved=\"false\"></xref> property to true. Does not explicitly throw an exception if called multiple times, but makes no promises about behaviour of derived classes.</p>\n"
+  example: []
+  syntax:
+    content: public void Dispose()
+    content.vb: Public Sub Dispose
+  overload: Rssdp.Infrastructure.DisposableManagedObjectBase.Dispose*
+  seealso:
+  - linkId: Rssdp.Infrastructure.DisposableManagedObjectBase.IsDisposed
+    commentId: P:Rssdp.Infrastructure.DisposableManagedObjectBase.IsDisposed
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+references:
+- uid: Rssdp.Infrastructure.DisposableManagedObjectBase.IsDisposed
+  commentId: P:Rssdp.Infrastructure.DisposableManagedObjectBase.IsDisposed
+  parent: Rssdp.Infrastructure.DisposableManagedObjectBase
+  isExternal: false
+  name: IsDisposed
+  nameWithType: DisposableManagedObjectBase.IsDisposed
+  fullName: Rssdp.Infrastructure.DisposableManagedObjectBase.IsDisposed
+- uid: Rssdp.Infrastructure
+  commentId: N:Rssdp.Infrastructure
+  isExternal: false
+  name: Rssdp.Infrastructure
+  nameWithType: Rssdp.Infrastructure
+  fullName: Rssdp.Infrastructure
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  name: Object
+  nameWithType: Object
+  fullName: System.Object
+- uid: Rssdp.Infrastructure.DisposableManagedObjectBase
+  commentId: T:Rssdp.Infrastructure.DisposableManagedObjectBase
+  parent: Rssdp.Infrastructure
+  isExternal: false
+  name: DisposableManagedObjectBase
+  nameWithType: DisposableManagedObjectBase
+  fullName: Rssdp.Infrastructure.DisposableManagedObjectBase
+- uid: System
+  commentId: N:System
+  isExternal: false
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Rssdp.Infrastructure.DisposableManagedObjectBase.Dispose*
+  commentId: Overload:Rssdp.Infrastructure.DisposableManagedObjectBase.Dispose
+  isExternal: false
+  name: Dispose
+  nameWithType: DisposableManagedObjectBase.Dispose
+  fullName: Rssdp.Infrastructure.DisposableManagedObjectBase.Dispose
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  name: Boolean
+  nameWithType: Boolean
+  fullName: System.Boolean
+- uid: System.ObjectDisposedException
+  commentId: T:System.ObjectDisposedException
+- uid: Rssdp.Infrastructure.DisposableManagedObjectBase.Dispose
+  commentId: M:Rssdp.Infrastructure.DisposableManagedObjectBase.Dispose
+  parent: Rssdp.Infrastructure.DisposableManagedObjectBase
+  isExternal: false
+  name: Dispose()
+  nameWithType: DisposableManagedObjectBase.Dispose()
+  fullName: Rssdp.Infrastructure.DisposableManagedObjectBase.Dispose()
+  spec.csharp:
+  - uid: Rssdp.Infrastructure.DisposableManagedObjectBase.Dispose
+    name: Dispose
+    nameWithType: DisposableManagedObjectBase.Dispose
+    fullName: Rssdp.Infrastructure.DisposableManagedObjectBase.Dispose
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: Rssdp.Infrastructure.DisposableManagedObjectBase.Dispose
+    name: Dispose
+    nameWithType: DisposableManagedObjectBase.Dispose
+    fullName: Rssdp.Infrastructure.DisposableManagedObjectBase.Dispose
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: Rssdp.Infrastructure.DisposableManagedObjectBase.ThrowIfDisposed*
+  commentId: Overload:Rssdp.Infrastructure.DisposableManagedObjectBase.ThrowIfDisposed
+  isExternal: false
+  name: ThrowIfDisposed
+  nameWithType: DisposableManagedObjectBase.ThrowIfDisposed
+  fullName: Rssdp.Infrastructure.DisposableManagedObjectBase.ThrowIfDisposed
+- uid: Rssdp.Infrastructure.DisposableManagedObjectBase.IsDisposed*
+  commentId: Overload:Rssdp.Infrastructure.DisposableManagedObjectBase.IsDisposed
+  isExternal: false
+  name: IsDisposed
+  nameWithType: DisposableManagedObjectBase.IsDisposed
+  fullName: Rssdp.Infrastructure.DisposableManagedObjectBase.IsDisposed

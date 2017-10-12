@@ -1,0 +1,1220 @@
+### YamlMime:ManagedReference
+items:
+- uid: Rssdp.SsdpRootDevice
+  commentId: T:Rssdp.SsdpRootDevice
+  id: SsdpRootDevice
+  parent: Rssdp
+  children:
+  - Rssdp.SsdpRootDevice.#ctor
+  - Rssdp.SsdpRootDevice.#ctor(Uri,TimeSpan,System.String)
+  - Rssdp.SsdpRootDevice.CacheLifetime
+  - Rssdp.SsdpRootDevice.Location
+  - Rssdp.SsdpRootDevice.ToDescriptionDocument
+  - Rssdp.SsdpRootDevice.UrlBase
+  langs:
+  - csharp
+  - vb
+  name: SsdpRootDevice
+  nameWithType: SsdpRootDevice
+  fullName: Rssdp.SsdpRootDevice
+  type: Class
+  source:
+    id: SsdpRootDevice
+    path: ''
+    startLine: 7831
+  assemblies:
+  - cs.temp.dll
+  namespace: Rssdp
+  summary: "\nRepresents a &apos;root&apos; device, a device that has no parent. Used for publishing devices and for the root device in a tree of discovered devices.\n"
+  remarks: "\n<p>Child (embedded) devices are represented by the <xref href=\"Rssdp.SsdpDevice\" data-throw-if-not-resolved=\"false\"></xref> in the <xref href=\"Rssdp.SsdpDevice.Devices\" data-throw-if-not-resolved=\"false\"></xref> property.</p>\n<p>Root devices contain some information that applies to the whole device tree and is therefore not present on child devices, such as <xref href=\"Rssdp.SsdpRootDevice.CacheLifetime\" data-throw-if-not-resolved=\"false\"></xref> and <xref href=\"Rssdp.SsdpRootDevice.Location\" data-throw-if-not-resolved=\"false\"></xref>.</p>\n"
+  example: []
+  syntax:
+    content: 'public class SsdpRootDevice : SsdpDevice'
+    content.vb: >-
+      Public Class SsdpRootDevice
+          Inherits SsdpDevice
+  inheritance:
+  - System.Object
+  - Rssdp.SsdpDevice
+  inheritedMembers:
+  - Rssdp.SsdpDevice.DeviceAdded
+  - Rssdp.SsdpDevice.DeviceRemoved
+  - Rssdp.SsdpDevice.ServiceAdded
+  - Rssdp.SsdpDevice.ServiceRemoved
+  - Rssdp.SsdpDevice.DeviceType
+  - Rssdp.SsdpDevice.DeviceTypeNamespace
+  - Rssdp.SsdpDevice.DeviceVersion
+  - Rssdp.SsdpDevice.FullDeviceType
+  - Rssdp.SsdpDevice.Uuid
+  - Rssdp.SsdpDevice.Udn
+  - Rssdp.SsdpDevice.FriendlyName
+  - Rssdp.SsdpDevice.Manufacturer
+  - Rssdp.SsdpDevice.ManufacturerUrl
+  - Rssdp.SsdpDevice.ModelDescription
+  - Rssdp.SsdpDevice.ModelName
+  - Rssdp.SsdpDevice.ModelNumber
+  - Rssdp.SsdpDevice.ModelUrl
+  - Rssdp.SsdpDevice.SerialNumber
+  - Rssdp.SsdpDevice.Upc
+  - Rssdp.SsdpDevice.PresentationUrl
+  - Rssdp.SsdpDevice.Icons
+  - Rssdp.SsdpDevice.Devices
+  - Rssdp.SsdpDevice.CustomProperties
+  - Rssdp.SsdpDevice.CustomResponseHeaders
+  - Rssdp.SsdpDevice.Services
+  - Rssdp.SsdpDevice.AddDevice(Rssdp.SsdpEmbeddedDevice)
+  - Rssdp.SsdpDevice.RemoveDevice(Rssdp.SsdpEmbeddedDevice)
+  - Rssdp.SsdpDevice.OnDeviceAdded(Rssdp.SsdpEmbeddedDevice)
+  - Rssdp.SsdpDevice.OnDeviceRemoved(Rssdp.SsdpEmbeddedDevice)
+  - Rssdp.SsdpDevice.AddService(Rssdp.SsdpService)
+  - Rssdp.SsdpDevice.RemoveService(Rssdp.SsdpService)
+  - Rssdp.SsdpDevice.OnServiceAdded(Rssdp.SsdpService)
+  - Rssdp.SsdpDevice.OnServiceRemoved(Rssdp.SsdpService)
+  - Rssdp.SsdpDevice.WriteDeviceDescriptionXml(XmlWriter,Rssdp.SsdpDevice)
+  - Rssdp.SsdpDevice.StringToUri(System.String)
+  - System.Object.ToString
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  modifiers.csharp:
+  - public
+  - class
+  modifiers.vb:
+  - Public
+  - Class
+- uid: Rssdp.SsdpRootDevice.#ctor
+  commentId: M:Rssdp.SsdpRootDevice.#ctor
+  id: '#ctor'
+  parent: Rssdp.SsdpRootDevice
+  langs:
+  - csharp
+  - vb
+  name: SsdpRootDevice()
+  nameWithType: SsdpRootDevice.SsdpRootDevice()
+  fullName: Rssdp.SsdpRootDevice.SsdpRootDevice()
+  type: Constructor
+  source:
+    id: .ctor
+    path: ''
+    startLine: 7845
+  assemblies:
+  - cs.temp.dll
+  namespace: Rssdp
+  summary: "\nDefault constructor.\n"
+  example: []
+  syntax:
+    content: public SsdpRootDevice()
+    content.vb: Public Sub New
+  overload: Rssdp.SsdpRootDevice.#ctor*
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+- uid: Rssdp.SsdpRootDevice.#ctor(Uri,TimeSpan,System.String)
+  commentId: M:Rssdp.SsdpRootDevice.#ctor(Uri,TimeSpan,System.String)
+  id: '#ctor(Uri,TimeSpan,System.String)'
+  parent: Rssdp.SsdpRootDevice
+  langs:
+  - csharp
+  - vb
+  name: SsdpRootDevice(Uri, TimeSpan, String)
+  nameWithType: SsdpRootDevice.SsdpRootDevice(Uri, TimeSpan, String)
+  fullName: Rssdp.SsdpRootDevice.SsdpRootDevice(Uri, TimeSpan, System.String)
+  type: Constructor
+  source:
+    id: .ctor
+    path: ''
+    startLine: 7857
+  assemblies:
+  - cs.temp.dll
+  namespace: Rssdp
+  summary: "\nDeserialisation constructor.\n"
+  example: []
+  syntax:
+    content: public SsdpRootDevice(Uri location, TimeSpan cacheLifetime, string deviceDescriptionXml)
+    parameters:
+    - id: location
+      type: Uri
+      description: The url from which the device description document was retrieved.
+    - id: cacheLifetime
+      type: TimeSpan
+      description: A <xref href="System.TimeSpan" data-throw-if-not-resolved="false"></xref> representing the time maximum period of time the device description can be cached for.
+    - id: deviceDescriptionXml
+      type: System.String
+      description: The device description XML as a string.
+    content.vb: Public Sub New(location As Uri, cacheLifetime As TimeSpan, deviceDescriptionXml As String)
+  overload: Rssdp.SsdpRootDevice.#ctor*
+  exceptions:
+  - type: System.ArgumentNullException
+    commentId: T:System.ArgumentNullException
+    description: Thrown if the <code data-dev-comment-type="paramref" class="paramref">deviceDescriptionXml</code> or <code data-dev-comment-type="paramref" class="paramref">location</code> arguments are null.
+  - type: System.ArgumentException
+    commentId: T:System.ArgumentException
+    description: Thrown if the <code data-dev-comment-type="paramref" class="paramref">deviceDescriptionXml</code> argument is empty.
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+- uid: Rssdp.SsdpRootDevice.CacheLifetime
+  commentId: P:Rssdp.SsdpRootDevice.CacheLifetime
+  id: CacheLifetime
+  parent: Rssdp.SsdpRootDevice
+  langs:
+  - csharp
+  - vb
+  name: CacheLifetime
+  nameWithType: SsdpRootDevice.CacheLifetime
+  fullName: Rssdp.SsdpRootDevice.CacheLifetime
+  type: Property
+  source:
+    id: CacheLifetime
+    path: ''
+    startLine: 7880
+  assemblies:
+  - cs.temp.dll
+  namespace: Rssdp
+  summary: "\nSpecifies how long clients can cache this device&apos;s details for. Optional but defaults to <see cref=\"!:TimeSpan.Zero\"></see> which means no-caching. Recommended value is half an hour.\n"
+  remarks: "\n<p>Specifiy <see cref=\"!:TimeSpan.Zero\"></see> to indicate no caching allowed.</p>\n<p>Also used to specify how often to rebroadcast alive notifications.</p>\n<p>The UPnP/SSDP specifications indicate this should not be less than 1800 seconds (half an hour), but this is not enforced by this library.</p>\n"
+  example: []
+  syntax:
+    content: public TimeSpan CacheLifetime { get; set; }
+    parameters: []
+    return:
+      type: TimeSpan
+    content.vb: Public Property CacheLifetime As TimeSpan
+  overload: Rssdp.SsdpRootDevice.CacheLifetime*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: Rssdp.SsdpRootDevice.Location
+  commentId: P:Rssdp.SsdpRootDevice.Location
+  id: Location
+  parent: Rssdp.SsdpRootDevice
+  langs:
+  - csharp
+  - vb
+  name: Location
+  nameWithType: SsdpRootDevice.Location
+  fullName: Rssdp.SsdpRootDevice.Location
+  type: Property
+  source:
+    id: Location
+    path: ''
+    startLine: 7888
+  assemblies:
+  - cs.temp.dll
+  namespace: Rssdp
+  summary: "\nGets or sets the URL used to retrieve the description document for this device/tree. Required.\n"
+  example: []
+  syntax:
+    content: public Uri Location { get; set; }
+    parameters: []
+    return:
+      type: Uri
+    content.vb: Public Property Location As Uri
+  overload: Rssdp.SsdpRootDevice.Location*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: Rssdp.SsdpRootDevice.UrlBase
+  commentId: P:Rssdp.SsdpRootDevice.UrlBase
+  id: UrlBase
+  parent: Rssdp.SsdpRootDevice
+  langs:
+  - csharp
+  - vb
+  name: UrlBase
+  nameWithType: SsdpRootDevice.UrlBase
+  fullName: Rssdp.SsdpRootDevice.UrlBase
+  type: Property
+  source:
+    id: UrlBase
+    path: ''
+    startLine: 7897
+  assemblies:
+  - cs.temp.dll
+  namespace: Rssdp
+  summary: "\nThe base URL to use for all relative url&apos;s provided in other propertise (and those of child devices). Optional.\n"
+  remarks: "\n<p>Defines the base URL. Used to construct fully-qualified URLs. All relative URLs that appear elsewhere in the description are combined with this base URL. If URLBase is empty or not given, the base URL is the URL from which the device description was retrieved (which is the preferred implementation; use of URLBase is no longer recommended). Specified by UPnP vendor. Single URL.</p>\n"
+  example: []
+  syntax:
+    content: public Uri UrlBase { get; set; }
+    parameters: []
+    return:
+      type: Uri
+    content.vb: Public Property UrlBase As Uri
+  overload: Rssdp.SsdpRootDevice.UrlBase*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: Rssdp.SsdpRootDevice.ToDescriptionDocument
+  commentId: M:Rssdp.SsdpRootDevice.ToDescriptionDocument
+  id: ToDescriptionDocument
+  parent: Rssdp.SsdpRootDevice
+  langs:
+  - csharp
+  - vb
+  name: ToDescriptionDocument()
+  nameWithType: SsdpRootDevice.ToDescriptionDocument()
+  fullName: Rssdp.SsdpRootDevice.ToDescriptionDocument()
+  type: Method
+  source:
+    id: ToDescriptionDocument
+    path: ''
+    startLine: 7918
+  assemblies:
+  - cs.temp.dll
+  namespace: Rssdp
+  summary: "\nSaves the property values of this device object to an a string in the full UPnP device description XML format, including child devices and outer root node and XML document declaration.\n"
+  example: []
+  syntax:
+    content: public virtual string ToDescriptionDocument()
+    return:
+      type: System.String
+      description: A string containing XML in the UPnP device description format
+    content.vb: Public Overridable Function ToDescriptionDocument As String
+  overload: Rssdp.SsdpRootDevice.ToDescriptionDocument*
+  modifiers.csharp:
+  - public
+  - virtual
+  modifiers.vb:
+  - Public
+  - Overridable
+references:
+- uid: Rssdp.SsdpDevice
+  commentId: T:Rssdp.SsdpDevice
+  parent: Rssdp
+  isExternal: false
+  name: SsdpDevice
+  nameWithType: SsdpDevice
+  fullName: Rssdp.SsdpDevice
+- uid: Rssdp.SsdpDevice.Devices
+  commentId: P:Rssdp.SsdpDevice.Devices
+  parent: Rssdp.SsdpDevice
+  isExternal: false
+  name: Devices
+  nameWithType: SsdpDevice.Devices
+  fullName: Rssdp.SsdpDevice.Devices
+- uid: Rssdp.SsdpRootDevice.CacheLifetime
+  commentId: P:Rssdp.SsdpRootDevice.CacheLifetime
+- uid: Rssdp.SsdpRootDevice.Location
+  commentId: P:Rssdp.SsdpRootDevice.Location
+- uid: Rssdp
+  commentId: N:Rssdp
+  isExternal: false
+  name: Rssdp
+  nameWithType: Rssdp
+  fullName: Rssdp
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  name: Object
+  nameWithType: Object
+  fullName: System.Object
+- uid: Rssdp.SsdpDevice.DeviceAdded
+  commentId: E:Rssdp.SsdpDevice.DeviceAdded
+  parent: Rssdp.SsdpDevice
+  isExternal: false
+  name: DeviceAdded
+  nameWithType: SsdpDevice.DeviceAdded
+  fullName: Rssdp.SsdpDevice.DeviceAdded
+- uid: Rssdp.SsdpDevice.DeviceRemoved
+  commentId: E:Rssdp.SsdpDevice.DeviceRemoved
+  parent: Rssdp.SsdpDevice
+  isExternal: false
+  name: DeviceRemoved
+  nameWithType: SsdpDevice.DeviceRemoved
+  fullName: Rssdp.SsdpDevice.DeviceRemoved
+- uid: Rssdp.SsdpDevice.ServiceAdded
+  commentId: E:Rssdp.SsdpDevice.ServiceAdded
+  parent: Rssdp.SsdpDevice
+  isExternal: false
+  name: ServiceAdded
+  nameWithType: SsdpDevice.ServiceAdded
+  fullName: Rssdp.SsdpDevice.ServiceAdded
+- uid: Rssdp.SsdpDevice.ServiceRemoved
+  commentId: E:Rssdp.SsdpDevice.ServiceRemoved
+  parent: Rssdp.SsdpDevice
+  isExternal: false
+  name: ServiceRemoved
+  nameWithType: SsdpDevice.ServiceRemoved
+  fullName: Rssdp.SsdpDevice.ServiceRemoved
+- uid: Rssdp.SsdpDevice.DeviceType
+  commentId: P:Rssdp.SsdpDevice.DeviceType
+  parent: Rssdp.SsdpDevice
+  isExternal: false
+  name: DeviceType
+  nameWithType: SsdpDevice.DeviceType
+  fullName: Rssdp.SsdpDevice.DeviceType
+- uid: Rssdp.SsdpDevice.DeviceTypeNamespace
+  commentId: P:Rssdp.SsdpDevice.DeviceTypeNamespace
+  parent: Rssdp.SsdpDevice
+  isExternal: false
+  name: DeviceTypeNamespace
+  nameWithType: SsdpDevice.DeviceTypeNamespace
+  fullName: Rssdp.SsdpDevice.DeviceTypeNamespace
+- uid: Rssdp.SsdpDevice.DeviceVersion
+  commentId: P:Rssdp.SsdpDevice.DeviceVersion
+  parent: Rssdp.SsdpDevice
+  isExternal: false
+  name: DeviceVersion
+  nameWithType: SsdpDevice.DeviceVersion
+  fullName: Rssdp.SsdpDevice.DeviceVersion
+- uid: Rssdp.SsdpDevice.FullDeviceType
+  commentId: P:Rssdp.SsdpDevice.FullDeviceType
+  parent: Rssdp.SsdpDevice
+  isExternal: false
+  name: FullDeviceType
+  nameWithType: SsdpDevice.FullDeviceType
+  fullName: Rssdp.SsdpDevice.FullDeviceType
+- uid: Rssdp.SsdpDevice.Uuid
+  commentId: P:Rssdp.SsdpDevice.Uuid
+  parent: Rssdp.SsdpDevice
+  isExternal: false
+  name: Uuid
+  nameWithType: SsdpDevice.Uuid
+  fullName: Rssdp.SsdpDevice.Uuid
+- uid: Rssdp.SsdpDevice.Udn
+  commentId: P:Rssdp.SsdpDevice.Udn
+  parent: Rssdp.SsdpDevice
+  isExternal: false
+  name: Udn
+  nameWithType: SsdpDevice.Udn
+  fullName: Rssdp.SsdpDevice.Udn
+- uid: Rssdp.SsdpDevice.FriendlyName
+  commentId: P:Rssdp.SsdpDevice.FriendlyName
+  parent: Rssdp.SsdpDevice
+  isExternal: false
+  name: FriendlyName
+  nameWithType: SsdpDevice.FriendlyName
+  fullName: Rssdp.SsdpDevice.FriendlyName
+- uid: Rssdp.SsdpDevice.Manufacturer
+  commentId: P:Rssdp.SsdpDevice.Manufacturer
+  parent: Rssdp.SsdpDevice
+  isExternal: false
+  name: Manufacturer
+  nameWithType: SsdpDevice.Manufacturer
+  fullName: Rssdp.SsdpDevice.Manufacturer
+- uid: Rssdp.SsdpDevice.ManufacturerUrl
+  commentId: P:Rssdp.SsdpDevice.ManufacturerUrl
+  parent: Rssdp.SsdpDevice
+  isExternal: false
+  name: ManufacturerUrl
+  nameWithType: SsdpDevice.ManufacturerUrl
+  fullName: Rssdp.SsdpDevice.ManufacturerUrl
+- uid: Rssdp.SsdpDevice.ModelDescription
+  commentId: P:Rssdp.SsdpDevice.ModelDescription
+  parent: Rssdp.SsdpDevice
+  isExternal: false
+  name: ModelDescription
+  nameWithType: SsdpDevice.ModelDescription
+  fullName: Rssdp.SsdpDevice.ModelDescription
+- uid: Rssdp.SsdpDevice.ModelName
+  commentId: P:Rssdp.SsdpDevice.ModelName
+  parent: Rssdp.SsdpDevice
+  isExternal: false
+  name: ModelName
+  nameWithType: SsdpDevice.ModelName
+  fullName: Rssdp.SsdpDevice.ModelName
+- uid: Rssdp.SsdpDevice.ModelNumber
+  commentId: P:Rssdp.SsdpDevice.ModelNumber
+  parent: Rssdp.SsdpDevice
+  isExternal: false
+  name: ModelNumber
+  nameWithType: SsdpDevice.ModelNumber
+  fullName: Rssdp.SsdpDevice.ModelNumber
+- uid: Rssdp.SsdpDevice.ModelUrl
+  commentId: P:Rssdp.SsdpDevice.ModelUrl
+  parent: Rssdp.SsdpDevice
+  isExternal: false
+  name: ModelUrl
+  nameWithType: SsdpDevice.ModelUrl
+  fullName: Rssdp.SsdpDevice.ModelUrl
+- uid: Rssdp.SsdpDevice.SerialNumber
+  commentId: P:Rssdp.SsdpDevice.SerialNumber
+  parent: Rssdp.SsdpDevice
+  isExternal: false
+  name: SerialNumber
+  nameWithType: SsdpDevice.SerialNumber
+  fullName: Rssdp.SsdpDevice.SerialNumber
+- uid: Rssdp.SsdpDevice.Upc
+  commentId: P:Rssdp.SsdpDevice.Upc
+  parent: Rssdp.SsdpDevice
+  isExternal: false
+  name: Upc
+  nameWithType: SsdpDevice.Upc
+  fullName: Rssdp.SsdpDevice.Upc
+- uid: Rssdp.SsdpDevice.PresentationUrl
+  commentId: P:Rssdp.SsdpDevice.PresentationUrl
+  parent: Rssdp.SsdpDevice
+  isExternal: false
+  name: PresentationUrl
+  nameWithType: SsdpDevice.PresentationUrl
+  fullName: Rssdp.SsdpDevice.PresentationUrl
+- uid: Rssdp.SsdpDevice.Icons
+  commentId: P:Rssdp.SsdpDevice.Icons
+  parent: Rssdp.SsdpDevice
+  isExternal: false
+  name: Icons
+  nameWithType: SsdpDevice.Icons
+  fullName: Rssdp.SsdpDevice.Icons
+- uid: Rssdp.SsdpDevice.CustomProperties
+  commentId: P:Rssdp.SsdpDevice.CustomProperties
+  parent: Rssdp.SsdpDevice
+  isExternal: false
+  name: CustomProperties
+  nameWithType: SsdpDevice.CustomProperties
+  fullName: Rssdp.SsdpDevice.CustomProperties
+- uid: Rssdp.SsdpDevice.CustomResponseHeaders
+  commentId: P:Rssdp.SsdpDevice.CustomResponseHeaders
+  parent: Rssdp.SsdpDevice
+  isExternal: false
+  name: CustomResponseHeaders
+  nameWithType: SsdpDevice.CustomResponseHeaders
+  fullName: Rssdp.SsdpDevice.CustomResponseHeaders
+- uid: Rssdp.SsdpDevice.Services
+  commentId: P:Rssdp.SsdpDevice.Services
+  parent: Rssdp.SsdpDevice
+  isExternal: false
+  name: Services
+  nameWithType: SsdpDevice.Services
+  fullName: Rssdp.SsdpDevice.Services
+- uid: Rssdp.SsdpDevice.AddDevice(Rssdp.SsdpEmbeddedDevice)
+  commentId: M:Rssdp.SsdpDevice.AddDevice(Rssdp.SsdpEmbeddedDevice)
+  parent: Rssdp.SsdpDevice
+  isExternal: false
+  name: AddDevice(SsdpEmbeddedDevice)
+  nameWithType: SsdpDevice.AddDevice(SsdpEmbeddedDevice)
+  fullName: Rssdp.SsdpDevice.AddDevice(Rssdp.SsdpEmbeddedDevice)
+  spec.csharp:
+  - uid: Rssdp.SsdpDevice.AddDevice(Rssdp.SsdpEmbeddedDevice)
+    name: AddDevice
+    nameWithType: SsdpDevice.AddDevice
+    fullName: Rssdp.SsdpDevice.AddDevice
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: Rssdp.SsdpEmbeddedDevice
+    name: SsdpEmbeddedDevice
+    nameWithType: SsdpEmbeddedDevice
+    fullName: Rssdp.SsdpEmbeddedDevice
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: Rssdp.SsdpDevice.AddDevice(Rssdp.SsdpEmbeddedDevice)
+    name: AddDevice
+    nameWithType: SsdpDevice.AddDevice
+    fullName: Rssdp.SsdpDevice.AddDevice
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: Rssdp.SsdpEmbeddedDevice
+    name: SsdpEmbeddedDevice
+    nameWithType: SsdpEmbeddedDevice
+    fullName: Rssdp.SsdpEmbeddedDevice
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: Rssdp.SsdpDevice.RemoveDevice(Rssdp.SsdpEmbeddedDevice)
+  commentId: M:Rssdp.SsdpDevice.RemoveDevice(Rssdp.SsdpEmbeddedDevice)
+  parent: Rssdp.SsdpDevice
+  isExternal: false
+  name: RemoveDevice(SsdpEmbeddedDevice)
+  nameWithType: SsdpDevice.RemoveDevice(SsdpEmbeddedDevice)
+  fullName: Rssdp.SsdpDevice.RemoveDevice(Rssdp.SsdpEmbeddedDevice)
+  spec.csharp:
+  - uid: Rssdp.SsdpDevice.RemoveDevice(Rssdp.SsdpEmbeddedDevice)
+    name: RemoveDevice
+    nameWithType: SsdpDevice.RemoveDevice
+    fullName: Rssdp.SsdpDevice.RemoveDevice
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: Rssdp.SsdpEmbeddedDevice
+    name: SsdpEmbeddedDevice
+    nameWithType: SsdpEmbeddedDevice
+    fullName: Rssdp.SsdpEmbeddedDevice
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: Rssdp.SsdpDevice.RemoveDevice(Rssdp.SsdpEmbeddedDevice)
+    name: RemoveDevice
+    nameWithType: SsdpDevice.RemoveDevice
+    fullName: Rssdp.SsdpDevice.RemoveDevice
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: Rssdp.SsdpEmbeddedDevice
+    name: SsdpEmbeddedDevice
+    nameWithType: SsdpEmbeddedDevice
+    fullName: Rssdp.SsdpEmbeddedDevice
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: Rssdp.SsdpDevice.OnDeviceAdded(Rssdp.SsdpEmbeddedDevice)
+  commentId: M:Rssdp.SsdpDevice.OnDeviceAdded(Rssdp.SsdpEmbeddedDevice)
+  parent: Rssdp.SsdpDevice
+  isExternal: false
+  name: OnDeviceAdded(SsdpEmbeddedDevice)
+  nameWithType: SsdpDevice.OnDeviceAdded(SsdpEmbeddedDevice)
+  fullName: Rssdp.SsdpDevice.OnDeviceAdded(Rssdp.SsdpEmbeddedDevice)
+  spec.csharp:
+  - uid: Rssdp.SsdpDevice.OnDeviceAdded(Rssdp.SsdpEmbeddedDevice)
+    name: OnDeviceAdded
+    nameWithType: SsdpDevice.OnDeviceAdded
+    fullName: Rssdp.SsdpDevice.OnDeviceAdded
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: Rssdp.SsdpEmbeddedDevice
+    name: SsdpEmbeddedDevice
+    nameWithType: SsdpEmbeddedDevice
+    fullName: Rssdp.SsdpEmbeddedDevice
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: Rssdp.SsdpDevice.OnDeviceAdded(Rssdp.SsdpEmbeddedDevice)
+    name: OnDeviceAdded
+    nameWithType: SsdpDevice.OnDeviceAdded
+    fullName: Rssdp.SsdpDevice.OnDeviceAdded
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: Rssdp.SsdpEmbeddedDevice
+    name: SsdpEmbeddedDevice
+    nameWithType: SsdpEmbeddedDevice
+    fullName: Rssdp.SsdpEmbeddedDevice
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: Rssdp.SsdpDevice.OnDeviceRemoved(Rssdp.SsdpEmbeddedDevice)
+  commentId: M:Rssdp.SsdpDevice.OnDeviceRemoved(Rssdp.SsdpEmbeddedDevice)
+  parent: Rssdp.SsdpDevice
+  isExternal: false
+  name: OnDeviceRemoved(SsdpEmbeddedDevice)
+  nameWithType: SsdpDevice.OnDeviceRemoved(SsdpEmbeddedDevice)
+  fullName: Rssdp.SsdpDevice.OnDeviceRemoved(Rssdp.SsdpEmbeddedDevice)
+  spec.csharp:
+  - uid: Rssdp.SsdpDevice.OnDeviceRemoved(Rssdp.SsdpEmbeddedDevice)
+    name: OnDeviceRemoved
+    nameWithType: SsdpDevice.OnDeviceRemoved
+    fullName: Rssdp.SsdpDevice.OnDeviceRemoved
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: Rssdp.SsdpEmbeddedDevice
+    name: SsdpEmbeddedDevice
+    nameWithType: SsdpEmbeddedDevice
+    fullName: Rssdp.SsdpEmbeddedDevice
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: Rssdp.SsdpDevice.OnDeviceRemoved(Rssdp.SsdpEmbeddedDevice)
+    name: OnDeviceRemoved
+    nameWithType: SsdpDevice.OnDeviceRemoved
+    fullName: Rssdp.SsdpDevice.OnDeviceRemoved
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: Rssdp.SsdpEmbeddedDevice
+    name: SsdpEmbeddedDevice
+    nameWithType: SsdpEmbeddedDevice
+    fullName: Rssdp.SsdpEmbeddedDevice
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: Rssdp.SsdpDevice.AddService(Rssdp.SsdpService)
+  commentId: M:Rssdp.SsdpDevice.AddService(Rssdp.SsdpService)
+  parent: Rssdp.SsdpDevice
+  isExternal: false
+  name: AddService(SsdpService)
+  nameWithType: SsdpDevice.AddService(SsdpService)
+  fullName: Rssdp.SsdpDevice.AddService(Rssdp.SsdpService)
+  spec.csharp:
+  - uid: Rssdp.SsdpDevice.AddService(Rssdp.SsdpService)
+    name: AddService
+    nameWithType: SsdpDevice.AddService
+    fullName: Rssdp.SsdpDevice.AddService
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: Rssdp.SsdpService
+    name: SsdpService
+    nameWithType: SsdpService
+    fullName: Rssdp.SsdpService
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: Rssdp.SsdpDevice.AddService(Rssdp.SsdpService)
+    name: AddService
+    nameWithType: SsdpDevice.AddService
+    fullName: Rssdp.SsdpDevice.AddService
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: Rssdp.SsdpService
+    name: SsdpService
+    nameWithType: SsdpService
+    fullName: Rssdp.SsdpService
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: Rssdp.SsdpDevice.RemoveService(Rssdp.SsdpService)
+  commentId: M:Rssdp.SsdpDevice.RemoveService(Rssdp.SsdpService)
+  parent: Rssdp.SsdpDevice
+  isExternal: false
+  name: RemoveService(SsdpService)
+  nameWithType: SsdpDevice.RemoveService(SsdpService)
+  fullName: Rssdp.SsdpDevice.RemoveService(Rssdp.SsdpService)
+  spec.csharp:
+  - uid: Rssdp.SsdpDevice.RemoveService(Rssdp.SsdpService)
+    name: RemoveService
+    nameWithType: SsdpDevice.RemoveService
+    fullName: Rssdp.SsdpDevice.RemoveService
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: Rssdp.SsdpService
+    name: SsdpService
+    nameWithType: SsdpService
+    fullName: Rssdp.SsdpService
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: Rssdp.SsdpDevice.RemoveService(Rssdp.SsdpService)
+    name: RemoveService
+    nameWithType: SsdpDevice.RemoveService
+    fullName: Rssdp.SsdpDevice.RemoveService
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: Rssdp.SsdpService
+    name: SsdpService
+    nameWithType: SsdpService
+    fullName: Rssdp.SsdpService
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: Rssdp.SsdpDevice.OnServiceAdded(Rssdp.SsdpService)
+  commentId: M:Rssdp.SsdpDevice.OnServiceAdded(Rssdp.SsdpService)
+  parent: Rssdp.SsdpDevice
+  isExternal: false
+  name: OnServiceAdded(SsdpService)
+  nameWithType: SsdpDevice.OnServiceAdded(SsdpService)
+  fullName: Rssdp.SsdpDevice.OnServiceAdded(Rssdp.SsdpService)
+  spec.csharp:
+  - uid: Rssdp.SsdpDevice.OnServiceAdded(Rssdp.SsdpService)
+    name: OnServiceAdded
+    nameWithType: SsdpDevice.OnServiceAdded
+    fullName: Rssdp.SsdpDevice.OnServiceAdded
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: Rssdp.SsdpService
+    name: SsdpService
+    nameWithType: SsdpService
+    fullName: Rssdp.SsdpService
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: Rssdp.SsdpDevice.OnServiceAdded(Rssdp.SsdpService)
+    name: OnServiceAdded
+    nameWithType: SsdpDevice.OnServiceAdded
+    fullName: Rssdp.SsdpDevice.OnServiceAdded
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: Rssdp.SsdpService
+    name: SsdpService
+    nameWithType: SsdpService
+    fullName: Rssdp.SsdpService
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: Rssdp.SsdpDevice.OnServiceRemoved(Rssdp.SsdpService)
+  commentId: M:Rssdp.SsdpDevice.OnServiceRemoved(Rssdp.SsdpService)
+  parent: Rssdp.SsdpDevice
+  isExternal: false
+  name: OnServiceRemoved(SsdpService)
+  nameWithType: SsdpDevice.OnServiceRemoved(SsdpService)
+  fullName: Rssdp.SsdpDevice.OnServiceRemoved(Rssdp.SsdpService)
+  spec.csharp:
+  - uid: Rssdp.SsdpDevice.OnServiceRemoved(Rssdp.SsdpService)
+    name: OnServiceRemoved
+    nameWithType: SsdpDevice.OnServiceRemoved
+    fullName: Rssdp.SsdpDevice.OnServiceRemoved
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: Rssdp.SsdpService
+    name: SsdpService
+    nameWithType: SsdpService
+    fullName: Rssdp.SsdpService
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: Rssdp.SsdpDevice.OnServiceRemoved(Rssdp.SsdpService)
+    name: OnServiceRemoved
+    nameWithType: SsdpDevice.OnServiceRemoved
+    fullName: Rssdp.SsdpDevice.OnServiceRemoved
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: Rssdp.SsdpService
+    name: SsdpService
+    nameWithType: SsdpService
+    fullName: Rssdp.SsdpService
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: Rssdp.SsdpDevice.WriteDeviceDescriptionXml(XmlWriter,Rssdp.SsdpDevice)
+  commentId: M:Rssdp.SsdpDevice.WriteDeviceDescriptionXml(XmlWriter,Rssdp.SsdpDevice)
+  parent: Rssdp.SsdpDevice
+  isExternal: true
+  name: WriteDeviceDescriptionXml(XmlWriter, SsdpDevice)
+  nameWithType: SsdpDevice.WriteDeviceDescriptionXml(XmlWriter, SsdpDevice)
+  fullName: Rssdp.SsdpDevice.WriteDeviceDescriptionXml(XmlWriter, Rssdp.SsdpDevice)
+  spec.csharp:
+  - uid: Rssdp.SsdpDevice.WriteDeviceDescriptionXml(XmlWriter,Rssdp.SsdpDevice)
+    name: WriteDeviceDescriptionXml
+    nameWithType: SsdpDevice.WriteDeviceDescriptionXml
+    fullName: Rssdp.SsdpDevice.WriteDeviceDescriptionXml
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: XmlWriter
+    name: XmlWriter
+    nameWithType: XmlWriter
+    fullName: XmlWriter
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: Rssdp.SsdpDevice
+    name: SsdpDevice
+    nameWithType: SsdpDevice
+    fullName: Rssdp.SsdpDevice
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: Rssdp.SsdpDevice.WriteDeviceDescriptionXml(XmlWriter,Rssdp.SsdpDevice)
+    name: WriteDeviceDescriptionXml
+    nameWithType: SsdpDevice.WriteDeviceDescriptionXml
+    fullName: Rssdp.SsdpDevice.WriteDeviceDescriptionXml
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: XmlWriter
+    name: XmlWriter
+    nameWithType: XmlWriter
+    fullName: XmlWriter
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: Rssdp.SsdpDevice
+    name: SsdpDevice
+    nameWithType: SsdpDevice
+    fullName: Rssdp.SsdpDevice
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: Rssdp.SsdpDevice.StringToUri(System.String)
+  commentId: M:Rssdp.SsdpDevice.StringToUri(System.String)
+  parent: Rssdp.SsdpDevice
+  isExternal: true
+  name: StringToUri(String)
+  nameWithType: SsdpDevice.StringToUri(String)
+  fullName: Rssdp.SsdpDevice.StringToUri(System.String)
+  spec.csharp:
+  - uid: Rssdp.SsdpDevice.StringToUri(System.String)
+    name: StringToUri
+    nameWithType: SsdpDevice.StringToUri
+    fullName: Rssdp.SsdpDevice.StringToUri
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: Rssdp.SsdpDevice.StringToUri(System.String)
+    name: StringToUri
+    nameWithType: SsdpDevice.StringToUri
+    fullName: Rssdp.SsdpDevice.StringToUri
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  name: ToString()
+  nameWithType: Object.ToString()
+  fullName: System.Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    nameWithType: Object.ToString
+    fullName: System.Object.ToString
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    nameWithType: Object.ToString
+    fullName: System.Object.ToString
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  name: Equals(Object)
+  nameWithType: Object.Equals(Object)
+  fullName: System.Object.Equals(System.Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  name: Equals(Object, Object)
+  nameWithType: Object.Equals(Object, Object)
+  fullName: System.Object.Equals(System.Object, System.Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  name: ReferenceEquals(Object, Object)
+  nameWithType: Object.ReferenceEquals(Object, Object)
+  fullName: System.Object.ReferenceEquals(System.Object, System.Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    nameWithType: Object.ReferenceEquals
+    fullName: System.Object.ReferenceEquals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    nameWithType: Object.ReferenceEquals
+    fullName: System.Object.ReferenceEquals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  name: GetHashCode()
+  nameWithType: Object.GetHashCode()
+  fullName: System.Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    nameWithType: Object.GetHashCode
+    fullName: System.Object.GetHashCode
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    nameWithType: Object.GetHashCode
+    fullName: System.Object.GetHashCode
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  name: GetType()
+  nameWithType: Object.GetType()
+  fullName: System.Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    nameWithType: Object.GetType
+    fullName: System.Object.GetType
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    nameWithType: Object.GetType
+    fullName: System.Object.GetType
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  name: MemberwiseClone()
+  nameWithType: Object.MemberwiseClone()
+  fullName: System.Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    nameWithType: Object.MemberwiseClone
+    fullName: System.Object.MemberwiseClone
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    nameWithType: Object.MemberwiseClone
+    fullName: System.Object.MemberwiseClone
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System
+  commentId: N:System
+  isExternal: false
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Rssdp.SsdpRootDevice.#ctor*
+  commentId: Overload:Rssdp.SsdpRootDevice.#ctor
+  isExternal: false
+  name: SsdpRootDevice
+  nameWithType: SsdpRootDevice.SsdpRootDevice
+  fullName: Rssdp.SsdpRootDevice.SsdpRootDevice
+- uid: System.TimeSpan
+  commentId: T:System.TimeSpan
+- uid: System.ArgumentNullException
+  commentId: T:System.ArgumentNullException
+- uid: System.ArgumentException
+  commentId: T:System.ArgumentException
+- uid: Uri
+  isExternal: true
+  name: Uri
+  nameWithType: Uri
+  fullName: Uri
+- uid: TimeSpan
+  isExternal: true
+  name: TimeSpan
+  nameWithType: TimeSpan
+  fullName: TimeSpan
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  name: String
+  nameWithType: String
+  fullName: System.String
+- uid: Rssdp.SsdpRootDevice.CacheLifetime*
+  commentId: Overload:Rssdp.SsdpRootDevice.CacheLifetime
+  isExternal: false
+  name: CacheLifetime
+  nameWithType: SsdpRootDevice.CacheLifetime
+  fullName: Rssdp.SsdpRootDevice.CacheLifetime
+- uid: Rssdp.SsdpRootDevice.Location*
+  commentId: Overload:Rssdp.SsdpRootDevice.Location
+  isExternal: false
+  name: Location
+  nameWithType: SsdpRootDevice.Location
+  fullName: Rssdp.SsdpRootDevice.Location
+- uid: Rssdp.SsdpRootDevice.UrlBase*
+  commentId: Overload:Rssdp.SsdpRootDevice.UrlBase
+  isExternal: false
+  name: UrlBase
+  nameWithType: SsdpRootDevice.UrlBase
+  fullName: Rssdp.SsdpRootDevice.UrlBase
+- uid: Rssdp.SsdpRootDevice.ToDescriptionDocument*
+  commentId: Overload:Rssdp.SsdpRootDevice.ToDescriptionDocument
+  isExternal: false
+  name: ToDescriptionDocument
+  nameWithType: SsdpRootDevice.ToDescriptionDocument
+  fullName: Rssdp.SsdpRootDevice.ToDescriptionDocument

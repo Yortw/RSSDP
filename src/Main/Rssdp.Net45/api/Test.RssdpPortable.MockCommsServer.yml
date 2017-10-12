@@ -1,0 +1,944 @@
+### YamlMime:ManagedReference
+items:
+- uid: Test.RssdpPortable.MockCommsServer
+  commentId: T:Test.RssdpPortable.MockCommsServer
+  id: MockCommsServer
+  parent: Test.RssdpPortable
+  children:
+  - Test.RssdpPortable.MockCommsServer.#ctor
+  - Test.RssdpPortable.MockCommsServer.BeginListeningForBroadcasts
+  - Test.RssdpPortable.MockCommsServer.DeviceNetworkType
+  - Test.RssdpPortable.MockCommsServer.Dispose(System.Boolean)
+  - Test.RssdpPortable.MockCommsServer.IsShared
+  - Test.RssdpPortable.MockCommsServer.MockReceiveBroadcast(ReceivedUdpData)
+  - Test.RssdpPortable.MockCommsServer.MockReceiveMessage(ReceivedUdpData)
+  - Test.RssdpPortable.MockCommsServer.RequestReceived
+  - Test.RssdpPortable.MockCommsServer.ResponseReceived
+  - Test.RssdpPortable.MockCommsServer.SendMessage(System.Byte[],UdpEndPoint)
+  - Test.RssdpPortable.MockCommsServer.SendMulticastMessage(System.Byte[])
+  - Test.RssdpPortable.MockCommsServer.SentBroadcasts
+  - Test.RssdpPortable.MockCommsServer.SentMessages
+  - Test.RssdpPortable.MockCommsServer.StopListeningForBroadcasts
+  - Test.RssdpPortable.MockCommsServer.StopListeningForResponses
+  - Test.RssdpPortable.MockCommsServer.WaitForMessageToProcess(System.Int32)
+  - Test.RssdpPortable.MockCommsServer.WaitForMockBroadcast(System.Int32)
+  - Test.RssdpPortable.MockCommsServer.WaitForMockMessage(System.Int32)
+  langs:
+  - csharp
+  - vb
+  name: MockCommsServer
+  nameWithType: MockCommsServer
+  fullName: Test.RssdpPortable.MockCommsServer
+  type: Class
+  source:
+    id: MockCommsServer
+    path: ''
+    startLine: 10139
+  assemblies:
+  - cs.temp.dll
+  namespace: Test.RssdpPortable
+  syntax:
+    content: 'public class MockCommsServer : DisposableManagedObjectBase, ISsdpCommunicationsServer'
+    content.vb: >-
+      Public Class MockCommsServer
+          Inherits DisposableManagedObjectBase
+          Implements ISsdpCommunicationsServer
+  inheritance:
+  - System.Object
+  implements:
+  - ISsdpCommunicationsServer
+  modifiers.csharp:
+  - public
+  - class
+  modifiers.vb:
+  - Public
+  - Class
+- uid: Test.RssdpPortable.MockCommsServer.SentMessages
+  commentId: F:Test.RssdpPortable.MockCommsServer.SentMessages
+  id: SentMessages
+  parent: Test.RssdpPortable.MockCommsServer
+  langs:
+  - csharp
+  - vb
+  name: SentMessages
+  nameWithType: MockCommsServer.SentMessages
+  fullName: Test.RssdpPortable.MockCommsServer.SentMessages
+  type: Field
+  source:
+    id: SentMessages
+    path: ''
+    startLine: 10153
+  assemblies:
+  - cs.temp.dll
+  namespace: Test.RssdpPortable
+  syntax:
+    content: public Queue<ReceivedUdpData> SentMessages
+    return:
+      type: System.Collections.Generic.Queue{ReceivedUdpData}
+    content.vb: Public SentMessages As Queue(Of ReceivedUdpData)
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+- uid: Test.RssdpPortable.MockCommsServer.SentBroadcasts
+  commentId: F:Test.RssdpPortable.MockCommsServer.SentBroadcasts
+  id: SentBroadcasts
+  parent: Test.RssdpPortable.MockCommsServer
+  langs:
+  - csharp
+  - vb
+  name: SentBroadcasts
+  nameWithType: MockCommsServer.SentBroadcasts
+  fullName: Test.RssdpPortable.MockCommsServer.SentBroadcasts
+  type: Field
+  source:
+    id: SentBroadcasts
+    path: ''
+    startLine: 10154
+  assemblies:
+  - cs.temp.dll
+  namespace: Test.RssdpPortable
+  syntax:
+    content: public Queue<ReceivedUdpData> SentBroadcasts
+    return:
+      type: System.Collections.Generic.Queue{ReceivedUdpData}
+    content.vb: Public SentBroadcasts As Queue(Of ReceivedUdpData)
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+- uid: Test.RssdpPortable.MockCommsServer.#ctor
+  commentId: M:Test.RssdpPortable.MockCommsServer.#ctor
+  id: '#ctor'
+  parent: Test.RssdpPortable.MockCommsServer
+  langs:
+  - csharp
+  - vb
+  name: MockCommsServer()
+  nameWithType: MockCommsServer.MockCommsServer()
+  fullName: Test.RssdpPortable.MockCommsServer.MockCommsServer()
+  type: Constructor
+  source:
+    id: .ctor
+    path: ''
+    startLine: 10166
+  assemblies:
+  - cs.temp.dll
+  namespace: Test.RssdpPortable
+  syntax:
+    content: public MockCommsServer()
+    content.vb: Public Sub New
+  overload: Test.RssdpPortable.MockCommsServer.#ctor*
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+- uid: Test.RssdpPortable.MockCommsServer.Dispose(System.Boolean)
+  commentId: M:Test.RssdpPortable.MockCommsServer.Dispose(System.Boolean)
+  id: Dispose(System.Boolean)
+  parent: Test.RssdpPortable.MockCommsServer
+  langs:
+  - csharp
+  - vb
+  name: Dispose(Boolean)
+  nameWithType: MockCommsServer.Dispose(Boolean)
+  fullName: Test.RssdpPortable.MockCommsServer.Dispose(System.Boolean)
+  type: Method
+  source:
+    id: Dispose
+    path: ''
+    startLine: 10172
+  assemblies:
+  - cs.temp.dll
+  namespace: Test.RssdpPortable
+  syntax:
+    content: protected override void Dispose(bool disposing)
+    parameters:
+    - id: disposing
+      type: System.Boolean
+    content.vb: Protected Overrides Sub Dispose(disposing As Boolean)
+  overload: Test.RssdpPortable.MockCommsServer.Dispose*
+  modifiers.csharp:
+  - protected
+  - override
+  modifiers.vb:
+  - Protected
+  - Overrides
+- uid: Test.RssdpPortable.MockCommsServer.RequestReceived
+  commentId: E:Test.RssdpPortable.MockCommsServer.RequestReceived
+  id: RequestReceived
+  parent: Test.RssdpPortable.MockCommsServer
+  langs:
+  - csharp
+  - vb
+  name: RequestReceived
+  nameWithType: MockCommsServer.RequestReceived
+  fullName: Test.RssdpPortable.MockCommsServer.RequestReceived
+  type: Event
+  source:
+    id: RequestReceived
+    path: ''
+    startLine: 10193
+  assemblies:
+  - cs.temp.dll
+  namespace: Test.RssdpPortable
+  syntax:
+    content: public event EventHandler<RequestReceivedEventArgs> RequestReceived
+    return:
+      type: EventHandler{RequestReceivedEventArgs}
+    content.vb: Public Event RequestReceived As EventHandler(Of RequestReceivedEventArgs)
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+- uid: Test.RssdpPortable.MockCommsServer.ResponseReceived
+  commentId: E:Test.RssdpPortable.MockCommsServer.ResponseReceived
+  id: ResponseReceived
+  parent: Test.RssdpPortable.MockCommsServer
+  langs:
+  - csharp
+  - vb
+  name: ResponseReceived
+  nameWithType: MockCommsServer.ResponseReceived
+  fullName: Test.RssdpPortable.MockCommsServer.ResponseReceived
+  type: Event
+  source:
+    id: ResponseReceived
+    path: ''
+    startLine: 10195
+  assemblies:
+  - cs.temp.dll
+  namespace: Test.RssdpPortable
+  syntax:
+    content: public event EventHandler<ResponseReceivedEventArgs> ResponseReceived
+    return:
+      type: EventHandler{ResponseReceivedEventArgs}
+    content.vb: Public Event ResponseReceived As EventHandler(Of ResponseReceivedEventArgs)
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+- uid: Test.RssdpPortable.MockCommsServer.BeginListeningForBroadcasts
+  commentId: M:Test.RssdpPortable.MockCommsServer.BeginListeningForBroadcasts
+  id: BeginListeningForBroadcasts
+  parent: Test.RssdpPortable.MockCommsServer
+  langs:
+  - csharp
+  - vb
+  name: BeginListeningForBroadcasts()
+  nameWithType: MockCommsServer.BeginListeningForBroadcasts()
+  fullName: Test.RssdpPortable.MockCommsServer.BeginListeningForBroadcasts()
+  type: Method
+  source:
+    id: BeginListeningForBroadcasts
+    path: ''
+    startLine: 10197
+  assemblies:
+  - cs.temp.dll
+  namespace: Test.RssdpPortable
+  syntax:
+    content: public void BeginListeningForBroadcasts()
+    content.vb: Public Sub BeginListeningForBroadcasts
+  overload: Test.RssdpPortable.MockCommsServer.BeginListeningForBroadcasts*
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+- uid: Test.RssdpPortable.MockCommsServer.StopListeningForBroadcasts
+  commentId: M:Test.RssdpPortable.MockCommsServer.StopListeningForBroadcasts
+  id: StopListeningForBroadcasts
+  parent: Test.RssdpPortable.MockCommsServer
+  langs:
+  - csharp
+  - vb
+  name: StopListeningForBroadcasts()
+  nameWithType: MockCommsServer.StopListeningForBroadcasts()
+  fullName: Test.RssdpPortable.MockCommsServer.StopListeningForBroadcasts()
+  type: Method
+  source:
+    id: StopListeningForBroadcasts
+    path: ''
+    startLine: 10225
+  assemblies:
+  - cs.temp.dll
+  namespace: Test.RssdpPortable
+  syntax:
+    content: public void StopListeningForBroadcasts()
+    content.vb: Public Sub StopListeningForBroadcasts
+  overload: Test.RssdpPortable.MockCommsServer.StopListeningForBroadcasts*
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+- uid: Test.RssdpPortable.MockCommsServer.StopListeningForResponses
+  commentId: M:Test.RssdpPortable.MockCommsServer.StopListeningForResponses
+  id: StopListeningForResponses
+  parent: Test.RssdpPortable.MockCommsServer
+  langs:
+  - csharp
+  - vb
+  name: StopListeningForResponses()
+  nameWithType: MockCommsServer.StopListeningForResponses()
+  fullName: Test.RssdpPortable.MockCommsServer.StopListeningForResponses()
+  type: Method
+  source:
+    id: StopListeningForResponses
+    path: ''
+    startLine: 10232
+  assemblies:
+  - cs.temp.dll
+  namespace: Test.RssdpPortable
+  syntax:
+    content: public void StopListeningForResponses()
+    content.vb: Public Sub StopListeningForResponses
+  overload: Test.RssdpPortable.MockCommsServer.StopListeningForResponses*
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+- uid: Test.RssdpPortable.MockCommsServer.SendMessage(System.Byte[],UdpEndPoint)
+  commentId: M:Test.RssdpPortable.MockCommsServer.SendMessage(System.Byte[],UdpEndPoint)
+  id: SendMessage(System.Byte[],UdpEndPoint)
+  parent: Test.RssdpPortable.MockCommsServer
+  langs:
+  - csharp
+  - vb
+  name: SendMessage(Byte[], UdpEndPoint)
+  nameWithType: MockCommsServer.SendMessage(Byte[], UdpEndPoint)
+  fullName: Test.RssdpPortable.MockCommsServer.SendMessage(System.Byte[], UdpEndPoint)
+  type: Method
+  source:
+    id: SendMessage
+    path: ''
+    startLine: 10239
+  assemblies:
+  - cs.temp.dll
+  namespace: Test.RssdpPortable
+  syntax:
+    content: public void SendMessage(byte[] messageData, UdpEndPoint destination)
+    parameters:
+    - id: messageData
+      type: System.Byte[]
+    - id: destination
+      type: UdpEndPoint
+    content.vb: Public Sub SendMessage(messageData As Byte(), destination As UdpEndPoint)
+  overload: Test.RssdpPortable.MockCommsServer.SendMessage*
+  nameWithType.vb: MockCommsServer.SendMessage(Byte(), UdpEndPoint)
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+  fullName.vb: Test.RssdpPortable.MockCommsServer.SendMessage(System.Byte(), UdpEndPoint)
+  name.vb: SendMessage(Byte(), UdpEndPoint)
+- uid: Test.RssdpPortable.MockCommsServer.SendMulticastMessage(System.Byte[])
+  commentId: M:Test.RssdpPortable.MockCommsServer.SendMulticastMessage(System.Byte[])
+  id: SendMulticastMessage(System.Byte[])
+  parent: Test.RssdpPortable.MockCommsServer
+  langs:
+  - csharp
+  - vb
+  name: SendMulticastMessage(Byte[])
+  nameWithType: MockCommsServer.SendMulticastMessage(Byte[])
+  fullName: Test.RssdpPortable.MockCommsServer.SendMulticastMessage(System.Byte[])
+  type: Method
+  source:
+    id: SendMulticastMessage
+    path: ''
+    startLine: 10256
+  assemblies:
+  - cs.temp.dll
+  namespace: Test.RssdpPortable
+  syntax:
+    content: public void SendMulticastMessage(byte[] messageData)
+    parameters:
+    - id: messageData
+      type: System.Byte[]
+    content.vb: Public Sub SendMulticastMessage(messageData As Byte())
+  overload: Test.RssdpPortable.MockCommsServer.SendMulticastMessage*
+  nameWithType.vb: MockCommsServer.SendMulticastMessage(Byte())
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+  fullName.vb: Test.RssdpPortable.MockCommsServer.SendMulticastMessage(System.Byte())
+  name.vb: SendMulticastMessage(Byte())
+- uid: Test.RssdpPortable.MockCommsServer.IsShared
+  commentId: P:Test.RssdpPortable.MockCommsServer.IsShared
+  id: IsShared
+  parent: Test.RssdpPortable.MockCommsServer
+  langs:
+  - csharp
+  - vb
+  name: IsShared
+  nameWithType: MockCommsServer.IsShared
+  fullName: Test.RssdpPortable.MockCommsServer.IsShared
+  type: Property
+  source:
+    id: IsShared
+    path: ''
+    startLine: 10304
+  assemblies:
+  - cs.temp.dll
+  namespace: Test.RssdpPortable
+  syntax:
+    content: public bool IsShared { get; set; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Public Property IsShared As Boolean
+  overload: Test.RssdpPortable.MockCommsServer.IsShared*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: Test.RssdpPortable.MockCommsServer.DeviceNetworkType
+  commentId: P:Test.RssdpPortable.MockCommsServer.DeviceNetworkType
+  id: DeviceNetworkType
+  parent: Test.RssdpPortable.MockCommsServer
+  langs:
+  - csharp
+  - vb
+  name: DeviceNetworkType
+  nameWithType: MockCommsServer.DeviceNetworkType
+  fullName: Test.RssdpPortable.MockCommsServer.DeviceNetworkType
+  type: Property
+  source:
+    id: DeviceNetworkType
+    path: ''
+    startLine: 10310
+  assemblies:
+  - cs.temp.dll
+  namespace: Test.RssdpPortable
+  syntax:
+    content: public DeviceNetworkType DeviceNetworkType { get; }
+    parameters: []
+    return:
+      type: DeviceNetworkType
+    content.vb: Public ReadOnly Property DeviceNetworkType As DeviceNetworkType
+  overload: Test.RssdpPortable.MockCommsServer.DeviceNetworkType*
+  modifiers.csharp:
+  - public
+  - get
+  modifiers.vb:
+  - Public
+  - ReadOnly
+- uid: Test.RssdpPortable.MockCommsServer.MockReceiveBroadcast(ReceivedUdpData)
+  commentId: M:Test.RssdpPortable.MockCommsServer.MockReceiveBroadcast(ReceivedUdpData)
+  id: MockReceiveBroadcast(ReceivedUdpData)
+  parent: Test.RssdpPortable.MockCommsServer
+  langs:
+  - csharp
+  - vb
+  name: MockReceiveBroadcast(ReceivedUdpData)
+  nameWithType: MockCommsServer.MockReceiveBroadcast(ReceivedUdpData)
+  fullName: Test.RssdpPortable.MockCommsServer.MockReceiveBroadcast(ReceivedUdpData)
+  type: Method
+  source:
+    id: MockReceiveBroadcast
+    path: ''
+    startLine: 10317
+  assemblies:
+  - cs.temp.dll
+  namespace: Test.RssdpPortable
+  syntax:
+    content: public void MockReceiveBroadcast(ReceivedUdpData broadcastMessage)
+    parameters:
+    - id: broadcastMessage
+      type: ReceivedUdpData
+    content.vb: Public Sub MockReceiveBroadcast(broadcastMessage As ReceivedUdpData)
+  overload: Test.RssdpPortable.MockCommsServer.MockReceiveBroadcast*
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+- uid: Test.RssdpPortable.MockCommsServer.MockReceiveMessage(ReceivedUdpData)
+  commentId: M:Test.RssdpPortable.MockCommsServer.MockReceiveMessage(ReceivedUdpData)
+  id: MockReceiveMessage(ReceivedUdpData)
+  parent: Test.RssdpPortable.MockCommsServer
+  langs:
+  - csharp
+  - vb
+  name: MockReceiveMessage(ReceivedUdpData)
+  nameWithType: MockCommsServer.MockReceiveMessage(ReceivedUdpData)
+  fullName: Test.RssdpPortable.MockCommsServer.MockReceiveMessage(ReceivedUdpData)
+  type: Method
+  source:
+    id: MockReceiveMessage
+    path: ''
+    startLine: 10326
+  assemblies:
+  - cs.temp.dll
+  namespace: Test.RssdpPortable
+  syntax:
+    content: public void MockReceiveMessage(ReceivedUdpData message)
+    parameters:
+    - id: message
+      type: ReceivedUdpData
+    content.vb: Public Sub MockReceiveMessage(message As ReceivedUdpData)
+  overload: Test.RssdpPortable.MockCommsServer.MockReceiveMessage*
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+- uid: Test.RssdpPortable.MockCommsServer.WaitForMockBroadcast(System.Int32)
+  commentId: M:Test.RssdpPortable.MockCommsServer.WaitForMockBroadcast(System.Int32)
+  id: WaitForMockBroadcast(System.Int32)
+  parent: Test.RssdpPortable.MockCommsServer
+  langs:
+  - csharp
+  - vb
+  name: WaitForMockBroadcast(Int32)
+  nameWithType: MockCommsServer.WaitForMockBroadcast(Int32)
+  fullName: Test.RssdpPortable.MockCommsServer.WaitForMockBroadcast(System.Int32)
+  type: Method
+  source:
+    id: WaitForMockBroadcast
+    path: ''
+    startLine: 10335
+  assemblies:
+  - cs.temp.dll
+  namespace: Test.RssdpPortable
+  syntax:
+    content: public void WaitForMockBroadcast(int timeoutMilliseconds)
+    parameters:
+    - id: timeoutMilliseconds
+      type: System.Int32
+    content.vb: Public Sub WaitForMockBroadcast(timeoutMilliseconds As Integer)
+  overload: Test.RssdpPortable.MockCommsServer.WaitForMockBroadcast*
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+- uid: Test.RssdpPortable.MockCommsServer.WaitForMockMessage(System.Int32)
+  commentId: M:Test.RssdpPortable.MockCommsServer.WaitForMockMessage(System.Int32)
+  id: WaitForMockMessage(System.Int32)
+  parent: Test.RssdpPortable.MockCommsServer
+  langs:
+  - csharp
+  - vb
+  name: WaitForMockMessage(Int32)
+  nameWithType: MockCommsServer.WaitForMockMessage(Int32)
+  fullName: Test.RssdpPortable.MockCommsServer.WaitForMockMessage(System.Int32)
+  type: Method
+  source:
+    id: WaitForMockMessage
+    path: ''
+    startLine: 10344
+  assemblies:
+  - cs.temp.dll
+  namespace: Test.RssdpPortable
+  syntax:
+    content: public bool WaitForMockMessage(int timeoutMilliseconds)
+    parameters:
+    - id: timeoutMilliseconds
+      type: System.Int32
+    return:
+      type: System.Boolean
+    content.vb: Public Function WaitForMockMessage(timeoutMilliseconds As Integer) As Boolean
+  overload: Test.RssdpPortable.MockCommsServer.WaitForMockMessage*
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+- uid: Test.RssdpPortable.MockCommsServer.WaitForMessageToProcess(System.Int32)
+  commentId: M:Test.RssdpPortable.MockCommsServer.WaitForMessageToProcess(System.Int32)
+  id: WaitForMessageToProcess(System.Int32)
+  parent: Test.RssdpPortable.MockCommsServer
+  langs:
+  - csharp
+  - vb
+  name: WaitForMessageToProcess(Int32)
+  nameWithType: MockCommsServer.WaitForMessageToProcess(Int32)
+  fullName: Test.RssdpPortable.MockCommsServer.WaitForMessageToProcess(System.Int32)
+  type: Method
+  source:
+    id: WaitForMessageToProcess
+    path: ''
+    startLine: 10354
+  assemblies:
+  - cs.temp.dll
+  namespace: Test.RssdpPortable
+  syntax:
+    content: public bool WaitForMessageToProcess(int timeoutMillseconds)
+    parameters:
+    - id: timeoutMillseconds
+      type: System.Int32
+    return:
+      type: System.Boolean
+    content.vb: Public Function WaitForMessageToProcess(timeoutMillseconds As Integer) As Boolean
+  overload: Test.RssdpPortable.MockCommsServer.WaitForMessageToProcess*
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+references:
+- uid: Test.RssdpPortable
+  commentId: N:Test.RssdpPortable
+  isExternal: false
+  name: Test.RssdpPortable
+  nameWithType: Test.RssdpPortable
+  fullName: Test.RssdpPortable
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  name: Object
+  nameWithType: Object
+  fullName: System.Object
+- uid: ISsdpCommunicationsServer
+  isExternal: true
+  name: ISsdpCommunicationsServer
+  nameWithType: ISsdpCommunicationsServer
+  fullName: ISsdpCommunicationsServer
+- uid: System
+  commentId: N:System
+  isExternal: false
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: System.Collections.Generic.Queue{ReceivedUdpData}
+  commentId: '!:System.Collections.Generic.Queue{ReceivedUdpData}'
+  definition: System.Collections.Generic.Queue`1
+  name: Queue<ReceivedUdpData>
+  nameWithType: Queue<ReceivedUdpData>
+  fullName: System.Collections.Generic.Queue<ReceivedUdpData>
+  nameWithType.vb: Queue(Of ReceivedUdpData)
+  fullName.vb: System.Collections.Generic.Queue(Of ReceivedUdpData)
+  name.vb: Queue(Of ReceivedUdpData)
+  spec.csharp:
+  - uid: System.Collections.Generic.Queue`1
+    name: Queue
+    nameWithType: Queue
+    fullName: System.Collections.Generic.Queue
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: ReceivedUdpData
+    name: ReceivedUdpData
+    nameWithType: ReceivedUdpData
+    fullName: ReceivedUdpData
+    isExternal: true
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.Queue`1
+    name: Queue
+    nameWithType: Queue
+    fullName: System.Collections.Generic.Queue
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: ReceivedUdpData
+    name: ReceivedUdpData
+    nameWithType: ReceivedUdpData
+    fullName: ReceivedUdpData
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Collections.Generic.Queue`1
+  isExternal: true
+  name: Queue<>
+  nameWithType: Queue<>
+  fullName: System.Collections.Generic.Queue<>
+  nameWithType.vb: Queue(Of )
+  fullName.vb: System.Collections.Generic.Queue(Of )
+  name.vb: Queue(Of )
+  spec.csharp:
+  - uid: System.Collections.Generic.Queue`1
+    name: Queue
+    nameWithType: Queue
+    fullName: System.Collections.Generic.Queue
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - name: ''
+    nameWithType: ''
+    fullName: ''
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.Queue`1
+    name: Queue
+    nameWithType: Queue
+    fullName: System.Collections.Generic.Queue
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - name: ''
+    nameWithType: ''
+    fullName: ''
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: Test.RssdpPortable.MockCommsServer.#ctor*
+  commentId: Overload:Test.RssdpPortable.MockCommsServer.#ctor
+  isExternal: false
+  name: MockCommsServer
+  nameWithType: MockCommsServer.MockCommsServer
+  fullName: Test.RssdpPortable.MockCommsServer.MockCommsServer
+- uid: Test.RssdpPortable.MockCommsServer.Dispose*
+  commentId: Overload:Test.RssdpPortable.MockCommsServer.Dispose
+  isExternal: false
+  name: Dispose
+  nameWithType: MockCommsServer.Dispose
+  fullName: Test.RssdpPortable.MockCommsServer.Dispose
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  name: Boolean
+  nameWithType: Boolean
+  fullName: System.Boolean
+- uid: EventHandler{RequestReceivedEventArgs}
+  commentId: '!:EventHandler{RequestReceivedEventArgs}'
+  definition: EventHandler`1
+  name: EventHandler<RequestReceivedEventArgs>
+  nameWithType: EventHandler<RequestReceivedEventArgs>
+  fullName: EventHandler<RequestReceivedEventArgs>
+  nameWithType.vb: EventHandler(Of RequestReceivedEventArgs)
+  fullName.vb: EventHandler(Of RequestReceivedEventArgs)
+  name.vb: EventHandler(Of RequestReceivedEventArgs)
+  spec.csharp:
+  - uid: EventHandler`1
+    name: EventHandler
+    nameWithType: EventHandler
+    fullName: EventHandler
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: RequestReceivedEventArgs
+    name: RequestReceivedEventArgs
+    nameWithType: RequestReceivedEventArgs
+    fullName: RequestReceivedEventArgs
+    isExternal: true
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: EventHandler`1
+    name: EventHandler
+    nameWithType: EventHandler
+    fullName: EventHandler
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: RequestReceivedEventArgs
+    name: RequestReceivedEventArgs
+    nameWithType: RequestReceivedEventArgs
+    fullName: RequestReceivedEventArgs
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: EventHandler`1
+  isExternal: true
+  name: EventHandler<>
+  nameWithType: EventHandler<>
+  fullName: EventHandler<>
+  nameWithType.vb: EventHandler(Of )
+  fullName.vb: EventHandler(Of )
+  name.vb: EventHandler(Of )
+  spec.csharp:
+  - uid: EventHandler`1
+    name: EventHandler
+    nameWithType: EventHandler
+    fullName: EventHandler
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - name: ''
+    nameWithType: ''
+    fullName: ''
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: EventHandler`1
+    name: EventHandler
+    nameWithType: EventHandler
+    fullName: EventHandler
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - name: ''
+    nameWithType: ''
+    fullName: ''
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: EventHandler{ResponseReceivedEventArgs}
+  commentId: '!:EventHandler{ResponseReceivedEventArgs}'
+  definition: EventHandler`1
+  name: EventHandler<ResponseReceivedEventArgs>
+  nameWithType: EventHandler<ResponseReceivedEventArgs>
+  fullName: EventHandler<ResponseReceivedEventArgs>
+  nameWithType.vb: EventHandler(Of ResponseReceivedEventArgs)
+  fullName.vb: EventHandler(Of ResponseReceivedEventArgs)
+  name.vb: EventHandler(Of ResponseReceivedEventArgs)
+  spec.csharp:
+  - uid: EventHandler`1
+    name: EventHandler
+    nameWithType: EventHandler
+    fullName: EventHandler
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: ResponseReceivedEventArgs
+    name: ResponseReceivedEventArgs
+    nameWithType: ResponseReceivedEventArgs
+    fullName: ResponseReceivedEventArgs
+    isExternal: true
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: EventHandler`1
+    name: EventHandler
+    nameWithType: EventHandler
+    fullName: EventHandler
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: ResponseReceivedEventArgs
+    name: ResponseReceivedEventArgs
+    nameWithType: ResponseReceivedEventArgs
+    fullName: ResponseReceivedEventArgs
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: Test.RssdpPortable.MockCommsServer.BeginListeningForBroadcasts*
+  commentId: Overload:Test.RssdpPortable.MockCommsServer.BeginListeningForBroadcasts
+  isExternal: false
+  name: BeginListeningForBroadcasts
+  nameWithType: MockCommsServer.BeginListeningForBroadcasts
+  fullName: Test.RssdpPortable.MockCommsServer.BeginListeningForBroadcasts
+- uid: Test.RssdpPortable.MockCommsServer.StopListeningForBroadcasts*
+  commentId: Overload:Test.RssdpPortable.MockCommsServer.StopListeningForBroadcasts
+  isExternal: false
+  name: StopListeningForBroadcasts
+  nameWithType: MockCommsServer.StopListeningForBroadcasts
+  fullName: Test.RssdpPortable.MockCommsServer.StopListeningForBroadcasts
+- uid: Test.RssdpPortable.MockCommsServer.StopListeningForResponses*
+  commentId: Overload:Test.RssdpPortable.MockCommsServer.StopListeningForResponses
+  isExternal: false
+  name: StopListeningForResponses
+  nameWithType: MockCommsServer.StopListeningForResponses
+  fullName: Test.RssdpPortable.MockCommsServer.StopListeningForResponses
+- uid: Test.RssdpPortable.MockCommsServer.SendMessage*
+  commentId: Overload:Test.RssdpPortable.MockCommsServer.SendMessage
+  isExternal: false
+  name: SendMessage
+  nameWithType: MockCommsServer.SendMessage
+  fullName: Test.RssdpPortable.MockCommsServer.SendMessage
+- uid: System.Byte[]
+  name: Byte[]
+  nameWithType: Byte[]
+  fullName: System.Byte[]
+  nameWithType.vb: Byte()
+  fullName.vb: System.Byte()
+  name.vb: Byte()
+  spec.csharp:
+  - uid: System.Byte
+    name: Byte
+    nameWithType: Byte
+    fullName: System.Byte
+    isExternal: true
+  - name: '[]'
+    nameWithType: '[]'
+    fullName: '[]'
+  spec.vb:
+  - uid: System.Byte
+    name: Byte
+    nameWithType: Byte
+    fullName: System.Byte
+    isExternal: true
+  - name: ()
+    nameWithType: ()
+    fullName: ()
+- uid: UdpEndPoint
+  isExternal: true
+  name: UdpEndPoint
+  nameWithType: UdpEndPoint
+  fullName: UdpEndPoint
+- uid: Test.RssdpPortable.MockCommsServer.SendMulticastMessage*
+  commentId: Overload:Test.RssdpPortable.MockCommsServer.SendMulticastMessage
+  isExternal: false
+  name: SendMulticastMessage
+  nameWithType: MockCommsServer.SendMulticastMessage
+  fullName: Test.RssdpPortable.MockCommsServer.SendMulticastMessage
+- uid: Test.RssdpPortable.MockCommsServer.IsShared*
+  commentId: Overload:Test.RssdpPortable.MockCommsServer.IsShared
+  isExternal: false
+  name: IsShared
+  nameWithType: MockCommsServer.IsShared
+  fullName: Test.RssdpPortable.MockCommsServer.IsShared
+- uid: Test.RssdpPortable.MockCommsServer.DeviceNetworkType*
+  commentId: Overload:Test.RssdpPortable.MockCommsServer.DeviceNetworkType
+  isExternal: false
+  name: DeviceNetworkType
+  nameWithType: MockCommsServer.DeviceNetworkType
+  fullName: Test.RssdpPortable.MockCommsServer.DeviceNetworkType
+- uid: DeviceNetworkType
+  commentId: '!:DeviceNetworkType'
+  isExternal: true
+  name: DeviceNetworkType
+  nameWithType: DeviceNetworkType
+  fullName: DeviceNetworkType
+- uid: Test.RssdpPortable.MockCommsServer.MockReceiveBroadcast*
+  commentId: Overload:Test.RssdpPortable.MockCommsServer.MockReceiveBroadcast
+  isExternal: false
+  name: MockReceiveBroadcast
+  nameWithType: MockCommsServer.MockReceiveBroadcast
+  fullName: Test.RssdpPortable.MockCommsServer.MockReceiveBroadcast
+- uid: ReceivedUdpData
+  isExternal: true
+  name: ReceivedUdpData
+  nameWithType: ReceivedUdpData
+  fullName: ReceivedUdpData
+- uid: Test.RssdpPortable.MockCommsServer.MockReceiveMessage*
+  commentId: Overload:Test.RssdpPortable.MockCommsServer.MockReceiveMessage
+  isExternal: false
+  name: MockReceiveMessage
+  nameWithType: MockCommsServer.MockReceiveMessage
+  fullName: Test.RssdpPortable.MockCommsServer.MockReceiveMessage
+- uid: Test.RssdpPortable.MockCommsServer.WaitForMockBroadcast*
+  commentId: Overload:Test.RssdpPortable.MockCommsServer.WaitForMockBroadcast
+  isExternal: false
+  name: WaitForMockBroadcast
+  nameWithType: MockCommsServer.WaitForMockBroadcast
+  fullName: Test.RssdpPortable.MockCommsServer.WaitForMockBroadcast
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  name: Int32
+  nameWithType: Int32
+  fullName: System.Int32
+- uid: Test.RssdpPortable.MockCommsServer.WaitForMockMessage*
+  commentId: Overload:Test.RssdpPortable.MockCommsServer.WaitForMockMessage
+  isExternal: false
+  name: WaitForMockMessage
+  nameWithType: MockCommsServer.WaitForMockMessage
+  fullName: Test.RssdpPortable.MockCommsServer.WaitForMockMessage
+- uid: Test.RssdpPortable.MockCommsServer.WaitForMessageToProcess*
+  commentId: Overload:Test.RssdpPortable.MockCommsServer.WaitForMessageToProcess
+  isExternal: false
+  name: WaitForMessageToProcess
+  nameWithType: MockCommsServer.WaitForMessageToProcess
+  fullName: Test.RssdpPortable.MockCommsServer.WaitForMessageToProcess

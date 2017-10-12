@@ -1,0 +1,204 @@
+### YamlMime:ManagedReference
+items:
+- uid: Rssdp.DeviceAvailableEventArgs
+  commentId: T:Rssdp.DeviceAvailableEventArgs
+  id: DeviceAvailableEventArgs
+  parent: Rssdp
+  children:
+  - Rssdp.DeviceAvailableEventArgs.#ctor(Rssdp.DiscoveredSsdpDevice,System.Boolean)
+  - Rssdp.DeviceAvailableEventArgs.DiscoveredDevice
+  - Rssdp.DeviceAvailableEventArgs.IsNewlyDiscovered
+  langs:
+  - csharp
+  - vb
+  name: DeviceAvailableEventArgs
+  nameWithType: DeviceAvailableEventArgs
+  fullName: Rssdp.DeviceAvailableEventArgs
+  type: Class
+  source:
+    id: DeviceAvailableEventArgs
+    path: ''
+    startLine: 2388
+  assemblies:
+  - cs.temp.dll
+  namespace: Rssdp
+  summary: "\nEvent arguments for the <xref href=\"Rssdp.Infrastructure.SsdpDeviceLocatorBase.DeviceAvailable\" data-throw-if-not-resolved=\"false\"></xref> event.\n"
+  example: []
+  syntax:
+    content: 'public sealed class DeviceAvailableEventArgs : EventArgs'
+    content.vb: >-
+      Public NotInheritable Class DeviceAvailableEventArgs
+          Inherits EventArgs
+  inheritance:
+  - System.Object
+  modifiers.csharp:
+  - public
+  - sealed
+  - class
+  modifiers.vb:
+  - Public
+  - NotInheritable
+  - Class
+- uid: Rssdp.DeviceAvailableEventArgs.#ctor(Rssdp.DiscoveredSsdpDevice,System.Boolean)
+  commentId: M:Rssdp.DeviceAvailableEventArgs.#ctor(Rssdp.DiscoveredSsdpDevice,System.Boolean)
+  id: '#ctor(Rssdp.DiscoveredSsdpDevice,System.Boolean)'
+  parent: Rssdp.DeviceAvailableEventArgs
+  langs:
+  - csharp
+  - vb
+  name: DeviceAvailableEventArgs(DiscoveredSsdpDevice, Boolean)
+  nameWithType: DeviceAvailableEventArgs.DeviceAvailableEventArgs(DiscoveredSsdpDevice, Boolean)
+  fullName: Rssdp.DeviceAvailableEventArgs.DeviceAvailableEventArgs(Rssdp.DiscoveredSsdpDevice, System.Boolean)
+  type: Constructor
+  source:
+    id: .ctor
+    path: ''
+    startLine: 2406
+  assemblies:
+  - cs.temp.dll
+  namespace: Rssdp
+  summary: "\nFull constructor.\n"
+  example: []
+  syntax:
+    content: public DeviceAvailableEventArgs(DiscoveredSsdpDevice discoveredDevice, bool isNewlyDiscovered)
+    parameters:
+    - id: discoveredDevice
+      type: Rssdp.DiscoveredSsdpDevice
+      description: A <xref href="Rssdp.DiscoveredSsdpDevice" data-throw-if-not-resolved="false"></xref> instance representing the available device.
+    - id: isNewlyDiscovered
+      type: System.Boolean
+      description: A boolean value indicating whether or not this device came from the cache. See <xref href="Rssdp.DeviceAvailableEventArgs.IsNewlyDiscovered" data-throw-if-not-resolved="false"></xref> for more detail.
+    content.vb: Public Sub New(discoveredDevice As DiscoveredSsdpDevice, isNewlyDiscovered As Boolean)
+  overload: Rssdp.DeviceAvailableEventArgs.#ctor*
+  exceptions:
+  - type: System.ArgumentNullException
+    commentId: T:System.ArgumentNullException
+    description: Thrown if the <code data-dev-comment-type="paramref" class="paramref">discoveredDevice</code> parameter is null.
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+- uid: Rssdp.DeviceAvailableEventArgs.IsNewlyDiscovered
+  commentId: P:Rssdp.DeviceAvailableEventArgs.IsNewlyDiscovered
+  id: IsNewlyDiscovered
+  parent: Rssdp.DeviceAvailableEventArgs
+  langs:
+  - csharp
+  - vb
+  name: IsNewlyDiscovered
+  nameWithType: DeviceAvailableEventArgs.IsNewlyDiscovered
+  fullName: Rssdp.DeviceAvailableEventArgs.IsNewlyDiscovered
+  type: Property
+  source:
+    id: IsNewlyDiscovered
+    path: ''
+    startLine: 2421
+  assemblies:
+  - cs.temp.dll
+  namespace: Rssdp
+  summary: "\nReturns true if the device was discovered due to an alive notification, or a search and was not already in the cache. Returns false if the item came from the cache but matched the current search request.\n"
+  example: []
+  syntax:
+    content: public bool IsNewlyDiscovered { get; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Public ReadOnly Property IsNewlyDiscovered As Boolean
+  overload: Rssdp.DeviceAvailableEventArgs.IsNewlyDiscovered*
+  modifiers.csharp:
+  - public
+  - get
+  modifiers.vb:
+  - Public
+  - ReadOnly
+- uid: Rssdp.DeviceAvailableEventArgs.DiscoveredDevice
+  commentId: P:Rssdp.DeviceAvailableEventArgs.DiscoveredDevice
+  id: DiscoveredDevice
+  parent: Rssdp.DeviceAvailableEventArgs
+  langs:
+  - csharp
+  - vb
+  name: DiscoveredDevice
+  nameWithType: DeviceAvailableEventArgs.DiscoveredDevice
+  fullName: Rssdp.DeviceAvailableEventArgs.DiscoveredDevice
+  type: Property
+  source:
+    id: DiscoveredDevice
+    path: ''
+    startLine: 2429
+  assemblies:
+  - cs.temp.dll
+  namespace: Rssdp
+  summary: "\nA reference to a <xref href=\"Rssdp.DiscoveredSsdpDevice\" data-throw-if-not-resolved=\"false\"></xref> instance containing the discovered details and allowing access to the full device description.\n"
+  example: []
+  syntax:
+    content: public DiscoveredSsdpDevice DiscoveredDevice { get; }
+    parameters: []
+    return:
+      type: Rssdp.DiscoveredSsdpDevice
+    content.vb: Public ReadOnly Property DiscoveredDevice As DiscoveredSsdpDevice
+  overload: Rssdp.DeviceAvailableEventArgs.DiscoveredDevice*
+  modifiers.csharp:
+  - public
+  - get
+  modifiers.vb:
+  - Public
+  - ReadOnly
+references:
+- uid: Rssdp.Infrastructure.SsdpDeviceLocatorBase.DeviceAvailable
+  commentId: E:Rssdp.Infrastructure.SsdpDeviceLocatorBase.DeviceAvailable
+- uid: Rssdp
+  commentId: N:Rssdp
+  isExternal: false
+  name: Rssdp
+  nameWithType: Rssdp
+  fullName: Rssdp
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  name: Object
+  nameWithType: Object
+  fullName: System.Object
+- uid: System
+  commentId: N:System
+  isExternal: false
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Rssdp.DiscoveredSsdpDevice
+  commentId: T:Rssdp.DiscoveredSsdpDevice
+  parent: Rssdp
+  isExternal: false
+  name: DiscoveredSsdpDevice
+  nameWithType: DiscoveredSsdpDevice
+  fullName: Rssdp.DiscoveredSsdpDevice
+- uid: Rssdp.DeviceAvailableEventArgs.IsNewlyDiscovered
+  commentId: P:Rssdp.DeviceAvailableEventArgs.IsNewlyDiscovered
+- uid: Rssdp.DeviceAvailableEventArgs.#ctor*
+  commentId: Overload:Rssdp.DeviceAvailableEventArgs.#ctor
+  isExternal: false
+  name: DeviceAvailableEventArgs
+  nameWithType: DeviceAvailableEventArgs.DeviceAvailableEventArgs
+  fullName: Rssdp.DeviceAvailableEventArgs.DeviceAvailableEventArgs
+- uid: System.ArgumentNullException
+  commentId: T:System.ArgumentNullException
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  name: Boolean
+  nameWithType: Boolean
+  fullName: System.Boolean
+- uid: Rssdp.DeviceAvailableEventArgs.IsNewlyDiscovered*
+  commentId: Overload:Rssdp.DeviceAvailableEventArgs.IsNewlyDiscovered
+  isExternal: false
+  name: IsNewlyDiscovered
+  nameWithType: DeviceAvailableEventArgs.IsNewlyDiscovered
+  fullName: Rssdp.DeviceAvailableEventArgs.IsNewlyDiscovered
+- uid: Rssdp.DeviceAvailableEventArgs.DiscoveredDevice*
+  commentId: Overload:Rssdp.DeviceAvailableEventArgs.DiscoveredDevice
+  isExternal: false
+  name: DiscoveredDevice
+  nameWithType: DeviceAvailableEventArgs.DiscoveredDevice
+  fullName: Rssdp.DeviceAvailableEventArgs.DiscoveredDevice

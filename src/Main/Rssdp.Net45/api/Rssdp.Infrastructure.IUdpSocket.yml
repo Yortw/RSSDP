@@ -1,0 +1,235 @@
+### YamlMime:ManagedReference
+items:
+- uid: Rssdp.Infrastructure.IUdpSocket
+  commentId: T:Rssdp.Infrastructure.IUdpSocket
+  id: IUdpSocket
+  parent: Rssdp.Infrastructure
+  children:
+  - Rssdp.Infrastructure.IUdpSocket.ReceiveAsync
+  - Rssdp.Infrastructure.IUdpSocket.SendTo(System.Byte[],Rssdp.Infrastructure.UdpEndPoint)
+  langs:
+  - csharp
+  - vb
+  name: IUdpSocket
+  nameWithType: IUdpSocket
+  fullName: Rssdp.Infrastructure.IUdpSocket
+  type: Interface
+  source:
+    id: IUdpSocket
+    path: ''
+    startLine: 3742
+  assemblies:
+  - cs.temp.dll
+  namespace: Rssdp.Infrastructure
+  summary: "\nProvides a common interface across platforms for UDP sockets used by this SSDP implementation.\n"
+  example: []
+  syntax:
+    content: 'public interface IUdpSocket : IDisposable'
+    content.vb: >-
+      Public Interface IUdpSocket
+          Inherits IDisposable
+  modifiers.csharp:
+  - public
+  - interface
+  modifiers.vb:
+  - Public
+  - Interface
+- uid: Rssdp.Infrastructure.IUdpSocket.ReceiveAsync
+  commentId: M:Rssdp.Infrastructure.IUdpSocket.ReceiveAsync
+  id: ReceiveAsync
+  parent: Rssdp.Infrastructure.IUdpSocket
+  langs:
+  - csharp
+  - vb
+  name: ReceiveAsync()
+  nameWithType: IUdpSocket.ReceiveAsync()
+  fullName: Rssdp.Infrastructure.IUdpSocket.ReceiveAsync()
+  type: Method
+  source:
+    id: ReceiveAsync
+    path: ''
+    startLine: 3748
+  assemblies:
+  - cs.temp.dll
+  namespace: Rssdp.Infrastructure
+  summary: "\nWaits for and returns the next UDP message sent to this socket (uni or multicast).\n"
+  example: []
+  syntax:
+    content: Task<ReceivedUdpData> ReceiveAsync()
+    return:
+      type: System.Threading.Tasks.Task{Rssdp.Infrastructure.ReceivedUdpData}
+      description: ''
+    content.vb: Function ReceiveAsync As Task(Of ReceivedUdpData)
+  overload: Rssdp.Infrastructure.IUdpSocket.ReceiveAsync*
+- uid: Rssdp.Infrastructure.IUdpSocket.SendTo(System.Byte[],Rssdp.Infrastructure.UdpEndPoint)
+  commentId: M:Rssdp.Infrastructure.IUdpSocket.SendTo(System.Byte[],Rssdp.Infrastructure.UdpEndPoint)
+  id: SendTo(System.Byte[],Rssdp.Infrastructure.UdpEndPoint)
+  parent: Rssdp.Infrastructure.IUdpSocket
+  langs:
+  - csharp
+  - vb
+  name: SendTo(Byte[], UdpEndPoint)
+  nameWithType: IUdpSocket.SendTo(Byte[], UdpEndPoint)
+  fullName: Rssdp.Infrastructure.IUdpSocket.SendTo(System.Byte[], Rssdp.Infrastructure.UdpEndPoint)
+  type: Method
+  source:
+    id: SendTo
+    path: ''
+    startLine: 3755
+  assemblies:
+  - cs.temp.dll
+  namespace: Rssdp.Infrastructure
+  summary: "\nSends a UDP message to a particular end point (uni or multicast).\n"
+  example: []
+  syntax:
+    content: void SendTo(byte[] messageData, UdpEndPoint endPoint)
+    parameters:
+    - id: messageData
+      type: System.Byte[]
+      description: The data to send.
+    - id: endPoint
+      type: Rssdp.Infrastructure.UdpEndPoint
+      description: The <xref href="Rssdp.Infrastructure.UdpEndPoint" data-throw-if-not-resolved="false"></xref> providing the address and port to send to.
+    content.vb: Sub SendTo(messageData As Byte(), endPoint As UdpEndPoint)
+  overload: Rssdp.Infrastructure.IUdpSocket.SendTo*
+  nameWithType.vb: IUdpSocket.SendTo(Byte(), UdpEndPoint)
+  fullName.vb: Rssdp.Infrastructure.IUdpSocket.SendTo(System.Byte(), Rssdp.Infrastructure.UdpEndPoint)
+  name.vb: SendTo(Byte(), UdpEndPoint)
+references:
+- uid: Rssdp.Infrastructure
+  commentId: N:Rssdp.Infrastructure
+  isExternal: false
+  name: Rssdp.Infrastructure
+  nameWithType: Rssdp.Infrastructure
+  fullName: Rssdp.Infrastructure
+- uid: Rssdp.Infrastructure.IUdpSocket.ReceiveAsync*
+  commentId: Overload:Rssdp.Infrastructure.IUdpSocket.ReceiveAsync
+  isExternal: false
+  name: ReceiveAsync
+  nameWithType: IUdpSocket.ReceiveAsync
+  fullName: Rssdp.Infrastructure.IUdpSocket.ReceiveAsync
+- uid: System.Threading.Tasks.Task{Rssdp.Infrastructure.ReceivedUdpData}
+  commentId: T:System.Threading.Tasks.Task{Rssdp.Infrastructure.ReceivedUdpData}
+  parent: System.Threading.Tasks
+  definition: System.Threading.Tasks.Task`1
+  name: Task<ReceivedUdpData>
+  nameWithType: Task<ReceivedUdpData>
+  fullName: System.Threading.Tasks.Task<Rssdp.Infrastructure.ReceivedUdpData>
+  nameWithType.vb: Task(Of ReceivedUdpData)
+  fullName.vb: System.Threading.Tasks.Task(Of Rssdp.Infrastructure.ReceivedUdpData)
+  name.vb: Task(Of ReceivedUdpData)
+  spec.csharp:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    nameWithType: Task
+    fullName: System.Threading.Tasks.Task
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: Rssdp.Infrastructure.ReceivedUdpData
+    name: ReceivedUdpData
+    nameWithType: ReceivedUdpData
+    fullName: Rssdp.Infrastructure.ReceivedUdpData
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    nameWithType: Task
+    fullName: System.Threading.Tasks.Task
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: Rssdp.Infrastructure.ReceivedUdpData
+    name: ReceivedUdpData
+    nameWithType: ReceivedUdpData
+    fullName: Rssdp.Infrastructure.ReceivedUdpData
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Threading.Tasks.Task`1
+  commentId: T:System.Threading.Tasks.Task`1
+  isExternal: true
+  name: Task<TResult>
+  nameWithType: Task<TResult>
+  fullName: System.Threading.Tasks.Task<TResult>
+  nameWithType.vb: Task(Of TResult)
+  fullName.vb: System.Threading.Tasks.Task(Of TResult)
+  name.vb: Task(Of TResult)
+  spec.csharp:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    nameWithType: Task
+    fullName: System.Threading.Tasks.Task
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - name: TResult
+    nameWithType: TResult
+    fullName: TResult
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    nameWithType: Task
+    fullName: System.Threading.Tasks.Task
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - name: TResult
+    nameWithType: TResult
+    fullName: TResult
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Threading.Tasks
+  commentId: N:System.Threading.Tasks
+  isExternal: false
+  name: System.Threading.Tasks
+  nameWithType: System.Threading.Tasks
+  fullName: System.Threading.Tasks
+- uid: Rssdp.Infrastructure.UdpEndPoint
+  commentId: T:Rssdp.Infrastructure.UdpEndPoint
+  parent: Rssdp.Infrastructure
+  isExternal: false
+  name: UdpEndPoint
+  nameWithType: UdpEndPoint
+  fullName: Rssdp.Infrastructure.UdpEndPoint
+- uid: Rssdp.Infrastructure.IUdpSocket.SendTo*
+  commentId: Overload:Rssdp.Infrastructure.IUdpSocket.SendTo
+  isExternal: false
+  name: SendTo
+  nameWithType: IUdpSocket.SendTo
+  fullName: Rssdp.Infrastructure.IUdpSocket.SendTo
+- uid: System.Byte[]
+  name: Byte[]
+  nameWithType: Byte[]
+  fullName: System.Byte[]
+  nameWithType.vb: Byte()
+  fullName.vb: System.Byte()
+  name.vb: Byte()
+  spec.csharp:
+  - uid: System.Byte
+    name: Byte
+    nameWithType: Byte
+    fullName: System.Byte
+    isExternal: true
+  - name: '[]'
+    nameWithType: '[]'
+    fullName: '[]'
+  spec.vb:
+  - uid: System.Byte
+    name: Byte
+    nameWithType: Byte
+    fullName: System.Byte
+    isExternal: true
+  - name: ()
+    nameWithType: ()
+    fullName: ()

@@ -1,0 +1,350 @@
+### YamlMime:ManagedReference
+items:
+- uid: Rssdp.PackageTest.iOS.AppDelegate
+  commentId: T:Rssdp.PackageTest.iOS.AppDelegate
+  id: AppDelegate
+  parent: Rssdp.PackageTest.iOS
+  children:
+  - Rssdp.PackageTest.iOS.AppDelegate.DidEnterBackground(UIApplication)
+  - Rssdp.PackageTest.iOS.AppDelegate.FinishedLaunching(UIApplication,NSDictionary)
+  - Rssdp.PackageTest.iOS.AppDelegate.OnActivated(UIApplication)
+  - Rssdp.PackageTest.iOS.AppDelegate.OnResignActivation(UIApplication)
+  - Rssdp.PackageTest.iOS.AppDelegate.WillEnterForeground(UIApplication)
+  - Rssdp.PackageTest.iOS.AppDelegate.WillTerminate(UIApplication)
+  - Rssdp.PackageTest.iOS.AppDelegate.Window
+  langs:
+  - csharp
+  - vb
+  name: AppDelegate
+  nameWithType: AppDelegate
+  fullName: Rssdp.PackageTest.iOS.AppDelegate
+  type: Class
+  source:
+    id: AppDelegate
+    path: ''
+    startLine: 160
+  assemblies:
+  - cs.temp.dll
+  namespace: Rssdp.PackageTest.iOS
+  syntax:
+    content: 'public class AppDelegate : UIApplicationDelegate'
+    content.vb: >-
+      Public Class AppDelegate
+          Inherits UIApplicationDelegate
+  inheritance:
+  - System.Object
+  modifiers.csharp:
+  - public
+  - class
+  modifiers.vb:
+  - Public
+  - Class
+- uid: Rssdp.PackageTest.iOS.AppDelegate.Window
+  commentId: P:Rssdp.PackageTest.iOS.AppDelegate.Window
+  id: Window
+  parent: Rssdp.PackageTest.iOS.AppDelegate
+  langs:
+  - csharp
+  - vb
+  name: Window
+  nameWithType: AppDelegate.Window
+  fullName: Rssdp.PackageTest.iOS.AppDelegate.Window
+  type: Property
+  source:
+    id: Window
+    path: ''
+    startLine: 165
+  assemblies:
+  - cs.temp.dll
+  namespace: Rssdp.PackageTest.iOS
+  syntax:
+    content: public override UIWindow Window { get; set; }
+    parameters: []
+    return:
+      type: UIWindow
+    content.vb: Public Overrides Property Window As UIWindow
+  overload: Rssdp.PackageTest.iOS.AppDelegate.Window*
+  modifiers.csharp:
+  - public
+  - override
+  - get
+  - set
+  modifiers.vb:
+  - Public
+  - Overrides
+- uid: Rssdp.PackageTest.iOS.AppDelegate.FinishedLaunching(UIApplication,NSDictionary)
+  commentId: M:Rssdp.PackageTest.iOS.AppDelegate.FinishedLaunching(UIApplication,NSDictionary)
+  id: FinishedLaunching(UIApplication,NSDictionary)
+  parent: Rssdp.PackageTest.iOS.AppDelegate
+  langs:
+  - csharp
+  - vb
+  name: FinishedLaunching(UIApplication, NSDictionary)
+  nameWithType: AppDelegate.FinishedLaunching(UIApplication, NSDictionary)
+  fullName: Rssdp.PackageTest.iOS.AppDelegate.FinishedLaunching(UIApplication, NSDictionary)
+  type: Method
+  source:
+    id: FinishedLaunching
+    path: ''
+    startLine: 171
+  assemblies:
+  - cs.temp.dll
+  namespace: Rssdp.PackageTest.iOS
+  syntax:
+    content: public override bool FinishedLaunching(UIApplication application, NSDictionary launchOptions)
+    parameters:
+    - id: application
+      type: UIApplication
+    - id: launchOptions
+      type: NSDictionary
+    return:
+      type: System.Boolean
+    content.vb: Public Overrides Function FinishedLaunching(application As UIApplication, launchOptions As NSDictionary) As Boolean
+  overload: Rssdp.PackageTest.iOS.AppDelegate.FinishedLaunching*
+  modifiers.csharp:
+  - public
+  - override
+  modifiers.vb:
+  - Public
+  - Overrides
+- uid: Rssdp.PackageTest.iOS.AppDelegate.OnResignActivation(UIApplication)
+  commentId: M:Rssdp.PackageTest.iOS.AppDelegate.OnResignActivation(UIApplication)
+  id: OnResignActivation(UIApplication)
+  parent: Rssdp.PackageTest.iOS.AppDelegate
+  langs:
+  - csharp
+  - vb
+  name: OnResignActivation(UIApplication)
+  nameWithType: AppDelegate.OnResignActivation(UIApplication)
+  fullName: Rssdp.PackageTest.iOS.AppDelegate.OnResignActivation(UIApplication)
+  type: Method
+  source:
+    id: OnResignActivation
+    path: ''
+    startLine: 185
+  assemblies:
+  - cs.temp.dll
+  namespace: Rssdp.PackageTest.iOS
+  syntax:
+    content: public override void OnResignActivation(UIApplication application)
+    parameters:
+    - id: application
+      type: UIApplication
+    content.vb: Public Overrides Sub OnResignActivation(application As UIApplication)
+  overload: Rssdp.PackageTest.iOS.AppDelegate.OnResignActivation*
+  modifiers.csharp:
+  - public
+  - override
+  modifiers.vb:
+  - Public
+  - Overrides
+- uid: Rssdp.PackageTest.iOS.AppDelegate.DidEnterBackground(UIApplication)
+  commentId: M:Rssdp.PackageTest.iOS.AppDelegate.DidEnterBackground(UIApplication)
+  id: DidEnterBackground(UIApplication)
+  parent: Rssdp.PackageTest.iOS.AppDelegate
+  langs:
+  - csharp
+  - vb
+  name: DidEnterBackground(UIApplication)
+  nameWithType: AppDelegate.DidEnterBackground(UIApplication)
+  fullName: Rssdp.PackageTest.iOS.AppDelegate.DidEnterBackground(UIApplication)
+  type: Method
+  source:
+    id: DidEnterBackground
+    path: ''
+    startLine: 193
+  assemblies:
+  - cs.temp.dll
+  namespace: Rssdp.PackageTest.iOS
+  syntax:
+    content: public override void DidEnterBackground(UIApplication application)
+    parameters:
+    - id: application
+      type: UIApplication
+    content.vb: Public Overrides Sub DidEnterBackground(application As UIApplication)
+  overload: Rssdp.PackageTest.iOS.AppDelegate.DidEnterBackground*
+  modifiers.csharp:
+  - public
+  - override
+  modifiers.vb:
+  - Public
+  - Overrides
+- uid: Rssdp.PackageTest.iOS.AppDelegate.WillEnterForeground(UIApplication)
+  commentId: M:Rssdp.PackageTest.iOS.AppDelegate.WillEnterForeground(UIApplication)
+  id: WillEnterForeground(UIApplication)
+  parent: Rssdp.PackageTest.iOS.AppDelegate
+  langs:
+  - csharp
+  - vb
+  name: WillEnterForeground(UIApplication)
+  nameWithType: AppDelegate.WillEnterForeground(UIApplication)
+  fullName: Rssdp.PackageTest.iOS.AppDelegate.WillEnterForeground(UIApplication)
+  type: Method
+  source:
+    id: WillEnterForeground
+    path: ''
+    startLine: 199
+  assemblies:
+  - cs.temp.dll
+  namespace: Rssdp.PackageTest.iOS
+  syntax:
+    content: public override void WillEnterForeground(UIApplication application)
+    parameters:
+    - id: application
+      type: UIApplication
+    content.vb: Public Overrides Sub WillEnterForeground(application As UIApplication)
+  overload: Rssdp.PackageTest.iOS.AppDelegate.WillEnterForeground*
+  modifiers.csharp:
+  - public
+  - override
+  modifiers.vb:
+  - Public
+  - Overrides
+- uid: Rssdp.PackageTest.iOS.AppDelegate.OnActivated(UIApplication)
+  commentId: M:Rssdp.PackageTest.iOS.AppDelegate.OnActivated(UIApplication)
+  id: OnActivated(UIApplication)
+  parent: Rssdp.PackageTest.iOS.AppDelegate
+  langs:
+  - csharp
+  - vb
+  name: OnActivated(UIApplication)
+  nameWithType: AppDelegate.OnActivated(UIApplication)
+  fullName: Rssdp.PackageTest.iOS.AppDelegate.OnActivated(UIApplication)
+  type: Method
+  source:
+    id: OnActivated
+    path: ''
+    startLine: 205
+  assemblies:
+  - cs.temp.dll
+  namespace: Rssdp.PackageTest.iOS
+  syntax:
+    content: public override void OnActivated(UIApplication application)
+    parameters:
+    - id: application
+      type: UIApplication
+    content.vb: Public Overrides Sub OnActivated(application As UIApplication)
+  overload: Rssdp.PackageTest.iOS.AppDelegate.OnActivated*
+  modifiers.csharp:
+  - public
+  - override
+  modifiers.vb:
+  - Public
+  - Overrides
+- uid: Rssdp.PackageTest.iOS.AppDelegate.WillTerminate(UIApplication)
+  commentId: M:Rssdp.PackageTest.iOS.AppDelegate.WillTerminate(UIApplication)
+  id: WillTerminate(UIApplication)
+  parent: Rssdp.PackageTest.iOS.AppDelegate
+  langs:
+  - csharp
+  - vb
+  name: WillTerminate(UIApplication)
+  nameWithType: AppDelegate.WillTerminate(UIApplication)
+  fullName: Rssdp.PackageTest.iOS.AppDelegate.WillTerminate(UIApplication)
+  type: Method
+  source:
+    id: WillTerminate
+    path: ''
+    startLine: 211
+  assemblies:
+  - cs.temp.dll
+  namespace: Rssdp.PackageTest.iOS
+  syntax:
+    content: public override void WillTerminate(UIApplication application)
+    parameters:
+    - id: application
+      type: UIApplication
+    content.vb: Public Overrides Sub WillTerminate(application As UIApplication)
+  overload: Rssdp.PackageTest.iOS.AppDelegate.WillTerminate*
+  modifiers.csharp:
+  - public
+  - override
+  modifiers.vb:
+  - Public
+  - Overrides
+references:
+- uid: Rssdp.PackageTest.iOS
+  commentId: N:Rssdp.PackageTest.iOS
+  isExternal: false
+  name: Rssdp.PackageTest.iOS
+  nameWithType: Rssdp.PackageTest.iOS
+  fullName: Rssdp.PackageTest.iOS
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  name: Object
+  nameWithType: Object
+  fullName: System.Object
+- uid: System
+  commentId: N:System
+  isExternal: false
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Rssdp.PackageTest.iOS.AppDelegate.Window*
+  commentId: Overload:Rssdp.PackageTest.iOS.AppDelegate.Window
+  isExternal: false
+  name: Window
+  nameWithType: AppDelegate.Window
+  fullName: Rssdp.PackageTest.iOS.AppDelegate.Window
+- uid: UIWindow
+  commentId: '!:UIWindow'
+  isExternal: true
+  name: UIWindow
+  nameWithType: UIWindow
+  fullName: UIWindow
+- uid: Rssdp.PackageTest.iOS.AppDelegate.FinishedLaunching*
+  commentId: Overload:Rssdp.PackageTest.iOS.AppDelegate.FinishedLaunching
+  isExternal: false
+  name: FinishedLaunching
+  nameWithType: AppDelegate.FinishedLaunching
+  fullName: Rssdp.PackageTest.iOS.AppDelegate.FinishedLaunching
+- uid: UIApplication
+  isExternal: true
+  name: UIApplication
+  nameWithType: UIApplication
+  fullName: UIApplication
+- uid: NSDictionary
+  commentId: '!:NSDictionary'
+  isExternal: true
+  name: NSDictionary
+  nameWithType: NSDictionary
+  fullName: NSDictionary
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  name: Boolean
+  nameWithType: Boolean
+  fullName: System.Boolean
+- uid: Rssdp.PackageTest.iOS.AppDelegate.OnResignActivation*
+  commentId: Overload:Rssdp.PackageTest.iOS.AppDelegate.OnResignActivation
+  isExternal: false
+  name: OnResignActivation
+  nameWithType: AppDelegate.OnResignActivation
+  fullName: Rssdp.PackageTest.iOS.AppDelegate.OnResignActivation
+- uid: Rssdp.PackageTest.iOS.AppDelegate.DidEnterBackground*
+  commentId: Overload:Rssdp.PackageTest.iOS.AppDelegate.DidEnterBackground
+  isExternal: false
+  name: DidEnterBackground
+  nameWithType: AppDelegate.DidEnterBackground
+  fullName: Rssdp.PackageTest.iOS.AppDelegate.DidEnterBackground
+- uid: Rssdp.PackageTest.iOS.AppDelegate.WillEnterForeground*
+  commentId: Overload:Rssdp.PackageTest.iOS.AppDelegate.WillEnterForeground
+  isExternal: false
+  name: WillEnterForeground
+  nameWithType: AppDelegate.WillEnterForeground
+  fullName: Rssdp.PackageTest.iOS.AppDelegate.WillEnterForeground
+- uid: Rssdp.PackageTest.iOS.AppDelegate.OnActivated*
+  commentId: Overload:Rssdp.PackageTest.iOS.AppDelegate.OnActivated
+  isExternal: false
+  name: OnActivated
+  nameWithType: AppDelegate.OnActivated
+  fullName: Rssdp.PackageTest.iOS.AppDelegate.OnActivated
+- uid: Rssdp.PackageTest.iOS.AppDelegate.WillTerminate*
+  commentId: Overload:Rssdp.PackageTest.iOS.AppDelegate.WillTerminate
+  isExternal: false
+  name: WillTerminate
+  nameWithType: AppDelegate.WillTerminate
+  fullName: Rssdp.PackageTest.iOS.AppDelegate.WillTerminate

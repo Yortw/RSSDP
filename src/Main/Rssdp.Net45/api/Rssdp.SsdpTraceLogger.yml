@@ -1,0 +1,812 @@
+### YamlMime:ManagedReference
+items:
+- uid: Rssdp.SsdpTraceLogger
+  commentId: T:Rssdp.SsdpTraceLogger
+  id: SsdpTraceLogger
+  parent: Rssdp
+  children:
+  - Rssdp.SsdpTraceLogger.LogError(System.String)
+  - Rssdp.SsdpTraceLogger.LogError(System.String)
+  - Rssdp.SsdpTraceLogger.LogInfo(System.String)
+  - Rssdp.SsdpTraceLogger.LogInfo(System.String)
+  - Rssdp.SsdpTraceLogger.LogVerbose(System.String)
+  - Rssdp.SsdpTraceLogger.LogVerbose(System.String)
+  - Rssdp.SsdpTraceLogger.LogWarning(System.String)
+  - Rssdp.SsdpTraceLogger.LogWarning(System.String)
+  langs:
+  - csharp
+  - vb
+  name: SsdpTraceLogger
+  nameWithType: SsdpTraceLogger
+  fullName: Rssdp.SsdpTraceLogger
+  type: Class
+  source:
+    id: SsdpTraceLogger
+    path: ''
+    startLine: 9368
+  assemblies:
+  - cs.temp.dll
+  namespace: Rssdp
+  summary: "\nImplementation of <xref href=\"Rssdp.ISsdpLogger\" data-throw-if-not-resolved=\"false\"></xref> that writes to the .Net tracing system on platforms that support it, or <see cref=\"!:System.Diagnostics.Debug\"></see> on those that don&apos;t.\n"
+  remarks: "\n<p>On platforms that only support <see cref=\"!:System.Diagnostics.Debug\"></see> no log entries will be output unless running a debug build, and this effectively becomes a null logger for release builds.</p>\n"
+  example: []
+  syntax:
+    content: 'public class SsdpTraceLogger : ISsdpLogger'
+    content.vb: >-
+      Public Class SsdpTraceLogger
+          Implements ISsdpLogger
+  inheritance:
+  - System.Object
+  implements:
+  - Rssdp.ISsdpLogger
+  inheritedMembers:
+  - System.Object.ToString
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  modifiers.csharp:
+  - public
+  - class
+  modifiers.vb:
+  - Public
+  - Class
+- uid: Rssdp.SsdpTraceLogger.LogInfo(System.String)
+  commentId: M:Rssdp.SsdpTraceLogger.LogInfo(System.String)
+  id: LogInfo(System.String)
+  parent: Rssdp.SsdpTraceLogger
+  langs:
+  - csharp
+  - vb
+  name: LogInfo(String)
+  nameWithType: SsdpTraceLogger.LogInfo(String)
+  fullName: Rssdp.SsdpTraceLogger.LogInfo(System.String)
+  type: Method
+  source:
+    id: LogInfo
+    path: ''
+    startLine: 1653
+  assemblies:
+  - cs.temp.dll
+  namespace: Rssdp
+  summary: "\nRecords a regular log message.\n"
+  example: []
+  syntax:
+    content: public void LogInfo(string message)
+    parameters:
+    - id: message
+      type: System.String
+      description: The text to be logged.
+    content.vb: Public Sub LogInfo(message As String)
+  overload: Rssdp.SsdpTraceLogger.LogInfo*
+  implements:
+  - Rssdp.ISsdpLogger.LogInfo(System.String)
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+- uid: Rssdp.SsdpTraceLogger.LogVerbose(System.String)
+  commentId: M:Rssdp.SsdpTraceLogger.LogVerbose(System.String)
+  id: LogVerbose(System.String)
+  parent: Rssdp.SsdpTraceLogger
+  langs:
+  - csharp
+  - vb
+  name: LogVerbose(String)
+  nameWithType: SsdpTraceLogger.LogVerbose(String)
+  fullName: Rssdp.SsdpTraceLogger.LogVerbose(System.String)
+  type: Method
+  source:
+    id: LogVerbose
+    path: ''
+    startLine: 1662
+  assemblies:
+  - cs.temp.dll
+  namespace: Rssdp
+  summary: "\nRecords a frequent or large log message usually only required when trying to trace a problem.\n"
+  example: []
+  syntax:
+    content: public void LogVerbose(string message)
+    parameters:
+    - id: message
+      type: System.String
+      description: The text to be logged.
+    content.vb: Public Sub LogVerbose(message As String)
+  overload: Rssdp.SsdpTraceLogger.LogVerbose*
+  implements:
+  - Rssdp.ISsdpLogger.LogVerbose(System.String)
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+- uid: Rssdp.SsdpTraceLogger.LogWarning(System.String)
+  commentId: M:Rssdp.SsdpTraceLogger.LogWarning(System.String)
+  id: LogWarning(System.String)
+  parent: Rssdp.SsdpTraceLogger
+  langs:
+  - csharp
+  - vb
+  name: LogWarning(String)
+  nameWithType: SsdpTraceLogger.LogWarning(String)
+  fullName: Rssdp.SsdpTraceLogger.LogWarning(System.String)
+  type: Method
+  source:
+    id: LogWarning
+    path: ''
+    startLine: 1671
+  assemblies:
+  - cs.temp.dll
+  namespace: Rssdp
+  summary: "\nRecords an important message, but one that may not neccesarily be an error.\n"
+  example: []
+  syntax:
+    content: public void LogWarning(string message)
+    parameters:
+    - id: message
+      type: System.String
+      description: The text to be logged.
+    content.vb: Public Sub LogWarning(message As String)
+  overload: Rssdp.SsdpTraceLogger.LogWarning*
+  implements:
+  - Rssdp.ISsdpLogger.LogWarning(System.String)
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+- uid: Rssdp.SsdpTraceLogger.LogError(System.String)
+  commentId: M:Rssdp.SsdpTraceLogger.LogError(System.String)
+  id: LogError(System.String)
+  parent: Rssdp.SsdpTraceLogger
+  langs:
+  - csharp
+  - vb
+  name: LogError(String)
+  nameWithType: SsdpTraceLogger.LogError(String)
+  fullName: Rssdp.SsdpTraceLogger.LogError(System.String)
+  type: Method
+  source:
+    id: LogError
+    path: ''
+    startLine: 1680
+  assemblies:
+  - cs.temp.dll
+  namespace: Rssdp
+  summary: "\nRecords a message that represents an error.\n"
+  example: []
+  syntax:
+    content: public void LogError(string message)
+    parameters:
+    - id: message
+      type: System.String
+      description: The text to be logged.
+    content.vb: Public Sub LogError(message As String)
+  overload: Rssdp.SsdpTraceLogger.LogError*
+  implements:
+  - Rssdp.ISsdpLogger.LogError(System.String)
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+- uid: Rssdp.SsdpTraceLogger.LogInfo(System.String)
+  commentId: M:Rssdp.SsdpTraceLogger.LogInfo(System.String)
+  id: LogInfo(System.String)
+  parent: Rssdp.SsdpTraceLogger
+  langs:
+  - csharp
+  - vb
+  name: LogInfo(String)
+  nameWithType: SsdpTraceLogger.LogInfo(String)
+  fullName: Rssdp.SsdpTraceLogger.LogInfo(System.String)
+  type: Method
+  source:
+    id: LogInfo
+    path: ''
+    startLine: 9374
+  assemblies:
+  - cs.temp.dll
+  namespace: Rssdp
+  summary: "\nRecords a regular log message.\n"
+  example: []
+  syntax:
+    content: public void LogInfo(string message)
+    parameters:
+    - id: message
+      type: System.String
+      description: The text to be logged.
+    content.vb: Public Sub LogInfo(message As String)
+  overload: Rssdp.SsdpTraceLogger.LogInfo*
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+- uid: Rssdp.SsdpTraceLogger.LogVerbose(System.String)
+  commentId: M:Rssdp.SsdpTraceLogger.LogVerbose(System.String)
+  id: LogVerbose(System.String)
+  parent: Rssdp.SsdpTraceLogger
+  langs:
+  - csharp
+  - vb
+  name: LogVerbose(String)
+  nameWithType: SsdpTraceLogger.LogVerbose(String)
+  fullName: Rssdp.SsdpTraceLogger.LogVerbose(System.String)
+  type: Method
+  source:
+    id: LogVerbose
+    path: ''
+    startLine: 9383
+  assemblies:
+  - cs.temp.dll
+  namespace: Rssdp
+  summary: "\nRecords a frequent or large log message usually only required when trying to trace a problem.\n"
+  example: []
+  syntax:
+    content: public void LogVerbose(string message)
+    parameters:
+    - id: message
+      type: System.String
+      description: The text to be logged.
+    content.vb: Public Sub LogVerbose(message As String)
+  overload: Rssdp.SsdpTraceLogger.LogVerbose*
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+- uid: Rssdp.SsdpTraceLogger.LogWarning(System.String)
+  commentId: M:Rssdp.SsdpTraceLogger.LogWarning(System.String)
+  id: LogWarning(System.String)
+  parent: Rssdp.SsdpTraceLogger
+  langs:
+  - csharp
+  - vb
+  name: LogWarning(String)
+  nameWithType: SsdpTraceLogger.LogWarning(String)
+  fullName: Rssdp.SsdpTraceLogger.LogWarning(System.String)
+  type: Method
+  source:
+    id: LogWarning
+    path: ''
+    startLine: 9392
+  assemblies:
+  - cs.temp.dll
+  namespace: Rssdp
+  summary: "\nRecords an important message, but one that may not neccesarily be an error.\n"
+  example: []
+  syntax:
+    content: public void LogWarning(string message)
+    parameters:
+    - id: message
+      type: System.String
+      description: The text to be logged.
+    content.vb: Public Sub LogWarning(message As String)
+  overload: Rssdp.SsdpTraceLogger.LogWarning*
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+- uid: Rssdp.SsdpTraceLogger.LogError(System.String)
+  commentId: M:Rssdp.SsdpTraceLogger.LogError(System.String)
+  id: LogError(System.String)
+  parent: Rssdp.SsdpTraceLogger
+  langs:
+  - csharp
+  - vb
+  name: LogError(String)
+  nameWithType: SsdpTraceLogger.LogError(String)
+  fullName: Rssdp.SsdpTraceLogger.LogError(System.String)
+  type: Method
+  source:
+    id: LogError
+    path: ''
+    startLine: 9401
+  assemblies:
+  - cs.temp.dll
+  namespace: Rssdp
+  summary: "\nRecords a message that represents an error.\n"
+  example: []
+  syntax:
+    content: public void LogError(string message)
+    parameters:
+    - id: message
+      type: System.String
+      description: The text to be logged.
+    content.vb: Public Sub LogError(message As String)
+  overload: Rssdp.SsdpTraceLogger.LogError*
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+references:
+- uid: Rssdp.ISsdpLogger
+  commentId: T:Rssdp.ISsdpLogger
+  parent: Rssdp
+  isExternal: false
+  name: ISsdpLogger
+  nameWithType: ISsdpLogger
+  fullName: Rssdp.ISsdpLogger
+- uid: Rssdp
+  commentId: N:Rssdp
+  isExternal: false
+  name: Rssdp
+  nameWithType: Rssdp
+  fullName: Rssdp
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  name: Object
+  nameWithType: Object
+  fullName: System.Object
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  name: ToString()
+  nameWithType: Object.ToString()
+  fullName: System.Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    nameWithType: Object.ToString
+    fullName: System.Object.ToString
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    nameWithType: Object.ToString
+    fullName: System.Object.ToString
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  name: Equals(Object)
+  nameWithType: Object.Equals(Object)
+  fullName: System.Object.Equals(System.Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  name: Equals(Object, Object)
+  nameWithType: Object.Equals(Object, Object)
+  fullName: System.Object.Equals(System.Object, System.Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  name: ReferenceEquals(Object, Object)
+  nameWithType: Object.ReferenceEquals(Object, Object)
+  fullName: System.Object.ReferenceEquals(System.Object, System.Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    nameWithType: Object.ReferenceEquals
+    fullName: System.Object.ReferenceEquals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    nameWithType: Object.ReferenceEquals
+    fullName: System.Object.ReferenceEquals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  name: GetHashCode()
+  nameWithType: Object.GetHashCode()
+  fullName: System.Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    nameWithType: Object.GetHashCode
+    fullName: System.Object.GetHashCode
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    nameWithType: Object.GetHashCode
+    fullName: System.Object.GetHashCode
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  name: GetType()
+  nameWithType: Object.GetType()
+  fullName: System.Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    nameWithType: Object.GetType
+    fullName: System.Object.GetType
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    nameWithType: Object.GetType
+    fullName: System.Object.GetType
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  name: MemberwiseClone()
+  nameWithType: Object.MemberwiseClone()
+  fullName: System.Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    nameWithType: Object.MemberwiseClone
+    fullName: System.Object.MemberwiseClone
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    nameWithType: Object.MemberwiseClone
+    fullName: System.Object.MemberwiseClone
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System
+  commentId: N:System
+  isExternal: false
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Rssdp.SsdpTraceLogger.LogInfo*
+  commentId: Overload:Rssdp.SsdpTraceLogger.LogInfo
+  isExternal: false
+  name: LogInfo
+  nameWithType: SsdpTraceLogger.LogInfo
+  fullName: Rssdp.SsdpTraceLogger.LogInfo
+- uid: Rssdp.ISsdpLogger.LogInfo(System.String)
+  commentId: M:Rssdp.ISsdpLogger.LogInfo(System.String)
+  parent: Rssdp.ISsdpLogger
+  isExternal: true
+  name: LogInfo(String)
+  nameWithType: ISsdpLogger.LogInfo(String)
+  fullName: Rssdp.ISsdpLogger.LogInfo(System.String)
+  spec.csharp:
+  - uid: Rssdp.ISsdpLogger.LogInfo(System.String)
+    name: LogInfo
+    nameWithType: ISsdpLogger.LogInfo
+    fullName: Rssdp.ISsdpLogger.LogInfo
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: Rssdp.ISsdpLogger.LogInfo(System.String)
+    name: LogInfo
+    nameWithType: ISsdpLogger.LogInfo
+    fullName: Rssdp.ISsdpLogger.LogInfo
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  name: String
+  nameWithType: String
+  fullName: System.String
+- uid: Rssdp.SsdpTraceLogger.LogVerbose*
+  commentId: Overload:Rssdp.SsdpTraceLogger.LogVerbose
+  isExternal: false
+  name: LogVerbose
+  nameWithType: SsdpTraceLogger.LogVerbose
+  fullName: Rssdp.SsdpTraceLogger.LogVerbose
+- uid: Rssdp.ISsdpLogger.LogVerbose(System.String)
+  commentId: M:Rssdp.ISsdpLogger.LogVerbose(System.String)
+  parent: Rssdp.ISsdpLogger
+  isExternal: true
+  name: LogVerbose(String)
+  nameWithType: ISsdpLogger.LogVerbose(String)
+  fullName: Rssdp.ISsdpLogger.LogVerbose(System.String)
+  spec.csharp:
+  - uid: Rssdp.ISsdpLogger.LogVerbose(System.String)
+    name: LogVerbose
+    nameWithType: ISsdpLogger.LogVerbose
+    fullName: Rssdp.ISsdpLogger.LogVerbose
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: Rssdp.ISsdpLogger.LogVerbose(System.String)
+    name: LogVerbose
+    nameWithType: ISsdpLogger.LogVerbose
+    fullName: Rssdp.ISsdpLogger.LogVerbose
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: Rssdp.SsdpTraceLogger.LogWarning*
+  commentId: Overload:Rssdp.SsdpTraceLogger.LogWarning
+  isExternal: false
+  name: LogWarning
+  nameWithType: SsdpTraceLogger.LogWarning
+  fullName: Rssdp.SsdpTraceLogger.LogWarning
+- uid: Rssdp.ISsdpLogger.LogWarning(System.String)
+  commentId: M:Rssdp.ISsdpLogger.LogWarning(System.String)
+  parent: Rssdp.ISsdpLogger
+  isExternal: true
+  name: LogWarning(String)
+  nameWithType: ISsdpLogger.LogWarning(String)
+  fullName: Rssdp.ISsdpLogger.LogWarning(System.String)
+  spec.csharp:
+  - uid: Rssdp.ISsdpLogger.LogWarning(System.String)
+    name: LogWarning
+    nameWithType: ISsdpLogger.LogWarning
+    fullName: Rssdp.ISsdpLogger.LogWarning
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: Rssdp.ISsdpLogger.LogWarning(System.String)
+    name: LogWarning
+    nameWithType: ISsdpLogger.LogWarning
+    fullName: Rssdp.ISsdpLogger.LogWarning
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: Rssdp.SsdpTraceLogger.LogError*
+  commentId: Overload:Rssdp.SsdpTraceLogger.LogError
+  isExternal: false
+  name: LogError
+  nameWithType: SsdpTraceLogger.LogError
+  fullName: Rssdp.SsdpTraceLogger.LogError
+- uid: Rssdp.ISsdpLogger.LogError(System.String)
+  commentId: M:Rssdp.ISsdpLogger.LogError(System.String)
+  parent: Rssdp.ISsdpLogger
+  isExternal: true
+  name: LogError(String)
+  nameWithType: ISsdpLogger.LogError(String)
+  fullName: Rssdp.ISsdpLogger.LogError(System.String)
+  spec.csharp:
+  - uid: Rssdp.ISsdpLogger.LogError(System.String)
+    name: LogError
+    nameWithType: ISsdpLogger.LogError
+    fullName: Rssdp.ISsdpLogger.LogError
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: Rssdp.ISsdpLogger.LogError(System.String)
+    name: LogError
+    nameWithType: ISsdpLogger.LogError
+    fullName: Rssdp.ISsdpLogger.LogError
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )

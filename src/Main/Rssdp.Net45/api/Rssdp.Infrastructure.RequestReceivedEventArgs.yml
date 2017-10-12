@@ -1,0 +1,206 @@
+### YamlMime:ManagedReference
+items:
+- uid: Rssdp.Infrastructure.RequestReceivedEventArgs
+  commentId: T:Rssdp.Infrastructure.RequestReceivedEventArgs
+  id: RequestReceivedEventArgs
+  parent: Rssdp.Infrastructure
+  children:
+  - Rssdp.Infrastructure.RequestReceivedEventArgs.#ctor(HttpRequestMessage,Rssdp.Infrastructure.UdpEndPoint)
+  - Rssdp.Infrastructure.RequestReceivedEventArgs.Message
+  - Rssdp.Infrastructure.RequestReceivedEventArgs.ReceivedFrom
+  langs:
+  - csharp
+  - vb
+  name: RequestReceivedEventArgs
+  nameWithType: RequestReceivedEventArgs
+  fullName: Rssdp.Infrastructure.RequestReceivedEventArgs
+  type: Class
+  source:
+    id: RequestReceivedEventArgs
+    path: ''
+    startLine: 3940
+  assemblies:
+  - cs.temp.dll
+  namespace: Rssdp.Infrastructure
+  summary: "\nProvides arguments for the <xref href=\"Rssdp.Infrastructure.ISsdpCommunicationsServer.RequestReceived\" data-throw-if-not-resolved=\"false\"></xref> event.\n"
+  example: []
+  syntax:
+    content: 'public sealed class RequestReceivedEventArgs : EventArgs'
+    content.vb: >-
+      Public NotInheritable Class RequestReceivedEventArgs
+          Inherits EventArgs
+  inheritance:
+  - System.Object
+  modifiers.csharp:
+  - public
+  - sealed
+  - class
+  modifiers.vb:
+  - Public
+  - NotInheritable
+  - Class
+- uid: Rssdp.Infrastructure.RequestReceivedEventArgs.#ctor(HttpRequestMessage,Rssdp.Infrastructure.UdpEndPoint)
+  commentId: M:Rssdp.Infrastructure.RequestReceivedEventArgs.#ctor(HttpRequestMessage,Rssdp.Infrastructure.UdpEndPoint)
+  id: '#ctor(HttpRequestMessage,Rssdp.Infrastructure.UdpEndPoint)'
+  parent: Rssdp.Infrastructure.RequestReceivedEventArgs
+  langs:
+  - csharp
+  - vb
+  name: RequestReceivedEventArgs(HttpRequestMessage, UdpEndPoint)
+  nameWithType: RequestReceivedEventArgs.RequestReceivedEventArgs(HttpRequestMessage, UdpEndPoint)
+  fullName: Rssdp.Infrastructure.RequestReceivedEventArgs.RequestReceivedEventArgs(HttpRequestMessage, Rssdp.Infrastructure.UdpEndPoint)
+  type: Constructor
+  source:
+    id: .ctor
+    path: ''
+    startLine: 3957
+  assemblies:
+  - cs.temp.dll
+  namespace: Rssdp.Infrastructure
+  summary: "\nFull constructor.\n"
+  example: []
+  syntax:
+    content: public RequestReceivedEventArgs(HttpRequestMessage message, UdpEndPoint receivedFrom)
+    parameters:
+    - id: message
+      type: HttpRequestMessage
+      description: The <see cref="!:HttpRequestMessage"></see> that was received.
+    - id: receivedFrom
+      type: Rssdp.Infrastructure.UdpEndPoint
+      description: A <xref href="Rssdp.Infrastructure.UdpEndPoint" data-throw-if-not-resolved="false"></xref> representing the sender&apos;s address (sometimes used for replies).
+    content.vb: Public Sub New(message As HttpRequestMessage, receivedFrom As UdpEndPoint)
+  overload: Rssdp.Infrastructure.RequestReceivedEventArgs.#ctor*
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+- uid: Rssdp.Infrastructure.RequestReceivedEventArgs.Message
+  commentId: P:Rssdp.Infrastructure.RequestReceivedEventArgs.Message
+  id: Message
+  parent: Rssdp.Infrastructure.RequestReceivedEventArgs
+  langs:
+  - csharp
+  - vb
+  name: Message
+  nameWithType: RequestReceivedEventArgs.Message
+  fullName: Rssdp.Infrastructure.RequestReceivedEventArgs.Message
+  type: Property
+  source:
+    id: Message
+    path: ''
+    startLine: 3970
+  assemblies:
+  - cs.temp.dll
+  namespace: Rssdp.Infrastructure
+  summary: "\nThe <see cref=\"!:HttpRequestMessage\"></see> that was received.\n"
+  example: []
+  syntax:
+    content: public HttpRequestMessage Message { get; }
+    parameters: []
+    return:
+      type: HttpRequestMessage
+    content.vb: Public ReadOnly Property Message As HttpRequestMessage
+  overload: Rssdp.Infrastructure.RequestReceivedEventArgs.Message*
+  modifiers.csharp:
+  - public
+  - get
+  modifiers.vb:
+  - Public
+  - ReadOnly
+- uid: Rssdp.Infrastructure.RequestReceivedEventArgs.ReceivedFrom
+  commentId: P:Rssdp.Infrastructure.RequestReceivedEventArgs.ReceivedFrom
+  id: ReceivedFrom
+  parent: Rssdp.Infrastructure.RequestReceivedEventArgs
+  langs:
+  - csharp
+  - vb
+  name: ReceivedFrom
+  nameWithType: RequestReceivedEventArgs.ReceivedFrom
+  fullName: Rssdp.Infrastructure.RequestReceivedEventArgs.ReceivedFrom
+  type: Property
+  source:
+    id: ReceivedFrom
+    path: ''
+    startLine: 3978
+  assemblies:
+  - cs.temp.dll
+  namespace: Rssdp.Infrastructure
+  summary: "\nThe <xref href=\"Rssdp.Infrastructure.UdpEndPoint\" data-throw-if-not-resolved=\"false\"></xref> the request came from.\n"
+  example: []
+  syntax:
+    content: public UdpEndPoint ReceivedFrom { get; }
+    parameters: []
+    return:
+      type: Rssdp.Infrastructure.UdpEndPoint
+    content.vb: Public ReadOnly Property ReceivedFrom As UdpEndPoint
+  overload: Rssdp.Infrastructure.RequestReceivedEventArgs.ReceivedFrom*
+  modifiers.csharp:
+  - public
+  - get
+  modifiers.vb:
+  - Public
+  - ReadOnly
+references:
+- uid: Rssdp.Infrastructure.ISsdpCommunicationsServer.RequestReceived
+  commentId: E:Rssdp.Infrastructure.ISsdpCommunicationsServer.RequestReceived
+  parent: Rssdp.Infrastructure.ISsdpCommunicationsServer
+  isExternal: false
+  name: RequestReceived
+  nameWithType: ISsdpCommunicationsServer.RequestReceived
+  fullName: Rssdp.Infrastructure.ISsdpCommunicationsServer.RequestReceived
+- uid: Rssdp.Infrastructure
+  commentId: N:Rssdp.Infrastructure
+  isExternal: false
+  name: Rssdp.Infrastructure
+  nameWithType: Rssdp.Infrastructure
+  fullName: Rssdp.Infrastructure
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  name: Object
+  nameWithType: Object
+  fullName: System.Object
+- uid: Rssdp.Infrastructure.ISsdpCommunicationsServer
+  commentId: T:Rssdp.Infrastructure.ISsdpCommunicationsServer
+  parent: Rssdp.Infrastructure
+  isExternal: false
+  name: ISsdpCommunicationsServer
+  nameWithType: ISsdpCommunicationsServer
+  fullName: Rssdp.Infrastructure.ISsdpCommunicationsServer
+- uid: System
+  commentId: N:System
+  isExternal: false
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Rssdp.Infrastructure.UdpEndPoint
+  commentId: T:Rssdp.Infrastructure.UdpEndPoint
+  parent: Rssdp.Infrastructure
+  isExternal: false
+  name: UdpEndPoint
+  nameWithType: UdpEndPoint
+  fullName: Rssdp.Infrastructure.UdpEndPoint
+- uid: Rssdp.Infrastructure.RequestReceivedEventArgs.#ctor*
+  commentId: Overload:Rssdp.Infrastructure.RequestReceivedEventArgs.#ctor
+  isExternal: false
+  name: RequestReceivedEventArgs
+  nameWithType: RequestReceivedEventArgs.RequestReceivedEventArgs
+  fullName: Rssdp.Infrastructure.RequestReceivedEventArgs.RequestReceivedEventArgs
+- uid: HttpRequestMessage
+  isExternal: true
+  name: HttpRequestMessage
+  nameWithType: HttpRequestMessage
+  fullName: HttpRequestMessage
+- uid: Rssdp.Infrastructure.RequestReceivedEventArgs.Message*
+  commentId: Overload:Rssdp.Infrastructure.RequestReceivedEventArgs.Message
+  isExternal: false
+  name: Message
+  nameWithType: RequestReceivedEventArgs.Message
+  fullName: Rssdp.Infrastructure.RequestReceivedEventArgs.Message
+- uid: Rssdp.Infrastructure.RequestReceivedEventArgs.ReceivedFrom*
+  commentId: Overload:Rssdp.Infrastructure.RequestReceivedEventArgs.ReceivedFrom
+  isExternal: false
+  name: ReceivedFrom
+  nameWithType: RequestReceivedEventArgs.ReceivedFrom
+  fullName: Rssdp.Infrastructure.RequestReceivedEventArgs.ReceivedFrom

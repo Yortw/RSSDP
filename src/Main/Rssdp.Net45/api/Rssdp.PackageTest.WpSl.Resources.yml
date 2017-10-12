@@ -1,0 +1,23 @@
+### YamlMime:ManagedReference
+items:
+- uid: Rssdp.PackageTest.WpSl.Resources
+  commentId: N:Rssdp.PackageTest.WpSl.Resources
+  id: Rssdp.PackageTest.WpSl.Resources
+  children:
+  - Rssdp.PackageTest.WpSl.Resources.AppResources
+  langs:
+  - csharp
+  - vb
+  name: Rssdp.PackageTest.WpSl.Resources
+  nameWithType: Rssdp.PackageTest.WpSl.Resources
+  fullName: Rssdp.PackageTest.WpSl.Resources
+  type: Namespace
+  assemblies:
+  - cs.temp.dll
+references:
+- uid: Rssdp.PackageTest.WpSl.Resources.AppResources
+  commentId: T:Rssdp.PackageTest.WpSl.Resources.AppResources
+  isExternal: false
+  name: AppResources
+  nameWithType: AppResources
+  fullName: Rssdp.PackageTest.WpSl.Resources.AppResources

@@ -1,0 +1,192 @@
+### YamlMime:ManagedReference
+items:
+- uid: Rssdp.ISsdpLogger
+  commentId: T:Rssdp.ISsdpLogger
+  id: ISsdpLogger
+  parent: Rssdp
+  children:
+  - Rssdp.ISsdpLogger.LogError(System.String)
+  - Rssdp.ISsdpLogger.LogInfo(System.String)
+  - Rssdp.ISsdpLogger.LogVerbose(System.String)
+  - Rssdp.ISsdpLogger.LogWarning(System.String)
+  langs:
+  - csharp
+  - vb
+  name: ISsdpLogger
+  nameWithType: ISsdpLogger
+  fullName: Rssdp.ISsdpLogger
+  type: Interface
+  source:
+    id: ISsdpLogger
+    path: ''
+    startLine: 3703
+  assemblies:
+  - cs.temp.dll
+  namespace: Rssdp
+  summary: "\nInterface for a simple logging component used by RSSDP to record internal activity.\n"
+  example: []
+  syntax:
+    content: public interface ISsdpLogger
+    content.vb: Public Interface ISsdpLogger
+  modifiers.csharp:
+  - public
+  - interface
+  modifiers.vb:
+  - Public
+  - Interface
+- uid: Rssdp.ISsdpLogger.LogInfo(System.String)
+  commentId: M:Rssdp.ISsdpLogger.LogInfo(System.String)
+  id: LogInfo(System.String)
+  parent: Rssdp.ISsdpLogger
+  langs:
+  - csharp
+  - vb
+  name: LogInfo(String)
+  nameWithType: ISsdpLogger.LogInfo(String)
+  fullName: Rssdp.ISsdpLogger.LogInfo(System.String)
+  type: Method
+  source:
+    id: LogInfo
+    path: ''
+    startLine: 3710
+  assemblies:
+  - cs.temp.dll
+  namespace: Rssdp
+  summary: "\nRecords a regular log message.\n"
+  example: []
+  syntax:
+    content: void LogInfo(string message)
+    parameters:
+    - id: message
+      type: System.String
+      description: The text to be logged.
+    content.vb: Sub LogInfo(message As String)
+  overload: Rssdp.ISsdpLogger.LogInfo*
+- uid: Rssdp.ISsdpLogger.LogVerbose(System.String)
+  commentId: M:Rssdp.ISsdpLogger.LogVerbose(System.String)
+  id: LogVerbose(System.String)
+  parent: Rssdp.ISsdpLogger
+  langs:
+  - csharp
+  - vb
+  name: LogVerbose(String)
+  nameWithType: ISsdpLogger.LogVerbose(String)
+  fullName: Rssdp.ISsdpLogger.LogVerbose(System.String)
+  type: Method
+  source:
+    id: LogVerbose
+    path: ''
+    startLine: 3716
+  assemblies:
+  - cs.temp.dll
+  namespace: Rssdp
+  summary: "\nRecords a frequent or large log message usually only required when trying to trace a problem.\n"
+  example: []
+  syntax:
+    content: void LogVerbose(string message)
+    parameters:
+    - id: message
+      type: System.String
+      description: The text to be logged.
+    content.vb: Sub LogVerbose(message As String)
+  overload: Rssdp.ISsdpLogger.LogVerbose*
+- uid: Rssdp.ISsdpLogger.LogWarning(System.String)
+  commentId: M:Rssdp.ISsdpLogger.LogWarning(System.String)
+  id: LogWarning(System.String)
+  parent: Rssdp.ISsdpLogger
+  langs:
+  - csharp
+  - vb
+  name: LogWarning(String)
+  nameWithType: ISsdpLogger.LogWarning(String)
+  fullName: Rssdp.ISsdpLogger.LogWarning(System.String)
+  type: Method
+  source:
+    id: LogWarning
+    path: ''
+    startLine: 3722
+  assemblies:
+  - cs.temp.dll
+  namespace: Rssdp
+  summary: "\nRecords an important message, but one that may not neccesarily be an error.\n"
+  example: []
+  syntax:
+    content: void LogWarning(string message)
+    parameters:
+    - id: message
+      type: System.String
+      description: The text to be logged.
+    content.vb: Sub LogWarning(message As String)
+  overload: Rssdp.ISsdpLogger.LogWarning*
+- uid: Rssdp.ISsdpLogger.LogError(System.String)
+  commentId: M:Rssdp.ISsdpLogger.LogError(System.String)
+  id: LogError(System.String)
+  parent: Rssdp.ISsdpLogger
+  langs:
+  - csharp
+  - vb
+  name: LogError(String)
+  nameWithType: ISsdpLogger.LogError(String)
+  fullName: Rssdp.ISsdpLogger.LogError(System.String)
+  type: Method
+  source:
+    id: LogError
+    path: ''
+    startLine: 3728
+  assemblies:
+  - cs.temp.dll
+  namespace: Rssdp
+  summary: "\nRecords a message that represents an error.\n"
+  example: []
+  syntax:
+    content: void LogError(string message)
+    parameters:
+    - id: message
+      type: System.String
+      description: The text to be logged.
+    content.vb: Sub LogError(message As String)
+  overload: Rssdp.ISsdpLogger.LogError*
+references:
+- uid: Rssdp
+  commentId: N:Rssdp
+  isExternal: false
+  name: Rssdp
+  nameWithType: Rssdp
+  fullName: Rssdp
+- uid: Rssdp.ISsdpLogger.LogInfo*
+  commentId: Overload:Rssdp.ISsdpLogger.LogInfo
+  isExternal: false
+  name: LogInfo
+  nameWithType: ISsdpLogger.LogInfo
+  fullName: Rssdp.ISsdpLogger.LogInfo
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  name: String
+  nameWithType: String
+  fullName: System.String
+- uid: System
+  commentId: N:System
+  isExternal: false
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Rssdp.ISsdpLogger.LogVerbose*
+  commentId: Overload:Rssdp.ISsdpLogger.LogVerbose
+  isExternal: false
+  name: LogVerbose
+  nameWithType: ISsdpLogger.LogVerbose
+  fullName: Rssdp.ISsdpLogger.LogVerbose
+- uid: Rssdp.ISsdpLogger.LogWarning*
+  commentId: Overload:Rssdp.ISsdpLogger.LogWarning
+  isExternal: false
+  name: LogWarning
+  nameWithType: ISsdpLogger.LogWarning
+  fullName: Rssdp.ISsdpLogger.LogWarning
+- uid: Rssdp.ISsdpLogger.LogError*
+  commentId: Overload:Rssdp.ISsdpLogger.LogError
+  isExternal: false
+  name: LogError
+  nameWithType: ISsdpLogger.LogError
+  fullName: Rssdp.ISsdpLogger.LogError

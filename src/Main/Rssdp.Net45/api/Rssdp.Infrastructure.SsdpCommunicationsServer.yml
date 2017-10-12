@@ -1,0 +1,1070 @@
+### YamlMime:ManagedReference
+items:
+- uid: Rssdp.Infrastructure.SsdpCommunicationsServer
+  commentId: T:Rssdp.Infrastructure.SsdpCommunicationsServer
+  id: SsdpCommunicationsServer
+  parent: Rssdp.Infrastructure
+  children:
+  - Rssdp.Infrastructure.SsdpCommunicationsServer.#ctor(Rssdp.Infrastructure.ISocketFactory)
+  - Rssdp.Infrastructure.SsdpCommunicationsServer.#ctor(Rssdp.Infrastructure.ISocketFactory,System.Int32)
+  - Rssdp.Infrastructure.SsdpCommunicationsServer.#ctor(Rssdp.Infrastructure.ISocketFactory,System.Int32,System.Int32)
+  - Rssdp.Infrastructure.SsdpCommunicationsServer.BeginListeningForBroadcasts
+  - Rssdp.Infrastructure.SsdpCommunicationsServer.DeviceNetworkType
+  - Rssdp.Infrastructure.SsdpCommunicationsServer.Dispose(System.Boolean)
+  - Rssdp.Infrastructure.SsdpCommunicationsServer.IsShared
+  - Rssdp.Infrastructure.SsdpCommunicationsServer.RequestReceived
+  - Rssdp.Infrastructure.SsdpCommunicationsServer.ResponseReceived
+  - Rssdp.Infrastructure.SsdpCommunicationsServer.SendMessage(System.Byte[],Rssdp.Infrastructure.UdpEndPoint)
+  - Rssdp.Infrastructure.SsdpCommunicationsServer.StopListeningForBroadcasts
+  - Rssdp.Infrastructure.SsdpCommunicationsServer.StopListeningForResponses
+  langs:
+  - csharp
+  - vb
+  name: SsdpCommunicationsServer
+  nameWithType: SsdpCommunicationsServer
+  fullName: Rssdp.Infrastructure.SsdpCommunicationsServer
+  type: Class
+  source:
+    id: SsdpCommunicationsServer
+    path: ''
+    startLine: 4153
+  assemblies:
+  - cs.temp.dll
+  namespace: Rssdp.Infrastructure
+  summary: "\nProvides the platform independent logic for publishing device existence and responding to search requests.\n"
+  example: []
+  syntax:
+    content: 'public sealed class SsdpCommunicationsServer : DisposableManagedObjectBase, ISsdpCommunicationsServer, IDisposable'
+    content.vb: >-
+      Public NotInheritable Class SsdpCommunicationsServer
+          Inherits DisposableManagedObjectBase
+          Implements ISsdpCommunicationsServer, IDisposable
+  inheritance:
+  - System.Object
+  - Rssdp.Infrastructure.DisposableManagedObjectBase
+  implements:
+  - Rssdp.Infrastructure.ISsdpCommunicationsServer
+  - IDisposable
+  inheritedMembers:
+  - Rssdp.Infrastructure.DisposableManagedObjectBase.ThrowIfDisposed
+  - Rssdp.Infrastructure.DisposableManagedObjectBase.IsDisposed
+  - Rssdp.Infrastructure.DisposableManagedObjectBase.Dispose
+  modifiers.csharp:
+  - public
+  - sealed
+  - class
+  modifiers.vb:
+  - Public
+  - NotInheritable
+  - Class
+- uid: Rssdp.Infrastructure.SsdpCommunicationsServer.RequestReceived
+  commentId: E:Rssdp.Infrastructure.SsdpCommunicationsServer.RequestReceived
+  id: RequestReceived
+  parent: Rssdp.Infrastructure.SsdpCommunicationsServer
+  langs:
+  - csharp
+  - vb
+  name: RequestReceived
+  nameWithType: SsdpCommunicationsServer.RequestReceived
+  fullName: Rssdp.Infrastructure.SsdpCommunicationsServer.RequestReceived
+  type: Event
+  source:
+    id: RequestReceived
+    path: ''
+    startLine: 4197
+  assemblies:
+  - cs.temp.dll
+  namespace: Rssdp.Infrastructure
+  summary: "\nRaised when a HTTPU request message is received by a socket (unicast or multicast).\n"
+  example: []
+  syntax:
+    content: public event EventHandler<RequestReceivedEventArgs> RequestReceived
+    return:
+      type: EventHandler{Rssdp.Infrastructure.RequestReceivedEventArgs}
+    content.vb: Public Event RequestReceived As EventHandler(Of RequestReceivedEventArgs)
+  implements:
+  - Rssdp.Infrastructure.ISsdpCommunicationsServer.RequestReceived
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+- uid: Rssdp.Infrastructure.SsdpCommunicationsServer.ResponseReceived
+  commentId: E:Rssdp.Infrastructure.SsdpCommunicationsServer.ResponseReceived
+  id: ResponseReceived
+  parent: Rssdp.Infrastructure.SsdpCommunicationsServer
+  langs:
+  - csharp
+  - vb
+  name: ResponseReceived
+  nameWithType: SsdpCommunicationsServer.ResponseReceived
+  fullName: Rssdp.Infrastructure.SsdpCommunicationsServer.ResponseReceived
+  type: Event
+  source:
+    id: ResponseReceived
+    path: ''
+    startLine: 4202
+  assemblies:
+  - cs.temp.dll
+  namespace: Rssdp.Infrastructure
+  summary: "\nRaised when an HTTPU response message is received by a socket (unicast or multicast).\n"
+  example: []
+  syntax:
+    content: public event EventHandler<ResponseReceivedEventArgs> ResponseReceived
+    return:
+      type: EventHandler{Rssdp.Infrastructure.ResponseReceivedEventArgs}
+    content.vb: Public Event ResponseReceived As EventHandler(Of ResponseReceivedEventArgs)
+  implements:
+  - Rssdp.Infrastructure.ISsdpCommunicationsServer.ResponseReceived
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+- uid: Rssdp.Infrastructure.SsdpCommunicationsServer.#ctor(Rssdp.Infrastructure.ISocketFactory)
+  commentId: M:Rssdp.Infrastructure.SsdpCommunicationsServer.#ctor(Rssdp.Infrastructure.ISocketFactory)
+  id: '#ctor(Rssdp.Infrastructure.ISocketFactory)'
+  parent: Rssdp.Infrastructure.SsdpCommunicationsServer
+  langs:
+  - csharp
+  - vb
+  name: SsdpCommunicationsServer(ISocketFactory)
+  nameWithType: SsdpCommunicationsServer.SsdpCommunicationsServer(ISocketFactory)
+  fullName: Rssdp.Infrastructure.SsdpCommunicationsServer.SsdpCommunicationsServer(Rssdp.Infrastructure.ISocketFactory)
+  type: Constructor
+  source:
+    id: .ctor
+    path: ''
+    startLine: 4213
+  assemblies:
+  - cs.temp.dll
+  namespace: Rssdp.Infrastructure
+  summary: "\nMinimum constructor.\n"
+  example: []
+  syntax:
+    content: public SsdpCommunicationsServer(ISocketFactory socketFactory)
+    parameters:
+    - id: socketFactory
+      type: Rssdp.Infrastructure.ISocketFactory
+      description: An implementation of the <xref href="Rssdp.Infrastructure.ISocketFactory" data-throw-if-not-resolved="false"></xref> interface that can be used to make new unicast and multicast sockets. Cannot be null.
+    content.vb: Public Sub New(socketFactory As ISocketFactory)
+  overload: Rssdp.Infrastructure.SsdpCommunicationsServer.#ctor*
+  exceptions:
+  - type: System.ArgumentNullException
+    commentId: T:System.ArgumentNullException
+    description: The <code data-dev-comment-type="paramref" class="paramref">socketFactory</code> argument is null.
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+- uid: Rssdp.Infrastructure.SsdpCommunicationsServer.#ctor(Rssdp.Infrastructure.ISocketFactory,System.Int32)
+  commentId: M:Rssdp.Infrastructure.SsdpCommunicationsServer.#ctor(Rssdp.Infrastructure.ISocketFactory,System.Int32)
+  id: '#ctor(Rssdp.Infrastructure.ISocketFactory,System.Int32)'
+  parent: Rssdp.Infrastructure.SsdpCommunicationsServer
+  langs:
+  - csharp
+  - vb
+  name: SsdpCommunicationsServer(ISocketFactory, Int32)
+  nameWithType: SsdpCommunicationsServer.SsdpCommunicationsServer(ISocketFactory, Int32)
+  fullName: Rssdp.Infrastructure.SsdpCommunicationsServer.SsdpCommunicationsServer(Rssdp.Infrastructure.ISocketFactory, System.Int32)
+  type: Constructor
+  source:
+    id: .ctor
+    path: ''
+    startLine: 4224
+  assemblies:
+  - cs.temp.dll
+  namespace: Rssdp.Infrastructure
+  summary: "\nPartial constructor.\n"
+  example: []
+  syntax:
+    content: public SsdpCommunicationsServer(ISocketFactory socketFactory, int localPort)
+    parameters:
+    - id: socketFactory
+      type: Rssdp.Infrastructure.ISocketFactory
+      description: An implementation of the <xref href="Rssdp.Infrastructure.ISocketFactory" data-throw-if-not-resolved="false"></xref> interface that can be used to make new unicast and multicast sockets. Cannot be null.
+    - id: localPort
+      type: System.Int32
+      description: The specific local port to use for all sockets created by this instance. Specify zero to indicate the system should choose a free port itself.
+    content.vb: Public Sub New(socketFactory As ISocketFactory, localPort As Integer)
+  overload: Rssdp.Infrastructure.SsdpCommunicationsServer.#ctor*
+  exceptions:
+  - type: System.ArgumentNullException
+    commentId: T:System.ArgumentNullException
+    description: The <code data-dev-comment-type="paramref" class="paramref">socketFactory</code> argument is null.
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+- uid: Rssdp.Infrastructure.SsdpCommunicationsServer.#ctor(Rssdp.Infrastructure.ISocketFactory,System.Int32,System.Int32)
+  commentId: M:Rssdp.Infrastructure.SsdpCommunicationsServer.#ctor(Rssdp.Infrastructure.ISocketFactory,System.Int32,System.Int32)
+  id: '#ctor(Rssdp.Infrastructure.ISocketFactory,System.Int32,System.Int32)'
+  parent: Rssdp.Infrastructure.SsdpCommunicationsServer
+  langs:
+  - csharp
+  - vb
+  name: SsdpCommunicationsServer(ISocketFactory, Int32, Int32)
+  nameWithType: SsdpCommunicationsServer.SsdpCommunicationsServer(ISocketFactory, Int32, Int32)
+  fullName: Rssdp.Infrastructure.SsdpCommunicationsServer.SsdpCommunicationsServer(Rssdp.Infrastructure.ISocketFactory, System.Int32, System.Int32)
+  type: Constructor
+  source:
+    id: .ctor
+    path: ''
+    startLine: 4237
+  assemblies:
+  - cs.temp.dll
+  namespace: Rssdp.Infrastructure
+  summary: "\nFull constructor.\n"
+  example: []
+  syntax:
+    content: public SsdpCommunicationsServer(ISocketFactory socketFactory, int localPort, int multicastTimeToLive)
+    parameters:
+    - id: socketFactory
+      type: Rssdp.Infrastructure.ISocketFactory
+      description: An implementation of the <xref href="Rssdp.Infrastructure.ISocketFactory" data-throw-if-not-resolved="false"></xref> interface that can be used to make new unicast and multicast sockets. Cannot be null.
+    - id: localPort
+      type: System.Int32
+      description: The specific local port to use for all sockets created by this instance. Specify zero to indicate the system should choose a free port itself.
+    - id: multicastTimeToLive
+      type: System.Int32
+      description: The multicast time to live value for multicast sockets. Technically this is a number of router hops, not a &apos;Time&apos;. Must be greater than zero.
+    content.vb: Public Sub New(socketFactory As ISocketFactory, localPort As Integer, multicastTimeToLive As Integer)
+  overload: Rssdp.Infrastructure.SsdpCommunicationsServer.#ctor*
+  exceptions:
+  - type: System.ArgumentNullException
+    commentId: T:System.ArgumentNullException
+    description: The <code data-dev-comment-type="paramref" class="paramref">socketFactory</code> argument is null.
+  - type: System.ArgumentOutOfRangeException
+    commentId: T:System.ArgumentOutOfRangeException
+    description: The <code data-dev-comment-type="paramref" class="paramref">multicastTimeToLive</code> argument is less than or equal to zero.
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+- uid: Rssdp.Infrastructure.SsdpCommunicationsServer.BeginListeningForBroadcasts
+  commentId: M:Rssdp.Infrastructure.SsdpCommunicationsServer.BeginListeningForBroadcasts
+  id: BeginListeningForBroadcasts
+  parent: Rssdp.Infrastructure.SsdpCommunicationsServer
+  langs:
+  - csharp
+  - vb
+  name: BeginListeningForBroadcasts()
+  nameWithType: SsdpCommunicationsServer.BeginListeningForBroadcasts()
+  fullName: Rssdp.Infrastructure.SsdpCommunicationsServer.BeginListeningForBroadcasts()
+  type: Method
+  source:
+    id: BeginListeningForBroadcasts
+    path: ''
+    startLine: 4262
+  assemblies:
+  - cs.temp.dll
+  namespace: Rssdp.Infrastructure
+  summary: "\nCauses the server to begin listening for multicast messages, being SSDP search requests and notifications.\n"
+  example: []
+  syntax:
+    content: public void BeginListeningForBroadcasts()
+    content.vb: Public Sub BeginListeningForBroadcasts
+  overload: Rssdp.Infrastructure.SsdpCommunicationsServer.BeginListeningForBroadcasts*
+  exceptions:
+  - type: System.ObjectDisposedException
+    commentId: T:System.ObjectDisposedException
+    description: Thrown if the <xref href="Rssdp.Infrastructure.DisposableManagedObjectBase.IsDisposed" data-throw-if-not-resolved="false"></xref> property is true (because <xref href="Rssdp.Infrastructure.DisposableManagedObjectBase.Dispose" data-throw-if-not-resolved="false"></xref> has been called previously).
+  implements:
+  - Rssdp.Infrastructure.ISsdpCommunicationsServer.BeginListeningForBroadcasts
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+- uid: Rssdp.Infrastructure.SsdpCommunicationsServer.StopListeningForBroadcasts
+  commentId: M:Rssdp.Infrastructure.SsdpCommunicationsServer.StopListeningForBroadcasts
+  id: StopListeningForBroadcasts
+  parent: Rssdp.Infrastructure.SsdpCommunicationsServer
+  langs:
+  - csharp
+  - vb
+  name: StopListeningForBroadcasts()
+  nameWithType: SsdpCommunicationsServer.StopListeningForBroadcasts()
+  fullName: Rssdp.Infrastructure.SsdpCommunicationsServer.StopListeningForBroadcasts()
+  type: Method
+  source:
+    id: StopListeningForBroadcasts
+    path: ''
+    startLine: 4280
+  assemblies:
+  - cs.temp.dll
+  namespace: Rssdp.Infrastructure
+  summary: "\nCauses the server to stop listening for multicast messages, being SSDP search requests and notifications.\n"
+  example: []
+  syntax:
+    content: public void StopListeningForBroadcasts()
+    content.vb: Public Sub StopListeningForBroadcasts
+  overload: Rssdp.Infrastructure.SsdpCommunicationsServer.StopListeningForBroadcasts*
+  exceptions:
+  - type: System.ObjectDisposedException
+    commentId: T:System.ObjectDisposedException
+    description: Thrown if the <xref href="Rssdp.Infrastructure.DisposableManagedObjectBase.IsDisposed" data-throw-if-not-resolved="false"></xref> property is true (because <xref href="Rssdp.Infrastructure.DisposableManagedObjectBase.Dispose" data-throw-if-not-resolved="false"></xref> has been called previously).
+  implements:
+  - Rssdp.Infrastructure.ISsdpCommunicationsServer.StopListeningForBroadcasts
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+- uid: Rssdp.Infrastructure.SsdpCommunicationsServer.SendMessage(System.Byte[],Rssdp.Infrastructure.UdpEndPoint)
+  commentId: M:Rssdp.Infrastructure.SsdpCommunicationsServer.SendMessage(System.Byte[],Rssdp.Infrastructure.UdpEndPoint)
+  id: SendMessage(System.Byte[],Rssdp.Infrastructure.UdpEndPoint)
+  parent: Rssdp.Infrastructure.SsdpCommunicationsServer
+  langs:
+  - csharp
+  - vb
+  name: SendMessage(Byte[], UdpEndPoint)
+  nameWithType: SsdpCommunicationsServer.SendMessage(Byte[], UdpEndPoint)
+  fullName: Rssdp.Infrastructure.SsdpCommunicationsServer.SendMessage(System.Byte[], Rssdp.Infrastructure.UdpEndPoint)
+  type: Method
+  source:
+    id: SendMessage
+    path: ''
+    startLine: 4301
+  assemblies:
+  - cs.temp.dll
+  namespace: Rssdp.Infrastructure
+  summary: "\nSends a message to a particular address (uni or multicast) and port.\n"
+  example: []
+  syntax:
+    content: public void SendMessage(byte[] messageData, UdpEndPoint destination)
+    parameters:
+    - id: messageData
+      type: System.Byte[]
+      description: A byte array containing the data to send.
+    - id: destination
+      type: Rssdp.Infrastructure.UdpEndPoint
+      description: A <xref href="Rssdp.Infrastructure.UdpEndPoint" data-throw-if-not-resolved="false"></xref> representing the destination address for the data. Can be either a multicast or unicast destination.
+    content.vb: Public Sub SendMessage(messageData As Byte(), destination As UdpEndPoint)
+  overload: Rssdp.Infrastructure.SsdpCommunicationsServer.SendMessage*
+  exceptions:
+  - type: System.ArgumentNullException
+    commentId: T:System.ArgumentNullException
+    description: Thrown if the <code data-dev-comment-type="paramref" class="paramref">messageData</code> argument is null.
+  - type: System.ObjectDisposedException
+    commentId: T:System.ObjectDisposedException
+    description: Thrown if the <xref href="Rssdp.Infrastructure.DisposableManagedObjectBase.IsDisposed" data-throw-if-not-resolved="false"></xref> property is true (because <xref href="Rssdp.Infrastructure.DisposableManagedObjectBase.Dispose" data-throw-if-not-resolved="false"></xref> has been called previously).
+  implements:
+  - Rssdp.Infrastructure.ISsdpCommunicationsServer.SendMessage(System.Byte[],Rssdp.Infrastructure.UdpEndPoint)
+  nameWithType.vb: SsdpCommunicationsServer.SendMessage(Byte(), UdpEndPoint)
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+  fullName.vb: Rssdp.Infrastructure.SsdpCommunicationsServer.SendMessage(System.Byte(), Rssdp.Infrastructure.UdpEndPoint)
+  name.vb: SendMessage(Byte(), UdpEndPoint)
+- uid: Rssdp.Infrastructure.SsdpCommunicationsServer.StopListeningForResponses
+  commentId: M:Rssdp.Infrastructure.SsdpCommunicationsServer.StopListeningForResponses
+  id: StopListeningForResponses
+  parent: Rssdp.Infrastructure.SsdpCommunicationsServer
+  langs:
+  - csharp
+  - vb
+  name: StopListeningForResponses()
+  nameWithType: SsdpCommunicationsServer.StopListeningForResponses()
+  fullName: Rssdp.Infrastructure.SsdpCommunicationsServer.StopListeningForResponses()
+  type: Method
+  source:
+    id: StopListeningForResponses
+    path: ''
+    startLine: 4320
+  assemblies:
+  - cs.temp.dll
+  namespace: Rssdp.Infrastructure
+  summary: "\nStops listening for search responses on the local, unicast socket.\n"
+  example: []
+  syntax:
+    content: public void StopListeningForResponses()
+    content.vb: Public Sub StopListeningForResponses
+  overload: Rssdp.Infrastructure.SsdpCommunicationsServer.StopListeningForResponses*
+  exceptions:
+  - type: System.ObjectDisposedException
+    commentId: T:System.ObjectDisposedException
+    description: Thrown if the <xref href="Rssdp.Infrastructure.DisposableManagedObjectBase.IsDisposed" data-throw-if-not-resolved="false"></xref> property is true (because <xref href="Rssdp.Infrastructure.DisposableManagedObjectBase.Dispose" data-throw-if-not-resolved="false"></xref> has been called previously).
+  implements:
+  - Rssdp.Infrastructure.ISsdpCommunicationsServer.StopListeningForResponses
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+- uid: Rssdp.Infrastructure.SsdpCommunicationsServer.IsShared
+  commentId: P:Rssdp.Infrastructure.SsdpCommunicationsServer.IsShared
+  id: IsShared
+  parent: Rssdp.Infrastructure.SsdpCommunicationsServer
+  langs:
+  - csharp
+  - vb
+  name: IsShared
+  nameWithType: SsdpCommunicationsServer.IsShared
+  fullName: Rssdp.Infrastructure.SsdpCommunicationsServer.IsShared
+  type: Property
+  source:
+    id: IsShared
+    path: ''
+    startLine: 4343
+  assemblies:
+  - cs.temp.dll
+  namespace: Rssdp.Infrastructure
+  summary: "\nGets or sets a boolean value indicating whether or not this instance is shared amongst multiple <xref href=\"Rssdp.Infrastructure.SsdpDeviceLocatorBase\" data-throw-if-not-resolved=\"false\"></xref> and/or <xref href=\"Rssdp.Infrastructure.ISsdpDevicePublisher\" data-throw-if-not-resolved=\"false\"></xref> instances.\n"
+  remarks: "\n<p>If true, disposing an instance of a <xref href=\"Rssdp.Infrastructure.SsdpDeviceLocatorBase\" data-throw-if-not-resolved=\"false\"></xref>or a <xref href=\"Rssdp.Infrastructure.ISsdpDevicePublisher\" data-throw-if-not-resolved=\"false\"></xref> will not dispose this comms server instance. The calling code is responsible for managing the lifetime of the server.</p>\n"
+  example: []
+  syntax:
+    content: public bool IsShared { get; set; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Public Property IsShared As Boolean
+  overload: Rssdp.Infrastructure.SsdpCommunicationsServer.IsShared*
+  implements:
+  - Rssdp.Infrastructure.ISsdpCommunicationsServer.IsShared
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: Rssdp.Infrastructure.SsdpCommunicationsServer.DeviceNetworkType
+  commentId: P:Rssdp.Infrastructure.SsdpCommunicationsServer.DeviceNetworkType
+  id: DeviceNetworkType
+  parent: Rssdp.Infrastructure.SsdpCommunicationsServer
+  langs:
+  - csharp
+  - vb
+  name: DeviceNetworkType
+  nameWithType: SsdpCommunicationsServer.DeviceNetworkType
+  fullName: Rssdp.Infrastructure.SsdpCommunicationsServer.DeviceNetworkType
+  type: Property
+  source:
+    id: DeviceNetworkType
+    path: ''
+    startLine: 4352
+  assemblies:
+  - cs.temp.dll
+  namespace: Rssdp.Infrastructure
+  summary: "\nWhat type of sockets will be created: ipv6 or ipv4\n"
+  example: []
+  syntax:
+    content: public DeviceNetworkType DeviceNetworkType { get; }
+    parameters: []
+    return:
+      type: Rssdp.DeviceNetworkType
+    content.vb: Public ReadOnly Property DeviceNetworkType As DeviceNetworkType
+  overload: Rssdp.Infrastructure.SsdpCommunicationsServer.DeviceNetworkType*
+  implements:
+  - Rssdp.Infrastructure.ISsdpCommunicationsServer.DeviceNetworkType
+  modifiers.csharp:
+  - public
+  - get
+  modifiers.vb:
+  - Public
+  - ReadOnly
+- uid: Rssdp.Infrastructure.SsdpCommunicationsServer.Dispose(System.Boolean)
+  commentId: M:Rssdp.Infrastructure.SsdpCommunicationsServer.Dispose(System.Boolean)
+  id: Dispose(System.Boolean)
+  parent: Rssdp.Infrastructure.SsdpCommunicationsServer
+  langs:
+  - csharp
+  - vb
+  name: Dispose(Boolean)
+  nameWithType: SsdpCommunicationsServer.Dispose(Boolean)
+  fullName: Rssdp.Infrastructure.SsdpCommunicationsServer.Dispose(System.Boolean)
+  type: Method
+  source:
+    id: Dispose
+    path: ''
+    startLine: 4362
+  assemblies:
+  - cs.temp.dll
+  namespace: Rssdp.Infrastructure
+  summary: "\nStops listening for requests, disposes this instance and all internal resources.\n"
+  example: []
+  syntax:
+    content: protected override void Dispose(bool disposing)
+    parameters:
+    - id: disposing
+      type: System.Boolean
+      description: ''
+    content.vb: Protected Overrides Sub Dispose(disposing As Boolean)
+  overridden: Rssdp.Infrastructure.DisposableManagedObjectBase.Dispose(System.Boolean)
+  overload: Rssdp.Infrastructure.SsdpCommunicationsServer.Dispose*
+  modifiers.csharp:
+  - protected
+  - override
+  modifiers.vb:
+  - Protected
+  - Overrides
+references:
+- uid: Rssdp.Infrastructure
+  commentId: N:Rssdp.Infrastructure
+  isExternal: false
+  name: Rssdp.Infrastructure
+  nameWithType: Rssdp.Infrastructure
+  fullName: Rssdp.Infrastructure
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  name: Object
+  nameWithType: Object
+  fullName: System.Object
+- uid: Rssdp.Infrastructure.DisposableManagedObjectBase
+  commentId: T:Rssdp.Infrastructure.DisposableManagedObjectBase
+  parent: Rssdp.Infrastructure
+  isExternal: false
+  name: DisposableManagedObjectBase
+  nameWithType: DisposableManagedObjectBase
+  fullName: Rssdp.Infrastructure.DisposableManagedObjectBase
+- uid: Rssdp.Infrastructure.ISsdpCommunicationsServer
+  commentId: T:Rssdp.Infrastructure.ISsdpCommunicationsServer
+  parent: Rssdp.Infrastructure
+  isExternal: false
+  name: ISsdpCommunicationsServer
+  nameWithType: ISsdpCommunicationsServer
+  fullName: Rssdp.Infrastructure.ISsdpCommunicationsServer
+- uid: IDisposable
+  commentId: '!:IDisposable'
+  isExternal: true
+  name: IDisposable
+  nameWithType: IDisposable
+  fullName: IDisposable
+- uid: Rssdp.Infrastructure.DisposableManagedObjectBase.ThrowIfDisposed
+  commentId: M:Rssdp.Infrastructure.DisposableManagedObjectBase.ThrowIfDisposed
+  parent: Rssdp.Infrastructure.DisposableManagedObjectBase
+  isExternal: false
+  name: ThrowIfDisposed()
+  nameWithType: DisposableManagedObjectBase.ThrowIfDisposed()
+  fullName: Rssdp.Infrastructure.DisposableManagedObjectBase.ThrowIfDisposed()
+  spec.csharp:
+  - uid: Rssdp.Infrastructure.DisposableManagedObjectBase.ThrowIfDisposed
+    name: ThrowIfDisposed
+    nameWithType: DisposableManagedObjectBase.ThrowIfDisposed
+    fullName: Rssdp.Infrastructure.DisposableManagedObjectBase.ThrowIfDisposed
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: Rssdp.Infrastructure.DisposableManagedObjectBase.ThrowIfDisposed
+    name: ThrowIfDisposed
+    nameWithType: DisposableManagedObjectBase.ThrowIfDisposed
+    fullName: Rssdp.Infrastructure.DisposableManagedObjectBase.ThrowIfDisposed
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: Rssdp.Infrastructure.DisposableManagedObjectBase.IsDisposed
+  commentId: P:Rssdp.Infrastructure.DisposableManagedObjectBase.IsDisposed
+  parent: Rssdp.Infrastructure.DisposableManagedObjectBase
+  isExternal: false
+  name: IsDisposed
+  nameWithType: DisposableManagedObjectBase.IsDisposed
+  fullName: Rssdp.Infrastructure.DisposableManagedObjectBase.IsDisposed
+- uid: Rssdp.Infrastructure.DisposableManagedObjectBase.Dispose
+  commentId: M:Rssdp.Infrastructure.DisposableManagedObjectBase.Dispose
+  parent: Rssdp.Infrastructure.DisposableManagedObjectBase
+  isExternal: false
+  name: Dispose()
+  nameWithType: DisposableManagedObjectBase.Dispose()
+  fullName: Rssdp.Infrastructure.DisposableManagedObjectBase.Dispose()
+  spec.csharp:
+  - uid: Rssdp.Infrastructure.DisposableManagedObjectBase.Dispose
+    name: Dispose
+    nameWithType: DisposableManagedObjectBase.Dispose
+    fullName: Rssdp.Infrastructure.DisposableManagedObjectBase.Dispose
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: Rssdp.Infrastructure.DisposableManagedObjectBase.Dispose
+    name: Dispose
+    nameWithType: DisposableManagedObjectBase.Dispose
+    fullName: Rssdp.Infrastructure.DisposableManagedObjectBase.Dispose
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System
+  commentId: N:System
+  isExternal: false
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Rssdp.Infrastructure.ISsdpCommunicationsServer.RequestReceived
+  commentId: E:Rssdp.Infrastructure.ISsdpCommunicationsServer.RequestReceived
+  parent: Rssdp.Infrastructure.ISsdpCommunicationsServer
+  isExternal: false
+  name: RequestReceived
+  nameWithType: ISsdpCommunicationsServer.RequestReceived
+  fullName: Rssdp.Infrastructure.ISsdpCommunicationsServer.RequestReceived
+- uid: EventHandler{Rssdp.Infrastructure.RequestReceivedEventArgs}
+  commentId: '!:EventHandler{Rssdp.Infrastructure.RequestReceivedEventArgs}'
+  definition: EventHandler`1
+  name: EventHandler<RequestReceivedEventArgs>
+  nameWithType: EventHandler<RequestReceivedEventArgs>
+  fullName: EventHandler<Rssdp.Infrastructure.RequestReceivedEventArgs>
+  nameWithType.vb: EventHandler(Of RequestReceivedEventArgs)
+  fullName.vb: EventHandler(Of Rssdp.Infrastructure.RequestReceivedEventArgs)
+  name.vb: EventHandler(Of RequestReceivedEventArgs)
+  spec.csharp:
+  - uid: EventHandler`1
+    name: EventHandler
+    nameWithType: EventHandler
+    fullName: EventHandler
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: Rssdp.Infrastructure.RequestReceivedEventArgs
+    name: RequestReceivedEventArgs
+    nameWithType: RequestReceivedEventArgs
+    fullName: Rssdp.Infrastructure.RequestReceivedEventArgs
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: EventHandler`1
+    name: EventHandler
+    nameWithType: EventHandler
+    fullName: EventHandler
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: Rssdp.Infrastructure.RequestReceivedEventArgs
+    name: RequestReceivedEventArgs
+    nameWithType: RequestReceivedEventArgs
+    fullName: Rssdp.Infrastructure.RequestReceivedEventArgs
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: EventHandler`1
+  isExternal: true
+  name: EventHandler<>
+  nameWithType: EventHandler<>
+  fullName: EventHandler<>
+  nameWithType.vb: EventHandler(Of )
+  fullName.vb: EventHandler(Of )
+  name.vb: EventHandler(Of )
+  spec.csharp:
+  - uid: EventHandler`1
+    name: EventHandler
+    nameWithType: EventHandler
+    fullName: EventHandler
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - name: ''
+    nameWithType: ''
+    fullName: ''
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: EventHandler`1
+    name: EventHandler
+    nameWithType: EventHandler
+    fullName: EventHandler
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - name: ''
+    nameWithType: ''
+    fullName: ''
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: Rssdp.Infrastructure.ISsdpCommunicationsServer.ResponseReceived
+  commentId: E:Rssdp.Infrastructure.ISsdpCommunicationsServer.ResponseReceived
+  parent: Rssdp.Infrastructure.ISsdpCommunicationsServer
+  isExternal: false
+  name: ResponseReceived
+  nameWithType: ISsdpCommunicationsServer.ResponseReceived
+  fullName: Rssdp.Infrastructure.ISsdpCommunicationsServer.ResponseReceived
+- uid: EventHandler{Rssdp.Infrastructure.ResponseReceivedEventArgs}
+  commentId: '!:EventHandler{Rssdp.Infrastructure.ResponseReceivedEventArgs}'
+  definition: EventHandler`1
+  name: EventHandler<ResponseReceivedEventArgs>
+  nameWithType: EventHandler<ResponseReceivedEventArgs>
+  fullName: EventHandler<Rssdp.Infrastructure.ResponseReceivedEventArgs>
+  nameWithType.vb: EventHandler(Of ResponseReceivedEventArgs)
+  fullName.vb: EventHandler(Of Rssdp.Infrastructure.ResponseReceivedEventArgs)
+  name.vb: EventHandler(Of ResponseReceivedEventArgs)
+  spec.csharp:
+  - uid: EventHandler`1
+    name: EventHandler
+    nameWithType: EventHandler
+    fullName: EventHandler
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: Rssdp.Infrastructure.ResponseReceivedEventArgs
+    name: ResponseReceivedEventArgs
+    nameWithType: ResponseReceivedEventArgs
+    fullName: Rssdp.Infrastructure.ResponseReceivedEventArgs
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: EventHandler`1
+    name: EventHandler
+    nameWithType: EventHandler
+    fullName: EventHandler
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: Rssdp.Infrastructure.ResponseReceivedEventArgs
+    name: ResponseReceivedEventArgs
+    nameWithType: ResponseReceivedEventArgs
+    fullName: Rssdp.Infrastructure.ResponseReceivedEventArgs
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: Rssdp.Infrastructure.ISocketFactory
+  commentId: T:Rssdp.Infrastructure.ISocketFactory
+  parent: Rssdp.Infrastructure
+  isExternal: false
+  name: ISocketFactory
+  nameWithType: ISocketFactory
+  fullName: Rssdp.Infrastructure.ISocketFactory
+- uid: Rssdp.Infrastructure.SsdpCommunicationsServer.#ctor*
+  commentId: Overload:Rssdp.Infrastructure.SsdpCommunicationsServer.#ctor
+  isExternal: false
+  name: SsdpCommunicationsServer
+  nameWithType: SsdpCommunicationsServer.SsdpCommunicationsServer
+  fullName: Rssdp.Infrastructure.SsdpCommunicationsServer.SsdpCommunicationsServer
+- uid: System.ArgumentNullException
+  commentId: T:System.ArgumentNullException
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  name: Int32
+  nameWithType: Int32
+  fullName: System.Int32
+- uid: System.ArgumentOutOfRangeException
+  commentId: T:System.ArgumentOutOfRangeException
+- uid: Rssdp.Infrastructure.SsdpCommunicationsServer.BeginListeningForBroadcasts*
+  commentId: Overload:Rssdp.Infrastructure.SsdpCommunicationsServer.BeginListeningForBroadcasts
+  isExternal: false
+  name: BeginListeningForBroadcasts
+  nameWithType: SsdpCommunicationsServer.BeginListeningForBroadcasts
+  fullName: Rssdp.Infrastructure.SsdpCommunicationsServer.BeginListeningForBroadcasts
+- uid: Rssdp.Infrastructure.ISsdpCommunicationsServer.BeginListeningForBroadcasts
+  commentId: M:Rssdp.Infrastructure.ISsdpCommunicationsServer.BeginListeningForBroadcasts
+  parent: Rssdp.Infrastructure.ISsdpCommunicationsServer
+  isExternal: false
+  name: BeginListeningForBroadcasts()
+  nameWithType: ISsdpCommunicationsServer.BeginListeningForBroadcasts()
+  fullName: Rssdp.Infrastructure.ISsdpCommunicationsServer.BeginListeningForBroadcasts()
+  spec.csharp:
+  - uid: Rssdp.Infrastructure.ISsdpCommunicationsServer.BeginListeningForBroadcasts
+    name: BeginListeningForBroadcasts
+    nameWithType: ISsdpCommunicationsServer.BeginListeningForBroadcasts
+    fullName: Rssdp.Infrastructure.ISsdpCommunicationsServer.BeginListeningForBroadcasts
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: Rssdp.Infrastructure.ISsdpCommunicationsServer.BeginListeningForBroadcasts
+    name: BeginListeningForBroadcasts
+    nameWithType: ISsdpCommunicationsServer.BeginListeningForBroadcasts
+    fullName: Rssdp.Infrastructure.ISsdpCommunicationsServer.BeginListeningForBroadcasts
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.ObjectDisposedException
+  commentId: T:System.ObjectDisposedException
+- uid: Rssdp.Infrastructure.SsdpCommunicationsServer.StopListeningForBroadcasts*
+  commentId: Overload:Rssdp.Infrastructure.SsdpCommunicationsServer.StopListeningForBroadcasts
+  isExternal: false
+  name: StopListeningForBroadcasts
+  nameWithType: SsdpCommunicationsServer.StopListeningForBroadcasts
+  fullName: Rssdp.Infrastructure.SsdpCommunicationsServer.StopListeningForBroadcasts
+- uid: Rssdp.Infrastructure.ISsdpCommunicationsServer.StopListeningForBroadcasts
+  commentId: M:Rssdp.Infrastructure.ISsdpCommunicationsServer.StopListeningForBroadcasts
+  parent: Rssdp.Infrastructure.ISsdpCommunicationsServer
+  isExternal: false
+  name: StopListeningForBroadcasts()
+  nameWithType: ISsdpCommunicationsServer.StopListeningForBroadcasts()
+  fullName: Rssdp.Infrastructure.ISsdpCommunicationsServer.StopListeningForBroadcasts()
+  spec.csharp:
+  - uid: Rssdp.Infrastructure.ISsdpCommunicationsServer.StopListeningForBroadcasts
+    name: StopListeningForBroadcasts
+    nameWithType: ISsdpCommunicationsServer.StopListeningForBroadcasts
+    fullName: Rssdp.Infrastructure.ISsdpCommunicationsServer.StopListeningForBroadcasts
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: Rssdp.Infrastructure.ISsdpCommunicationsServer.StopListeningForBroadcasts
+    name: StopListeningForBroadcasts
+    nameWithType: ISsdpCommunicationsServer.StopListeningForBroadcasts
+    fullName: Rssdp.Infrastructure.ISsdpCommunicationsServer.StopListeningForBroadcasts
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: Rssdp.Infrastructure.UdpEndPoint
+  commentId: T:Rssdp.Infrastructure.UdpEndPoint
+  parent: Rssdp.Infrastructure
+  isExternal: false
+  name: UdpEndPoint
+  nameWithType: UdpEndPoint
+  fullName: Rssdp.Infrastructure.UdpEndPoint
+- uid: Rssdp.Infrastructure.SsdpCommunicationsServer.SendMessage*
+  commentId: Overload:Rssdp.Infrastructure.SsdpCommunicationsServer.SendMessage
+  isExternal: false
+  name: SendMessage
+  nameWithType: SsdpCommunicationsServer.SendMessage
+  fullName: Rssdp.Infrastructure.SsdpCommunicationsServer.SendMessage
+- uid: Rssdp.Infrastructure.ISsdpCommunicationsServer.SendMessage(System.Byte[],Rssdp.Infrastructure.UdpEndPoint)
+  commentId: M:Rssdp.Infrastructure.ISsdpCommunicationsServer.SendMessage(System.Byte[],Rssdp.Infrastructure.UdpEndPoint)
+  parent: Rssdp.Infrastructure.ISsdpCommunicationsServer
+  isExternal: true
+  name: SendMessage(Byte[], UdpEndPoint)
+  nameWithType: ISsdpCommunicationsServer.SendMessage(Byte[], UdpEndPoint)
+  fullName: Rssdp.Infrastructure.ISsdpCommunicationsServer.SendMessage(System.Byte[], Rssdp.Infrastructure.UdpEndPoint)
+  nameWithType.vb: ISsdpCommunicationsServer.SendMessage(Byte(), UdpEndPoint)
+  fullName.vb: Rssdp.Infrastructure.ISsdpCommunicationsServer.SendMessage(System.Byte(), Rssdp.Infrastructure.UdpEndPoint)
+  name.vb: SendMessage(Byte(), UdpEndPoint)
+  spec.csharp:
+  - uid: Rssdp.Infrastructure.ISsdpCommunicationsServer.SendMessage(System.Byte[],Rssdp.Infrastructure.UdpEndPoint)
+    name: SendMessage
+    nameWithType: ISsdpCommunicationsServer.SendMessage
+    fullName: Rssdp.Infrastructure.ISsdpCommunicationsServer.SendMessage
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Byte
+    name: Byte
+    nameWithType: Byte
+    fullName: System.Byte
+    isExternal: true
+  - name: '[]'
+    nameWithType: '[]'
+    fullName: '[]'
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: Rssdp.Infrastructure.UdpEndPoint
+    name: UdpEndPoint
+    nameWithType: UdpEndPoint
+    fullName: Rssdp.Infrastructure.UdpEndPoint
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: Rssdp.Infrastructure.ISsdpCommunicationsServer.SendMessage(System.Byte[],Rssdp.Infrastructure.UdpEndPoint)
+    name: SendMessage
+    nameWithType: ISsdpCommunicationsServer.SendMessage
+    fullName: Rssdp.Infrastructure.ISsdpCommunicationsServer.SendMessage
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Byte
+    name: Byte
+    nameWithType: Byte
+    fullName: System.Byte
+    isExternal: true
+  - name: ()
+    nameWithType: ()
+    fullName: ()
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: Rssdp.Infrastructure.UdpEndPoint
+    name: UdpEndPoint
+    nameWithType: UdpEndPoint
+    fullName: Rssdp.Infrastructure.UdpEndPoint
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Byte[]
+  name: Byte[]
+  nameWithType: Byte[]
+  fullName: System.Byte[]
+  nameWithType.vb: Byte()
+  fullName.vb: System.Byte()
+  name.vb: Byte()
+  spec.csharp:
+  - uid: System.Byte
+    name: Byte
+    nameWithType: Byte
+    fullName: System.Byte
+    isExternal: true
+  - name: '[]'
+    nameWithType: '[]'
+    fullName: '[]'
+  spec.vb:
+  - uid: System.Byte
+    name: Byte
+    nameWithType: Byte
+    fullName: System.Byte
+    isExternal: true
+  - name: ()
+    nameWithType: ()
+    fullName: ()
+- uid: Rssdp.Infrastructure.SsdpCommunicationsServer.StopListeningForResponses*
+  commentId: Overload:Rssdp.Infrastructure.SsdpCommunicationsServer.StopListeningForResponses
+  isExternal: false
+  name: StopListeningForResponses
+  nameWithType: SsdpCommunicationsServer.StopListeningForResponses
+  fullName: Rssdp.Infrastructure.SsdpCommunicationsServer.StopListeningForResponses
+- uid: Rssdp.Infrastructure.ISsdpCommunicationsServer.StopListeningForResponses
+  commentId: M:Rssdp.Infrastructure.ISsdpCommunicationsServer.StopListeningForResponses
+  parent: Rssdp.Infrastructure.ISsdpCommunicationsServer
+  isExternal: false
+  name: StopListeningForResponses()
+  nameWithType: ISsdpCommunicationsServer.StopListeningForResponses()
+  fullName: Rssdp.Infrastructure.ISsdpCommunicationsServer.StopListeningForResponses()
+  spec.csharp:
+  - uid: Rssdp.Infrastructure.ISsdpCommunicationsServer.StopListeningForResponses
+    name: StopListeningForResponses
+    nameWithType: ISsdpCommunicationsServer.StopListeningForResponses
+    fullName: Rssdp.Infrastructure.ISsdpCommunicationsServer.StopListeningForResponses
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: Rssdp.Infrastructure.ISsdpCommunicationsServer.StopListeningForResponses
+    name: StopListeningForResponses
+    nameWithType: ISsdpCommunicationsServer.StopListeningForResponses
+    fullName: Rssdp.Infrastructure.ISsdpCommunicationsServer.StopListeningForResponses
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: Rssdp.Infrastructure.SsdpDeviceLocatorBase
+  commentId: T:Rssdp.Infrastructure.SsdpDeviceLocatorBase
+  isExternal: false
+  name: SsdpDeviceLocatorBase
+  nameWithType: SsdpDeviceLocatorBase
+  fullName: Rssdp.Infrastructure.SsdpDeviceLocatorBase
+- uid: Rssdp.Infrastructure.ISsdpDevicePublisher
+  commentId: T:Rssdp.Infrastructure.ISsdpDevicePublisher
+  parent: Rssdp.Infrastructure
+  isExternal: false
+  name: ISsdpDevicePublisher
+  nameWithType: ISsdpDevicePublisher
+  fullName: Rssdp.Infrastructure.ISsdpDevicePublisher
+- uid: Rssdp.Infrastructure.SsdpCommunicationsServer.IsShared*
+  commentId: Overload:Rssdp.Infrastructure.SsdpCommunicationsServer.IsShared
+  isExternal: false
+  name: IsShared
+  nameWithType: SsdpCommunicationsServer.IsShared
+  fullName: Rssdp.Infrastructure.SsdpCommunicationsServer.IsShared
+- uid: Rssdp.Infrastructure.ISsdpCommunicationsServer.IsShared
+  commentId: P:Rssdp.Infrastructure.ISsdpCommunicationsServer.IsShared
+  parent: Rssdp.Infrastructure.ISsdpCommunicationsServer
+  isExternal: false
+  name: IsShared
+  nameWithType: ISsdpCommunicationsServer.IsShared
+  fullName: Rssdp.Infrastructure.ISsdpCommunicationsServer.IsShared
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  name: Boolean
+  nameWithType: Boolean
+  fullName: System.Boolean
+- uid: Rssdp.Infrastructure.SsdpCommunicationsServer.DeviceNetworkType*
+  commentId: Overload:Rssdp.Infrastructure.SsdpCommunicationsServer.DeviceNetworkType
+  isExternal: false
+  name: DeviceNetworkType
+  nameWithType: SsdpCommunicationsServer.DeviceNetworkType
+  fullName: Rssdp.Infrastructure.SsdpCommunicationsServer.DeviceNetworkType
+- uid: Rssdp.Infrastructure.ISsdpCommunicationsServer.DeviceNetworkType
+  commentId: P:Rssdp.Infrastructure.ISsdpCommunicationsServer.DeviceNetworkType
+  parent: Rssdp.Infrastructure.ISsdpCommunicationsServer
+  isExternal: false
+  name: DeviceNetworkType
+  nameWithType: ISsdpCommunicationsServer.DeviceNetworkType
+  fullName: Rssdp.Infrastructure.ISsdpCommunicationsServer.DeviceNetworkType
+- uid: Rssdp.DeviceNetworkType
+  commentId: T:Rssdp.DeviceNetworkType
+  parent: Rssdp
+  isExternal: false
+  name: DeviceNetworkType
+  nameWithType: DeviceNetworkType
+  fullName: Rssdp.DeviceNetworkType
+- uid: Rssdp
+  commentId: N:Rssdp
+  isExternal: false
+  name: Rssdp
+  nameWithType: Rssdp
+  fullName: Rssdp
+- uid: Rssdp.Infrastructure.DisposableManagedObjectBase.Dispose(System.Boolean)
+  commentId: M:Rssdp.Infrastructure.DisposableManagedObjectBase.Dispose(System.Boolean)
+  parent: Rssdp.Infrastructure.DisposableManagedObjectBase
+  isExternal: true
+  name: Dispose(Boolean)
+  nameWithType: DisposableManagedObjectBase.Dispose(Boolean)
+  fullName: Rssdp.Infrastructure.DisposableManagedObjectBase.Dispose(System.Boolean)
+  spec.csharp:
+  - uid: Rssdp.Infrastructure.DisposableManagedObjectBase.Dispose(System.Boolean)
+    name: Dispose
+    nameWithType: DisposableManagedObjectBase.Dispose
+    fullName: Rssdp.Infrastructure.DisposableManagedObjectBase.Dispose
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Boolean
+    name: Boolean
+    nameWithType: Boolean
+    fullName: System.Boolean
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: Rssdp.Infrastructure.DisposableManagedObjectBase.Dispose(System.Boolean)
+    name: Dispose
+    nameWithType: DisposableManagedObjectBase.Dispose
+    fullName: Rssdp.Infrastructure.DisposableManagedObjectBase.Dispose
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Boolean
+    name: Boolean
+    nameWithType: Boolean
+    fullName: System.Boolean
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: Rssdp.Infrastructure.SsdpCommunicationsServer.Dispose*
+  commentId: Overload:Rssdp.Infrastructure.SsdpCommunicationsServer.Dispose
+  isExternal: false
+  name: Dispose
+  nameWithType: SsdpCommunicationsServer.Dispose
+  fullName: Rssdp.Infrastructure.SsdpCommunicationsServer.Dispose
