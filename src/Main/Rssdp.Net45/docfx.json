@@ -59,12 +59,12 @@
 		],
 		"dest": "../../../docs",
 		"globalMetadataFiles": [],
-		"globalMetadata": {
-			"_appTitle": "RSSDP",
-			"_appFaviconPath": "images/RSSDPIcon.ico",
-			"_appLogoPath": "images/RSSDPIconSmall.png",
-			"_appFooter": "Copyright (c) 2017 Troy Willmot"
-		},
+			"globalMetadata": {
+				"_appTitle": "RSSDP",
+				"_appFaviconPath": "images/RssdpIcon.ico",
+				"_appLogoPath": "images/RssdpIconSmall.png",
+				"_appFooter": "Copyright (c) 2017 Troy Willmot"
+			},
 		"fileMetadataFiles": [],
 		"template": [ "statictoc", "memberpage/2.24.0/content" ],
 		"postProcessors": [],
