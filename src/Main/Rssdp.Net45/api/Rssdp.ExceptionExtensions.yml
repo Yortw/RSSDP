@@ -5,8 +5,8 @@ items:
   id: ExceptionExtensions
   parent: Rssdp
   children:
-  - Rssdp.ExceptionExtensions.IsCritical(Exception)
-  - Rssdp.ExceptionExtensions.IsCritical(Exception)
+  - Rssdp.ExceptionExtensions.IsCritical(System.Exception)
+  - Rssdp.ExceptionExtensions.IsCritical(System.Exception)
   langs:
   - csharp
   - vb
@@ -17,7 +17,7 @@ items:
   source:
     id: ExceptionExtensions
     path: ''
-    startLine: 9258
+    startLine: 8216
   assemblies:
   - cs.temp.dll
   namespace: Rssdp
@@ -43,9 +43,9 @@ items:
   modifiers.vb:
   - Public
   - Module
-- uid: Rssdp.ExceptionExtensions.IsCritical(Exception)
-  commentId: M:Rssdp.ExceptionExtensions.IsCritical(Exception)
-  id: IsCritical(Exception)
+- uid: Rssdp.ExceptionExtensions.IsCritical(System.Exception)
+  commentId: M:Rssdp.ExceptionExtensions.IsCritical(System.Exception)
+  id: IsCritical(System.Exception)
   isExtensionMethod: true
   parent: Rssdp.ExceptionExtensions
   langs:
@@ -53,12 +53,12 @@ items:
   - vb
   name: IsCritical(Exception)
   nameWithType: ExceptionExtensions.IsCritical(Exception)
-  fullName: Rssdp.ExceptionExtensions.IsCritical(Exception)
+  fullName: Rssdp.ExceptionExtensions.IsCritical(System.Exception)
   type: Method
   source:
     id: IsCritical
     path: ''
-    startLine: 2885
+    startLine: 1843
   assemblies:
   - cs.temp.dll
   namespace: Rssdp
@@ -69,7 +69,7 @@ items:
     content: public static bool IsCritical(this Exception exception)
     parameters:
     - id: exception
-      type: Exception
+      type: System.Exception
       description: The exception to check.
     return:
       type: System.Boolean
@@ -85,9 +85,9 @@ items:
   modifiers.vb:
   - Public
   - Shared
-- uid: Rssdp.ExceptionExtensions.IsCritical(Exception)
-  commentId: M:Rssdp.ExceptionExtensions.IsCritical(Exception)
-  id: IsCritical(Exception)
+- uid: Rssdp.ExceptionExtensions.IsCritical(System.Exception)
+  commentId: M:Rssdp.ExceptionExtensions.IsCritical(System.Exception)
+  id: IsCritical(System.Exception)
   isExtensionMethod: true
   parent: Rssdp.ExceptionExtensions
   langs:
@@ -95,12 +95,12 @@ items:
   - vb
   name: IsCritical(Exception)
   nameWithType: ExceptionExtensions.IsCritical(Exception)
-  fullName: Rssdp.ExceptionExtensions.IsCritical(Exception)
+  fullName: Rssdp.ExceptionExtensions.IsCritical(System.Exception)
   type: Method
   source:
     id: IsCritical
     path: ''
-    startLine: 9276
+    startLine: 8234
   assemblies:
   - cs.temp.dll
   namespace: Rssdp
@@ -111,7 +111,7 @@ items:
     content: public static bool IsCritical(this Exception exception)
     parameters:
     - id: exception
-      type: Exception
+      type: System.Exception
       description: The exception to check.
     return:
       type: System.Boolean
@@ -130,6 +130,11 @@ items:
 references:
 - uid: System.Exception
   commentId: T:System.Exception
+  parent: System
+  isExternal: true
+  name: Exception
+  nameWithType: Exception
+  fullName: System.Exception
 - uid: Rssdp
   commentId: N:Rssdp
   isExternal: false
@@ -434,11 +439,6 @@ references:
   name: IsCritical
   nameWithType: ExceptionExtensions.IsCritical
   fullName: Rssdp.ExceptionExtensions.IsCritical
-- uid: Exception
-  isExternal: true
-  name: Exception
-  nameWithType: Exception
-  fullName: Exception
 - uid: System.Boolean
   commentId: T:System.Boolean
   parent: System

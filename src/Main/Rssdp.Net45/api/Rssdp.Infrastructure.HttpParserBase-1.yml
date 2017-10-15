@@ -20,7 +20,7 @@ items:
   source:
     id: HttpParserBase
     path: ''
-    startLine: 2958
+    startLine: 1916
   assemblies:
   - cs.temp.dll
   namespace: Rssdp.Infrastructure
@@ -72,7 +72,7 @@ items:
   source:
     id: Parse
     path: ''
-    startLine: 2975
+    startLine: 1933
   assemblies:
   - cs.temp.dll
   namespace: Rssdp.Infrastructure
@@ -111,7 +111,7 @@ items:
   source:
     id: Parse
     path: ''
-    startLine: 2984
+    startLine: 1942
   assemblies:
   - cs.temp.dll
   namespace: Rssdp.Infrastructure
@@ -156,7 +156,7 @@ items:
   source:
     id: ParseStatusLine
     path: ''
-    startLine: 3042
+    startLine: 2000
   assemblies:
   - cs.temp.dll
   namespace: Rssdp.Infrastructure
@@ -195,7 +195,7 @@ items:
   source:
     id: IsContentHeader
     path: ''
-    startLine: 3048
+    startLine: 2006
   assemblies:
   - cs.temp.dll
   namespace: Rssdp.Infrastructure
@@ -233,11 +233,11 @@ items:
   source:
     id: ParseHttpVersion
     path: ''
-    startLine: 3055
+    startLine: 2013
   assemblies:
   - cs.temp.dll
   namespace: Rssdp.Infrastructure
-  summary: "\nParses the HTTP version text from an HTTP request or response status line and returns a <see cref=\"!:Version\"></see> object representing the parsed values.\n"
+  summary: "\nParses the HTTP version text from an HTTP request or response status line and returns a <xref href=\"System.Version\" data-throw-if-not-resolved=\"false\"></xref> object representing the parsed values.\n"
   example: []
   syntax:
     content: protected static Version ParseHttpVersion(string versionData)
@@ -246,8 +246,8 @@ items:
       type: System.String
       description: A string containing the HTTP version, from the message status line.
     return:
-      type: Version
-      description: A <see cref="!:Version"></see> object containing the parsed version data.
+      type: System.Version
+      description: A <xref href="System.Version" data-throw-if-not-resolved="false"></xref> object containing the parsed version data.
     content.vb: Protected Shared Function ParseHttpVersion(versionData As String) As Version
   overload: Rssdp.Infrastructure.HttpParserBase`1.ParseHttpVersion*
   nameWithType.vb: HttpParserBase(Of T).ParseHttpVersion(String)
@@ -630,6 +630,13 @@ references:
   name: Boolean
   nameWithType: Boolean
   fullName: System.Boolean
+- uid: System.Version
+  commentId: T:System.Version
+  parent: System
+  isExternal: true
+  name: Version
+  nameWithType: Version
+  fullName: System.Version
 - uid: Rssdp.Infrastructure.HttpParserBase`1.ParseHttpVersion*
   commentId: Overload:Rssdp.Infrastructure.HttpParserBase`1.ParseHttpVersion
   isExternal: false
@@ -638,9 +645,3 @@ references:
   fullName: Rssdp.Infrastructure.HttpParserBase<T>.ParseHttpVersion
   nameWithType.vb: HttpParserBase(Of T).ParseHttpVersion
   fullName.vb: Rssdp.Infrastructure.HttpParserBase(Of T).ParseHttpVersion
-- uid: Version
-  commentId: '!:Version'
-  isExternal: true
-  name: Version
-  nameWithType: Version
-  fullName: Version

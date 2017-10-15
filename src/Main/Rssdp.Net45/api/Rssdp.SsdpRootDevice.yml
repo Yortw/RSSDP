@@ -6,7 +6,7 @@ items:
   parent: Rssdp
   children:
   - Rssdp.SsdpRootDevice.#ctor
-  - Rssdp.SsdpRootDevice.#ctor(Uri,TimeSpan,System.String)
+  - Rssdp.SsdpRootDevice.#ctor(Uri,System.TimeSpan,System.String)
   - Rssdp.SsdpRootDevice.CacheLifetime
   - Rssdp.SsdpRootDevice.Location
   - Rssdp.SsdpRootDevice.ToDescriptionDocument
@@ -21,7 +21,7 @@ items:
   source:
     id: SsdpRootDevice
     path: ''
-    startLine: 7831
+    startLine: 6789
   assemblies:
   - cs.temp.dll
   namespace: Rssdp
@@ -99,7 +99,7 @@ items:
   source:
     id: .ctor
     path: ''
-    startLine: 7845
+    startLine: 6803
   assemblies:
   - cs.temp.dll
   namespace: Rssdp
@@ -113,21 +113,21 @@ items:
   - public
   modifiers.vb:
   - Public
-- uid: Rssdp.SsdpRootDevice.#ctor(Uri,TimeSpan,System.String)
-  commentId: M:Rssdp.SsdpRootDevice.#ctor(Uri,TimeSpan,System.String)
-  id: '#ctor(Uri,TimeSpan,System.String)'
+- uid: Rssdp.SsdpRootDevice.#ctor(Uri,System.TimeSpan,System.String)
+  commentId: M:Rssdp.SsdpRootDevice.#ctor(Uri,System.TimeSpan,System.String)
+  id: '#ctor(Uri,System.TimeSpan,System.String)'
   parent: Rssdp.SsdpRootDevice
   langs:
   - csharp
   - vb
   name: SsdpRootDevice(Uri, TimeSpan, String)
   nameWithType: SsdpRootDevice.SsdpRootDevice(Uri, TimeSpan, String)
-  fullName: Rssdp.SsdpRootDevice.SsdpRootDevice(Uri, TimeSpan, System.String)
+  fullName: Rssdp.SsdpRootDevice.SsdpRootDevice(Uri, System.TimeSpan, System.String)
   type: Constructor
   source:
     id: .ctor
     path: ''
-    startLine: 7857
+    startLine: 6815
   assemblies:
   - cs.temp.dll
   namespace: Rssdp
@@ -140,7 +140,7 @@ items:
       type: Uri
       description: The url from which the device description document was retrieved.
     - id: cacheLifetime
-      type: TimeSpan
+      type: System.TimeSpan
       description: A <xref href="System.TimeSpan" data-throw-if-not-resolved="false"></xref> representing the time maximum period of time the device description can be cached for.
     - id: deviceDescriptionXml
       type: System.String
@@ -172,18 +172,18 @@ items:
   source:
     id: CacheLifetime
     path: ''
-    startLine: 7880
+    startLine: 6838
   assemblies:
   - cs.temp.dll
   namespace: Rssdp
-  summary: "\nSpecifies how long clients can cache this device&apos;s details for. Optional but defaults to <see cref=\"!:TimeSpan.Zero\"></see> which means no-caching. Recommended value is half an hour.\n"
-  remarks: "\n<p>Specifiy <see cref=\"!:TimeSpan.Zero\"></see> to indicate no caching allowed.</p>\n<p>Also used to specify how often to rebroadcast alive notifications.</p>\n<p>The UPnP/SSDP specifications indicate this should not be less than 1800 seconds (half an hour), but this is not enforced by this library.</p>\n"
+  summary: "\nSpecifies how long clients can cache this device&apos;s details for. Optional but defaults to <xref href=\"System.TimeSpan.Zero\" data-throw-if-not-resolved=\"false\"></xref> which means no-caching. Recommended value is half an hour.\n"
+  remarks: "\n<p>Specifiy <xref href=\"System.TimeSpan.Zero\" data-throw-if-not-resolved=\"false\"></xref> to indicate no caching allowed.</p>\n<p>Also used to specify how often to rebroadcast alive notifications.</p>\n<p>The UPnP/SSDP specifications indicate this should not be less than 1800 seconds (half an hour), but this is not enforced by this library.</p>\n"
   example: []
   syntax:
     content: public TimeSpan CacheLifetime { get; set; }
     parameters: []
     return:
-      type: TimeSpan
+      type: System.TimeSpan
     content.vb: Public Property CacheLifetime As TimeSpan
   overload: Rssdp.SsdpRootDevice.CacheLifetime*
   modifiers.csharp:
@@ -206,7 +206,7 @@ items:
   source:
     id: Location
     path: ''
-    startLine: 7888
+    startLine: 6846
   assemblies:
   - cs.temp.dll
   namespace: Rssdp
@@ -239,7 +239,7 @@ items:
   source:
     id: UrlBase
     path: ''
-    startLine: 7897
+    startLine: 6855
   assemblies:
   - cs.temp.dll
   namespace: Rssdp
@@ -273,7 +273,7 @@ items:
   source:
     id: ToDescriptionDocument
     path: ''
-    startLine: 7918
+    startLine: 6876
   assemblies:
   - cs.temp.dll
   namespace: Rssdp
@@ -1173,6 +1173,11 @@ references:
   fullName: Rssdp.SsdpRootDevice.SsdpRootDevice
 - uid: System.TimeSpan
   commentId: T:System.TimeSpan
+  parent: System
+  isExternal: true
+  name: TimeSpan
+  nameWithType: TimeSpan
+  fullName: System.TimeSpan
 - uid: System.ArgumentNullException
   commentId: T:System.ArgumentNullException
 - uid: System.ArgumentException
@@ -1182,11 +1187,6 @@ references:
   name: Uri
   nameWithType: Uri
   fullName: Uri
-- uid: TimeSpan
-  isExternal: true
-  name: TimeSpan
-  nameWithType: TimeSpan
-  fullName: TimeSpan
 - uid: System.String
   commentId: T:System.String
   parent: System
@@ -1194,6 +1194,8 @@ references:
   name: String
   nameWithType: String
   fullName: System.String
+- uid: System.TimeSpan.Zero
+  commentId: F:System.TimeSpan.Zero
 - uid: Rssdp.SsdpRootDevice.CacheLifetime*
   commentId: Overload:Rssdp.SsdpRootDevice.CacheLifetime
   isExternal: false

@@ -25,7 +25,7 @@ items:
   source:
     id: SsdpConstants
     path: ''
-    startLine: 4585
+    startLine: 3543
   assemblies:
   - cs.temp.dll
   namespace: Rssdp.Infrastructure
@@ -65,7 +65,7 @@ items:
   source:
     id: MulticastLinkLocalAddressV6
     path: ''
-    startLine: 4590
+    startLine: 3548
   assemblies:
   - cs.temp.dll
   namespace: Rssdp.Infrastructure
@@ -96,7 +96,7 @@ items:
   source:
     id: MulticastLocalAdminAddress
     path: ''
-    startLine: 4594
+    startLine: 3552
   assemblies:
   - cs.temp.dll
   namespace: Rssdp.Infrastructure
@@ -127,7 +127,7 @@ items:
   source:
     id: MulticastPort
     path: ''
-    startLine: 4598
+    startLine: 3556
   assemblies:
   - cs.temp.dll
   namespace: Rssdp.Infrastructure
@@ -158,7 +158,7 @@ items:
   source:
     id: SsdpDefaultMulticastTimeToLive
     path: ''
-    startLine: 4602
+    startLine: 3560
   assemblies:
   - cs.temp.dll
   namespace: Rssdp.Infrastructure
@@ -189,7 +189,7 @@ items:
   source:
     id: DefaultUdpSocketBufferSize
     path: ''
-    startLine: 4614
+    startLine: 3572
   assemblies:
   - cs.temp.dll
   namespace: Rssdp.Infrastructure
@@ -220,7 +220,7 @@ items:
   source:
     id: MaxUdpSocketBufferSize
     path: ''
-    startLine: 4618
+    startLine: 3576
   assemblies:
   - cs.temp.dll
   namespace: Rssdp.Infrastructure
@@ -251,7 +251,7 @@ items:
   source:
     id: UpnpDeviceTypeNamespace
     path: ''
-    startLine: 4623
+    startLine: 3581
   assemblies:
   - cs.temp.dll
   namespace: Rssdp.Infrastructure
@@ -282,7 +282,7 @@ items:
   source:
     id: UpnpDeviceTypeRootDevice
     path: ''
-    startLine: 4627
+    startLine: 3585
   assemblies:
   - cs.temp.dll
   namespace: Rssdp.Infrastructure
@@ -313,7 +313,7 @@ items:
   source:
     id: PnpDeviceTypeRootDevice
     path: ''
-    startLine: 4632
+    startLine: 3590
   assemblies:
   - cs.temp.dll
   namespace: Rssdp.Infrastructure
@@ -344,7 +344,7 @@ items:
   source:
     id: UpnpDeviceTypeBasicDevice
     path: ''
-    startLine: 4636
+    startLine: 3594
   assemblies:
   - cs.temp.dll
   namespace: Rssdp.Infrastructure

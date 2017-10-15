@@ -25,27 +25,35 @@ items:
   source:
     id: SsdpDevicePublisherBase
     path: ''
-    startLine: 6691
+    startLine: 5649
   assemblies:
   - cs.temp.dll
   namespace: Rssdp.Infrastructure
   summary: "\nProvides the platform independent logic for publishing SSDP devices (notifications and search responses).\n"
   example: []
   syntax:
-    content: 'public abstract class SsdpDevicePublisherBase : DisposableManagedObjectBase, ISsdpDevicePublisher'
+    content: 'public abstract class SsdpDevicePublisherBase : DisposableManagedObjectBase, IDisposable, ISsdpDevicePublisher'
     content.vb: >-
       Public MustInherit Class SsdpDevicePublisherBase
           Inherits DisposableManagedObjectBase
-          Implements ISsdpDevicePublisher
+          Implements IDisposable, ISsdpDevicePublisher
   inheritance:
   - System.Object
   - Rssdp.Infrastructure.DisposableManagedObjectBase
   implements:
+  - System.IDisposable
   - Rssdp.Infrastructure.ISsdpDevicePublisher
   inheritedMembers:
   - Rssdp.Infrastructure.DisposableManagedObjectBase.ThrowIfDisposed
   - Rssdp.Infrastructure.DisposableManagedObjectBase.IsDisposed
   - Rssdp.Infrastructure.DisposableManagedObjectBase.Dispose
+  - System.Object.ToString
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
   modifiers.csharp:
   - public
   - abstract
@@ -68,7 +76,7 @@ items:
   source:
     id: .ctor
     path: ''
-    startLine: 6768
+    startLine: 5726
   assemblies:
   - cs.temp.dll
   namespace: Rssdp.Infrastructure
@@ -106,7 +114,7 @@ items:
   source:
     id: .ctor
     path: ''
-    startLine: 6779
+    startLine: 5737
   assemblies:
   - cs.temp.dll
   namespace: Rssdp.Infrastructure
@@ -147,7 +155,7 @@ items:
   source:
     id: AddDevice
     path: ''
-    startLine: 6820
+    startLine: 5778
   assemblies:
   - cs.temp.dll
   namespace: Rssdp.Infrastructure
@@ -189,7 +197,7 @@ items:
   source:
     id: RemoveDevice
     path: ''
-    startLine: 6866
+    startLine: 5824
   assemblies:
   - cs.temp.dll
   namespace: Rssdp.Infrastructure
@@ -228,7 +236,7 @@ items:
   source:
     id: Log
     path: ''
-    startLine: 6910
+    startLine: 5868
   assemblies:
   - cs.temp.dll
   namespace: Rssdp.Infrastructure
@@ -262,7 +270,7 @@ items:
   source:
     id: Devices
     path: ''
-    startLine: 6918
+    startLine: 5876
   assemblies:
   - cs.temp.dll
   namespace: Rssdp.Infrastructure
@@ -295,7 +303,7 @@ items:
   source:
     id: SupportPnpRootDevice
     path: ''
-    startLine: 6933
+    startLine: 5891
   assemblies:
   - cs.temp.dll
   namespace: Rssdp.Infrastructure
@@ -303,12 +311,24 @@ items:
   remarks: "\n<p>Enabling this option will cause devices to show up in Microsoft Windows Explorer&apos;s network screens (if discovery is enabled etc.). Windows Explorer appears to search only for pnp:rootdeivce and not upnp:rootdevice.</p>\n<p>If false, the system will only use upnp:rootdevice for notifiation broadcasts and and search responses, which is correct according to the UPnP/SSDP spec.</p>\n"
   example: []
   syntax:
-    content: public bool SupportPnpRootDevice { get; set; }
+    content: >-
+      [Obsolete("Set StandardsMode to SsdpStandardsMode.Relaxed instead.")]
+
+      public bool SupportPnpRootDevice { get; set; }
     parameters: []
     return:
       type: System.Boolean
-    content.vb: Public Property SupportPnpRootDevice As Boolean
+    content.vb: >-
+      <Obsolete("Set StandardsMode to SsdpStandardsMode.Relaxed instead.")>
+
+      Public Property SupportPnpRootDevice As Boolean
   overload: Rssdp.Infrastructure.SsdpDevicePublisherBase.SupportPnpRootDevice*
+  attributes:
+  - type: System.ObsoleteAttribute
+    ctor: System.ObsoleteAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: Set StandardsMode to SsdpStandardsMode.Relaxed instead.
   modifiers.csharp:
   - public
   - get
@@ -329,7 +349,7 @@ items:
   source:
     id: StandardsMode
     path: ''
-    startLine: 6953
+    startLine: 5911
   assemblies:
   - cs.temp.dll
   namespace: Rssdp.Infrastructure
@@ -363,18 +383,18 @@ items:
   source:
     id: NotificationBroadcastInterval
     path: ''
-    startLine: 6979
+    startLine: 5937
   assemblies:
   - cs.temp.dll
   namespace: Rssdp.Infrastructure
   summary: "\nSets or returns a fixed interval at which alive notifications for services exposed by this publisher instance are broadcast.\n"
-  remarks: "\n<p>If this is set to <see cref=\"!:TimeSpan.Zero\"></see> then the system will follow the process recommended \nby the SSDP spec and calculate a randomised interval based on the cache life times of the published services.\nThe default and recommended value is TimeSpan.Zero.\n</p>\n<p>While (zero and) any positive <see cref=\"!:TimeSpan\"></see> value are allowed, the SSDP specification says \nnotifications should not be broadcast more often than 15 minutes. If you wish to remain compatible with the SSDP\nspecification, do not set this property to a value greater than zero but less than 15 minutes.\n</p>\n"
+  remarks: "\n<p>If this is set to <xref href=\"System.TimeSpan.Zero\" data-throw-if-not-resolved=\"false\"></xref> then the system will follow the process recommended \nby the SSDP spec and calculate a randomised interval based on the cache life times of the published services.\nThe default and recommended value is TimeSpan.Zero.\n</p>\n<p>While (zero and) any positive <xref href=\"System.TimeSpan\" data-throw-if-not-resolved=\"false\"></xref> value are allowed, the SSDP specification says \nnotifications should not be broadcast more often than 15 minutes. If you wish to remain compatible with the SSDP\nspecification, do not set this property to a value greater than zero but less than 15 minutes.\n</p>\n"
   example: []
   syntax:
     content: public TimeSpan NotificationBroadcastInterval { get; set; }
     parameters: []
     return:
-      type: TimeSpan
+      type: System.TimeSpan
     content.vb: Public Property NotificationBroadcastInterval As TimeSpan
   overload: Rssdp.Infrastructure.SsdpDevicePublisherBase.NotificationBroadcastInterval*
   modifiers.csharp:
@@ -397,7 +417,7 @@ items:
   source:
     id: Dispose
     path: ''
-    startLine: 7003
+    startLine: 5961
   assemblies:
   - cs.temp.dll
   namespace: Rssdp.Infrastructure
@@ -439,6 +459,13 @@ references:
   name: DisposableManagedObjectBase
   nameWithType: DisposableManagedObjectBase
   fullName: Rssdp.Infrastructure.DisposableManagedObjectBase
+- uid: System.IDisposable
+  commentId: T:System.IDisposable
+  parent: System
+  isExternal: true
+  name: IDisposable
+  nameWithType: IDisposable
+  fullName: System.IDisposable
 - uid: Rssdp.Infrastructure.ISsdpDevicePublisher
   commentId: T:Rssdp.Infrastructure.ISsdpDevicePublisher
   parent: Rssdp.Infrastructure
@@ -505,6 +532,285 @@ references:
     name: Dispose
     nameWithType: DisposableManagedObjectBase.Dispose
     fullName: Rssdp.Infrastructure.DisposableManagedObjectBase.Dispose
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  name: ToString()
+  nameWithType: Object.ToString()
+  fullName: System.Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    nameWithType: Object.ToString
+    fullName: System.Object.ToString
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    nameWithType: Object.ToString
+    fullName: System.Object.ToString
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  name: Equals(Object)
+  nameWithType: Object.Equals(Object)
+  fullName: System.Object.Equals(System.Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  name: Equals(Object, Object)
+  nameWithType: Object.Equals(Object, Object)
+  fullName: System.Object.Equals(System.Object, System.Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  name: ReferenceEquals(Object, Object)
+  nameWithType: Object.ReferenceEquals(Object, Object)
+  fullName: System.Object.ReferenceEquals(System.Object, System.Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    nameWithType: Object.ReferenceEquals
+    fullName: System.Object.ReferenceEquals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    nameWithType: Object.ReferenceEquals
+    fullName: System.Object.ReferenceEquals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  name: GetHashCode()
+  nameWithType: Object.GetHashCode()
+  fullName: System.Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    nameWithType: Object.GetHashCode
+    fullName: System.Object.GetHashCode
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    nameWithType: Object.GetHashCode
+    fullName: System.Object.GetHashCode
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  name: GetType()
+  nameWithType: Object.GetType()
+  fullName: System.Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    nameWithType: Object.GetType
+    fullName: System.Object.GetType
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    nameWithType: Object.GetType
+    fullName: System.Object.GetType
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  name: MemberwiseClone()
+  nameWithType: Object.MemberwiseClone()
+  fullName: System.Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    nameWithType: Object.MemberwiseClone
+    fullName: System.Object.MemberwiseClone
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    nameWithType: Object.MemberwiseClone
+    fullName: System.Object.MemberwiseClone
+    isExternal: true
   - name: (
     nameWithType: (
     fullName: (
@@ -771,17 +1077,21 @@ references:
   name: StandardsMode
   nameWithType: SsdpDevicePublisherBase.StandardsMode
   fullName: Rssdp.Infrastructure.SsdpDevicePublisherBase.StandardsMode
+- uid: System.TimeSpan.Zero
+  commentId: F:System.TimeSpan.Zero
+- uid: System.TimeSpan
+  commentId: T:System.TimeSpan
+  parent: System
+  isExternal: true
+  name: TimeSpan
+  nameWithType: TimeSpan
+  fullName: System.TimeSpan
 - uid: Rssdp.Infrastructure.SsdpDevicePublisherBase.NotificationBroadcastInterval*
   commentId: Overload:Rssdp.Infrastructure.SsdpDevicePublisherBase.NotificationBroadcastInterval
   isExternal: false
   name: NotificationBroadcastInterval
   nameWithType: SsdpDevicePublisherBase.NotificationBroadcastInterval
   fullName: Rssdp.Infrastructure.SsdpDevicePublisherBase.NotificationBroadcastInterval
-- uid: TimeSpan
-  isExternal: true
-  name: TimeSpan
-  nameWithType: TimeSpan
-  fullName: TimeSpan
 - uid: Rssdp.Infrastructure.DisposableManagedObjectBase.Dispose(System.Boolean)
   commentId: M:Rssdp.Infrastructure.DisposableManagedObjectBase.Dispose(System.Boolean)
   parent: Rssdp.Infrastructure.DisposableManagedObjectBase

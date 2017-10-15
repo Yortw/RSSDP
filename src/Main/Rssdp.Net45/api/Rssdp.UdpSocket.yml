@@ -26,7 +26,7 @@ items:
   source:
     id: UdpSocket
     path: ''
-    startLine: 9638
+    startLine: 8596
   assemblies:
   - cs.temp.dll
   namespace: Rssdp
@@ -63,7 +63,7 @@ items:
   source:
     id: ReceiveAsync
     path: ''
-    startLine: 1694
+    startLine: 652
   assemblies:
   - cs.temp.dll
   namespace: Rssdp
@@ -91,7 +91,7 @@ items:
   source:
     id: SendTo
     path: ''
-    startLine: 1699
+    startLine: 657
   assemblies:
   - cs.temp.dll
   namespace: Rssdp
@@ -125,7 +125,7 @@ items:
   source:
     id: Dispose
     path: ''
-    startLine: 1704
+    startLine: 662
   assemblies:
   - cs.temp.dll
   namespace: Rssdp
@@ -156,7 +156,7 @@ items:
   source:
     id: .ctor
     path: ''
-    startLine: 9039
+    startLine: 7997
   assemblies:
   - cs.temp.dll
   namespace: Rssdp
@@ -189,7 +189,7 @@ items:
   source:
     id: ReceiveAsync
     path: ''
-    startLine: 9061
+    startLine: 8019
   assemblies:
   - cs.temp.dll
   namespace: Rssdp
@@ -217,7 +217,7 @@ items:
   source:
     id: SendTo
     path: ''
-    startLine: 9100
+    startLine: 8058
   assemblies:
   - cs.temp.dll
   namespace: Rssdp
@@ -251,7 +251,7 @@ items:
   source:
     id: Dispose
     path: ''
-    startLine: 9144
+    startLine: 8102
   assemblies:
   - cs.temp.dll
   namespace: Rssdp
@@ -282,7 +282,7 @@ items:
   source:
     id: .ctor
     path: ''
-    startLine: 9650
+    startLine: 8608
   assemblies:
   - cs.temp.dll
   namespace: Rssdp
@@ -315,7 +315,7 @@ items:
   source:
     id: ReceiveAsync
     path: ''
-    startLine: 9668
+    startLine: 8626
   assemblies:
   - cs.temp.dll
   namespace: Rssdp
@@ -343,7 +343,7 @@ items:
   source:
     id: SendTo
     path: ''
-    startLine: 9702
+    startLine: 8660
   assemblies:
   - cs.temp.dll
   namespace: Rssdp
@@ -377,7 +377,7 @@ items:
   source:
     id: Dispose
     path: ''
-    startLine: 9716
+    startLine: 8674
   assemblies:
   - cs.temp.dll
   namespace: Rssdp

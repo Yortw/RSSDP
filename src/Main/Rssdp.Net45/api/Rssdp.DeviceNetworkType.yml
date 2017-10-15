@@ -17,7 +17,7 @@ items:
   source:
     id: DeviceNetworkType
     path: ''
-    startLine: 2492
+    startLine: 1450
   assemblies:
   - cs.temp.dll
   namespace: Rssdp
@@ -46,7 +46,7 @@ items:
   source:
     id: IPv4
     path: ''
-    startLine: 2497
+    startLine: 1455
   assemblies:
   - cs.temp.dll
   namespace: Rssdp
@@ -76,7 +76,7 @@ items:
   source:
     id: IPv6
     path: ''
-    startLine: 2501
+    startLine: 1459
   assemblies:
   - cs.temp.dll
   namespace: Rssdp

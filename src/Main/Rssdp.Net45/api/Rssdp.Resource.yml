@@ -15,7 +15,7 @@ items:
   source:
     id: Resource
     path: ''
-    startLine: 1077
+    startLine: 35
   assemblies:
   - cs.temp.dll
   namespace: Rssdp

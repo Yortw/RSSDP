@@ -25,7 +25,7 @@ items:
   source:
     id: DiscoveredSsdpDevice
     path: ''
-    startLine: 2618
+    startLine: 1576
   assemblies:
   - cs.temp.dll
   namespace: Rssdp
@@ -70,7 +70,7 @@ items:
   source:
     id: NotificationType
     path: ''
-    startLine: 2635
+    startLine: 1593
   assemblies:
   - cs.temp.dll
   namespace: Rssdp
@@ -103,7 +103,7 @@ items:
   source:
     id: Usn
     path: ''
-    startLine: 2640
+    startLine: 1598
   assemblies:
   - cs.temp.dll
   namespace: Rssdp
@@ -136,7 +136,7 @@ items:
   source:
     id: DescriptionLocation
     path: ''
-    startLine: 2645
+    startLine: 1603
   assemblies:
   - cs.temp.dll
   namespace: Rssdp
@@ -169,7 +169,7 @@ items:
   source:
     id: CacheLifetime
     path: ''
-    startLine: 2650
+    startLine: 1608
   assemblies:
   - cs.temp.dll
   namespace: Rssdp
@@ -179,7 +179,7 @@ items:
     content: public TimeSpan CacheLifetime { get; set; }
     parameters: []
     return:
-      type: TimeSpan
+      type: System.TimeSpan
     content.vb: Public Property CacheLifetime As TimeSpan
   overload: Rssdp.DiscoveredSsdpDevice.CacheLifetime*
   modifiers.csharp:
@@ -202,7 +202,7 @@ items:
   source:
     id: AsAt
     path: ''
-    startLine: 2655
+    startLine: 1613
   assemblies:
   - cs.temp.dll
   namespace: Rssdp
@@ -212,7 +212,7 @@ items:
     content: public DateTimeOffset AsAt { get; set; }
     parameters: []
     return:
-      type: DateTimeOffset
+      type: System.DateTimeOffset
     content.vb: Public Property AsAt As DateTimeOffset
   overload: Rssdp.DiscoveredSsdpDevice.AsAt*
   modifiers.csharp:
@@ -235,7 +235,7 @@ items:
   source:
     id: ResponseHeaders
     path: ''
-    startLine: 2671
+    startLine: 1629
   assemblies:
   - cs.temp.dll
   namespace: Rssdp
@@ -268,7 +268,7 @@ items:
   source:
     id: IsExpired
     path: ''
-    startLine: 2681
+    startLine: 1639
   assemblies:
   - cs.temp.dll
   namespace: Rssdp
@@ -299,7 +299,7 @@ items:
   source:
     id: GetDeviceInfo
     path: ''
-    startLine: 2696
+    startLine: 1654
   assemblies:
   - cs.temp.dll
   namespace: Rssdp
@@ -340,7 +340,7 @@ items:
   source:
     id: GetDeviceInfo
     path: ''
-    startLine: 2717
+    startLine: 1675
   assemblies:
   - cs.temp.dll
   namespace: Rssdp
@@ -385,7 +385,7 @@ items:
   source:
     id: ToString
     path: ''
-    startLine: 2741
+    startLine: 1699
   assemblies:
   - cs.temp.dll
   namespace: Rssdp
@@ -731,23 +731,26 @@ references:
   name: CacheLifetime
   nameWithType: DiscoveredSsdpDevice.CacheLifetime
   fullName: Rssdp.DiscoveredSsdpDevice.CacheLifetime
-- uid: TimeSpan
+- uid: System.TimeSpan
+  commentId: T:System.TimeSpan
+  parent: System
   isExternal: true
   name: TimeSpan
   nameWithType: TimeSpan
-  fullName: TimeSpan
+  fullName: System.TimeSpan
 - uid: Rssdp.DiscoveredSsdpDevice.AsAt*
   commentId: Overload:Rssdp.DiscoveredSsdpDevice.AsAt
   isExternal: false
   name: AsAt
   nameWithType: DiscoveredSsdpDevice.AsAt
   fullName: Rssdp.DiscoveredSsdpDevice.AsAt
-- uid: DateTimeOffset
-  commentId: '!:DateTimeOffset'
+- uid: System.DateTimeOffset
+  commentId: T:System.DateTimeOffset
+  parent: System
   isExternal: true
   name: DateTimeOffset
   nameWithType: DateTimeOffset
-  fullName: DateTimeOffset
+  fullName: System.DateTimeOffset
 - uid: Rssdp.DiscoveredSsdpDevice.ResponseHeaders*
   commentId: Overload:Rssdp.DiscoveredSsdpDevice.ResponseHeaders
   isExternal: false
@@ -779,6 +782,11 @@ references:
   commentId: P:Rssdp.DiscoveredSsdpDevice.DescriptionLocation
 - uid: System.Exception
   commentId: T:System.Exception
+  parent: System
+  isExternal: true
+  name: Exception
+  nameWithType: Exception
+  fullName: System.Exception
 - uid: Rssdp.DiscoveredSsdpDevice.GetDeviceInfo*
   commentId: Overload:Rssdp.DiscoveredSsdpDevice.GetDeviceInfo
   isExternal: false

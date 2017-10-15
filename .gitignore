@@ -83,3 +83,5 @@ TestResults
 /src/Main/lib
 /src/Main/packages/
 /src/RssdpPackageTests/packages
+/src/Main/.vs/RSSDP/v15/sqlite3
+/src/Main/UpgradeLog.htm

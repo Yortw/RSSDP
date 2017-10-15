@@ -11,8 +11,8 @@ items:
   - Rssdp.Infrastructure.ISsdpDeviceLocator.NotificationFilter
   - Rssdp.Infrastructure.ISsdpDeviceLocator.SearchAsync
   - Rssdp.Infrastructure.ISsdpDeviceLocator.SearchAsync(System.String)
-  - Rssdp.Infrastructure.ISsdpDeviceLocator.SearchAsync(System.String,TimeSpan)
-  - Rssdp.Infrastructure.ISsdpDeviceLocator.SearchAsync(TimeSpan)
+  - Rssdp.Infrastructure.ISsdpDeviceLocator.SearchAsync(System.String,System.TimeSpan)
+  - Rssdp.Infrastructure.ISsdpDeviceLocator.SearchAsync(System.TimeSpan)
   - Rssdp.Infrastructure.ISsdpDeviceLocator.StartListeningForNotifications
   - Rssdp.Infrastructure.ISsdpDeviceLocator.StopListeningForNotifications
   langs:
@@ -25,7 +25,7 @@ items:
   source:
     id: ISsdpDeviceLocator
     path: ''
-    startLine: 3522
+    startLine: 2480
   assemblies:
   - cs.temp.dll
   namespace: Rssdp.Infrastructure
@@ -62,7 +62,7 @@ items:
   source:
     id: DeviceAvailable
     path: ''
-    startLine: 3534
+    startLine: 2492
   assemblies:
   - cs.temp.dll
   namespace: Rssdp.Infrastructure
@@ -71,7 +71,7 @@ items:
   syntax:
     content: event EventHandler<DeviceAvailableEventArgs> DeviceAvailable
     return:
-      type: EventHandler{Rssdp.DeviceAvailableEventArgs}
+      type: System.EventHandler{Rssdp.DeviceAvailableEventArgs}
     content.vb: Event DeviceAvailable As EventHandler(Of DeviceAvailableEventArgs)
   seealso:
   - linkId: Rssdp.Infrastructure.ISsdpDeviceLocator.NotificationFilter
@@ -96,7 +96,7 @@ items:
   source:
     id: DeviceUnavailable
     path: ''
-    startLine: 3543
+    startLine: 2501
   assemblies:
   - cs.temp.dll
   namespace: Rssdp.Infrastructure
@@ -105,7 +105,7 @@ items:
   syntax:
     content: event EventHandler<DeviceUnavailableEventArgs> DeviceUnavailable
     return:
-      type: EventHandler{Rssdp.DeviceUnavailableEventArgs}
+      type: System.EventHandler{Rssdp.DeviceUnavailableEventArgs}
     content.vb: Event DeviceUnavailable As EventHandler(Of DeviceUnavailableEventArgs)
   seealso:
   - linkId: Rssdp.Infrastructure.ISsdpDeviceLocator.DeviceAvailable
@@ -128,7 +128,7 @@ items:
   source:
     id: NotificationFilter
     path: ''
-    startLine: 3563
+    startLine: 2521
   assemblies:
   - cs.temp.dll
   namespace: Rssdp.Infrastructure
@@ -168,7 +168,7 @@ items:
   source:
     id: IsSearching
     path: ''
-    startLine: 3572
+    startLine: 2530
   assemblies:
   - cs.temp.dll
   namespace: Rssdp.Infrastructure
@@ -199,7 +199,7 @@ items:
   source:
     id: SearchAsync
     path: ''
-    startLine: 3584
+    startLine: 2542
   assemblies:
   - cs.temp.dll
   namespace: Rssdp.Infrastructure
@@ -226,7 +226,7 @@ items:
   source:
     id: SearchAsync
     path: ''
-    startLine: 3597
+    startLine: 2555
   assemblies:
   - cs.temp.dll
   namespace: Rssdp.Infrastructure
@@ -246,21 +246,21 @@ items:
       description: A task whose result is an <xref href="System.Collections.Generic.IEnumerable%601" data-throw-if-not-resolved="false"></xref> of <xref href="Rssdp.DiscoveredSsdpDevice" data-throw-if-not-resolved="false"></xref> instances, representing all found devices.
     content.vb: Function SearchAsync(searchTarget As String) As Task(Of IEnumerable(Of DiscoveredSsdpDevice))
   overload: Rssdp.Infrastructure.ISsdpDeviceLocator.SearchAsync*
-- uid: Rssdp.Infrastructure.ISsdpDeviceLocator.SearchAsync(System.String,TimeSpan)
-  commentId: M:Rssdp.Infrastructure.ISsdpDeviceLocator.SearchAsync(System.String,TimeSpan)
-  id: SearchAsync(System.String,TimeSpan)
+- uid: Rssdp.Infrastructure.ISsdpDeviceLocator.SearchAsync(System.String,System.TimeSpan)
+  commentId: M:Rssdp.Infrastructure.ISsdpDeviceLocator.SearchAsync(System.String,System.TimeSpan)
+  id: SearchAsync(System.String,System.TimeSpan)
   parent: Rssdp.Infrastructure.ISsdpDeviceLocator
   langs:
   - csharp
   - vb
   name: SearchAsync(String, TimeSpan)
   nameWithType: ISsdpDeviceLocator.SearchAsync(String, TimeSpan)
-  fullName: Rssdp.Infrastructure.ISsdpDeviceLocator.SearchAsync(System.String, TimeSpan)
+  fullName: Rssdp.Infrastructure.ISsdpDeviceLocator.SearchAsync(System.String, System.TimeSpan)
   type: Method
   source:
     id: SearchAsync
     path: ''
-    startLine: 3615
+    startLine: 2573
   assemblies:
   - cs.temp.dll
   namespace: Rssdp.Infrastructure
@@ -277,28 +277,28 @@ items:
 
         <table><tbody><tr><td>Root devices</td><td>upnp:rootdevice</td></tr><tr><td>Specific device by UUID</td><td>uuid:&lt;device uuid></td></tr><tr><td>Device type</td><td>A device namespace and type in format of urn:&lt;device namespace>:device:&lt;device type>:&lt;device version> i.e urn:schemas-upnp-org:device:Basic:1</td></tr><tr><td>Service type</td><td>A service namespace and type in format of urn:&lt;service namespace>:service:&lt;servicetype>:&lt;service version> i.e urn:my-namespace:service:MyCustomService:1</td></tr></tbody></table>
     - id: searchWaitTime
-      type: TimeSpan
+      type: System.TimeSpan
       description: The amount of time to wait for network responses to the search request. Longer values will likely return more devices, but increase search time. A value between 1 and 5 is recommended by the UPnP 1.1 specification. Specify TimeSpan.Zero to return only devices already in the cache.
     return:
       type: System.Threading.Tasks.Task{System.Collections.Generic.IEnumerable{Rssdp.DiscoveredSsdpDevice}}
       description: A task whose result is an <xref href="System.Collections.Generic.IEnumerable%601" data-throw-if-not-resolved="false"></xref> of <xref href="Rssdp.DiscoveredSsdpDevice" data-throw-if-not-resolved="false"></xref> instances, representing all found devices.
     content.vb: Function SearchAsync(searchTarget As String, searchWaitTime As TimeSpan) As Task(Of IEnumerable(Of DiscoveredSsdpDevice))
   overload: Rssdp.Infrastructure.ISsdpDeviceLocator.SearchAsync*
-- uid: Rssdp.Infrastructure.ISsdpDeviceLocator.SearchAsync(TimeSpan)
-  commentId: M:Rssdp.Infrastructure.ISsdpDeviceLocator.SearchAsync(TimeSpan)
-  id: SearchAsync(TimeSpan)
+- uid: Rssdp.Infrastructure.ISsdpDeviceLocator.SearchAsync(System.TimeSpan)
+  commentId: M:Rssdp.Infrastructure.ISsdpDeviceLocator.SearchAsync(System.TimeSpan)
+  id: SearchAsync(System.TimeSpan)
   parent: Rssdp.Infrastructure.ISsdpDeviceLocator
   langs:
   - csharp
   - vb
   name: SearchAsync(TimeSpan)
   nameWithType: ISsdpDeviceLocator.SearchAsync(TimeSpan)
-  fullName: Rssdp.Infrastructure.ISsdpDeviceLocator.SearchAsync(TimeSpan)
+  fullName: Rssdp.Infrastructure.ISsdpDeviceLocator.SearchAsync(System.TimeSpan)
   type: Method
   source:
     id: SearchAsync
     path: ''
-    startLine: 3622
+    startLine: 2580
   assemblies:
   - cs.temp.dll
   namespace: Rssdp.Infrastructure
@@ -308,7 +308,7 @@ items:
     content: Task<IEnumerable<DiscoveredSsdpDevice>> SearchAsync(TimeSpan searchWaitTime)
     parameters:
     - id: searchWaitTime
-      type: TimeSpan
+      type: System.TimeSpan
       description: The amount of time to wait for network responses to the search request. Longer values will likely return more devices, but increase search time. A value between 1 and 5 is recommended by the UPnP 1.1 specification. Specify TimeSpan.Zero to return only devices already in the cache.
     return:
       type: System.Threading.Tasks.Task{System.Collections.Generic.IEnumerable{Rssdp.DiscoveredSsdpDevice}}
@@ -329,7 +329,7 @@ items:
   source:
     id: StartListeningForNotifications
     path: ''
-    startLine: 3636
+    startLine: 2594
   assemblies:
   - cs.temp.dll
   namespace: Rssdp.Infrastructure
@@ -363,7 +363,7 @@ items:
   source:
     id: StopListeningForNotifications
     path: ''
-    startLine: 3649
+    startLine: 2607
   assemblies:
   - cs.temp.dll
   namespace: Rssdp.Infrastructure
@@ -493,20 +493,21 @@ references:
   - name: )
     nameWithType: )
     fullName: )
-- uid: EventHandler{Rssdp.DeviceAvailableEventArgs}
-  commentId: '!:EventHandler{Rssdp.DeviceAvailableEventArgs}'
-  definition: EventHandler`1
+- uid: System.EventHandler{Rssdp.DeviceAvailableEventArgs}
+  commentId: T:System.EventHandler{Rssdp.DeviceAvailableEventArgs}
+  parent: System
+  definition: System.EventHandler`1
   name: EventHandler<DeviceAvailableEventArgs>
   nameWithType: EventHandler<DeviceAvailableEventArgs>
-  fullName: EventHandler<Rssdp.DeviceAvailableEventArgs>
+  fullName: System.EventHandler<Rssdp.DeviceAvailableEventArgs>
   nameWithType.vb: EventHandler(Of DeviceAvailableEventArgs)
-  fullName.vb: EventHandler(Of Rssdp.DeviceAvailableEventArgs)
+  fullName.vb: System.EventHandler(Of Rssdp.DeviceAvailableEventArgs)
   name.vb: EventHandler(Of DeviceAvailableEventArgs)
   spec.csharp:
-  - uid: EventHandler`1
+  - uid: System.EventHandler`1
     name: EventHandler
     nameWithType: EventHandler
-    fullName: EventHandler
+    fullName: System.EventHandler
     isExternal: true
   - name: <
     nameWithType: <
@@ -519,10 +520,10 @@ references:
     nameWithType: '>'
     fullName: '>'
   spec.vb:
-  - uid: EventHandler`1
+  - uid: System.EventHandler`1
     name: EventHandler
     nameWithType: EventHandler
-    fullName: EventHandler
+    fullName: System.EventHandler
     isExternal: true
   - name: '(Of '
     nameWithType: '(Of '
@@ -541,44 +542,51 @@ references:
   name: ISsdpDeviceLocator
   nameWithType: ISsdpDeviceLocator
   fullName: Rssdp.Infrastructure.ISsdpDeviceLocator
-- uid: EventHandler`1
+- uid: System.EventHandler`1
+  commentId: T:System.EventHandler`1
   isExternal: true
-  name: EventHandler<>
-  nameWithType: EventHandler<>
-  fullName: EventHandler<>
-  nameWithType.vb: EventHandler(Of )
-  fullName.vb: EventHandler(Of )
-  name.vb: EventHandler(Of )
+  name: EventHandler<TEventArgs>
+  nameWithType: EventHandler<TEventArgs>
+  fullName: System.EventHandler<TEventArgs>
+  nameWithType.vb: EventHandler(Of TEventArgs)
+  fullName.vb: System.EventHandler(Of TEventArgs)
+  name.vb: EventHandler(Of TEventArgs)
   spec.csharp:
-  - uid: EventHandler`1
+  - uid: System.EventHandler`1
     name: EventHandler
     nameWithType: EventHandler
-    fullName: EventHandler
+    fullName: System.EventHandler
     isExternal: true
   - name: <
     nameWithType: <
     fullName: <
-  - name: ''
-    nameWithType: ''
-    fullName: ''
+  - name: TEventArgs
+    nameWithType: TEventArgs
+    fullName: TEventArgs
   - name: '>'
     nameWithType: '>'
     fullName: '>'
   spec.vb:
-  - uid: EventHandler`1
+  - uid: System.EventHandler`1
     name: EventHandler
     nameWithType: EventHandler
-    fullName: EventHandler
+    fullName: System.EventHandler
     isExternal: true
   - name: '(Of '
     nameWithType: '(Of '
     fullName: '(Of '
-  - name: ''
-    nameWithType: ''
-    fullName: ''
+  - name: TEventArgs
+    nameWithType: TEventArgs
+    fullName: TEventArgs
   - name: )
     nameWithType: )
     fullName: )
+- uid: System
+  commentId: N:System
+  isExternal: false
+  name: System
+  nameWithType: System
+  fullName: System
 - uid: Rssdp.Infrastructure.ISsdpDeviceLocator.DeviceAvailable
   commentId: E:Rssdp.Infrastructure.ISsdpDeviceLocator.DeviceAvailable
   parent: Rssdp.Infrastructure.ISsdpDeviceLocator
@@ -586,20 +594,21 @@ references:
   name: DeviceAvailable
   nameWithType: ISsdpDeviceLocator.DeviceAvailable
   fullName: Rssdp.Infrastructure.ISsdpDeviceLocator.DeviceAvailable
-- uid: EventHandler{Rssdp.DeviceUnavailableEventArgs}
-  commentId: '!:EventHandler{Rssdp.DeviceUnavailableEventArgs}'
-  definition: EventHandler`1
+- uid: System.EventHandler{Rssdp.DeviceUnavailableEventArgs}
+  commentId: T:System.EventHandler{Rssdp.DeviceUnavailableEventArgs}
+  parent: System
+  definition: System.EventHandler`1
   name: EventHandler<DeviceUnavailableEventArgs>
   nameWithType: EventHandler<DeviceUnavailableEventArgs>
-  fullName: EventHandler<Rssdp.DeviceUnavailableEventArgs>
+  fullName: System.EventHandler<Rssdp.DeviceUnavailableEventArgs>
   nameWithType.vb: EventHandler(Of DeviceUnavailableEventArgs)
-  fullName.vb: EventHandler(Of Rssdp.DeviceUnavailableEventArgs)
+  fullName.vb: System.EventHandler(Of Rssdp.DeviceUnavailableEventArgs)
   name.vb: EventHandler(Of DeviceUnavailableEventArgs)
   spec.csharp:
-  - uid: EventHandler`1
+  - uid: System.EventHandler`1
     name: EventHandler
     nameWithType: EventHandler
-    fullName: EventHandler
+    fullName: System.EventHandler
     isExternal: true
   - name: <
     nameWithType: <
@@ -612,10 +621,10 @@ references:
     nameWithType: '>'
     fullName: '>'
   spec.vb:
-  - uid: EventHandler`1
+  - uid: System.EventHandler`1
     name: EventHandler
     nameWithType: EventHandler
-    fullName: EventHandler
+    fullName: System.EventHandler
     isExternal: true
   - name: '(Of '
     nameWithType: '(Of '
@@ -640,12 +649,6 @@ references:
   name: String
   nameWithType: String
   fullName: System.String
-- uid: System
-  commentId: N:System
-  isExternal: false
-  name: System
-  nameWithType: System
-  fullName: System
 - uid: Rssdp.Infrastructure.ISsdpDeviceLocator.IsSearching*
   commentId: Overload:Rssdp.Infrastructure.ISsdpDeviceLocator.IsSearching
   isExternal: false
@@ -813,11 +816,13 @@ references:
   name: System.Threading.Tasks
   nameWithType: System.Threading.Tasks
   fullName: System.Threading.Tasks
-- uid: TimeSpan
+- uid: System.TimeSpan
+  commentId: T:System.TimeSpan
+  parent: System
   isExternal: true
   name: TimeSpan
   nameWithType: TimeSpan
-  fullName: TimeSpan
+  fullName: System.TimeSpan
 - uid: Rssdp.Infrastructure.ISsdpDeviceLocator.StartListeningForNotifications*
   commentId: Overload:Rssdp.Infrastructure.ISsdpDeviceLocator.StartListeningForNotifications
   isExternal: false

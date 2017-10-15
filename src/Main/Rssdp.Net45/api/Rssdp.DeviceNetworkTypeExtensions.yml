@@ -16,7 +16,7 @@ items:
   source:
     id: DeviceNetworkTypeExtensions
     path: ''
-    startLine: 2513
+    startLine: 1471
   assemblies:
   - cs.temp.dll
   namespace: Rssdp
@@ -57,7 +57,7 @@ items:
   source:
     id: GetMulticastIPAddress
     path: ''
-    startLine: 2521
+    startLine: 1479
   assemblies:
   - cs.temp.dll
   namespace: Rssdp
@@ -77,6 +77,9 @@ items:
 
       Public Shared Function GetMulticastIPAddress(deviceNetworkType As DeviceNetworkType) As String
   overload: Rssdp.DeviceNetworkTypeExtensions.GetMulticastIPAddress*
+  exceptions:
+  - type: System.ArgumentOutOfRangeException
+    commentId: T:System.ArgumentOutOfRangeException
   modifiers.csharp:
   - public
   - static
@@ -395,6 +398,8 @@ references:
   name: GetMulticastIPAddress
   nameWithType: DeviceNetworkTypeExtensions.GetMulticastIPAddress
   fullName: Rssdp.DeviceNetworkTypeExtensions.GetMulticastIPAddress
+- uid: System.ArgumentOutOfRangeException
+  commentId: T:System.ArgumentOutOfRangeException
 - uid: System.String
   commentId: T:System.String
   parent: System

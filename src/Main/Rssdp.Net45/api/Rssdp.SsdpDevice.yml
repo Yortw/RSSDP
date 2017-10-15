@@ -52,7 +52,7 @@ items:
   source:
     id: SsdpDevice
     path: ''
-    startLine: 4665
+    startLine: 3623
   assemblies:
   - cs.temp.dll
   namespace: Rssdp
@@ -102,7 +102,7 @@ items:
   source:
     id: DeviceAdded
     path: ''
-    startLine: 4689
+    startLine: 3647
   assemblies:
   - cs.temp.dll
   namespace: Rssdp
@@ -111,7 +111,7 @@ items:
   syntax:
     content: public event EventHandler<DeviceEventArgs> DeviceAdded
     return:
-      type: EventHandler{Rssdp.DeviceEventArgs}
+      type: System.EventHandler{Rssdp.DeviceEventArgs}
     content.vb: Public Event DeviceAdded As EventHandler(Of DeviceEventArgs)
   seealso:
   - linkId: Rssdp.SsdpDevice.AddDevice(Rssdp.SsdpEmbeddedDevice)
@@ -136,7 +136,7 @@ items:
   source:
     id: DeviceRemoved
     path: ''
-    startLine: 4696
+    startLine: 3654
   assemblies:
   - cs.temp.dll
   namespace: Rssdp
@@ -145,7 +145,7 @@ items:
   syntax:
     content: public event EventHandler<DeviceEventArgs> DeviceRemoved
     return:
-      type: EventHandler{Rssdp.DeviceEventArgs}
+      type: System.EventHandler{Rssdp.DeviceEventArgs}
     content.vb: Public Event DeviceRemoved As EventHandler(Of DeviceEventArgs)
   seealso:
   - linkId: Rssdp.SsdpDevice.RemoveDevice(Rssdp.SsdpEmbeddedDevice)
@@ -170,7 +170,7 @@ items:
   source:
     id: ServiceAdded
     path: ''
-    startLine: 4703
+    startLine: 3661
   assemblies:
   - cs.temp.dll
   namespace: Rssdp
@@ -179,7 +179,7 @@ items:
   syntax:
     content: public event EventHandler<ServiceEventArgs> ServiceAdded
     return:
-      type: EventHandler{Rssdp.ServiceEventArgs}
+      type: System.EventHandler{Rssdp.ServiceEventArgs}
     content.vb: Public Event ServiceAdded As EventHandler(Of ServiceEventArgs)
   seealso:
   - linkId: Rssdp.SsdpDevice.AddService(Rssdp.SsdpService)
@@ -204,7 +204,7 @@ items:
   source:
     id: ServiceRemoved
     path: ''
-    startLine: 4710
+    startLine: 3668
   assemblies:
   - cs.temp.dll
   namespace: Rssdp
@@ -213,7 +213,7 @@ items:
   syntax:
     content: public event EventHandler<ServiceEventArgs> ServiceRemoved
     return:
-      type: EventHandler{Rssdp.ServiceEventArgs}
+      type: System.EventHandler{Rssdp.ServiceEventArgs}
     content.vb: Public Event ServiceRemoved As EventHandler(Of ServiceEventArgs)
   seealso:
   - linkId: Rssdp.SsdpDevice.RemoveService(Rssdp.SsdpService)
@@ -238,7 +238,7 @@ items:
   source:
     id: .ctor
     path: ''
-    startLine: 4719
+    startLine: 3677
   assemblies:
   - cs.temp.dll
   namespace: Rssdp
@@ -266,7 +266,7 @@ items:
   source:
     id: .ctor
     path: ''
-    startLine: 4741
+    startLine: 3699
   assemblies:
   - cs.temp.dll
   namespace: Rssdp
@@ -306,7 +306,7 @@ items:
   source:
     id: DeviceType
     path: ''
-    startLine: 4768
+    startLine: 3726
   assemblies:
   - cs.temp.dll
   namespace: Rssdp
@@ -347,7 +347,7 @@ items:
   source:
     id: DeviceTypeNamespace
     path: ''
-    startLine: 4787
+    startLine: 3745
   assemblies:
   - cs.temp.dll
   namespace: Rssdp
@@ -388,7 +388,7 @@ items:
   source:
     id: DeviceVersion
     path: ''
-    startLine: 4806
+    startLine: 3764
   assemblies:
   - cs.temp.dll
   namespace: Rssdp
@@ -429,7 +429,7 @@ items:
   source:
     id: FullDeviceType
     path: ''
-    startLine: 4824
+    startLine: 3782
   assemblies:
   - cs.temp.dll
   namespace: Rssdp
@@ -463,7 +463,7 @@ items:
   source:
     id: Uuid
     path: ''
-    startLine: 4843
+    startLine: 3801
   assemblies:
   - cs.temp.dll
   namespace: Rssdp
@@ -497,7 +497,7 @@ items:
   source:
     id: Udn
     path: ''
-    startLine: 4853
+    startLine: 3811
   assemblies:
   - cs.temp.dll
   namespace: Rssdp
@@ -531,7 +531,7 @@ items:
   source:
     id: FriendlyName
     path: ''
-    startLine: 4872
+    startLine: 3830
   assemblies:
   - cs.temp.dll
   namespace: Rssdp
@@ -565,7 +565,7 @@ items:
   source:
     id: Manufacturer
     path: ''
-    startLine: 4877
+    startLine: 3835
   assemblies:
   - cs.temp.dll
   namespace: Rssdp
@@ -598,7 +598,7 @@ items:
   source:
     id: ManufacturerUrl
     path: ''
-    startLine: 4882
+    startLine: 3840
   assemblies:
   - cs.temp.dll
   namespace: Rssdp
@@ -631,7 +631,7 @@ items:
   source:
     id: ModelDescription
     path: ''
-    startLine: 4888
+    startLine: 3846
   assemblies:
   - cs.temp.dll
   namespace: Rssdp
@@ -665,7 +665,7 @@ items:
   source:
     id: ModelName
     path: ''
-    startLine: 4893
+    startLine: 3851
   assemblies:
   - cs.temp.dll
   namespace: Rssdp
@@ -698,7 +698,7 @@ items:
   source:
     id: ModelNumber
     path: ''
-    startLine: 4898
+    startLine: 3856
   assemblies:
   - cs.temp.dll
   namespace: Rssdp
@@ -731,7 +731,7 @@ items:
   source:
     id: ModelUrl
     path: ''
-    startLine: 4906
+    startLine: 3864
   assemblies:
   - cs.temp.dll
   namespace: Rssdp
@@ -765,7 +765,7 @@ items:
   source:
     id: SerialNumber
     path: ''
-    startLine: 4911
+    startLine: 3869
   assemblies:
   - cs.temp.dll
   namespace: Rssdp
@@ -798,7 +798,7 @@ items:
   source:
     id: Upc
     path: ''
-    startLine: 4919
+    startLine: 3877
   assemblies:
   - cs.temp.dll
   namespace: Rssdp
@@ -832,7 +832,7 @@ items:
   source:
     id: PresentationUrl
     path: ''
-    startLine: 4927
+    startLine: 3885
   assemblies:
   - cs.temp.dll
   namespace: Rssdp
@@ -866,7 +866,7 @@ items:
   source:
     id: Icons
     path: ''
-    startLine: 4934
+    startLine: 3892
   assemblies:
   - cs.temp.dll
   namespace: Rssdp
@@ -899,7 +899,7 @@ items:
   source:
     id: Devices
     path: ''
-    startLine: 4945
+    startLine: 3903
   assemblies:
   - cs.temp.dll
   namespace: Rssdp
@@ -937,7 +937,7 @@ items:
   source:
     id: CustomProperties
     path: ''
-    startLine: 4954
+    startLine: 3912
   assemblies:
   - cs.temp.dll
   namespace: Rssdp
@@ -970,7 +970,7 @@ items:
   source:
     id: CustomResponseHeaders
     path: ''
-    startLine: 4969
+    startLine: 3927
   assemblies:
   - cs.temp.dll
   namespace: Rssdp
@@ -1004,7 +1004,7 @@ items:
   source:
     id: Services
     path: ''
-    startLine: 4982
+    startLine: 3940
   assemblies:
   - cs.temp.dll
   namespace: Rssdp
@@ -1042,7 +1042,7 @@ items:
   source:
     id: AddDevice
     path: ''
-    startLine: 5005
+    startLine: 3963
   assemblies:
   - cs.temp.dll
   namespace: Rssdp
@@ -1085,7 +1085,7 @@ items:
   source:
     id: RemoveDevice
     path: ''
-    startLine: 5036
+    startLine: 3994
   assemblies:
   - cs.temp.dll
   namespace: Rssdp
@@ -1125,7 +1125,7 @@ items:
   source:
     id: OnDeviceAdded
     path: ''
-    startLine: 5059
+    startLine: 4017
   assemblies:
   - cs.temp.dll
   namespace: Rssdp
@@ -1164,7 +1164,7 @@ items:
   source:
     id: OnDeviceRemoved
     path: ''
-    startLine: 5072
+    startLine: 4030
   assemblies:
   - cs.temp.dll
   namespace: Rssdp
@@ -1204,7 +1204,7 @@ items:
   source:
     id: AddService
     path: ''
-    startLine: 5093
+    startLine: 4051
   assemblies:
   - cs.temp.dll
   namespace: Rssdp
@@ -1244,7 +1244,7 @@ items:
   source:
     id: RemoveService
     path: ''
-    startLine: 5120
+    startLine: 4078
   assemblies:
   - cs.temp.dll
   namespace: Rssdp
@@ -1284,7 +1284,7 @@ items:
   source:
     id: OnServiceAdded
     path: ''
-    startLine: 5140
+    startLine: 4098
   assemblies:
   - cs.temp.dll
   namespace: Rssdp
@@ -1323,7 +1323,7 @@ items:
   source:
     id: OnServiceRemoved
     path: ''
-    startLine: 5153
+    startLine: 4111
   assemblies:
   - cs.temp.dll
   namespace: Rssdp
@@ -1363,7 +1363,7 @@ items:
   source:
     id: WriteDeviceDescriptionXml
     path: ''
-    startLine: 5168
+    startLine: 4126
   assemblies:
   - cs.temp.dll
   namespace: Rssdp
@@ -1404,7 +1404,7 @@ items:
   source:
     id: StringToUri
     path: ''
-    startLine: 5203
+    startLine: 4161
   assemblies:
   - cs.temp.dll
   namespace: Rssdp
@@ -1784,20 +1784,21 @@ references:
   name: DeviceAdded
   nameWithType: SsdpDevice.DeviceAdded
   fullName: Rssdp.SsdpDevice.DeviceAdded
-- uid: EventHandler{Rssdp.DeviceEventArgs}
-  commentId: '!:EventHandler{Rssdp.DeviceEventArgs}'
-  definition: EventHandler`1
+- uid: System.EventHandler{Rssdp.DeviceEventArgs}
+  commentId: T:System.EventHandler{Rssdp.DeviceEventArgs}
+  parent: System
+  definition: System.EventHandler`1
   name: EventHandler<DeviceEventArgs>
   nameWithType: EventHandler<DeviceEventArgs>
-  fullName: EventHandler<Rssdp.DeviceEventArgs>
+  fullName: System.EventHandler<Rssdp.DeviceEventArgs>
   nameWithType.vb: EventHandler(Of DeviceEventArgs)
-  fullName.vb: EventHandler(Of Rssdp.DeviceEventArgs)
+  fullName.vb: System.EventHandler(Of Rssdp.DeviceEventArgs)
   name.vb: EventHandler(Of DeviceEventArgs)
   spec.csharp:
-  - uid: EventHandler`1
+  - uid: System.EventHandler`1
     name: EventHandler
     nameWithType: EventHandler
-    fullName: EventHandler
+    fullName: System.EventHandler
     isExternal: true
   - name: <
     nameWithType: <
@@ -1810,10 +1811,10 @@ references:
     nameWithType: '>'
     fullName: '>'
   spec.vb:
-  - uid: EventHandler`1
+  - uid: System.EventHandler`1
     name: EventHandler
     nameWithType: EventHandler
-    fullName: EventHandler
+    fullName: System.EventHandler
     isExternal: true
   - name: '(Of '
     nameWithType: '(Of '
@@ -1832,41 +1833,42 @@ references:
   name: SsdpDevice
   nameWithType: SsdpDevice
   fullName: Rssdp.SsdpDevice
-- uid: EventHandler`1
+- uid: System.EventHandler`1
+  commentId: T:System.EventHandler`1
   isExternal: true
-  name: EventHandler<>
-  nameWithType: EventHandler<>
-  fullName: EventHandler<>
-  nameWithType.vb: EventHandler(Of )
-  fullName.vb: EventHandler(Of )
-  name.vb: EventHandler(Of )
+  name: EventHandler<TEventArgs>
+  nameWithType: EventHandler<TEventArgs>
+  fullName: System.EventHandler<TEventArgs>
+  nameWithType.vb: EventHandler(Of TEventArgs)
+  fullName.vb: System.EventHandler(Of TEventArgs)
+  name.vb: EventHandler(Of TEventArgs)
   spec.csharp:
-  - uid: EventHandler`1
+  - uid: System.EventHandler`1
     name: EventHandler
     nameWithType: EventHandler
-    fullName: EventHandler
+    fullName: System.EventHandler
     isExternal: true
   - name: <
     nameWithType: <
     fullName: <
-  - name: ''
-    nameWithType: ''
-    fullName: ''
+  - name: TEventArgs
+    nameWithType: TEventArgs
+    fullName: TEventArgs
   - name: '>'
     nameWithType: '>'
     fullName: '>'
   spec.vb:
-  - uid: EventHandler`1
+  - uid: System.EventHandler`1
     name: EventHandler
     nameWithType: EventHandler
-    fullName: EventHandler
+    fullName: System.EventHandler
     isExternal: true
   - name: '(Of '
     nameWithType: '(Of '
     fullName: '(Of '
-  - name: ''
-    nameWithType: ''
-    fullName: ''
+  - name: TEventArgs
+    nameWithType: TEventArgs
+    fullName: TEventArgs
   - name: )
     nameWithType: )
     fullName: )
@@ -1958,20 +1960,21 @@ references:
   name: ServiceAdded
   nameWithType: SsdpDevice.ServiceAdded
   fullName: Rssdp.SsdpDevice.ServiceAdded
-- uid: EventHandler{Rssdp.ServiceEventArgs}
-  commentId: '!:EventHandler{Rssdp.ServiceEventArgs}'
-  definition: EventHandler`1
+- uid: System.EventHandler{Rssdp.ServiceEventArgs}
+  commentId: T:System.EventHandler{Rssdp.ServiceEventArgs}
+  parent: System
+  definition: System.EventHandler`1
   name: EventHandler<ServiceEventArgs>
   nameWithType: EventHandler<ServiceEventArgs>
-  fullName: EventHandler<Rssdp.ServiceEventArgs>
+  fullName: System.EventHandler<Rssdp.ServiceEventArgs>
   nameWithType.vb: EventHandler(Of ServiceEventArgs)
-  fullName.vb: EventHandler(Of Rssdp.ServiceEventArgs)
+  fullName.vb: System.EventHandler(Of Rssdp.ServiceEventArgs)
   name.vb: EventHandler(Of ServiceEventArgs)
   spec.csharp:
-  - uid: EventHandler`1
+  - uid: System.EventHandler`1
     name: EventHandler
     nameWithType: EventHandler
-    fullName: EventHandler
+    fullName: System.EventHandler
     isExternal: true
   - name: <
     nameWithType: <
@@ -1984,10 +1987,10 @@ references:
     nameWithType: '>'
     fullName: '>'
   spec.vb:
-  - uid: EventHandler`1
+  - uid: System.EventHandler`1
     name: EventHandler
     nameWithType: EventHandler
-    fullName: EventHandler
+    fullName: System.EventHandler
     isExternal: true
   - name: '(Of '
     nameWithType: '(Of '

@@ -15,8 +15,8 @@ items:
   - Rssdp.Infrastructure.SsdpDeviceLocatorBase.OnDeviceUnavailable(Rssdp.DiscoveredSsdpDevice,System.Boolean)
   - Rssdp.Infrastructure.SsdpDeviceLocatorBase.SearchAsync
   - Rssdp.Infrastructure.SsdpDeviceLocatorBase.SearchAsync(System.String)
-  - Rssdp.Infrastructure.SsdpDeviceLocatorBase.SearchAsync(System.String,TimeSpan)
-  - Rssdp.Infrastructure.SsdpDeviceLocatorBase.SearchAsync(TimeSpan)
+  - Rssdp.Infrastructure.SsdpDeviceLocatorBase.SearchAsync(System.String,System.TimeSpan)
+  - Rssdp.Infrastructure.SsdpDeviceLocatorBase.SearchAsync(System.TimeSpan)
   - Rssdp.Infrastructure.SsdpDeviceLocatorBase.StartListeningForNotifications
   - Rssdp.Infrastructure.SsdpDeviceLocatorBase.StopListeningForNotifications
   langs:
@@ -29,27 +29,35 @@ items:
   source:
     id: SsdpDeviceLocatorBase
     path: ''
-    startLine: 5713
+    startLine: 4671
   assemblies:
   - cs.temp.dll
   namespace: Rssdp.Infrastructure
   summary: "\nAllows you to search the network for a particular device, device types, or UPnP service types. Also listenings for broadcast notifications of device availability and raises events to indicate changes in status.\n"
   example: []
   syntax:
-    content: 'public abstract class SsdpDeviceLocatorBase : DisposableManagedObjectBase, ISsdpDeviceLocator'
+    content: 'public abstract class SsdpDeviceLocatorBase : DisposableManagedObjectBase, IDisposable, ISsdpDeviceLocator'
     content.vb: >-
       Public MustInherit Class SsdpDeviceLocatorBase
           Inherits DisposableManagedObjectBase
-          Implements ISsdpDeviceLocator
+          Implements IDisposable, ISsdpDeviceLocator
   inheritance:
   - System.Object
   - Rssdp.Infrastructure.DisposableManagedObjectBase
   implements:
+  - System.IDisposable
   - Rssdp.Infrastructure.ISsdpDeviceLocator
   inheritedMembers:
   - Rssdp.Infrastructure.DisposableManagedObjectBase.ThrowIfDisposed
   - Rssdp.Infrastructure.DisposableManagedObjectBase.IsDisposed
   - Rssdp.Infrastructure.DisposableManagedObjectBase.Dispose
+  - System.Object.ToString
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
   modifiers.csharp:
   - public
   - abstract
@@ -72,7 +80,7 @@ items:
   source:
     id: .ctor
     path: ''
-    startLine: 5745
+    startLine: 4703
   assemblies:
   - cs.temp.dll
   namespace: Rssdp.Infrastructure
@@ -104,7 +112,7 @@ items:
   source:
     id: DeviceAvailable
     path: ''
-    startLine: 5773
+    startLine: 4731
   assemblies:
   - cs.temp.dll
   namespace: Rssdp.Infrastructure
@@ -113,7 +121,7 @@ items:
   syntax:
     content: public event EventHandler<DeviceAvailableEventArgs> DeviceAvailable
     return:
-      type: EventHandler{Rssdp.DeviceAvailableEventArgs}
+      type: System.EventHandler{Rssdp.DeviceAvailableEventArgs}
     content.vb: Public Event DeviceAvailable As EventHandler(Of DeviceAvailableEventArgs)
   seealso:
   - linkId: Rssdp.Infrastructure.SsdpDeviceLocatorBase.NotificationFilter
@@ -144,7 +152,7 @@ items:
   source:
     id: DeviceUnavailable
     path: ''
-    startLine: 5788
+    startLine: 4746
   assemblies:
   - cs.temp.dll
   namespace: Rssdp.Infrastructure
@@ -154,7 +162,7 @@ items:
   syntax:
     content: public event EventHandler<DeviceUnavailableEventArgs> DeviceUnavailable
     return:
-      type: EventHandler{Rssdp.DeviceUnavailableEventArgs}
+      type: System.EventHandler{Rssdp.DeviceUnavailableEventArgs}
     content.vb: Public Event DeviceUnavailable As EventHandler(Of DeviceUnavailableEventArgs)
   seealso:
   - linkId: Rssdp.Infrastructure.SsdpDeviceLocatorBase.NotificationFilter
@@ -185,7 +193,7 @@ items:
   source:
     id: SearchAsync
     path: ''
-    startLine: 5800
+    startLine: 4758
   assemblies:
   - cs.temp.dll
   namespace: Rssdp.Infrastructure
@@ -216,7 +224,7 @@ items:
   source:
     id: SearchAsync
     path: ''
-    startLine: 5816
+    startLine: 4774
   assemblies:
   - cs.temp.dll
   namespace: Rssdp.Infrastructure
@@ -240,21 +248,21 @@ items:
   - public
   modifiers.vb:
   - Public
-- uid: Rssdp.Infrastructure.SsdpDeviceLocatorBase.SearchAsync(TimeSpan)
-  commentId: M:Rssdp.Infrastructure.SsdpDeviceLocatorBase.SearchAsync(TimeSpan)
-  id: SearchAsync(TimeSpan)
+- uid: Rssdp.Infrastructure.SsdpDeviceLocatorBase.SearchAsync(System.TimeSpan)
+  commentId: M:Rssdp.Infrastructure.SsdpDeviceLocatorBase.SearchAsync(System.TimeSpan)
+  id: SearchAsync(System.TimeSpan)
   parent: Rssdp.Infrastructure.SsdpDeviceLocatorBase
   langs:
   - csharp
   - vb
   name: SearchAsync(TimeSpan)
   nameWithType: SsdpDeviceLocatorBase.SearchAsync(TimeSpan)
-  fullName: Rssdp.Infrastructure.SsdpDeviceLocatorBase.SearchAsync(TimeSpan)
+  fullName: Rssdp.Infrastructure.SsdpDeviceLocatorBase.SearchAsync(System.TimeSpan)
   type: Method
   source:
     id: SearchAsync
     path: ''
-    startLine: 5826
+    startLine: 4784
   assemblies:
   - cs.temp.dll
   namespace: Rssdp.Infrastructure
@@ -264,7 +272,7 @@ items:
     content: public Task<IEnumerable<DiscoveredSsdpDevice>> SearchAsync(TimeSpan searchWaitTime)
     parameters:
     - id: searchWaitTime
-      type: TimeSpan
+      type: System.TimeSpan
       description: The amount of time to wait for network responses to the search request. Longer values will likely return more devices, but increase search time. A value between 1 and 5 seconds is recommended by the UPnP 1.1 specification, this method requires the value be greater 1 second if it is not zero. Specify TimeSpan.Zero to return only devices already in the cache.
     return:
       type: Task{IEnumerable{Rssdp.DiscoveredSsdpDevice}}
@@ -275,21 +283,21 @@ items:
   - public
   modifiers.vb:
   - Public
-- uid: Rssdp.Infrastructure.SsdpDeviceLocatorBase.SearchAsync(System.String,TimeSpan)
-  commentId: M:Rssdp.Infrastructure.SsdpDeviceLocatorBase.SearchAsync(System.String,TimeSpan)
-  id: SearchAsync(System.String,TimeSpan)
+- uid: Rssdp.Infrastructure.SsdpDeviceLocatorBase.SearchAsync(System.String,System.TimeSpan)
+  commentId: M:Rssdp.Infrastructure.SsdpDeviceLocatorBase.SearchAsync(System.String,System.TimeSpan)
+  id: SearchAsync(System.String,System.TimeSpan)
   parent: Rssdp.Infrastructure.SsdpDeviceLocatorBase
   langs:
   - csharp
   - vb
   name: SearchAsync(String, TimeSpan)
   nameWithType: SsdpDeviceLocatorBase.SearchAsync(String, TimeSpan)
-  fullName: Rssdp.Infrastructure.SsdpDeviceLocatorBase.SearchAsync(System.String, TimeSpan)
+  fullName: Rssdp.Infrastructure.SsdpDeviceLocatorBase.SearchAsync(System.String, System.TimeSpan)
   type: Method
   source:
     id: SearchAsync
     path: ''
-    startLine: 5847
+    startLine: 4805
   assemblies:
   - cs.temp.dll
   namespace: Rssdp.Infrastructure
@@ -306,7 +314,7 @@ items:
 
         <table><tbody><tr><td>Root devices</td><td>upnp:rootdevice</td></tr><tr><td>Specific device by UUID</td><td>uuid:&lt;device uuid></td></tr><tr><td>Device type</td><td>A device namespace and type in format of urn:&lt;device namespace>:device:&lt;device type>:&lt;device version> i.e urn:schemas-upnp-org:device:Basic:1</td></tr><tr><td>Service type</td><td>A service namespace and type in format of urn:&lt;service namespace>:service:&lt;servicetype>:&lt;service version> i.e urn:my-namespace:service:MyCustomService:1</td></tr></tbody></table>
     - id: searchWaitTime
-      type: TimeSpan
+      type: System.TimeSpan
       description: The amount of time to wait for network responses to the search request. Longer values will likely return more devices, but increase search time. A value between 1 and 5 seconds is recommended by the UPnP 1.1 specification, this method requires the value be greater 1 second if it is not zero. Specify TimeSpan.Zero to return only devices already in the cache.
     return:
       type: Task{IEnumerable{Rssdp.DiscoveredSsdpDevice}}
@@ -331,7 +339,7 @@ items:
   source:
     id: StartListeningForNotifications
     path: ''
-    startLine: 5916
+    startLine: 4874
   assemblies:
   - cs.temp.dll
   namespace: Rssdp.Infrastructure
@@ -373,7 +381,7 @@ items:
   source:
     id: StopListeningForNotifications
     path: ''
-    startLine: 5935
+    startLine: 4893
   assemblies:
   - cs.temp.dll
   namespace: Rssdp.Infrastructure
@@ -415,7 +423,7 @@ items:
   source:
     id: OnDeviceAvailable
     path: ''
-    startLine: 5948
+    startLine: 4906
   assemblies:
   - cs.temp.dll
   namespace: Rssdp.Infrastructure
@@ -455,7 +463,7 @@ items:
   source:
     id: OnDeviceUnavailable
     path: ''
-    startLine: 5963
+    startLine: 4921
   assemblies:
   - cs.temp.dll
   namespace: Rssdp.Infrastructure
@@ -495,7 +503,7 @@ items:
   source:
     id: IsSearching
     path: ''
-    startLine: 5982
+    startLine: 4940
   assemblies:
   - cs.temp.dll
   namespace: Rssdp.Infrastructure
@@ -531,7 +539,7 @@ items:
   source:
     id: NotificationFilter
     path: ''
-    startLine: 6002
+    startLine: 4960
   assemblies:
   - cs.temp.dll
   namespace: Rssdp.Infrastructure
@@ -576,7 +584,7 @@ items:
   source:
     id: Dispose
     path: ''
-    startLine: 6016
+    startLine: 4974
   assemblies:
   - cs.temp.dll
   namespace: Rssdp.Infrastructure
@@ -618,6 +626,13 @@ references:
   name: DisposableManagedObjectBase
   nameWithType: DisposableManagedObjectBase
   fullName: Rssdp.Infrastructure.DisposableManagedObjectBase
+- uid: System.IDisposable
+  commentId: T:System.IDisposable
+  parent: System
+  isExternal: true
+  name: IDisposable
+  nameWithType: IDisposable
+  fullName: System.IDisposable
 - uid: Rssdp.Infrastructure.ISsdpDeviceLocator
   commentId: T:Rssdp.Infrastructure.ISsdpDeviceLocator
   parent: Rssdp.Infrastructure
@@ -690,6 +705,285 @@ references:
   - name: )
     nameWithType: )
     fullName: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  name: ToString()
+  nameWithType: Object.ToString()
+  fullName: System.Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    nameWithType: Object.ToString
+    fullName: System.Object.ToString
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    nameWithType: Object.ToString
+    fullName: System.Object.ToString
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  name: Equals(Object)
+  nameWithType: Object.Equals(Object)
+  fullName: System.Object.Equals(System.Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  name: Equals(Object, Object)
+  nameWithType: Object.Equals(Object, Object)
+  fullName: System.Object.Equals(System.Object, System.Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  name: ReferenceEquals(Object, Object)
+  nameWithType: Object.ReferenceEquals(Object, Object)
+  fullName: System.Object.ReferenceEquals(System.Object, System.Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    nameWithType: Object.ReferenceEquals
+    fullName: System.Object.ReferenceEquals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    nameWithType: Object.ReferenceEquals
+    fullName: System.Object.ReferenceEquals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  name: GetHashCode()
+  nameWithType: Object.GetHashCode()
+  fullName: System.Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    nameWithType: Object.GetHashCode
+    fullName: System.Object.GetHashCode
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    nameWithType: Object.GetHashCode
+    fullName: System.Object.GetHashCode
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  name: GetType()
+  nameWithType: Object.GetType()
+  fullName: System.Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    nameWithType: Object.GetType
+    fullName: System.Object.GetType
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    nameWithType: Object.GetType
+    fullName: System.Object.GetType
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  name: MemberwiseClone()
+  nameWithType: Object.MemberwiseClone()
+  fullName: System.Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    nameWithType: Object.MemberwiseClone
+    fullName: System.Object.MemberwiseClone
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    nameWithType: Object.MemberwiseClone
+    fullName: System.Object.MemberwiseClone
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
 - uid: System
   commentId: N:System
   isExternal: false
@@ -724,20 +1018,21 @@ references:
   name: DeviceAvailable
   nameWithType: ISsdpDeviceLocator.DeviceAvailable
   fullName: Rssdp.Infrastructure.ISsdpDeviceLocator.DeviceAvailable
-- uid: EventHandler{Rssdp.DeviceAvailableEventArgs}
-  commentId: '!:EventHandler{Rssdp.DeviceAvailableEventArgs}'
-  definition: EventHandler`1
+- uid: System.EventHandler{Rssdp.DeviceAvailableEventArgs}
+  commentId: T:System.EventHandler{Rssdp.DeviceAvailableEventArgs}
+  parent: System
+  definition: System.EventHandler`1
   name: EventHandler<DeviceAvailableEventArgs>
   nameWithType: EventHandler<DeviceAvailableEventArgs>
-  fullName: EventHandler<Rssdp.DeviceAvailableEventArgs>
+  fullName: System.EventHandler<Rssdp.DeviceAvailableEventArgs>
   nameWithType.vb: EventHandler(Of DeviceAvailableEventArgs)
-  fullName.vb: EventHandler(Of Rssdp.DeviceAvailableEventArgs)
+  fullName.vb: System.EventHandler(Of Rssdp.DeviceAvailableEventArgs)
   name.vb: EventHandler(Of DeviceAvailableEventArgs)
   spec.csharp:
-  - uid: EventHandler`1
+  - uid: System.EventHandler`1
     name: EventHandler
     nameWithType: EventHandler
-    fullName: EventHandler
+    fullName: System.EventHandler
     isExternal: true
   - name: <
     nameWithType: <
@@ -750,10 +1045,10 @@ references:
     nameWithType: '>'
     fullName: '>'
   spec.vb:
-  - uid: EventHandler`1
+  - uid: System.EventHandler`1
     name: EventHandler
     nameWithType: EventHandler
-    fullName: EventHandler
+    fullName: System.EventHandler
     isExternal: true
   - name: '(Of '
     nameWithType: '(Of '
@@ -765,41 +1060,42 @@ references:
   - name: )
     nameWithType: )
     fullName: )
-- uid: EventHandler`1
+- uid: System.EventHandler`1
+  commentId: T:System.EventHandler`1
   isExternal: true
-  name: EventHandler<>
-  nameWithType: EventHandler<>
-  fullName: EventHandler<>
-  nameWithType.vb: EventHandler(Of )
-  fullName.vb: EventHandler(Of )
-  name.vb: EventHandler(Of )
+  name: EventHandler<TEventArgs>
+  nameWithType: EventHandler<TEventArgs>
+  fullName: System.EventHandler<TEventArgs>
+  nameWithType.vb: EventHandler(Of TEventArgs)
+  fullName.vb: System.EventHandler(Of TEventArgs)
+  name.vb: EventHandler(Of TEventArgs)
   spec.csharp:
-  - uid: EventHandler`1
+  - uid: System.EventHandler`1
     name: EventHandler
     nameWithType: EventHandler
-    fullName: EventHandler
+    fullName: System.EventHandler
     isExternal: true
   - name: <
     nameWithType: <
     fullName: <
-  - name: ''
-    nameWithType: ''
-    fullName: ''
+  - name: TEventArgs
+    nameWithType: TEventArgs
+    fullName: TEventArgs
   - name: '>'
     nameWithType: '>'
     fullName: '>'
   spec.vb:
-  - uid: EventHandler`1
+  - uid: System.EventHandler`1
     name: EventHandler
     nameWithType: EventHandler
-    fullName: EventHandler
+    fullName: System.EventHandler
     isExternal: true
   - name: '(Of '
     nameWithType: '(Of '
     fullName: '(Of '
-  - name: ''
-    nameWithType: ''
-    fullName: ''
+  - name: TEventArgs
+    nameWithType: TEventArgs
+    fullName: TEventArgs
   - name: )
     nameWithType: )
     fullName: )
@@ -821,20 +1117,21 @@ references:
   name: DeviceUnavailable
   nameWithType: ISsdpDeviceLocator.DeviceUnavailable
   fullName: Rssdp.Infrastructure.ISsdpDeviceLocator.DeviceUnavailable
-- uid: EventHandler{Rssdp.DeviceUnavailableEventArgs}
-  commentId: '!:EventHandler{Rssdp.DeviceUnavailableEventArgs}'
-  definition: EventHandler`1
+- uid: System.EventHandler{Rssdp.DeviceUnavailableEventArgs}
+  commentId: T:System.EventHandler{Rssdp.DeviceUnavailableEventArgs}
+  parent: System
+  definition: System.EventHandler`1
   name: EventHandler<DeviceUnavailableEventArgs>
   nameWithType: EventHandler<DeviceUnavailableEventArgs>
-  fullName: EventHandler<Rssdp.DeviceUnavailableEventArgs>
+  fullName: System.EventHandler<Rssdp.DeviceUnavailableEventArgs>
   nameWithType.vb: EventHandler(Of DeviceUnavailableEventArgs)
-  fullName.vb: EventHandler(Of Rssdp.DeviceUnavailableEventArgs)
+  fullName.vb: System.EventHandler(Of Rssdp.DeviceUnavailableEventArgs)
   name.vb: EventHandler(Of DeviceUnavailableEventArgs)
   spec.csharp:
-  - uid: EventHandler`1
+  - uid: System.EventHandler`1
     name: EventHandler
     nameWithType: EventHandler
-    fullName: EventHandler
+    fullName: System.EventHandler
     isExternal: true
   - name: <
     nameWithType: <
@@ -847,10 +1144,10 @@ references:
     nameWithType: '>'
     fullName: '>'
   spec.vb:
-  - uid: EventHandler`1
+  - uid: System.EventHandler`1
     name: EventHandler
     nameWithType: EventHandler
-    fullName: EventHandler
+    fullName: System.EventHandler
     isExternal: true
   - name: '(Of '
     nameWithType: '(Of '
@@ -982,11 +1279,13 @@ references:
   name: String
   nameWithType: String
   fullName: System.String
-- uid: TimeSpan
+- uid: System.TimeSpan
+  commentId: T:System.TimeSpan
+  parent: System
   isExternal: true
   name: TimeSpan
   nameWithType: TimeSpan
-  fullName: TimeSpan
+  fullName: System.TimeSpan
 - uid: Rssdp.Infrastructure.SsdpDeviceLocatorBase.StartListeningForNotifications*
   commentId: Overload:Rssdp.Infrastructure.SsdpDeviceLocatorBase.StartListeningForNotifications
   isExternal: false

@@ -17,7 +17,7 @@ items:
   source:
     id: IUdpSocket
     path: ''
-    startLine: 3742
+    startLine: 2700
   assemblies:
   - cs.temp.dll
   namespace: Rssdp.Infrastructure
@@ -28,6 +28,8 @@ items:
     content.vb: >-
       Public Interface IUdpSocket
           Inherits IDisposable
+  inheritedMembers:
+  - System.IDisposable.Dispose
   modifiers.csharp:
   - public
   - interface
@@ -48,7 +50,7 @@ items:
   source:
     id: ReceiveAsync
     path: ''
-    startLine: 3748
+    startLine: 2706
   assemblies:
   - cs.temp.dll
   namespace: Rssdp.Infrastructure
@@ -75,7 +77,7 @@ items:
   source:
     id: SendTo
     path: ''
-    startLine: 3755
+    startLine: 2713
   assemblies:
   - cs.temp.dll
   namespace: Rssdp.Infrastructure
@@ -102,6 +104,50 @@ references:
   name: Rssdp.Infrastructure
   nameWithType: Rssdp.Infrastructure
   fullName: Rssdp.Infrastructure
+- uid: System.IDisposable.Dispose
+  commentId: M:System.IDisposable.Dispose
+  parent: System.IDisposable
+  isExternal: true
+  name: Dispose()
+  nameWithType: IDisposable.Dispose()
+  fullName: System.IDisposable.Dispose()
+  spec.csharp:
+  - uid: System.IDisposable.Dispose
+    name: Dispose
+    nameWithType: IDisposable.Dispose
+    fullName: System.IDisposable.Dispose
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.IDisposable.Dispose
+    name: Dispose
+    nameWithType: IDisposable.Dispose
+    fullName: System.IDisposable.Dispose
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.IDisposable
+  commentId: T:System.IDisposable
+  parent: System
+  isExternal: true
+  name: IDisposable
+  nameWithType: IDisposable
+  fullName: System.IDisposable
+- uid: System
+  commentId: N:System
+  isExternal: false
+  name: System
+  nameWithType: System
+  fullName: System
 - uid: Rssdp.Infrastructure.IUdpSocket.ReceiveAsync*
   commentId: Overload:Rssdp.Infrastructure.IUdpSocket.ReceiveAsync
   isExternal: false

@@ -17,7 +17,7 @@ items:
   source:
     id: String
     path: ''
-    startLine: 1099
+    startLine: 57
   assemblies:
   - cs.temp.dll
   namespace: Rssdp
@@ -54,7 +54,7 @@ items:
   source:
     id: ApplicationName
     path: ''
-    startLine: 1103
+    startLine: 61
   assemblies:
   - cs.temp.dll
   namespace: Rssdp
@@ -83,7 +83,7 @@ items:
   source:
     id: Hello
     path: ''
-    startLine: 1106
+    startLine: 64
   assemblies:
   - cs.temp.dll
   namespace: Rssdp
