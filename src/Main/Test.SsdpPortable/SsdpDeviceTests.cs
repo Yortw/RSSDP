@@ -555,7 +555,6 @@ namespace Test.RssdpPortable
 		{
 			//See issue #70 in repo - empty custom properties would cause
 			//all following properties to be skipped.
-
 			var docString = @"<?xml version=""1.0"" encoding=""UTF-8""?>
 <root xmlns=""urn:schemas-upnp-org:device-1-0"">
   <specVersion>
@@ -567,6 +566,7 @@ namespace Test.RssdpPortable
     <UDN>uuid:55076f6e-6b79-1d65-a472-00059a3c7a00</UDN>
     <friendlyName>Twonky :)</friendlyName>
     <pv:extension xmlns:pv=""http://www.pv.com/pvns/""></pv:extension>
+    <pv:empty_extension xmlns:pv=""http://www.pv.com/pvns/"" />
     <manufacturer>PacketVideo</manufacturer>
     <manufacturerURL>http://www.pv.com</manufacturerURL>
     <modelName>TwonkyServer</modelName>
