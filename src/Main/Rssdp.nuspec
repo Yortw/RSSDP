@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
   <metadata>
     <id>Rssdp</id>
-    <version>3.5.6</version>
+    <version>3.5.7</version>
     <title>Rssdp</title>
     <authors>Troy Willmot</authors>
     <owners>Yortw</owners>
@@ -12,7 +12,7 @@
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>Really Simple Service Discovery Protocol - a 100% .Net implementation of the SSDP protocol for publishing custom/basic devices, and discovering all device types on a network.</description>
     <summary>A 100% .Net implementation of the SSDP protocol for basic and custom device types.</summary>
-    <releaseNotes>Fixes for search responses to match UPnP 1.1 specification.</releaseNotes>
+    <releaseNotes>Fix for parsing device description document with empty custom property nodes.</releaseNotes>
     <copyright>Copyright 2017</copyright>
     <language>en-AU</language>
     <tags>portable xamarin ios android windowsphone winrt uwp mobile ssdp discovery device service protocol upnp netfx40 .net4</tags>
@@ -24,7 +24,7 @@
       </group>
       <group targetFramework=".NetFramework4.5">
       </group>
-      <group targetFramework="monodroid">
+      <group targetFramework="monoandroid">
       </group>
       <group targetFramework="Xamarin.iOS10">
       </group>

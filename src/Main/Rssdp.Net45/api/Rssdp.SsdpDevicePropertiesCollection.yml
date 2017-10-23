@@ -26,7 +26,7 @@ items:
   source:
     id: SsdpDevicePropertiesCollection
     path: ''
-    startLine: 5405
+    startLine: 5413
   assemblies:
   - cs.temp.dll
   namespace: Rssdp
@@ -60,7 +60,7 @@ items:
   source:
     id: .ctor
     path: ''
-    startLine: 5419
+    startLine: 5427
   assemblies:
   - cs.temp.dll
   namespace: Rssdp
@@ -88,7 +88,7 @@ items:
   source:
     id: .ctor
     path: ''
-    startLine: 5428
+    startLine: 5436
   assemblies:
   - cs.temp.dll
   namespace: Rssdp
@@ -120,7 +120,7 @@ items:
   source:
     id: Add
     path: ''
-    startLine: 5446
+    startLine: 5454
   assemblies:
   - cs.temp.dll
   namespace: Rssdp
@@ -160,7 +160,7 @@ items:
   source:
     id: Remove
     path: ''
-    startLine: 5470
+    startLine: 5478
   assemblies:
   - cs.temp.dll
   namespace: Rssdp
@@ -206,7 +206,7 @@ items:
   source:
     id: Remove
     path: ''
-    startLine: 5490
+    startLine: 5498
   assemblies:
   - cs.temp.dll
   namespace: Rssdp
@@ -245,7 +245,7 @@ items:
   source:
     id: Contains
     path: ''
-    startLine: 5507
+    startLine: 5515
   assemblies:
   - cs.temp.dll
   namespace: Rssdp
@@ -280,7 +280,7 @@ items:
   source:
     id: Contains
     path: ''
-    startLine: 5526
+    startLine: 5534
   assemblies:
   - cs.temp.dll
   namespace: Rssdp
@@ -315,7 +315,7 @@ items:
   source:
     id: Count
     path: ''
-    startLine: 5543
+    startLine: 5551
   assemblies:
   - cs.temp.dll
   namespace: Rssdp
@@ -348,7 +348,7 @@ items:
   source:
     id: this[]
     path: ''
-    startLine: 5554
+    startLine: 5562
   assemblies:
   - cs.temp.dll
   namespace: Rssdp
@@ -392,7 +392,7 @@ items:
   source:
     id: GetEnumerator
     path: ''
-    startLine: 5570
+    startLine: 5578
   assemblies:
   - cs.temp.dll
   namespace: Rssdp
@@ -424,7 +424,7 @@ items:
   source:
     id: System.Collections.IEnumerable.GetEnumerator
     path: ''
-    startLine: 5586
+    startLine: 5594
   assemblies:
   - cs.temp.dll
   namespace: Rssdp
