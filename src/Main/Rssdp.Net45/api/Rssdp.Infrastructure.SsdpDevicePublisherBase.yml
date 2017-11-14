@@ -25,7 +25,7 @@ items:
   source:
     id: SsdpDevicePublisherBase
     path: ''
-    startLine: 5657
+    startLine: 5908
   assemblies:
   - cs.temp.dll
   namespace: Rssdp.Infrastructure
@@ -40,6 +40,8 @@ items:
   inheritance:
   - System.Object
   - Rssdp.Infrastructure.DisposableManagedObjectBase
+  derivedClasses:
+  - Rssdp.SsdpDevicePublisher
   implements:
   - System.IDisposable
   - Rssdp.Infrastructure.ISsdpDevicePublisher
@@ -76,7 +78,7 @@ items:
   source:
     id: .ctor
     path: ''
-    startLine: 5734
+    startLine: 5985
   assemblies:
   - cs.temp.dll
   namespace: Rssdp.Infrastructure
@@ -114,7 +116,7 @@ items:
   source:
     id: .ctor
     path: ''
-    startLine: 5745
+    startLine: 5996
   assemblies:
   - cs.temp.dll
   namespace: Rssdp.Infrastructure
@@ -155,7 +157,7 @@ items:
   source:
     id: AddDevice
     path: ''
-    startLine: 5786
+    startLine: 6037
   assemblies:
   - cs.temp.dll
   namespace: Rssdp.Infrastructure
@@ -197,7 +199,7 @@ items:
   source:
     id: RemoveDevice
     path: ''
-    startLine: 5832
+    startLine: 6083
   assemblies:
   - cs.temp.dll
   namespace: Rssdp.Infrastructure
@@ -236,7 +238,7 @@ items:
   source:
     id: Log
     path: ''
-    startLine: 5876
+    startLine: 6127
   assemblies:
   - cs.temp.dll
   namespace: Rssdp.Infrastructure
@@ -270,7 +272,7 @@ items:
   source:
     id: Devices
     path: ''
-    startLine: 5884
+    startLine: 6135
   assemblies:
   - cs.temp.dll
   namespace: Rssdp.Infrastructure
@@ -280,9 +282,11 @@ items:
     content: public IEnumerable<SsdpRootDevice> Devices { get; }
     parameters: []
     return:
-      type: IEnumerable{Rssdp.SsdpRootDevice}
+      type: System.Collections.Generic.IEnumerable{Rssdp.SsdpRootDevice}
     content.vb: Public ReadOnly Property Devices As IEnumerable(Of SsdpRootDevice)
   overload: Rssdp.Infrastructure.SsdpDevicePublisherBase.Devices*
+  implements:
+  - Rssdp.Infrastructure.ISsdpDevicePublisher.Devices
   modifiers.csharp:
   - public
   - get
@@ -303,7 +307,7 @@ items:
   source:
     id: SupportPnpRootDevice
     path: ''
-    startLine: 5899
+    startLine: 6150
   assemblies:
   - cs.temp.dll
   namespace: Rssdp.Infrastructure
@@ -349,7 +353,7 @@ items:
   source:
     id: StandardsMode
     path: ''
-    startLine: 5919
+    startLine: 6170
   assemblies:
   - cs.temp.dll
   namespace: Rssdp.Infrastructure
@@ -383,7 +387,7 @@ items:
   source:
     id: NotificationBroadcastInterval
     path: ''
-    startLine: 5945
+    startLine: 6196
   assemblies:
   - cs.temp.dll
   namespace: Rssdp.Infrastructure
@@ -417,7 +421,7 @@ items:
   source:
     id: Dispose
     path: ''
-    startLine: 5969
+    startLine: 6220
   assemblies:
   - cs.temp.dll
   namespace: Rssdp.Infrastructure
@@ -972,20 +976,28 @@ references:
   name: Devices
   nameWithType: SsdpDevicePublisherBase.Devices
   fullName: Rssdp.Infrastructure.SsdpDevicePublisherBase.Devices
-- uid: IEnumerable{Rssdp.SsdpRootDevice}
-  commentId: '!:IEnumerable{Rssdp.SsdpRootDevice}'
-  definition: IEnumerable`1
+- uid: Rssdp.Infrastructure.ISsdpDevicePublisher.Devices
+  commentId: P:Rssdp.Infrastructure.ISsdpDevicePublisher.Devices
+  parent: Rssdp.Infrastructure.ISsdpDevicePublisher
+  isExternal: false
+  name: Devices
+  nameWithType: ISsdpDevicePublisher.Devices
+  fullName: Rssdp.Infrastructure.ISsdpDevicePublisher.Devices
+- uid: System.Collections.Generic.IEnumerable{Rssdp.SsdpRootDevice}
+  commentId: T:System.Collections.Generic.IEnumerable{Rssdp.SsdpRootDevice}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.IEnumerable`1
   name: IEnumerable<SsdpRootDevice>
   nameWithType: IEnumerable<SsdpRootDevice>
-  fullName: IEnumerable<Rssdp.SsdpRootDevice>
+  fullName: System.Collections.Generic.IEnumerable<Rssdp.SsdpRootDevice>
   nameWithType.vb: IEnumerable(Of SsdpRootDevice)
-  fullName.vb: IEnumerable(Of Rssdp.SsdpRootDevice)
+  fullName.vb: System.Collections.Generic.IEnumerable(Of Rssdp.SsdpRootDevice)
   name.vb: IEnumerable(Of SsdpRootDevice)
   spec.csharp:
-  - uid: IEnumerable`1
+  - uid: System.Collections.Generic.IEnumerable`1
     name: IEnumerable
     nameWithType: IEnumerable
-    fullName: IEnumerable
+    fullName: System.Collections.Generic.IEnumerable
     isExternal: true
   - name: <
     nameWithType: <
@@ -998,10 +1010,10 @@ references:
     nameWithType: '>'
     fullName: '>'
   spec.vb:
-  - uid: IEnumerable`1
+  - uid: System.Collections.Generic.IEnumerable`1
     name: IEnumerable
     nameWithType: IEnumerable
-    fullName: IEnumerable
+    fullName: System.Collections.Generic.IEnumerable
     isExternal: true
   - name: '(Of '
     nameWithType: '(Of '
@@ -1013,44 +1025,51 @@ references:
   - name: )
     nameWithType: )
     fullName: )
-- uid: IEnumerable`1
+- uid: System.Collections.Generic.IEnumerable`1
+  commentId: T:System.Collections.Generic.IEnumerable`1
   isExternal: true
-  name: IEnumerable<>
-  nameWithType: IEnumerable<>
-  fullName: IEnumerable<>
-  nameWithType.vb: IEnumerable(Of )
-  fullName.vb: IEnumerable(Of )
-  name.vb: IEnumerable(Of )
+  name: IEnumerable<T>
+  nameWithType: IEnumerable<T>
+  fullName: System.Collections.Generic.IEnumerable<T>
+  nameWithType.vb: IEnumerable(Of T)
+  fullName.vb: System.Collections.Generic.IEnumerable(Of T)
+  name.vb: IEnumerable(Of T)
   spec.csharp:
-  - uid: IEnumerable`1
+  - uid: System.Collections.Generic.IEnumerable`1
     name: IEnumerable
     nameWithType: IEnumerable
-    fullName: IEnumerable
+    fullName: System.Collections.Generic.IEnumerable
     isExternal: true
   - name: <
     nameWithType: <
     fullName: <
-  - name: ''
-    nameWithType: ''
-    fullName: ''
+  - name: T
+    nameWithType: T
+    fullName: T
   - name: '>'
     nameWithType: '>'
     fullName: '>'
   spec.vb:
-  - uid: IEnumerable`1
+  - uid: System.Collections.Generic.IEnumerable`1
     name: IEnumerable
     nameWithType: IEnumerable
-    fullName: IEnumerable
+    fullName: System.Collections.Generic.IEnumerable
     isExternal: true
   - name: '(Of '
     nameWithType: '(Of '
     fullName: '(Of '
-  - name: ''
-    nameWithType: ''
-    fullName: ''
+  - name: T
+    nameWithType: T
+    fullName: T
   - name: )
     nameWithType: )
     fullName: )
+- uid: System.Collections.Generic
+  commentId: N:System.Collections.Generic
+  isExternal: false
+  name: System.Collections.Generic
+  nameWithType: System.Collections.Generic
+  fullName: System.Collections.Generic
 - uid: Rssdp.Infrastructure.SsdpDevicePublisherBase.SupportPnpRootDevice*
   commentId: Overload:Rssdp.Infrastructure.SsdpDevicePublisherBase.SupportPnpRootDevice
   isExternal: false

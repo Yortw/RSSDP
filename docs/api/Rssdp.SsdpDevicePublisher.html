@@ -1074,17 +1074,77 @@
   <div class="inheritance">
     <h5>Inheritance</h5>
     <div class="level0"><span class="xref">System.Object</span></div>
-    <div class="level1"><span class="xref">SsdpDevicePublisher</span></div>
+    <div class="level1"><a class="xref" href="Rssdp.Infrastructure.DisposableManagedObjectBase.html">DisposableManagedObjectBase</a></div>
+    <div class="level2"><a class="xref" href="Rssdp.Infrastructure.SsdpDevicePublisherBase.html">SsdpDevicePublisherBase</a></div>
+    <div class="level3"><span class="xref">SsdpDevicePublisher</span></div>
   </div>
   <div classs="implements">
     <h5>Implements</h5>
-    <div><span class="xref">SsdpDevicePublisherBase</span></div>
+    <div><span class="xref">System.IDisposable</span></div>
+    <div><a class="xref" href="Rssdp.Infrastructure.ISsdpDevicePublisher.html">ISsdpDevicePublisher</a></div>
+  </div>
+  <div class="inheritedMembers">
+    <h5>Inherited Members</h5>
+    <div>
+      <a class="xref" href="Rssdp.Infrastructure.SsdpDevicePublisherBase.AddDevice.html#Rssdp_Infrastructure_SsdpDevicePublisherBase_AddDevice_Rssdp_SsdpRootDevice_">SsdpDevicePublisherBase.AddDevice(SsdpRootDevice)</a>
+    </div>
+    <div>
+      <a class="xref" href="Rssdp.Infrastructure.SsdpDevicePublisherBase.RemoveDevice.html#Rssdp_Infrastructure_SsdpDevicePublisherBase_RemoveDevice_Rssdp_SsdpRootDevice_">SsdpDevicePublisherBase.RemoveDevice(SsdpRootDevice)</a>
+    </div>
+    <div>
+      <a class="xref" href="Rssdp.Infrastructure.SsdpDevicePublisherBase.Log.html#Rssdp_Infrastructure_SsdpDevicePublisherBase_Log">SsdpDevicePublisherBase.Log</a>
+    </div>
+    <div>
+      <a class="xref" href="Rssdp.Infrastructure.SsdpDevicePublisherBase.Devices.html#Rssdp_Infrastructure_SsdpDevicePublisherBase_Devices">SsdpDevicePublisherBase.Devices</a>
+    </div>
+    <div>
+      <a class="xref" href="Rssdp.Infrastructure.SsdpDevicePublisherBase.SupportPnpRootDevice.html#Rssdp_Infrastructure_SsdpDevicePublisherBase_SupportPnpRootDevice">SsdpDevicePublisherBase.SupportPnpRootDevice</a>
+    </div>
+    <div>
+      <a class="xref" href="Rssdp.Infrastructure.SsdpDevicePublisherBase.StandardsMode.html#Rssdp_Infrastructure_SsdpDevicePublisherBase_StandardsMode">SsdpDevicePublisherBase.StandardsMode</a>
+    </div>
+    <div>
+      <a class="xref" href="Rssdp.Infrastructure.SsdpDevicePublisherBase.NotificationBroadcastInterval.html#Rssdp_Infrastructure_SsdpDevicePublisherBase_NotificationBroadcastInterval">SsdpDevicePublisherBase.NotificationBroadcastInterval</a>
+    </div>
+    <div>
+      <a class="xref" href="Rssdp.Infrastructure.SsdpDevicePublisherBase.Dispose.html#Rssdp_Infrastructure_SsdpDevicePublisherBase_Dispose_System_Boolean_">SsdpDevicePublisherBase.Dispose(Boolean)</a>
+    </div>
+    <div>
+      <a class="xref" href="Rssdp.Infrastructure.DisposableManagedObjectBase.ThrowIfDisposed.html#Rssdp_Infrastructure_DisposableManagedObjectBase_ThrowIfDisposed">DisposableManagedObjectBase.ThrowIfDisposed()</a>
+    </div>
+    <div>
+      <a class="xref" href="Rssdp.Infrastructure.DisposableManagedObjectBase.IsDisposed.html#Rssdp_Infrastructure_DisposableManagedObjectBase_IsDisposed">DisposableManagedObjectBase.IsDisposed</a>
+    </div>
+    <div>
+      <a class="xref" href="Rssdp.Infrastructure.DisposableManagedObjectBase.Dispose.html#Rssdp_Infrastructure_DisposableManagedObjectBase_Dispose">DisposableManagedObjectBase.Dispose()</a>
+    </div>
+    <div>
+      <span class="xref">System.Object.ToString()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.Equals(System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.Equals(System.Object, System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.ReferenceEquals(System.Object, System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.GetHashCode()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.GetType()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.MemberwiseClone()</span>
+    </div>
   </div>
   <h6><strong>Namespace</strong>: <a class="xref" href="Rssdp.html">Rssdp</a></h6>
   <h6><strong>Assembly</strong>: cs.temp.dll.dll</h6>
   <h5 id="Rssdp_SsdpDevicePublisher_syntax">Syntax</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public class SsdpDevicePublisher : SsdpDevicePublisherBase, SsdpDevicePublisherBase</code></pre>
+    <pre><code class="lang-csharp hljs">public class SsdpDevicePublisher : SsdpDevicePublisherBase, IDisposable, ISsdpDevicePublisher</code></pre>
   </div>
   <h5 id="Rssdp_SsdpDevicePublisher_remarks"><strong>Remarks</strong></h5>
   <div class="markdown level0 remarks"><p>This is  the &apos;server&apos; part of the system. You add your devices to an instance of this class so clients can find them.</p>
@@ -1135,45 +1195,101 @@
 </td>
       </tr>
       <tr>
-        <td id="Rssdp_SsdpDevicePublisher__ctor_ISsdpCommunicationsServer_" data-uid="Rssdp.SsdpDevicePublisher.#ctor(ISsdpCommunicationsServer)">
-          <a class="xref" href="Rssdp.SsdpDevicePublisher.-ctor.html#Rssdp_SsdpDevicePublisher__ctor_ISsdpCommunicationsServer_">SsdpDevicePublisher(ISsdpCommunicationsServer)</a>
+        <td id="Rssdp_SsdpDevicePublisher__ctor" data-uid="Rssdp.SsdpDevicePublisher.#ctor">
+          <a class="xref" href="Rssdp.SsdpDevicePublisher.-ctor.html#Rssdp_SsdpDevicePublisher__ctor">SsdpDevicePublisher()</a>
+        </td>
+        <td class="markdown level1 summary"><p>Default constructor. </p>
+</td>
+      </tr>
+      <tr>
+        <td id="Rssdp_SsdpDevicePublisher__ctor" data-uid="Rssdp.SsdpDevicePublisher.#ctor">
+          <a class="xref" href="Rssdp.SsdpDevicePublisher.-ctor.html#Rssdp_SsdpDevicePublisher__ctor">SsdpDevicePublisher()</a>
+        </td>
+        <td class="markdown level1 summary"><p>Default constructor. </p>
+</td>
+      </tr>
+      <tr>
+        <td id="Rssdp_SsdpDevicePublisher__ctor_Rssdp_Infrastructure_ISsdpCommunicationsServer_" data-uid="Rssdp.SsdpDevicePublisher.#ctor(Rssdp.Infrastructure.ISsdpCommunicationsServer)">
+          <a class="xref" href="Rssdp.SsdpDevicePublisher.-ctor.html#Rssdp_SsdpDevicePublisher__ctor_Rssdp_Infrastructure_ISsdpCommunicationsServer_">SsdpDevicePublisher(ISsdpCommunicationsServer)</a>
+        </td>
+        <td class="markdown level1 summary"><p>Partial constructor. </p>
+</td>
+      </tr>
+      <tr>
+        <td id="Rssdp_SsdpDevicePublisher__ctor_Rssdp_Infrastructure_ISsdpCommunicationsServer_" data-uid="Rssdp.SsdpDevicePublisher.#ctor(Rssdp.Infrastructure.ISsdpCommunicationsServer)">
+          <a class="xref" href="Rssdp.SsdpDevicePublisher.-ctor.html#Rssdp_SsdpDevicePublisher__ctor_Rssdp_Infrastructure_ISsdpCommunicationsServer_">SsdpDevicePublisher(ISsdpCommunicationsServer)</a>
+        </td>
+        <td class="markdown level1 summary"><p>Partial constructor. </p>
+</td>
+      </tr>
+      <tr>
+        <td id="Rssdp_SsdpDevicePublisher__ctor_Rssdp_Infrastructure_ISsdpCommunicationsServer_" data-uid="Rssdp.SsdpDevicePublisher.#ctor(Rssdp.Infrastructure.ISsdpCommunicationsServer)">
+          <a class="xref" href="Rssdp.SsdpDevicePublisher.-ctor.html#Rssdp_SsdpDevicePublisher__ctor_Rssdp_Infrastructure_ISsdpCommunicationsServer_">SsdpDevicePublisher(ISsdpCommunicationsServer)</a>
+        </td>
+        <td class="markdown level1 summary"><p>Partial constructor. </p>
+</td>
+      </tr>
+      <tr>
+        <td id="Rssdp_SsdpDevicePublisher__ctor_Rssdp_Infrastructure_ISsdpCommunicationsServer_" data-uid="Rssdp.SsdpDevicePublisher.#ctor(Rssdp.Infrastructure.ISsdpCommunicationsServer)">
+          <a class="xref" href="Rssdp.SsdpDevicePublisher.-ctor.html#Rssdp_SsdpDevicePublisher__ctor_Rssdp_Infrastructure_ISsdpCommunicationsServer_">SsdpDevicePublisher(ISsdpCommunicationsServer)</a>
+        </td>
+        <td class="markdown level1 summary"><p>Partial constructor. </p>
+</td>
+      </tr>
+      <tr>
+        <td id="Rssdp_SsdpDevicePublisher__ctor_Rssdp_Infrastructure_ISsdpCommunicationsServer_" data-uid="Rssdp.SsdpDevicePublisher.#ctor(Rssdp.Infrastructure.ISsdpCommunicationsServer)">
+          <a class="xref" href="Rssdp.SsdpDevicePublisher.-ctor.html#Rssdp_SsdpDevicePublisher__ctor_Rssdp_Infrastructure_ISsdpCommunicationsServer_">SsdpDevicePublisher(ISsdpCommunicationsServer)</a>
+        </td>
+        <td class="markdown level1 summary"><p>Partial constructor. </p>
+</td>
+      </tr>
+      <tr>
+        <td id="Rssdp_SsdpDevicePublisher__ctor_Rssdp_Infrastructure_ISsdpCommunicationsServer_" data-uid="Rssdp.SsdpDevicePublisher.#ctor(Rssdp.Infrastructure.ISsdpCommunicationsServer)">
+          <a class="xref" href="Rssdp.SsdpDevicePublisher.-ctor.html#Rssdp_SsdpDevicePublisher__ctor_Rssdp_Infrastructure_ISsdpCommunicationsServer_">SsdpDevicePublisher(ISsdpCommunicationsServer)</a>
+        </td>
+        <td class="markdown level1 summary"><p>Partial constructor. </p>
+</td>
+      </tr>
+      <tr>
+        <td id="Rssdp_SsdpDevicePublisher__ctor_Rssdp_Infrastructure_ISsdpCommunicationsServer_" data-uid="Rssdp.SsdpDevicePublisher.#ctor(Rssdp.Infrastructure.ISsdpCommunicationsServer)">
+          <a class="xref" href="Rssdp.SsdpDevicePublisher.-ctor.html#Rssdp_SsdpDevicePublisher__ctor_Rssdp_Infrastructure_ISsdpCommunicationsServer_">SsdpDevicePublisher(ISsdpCommunicationsServer)</a>
+        </td>
+        <td class="markdown level1 summary"><p>Partial constructor. </p>
+</td>
+      </tr>
+      <tr>
+        <td id="Rssdp_SsdpDevicePublisher__ctor_Rssdp_Infrastructure_ISsdpCommunicationsServer_Rssdp_ISsdpLogger_" data-uid="Rssdp.SsdpDevicePublisher.#ctor(Rssdp.Infrastructure.ISsdpCommunicationsServer,Rssdp.ISsdpLogger)">
+          <a class="xref" href="Rssdp.SsdpDevicePublisher.-ctor.html#Rssdp_SsdpDevicePublisher__ctor_Rssdp_Infrastructure_ISsdpCommunicationsServer_Rssdp_ISsdpLogger_">SsdpDevicePublisher(ISsdpCommunicationsServer, ISsdpLogger)</a>
         </td>
         <td class="markdown level1 summary"><p>Full constructor. </p>
 </td>
       </tr>
       <tr>
-        <td id="Rssdp_SsdpDevicePublisher__ctor_ISsdpCommunicationsServer_" data-uid="Rssdp.SsdpDevicePublisher.#ctor(ISsdpCommunicationsServer)">
-          <a class="xref" href="Rssdp.SsdpDevicePublisher.-ctor.html#Rssdp_SsdpDevicePublisher__ctor_ISsdpCommunicationsServer_">SsdpDevicePublisher(ISsdpCommunicationsServer)</a>
+        <td id="Rssdp_SsdpDevicePublisher__ctor_Rssdp_Infrastructure_ISsdpCommunicationsServer_Rssdp_ISsdpLogger_" data-uid="Rssdp.SsdpDevicePublisher.#ctor(Rssdp.Infrastructure.ISsdpCommunicationsServer,Rssdp.ISsdpLogger)">
+          <a class="xref" href="Rssdp.SsdpDevicePublisher.-ctor.html#Rssdp_SsdpDevicePublisher__ctor_Rssdp_Infrastructure_ISsdpCommunicationsServer_Rssdp_ISsdpLogger_">SsdpDevicePublisher(ISsdpCommunicationsServer, ISsdpLogger)</a>
         </td>
         <td class="markdown level1 summary"><p>Full constructor. </p>
 </td>
       </tr>
       <tr>
-        <td id="Rssdp_SsdpDevicePublisher__ctor_ISsdpCommunicationsServer_" data-uid="Rssdp.SsdpDevicePublisher.#ctor(ISsdpCommunicationsServer)">
-          <a class="xref" href="Rssdp.SsdpDevicePublisher.-ctor.html#Rssdp_SsdpDevicePublisher__ctor_ISsdpCommunicationsServer_">SsdpDevicePublisher(ISsdpCommunicationsServer)</a>
+        <td id="Rssdp_SsdpDevicePublisher__ctor_Rssdp_Infrastructure_ISsdpCommunicationsServer_Rssdp_ISsdpLogger_" data-uid="Rssdp.SsdpDevicePublisher.#ctor(Rssdp.Infrastructure.ISsdpCommunicationsServer,Rssdp.ISsdpLogger)">
+          <a class="xref" href="Rssdp.SsdpDevicePublisher.-ctor.html#Rssdp_SsdpDevicePublisher__ctor_Rssdp_Infrastructure_ISsdpCommunicationsServer_Rssdp_ISsdpLogger_">SsdpDevicePublisher(ISsdpCommunicationsServer, ISsdpLogger)</a>
         </td>
         <td class="markdown level1 summary"><p>Full constructor. </p>
 </td>
       </tr>
       <tr>
-        <td id="Rssdp_SsdpDevicePublisher__ctor_ISsdpCommunicationsServer_" data-uid="Rssdp.SsdpDevicePublisher.#ctor(ISsdpCommunicationsServer)">
-          <a class="xref" href="Rssdp.SsdpDevicePublisher.-ctor.html#Rssdp_SsdpDevicePublisher__ctor_ISsdpCommunicationsServer_">SsdpDevicePublisher(ISsdpCommunicationsServer)</a>
+        <td id="Rssdp_SsdpDevicePublisher__ctor_System_Int32_" data-uid="Rssdp.SsdpDevicePublisher.#ctor(System.Int32)">
+          <a class="xref" href="Rssdp.SsdpDevicePublisher.-ctor.html#Rssdp_SsdpDevicePublisher__ctor_System_Int32_">SsdpDevicePublisher(Int32)</a>
         </td>
-        <td class="markdown level1 summary"><p>Full constructor. </p>
+        <td class="markdown level1 summary"><p>Partial constructor. </p>
 </td>
       </tr>
       <tr>
-        <td id="Rssdp_SsdpDevicePublisher__ctor_ISsdpCommunicationsServer_" data-uid="Rssdp.SsdpDevicePublisher.#ctor(ISsdpCommunicationsServer)">
-          <a class="xref" href="Rssdp.SsdpDevicePublisher.-ctor.html#Rssdp_SsdpDevicePublisher__ctor_ISsdpCommunicationsServer_">SsdpDevicePublisher(ISsdpCommunicationsServer)</a>
+        <td id="Rssdp_SsdpDevicePublisher__ctor_System_Int32_" data-uid="Rssdp.SsdpDevicePublisher.#ctor(System.Int32)">
+          <a class="xref" href="Rssdp.SsdpDevicePublisher.-ctor.html#Rssdp_SsdpDevicePublisher__ctor_System_Int32_">SsdpDevicePublisher(Int32)</a>
         </td>
-        <td class="markdown level1 summary"><p>Full constructor. </p>
-</td>
-      </tr>
-      <tr>
-        <td id="Rssdp_SsdpDevicePublisher__ctor_ISsdpCommunicationsServer_Rssdp_ISsdpLogger_" data-uid="Rssdp.SsdpDevicePublisher.#ctor(ISsdpCommunicationsServer,Rssdp.ISsdpLogger)">
-          <a class="xref" href="Rssdp.SsdpDevicePublisher.-ctor.html#Rssdp_SsdpDevicePublisher__ctor_ISsdpCommunicationsServer_Rssdp_ISsdpLogger_">SsdpDevicePublisher(ISsdpCommunicationsServer, ISsdpLogger)</a>
-        </td>
-        <td class="markdown level1 summary"><p>Full constructor. </p>
+        <td class="markdown level1 summary"><p>Partial constructor. </p>
 </td>
       </tr>
       <tr>
@@ -1242,6 +1358,34 @@
       <tr>
         <td id="Rssdp_SsdpDevicePublisher__ctor_System_Int32_System_Int32_" data-uid="Rssdp.SsdpDevicePublisher.#ctor(System.Int32,System.Int32)">
           <a class="xref" href="Rssdp.SsdpDevicePublisher.-ctor.html#Rssdp_SsdpDevicePublisher__ctor_System_Int32_System_Int32_">SsdpDevicePublisher(Int32, Int32)</a>
+        </td>
+        <td class="markdown level1 summary"><p>Partial constructor. </p>
+</td>
+      </tr>
+      <tr>
+        <td id="Rssdp_SsdpDevicePublisher__ctor_System_Int32_System_Int32_" data-uid="Rssdp.SsdpDevicePublisher.#ctor(System.Int32,System.Int32)">
+          <a class="xref" href="Rssdp.SsdpDevicePublisher.-ctor.html#Rssdp_SsdpDevicePublisher__ctor_System_Int32_System_Int32_">SsdpDevicePublisher(Int32, Int32)</a>
+        </td>
+        <td class="markdown level1 summary"><p>Partial constructor. </p>
+</td>
+      </tr>
+      <tr>
+        <td id="Rssdp_SsdpDevicePublisher__ctor_System_Int32_System_Int32_" data-uid="Rssdp.SsdpDevicePublisher.#ctor(System.Int32,System.Int32)">
+          <a class="xref" href="Rssdp.SsdpDevicePublisher.-ctor.html#Rssdp_SsdpDevicePublisher__ctor_System_Int32_System_Int32_">SsdpDevicePublisher(Int32, Int32)</a>
+        </td>
+        <td class="markdown level1 summary"><p>Partial constructor. </p>
+</td>
+      </tr>
+      <tr>
+        <td id="Rssdp_SsdpDevicePublisher__ctor_System_String_" data-uid="Rssdp.SsdpDevicePublisher.#ctor(System.String)">
+          <a class="xref" href="Rssdp.SsdpDevicePublisher.-ctor.html#Rssdp_SsdpDevicePublisher__ctor_System_String_">SsdpDevicePublisher(String)</a>
+        </td>
+        <td class="markdown level1 summary"><p>Partial constructor. </p>
+</td>
+      </tr>
+      <tr>
+        <td id="Rssdp_SsdpDevicePublisher__ctor_System_String_" data-uid="Rssdp.SsdpDevicePublisher.#ctor(System.String)">
+          <a class="xref" href="Rssdp.SsdpDevicePublisher.-ctor.html#Rssdp_SsdpDevicePublisher__ctor_System_String_">SsdpDevicePublisher(String)</a>
         </td>
         <td class="markdown level1 summary"><p>Partial constructor. </p>
 </td>

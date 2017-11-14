@@ -1082,12 +1082,12 @@
   <pre><code class="lang-csharp hljs">public SsdpDevicePublisher()</code></pre>
 </div>
 <h5 id="Rssdp_SsdpDevicePublisher__ctor_remarks">Remarks</h5>
-<div class="markdown level1 remarks"><p>Uses the default <see cref="!:ISsdpCommunicationsServer"></see> implementation and network settings for Windows Phone (Silverlight) and the SSDP specification.</p>
+<div class="markdown level1 remarks"><p>Uses the default <a class="xref" href="Rssdp.Infrastructure.ISsdpCommunicationsServer.html">ISsdpCommunicationsServer</a> implementation and network settings for Windows Phone (Silverlight) and the SSDP specification.</p>
 </div>
 
 
 <a id="Rssdp_SsdpDevicePublisher__ctor_" data-uid="Rssdp.SsdpDevicePublisher.#ctor*"></a>
-<h4 id="Rssdp_SsdpDevicePublisher__ctor_ISsdpCommunicationsServer_" data-uid="Rssdp.SsdpDevicePublisher.#ctor(ISsdpCommunicationsServer)">SsdpDevicePublisher(ISsdpCommunicationsServer)</h4>
+<h4 id="Rssdp_SsdpDevicePublisher__ctor_Rssdp_Infrastructure_ISsdpCommunicationsServer_" data-uid="Rssdp.SsdpDevicePublisher.#ctor(Rssdp.Infrastructure.ISsdpCommunicationsServer)">SsdpDevicePublisher(ISsdpCommunicationsServer)</h4>
 <div class="markdown level1 summary"><p>Full constructor. </p>
 </div>
 <div class="markdown level1 conceptual"></div>
@@ -1106,136 +1106,19 @@
   </thead>
   <tbody>
     <tr>
-      <td><span class="xref">ISsdpCommunicationsServer</span></td>
+      <td><a class="xref" href="Rssdp.Infrastructure.ISsdpCommunicationsServer.html">ISsdpCommunicationsServer</a></td>
       <td><span class="parametername">communicationsServer</span></td>
       <td></td>
     </tr>
   </tbody>
 </table>
-<h5 id="Rssdp_SsdpDevicePublisher__ctor_ISsdpCommunicationsServer__remarks">Remarks</h5>
-<div class="markdown level1 remarks"><p>Allows the caller to specify their own <see cref="!:ISsdpCommunicationsServer"></see> implementation for full control over the networking, or for mocking/testing purposes..</p>
+<h5 id="Rssdp_SsdpDevicePublisher__ctor_Rssdp_Infrastructure_ISsdpCommunicationsServer__remarks">Remarks</h5>
+<div class="markdown level1 remarks"><p>Allows the caller to specify their own <a class="xref" href="Rssdp.Infrastructure.ISsdpCommunicationsServer.html">ISsdpCommunicationsServer</a> implementation for full control over the networking, or for mocking/testing purposes..</p>
 </div>
 
 
 <a id="Rssdp_SsdpDevicePublisher__ctor_" data-uid="Rssdp.SsdpDevicePublisher.#ctor*"></a>
-<h4 id="Rssdp_SsdpDevicePublisher__ctor_System_Int32_" data-uid="Rssdp.SsdpDevicePublisher.#ctor(System.Int32)">SsdpDevicePublisher(Int32)</h4>
-<div class="markdown level1 summary"><p>Partial constructor. </p>
-</div>
-<div class="markdown level1 conceptual"></div>
-<h5 class="decalaration">Declaration</h5>
-<div class="codewrapper">
-  <pre><code class="lang-csharp hljs">public SsdpDevicePublisher(int localPort)</code></pre>
-</div>
-<h5 class="parameters">Parameters</h5>
-<table class="table table-bordered table-striped table-condensed">
-  <thead>
-    <tr>
-      <th>Type</th>
-      <th>Name</th>
-      <th>Description</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td><span class="xref">System.Int32</span></td>
-      <td><span class="parametername">localPort</span></td>
-      <td><p>The local port to use for socket communications, specify 0 to have the system choose it&apos;s own.</p>
-</td>
-    </tr>
-  </tbody>
-</table>
-<h5 id="Rssdp_SsdpDevicePublisher__ctor_System_Int32__remarks">Remarks</h5>
-<div class="markdown level1 remarks"><p>Uses the default <see cref="!:ISsdpCommunicationsServer"></see> implementation and network settings for Windows Phone (Silverlight) and the SSDP specification, but specifies the local port to use for socket communications. Specify 0 to indicate the system should choose it&apos;s own port.</p>
-</div>
-
-
-<a id="Rssdp_SsdpDevicePublisher__ctor_" data-uid="Rssdp.SsdpDevicePublisher.#ctor*"></a>
-<h4 id="Rssdp_SsdpDevicePublisher__ctor_System_Int32_System_Int32_" data-uid="Rssdp.SsdpDevicePublisher.#ctor(System.Int32,System.Int32)">SsdpDevicePublisher(Int32, Int32)</h4>
-<div class="markdown level1 summary"><p>Partial constructor. </p>
-</div>
-<div class="markdown level1 conceptual"></div>
-<h5 class="decalaration">Declaration</h5>
-<div class="codewrapper">
-  <pre><code class="lang-csharp hljs">public SsdpDevicePublisher(int localPort, int multicastTimeToLive)</code></pre>
-</div>
-<h5 class="parameters">Parameters</h5>
-<table class="table table-bordered table-striped table-condensed">
-  <thead>
-    <tr>
-      <th>Type</th>
-      <th>Name</th>
-      <th>Description</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td><span class="xref">System.Int32</span></td>
-      <td><span class="parametername">localPort</span></td>
-      <td><p>The local port to use for socket communications, specify 0 to have the system choose it&apos;s own.</p>
-</td>
-    </tr>
-    <tr>
-      <td><span class="xref">System.Int32</span></td>
-      <td><span class="parametername">multicastTimeToLive</span></td>
-      <td><p>The number of hops a multicast packet can make before it expires. Must be 1 or greater.</p>
-</td>
-    </tr>
-  </tbody>
-</table>
-<h5 id="Rssdp_SsdpDevicePublisher__ctor_System_Int32_System_Int32__remarks">Remarks</h5>
-<div class="markdown level1 remarks"><p>Uses the default <see cref="!:ISsdpCommunicationsServer"></see> implementation and network settings for Windows Phone (Silverlight) and the SSDP specification, but specifies the local port to use and multicast time to live setting for socket communications.</p>
-<p>Specify 0 for the <code data-dev-comment-type="paramref" class="paramref">localPort</code> argument to indicate the system should choose it&apos;s own port.</p>
-<p>The <code data-dev-comment-type="paramref" class="paramref">multicastTimeToLive</code> is actually a number of &apos;hops&apos; on the network and not a time based argument.</p>
-</div>
-
-
-<a id="Rssdp_SsdpDevicePublisher__ctor_" data-uid="Rssdp.SsdpDevicePublisher.#ctor*"></a>
-<h4 id="Rssdp_SsdpDevicePublisher__ctor" data-uid="Rssdp.SsdpDevicePublisher.#ctor">SsdpDevicePublisher()</h4>
-<div class="markdown level1 summary"><p>Default constructor. </p>
-</div>
-<div class="markdown level1 conceptual"></div>
-<h5 class="decalaration">Declaration</h5>
-<div class="codewrapper">
-  <pre><code class="lang-csharp hljs">public SsdpDevicePublisher()</code></pre>
-</div>
-<h5 id="Rssdp_SsdpDevicePublisher__ctor_remarks">Remarks</h5>
-<div class="markdown level1 remarks"><p>Uses the default <see cref="!:ISsdpCommunicationsServer"></see> implementation and network settings for Windows Phone (Silverlight) and the SSDP specification.</p>
-</div>
-
-
-<a id="Rssdp_SsdpDevicePublisher__ctor_" data-uid="Rssdp.SsdpDevicePublisher.#ctor*"></a>
-<h4 id="Rssdp_SsdpDevicePublisher__ctor_ISsdpCommunicationsServer_" data-uid="Rssdp.SsdpDevicePublisher.#ctor(ISsdpCommunicationsServer)">SsdpDevicePublisher(ISsdpCommunicationsServer)</h4>
-<div class="markdown level1 summary"><p>Full constructor. </p>
-</div>
-<div class="markdown level1 conceptual"></div>
-<h5 class="decalaration">Declaration</h5>
-<div class="codewrapper">
-  <pre><code class="lang-csharp hljs">public SsdpDevicePublisher(ISsdpCommunicationsServer communicationsServer)</code></pre>
-</div>
-<h5 class="parameters">Parameters</h5>
-<table class="table table-bordered table-striped table-condensed">
-  <thead>
-    <tr>
-      <th>Type</th>
-      <th>Name</th>
-      <th>Description</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td><span class="xref">ISsdpCommunicationsServer</span></td>
-      <td><span class="parametername">communicationsServer</span></td>
-      <td></td>
-    </tr>
-  </tbody>
-</table>
-<h5 id="Rssdp_SsdpDevicePublisher__ctor_ISsdpCommunicationsServer__remarks">Remarks</h5>
-<div class="markdown level1 remarks"><p>Allows the caller to specify their own <see cref="!:ISsdpCommunicationsServer"></see> implementation for full control over the networking, or for mocking/testing purposes..</p>
-</div>
-
-
-<a id="Rssdp_SsdpDevicePublisher__ctor_" data-uid="Rssdp.SsdpDevicePublisher.#ctor*"></a>
-<h4 id="Rssdp_SsdpDevicePublisher__ctor_ISsdpCommunicationsServer_Rssdp_ISsdpLogger_" data-uid="Rssdp.SsdpDevicePublisher.#ctor(ISsdpCommunicationsServer,Rssdp.ISsdpLogger)">SsdpDevicePublisher(ISsdpCommunicationsServer, ISsdpLogger)</h4>
+<h4 id="Rssdp_SsdpDevicePublisher__ctor_Rssdp_Infrastructure_ISsdpCommunicationsServer_Rssdp_ISsdpLogger_" data-uid="Rssdp.SsdpDevicePublisher.#ctor(Rssdp.Infrastructure.ISsdpCommunicationsServer,Rssdp.ISsdpLogger)">SsdpDevicePublisher(ISsdpCommunicationsServer, ISsdpLogger)</h4>
 <div class="markdown level1 summary"><p>Full constructor. </p>
 </div>
 <div class="markdown level1 conceptual"></div>
@@ -1254,7 +1137,7 @@
   </thead>
   <tbody>
     <tr>
-      <td><span class="xref">ISsdpCommunicationsServer</span></td>
+      <td><a class="xref" href="Rssdp.Infrastructure.ISsdpCommunicationsServer.html">ISsdpCommunicationsServer</a></td>
       <td><span class="parametername">communicationsServer</span></td>
       <td></td>
     </tr>
@@ -1265,8 +1148,8 @@
     </tr>
   </tbody>
 </table>
-<h5 id="Rssdp_SsdpDevicePublisher__ctor_ISsdpCommunicationsServer_Rssdp_ISsdpLogger__remarks">Remarks</h5>
-<div class="markdown level1 remarks"><p>Allows the caller to specify their own <see cref="!:ISsdpCommunicationsServer"></see> implementation for full control over the networking, or for mocking/testing purposes..</p>
+<h5 id="Rssdp_SsdpDevicePublisher__ctor_Rssdp_Infrastructure_ISsdpCommunicationsServer_Rssdp_ISsdpLogger__remarks">Remarks</h5>
+<div class="markdown level1 remarks"><p>Allows the caller to specify their own <a class="xref" href="Rssdp.Infrastructure.ISsdpCommunicationsServer.html">ISsdpCommunicationsServer</a> implementation for full control over the networking, or for mocking/testing purposes..</p>
 </div>
 
 
@@ -1298,7 +1181,7 @@
   </tbody>
 </table>
 <h5 id="Rssdp_SsdpDevicePublisher__ctor_System_Int32__remarks">Remarks</h5>
-<div class="markdown level1 remarks"><p>Uses the default <see cref="!:ISsdpCommunicationsServer"></see> implementation and network settings for Windows Phone (Silverlight) and the SSDP specification, but specifies the local port to use for socket communications. Specify 0 to indicate the system should choose it&apos;s own port.</p>
+<div class="markdown level1 remarks"><p>Uses the default <a class="xref" href="Rssdp.Infrastructure.ISsdpCommunicationsServer.html">ISsdpCommunicationsServer</a> implementation and network settings for Windows Phone (Silverlight) and the SSDP specification, but specifies the local port to use for socket communications. Specify 0 to indicate the system should choose it&apos;s own port.</p>
 </div>
 
 
@@ -1366,7 +1249,7 @@ Null or empty string will use <see cref="!:IPAddress.Any"></see>.</p>
   </tbody>
 </table>
 <h5 id="Rssdp_SsdpDevicePublisher__ctor_System_Int32_System_Int32__remarks">Remarks</h5>
-<div class="markdown level1 remarks"><p>Uses the default <see cref="!:ISsdpCommunicationsServer"></see> implementation and network settings for Windows Phone (Silverlight) and the SSDP specification, but specifies the local port to use and multicast time to live setting for socket communications.</p>
+<div class="markdown level1 remarks"><p>Uses the default <a class="xref" href="Rssdp.Infrastructure.ISsdpCommunicationsServer.html">ISsdpCommunicationsServer</a> implementation and network settings for Windows Phone (Silverlight) and the SSDP specification, but specifies the local port to use and multicast time to live setting for socket communications.</p>
 <p>Specify 0 for the <code data-dev-comment-type="paramref" class="paramref">localPort</code> argument to indicate the system should choose it&apos;s own port.</p>
 <p>The <code data-dev-comment-type="paramref" class="paramref">multicastTimeToLive</code> is actually a number of &apos;hops&apos; on the network and not a time based argument.</p>
 </div>
@@ -1382,12 +1265,12 @@ Null or empty string will use <see cref="!:IPAddress.Any"></see>.</p>
   <pre><code class="lang-csharp hljs">public SsdpDevicePublisher()</code></pre>
 </div>
 <h5 id="Rssdp_SsdpDevicePublisher__ctor_remarks">Remarks</h5>
-<div class="markdown level1 remarks"><p>Uses the default <see cref="!:ISsdpCommunicationsServer"></see> implementation and network settings for Windows Phone (Silverlight) and the SSDP specification.</p>
+<div class="markdown level1 remarks"><p>Uses the default <a class="xref" href="Rssdp.Infrastructure.ISsdpCommunicationsServer.html">ISsdpCommunicationsServer</a> implementation and network settings for Windows Phone (Silverlight) and the SSDP specification.</p>
 </div>
 
 
 <a id="Rssdp_SsdpDevicePublisher__ctor_" data-uid="Rssdp.SsdpDevicePublisher.#ctor*"></a>
-<h4 id="Rssdp_SsdpDevicePublisher__ctor_ISsdpCommunicationsServer_" data-uid="Rssdp.SsdpDevicePublisher.#ctor(ISsdpCommunicationsServer)">SsdpDevicePublisher(ISsdpCommunicationsServer)</h4>
+<h4 id="Rssdp_SsdpDevicePublisher__ctor_Rssdp_Infrastructure_ISsdpCommunicationsServer_" data-uid="Rssdp.SsdpDevicePublisher.#ctor(Rssdp.Infrastructure.ISsdpCommunicationsServer)">SsdpDevicePublisher(ISsdpCommunicationsServer)</h4>
 <div class="markdown level1 summary"><p>Full constructor. </p>
 </div>
 <div class="markdown level1 conceptual"></div>
@@ -1406,14 +1289,50 @@ Null or empty string will use <see cref="!:IPAddress.Any"></see>.</p>
   </thead>
   <tbody>
     <tr>
-      <td><span class="xref">ISsdpCommunicationsServer</span></td>
+      <td><a class="xref" href="Rssdp.Infrastructure.ISsdpCommunicationsServer.html">ISsdpCommunicationsServer</a></td>
       <td><span class="parametername">communicationsServer</span></td>
       <td></td>
     </tr>
   </tbody>
 </table>
-<h5 id="Rssdp_SsdpDevicePublisher__ctor_ISsdpCommunicationsServer__remarks">Remarks</h5>
-<div class="markdown level1 remarks"><p>Allows the caller to specify their own <see cref="!:ISsdpCommunicationsServer"></see> implementation for full control over the networking, or for mocking/testing purposes..</p>
+<h5 id="Rssdp_SsdpDevicePublisher__ctor_Rssdp_Infrastructure_ISsdpCommunicationsServer__remarks">Remarks</h5>
+<div class="markdown level1 remarks"><p>Allows the caller to specify their own <a class="xref" href="Rssdp.Infrastructure.ISsdpCommunicationsServer.html">ISsdpCommunicationsServer</a> implementation for full control over the networking, or for mocking/testing purposes..</p>
+</div>
+
+
+<a id="Rssdp_SsdpDevicePublisher__ctor_" data-uid="Rssdp.SsdpDevicePublisher.#ctor*"></a>
+<h4 id="Rssdp_SsdpDevicePublisher__ctor_Rssdp_Infrastructure_ISsdpCommunicationsServer_Rssdp_ISsdpLogger_" data-uid="Rssdp.SsdpDevicePublisher.#ctor(Rssdp.Infrastructure.ISsdpCommunicationsServer,Rssdp.ISsdpLogger)">SsdpDevicePublisher(ISsdpCommunicationsServer, ISsdpLogger)</h4>
+<div class="markdown level1 summary"><p>Full constructor. </p>
+</div>
+<div class="markdown level1 conceptual"></div>
+<h5 class="decalaration">Declaration</h5>
+<div class="codewrapper">
+  <pre><code class="lang-csharp hljs">public SsdpDevicePublisher(ISsdpCommunicationsServer communicationsServer, ISsdpLogger log)</code></pre>
+</div>
+<h5 class="parameters">Parameters</h5>
+<table class="table table-bordered table-striped table-condensed">
+  <thead>
+    <tr>
+      <th>Type</th>
+      <th>Name</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><a class="xref" href="Rssdp.Infrastructure.ISsdpCommunicationsServer.html">ISsdpCommunicationsServer</a></td>
+      <td><span class="parametername">communicationsServer</span></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td><a class="xref" href="Rssdp.ISsdpLogger.html">ISsdpLogger</a></td>
+      <td><span class="parametername">log</span></td>
+      <td></td>
+    </tr>
+  </tbody>
+</table>
+<h5 id="Rssdp_SsdpDevicePublisher__ctor_Rssdp_Infrastructure_ISsdpCommunicationsServer_Rssdp_ISsdpLogger__remarks">Remarks</h5>
+<div class="markdown level1 remarks"><p>Allows the caller to specify their own <a class="xref" href="Rssdp.Infrastructure.ISsdpCommunicationsServer.html">ISsdpCommunicationsServer</a> implementation for full control over the networking, or for mocking/testing purposes..</p>
 </div>
 
 
@@ -1445,7 +1364,154 @@ Null or empty string will use <see cref="!:IPAddress.Any"></see>.</p>
   </tbody>
 </table>
 <h5 id="Rssdp_SsdpDevicePublisher__ctor_System_Int32__remarks">Remarks</h5>
-<div class="markdown level1 remarks"><p>Uses the default <see cref="!:ISsdpCommunicationsServer"></see> implementation and network settings for Windows Phone (Silverlight) and the SSDP specification, but specifies the local port to use for socket communications. Specify 0 to indicate the system should choose it&apos;s own port.</p>
+<div class="markdown level1 remarks"><p>Uses the default <a class="xref" href="Rssdp.Infrastructure.ISsdpCommunicationsServer.html">ISsdpCommunicationsServer</a> implementation and network settings for Windows Phone (Silverlight) and the SSDP specification, but specifies the local port to use for socket communications. Specify 0 to indicate the system should choose it&apos;s own port.</p>
+</div>
+
+
+<a id="Rssdp_SsdpDevicePublisher__ctor_" data-uid="Rssdp.SsdpDevicePublisher.#ctor*"></a>
+<h4 id="Rssdp_SsdpDevicePublisher__ctor_System_String_" data-uid="Rssdp.SsdpDevicePublisher.#ctor(System.String)">SsdpDevicePublisher(String)</h4>
+<div class="markdown level1 summary"><p>Partial constructor. </p>
+</div>
+<div class="markdown level1 conceptual"></div>
+<h5 class="decalaration">Declaration</h5>
+<div class="codewrapper">
+  <pre><code class="lang-csharp hljs">public SsdpDevicePublisher(string ipAddress)</code></pre>
+</div>
+<h5 class="parameters">Parameters</h5>
+<table class="table table-bordered table-striped table-condensed">
+  <thead>
+    <tr>
+      <th>Type</th>
+      <th>Name</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><span class="xref">System.String</span></td>
+      <td><span class="parametername">ipAddress</span></td>
+      <td><p>The IP address of the local network adapter to bind sockets to. 
+Null or empty string will use <see cref="!:IPAddress.Any"></see>.</p>
+</td>
+    </tr>
+  </tbody>
+</table>
+
+
+<a id="Rssdp_SsdpDevicePublisher__ctor_" data-uid="Rssdp.SsdpDevicePublisher.#ctor*"></a>
+<h4 id="Rssdp_SsdpDevicePublisher__ctor_System_Int32_System_Int32_" data-uid="Rssdp.SsdpDevicePublisher.#ctor(System.Int32,System.Int32)">SsdpDevicePublisher(Int32, Int32)</h4>
+<div class="markdown level1 summary"><p>Partial constructor. </p>
+</div>
+<div class="markdown level1 conceptual"></div>
+<h5 class="decalaration">Declaration</h5>
+<div class="codewrapper">
+  <pre><code class="lang-csharp hljs">public SsdpDevicePublisher(int localPort, int multicastTimeToLive)</code></pre>
+</div>
+<h5 class="parameters">Parameters</h5>
+<table class="table table-bordered table-striped table-condensed">
+  <thead>
+    <tr>
+      <th>Type</th>
+      <th>Name</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><span class="xref">System.Int32</span></td>
+      <td><span class="parametername">localPort</span></td>
+      <td><p>The local port to use for socket communications, specify 0 to have the system choose it&apos;s own.</p>
+</td>
+    </tr>
+    <tr>
+      <td><span class="xref">System.Int32</span></td>
+      <td><span class="parametername">multicastTimeToLive</span></td>
+      <td><p>The number of hops a multicast packet can make before it expires. Must be 1 or greater.</p>
+</td>
+    </tr>
+  </tbody>
+</table>
+<h5 id="Rssdp_SsdpDevicePublisher__ctor_System_Int32_System_Int32__remarks">Remarks</h5>
+<div class="markdown level1 remarks"><p>Uses the default <a class="xref" href="Rssdp.Infrastructure.ISsdpCommunicationsServer.html">ISsdpCommunicationsServer</a> implementation and network settings for Windows Phone (Silverlight) and the SSDP specification, but specifies the local port to use and multicast time to live setting for socket communications.</p>
+<p>Specify 0 for the <code data-dev-comment-type="paramref" class="paramref">localPort</code> argument to indicate the system should choose it&apos;s own port.</p>
+<p>The <code data-dev-comment-type="paramref" class="paramref">multicastTimeToLive</code> is actually a number of &apos;hops&apos; on the network and not a time based argument.</p>
+</div>
+
+
+<a id="Rssdp_SsdpDevicePublisher__ctor_" data-uid="Rssdp.SsdpDevicePublisher.#ctor*"></a>
+<h4 id="Rssdp_SsdpDevicePublisher__ctor" data-uid="Rssdp.SsdpDevicePublisher.#ctor">SsdpDevicePublisher()</h4>
+<div class="markdown level1 summary"><p>Default constructor. </p>
+</div>
+<div class="markdown level1 conceptual"></div>
+<h5 class="decalaration">Declaration</h5>
+<div class="codewrapper">
+  <pre><code class="lang-csharp hljs">public SsdpDevicePublisher()</code></pre>
+</div>
+<h5 id="Rssdp_SsdpDevicePublisher__ctor_remarks">Remarks</h5>
+<div class="markdown level1 remarks"><p>Uses the default <a class="xref" href="Rssdp.Infrastructure.ISsdpCommunicationsServer.html">ISsdpCommunicationsServer</a> implementation and network settings for Windows Phone (Silverlight) and the SSDP specification.</p>
+</div>
+
+
+<a id="Rssdp_SsdpDevicePublisher__ctor_" data-uid="Rssdp.SsdpDevicePublisher.#ctor*"></a>
+<h4 id="Rssdp_SsdpDevicePublisher__ctor_Rssdp_Infrastructure_ISsdpCommunicationsServer_" data-uid="Rssdp.SsdpDevicePublisher.#ctor(Rssdp.Infrastructure.ISsdpCommunicationsServer)">SsdpDevicePublisher(ISsdpCommunicationsServer)</h4>
+<div class="markdown level1 summary"><p>Full constructor. </p>
+</div>
+<div class="markdown level1 conceptual"></div>
+<h5 class="decalaration">Declaration</h5>
+<div class="codewrapper">
+  <pre><code class="lang-csharp hljs">public SsdpDevicePublisher(ISsdpCommunicationsServer communicationsServer)</code></pre>
+</div>
+<h5 class="parameters">Parameters</h5>
+<table class="table table-bordered table-striped table-condensed">
+  <thead>
+    <tr>
+      <th>Type</th>
+      <th>Name</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><a class="xref" href="Rssdp.Infrastructure.ISsdpCommunicationsServer.html">ISsdpCommunicationsServer</a></td>
+      <td><span class="parametername">communicationsServer</span></td>
+      <td></td>
+    </tr>
+  </tbody>
+</table>
+<h5 id="Rssdp_SsdpDevicePublisher__ctor_Rssdp_Infrastructure_ISsdpCommunicationsServer__remarks">Remarks</h5>
+<div class="markdown level1 remarks"><p>Allows the caller to specify their own <a class="xref" href="Rssdp.Infrastructure.ISsdpCommunicationsServer.html">ISsdpCommunicationsServer</a> implementation for full control over the networking, or for mocking/testing purposes..</p>
+</div>
+
+
+<a id="Rssdp_SsdpDevicePublisher__ctor_" data-uid="Rssdp.SsdpDevicePublisher.#ctor*"></a>
+<h4 id="Rssdp_SsdpDevicePublisher__ctor_System_Int32_" data-uid="Rssdp.SsdpDevicePublisher.#ctor(System.Int32)">SsdpDevicePublisher(Int32)</h4>
+<div class="markdown level1 summary"><p>Partial constructor. </p>
+</div>
+<div class="markdown level1 conceptual"></div>
+<h5 class="decalaration">Declaration</h5>
+<div class="codewrapper">
+  <pre><code class="lang-csharp hljs">public SsdpDevicePublisher(int localPort)</code></pre>
+</div>
+<h5 class="parameters">Parameters</h5>
+<table class="table table-bordered table-striped table-condensed">
+  <thead>
+    <tr>
+      <th>Type</th>
+      <th>Name</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><span class="xref">System.Int32</span></td>
+      <td><span class="parametername">localPort</span></td>
+      <td><p>The local port to use for socket communications, specify 0 to have the system choose it&apos;s own.</p>
+</td>
+    </tr>
+  </tbody>
+</table>
+<h5 id="Rssdp_SsdpDevicePublisher__ctor_System_Int32__remarks">Remarks</h5>
+<div class="markdown level1 remarks"><p>Uses the default <a class="xref" href="Rssdp.Infrastructure.ISsdpCommunicationsServer.html">ISsdpCommunicationsServer</a> implementation and network settings for Windows Phone (Silverlight) and the SSDP specification, but specifies the local port to use for socket communications. Specify 0 to indicate the system should choose it&apos;s own port.</p>
 </div>
 
 
@@ -1483,7 +1549,7 @@ Null or empty string will use <see cref="!:IPAddress.Any"></see>.</p>
   </tbody>
 </table>
 <h5 id="Rssdp_SsdpDevicePublisher__ctor_System_Int32_System_Int32__remarks">Remarks</h5>
-<div class="markdown level1 remarks"><p>Uses the default <see cref="!:ISsdpCommunicationsServer"></see> implementation and network settings for Windows Phone (Silverlight) and the SSDP specification, but specifies the local port to use and multicast time to live setting for socket communications.</p>
+<div class="markdown level1 remarks"><p>Uses the default <a class="xref" href="Rssdp.Infrastructure.ISsdpCommunicationsServer.html">ISsdpCommunicationsServer</a> implementation and network settings for Windows Phone (Silverlight) and the SSDP specification, but specifies the local port to use and multicast time to live setting for socket communications.</p>
 <p>Specify 0 for the <code data-dev-comment-type="paramref" class="paramref">localPort</code> argument to indicate the system should choose it&apos;s own port.</p>
 <p>The <code data-dev-comment-type="paramref" class="paramref">multicastTimeToLive</code> is actually a number of &apos;hops&apos; on the network and not a time based argument.</p>
 </div>
@@ -1499,12 +1565,12 @@ Null or empty string will use <see cref="!:IPAddress.Any"></see>.</p>
   <pre><code class="lang-csharp hljs">public SsdpDevicePublisher()</code></pre>
 </div>
 <h5 id="Rssdp_SsdpDevicePublisher__ctor_remarks">Remarks</h5>
-<div class="markdown level1 remarks"><p>Uses the default <see cref="!:ISsdpCommunicationsServer"></see> implementation and network settings for Windows Phone (Silverlight) and the SSDP specification.</p>
+<div class="markdown level1 remarks"><p>Uses the default <a class="xref" href="Rssdp.Infrastructure.ISsdpCommunicationsServer.html">ISsdpCommunicationsServer</a> implementation and network settings for Windows Phone (Silverlight) and the SSDP specification.</p>
 </div>
 
 
 <a id="Rssdp_SsdpDevicePublisher__ctor_" data-uid="Rssdp.SsdpDevicePublisher.#ctor*"></a>
-<h4 id="Rssdp_SsdpDevicePublisher__ctor_ISsdpCommunicationsServer_" data-uid="Rssdp.SsdpDevicePublisher.#ctor(ISsdpCommunicationsServer)">SsdpDevicePublisher(ISsdpCommunicationsServer)</h4>
+<h4 id="Rssdp_SsdpDevicePublisher__ctor_Rssdp_Infrastructure_ISsdpCommunicationsServer_" data-uid="Rssdp.SsdpDevicePublisher.#ctor(Rssdp.Infrastructure.ISsdpCommunicationsServer)">SsdpDevicePublisher(ISsdpCommunicationsServer)</h4>
 <div class="markdown level1 summary"><p>Full constructor. </p>
 </div>
 <div class="markdown level1 conceptual"></div>
@@ -1523,14 +1589,50 @@ Null or empty string will use <see cref="!:IPAddress.Any"></see>.</p>
   </thead>
   <tbody>
     <tr>
-      <td><span class="xref">ISsdpCommunicationsServer</span></td>
+      <td><a class="xref" href="Rssdp.Infrastructure.ISsdpCommunicationsServer.html">ISsdpCommunicationsServer</a></td>
       <td><span class="parametername">communicationsServer</span></td>
       <td></td>
     </tr>
   </tbody>
 </table>
-<h5 id="Rssdp_SsdpDevicePublisher__ctor_ISsdpCommunicationsServer__remarks">Remarks</h5>
-<div class="markdown level1 remarks"><p>Allows the caller to specify their own <see cref="!:ISsdpCommunicationsServer"></see> implementation for full control over the networking, or for mocking/testing purposes..</p>
+<h5 id="Rssdp_SsdpDevicePublisher__ctor_Rssdp_Infrastructure_ISsdpCommunicationsServer__remarks">Remarks</h5>
+<div class="markdown level1 remarks"><p>Allows the caller to specify their own <a class="xref" href="Rssdp.Infrastructure.ISsdpCommunicationsServer.html">ISsdpCommunicationsServer</a> implementation for full control over the networking, or for mocking/testing purposes..</p>
+</div>
+
+
+<a id="Rssdp_SsdpDevicePublisher__ctor_" data-uid="Rssdp.SsdpDevicePublisher.#ctor*"></a>
+<h4 id="Rssdp_SsdpDevicePublisher__ctor_Rssdp_Infrastructure_ISsdpCommunicationsServer_Rssdp_ISsdpLogger_" data-uid="Rssdp.SsdpDevicePublisher.#ctor(Rssdp.Infrastructure.ISsdpCommunicationsServer,Rssdp.ISsdpLogger)">SsdpDevicePublisher(ISsdpCommunicationsServer, ISsdpLogger)</h4>
+<div class="markdown level1 summary"><p>Full constructor. </p>
+</div>
+<div class="markdown level1 conceptual"></div>
+<h5 class="decalaration">Declaration</h5>
+<div class="codewrapper">
+  <pre><code class="lang-csharp hljs">public SsdpDevicePublisher(ISsdpCommunicationsServer communicationsServer, ISsdpLogger log)</code></pre>
+</div>
+<h5 class="parameters">Parameters</h5>
+<table class="table table-bordered table-striped table-condensed">
+  <thead>
+    <tr>
+      <th>Type</th>
+      <th>Name</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><a class="xref" href="Rssdp.Infrastructure.ISsdpCommunicationsServer.html">ISsdpCommunicationsServer</a></td>
+      <td><span class="parametername">communicationsServer</span></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td><a class="xref" href="Rssdp.ISsdpLogger.html">ISsdpLogger</a></td>
+      <td><span class="parametername">log</span></td>
+      <td></td>
+    </tr>
+  </tbody>
+</table>
+<h5 id="Rssdp_SsdpDevicePublisher__ctor_Rssdp_Infrastructure_ISsdpCommunicationsServer_Rssdp_ISsdpLogger__remarks">Remarks</h5>
+<div class="markdown level1 remarks"><p>Allows the caller to specify their own <a class="xref" href="Rssdp.Infrastructure.ISsdpCommunicationsServer.html">ISsdpCommunicationsServer</a> implementation for full control over the networking, or for mocking/testing purposes..</p>
 </div>
 
 
@@ -1562,7 +1664,154 @@ Null or empty string will use <see cref="!:IPAddress.Any"></see>.</p>
   </tbody>
 </table>
 <h5 id="Rssdp_SsdpDevicePublisher__ctor_System_Int32__remarks">Remarks</h5>
-<div class="markdown level1 remarks"><p>Uses the default <see cref="!:ISsdpCommunicationsServer"></see> implementation and network settings for Windows Phone (Silverlight) and the SSDP specification, but specifies the local port to use for socket communications. Specify 0 to indicate the system should choose it&apos;s own port.</p>
+<div class="markdown level1 remarks"><p>Uses the default <a class="xref" href="Rssdp.Infrastructure.ISsdpCommunicationsServer.html">ISsdpCommunicationsServer</a> implementation and network settings for Windows Phone (Silverlight) and the SSDP specification, but specifies the local port to use for socket communications. Specify 0 to indicate the system should choose it&apos;s own port.</p>
+</div>
+
+
+<a id="Rssdp_SsdpDevicePublisher__ctor_" data-uid="Rssdp.SsdpDevicePublisher.#ctor*"></a>
+<h4 id="Rssdp_SsdpDevicePublisher__ctor_System_String_" data-uid="Rssdp.SsdpDevicePublisher.#ctor(System.String)">SsdpDevicePublisher(String)</h4>
+<div class="markdown level1 summary"><p>Partial constructor. </p>
+</div>
+<div class="markdown level1 conceptual"></div>
+<h5 class="decalaration">Declaration</h5>
+<div class="codewrapper">
+  <pre><code class="lang-csharp hljs">public SsdpDevicePublisher(string ipAddress)</code></pre>
+</div>
+<h5 class="parameters">Parameters</h5>
+<table class="table table-bordered table-striped table-condensed">
+  <thead>
+    <tr>
+      <th>Type</th>
+      <th>Name</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><span class="xref">System.String</span></td>
+      <td><span class="parametername">ipAddress</span></td>
+      <td><p>The IP address of the local network adapter to bind sockets to. 
+Null or empty string will use <see cref="!:IPAddress.Any"></see>.</p>
+</td>
+    </tr>
+  </tbody>
+</table>
+
+
+<a id="Rssdp_SsdpDevicePublisher__ctor_" data-uid="Rssdp.SsdpDevicePublisher.#ctor*"></a>
+<h4 id="Rssdp_SsdpDevicePublisher__ctor_System_Int32_System_Int32_" data-uid="Rssdp.SsdpDevicePublisher.#ctor(System.Int32,System.Int32)">SsdpDevicePublisher(Int32, Int32)</h4>
+<div class="markdown level1 summary"><p>Partial constructor. </p>
+</div>
+<div class="markdown level1 conceptual"></div>
+<h5 class="decalaration">Declaration</h5>
+<div class="codewrapper">
+  <pre><code class="lang-csharp hljs">public SsdpDevicePublisher(int localPort, int multicastTimeToLive)</code></pre>
+</div>
+<h5 class="parameters">Parameters</h5>
+<table class="table table-bordered table-striped table-condensed">
+  <thead>
+    <tr>
+      <th>Type</th>
+      <th>Name</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><span class="xref">System.Int32</span></td>
+      <td><span class="parametername">localPort</span></td>
+      <td><p>The local port to use for socket communications, specify 0 to have the system choose it&apos;s own.</p>
+</td>
+    </tr>
+    <tr>
+      <td><span class="xref">System.Int32</span></td>
+      <td><span class="parametername">multicastTimeToLive</span></td>
+      <td><p>The number of hops a multicast packet can make before it expires. Must be 1 or greater.</p>
+</td>
+    </tr>
+  </tbody>
+</table>
+<h5 id="Rssdp_SsdpDevicePublisher__ctor_System_Int32_System_Int32__remarks">Remarks</h5>
+<div class="markdown level1 remarks"><p>Uses the default <a class="xref" href="Rssdp.Infrastructure.ISsdpCommunicationsServer.html">ISsdpCommunicationsServer</a> implementation and network settings for Windows Phone (Silverlight) and the SSDP specification, but specifies the local port to use and multicast time to live setting for socket communications.</p>
+<p>Specify 0 for the <code data-dev-comment-type="paramref" class="paramref">localPort</code> argument to indicate the system should choose it&apos;s own port.</p>
+<p>The <code data-dev-comment-type="paramref" class="paramref">multicastTimeToLive</code> is actually a number of &apos;hops&apos; on the network and not a time based argument.</p>
+</div>
+
+
+<a id="Rssdp_SsdpDevicePublisher__ctor_" data-uid="Rssdp.SsdpDevicePublisher.#ctor*"></a>
+<h4 id="Rssdp_SsdpDevicePublisher__ctor" data-uid="Rssdp.SsdpDevicePublisher.#ctor">SsdpDevicePublisher()</h4>
+<div class="markdown level1 summary"><p>Default constructor. </p>
+</div>
+<div class="markdown level1 conceptual"></div>
+<h5 class="decalaration">Declaration</h5>
+<div class="codewrapper">
+  <pre><code class="lang-csharp hljs">public SsdpDevicePublisher()</code></pre>
+</div>
+<h5 id="Rssdp_SsdpDevicePublisher__ctor_remarks">Remarks</h5>
+<div class="markdown level1 remarks"><p>Uses the default <a class="xref" href="Rssdp.Infrastructure.ISsdpCommunicationsServer.html">ISsdpCommunicationsServer</a> implementation and network settings for Windows Phone (Silverlight) and the SSDP specification.</p>
+</div>
+
+
+<a id="Rssdp_SsdpDevicePublisher__ctor_" data-uid="Rssdp.SsdpDevicePublisher.#ctor*"></a>
+<h4 id="Rssdp_SsdpDevicePublisher__ctor_Rssdp_Infrastructure_ISsdpCommunicationsServer_" data-uid="Rssdp.SsdpDevicePublisher.#ctor(Rssdp.Infrastructure.ISsdpCommunicationsServer)">SsdpDevicePublisher(ISsdpCommunicationsServer)</h4>
+<div class="markdown level1 summary"><p>Full constructor. </p>
+</div>
+<div class="markdown level1 conceptual"></div>
+<h5 class="decalaration">Declaration</h5>
+<div class="codewrapper">
+  <pre><code class="lang-csharp hljs">public SsdpDevicePublisher(ISsdpCommunicationsServer communicationsServer)</code></pre>
+</div>
+<h5 class="parameters">Parameters</h5>
+<table class="table table-bordered table-striped table-condensed">
+  <thead>
+    <tr>
+      <th>Type</th>
+      <th>Name</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><a class="xref" href="Rssdp.Infrastructure.ISsdpCommunicationsServer.html">ISsdpCommunicationsServer</a></td>
+      <td><span class="parametername">communicationsServer</span></td>
+      <td></td>
+    </tr>
+  </tbody>
+</table>
+<h5 id="Rssdp_SsdpDevicePublisher__ctor_Rssdp_Infrastructure_ISsdpCommunicationsServer__remarks">Remarks</h5>
+<div class="markdown level1 remarks"><p>Allows the caller to specify their own <a class="xref" href="Rssdp.Infrastructure.ISsdpCommunicationsServer.html">ISsdpCommunicationsServer</a> implementation for full control over the networking, or for mocking/testing purposes..</p>
+</div>
+
+
+<a id="Rssdp_SsdpDevicePublisher__ctor_" data-uid="Rssdp.SsdpDevicePublisher.#ctor*"></a>
+<h4 id="Rssdp_SsdpDevicePublisher__ctor_System_Int32_" data-uid="Rssdp.SsdpDevicePublisher.#ctor(System.Int32)">SsdpDevicePublisher(Int32)</h4>
+<div class="markdown level1 summary"><p>Partial constructor. </p>
+</div>
+<div class="markdown level1 conceptual"></div>
+<h5 class="decalaration">Declaration</h5>
+<div class="codewrapper">
+  <pre><code class="lang-csharp hljs">public SsdpDevicePublisher(int localPort)</code></pre>
+</div>
+<h5 class="parameters">Parameters</h5>
+<table class="table table-bordered table-striped table-condensed">
+  <thead>
+    <tr>
+      <th>Type</th>
+      <th>Name</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><span class="xref">System.Int32</span></td>
+      <td><span class="parametername">localPort</span></td>
+      <td><p>The local port to use for socket communications, specify 0 to have the system choose it&apos;s own.</p>
+</td>
+    </tr>
+  </tbody>
+</table>
+<h5 id="Rssdp_SsdpDevicePublisher__ctor_System_Int32__remarks">Remarks</h5>
+<div class="markdown level1 remarks"><p>Uses the default <a class="xref" href="Rssdp.Infrastructure.ISsdpCommunicationsServer.html">ISsdpCommunicationsServer</a> implementation and network settings for Windows Phone (Silverlight) and the SSDP specification, but specifies the local port to use for socket communications. Specify 0 to indicate the system should choose it&apos;s own port.</p>
 </div>
 
 
@@ -1600,7 +1849,7 @@ Null or empty string will use <see cref="!:IPAddress.Any"></see>.</p>
   </tbody>
 </table>
 <h5 id="Rssdp_SsdpDevicePublisher__ctor_System_Int32_System_Int32__remarks">Remarks</h5>
-<div class="markdown level1 remarks"><p>Uses the default <see cref="!:ISsdpCommunicationsServer"></see> implementation and network settings for Windows Phone (Silverlight) and the SSDP specification, but specifies the local port to use and multicast time to live setting for socket communications.</p>
+<div class="markdown level1 remarks"><p>Uses the default <a class="xref" href="Rssdp.Infrastructure.ISsdpCommunicationsServer.html">ISsdpCommunicationsServer</a> implementation and network settings for Windows Phone (Silverlight) and the SSDP specification, but specifies the local port to use and multicast time to live setting for socket communications.</p>
 <p>Specify 0 for the <code data-dev-comment-type="paramref" class="paramref">localPort</code> argument to indicate the system should choose it&apos;s own port.</p>
 <p>The <code data-dev-comment-type="paramref" class="paramref">multicastTimeToLive</code> is actually a number of &apos;hops&apos; on the network and not a time based argument.</p>
 </div>
@@ -1616,12 +1865,12 @@ Null or empty string will use <see cref="!:IPAddress.Any"></see>.</p>
   <pre><code class="lang-csharp hljs">public SsdpDevicePublisher()</code></pre>
 </div>
 <h5 id="Rssdp_SsdpDevicePublisher__ctor_remarks">Remarks</h5>
-<div class="markdown level1 remarks"><p>Uses the default <see cref="!:ISsdpCommunicationsServer"></see> implementation and network settings for Windows Phone (Silverlight) and the SSDP specification.</p>
+<div class="markdown level1 remarks"><p>Uses the default <a class="xref" href="Rssdp.Infrastructure.ISsdpCommunicationsServer.html">ISsdpCommunicationsServer</a> implementation and network settings for Windows Phone (Silverlight) and the SSDP specification.</p>
 </div>
 
 
 <a id="Rssdp_SsdpDevicePublisher__ctor_" data-uid="Rssdp.SsdpDevicePublisher.#ctor*"></a>
-<h4 id="Rssdp_SsdpDevicePublisher__ctor_ISsdpCommunicationsServer_" data-uid="Rssdp.SsdpDevicePublisher.#ctor(ISsdpCommunicationsServer)">SsdpDevicePublisher(ISsdpCommunicationsServer)</h4>
+<h4 id="Rssdp_SsdpDevicePublisher__ctor_Rssdp_Infrastructure_ISsdpCommunicationsServer_" data-uid="Rssdp.SsdpDevicePublisher.#ctor(Rssdp.Infrastructure.ISsdpCommunicationsServer)">SsdpDevicePublisher(ISsdpCommunicationsServer)</h4>
 <div class="markdown level1 summary"><p>Full constructor. </p>
 </div>
 <div class="markdown level1 conceptual"></div>
@@ -1640,14 +1889,14 @@ Null or empty string will use <see cref="!:IPAddress.Any"></see>.</p>
   </thead>
   <tbody>
     <tr>
-      <td><span class="xref">ISsdpCommunicationsServer</span></td>
+      <td><a class="xref" href="Rssdp.Infrastructure.ISsdpCommunicationsServer.html">ISsdpCommunicationsServer</a></td>
       <td><span class="parametername">communicationsServer</span></td>
       <td></td>
     </tr>
   </tbody>
 </table>
-<h5 id="Rssdp_SsdpDevicePublisher__ctor_ISsdpCommunicationsServer__remarks">Remarks</h5>
-<div class="markdown level1 remarks"><p>Allows the caller to specify their own <see cref="!:ISsdpCommunicationsServer"></see> implementation for full control over the networking, or for mocking/testing purposes..</p>
+<h5 id="Rssdp_SsdpDevicePublisher__ctor_Rssdp_Infrastructure_ISsdpCommunicationsServer__remarks">Remarks</h5>
+<div class="markdown level1 remarks"><p>Allows the caller to specify their own <a class="xref" href="Rssdp.Infrastructure.ISsdpCommunicationsServer.html">ISsdpCommunicationsServer</a> implementation for full control over the networking, or for mocking/testing purposes..</p>
 </div>
 
 
@@ -1679,7 +1928,7 @@ Null or empty string will use <see cref="!:IPAddress.Any"></see>.</p>
   </tbody>
 </table>
 <h5 id="Rssdp_SsdpDevicePublisher__ctor_System_Int32__remarks">Remarks</h5>
-<div class="markdown level1 remarks"><p>Uses the default <see cref="!:ISsdpCommunicationsServer"></see> implementation and network settings for Windows Phone (Silverlight) and the SSDP specification, but specifies the local port to use for socket communications. Specify 0 to indicate the system should choose it&apos;s own port.</p>
+<div class="markdown level1 remarks"><p>Uses the default <a class="xref" href="Rssdp.Infrastructure.ISsdpCommunicationsServer.html">ISsdpCommunicationsServer</a> implementation and network settings for Windows Phone (Silverlight) and the SSDP specification, but specifies the local port to use for socket communications. Specify 0 to indicate the system should choose it&apos;s own port.</p>
 </div>
 
 
@@ -1717,7 +1966,124 @@ Null or empty string will use <see cref="!:IPAddress.Any"></see>.</p>
   </tbody>
 </table>
 <h5 id="Rssdp_SsdpDevicePublisher__ctor_System_Int32_System_Int32__remarks">Remarks</h5>
-<div class="markdown level1 remarks"><p>Uses the default <see cref="!:ISsdpCommunicationsServer"></see> implementation and network settings for Windows Phone (Silverlight) and the SSDP specification, but specifies the local port to use and multicast time to live setting for socket communications.</p>
+<div class="markdown level1 remarks"><p>Uses the default <a class="xref" href="Rssdp.Infrastructure.ISsdpCommunicationsServer.html">ISsdpCommunicationsServer</a> implementation and network settings for Windows Phone (Silverlight) and the SSDP specification, but specifies the local port to use and multicast time to live setting for socket communications.</p>
+<p>Specify 0 for the <code data-dev-comment-type="paramref" class="paramref">localPort</code> argument to indicate the system should choose it&apos;s own port.</p>
+<p>The <code data-dev-comment-type="paramref" class="paramref">multicastTimeToLive</code> is actually a number of &apos;hops&apos; on the network and not a time based argument.</p>
+</div>
+
+
+<a id="Rssdp_SsdpDevicePublisher__ctor_" data-uid="Rssdp.SsdpDevicePublisher.#ctor*"></a>
+<h4 id="Rssdp_SsdpDevicePublisher__ctor" data-uid="Rssdp.SsdpDevicePublisher.#ctor">SsdpDevicePublisher()</h4>
+<div class="markdown level1 summary"><p>Default constructor. </p>
+</div>
+<div class="markdown level1 conceptual"></div>
+<h5 class="decalaration">Declaration</h5>
+<div class="codewrapper">
+  <pre><code class="lang-csharp hljs">public SsdpDevicePublisher()</code></pre>
+</div>
+<h5 id="Rssdp_SsdpDevicePublisher__ctor_remarks">Remarks</h5>
+<div class="markdown level1 remarks"><p>Uses the default <a class="xref" href="Rssdp.Infrastructure.ISsdpCommunicationsServer.html">ISsdpCommunicationsServer</a> implementation and network settings for Windows Phone (Silverlight) and the SSDP specification.</p>
+</div>
+
+
+<a id="Rssdp_SsdpDevicePublisher__ctor_" data-uid="Rssdp.SsdpDevicePublisher.#ctor*"></a>
+<h4 id="Rssdp_SsdpDevicePublisher__ctor_Rssdp_Infrastructure_ISsdpCommunicationsServer_" data-uid="Rssdp.SsdpDevicePublisher.#ctor(Rssdp.Infrastructure.ISsdpCommunicationsServer)">SsdpDevicePublisher(ISsdpCommunicationsServer)</h4>
+<div class="markdown level1 summary"><p>Full constructor. </p>
+</div>
+<div class="markdown level1 conceptual"></div>
+<h5 class="decalaration">Declaration</h5>
+<div class="codewrapper">
+  <pre><code class="lang-csharp hljs">public SsdpDevicePublisher(ISsdpCommunicationsServer communicationsServer)</code></pre>
+</div>
+<h5 class="parameters">Parameters</h5>
+<table class="table table-bordered table-striped table-condensed">
+  <thead>
+    <tr>
+      <th>Type</th>
+      <th>Name</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><a class="xref" href="Rssdp.Infrastructure.ISsdpCommunicationsServer.html">ISsdpCommunicationsServer</a></td>
+      <td><span class="parametername">communicationsServer</span></td>
+      <td></td>
+    </tr>
+  </tbody>
+</table>
+<h5 id="Rssdp_SsdpDevicePublisher__ctor_Rssdp_Infrastructure_ISsdpCommunicationsServer__remarks">Remarks</h5>
+<div class="markdown level1 remarks"><p>Allows the caller to specify their own <a class="xref" href="Rssdp.Infrastructure.ISsdpCommunicationsServer.html">ISsdpCommunicationsServer</a> implementation for full control over the networking, or for mocking/testing purposes..</p>
+</div>
+
+
+<a id="Rssdp_SsdpDevicePublisher__ctor_" data-uid="Rssdp.SsdpDevicePublisher.#ctor*"></a>
+<h4 id="Rssdp_SsdpDevicePublisher__ctor_System_Int32_" data-uid="Rssdp.SsdpDevicePublisher.#ctor(System.Int32)">SsdpDevicePublisher(Int32)</h4>
+<div class="markdown level1 summary"><p>Partial constructor. </p>
+</div>
+<div class="markdown level1 conceptual"></div>
+<h5 class="decalaration">Declaration</h5>
+<div class="codewrapper">
+  <pre><code class="lang-csharp hljs">public SsdpDevicePublisher(int localPort)</code></pre>
+</div>
+<h5 class="parameters">Parameters</h5>
+<table class="table table-bordered table-striped table-condensed">
+  <thead>
+    <tr>
+      <th>Type</th>
+      <th>Name</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><span class="xref">System.Int32</span></td>
+      <td><span class="parametername">localPort</span></td>
+      <td><p>The local port to use for socket communications, specify 0 to have the system choose it&apos;s own.</p>
+</td>
+    </tr>
+  </tbody>
+</table>
+<h5 id="Rssdp_SsdpDevicePublisher__ctor_System_Int32__remarks">Remarks</h5>
+<div class="markdown level1 remarks"><p>Uses the default <a class="xref" href="Rssdp.Infrastructure.ISsdpCommunicationsServer.html">ISsdpCommunicationsServer</a> implementation and network settings for Windows Phone (Silverlight) and the SSDP specification, but specifies the local port to use for socket communications. Specify 0 to indicate the system should choose it&apos;s own port.</p>
+</div>
+
+
+<a id="Rssdp_SsdpDevicePublisher__ctor_" data-uid="Rssdp.SsdpDevicePublisher.#ctor*"></a>
+<h4 id="Rssdp_SsdpDevicePublisher__ctor_System_Int32_System_Int32_" data-uid="Rssdp.SsdpDevicePublisher.#ctor(System.Int32,System.Int32)">SsdpDevicePublisher(Int32, Int32)</h4>
+<div class="markdown level1 summary"><p>Partial constructor. </p>
+</div>
+<div class="markdown level1 conceptual"></div>
+<h5 class="decalaration">Declaration</h5>
+<div class="codewrapper">
+  <pre><code class="lang-csharp hljs">public SsdpDevicePublisher(int localPort, int multicastTimeToLive)</code></pre>
+</div>
+<h5 class="parameters">Parameters</h5>
+<table class="table table-bordered table-striped table-condensed">
+  <thead>
+    <tr>
+      <th>Type</th>
+      <th>Name</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><span class="xref">System.Int32</span></td>
+      <td><span class="parametername">localPort</span></td>
+      <td><p>The local port to use for socket communications, specify 0 to have the system choose it&apos;s own.</p>
+</td>
+    </tr>
+    <tr>
+      <td><span class="xref">System.Int32</span></td>
+      <td><span class="parametername">multicastTimeToLive</span></td>
+      <td><p>The number of hops a multicast packet can make before it expires. Must be 1 or greater.</p>
+</td>
+    </tr>
+  </tbody>
+</table>
+<h5 id="Rssdp_SsdpDevicePublisher__ctor_System_Int32_System_Int32__remarks">Remarks</h5>
+<div class="markdown level1 remarks"><p>Uses the default <a class="xref" href="Rssdp.Infrastructure.ISsdpCommunicationsServer.html">ISsdpCommunicationsServer</a> implementation and network settings for Windows Phone (Silverlight) and the SSDP specification, but specifies the local port to use and multicast time to live setting for socket communications.</p>
 <p>Specify 0 for the <code data-dev-comment-type="paramref" class="paramref">localPort</code> argument to indicate the system should choose it&apos;s own port.</p>
 <p>The <code data-dev-comment-type="paramref" class="paramref">multicastTimeToLive</code> is actually a number of &apos;hops&apos; on the network and not a time based argument.</p>
 </div>

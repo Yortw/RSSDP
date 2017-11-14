@@ -19,7 +19,7 @@ items:
   source:
     id: CustomHttpHeader
     path: ''
-    startLine: 1051
+    startLine: 1302
   assemblies:
   - cs.temp.dll
   namespace: Rssdp
@@ -59,7 +59,7 @@ items:
   source:
     id: .ctor
     path: ''
-    startLine: 1073
+    startLine: 1324
   assemblies:
   - cs.temp.dll
   namespace: Rssdp
@@ -102,7 +102,7 @@ items:
   source:
     id: Name
     path: ''
-    startLine: 1086
+    startLine: 1337
   assemblies:
   - cs.temp.dll
   namespace: Rssdp
@@ -135,7 +135,7 @@ items:
   source:
     id: Value
     path: ''
-    startLine: 1099
+    startLine: 1350
   assemblies:
   - cs.temp.dll
   namespace: Rssdp
@@ -168,7 +168,7 @@ items:
   source:
     id: ToString
     path: ''
-    startLine: 1117
+    startLine: 1368
   assemblies:
   - cs.temp.dll
   namespace: Rssdp

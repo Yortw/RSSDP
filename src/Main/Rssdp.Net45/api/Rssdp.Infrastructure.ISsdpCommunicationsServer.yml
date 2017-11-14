@@ -23,7 +23,7 @@ items:
   source:
     id: ISsdpCommunicationsServer
     path: ''
-    startLine: 2405
+    startLine: 2656
   assemblies:
   - cs.temp.dll
   namespace: Rssdp.Infrastructure
@@ -56,7 +56,7 @@ items:
   source:
     id: RequestReceived
     path: ''
-    startLine: 2413
+    startLine: 2664
   assemblies:
   - cs.temp.dll
   namespace: Rssdp.Infrastructure
@@ -81,7 +81,7 @@ items:
   source:
     id: ResponseReceived
     path: ''
-    startLine: 2418
+    startLine: 2669
   assemblies:
   - cs.temp.dll
   namespace: Rssdp.Infrastructure
@@ -106,7 +106,7 @@ items:
   source:
     id: BeginListeningForBroadcasts
     path: ''
-    startLine: 2427
+    startLine: 2678
   assemblies:
   - cs.temp.dll
   namespace: Rssdp.Infrastructure
@@ -130,7 +130,7 @@ items:
   source:
     id: StopListeningForBroadcasts
     path: ''
-    startLine: 2432
+    startLine: 2683
   assemblies:
   - cs.temp.dll
   namespace: Rssdp.Infrastructure
@@ -154,7 +154,7 @@ items:
   source:
     id: StopListeningForResponses
     path: ''
-    startLine: 2437
+    startLine: 2688
   assemblies:
   - cs.temp.dll
   namespace: Rssdp.Infrastructure
@@ -178,7 +178,7 @@ items:
   source:
     id: SendMessage
     path: ''
-    startLine: 2444
+    startLine: 2695
   assemblies:
   - cs.temp.dll
   namespace: Rssdp.Infrastructure
@@ -212,7 +212,7 @@ items:
   source:
     id: IsShared
     path: ''
-    startLine: 2456
+    startLine: 2707
   assemblies:
   - cs.temp.dll
   namespace: Rssdp.Infrastructure
@@ -243,7 +243,7 @@ items:
   source:
     id: DeviceNetworkType
     path: ''
-    startLine: 2461
+    startLine: 2712
   assemblies:
   - cs.temp.dll
   namespace: Rssdp.Infrastructure
@@ -492,6 +492,7 @@ references:
     fullName: ()
 - uid: Rssdp.Infrastructure.SsdpDeviceLocatorBase
   commentId: T:Rssdp.Infrastructure.SsdpDeviceLocatorBase
+  parent: Rssdp.Infrastructure
   isExternal: false
   name: SsdpDeviceLocatorBase
   nameWithType: SsdpDeviceLocatorBase

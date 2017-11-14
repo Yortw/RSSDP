@@ -29,7 +29,7 @@ items:
   source:
     id: SsdpDeviceLocatorBase
     path: ''
-    startLine: 4679
+    startLine: 4930
   assemblies:
   - cs.temp.dll
   namespace: Rssdp.Infrastructure
@@ -44,6 +44,8 @@ items:
   inheritance:
   - System.Object
   - Rssdp.Infrastructure.DisposableManagedObjectBase
+  derivedClasses:
+  - Rssdp.SsdpDeviceLocator
   implements:
   - System.IDisposable
   - Rssdp.Infrastructure.ISsdpDeviceLocator
@@ -80,7 +82,7 @@ items:
   source:
     id: .ctor
     path: ''
-    startLine: 4711
+    startLine: 4962
   assemblies:
   - cs.temp.dll
   namespace: Rssdp.Infrastructure
@@ -112,7 +114,7 @@ items:
   source:
     id: DeviceAvailable
     path: ''
-    startLine: 4739
+    startLine: 4990
   assemblies:
   - cs.temp.dll
   namespace: Rssdp.Infrastructure
@@ -152,7 +154,7 @@ items:
   source:
     id: DeviceUnavailable
     path: ''
-    startLine: 4754
+    startLine: 5005
   assemblies:
   - cs.temp.dll
   namespace: Rssdp.Infrastructure
@@ -193,7 +195,7 @@ items:
   source:
     id: SearchAsync
     path: ''
-    startLine: 4766
+    startLine: 5017
   assemblies:
   - cs.temp.dll
   namespace: Rssdp.Infrastructure
@@ -202,8 +204,8 @@ items:
   syntax:
     content: public Task<IEnumerable<DiscoveredSsdpDevice>> SearchAsync()
     return:
-      type: Task{IEnumerable{Rssdp.DiscoveredSsdpDevice}}
-      description: A task whose result is an <see cref="!:IEnumerable&lt;T>"></see> of <xref href="Rssdp.DiscoveredSsdpDevice" data-throw-if-not-resolved="false"></xref> instances, representing all found devices.
+      type: Task{System.Collections.Generic.IEnumerable{Rssdp.DiscoveredSsdpDevice}}
+      description: A task whose result is an <xref href="System.Collections.Generic.IEnumerable%601" data-throw-if-not-resolved="false"></xref> of <xref href="Rssdp.DiscoveredSsdpDevice" data-throw-if-not-resolved="false"></xref> instances, representing all found devices.
     content.vb: Public Function SearchAsync As Task(Of IEnumerable(Of DiscoveredSsdpDevice))
   overload: Rssdp.Infrastructure.SsdpDeviceLocatorBase.SearchAsync*
   modifiers.csharp:
@@ -224,7 +226,7 @@ items:
   source:
     id: SearchAsync
     path: ''
-    startLine: 4782
+    startLine: 5033
   assemblies:
   - cs.temp.dll
   namespace: Rssdp.Infrastructure
@@ -240,8 +242,8 @@ items:
 
         <table><tbody><tr><td>Root devices</td><td>upnp:rootdevice</td></tr><tr><td>Specific device by UUID</td><td>uuid:&lt;device uuid></td></tr><tr><td>Device type</td><td>Fully qualified device type starting with urn: i.e urn:schemas-upnp-org:Basic:1</td></tr></tbody></table>
     return:
-      type: Task{IEnumerable{Rssdp.DiscoveredSsdpDevice}}
-      description: A task whose result is an <see cref="!:IEnumerable&lt;T>"></see> of <xref href="Rssdp.DiscoveredSsdpDevice" data-throw-if-not-resolved="false"></xref> instances, representing all found devices.
+      type: Task{System.Collections.Generic.IEnumerable{Rssdp.DiscoveredSsdpDevice}}
+      description: A task whose result is an <xref href="System.Collections.Generic.IEnumerable%601" data-throw-if-not-resolved="false"></xref> of <xref href="Rssdp.DiscoveredSsdpDevice" data-throw-if-not-resolved="false"></xref> instances, representing all found devices.
     content.vb: Public Function SearchAsync(searchTarget As String) As Task(Of IEnumerable(Of DiscoveredSsdpDevice))
   overload: Rssdp.Infrastructure.SsdpDeviceLocatorBase.SearchAsync*
   modifiers.csharp:
@@ -262,7 +264,7 @@ items:
   source:
     id: SearchAsync
     path: ''
-    startLine: 4792
+    startLine: 5043
   assemblies:
   - cs.temp.dll
   namespace: Rssdp.Infrastructure
@@ -275,8 +277,8 @@ items:
       type: System.TimeSpan
       description: The amount of time to wait for network responses to the search request. Longer values will likely return more devices, but increase search time. A value between 1 and 5 seconds is recommended by the UPnP 1.1 specification, this method requires the value be greater 1 second if it is not zero. Specify TimeSpan.Zero to return only devices already in the cache.
     return:
-      type: Task{IEnumerable{Rssdp.DiscoveredSsdpDevice}}
-      description: A task whose result is an <see cref="!:IEnumerable&lt;T>"></see> of <xref href="Rssdp.DiscoveredSsdpDevice" data-throw-if-not-resolved="false"></xref> instances, representing all found devices.
+      type: Task{System.Collections.Generic.IEnumerable{Rssdp.DiscoveredSsdpDevice}}
+      description: A task whose result is an <xref href="System.Collections.Generic.IEnumerable%601" data-throw-if-not-resolved="false"></xref> of <xref href="Rssdp.DiscoveredSsdpDevice" data-throw-if-not-resolved="false"></xref> instances, representing all found devices.
     content.vb: Public Function SearchAsync(searchWaitTime As TimeSpan) As Task(Of IEnumerable(Of DiscoveredSsdpDevice))
   overload: Rssdp.Infrastructure.SsdpDeviceLocatorBase.SearchAsync*
   modifiers.csharp:
@@ -297,7 +299,7 @@ items:
   source:
     id: SearchAsync
     path: ''
-    startLine: 4813
+    startLine: 5064
   assemblies:
   - cs.temp.dll
   namespace: Rssdp.Infrastructure
@@ -317,8 +319,8 @@ items:
       type: System.TimeSpan
       description: The amount of time to wait for network responses to the search request. Longer values will likely return more devices, but increase search time. A value between 1 and 5 seconds is recommended by the UPnP 1.1 specification, this method requires the value be greater 1 second if it is not zero. Specify TimeSpan.Zero to return only devices already in the cache.
     return:
-      type: Task{IEnumerable{Rssdp.DiscoveredSsdpDevice}}
-      description: A task whose result is an <see cref="!:IEnumerable&lt;T>"></see> of <xref href="Rssdp.DiscoveredSsdpDevice" data-throw-if-not-resolved="false"></xref> instances, representing all found devices.
+      type: Task{System.Collections.Generic.IEnumerable{Rssdp.DiscoveredSsdpDevice}}
+      description: A task whose result is an <xref href="System.Collections.Generic.IEnumerable%601" data-throw-if-not-resolved="false"></xref> of <xref href="Rssdp.DiscoveredSsdpDevice" data-throw-if-not-resolved="false"></xref> instances, representing all found devices.
     content.vb: Public Function SearchAsync(searchTarget As String, searchWaitTime As TimeSpan) As Task(Of IEnumerable(Of DiscoveredSsdpDevice))
   overload: Rssdp.Infrastructure.SsdpDeviceLocatorBase.SearchAsync*
   modifiers.csharp:
@@ -339,7 +341,7 @@ items:
   source:
     id: StartListeningForNotifications
     path: ''
-    startLine: 4882
+    startLine: 5133
   assemblies:
   - cs.temp.dll
   namespace: Rssdp.Infrastructure
@@ -381,7 +383,7 @@ items:
   source:
     id: StopListeningForNotifications
     path: ''
-    startLine: 4901
+    startLine: 5152
   assemblies:
   - cs.temp.dll
   namespace: Rssdp.Infrastructure
@@ -423,7 +425,7 @@ items:
   source:
     id: OnDeviceAvailable
     path: ''
-    startLine: 4914
+    startLine: 5165
   assemblies:
   - cs.temp.dll
   namespace: Rssdp.Infrastructure
@@ -463,7 +465,7 @@ items:
   source:
     id: OnDeviceUnavailable
     path: ''
-    startLine: 4929
+    startLine: 5180
   assemblies:
   - cs.temp.dll
   namespace: Rssdp.Infrastructure
@@ -503,7 +505,7 @@ items:
   source:
     id: IsSearching
     path: ''
-    startLine: 4948
+    startLine: 5199
   assemblies:
   - cs.temp.dll
   namespace: Rssdp.Infrastructure
@@ -539,7 +541,7 @@ items:
   source:
     id: NotificationFilter
     path: ''
-    startLine: 4968
+    startLine: 5219
   assemblies:
   - cs.temp.dll
   namespace: Rssdp.Infrastructure
@@ -584,7 +586,7 @@ items:
   source:
     id: Dispose
     path: ''
-    startLine: 4982
+    startLine: 5233
   assemblies:
   - cs.temp.dll
   namespace: Rssdp.Infrastructure
@@ -1005,12 +1007,76 @@ references:
   fullName: Rssdp.Infrastructure.SsdpDeviceLocatorBase.SsdpDeviceLocatorBase
 - uid: Rssdp.Infrastructure.SsdpDeviceLocatorBase.NotificationFilter
   commentId: P:Rssdp.Infrastructure.SsdpDeviceLocatorBase.NotificationFilter
+  parent: Rssdp.Infrastructure.SsdpDeviceLocatorBase
+  isExternal: false
+  name: NotificationFilter
+  nameWithType: SsdpDeviceLocatorBase.NotificationFilter
+  fullName: Rssdp.Infrastructure.SsdpDeviceLocatorBase.NotificationFilter
 - uid: Rssdp.Infrastructure.SsdpDeviceLocatorBase.DeviceUnavailable
   commentId: E:Rssdp.Infrastructure.SsdpDeviceLocatorBase.DeviceUnavailable
+  parent: Rssdp.Infrastructure.SsdpDeviceLocatorBase
+  isExternal: false
+  name: DeviceUnavailable
+  nameWithType: SsdpDeviceLocatorBase.DeviceUnavailable
+  fullName: Rssdp.Infrastructure.SsdpDeviceLocatorBase.DeviceUnavailable
 - uid: Rssdp.Infrastructure.SsdpDeviceLocatorBase.StartListeningForNotifications
   commentId: M:Rssdp.Infrastructure.SsdpDeviceLocatorBase.StartListeningForNotifications
+  parent: Rssdp.Infrastructure.SsdpDeviceLocatorBase
+  isExternal: false
+  name: StartListeningForNotifications()
+  nameWithType: SsdpDeviceLocatorBase.StartListeningForNotifications()
+  fullName: Rssdp.Infrastructure.SsdpDeviceLocatorBase.StartListeningForNotifications()
+  spec.csharp:
+  - uid: Rssdp.Infrastructure.SsdpDeviceLocatorBase.StartListeningForNotifications
+    name: StartListeningForNotifications
+    nameWithType: SsdpDeviceLocatorBase.StartListeningForNotifications
+    fullName: Rssdp.Infrastructure.SsdpDeviceLocatorBase.StartListeningForNotifications
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: Rssdp.Infrastructure.SsdpDeviceLocatorBase.StartListeningForNotifications
+    name: StartListeningForNotifications
+    nameWithType: SsdpDeviceLocatorBase.StartListeningForNotifications
+    fullName: Rssdp.Infrastructure.SsdpDeviceLocatorBase.StartListeningForNotifications
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
 - uid: Rssdp.Infrastructure.SsdpDeviceLocatorBase.StopListeningForNotifications
   commentId: M:Rssdp.Infrastructure.SsdpDeviceLocatorBase.StopListeningForNotifications
+  parent: Rssdp.Infrastructure.SsdpDeviceLocatorBase
+  isExternal: false
+  name: StopListeningForNotifications()
+  nameWithType: SsdpDeviceLocatorBase.StopListeningForNotifications()
+  fullName: Rssdp.Infrastructure.SsdpDeviceLocatorBase.StopListeningForNotifications()
+  spec.csharp:
+  - uid: Rssdp.Infrastructure.SsdpDeviceLocatorBase.StopListeningForNotifications
+    name: StopListeningForNotifications
+    nameWithType: SsdpDeviceLocatorBase.StopListeningForNotifications
+    fullName: Rssdp.Infrastructure.SsdpDeviceLocatorBase.StopListeningForNotifications
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: Rssdp.Infrastructure.SsdpDeviceLocatorBase.StopListeningForNotifications
+    name: StopListeningForNotifications
+    nameWithType: SsdpDeviceLocatorBase.StopListeningForNotifications
+    fullName: Rssdp.Infrastructure.SsdpDeviceLocatorBase.StopListeningForNotifications
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
 - uid: Rssdp.Infrastructure.ISsdpDeviceLocator.DeviceAvailable
   commentId: E:Rssdp.Infrastructure.ISsdpDeviceLocator.DeviceAvailable
   parent: Rssdp.Infrastructure.ISsdpDeviceLocator
@@ -1060,6 +1126,13 @@ references:
   - name: )
     nameWithType: )
     fullName: )
+- uid: Rssdp.Infrastructure.SsdpDeviceLocatorBase
+  commentId: T:Rssdp.Infrastructure.SsdpDeviceLocatorBase
+  parent: Rssdp.Infrastructure
+  isExternal: false
+  name: SsdpDeviceLocatorBase
+  nameWithType: SsdpDeviceLocatorBase
+  fullName: Rssdp.Infrastructure.SsdpDeviceLocatorBase
 - uid: System.EventHandler`1
   commentId: T:System.EventHandler`1
   isExternal: true
@@ -1110,6 +1183,11 @@ references:
   fullName: Rssdp.DiscoveredSsdpDevice
 - uid: Rssdp.Infrastructure.SsdpDeviceLocatorBase.DeviceAvailable
   commentId: E:Rssdp.Infrastructure.SsdpDeviceLocatorBase.DeviceAvailable
+  parent: Rssdp.Infrastructure.SsdpDeviceLocatorBase
+  isExternal: false
+  name: DeviceAvailable
+  nameWithType: SsdpDeviceLocatorBase.DeviceAvailable
+  fullName: Rssdp.Infrastructure.SsdpDeviceLocatorBase.DeviceAvailable
 - uid: Rssdp.Infrastructure.ISsdpDeviceLocator.DeviceUnavailable
   commentId: E:Rssdp.Infrastructure.ISsdpDeviceLocator.DeviceUnavailable
   parent: Rssdp.Infrastructure.ISsdpDeviceLocator
@@ -1165,20 +1243,59 @@ references:
   name: Rssdp
   nameWithType: Rssdp
   fullName: Rssdp
+- uid: System.Collections.Generic.IEnumerable`1
+  commentId: T:System.Collections.Generic.IEnumerable`1
+  isExternal: true
+  name: IEnumerable<T>
+  nameWithType: IEnumerable<T>
+  fullName: System.Collections.Generic.IEnumerable<T>
+  nameWithType.vb: IEnumerable(Of T)
+  fullName.vb: System.Collections.Generic.IEnumerable(Of T)
+  name.vb: IEnumerable(Of T)
+  spec.csharp:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    nameWithType: IEnumerable
+    fullName: System.Collections.Generic.IEnumerable
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    nameWithType: IEnumerable
+    fullName: System.Collections.Generic.IEnumerable
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: )
+    nameWithType: )
+    fullName: )
 - uid: Rssdp.Infrastructure.SsdpDeviceLocatorBase.SearchAsync*
   commentId: Overload:Rssdp.Infrastructure.SsdpDeviceLocatorBase.SearchAsync
   isExternal: false
   name: SearchAsync
   nameWithType: SsdpDeviceLocatorBase.SearchAsync
   fullName: Rssdp.Infrastructure.SsdpDeviceLocatorBase.SearchAsync
-- uid: Task{IEnumerable{Rssdp.DiscoveredSsdpDevice}}
-  commentId: '!:Task{IEnumerable{Rssdp.DiscoveredSsdpDevice}}'
+- uid: Task{System.Collections.Generic.IEnumerable{Rssdp.DiscoveredSsdpDevice}}
+  commentId: '!:Task{System.Collections.Generic.IEnumerable{Rssdp.DiscoveredSsdpDevice}}'
   definition: Task`1
   name: Task<IEnumerable<DiscoveredSsdpDevice>>
   nameWithType: Task<IEnumerable<DiscoveredSsdpDevice>>
-  fullName: Task<IEnumerable<Rssdp.DiscoveredSsdpDevice>>
+  fullName: Task<System.Collections.Generic.IEnumerable<Rssdp.DiscoveredSsdpDevice>>
   nameWithType.vb: Task(Of IEnumerable(Of DiscoveredSsdpDevice))
-  fullName.vb: Task(Of IEnumerable(Of Rssdp.DiscoveredSsdpDevice))
+  fullName.vb: Task(Of System.Collections.Generic.IEnumerable(Of Rssdp.DiscoveredSsdpDevice))
   name.vb: Task(Of IEnumerable(Of DiscoveredSsdpDevice))
   spec.csharp:
   - uid: Task`1
@@ -1189,10 +1306,10 @@ references:
   - name: <
     nameWithType: <
     fullName: <
-  - uid: IEnumerable`1
+  - uid: System.Collections.Generic.IEnumerable`1
     name: IEnumerable
     nameWithType: IEnumerable
-    fullName: IEnumerable
+    fullName: System.Collections.Generic.IEnumerable
     isExternal: true
   - name: <
     nameWithType: <
@@ -1216,10 +1333,10 @@ references:
   - name: '(Of '
     nameWithType: '(Of '
     fullName: '(Of '
-  - uid: IEnumerable`1
+  - uid: System.Collections.Generic.IEnumerable`1
     name: IEnumerable
     nameWithType: IEnumerable
-    fullName: IEnumerable
+    fullName: System.Collections.Generic.IEnumerable
     isExternal: true
   - name: '(Of '
     nameWithType: '(Of '
@@ -1377,12 +1494,6 @@ references:
   name: OnDeviceUnavailable
   nameWithType: SsdpDeviceLocatorBase.OnDeviceUnavailable
   fullName: Rssdp.Infrastructure.SsdpDeviceLocatorBase.OnDeviceUnavailable
-- uid: Rssdp.Infrastructure.SsdpDeviceLocatorBase
-  commentId: T:Rssdp.Infrastructure.SsdpDeviceLocatorBase
-  isExternal: false
-  name: SsdpDeviceLocatorBase
-  nameWithType: SsdpDeviceLocatorBase
-  fullName: Rssdp.Infrastructure.SsdpDeviceLocatorBase
 - uid: Rssdp.Infrastructure.SsdpDeviceLocatorBase.IsSearching*
   commentId: Overload:Rssdp.Infrastructure.SsdpDeviceLocatorBase.IsSearching
   isExternal: false

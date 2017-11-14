@@ -25,7 +25,7 @@ items:
   source:
     id: DiscoveredSsdpDevice
     path: ''
-    startLine: 1576
+    startLine: 1827
   assemblies:
   - cs.temp.dll
   namespace: Rssdp
@@ -70,7 +70,7 @@ items:
   source:
     id: NotificationType
     path: ''
-    startLine: 1593
+    startLine: 1844
   assemblies:
   - cs.temp.dll
   namespace: Rssdp
@@ -103,7 +103,7 @@ items:
   source:
     id: Usn
     path: ''
-    startLine: 1598
+    startLine: 1849
   assemblies:
   - cs.temp.dll
   namespace: Rssdp
@@ -136,7 +136,7 @@ items:
   source:
     id: DescriptionLocation
     path: ''
-    startLine: 1603
+    startLine: 1854
   assemblies:
   - cs.temp.dll
   namespace: Rssdp
@@ -169,7 +169,7 @@ items:
   source:
     id: CacheLifetime
     path: ''
-    startLine: 1608
+    startLine: 1859
   assemblies:
   - cs.temp.dll
   namespace: Rssdp
@@ -202,7 +202,7 @@ items:
   source:
     id: AsAt
     path: ''
-    startLine: 1613
+    startLine: 1864
   assemblies:
   - cs.temp.dll
   namespace: Rssdp
@@ -235,7 +235,7 @@ items:
   source:
     id: ResponseHeaders
     path: ''
-    startLine: 1629
+    startLine: 1880
   assemblies:
   - cs.temp.dll
   namespace: Rssdp
@@ -268,7 +268,7 @@ items:
   source:
     id: IsExpired
     path: ''
-    startLine: 1639
+    startLine: 1890
   assemblies:
   - cs.temp.dll
   namespace: Rssdp
@@ -299,7 +299,7 @@ items:
   source:
     id: GetDeviceInfo
     path: ''
-    startLine: 1654
+    startLine: 1905
   assemblies:
   - cs.temp.dll
   namespace: Rssdp
@@ -340,7 +340,7 @@ items:
   source:
     id: GetDeviceInfo
     path: ''
-    startLine: 1675
+    startLine: 1926
   assemblies:
   - cs.temp.dll
   namespace: Rssdp
@@ -385,7 +385,7 @@ items:
   source:
     id: ToString
     path: ''
-    startLine: 1699
+    startLine: 1950
   assemblies:
   - cs.temp.dll
   namespace: Rssdp

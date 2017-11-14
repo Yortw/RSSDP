@@ -1076,11 +1076,40 @@
     <div class="level0"><span class="xref">System.Object</span></div>
     <div class="level1"><span class="xref">SsdpDevicePropertiesCollection</span></div>
   </div>
+  <div classs="implements">
+    <h5>Implements</h5>
+    <div><span class="xref">System.Collections.Generic.IEnumerable</span>&lt;<a class="xref" href="Rssdp.SsdpDeviceProperty.html">SsdpDeviceProperty</a>&gt;</div>
+    <div><span class="xref">System.Collections.IEnumerable</span></div>
+  </div>
+  <div class="inheritedMembers">
+    <h5>Inherited Members</h5>
+    <div>
+      <span class="xref">System.Object.ToString()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.Equals(System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.Equals(System.Object, System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.ReferenceEquals(System.Object, System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.GetHashCode()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.GetType()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.MemberwiseClone()</span>
+    </div>
+  </div>
   <h6><strong>Namespace</strong>: <a class="xref" href="Rssdp.html">Rssdp</a></h6>
   <h6><strong>Assembly</strong>: cs.temp.dll.dll</h6>
   <h5 id="Rssdp_SsdpDevicePropertiesCollection_syntax">Syntax</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public class SsdpDevicePropertiesCollection : IEnumerable&lt;SsdpDeviceProperty&gt;</code></pre>
+    <pre><code class="lang-csharp hljs">public class SsdpDevicePropertiesCollection : IEnumerable&lt;SsdpDeviceProperty&gt;, IEnumerable</code></pre>
   </div>
   <h5 id="Rssdp_SsdpDevicePropertiesCollection_remarks"><strong>Remarks</strong></h5>
   <div class="markdown level0 remarks"><p>Items added to this collection are keyed by their <a class="xref" href="Rssdp.SsdpDeviceProperty.FullName.html#Rssdp_SsdpDeviceProperty_FullName">FullName</a> property value, at the time they were added. If the name changes after they were added to the collection, the key is not updated unless the item is manually removed and re-added to the collection.</p>

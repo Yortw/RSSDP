@@ -13,9 +13,9 @@ items:
   - Rssdp.UdpSocket.ReceiveAsync
   - Rssdp.UdpSocket.ReceiveAsync
   - Rssdp.UdpSocket.ReceiveAsync
-  - Rssdp.UdpSocket.SendTo(System.Byte[],UdpEndPoint)
-  - Rssdp.UdpSocket.SendTo(System.Byte[],UdpEndPoint)
-  - Rssdp.UdpSocket.SendTo(System.Byte[],UdpEndPoint)
+  - Rssdp.UdpSocket.SendTo(System.Byte[],Rssdp.Infrastructure.UdpEndPoint)
+  - Rssdp.UdpSocket.SendTo(System.Byte[],Rssdp.Infrastructure.UdpEndPoint)
+  - Rssdp.UdpSocket.SendTo(System.Byte[],Rssdp.Infrastructure.UdpEndPoint)
   langs:
   - csharp
   - vb
@@ -26,21 +26,33 @@ items:
   source:
     id: UdpSocket
     path: ''
-    startLine: 8604
+    startLine: 8855
   assemblies:
   - cs.temp.dll
   namespace: Rssdp
   syntax:
-    content: 'public sealed class UdpSocket : DisposableManagedObjectBase, IUdpSocket, DisposableManagedObjectBase'
+    content: 'public sealed class UdpSocket : DisposableManagedObjectBase, IUdpSocket, IDisposable'
     content.vb: >-
       Public NotInheritable Class UdpSocket
           Inherits DisposableManagedObjectBase
-          Implements IUdpSocket, DisposableManagedObjectBase
+          Implements IUdpSocket, IDisposable
   inheritance:
   - System.Object
+  - Rssdp.Infrastructure.DisposableManagedObjectBase
   implements:
-  - IUdpSocket
-  - DisposableManagedObjectBase
+  - Rssdp.Infrastructure.IUdpSocket
+  - System.IDisposable
+  inheritedMembers:
+  - Rssdp.Infrastructure.DisposableManagedObjectBase.ThrowIfDisposed
+  - Rssdp.Infrastructure.DisposableManagedObjectBase.IsDisposed
+  - Rssdp.Infrastructure.DisposableManagedObjectBase.Dispose
+  - System.Object.ToString
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
   modifiers.csharp:
   - public
   - sealed
@@ -63,35 +75,37 @@ items:
   source:
     id: ReceiveAsync
     path: ''
-    startLine: 652
+    startLine: 903
   assemblies:
   - cs.temp.dll
   namespace: Rssdp
   syntax:
     content: public Task<ReceivedUdpData> ReceiveAsync()
     return:
-      type: System.Threading.Tasks.Task{ReceivedUdpData}
+      type: System.Threading.Tasks.Task{Rssdp.Infrastructure.ReceivedUdpData}
     content.vb: Public Function ReceiveAsync As Task(Of ReceivedUdpData)
   overload: Rssdp.UdpSocket.ReceiveAsync*
+  implements:
+  - Rssdp.Infrastructure.IUdpSocket.ReceiveAsync
   modifiers.csharp:
   - public
   modifiers.vb:
   - Public
-- uid: Rssdp.UdpSocket.SendTo(System.Byte[],UdpEndPoint)
-  commentId: M:Rssdp.UdpSocket.SendTo(System.Byte[],UdpEndPoint)
-  id: SendTo(System.Byte[],UdpEndPoint)
+- uid: Rssdp.UdpSocket.SendTo(System.Byte[],Rssdp.Infrastructure.UdpEndPoint)
+  commentId: M:Rssdp.UdpSocket.SendTo(System.Byte[],Rssdp.Infrastructure.UdpEndPoint)
+  id: SendTo(System.Byte[],Rssdp.Infrastructure.UdpEndPoint)
   parent: Rssdp.UdpSocket
   langs:
   - csharp
   - vb
   name: SendTo(Byte[], UdpEndPoint)
   nameWithType: UdpSocket.SendTo(Byte[], UdpEndPoint)
-  fullName: Rssdp.UdpSocket.SendTo(System.Byte[], UdpEndPoint)
+  fullName: Rssdp.UdpSocket.SendTo(System.Byte[], Rssdp.Infrastructure.UdpEndPoint)
   type: Method
   source:
     id: SendTo
     path: ''
-    startLine: 657
+    startLine: 908
   assemblies:
   - cs.temp.dll
   namespace: Rssdp
@@ -101,15 +115,17 @@ items:
     - id: messageData
       type: System.Byte[]
     - id: endPoint
-      type: UdpEndPoint
+      type: Rssdp.Infrastructure.UdpEndPoint
     content.vb: Public Sub SendTo(messageData As Byte(), endPoint As UdpEndPoint)
   overload: Rssdp.UdpSocket.SendTo*
+  implements:
+  - Rssdp.Infrastructure.IUdpSocket.SendTo(System.Byte[],Rssdp.Infrastructure.UdpEndPoint)
   nameWithType.vb: UdpSocket.SendTo(Byte(), UdpEndPoint)
   modifiers.csharp:
   - public
   modifiers.vb:
   - Public
-  fullName.vb: Rssdp.UdpSocket.SendTo(System.Byte(), UdpEndPoint)
+  fullName.vb: Rssdp.UdpSocket.SendTo(System.Byte(), Rssdp.Infrastructure.UdpEndPoint)
   name.vb: SendTo(Byte(), UdpEndPoint)
 - uid: Rssdp.UdpSocket.Dispose(System.Boolean)
   commentId: M:Rssdp.UdpSocket.Dispose(System.Boolean)
@@ -125,7 +141,7 @@ items:
   source:
     id: Dispose
     path: ''
-    startLine: 662
+    startLine: 913
   assemblies:
   - cs.temp.dll
   namespace: Rssdp
@@ -135,6 +151,7 @@ items:
     - id: disposing
       type: System.Boolean
     content.vb: Protected Overrides Sub Dispose(disposing As Boolean)
+  overridden: Rssdp.Infrastructure.DisposableManagedObjectBase.Dispose(System.Boolean)
   overload: Rssdp.UdpSocket.Dispose*
   modifiers.csharp:
   - protected
@@ -156,7 +173,7 @@ items:
   source:
     id: .ctor
     path: ''
-    startLine: 8005
+    startLine: 8256
   assemblies:
   - cs.temp.dll
   namespace: Rssdp
@@ -189,35 +206,35 @@ items:
   source:
     id: ReceiveAsync
     path: ''
-    startLine: 8027
+    startLine: 8278
   assemblies:
   - cs.temp.dll
   namespace: Rssdp
   syntax:
     content: public Task<ReceivedUdpData> ReceiveAsync()
     return:
-      type: System.Threading.Tasks.Task{ReceivedUdpData}
+      type: System.Threading.Tasks.Task{Rssdp.Infrastructure.ReceivedUdpData}
     content.vb: Public Function ReceiveAsync As Task(Of ReceivedUdpData)
   overload: Rssdp.UdpSocket.ReceiveAsync*
   modifiers.csharp:
   - public
   modifiers.vb:
   - Public
-- uid: Rssdp.UdpSocket.SendTo(System.Byte[],UdpEndPoint)
-  commentId: M:Rssdp.UdpSocket.SendTo(System.Byte[],UdpEndPoint)
-  id: SendTo(System.Byte[],UdpEndPoint)
+- uid: Rssdp.UdpSocket.SendTo(System.Byte[],Rssdp.Infrastructure.UdpEndPoint)
+  commentId: M:Rssdp.UdpSocket.SendTo(System.Byte[],Rssdp.Infrastructure.UdpEndPoint)
+  id: SendTo(System.Byte[],Rssdp.Infrastructure.UdpEndPoint)
   parent: Rssdp.UdpSocket
   langs:
   - csharp
   - vb
   name: SendTo(Byte[], UdpEndPoint)
   nameWithType: UdpSocket.SendTo(Byte[], UdpEndPoint)
-  fullName: Rssdp.UdpSocket.SendTo(System.Byte[], UdpEndPoint)
+  fullName: Rssdp.UdpSocket.SendTo(System.Byte[], Rssdp.Infrastructure.UdpEndPoint)
   type: Method
   source:
     id: SendTo
     path: ''
-    startLine: 8066
+    startLine: 8317
   assemblies:
   - cs.temp.dll
   namespace: Rssdp
@@ -227,7 +244,7 @@ items:
     - id: messageData
       type: System.Byte[]
     - id: endPoint
-      type: UdpEndPoint
+      type: Rssdp.Infrastructure.UdpEndPoint
     content.vb: Public Sub SendTo(messageData As Byte(), endPoint As UdpEndPoint)
   overload: Rssdp.UdpSocket.SendTo*
   nameWithType.vb: UdpSocket.SendTo(Byte(), UdpEndPoint)
@@ -235,7 +252,7 @@ items:
   - public
   modifiers.vb:
   - Public
-  fullName.vb: Rssdp.UdpSocket.SendTo(System.Byte(), UdpEndPoint)
+  fullName.vb: Rssdp.UdpSocket.SendTo(System.Byte(), Rssdp.Infrastructure.UdpEndPoint)
   name.vb: SendTo(Byte(), UdpEndPoint)
 - uid: Rssdp.UdpSocket.Dispose(System.Boolean)
   commentId: M:Rssdp.UdpSocket.Dispose(System.Boolean)
@@ -251,7 +268,7 @@ items:
   source:
     id: Dispose
     path: ''
-    startLine: 8110
+    startLine: 8361
   assemblies:
   - cs.temp.dll
   namespace: Rssdp
@@ -261,6 +278,7 @@ items:
     - id: disposing
       type: System.Boolean
     content.vb: Protected Overrides Sub Dispose(disposing As Boolean)
+  overridden: Rssdp.Infrastructure.DisposableManagedObjectBase.Dispose(System.Boolean)
   overload: Rssdp.UdpSocket.Dispose*
   modifiers.csharp:
   - protected
@@ -282,7 +300,7 @@ items:
   source:
     id: .ctor
     path: ''
-    startLine: 8616
+    startLine: 8867
   assemblies:
   - cs.temp.dll
   namespace: Rssdp
@@ -315,35 +333,35 @@ items:
   source:
     id: ReceiveAsync
     path: ''
-    startLine: 8634
+    startLine: 8885
   assemblies:
   - cs.temp.dll
   namespace: Rssdp
   syntax:
     content: public Task<ReceivedUdpData> ReceiveAsync()
     return:
-      type: System.Threading.Tasks.Task{ReceivedUdpData}
+      type: System.Threading.Tasks.Task{Rssdp.Infrastructure.ReceivedUdpData}
     content.vb: Public Function ReceiveAsync As Task(Of ReceivedUdpData)
   overload: Rssdp.UdpSocket.ReceiveAsync*
   modifiers.csharp:
   - public
   modifiers.vb:
   - Public
-- uid: Rssdp.UdpSocket.SendTo(System.Byte[],UdpEndPoint)
-  commentId: M:Rssdp.UdpSocket.SendTo(System.Byte[],UdpEndPoint)
-  id: SendTo(System.Byte[],UdpEndPoint)
+- uid: Rssdp.UdpSocket.SendTo(System.Byte[],Rssdp.Infrastructure.UdpEndPoint)
+  commentId: M:Rssdp.UdpSocket.SendTo(System.Byte[],Rssdp.Infrastructure.UdpEndPoint)
+  id: SendTo(System.Byte[],Rssdp.Infrastructure.UdpEndPoint)
   parent: Rssdp.UdpSocket
   langs:
   - csharp
   - vb
   name: SendTo(Byte[], UdpEndPoint)
   nameWithType: UdpSocket.SendTo(Byte[], UdpEndPoint)
-  fullName: Rssdp.UdpSocket.SendTo(System.Byte[], UdpEndPoint)
+  fullName: Rssdp.UdpSocket.SendTo(System.Byte[], Rssdp.Infrastructure.UdpEndPoint)
   type: Method
   source:
     id: SendTo
     path: ''
-    startLine: 8668
+    startLine: 8919
   assemblies:
   - cs.temp.dll
   namespace: Rssdp
@@ -353,7 +371,7 @@ items:
     - id: messageData
       type: System.Byte[]
     - id: endPoint
-      type: UdpEndPoint
+      type: Rssdp.Infrastructure.UdpEndPoint
     content.vb: Public Sub SendTo(messageData As Byte(), endPoint As UdpEndPoint)
   overload: Rssdp.UdpSocket.SendTo*
   nameWithType.vb: UdpSocket.SendTo(Byte(), UdpEndPoint)
@@ -361,7 +379,7 @@ items:
   - public
   modifiers.vb:
   - Public
-  fullName.vb: Rssdp.UdpSocket.SendTo(System.Byte(), UdpEndPoint)
+  fullName.vb: Rssdp.UdpSocket.SendTo(System.Byte(), Rssdp.Infrastructure.UdpEndPoint)
   name.vb: SendTo(Byte(), UdpEndPoint)
 - uid: Rssdp.UdpSocket.Dispose(System.Boolean)
   commentId: M:Rssdp.UdpSocket.Dispose(System.Boolean)
@@ -377,7 +395,7 @@ items:
   source:
     id: Dispose
     path: ''
-    startLine: 8682
+    startLine: 8933
   assemblies:
   - cs.temp.dll
   namespace: Rssdp
@@ -387,6 +405,7 @@ items:
     - id: disposing
       type: System.Boolean
     content.vb: Protected Overrides Sub Dispose(disposing As Boolean)
+  overridden: Rssdp.Infrastructure.DisposableManagedObjectBase.Dispose(System.Boolean)
   overload: Rssdp.UdpSocket.Dispose*
   modifiers.csharp:
   - protected
@@ -408,38 +427,427 @@ references:
   name: Object
   nameWithType: Object
   fullName: System.Object
-- uid: IUdpSocket
-  isExternal: true
-  name: IUdpSocket
-  nameWithType: IUdpSocket
-  fullName: IUdpSocket
-- uid: DisposableManagedObjectBase
-  commentId: '!:DisposableManagedObjectBase'
-  isExternal: true
+- uid: Rssdp.Infrastructure.DisposableManagedObjectBase
+  commentId: T:Rssdp.Infrastructure.DisposableManagedObjectBase
+  parent: Rssdp.Infrastructure
+  isExternal: false
   name: DisposableManagedObjectBase
   nameWithType: DisposableManagedObjectBase
-  fullName: DisposableManagedObjectBase
+  fullName: Rssdp.Infrastructure.DisposableManagedObjectBase
+- uid: Rssdp.Infrastructure.IUdpSocket
+  commentId: T:Rssdp.Infrastructure.IUdpSocket
+  parent: Rssdp.Infrastructure
+  isExternal: false
+  name: IUdpSocket
+  nameWithType: IUdpSocket
+  fullName: Rssdp.Infrastructure.IUdpSocket
+- uid: System.IDisposable
+  commentId: T:System.IDisposable
+  parent: System
+  isExternal: true
+  name: IDisposable
+  nameWithType: IDisposable
+  fullName: System.IDisposable
+- uid: Rssdp.Infrastructure.DisposableManagedObjectBase.ThrowIfDisposed
+  commentId: M:Rssdp.Infrastructure.DisposableManagedObjectBase.ThrowIfDisposed
+  parent: Rssdp.Infrastructure.DisposableManagedObjectBase
+  isExternal: false
+  name: ThrowIfDisposed()
+  nameWithType: DisposableManagedObjectBase.ThrowIfDisposed()
+  fullName: Rssdp.Infrastructure.DisposableManagedObjectBase.ThrowIfDisposed()
+  spec.csharp:
+  - uid: Rssdp.Infrastructure.DisposableManagedObjectBase.ThrowIfDisposed
+    name: ThrowIfDisposed
+    nameWithType: DisposableManagedObjectBase.ThrowIfDisposed
+    fullName: Rssdp.Infrastructure.DisposableManagedObjectBase.ThrowIfDisposed
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: Rssdp.Infrastructure.DisposableManagedObjectBase.ThrowIfDisposed
+    name: ThrowIfDisposed
+    nameWithType: DisposableManagedObjectBase.ThrowIfDisposed
+    fullName: Rssdp.Infrastructure.DisposableManagedObjectBase.ThrowIfDisposed
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: Rssdp.Infrastructure.DisposableManagedObjectBase.IsDisposed
+  commentId: P:Rssdp.Infrastructure.DisposableManagedObjectBase.IsDisposed
+  parent: Rssdp.Infrastructure.DisposableManagedObjectBase
+  isExternal: false
+  name: IsDisposed
+  nameWithType: DisposableManagedObjectBase.IsDisposed
+  fullName: Rssdp.Infrastructure.DisposableManagedObjectBase.IsDisposed
+- uid: Rssdp.Infrastructure.DisposableManagedObjectBase.Dispose
+  commentId: M:Rssdp.Infrastructure.DisposableManagedObjectBase.Dispose
+  parent: Rssdp.Infrastructure.DisposableManagedObjectBase
+  isExternal: false
+  name: Dispose()
+  nameWithType: DisposableManagedObjectBase.Dispose()
+  fullName: Rssdp.Infrastructure.DisposableManagedObjectBase.Dispose()
+  spec.csharp:
+  - uid: Rssdp.Infrastructure.DisposableManagedObjectBase.Dispose
+    name: Dispose
+    nameWithType: DisposableManagedObjectBase.Dispose
+    fullName: Rssdp.Infrastructure.DisposableManagedObjectBase.Dispose
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: Rssdp.Infrastructure.DisposableManagedObjectBase.Dispose
+    name: Dispose
+    nameWithType: DisposableManagedObjectBase.Dispose
+    fullName: Rssdp.Infrastructure.DisposableManagedObjectBase.Dispose
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  name: ToString()
+  nameWithType: Object.ToString()
+  fullName: System.Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    nameWithType: Object.ToString
+    fullName: System.Object.ToString
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    nameWithType: Object.ToString
+    fullName: System.Object.ToString
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  name: Equals(Object)
+  nameWithType: Object.Equals(Object)
+  fullName: System.Object.Equals(System.Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  name: Equals(Object, Object)
+  nameWithType: Object.Equals(Object, Object)
+  fullName: System.Object.Equals(System.Object, System.Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  name: ReferenceEquals(Object, Object)
+  nameWithType: Object.ReferenceEquals(Object, Object)
+  fullName: System.Object.ReferenceEquals(System.Object, System.Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    nameWithType: Object.ReferenceEquals
+    fullName: System.Object.ReferenceEquals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    nameWithType: Object.ReferenceEquals
+    fullName: System.Object.ReferenceEquals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  name: GetHashCode()
+  nameWithType: Object.GetHashCode()
+  fullName: System.Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    nameWithType: Object.GetHashCode
+    fullName: System.Object.GetHashCode
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    nameWithType: Object.GetHashCode
+    fullName: System.Object.GetHashCode
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  name: GetType()
+  nameWithType: Object.GetType()
+  fullName: System.Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    nameWithType: Object.GetType
+    fullName: System.Object.GetType
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    nameWithType: Object.GetType
+    fullName: System.Object.GetType
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  name: MemberwiseClone()
+  nameWithType: Object.MemberwiseClone()
+  fullName: System.Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    nameWithType: Object.MemberwiseClone
+    fullName: System.Object.MemberwiseClone
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    nameWithType: Object.MemberwiseClone
+    fullName: System.Object.MemberwiseClone
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
 - uid: System
   commentId: N:System
   isExternal: false
   name: System
   nameWithType: System
   fullName: System
+- uid: Rssdp.Infrastructure
+  commentId: N:Rssdp.Infrastructure
+  isExternal: false
+  name: Rssdp.Infrastructure
+  nameWithType: Rssdp.Infrastructure
+  fullName: Rssdp.Infrastructure
 - uid: Rssdp.UdpSocket.ReceiveAsync*
   commentId: Overload:Rssdp.UdpSocket.ReceiveAsync
   isExternal: false
   name: ReceiveAsync
   nameWithType: UdpSocket.ReceiveAsync
   fullName: Rssdp.UdpSocket.ReceiveAsync
-- uid: System.Threading.Tasks.Task{ReceivedUdpData}
-  commentId: T:System.Threading.Tasks.Task{ReceivedUdpData}
+- uid: Rssdp.Infrastructure.IUdpSocket.ReceiveAsync
+  commentId: M:Rssdp.Infrastructure.IUdpSocket.ReceiveAsync
+  parent: Rssdp.Infrastructure.IUdpSocket
+  isExternal: false
+  name: ReceiveAsync()
+  nameWithType: IUdpSocket.ReceiveAsync()
+  fullName: Rssdp.Infrastructure.IUdpSocket.ReceiveAsync()
+  spec.csharp:
+  - uid: Rssdp.Infrastructure.IUdpSocket.ReceiveAsync
+    name: ReceiveAsync
+    nameWithType: IUdpSocket.ReceiveAsync
+    fullName: Rssdp.Infrastructure.IUdpSocket.ReceiveAsync
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: Rssdp.Infrastructure.IUdpSocket.ReceiveAsync
+    name: ReceiveAsync
+    nameWithType: IUdpSocket.ReceiveAsync
+    fullName: Rssdp.Infrastructure.IUdpSocket.ReceiveAsync
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Threading.Tasks.Task{Rssdp.Infrastructure.ReceivedUdpData}
+  commentId: T:System.Threading.Tasks.Task{Rssdp.Infrastructure.ReceivedUdpData}
   parent: System.Threading.Tasks
   definition: System.Threading.Tasks.Task`1
   name: Task<ReceivedUdpData>
   nameWithType: Task<ReceivedUdpData>
-  fullName: System.Threading.Tasks.Task<ReceivedUdpData>
+  fullName: System.Threading.Tasks.Task<Rssdp.Infrastructure.ReceivedUdpData>
   nameWithType.vb: Task(Of ReceivedUdpData)
-  fullName.vb: System.Threading.Tasks.Task(Of ReceivedUdpData)
+  fullName.vb: System.Threading.Tasks.Task(Of Rssdp.Infrastructure.ReceivedUdpData)
   name.vb: Task(Of ReceivedUdpData)
   spec.csharp:
   - uid: System.Threading.Tasks.Task`1
@@ -450,11 +858,10 @@ references:
   - name: <
     nameWithType: <
     fullName: <
-  - uid: ReceivedUdpData
+  - uid: Rssdp.Infrastructure.ReceivedUdpData
     name: ReceivedUdpData
     nameWithType: ReceivedUdpData
-    fullName: ReceivedUdpData
-    isExternal: true
+    fullName: Rssdp.Infrastructure.ReceivedUdpData
   - name: '>'
     nameWithType: '>'
     fullName: '>'
@@ -467,11 +874,10 @@ references:
   - name: '(Of '
     nameWithType: '(Of '
     fullName: '(Of '
-  - uid: ReceivedUdpData
+  - uid: Rssdp.Infrastructure.ReceivedUdpData
     name: ReceivedUdpData
     nameWithType: ReceivedUdpData
-    fullName: ReceivedUdpData
-    isExternal: true
+    fullName: Rssdp.Infrastructure.ReceivedUdpData
   - name: )
     nameWithType: )
     fullName: )
@@ -526,6 +932,68 @@ references:
   name: SendTo
   nameWithType: UdpSocket.SendTo
   fullName: Rssdp.UdpSocket.SendTo
+- uid: Rssdp.Infrastructure.IUdpSocket.SendTo(System.Byte[],Rssdp.Infrastructure.UdpEndPoint)
+  commentId: M:Rssdp.Infrastructure.IUdpSocket.SendTo(System.Byte[],Rssdp.Infrastructure.UdpEndPoint)
+  parent: Rssdp.Infrastructure.IUdpSocket
+  isExternal: true
+  name: SendTo(Byte[], UdpEndPoint)
+  nameWithType: IUdpSocket.SendTo(Byte[], UdpEndPoint)
+  fullName: Rssdp.Infrastructure.IUdpSocket.SendTo(System.Byte[], Rssdp.Infrastructure.UdpEndPoint)
+  nameWithType.vb: IUdpSocket.SendTo(Byte(), UdpEndPoint)
+  fullName.vb: Rssdp.Infrastructure.IUdpSocket.SendTo(System.Byte(), Rssdp.Infrastructure.UdpEndPoint)
+  name.vb: SendTo(Byte(), UdpEndPoint)
+  spec.csharp:
+  - uid: Rssdp.Infrastructure.IUdpSocket.SendTo(System.Byte[],Rssdp.Infrastructure.UdpEndPoint)
+    name: SendTo
+    nameWithType: IUdpSocket.SendTo
+    fullName: Rssdp.Infrastructure.IUdpSocket.SendTo
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Byte
+    name: Byte
+    nameWithType: Byte
+    fullName: System.Byte
+    isExternal: true
+  - name: '[]'
+    nameWithType: '[]'
+    fullName: '[]'
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: Rssdp.Infrastructure.UdpEndPoint
+    name: UdpEndPoint
+    nameWithType: UdpEndPoint
+    fullName: Rssdp.Infrastructure.UdpEndPoint
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: Rssdp.Infrastructure.IUdpSocket.SendTo(System.Byte[],Rssdp.Infrastructure.UdpEndPoint)
+    name: SendTo
+    nameWithType: IUdpSocket.SendTo
+    fullName: Rssdp.Infrastructure.IUdpSocket.SendTo
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Byte
+    name: Byte
+    nameWithType: Byte
+    fullName: System.Byte
+    isExternal: true
+  - name: ()
+    nameWithType: ()
+    fullName: ()
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: Rssdp.Infrastructure.UdpEndPoint
+    name: UdpEndPoint
+    nameWithType: UdpEndPoint
+    fullName: Rssdp.Infrastructure.UdpEndPoint
+  - name: )
+    nameWithType: )
+    fullName: )
 - uid: System.Byte[]
   name: Byte[]
   nameWithType: Byte[]
@@ -551,11 +1019,52 @@ references:
   - name: ()
     nameWithType: ()
     fullName: ()
-- uid: UdpEndPoint
-  isExternal: true
+- uid: Rssdp.Infrastructure.UdpEndPoint
+  commentId: T:Rssdp.Infrastructure.UdpEndPoint
+  parent: Rssdp.Infrastructure
+  isExternal: false
   name: UdpEndPoint
   nameWithType: UdpEndPoint
-  fullName: UdpEndPoint
+  fullName: Rssdp.Infrastructure.UdpEndPoint
+- uid: Rssdp.Infrastructure.DisposableManagedObjectBase.Dispose(System.Boolean)
+  commentId: M:Rssdp.Infrastructure.DisposableManagedObjectBase.Dispose(System.Boolean)
+  parent: Rssdp.Infrastructure.DisposableManagedObjectBase
+  isExternal: true
+  name: Dispose(Boolean)
+  nameWithType: DisposableManagedObjectBase.Dispose(Boolean)
+  fullName: Rssdp.Infrastructure.DisposableManagedObjectBase.Dispose(System.Boolean)
+  spec.csharp:
+  - uid: Rssdp.Infrastructure.DisposableManagedObjectBase.Dispose(System.Boolean)
+    name: Dispose
+    nameWithType: DisposableManagedObjectBase.Dispose
+    fullName: Rssdp.Infrastructure.DisposableManagedObjectBase.Dispose
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Boolean
+    name: Boolean
+    nameWithType: Boolean
+    fullName: System.Boolean
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: Rssdp.Infrastructure.DisposableManagedObjectBase.Dispose(System.Boolean)
+    name: Dispose
+    nameWithType: DisposableManagedObjectBase.Dispose
+    fullName: Rssdp.Infrastructure.DisposableManagedObjectBase.Dispose
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Boolean
+    name: Boolean
+    nameWithType: Boolean
+    fullName: System.Boolean
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
 - uid: Rssdp.UdpSocket.Dispose*
   commentId: Overload:Rssdp.UdpSocket.Dispose
   isExternal: false

@@ -44,6 +44,12 @@ items:
   assemblies:
   - cs.temp.dll
 references:
+- uid: Rssdp.SsdpDevicePublisher
+  commentId: T:Rssdp.SsdpDevicePublisher
+  isExternal: false
+  name: SsdpDevicePublisher
+  nameWithType: SsdpDevicePublisher
+  fullName: Rssdp.SsdpDevicePublisher
 - uid: Rssdp.Resource
   commentId: T:Rssdp.Resource
   isExternal: false
@@ -62,12 +68,6 @@ references:
   name: Resource.String
   nameWithType: Resource.String
   fullName: Rssdp.Resource.String
-- uid: Rssdp.SsdpDevicePublisher
-  commentId: T:Rssdp.SsdpDevicePublisher
-  isExternal: false
-  name: SsdpDevicePublisher
-  nameWithType: SsdpDevicePublisher
-  fullName: Rssdp.SsdpDevicePublisher
 - uid: Rssdp.SocketFactory
   commentId: T:Rssdp.SocketFactory
   isExternal: false

@@ -27,7 +27,7 @@ items:
   source:
     id: SsdpCommunicationsServer
     path: ''
-    startLine: 3111
+    startLine: 3362
   assemblies:
   - cs.temp.dll
   namespace: Rssdp.Infrastructure
@@ -78,7 +78,7 @@ items:
   source:
     id: RequestReceived
     path: ''
-    startLine: 3155
+    startLine: 3406
   assemblies:
   - cs.temp.dll
   namespace: Rssdp.Infrastructure
@@ -109,7 +109,7 @@ items:
   source:
     id: ResponseReceived
     path: ''
-    startLine: 3160
+    startLine: 3411
   assemblies:
   - cs.temp.dll
   namespace: Rssdp.Infrastructure
@@ -140,7 +140,7 @@ items:
   source:
     id: .ctor
     path: ''
-    startLine: 3171
+    startLine: 3422
   assemblies:
   - cs.temp.dll
   namespace: Rssdp.Infrastructure
@@ -176,7 +176,7 @@ items:
   source:
     id: .ctor
     path: ''
-    startLine: 3182
+    startLine: 3433
   assemblies:
   - cs.temp.dll
   namespace: Rssdp.Infrastructure
@@ -215,7 +215,7 @@ items:
   source:
     id: .ctor
     path: ''
-    startLine: 3195
+    startLine: 3446
   assemblies:
   - cs.temp.dll
   namespace: Rssdp.Infrastructure
@@ -260,7 +260,7 @@ items:
   source:
     id: BeginListeningForBroadcasts
     path: ''
-    startLine: 3220
+    startLine: 3471
   assemblies:
   - cs.temp.dll
   namespace: Rssdp.Infrastructure
@@ -294,7 +294,7 @@ items:
   source:
     id: StopListeningForBroadcasts
     path: ''
-    startLine: 3238
+    startLine: 3489
   assemblies:
   - cs.temp.dll
   namespace: Rssdp.Infrastructure
@@ -328,7 +328,7 @@ items:
   source:
     id: SendMessage
     path: ''
-    startLine: 3259
+    startLine: 3510
   assemblies:
   - cs.temp.dll
   namespace: Rssdp.Infrastructure
@@ -375,7 +375,7 @@ items:
   source:
     id: StopListeningForResponses
     path: ''
-    startLine: 3278
+    startLine: 3529
   assemblies:
   - cs.temp.dll
   namespace: Rssdp.Infrastructure
@@ -409,7 +409,7 @@ items:
   source:
     id: IsShared
     path: ''
-    startLine: 3301
+    startLine: 3552
   assemblies:
   - cs.temp.dll
   namespace: Rssdp.Infrastructure
@@ -445,7 +445,7 @@ items:
   source:
     id: DeviceNetworkType
     path: ''
-    startLine: 3310
+    startLine: 3561
   assemblies:
   - cs.temp.dll
   namespace: Rssdp.Infrastructure
@@ -480,7 +480,7 @@ items:
   source:
     id: Dispose
     path: ''
-    startLine: 3320
+    startLine: 3571
   assemblies:
   - cs.temp.dll
   namespace: Rssdp.Infrastructure
@@ -1256,6 +1256,7 @@ references:
     fullName: )
 - uid: Rssdp.Infrastructure.SsdpDeviceLocatorBase
   commentId: T:Rssdp.Infrastructure.SsdpDeviceLocatorBase
+  parent: Rssdp.Infrastructure
   isExternal: false
   name: SsdpDeviceLocatorBase
   nameWithType: SsdpDeviceLocatorBase

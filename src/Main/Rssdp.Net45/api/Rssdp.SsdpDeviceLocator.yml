@@ -7,8 +7,8 @@ items:
   children:
   - Rssdp.SsdpDeviceLocator.#ctor
   - Rssdp.SsdpDeviceLocator.#ctor
-  - Rssdp.SsdpDeviceLocator.#ctor(ISsdpCommunicationsServer)
-  - Rssdp.SsdpDeviceLocator.#ctor(ISsdpCommunicationsServer)
+  - Rssdp.SsdpDeviceLocator.#ctor(Rssdp.Infrastructure.ISsdpCommunicationsServer)
+  - Rssdp.SsdpDeviceLocator.#ctor(Rssdp.Infrastructure.ISsdpCommunicationsServer)
   - Rssdp.SsdpDeviceLocator.#ctor(System.String)
   langs:
   - csharp
@@ -20,22 +20,49 @@ items:
   source:
     id: SsdpDeviceLocator
     path: ''
-    startLine: 8273
+    startLine: 8524
   assemblies:
   - cs.temp.dll
   namespace: Rssdp
   summary: "\nAllows you to search the network for a particular device, device types, or UPnP service types. Also listenings for broadcast notifications of device availability and raises events to indicate changes in status.\n"
   example: []
   syntax:
-    content: 'public sealed class SsdpDeviceLocator : SsdpDeviceLocatorBase, SsdpDeviceLocatorBase'
+    content: 'public sealed class SsdpDeviceLocator : SsdpDeviceLocatorBase, IDisposable, ISsdpDeviceLocator'
     content.vb: >-
       Public NotInheritable Class SsdpDeviceLocator
           Inherits SsdpDeviceLocatorBase
-          Implements SsdpDeviceLocatorBase
+          Implements IDisposable, ISsdpDeviceLocator
   inheritance:
   - System.Object
+  - Rssdp.Infrastructure.DisposableManagedObjectBase
+  - Rssdp.Infrastructure.SsdpDeviceLocatorBase
   implements:
-  - SsdpDeviceLocatorBase
+  - System.IDisposable
+  - Rssdp.Infrastructure.ISsdpDeviceLocator
+  inheritedMembers:
+  - Rssdp.Infrastructure.SsdpDeviceLocatorBase.DeviceAvailable
+  - Rssdp.Infrastructure.SsdpDeviceLocatorBase.DeviceUnavailable
+  - Rssdp.Infrastructure.SsdpDeviceLocatorBase.SearchAsync
+  - Rssdp.Infrastructure.SsdpDeviceLocatorBase.SearchAsync(System.String)
+  - Rssdp.Infrastructure.SsdpDeviceLocatorBase.SearchAsync(System.TimeSpan)
+  - Rssdp.Infrastructure.SsdpDeviceLocatorBase.SearchAsync(System.String,System.TimeSpan)
+  - Rssdp.Infrastructure.SsdpDeviceLocatorBase.StartListeningForNotifications
+  - Rssdp.Infrastructure.SsdpDeviceLocatorBase.StopListeningForNotifications
+  - Rssdp.Infrastructure.SsdpDeviceLocatorBase.OnDeviceAvailable(Rssdp.DiscoveredSsdpDevice,System.Boolean)
+  - Rssdp.Infrastructure.SsdpDeviceLocatorBase.OnDeviceUnavailable(Rssdp.DiscoveredSsdpDevice,System.Boolean)
+  - Rssdp.Infrastructure.SsdpDeviceLocatorBase.IsSearching
+  - Rssdp.Infrastructure.SsdpDeviceLocatorBase.NotificationFilter
+  - Rssdp.Infrastructure.SsdpDeviceLocatorBase.Dispose(System.Boolean)
+  - Rssdp.Infrastructure.DisposableManagedObjectBase.ThrowIfDisposed
+  - Rssdp.Infrastructure.DisposableManagedObjectBase.IsDisposed
+  - Rssdp.Infrastructure.DisposableManagedObjectBase.Dispose
+  - System.Object.ToString
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
   modifiers.csharp:
   - public
   - sealed
@@ -58,11 +85,11 @@ items:
   source:
     id: .ctor
     path: ''
-    startLine: 504
+    startLine: 755
   assemblies:
   - cs.temp.dll
   namespace: Rssdp
-  summary: "\nDefault constructor. Constructs a new instance using the default <see cref=\"!:ISsdpCommunicationsServer\"></see> and <see cref=\"!:ISocketFactory\"></see> implementations for this platform.\n"
+  summary: "\nDefault constructor. Constructs a new instance using the default <xref href=\"Rssdp.Infrastructure.ISsdpCommunicationsServer\" data-throw-if-not-resolved=\"false\"></xref> and <xref href=\"Rssdp.Infrastructure.ISocketFactory\" data-throw-if-not-resolved=\"false\"></xref> implementations for this platform.\n"
   example: []
   syntax:
     content: public SsdpDeviceLocator()
@@ -72,31 +99,31 @@ items:
   - public
   modifiers.vb:
   - Public
-- uid: Rssdp.SsdpDeviceLocator.#ctor(ISsdpCommunicationsServer)
-  commentId: M:Rssdp.SsdpDeviceLocator.#ctor(ISsdpCommunicationsServer)
-  id: '#ctor(ISsdpCommunicationsServer)'
+- uid: Rssdp.SsdpDeviceLocator.#ctor(Rssdp.Infrastructure.ISsdpCommunicationsServer)
+  commentId: M:Rssdp.SsdpDeviceLocator.#ctor(Rssdp.Infrastructure.ISsdpCommunicationsServer)
+  id: '#ctor(Rssdp.Infrastructure.ISsdpCommunicationsServer)'
   parent: Rssdp.SsdpDeviceLocator
   langs:
   - csharp
   - vb
   name: SsdpDeviceLocator(ISsdpCommunicationsServer)
   nameWithType: SsdpDeviceLocator.SsdpDeviceLocator(ISsdpCommunicationsServer)
-  fullName: Rssdp.SsdpDeviceLocator.SsdpDeviceLocator(ISsdpCommunicationsServer)
+  fullName: Rssdp.SsdpDeviceLocator.SsdpDeviceLocator(Rssdp.Infrastructure.ISsdpCommunicationsServer)
   type: Constructor
   source:
     id: .ctor
     path: ''
-    startLine: 513
+    startLine: 764
   assemblies:
   - cs.temp.dll
   namespace: Rssdp
-  summary: "\nFull constructor. Constructs a new instance using the provided <see cref=\"!:ISsdpCommunicationsServer\"></see> implementation.\n"
+  summary: "\nFull constructor. Constructs a new instance using the provided <xref href=\"Rssdp.Infrastructure.ISsdpCommunicationsServer\" data-throw-if-not-resolved=\"false\"></xref> implementation.\n"
   example: []
   syntax:
     content: public SsdpDeviceLocator(ISsdpCommunicationsServer communicationsServer)
     parameters:
     - id: communicationsServer
-      type: ISsdpCommunicationsServer
+      type: Rssdp.Infrastructure.ISsdpCommunicationsServer
     content.vb: Public Sub New(communicationsServer As ISsdpCommunicationsServer)
   overload: Rssdp.SsdpDeviceLocator.#ctor*
   modifiers.csharp:
@@ -117,11 +144,11 @@ items:
   source:
     id: .ctor
     path: ''
-    startLine: 8279
+    startLine: 8530
   assemblies:
   - cs.temp.dll
   namespace: Rssdp
-  summary: "\nDefault constructor. Constructs a new instance using the default <see cref=\"!:ISsdpCommunicationsServer\"></see> and <see cref=\"!:ISocketFactory\"></see> implementations for this platform.\n"
+  summary: "\nDefault constructor. Constructs a new instance using the default <xref href=\"Rssdp.Infrastructure.ISsdpCommunicationsServer\" data-throw-if-not-resolved=\"false\"></xref> and <xref href=\"Rssdp.Infrastructure.ISocketFactory\" data-throw-if-not-resolved=\"false\"></xref> implementations for this platform.\n"
   example: []
   syntax:
     content: public SsdpDeviceLocator()
@@ -145,7 +172,7 @@ items:
   source:
     id: .ctor
     path: ''
-    startLine: 8298
+    startLine: 8549
   assemblies:
   - cs.temp.dll
   namespace: Rssdp
@@ -163,31 +190,31 @@ items:
   - public
   modifiers.vb:
   - Public
-- uid: Rssdp.SsdpDeviceLocator.#ctor(ISsdpCommunicationsServer)
-  commentId: M:Rssdp.SsdpDeviceLocator.#ctor(ISsdpCommunicationsServer)
-  id: '#ctor(ISsdpCommunicationsServer)'
+- uid: Rssdp.SsdpDeviceLocator.#ctor(Rssdp.Infrastructure.ISsdpCommunicationsServer)
+  commentId: M:Rssdp.SsdpDeviceLocator.#ctor(Rssdp.Infrastructure.ISsdpCommunicationsServer)
+  id: '#ctor(Rssdp.Infrastructure.ISsdpCommunicationsServer)'
   parent: Rssdp.SsdpDeviceLocator
   langs:
   - csharp
   - vb
   name: SsdpDeviceLocator(ISsdpCommunicationsServer)
   nameWithType: SsdpDeviceLocator.SsdpDeviceLocator(ISsdpCommunicationsServer)
-  fullName: Rssdp.SsdpDeviceLocator.SsdpDeviceLocator(ISsdpCommunicationsServer)
+  fullName: Rssdp.SsdpDeviceLocator.SsdpDeviceLocator(Rssdp.Infrastructure.ISsdpCommunicationsServer)
   type: Constructor
   source:
     id: .ctor
     path: ''
-    startLine: 8314
+    startLine: 8565
   assemblies:
   - cs.temp.dll
   namespace: Rssdp
-  summary: "\nFull constructor. Constructs a new instance using the provided <see cref=\"!:ISsdpCommunicationsServer\"></see> implementation.\n"
+  summary: "\nFull constructor. Constructs a new instance using the provided <xref href=\"Rssdp.Infrastructure.ISsdpCommunicationsServer\" data-throw-if-not-resolved=\"false\"></xref> implementation.\n"
   example: []
   syntax:
     content: public SsdpDeviceLocator(ISsdpCommunicationsServer communicationsServer)
     parameters:
     - id: communicationsServer
-      type: ISsdpCommunicationsServer
+      type: Rssdp.Infrastructure.ISsdpCommunicationsServer
     content.vb: Public Sub New(communicationsServer As ISsdpCommunicationsServer)
   overload: Rssdp.SsdpDeviceLocator.#ctor*
   modifiers.csharp:
@@ -208,29 +235,803 @@ references:
   name: Object
   nameWithType: Object
   fullName: System.Object
-- uid: SsdpDeviceLocatorBase
-  commentId: '!:SsdpDeviceLocatorBase'
-  isExternal: true
+- uid: Rssdp.Infrastructure.DisposableManagedObjectBase
+  commentId: T:Rssdp.Infrastructure.DisposableManagedObjectBase
+  parent: Rssdp.Infrastructure
+  isExternal: false
+  name: DisposableManagedObjectBase
+  nameWithType: DisposableManagedObjectBase
+  fullName: Rssdp.Infrastructure.DisposableManagedObjectBase
+- uid: Rssdp.Infrastructure.SsdpDeviceLocatorBase
+  commentId: T:Rssdp.Infrastructure.SsdpDeviceLocatorBase
+  parent: Rssdp.Infrastructure
+  isExternal: false
   name: SsdpDeviceLocatorBase
   nameWithType: SsdpDeviceLocatorBase
-  fullName: SsdpDeviceLocatorBase
+  fullName: Rssdp.Infrastructure.SsdpDeviceLocatorBase
+- uid: System.IDisposable
+  commentId: T:System.IDisposable
+  parent: System
+  isExternal: true
+  name: IDisposable
+  nameWithType: IDisposable
+  fullName: System.IDisposable
+- uid: Rssdp.Infrastructure.ISsdpDeviceLocator
+  commentId: T:Rssdp.Infrastructure.ISsdpDeviceLocator
+  parent: Rssdp.Infrastructure
+  isExternal: false
+  name: ISsdpDeviceLocator
+  nameWithType: ISsdpDeviceLocator
+  fullName: Rssdp.Infrastructure.ISsdpDeviceLocator
+- uid: Rssdp.Infrastructure.SsdpDeviceLocatorBase.DeviceAvailable
+  commentId: E:Rssdp.Infrastructure.SsdpDeviceLocatorBase.DeviceAvailable
+  parent: Rssdp.Infrastructure.SsdpDeviceLocatorBase
+  isExternal: false
+  name: DeviceAvailable
+  nameWithType: SsdpDeviceLocatorBase.DeviceAvailable
+  fullName: Rssdp.Infrastructure.SsdpDeviceLocatorBase.DeviceAvailable
+- uid: Rssdp.Infrastructure.SsdpDeviceLocatorBase.DeviceUnavailable
+  commentId: E:Rssdp.Infrastructure.SsdpDeviceLocatorBase.DeviceUnavailable
+  parent: Rssdp.Infrastructure.SsdpDeviceLocatorBase
+  isExternal: false
+  name: DeviceUnavailable
+  nameWithType: SsdpDeviceLocatorBase.DeviceUnavailable
+  fullName: Rssdp.Infrastructure.SsdpDeviceLocatorBase.DeviceUnavailable
+- uid: Rssdp.Infrastructure.SsdpDeviceLocatorBase.SearchAsync
+  commentId: M:Rssdp.Infrastructure.SsdpDeviceLocatorBase.SearchAsync
+  parent: Rssdp.Infrastructure.SsdpDeviceLocatorBase
+  isExternal: false
+  name: SearchAsync()
+  nameWithType: SsdpDeviceLocatorBase.SearchAsync()
+  fullName: Rssdp.Infrastructure.SsdpDeviceLocatorBase.SearchAsync()
+  spec.csharp:
+  - uid: Rssdp.Infrastructure.SsdpDeviceLocatorBase.SearchAsync
+    name: SearchAsync
+    nameWithType: SsdpDeviceLocatorBase.SearchAsync
+    fullName: Rssdp.Infrastructure.SsdpDeviceLocatorBase.SearchAsync
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: Rssdp.Infrastructure.SsdpDeviceLocatorBase.SearchAsync
+    name: SearchAsync
+    nameWithType: SsdpDeviceLocatorBase.SearchAsync
+    fullName: Rssdp.Infrastructure.SsdpDeviceLocatorBase.SearchAsync
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: Rssdp.Infrastructure.SsdpDeviceLocatorBase.SearchAsync(System.String)
+  commentId: M:Rssdp.Infrastructure.SsdpDeviceLocatorBase.SearchAsync(System.String)
+  parent: Rssdp.Infrastructure.SsdpDeviceLocatorBase
+  isExternal: true
+  name: SearchAsync(String)
+  nameWithType: SsdpDeviceLocatorBase.SearchAsync(String)
+  fullName: Rssdp.Infrastructure.SsdpDeviceLocatorBase.SearchAsync(System.String)
+  spec.csharp:
+  - uid: Rssdp.Infrastructure.SsdpDeviceLocatorBase.SearchAsync(System.String)
+    name: SearchAsync
+    nameWithType: SsdpDeviceLocatorBase.SearchAsync
+    fullName: Rssdp.Infrastructure.SsdpDeviceLocatorBase.SearchAsync
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: Rssdp.Infrastructure.SsdpDeviceLocatorBase.SearchAsync(System.String)
+    name: SearchAsync
+    nameWithType: SsdpDeviceLocatorBase.SearchAsync
+    fullName: Rssdp.Infrastructure.SsdpDeviceLocatorBase.SearchAsync
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: Rssdp.Infrastructure.SsdpDeviceLocatorBase.SearchAsync(System.TimeSpan)
+  commentId: M:Rssdp.Infrastructure.SsdpDeviceLocatorBase.SearchAsync(System.TimeSpan)
+  parent: Rssdp.Infrastructure.SsdpDeviceLocatorBase
+  isExternal: true
+  name: SearchAsync(TimeSpan)
+  nameWithType: SsdpDeviceLocatorBase.SearchAsync(TimeSpan)
+  fullName: Rssdp.Infrastructure.SsdpDeviceLocatorBase.SearchAsync(System.TimeSpan)
+  spec.csharp:
+  - uid: Rssdp.Infrastructure.SsdpDeviceLocatorBase.SearchAsync(System.TimeSpan)
+    name: SearchAsync
+    nameWithType: SsdpDeviceLocatorBase.SearchAsync
+    fullName: Rssdp.Infrastructure.SsdpDeviceLocatorBase.SearchAsync
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.TimeSpan
+    name: TimeSpan
+    nameWithType: TimeSpan
+    fullName: System.TimeSpan
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: Rssdp.Infrastructure.SsdpDeviceLocatorBase.SearchAsync(System.TimeSpan)
+    name: SearchAsync
+    nameWithType: SsdpDeviceLocatorBase.SearchAsync
+    fullName: Rssdp.Infrastructure.SsdpDeviceLocatorBase.SearchAsync
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.TimeSpan
+    name: TimeSpan
+    nameWithType: TimeSpan
+    fullName: System.TimeSpan
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: Rssdp.Infrastructure.SsdpDeviceLocatorBase.SearchAsync(System.String,System.TimeSpan)
+  commentId: M:Rssdp.Infrastructure.SsdpDeviceLocatorBase.SearchAsync(System.String,System.TimeSpan)
+  parent: Rssdp.Infrastructure.SsdpDeviceLocatorBase
+  isExternal: true
+  name: SearchAsync(String, TimeSpan)
+  nameWithType: SsdpDeviceLocatorBase.SearchAsync(String, TimeSpan)
+  fullName: Rssdp.Infrastructure.SsdpDeviceLocatorBase.SearchAsync(System.String, System.TimeSpan)
+  spec.csharp:
+  - uid: Rssdp.Infrastructure.SsdpDeviceLocatorBase.SearchAsync(System.String,System.TimeSpan)
+    name: SearchAsync
+    nameWithType: SsdpDeviceLocatorBase.SearchAsync
+    fullName: Rssdp.Infrastructure.SsdpDeviceLocatorBase.SearchAsync
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.TimeSpan
+    name: TimeSpan
+    nameWithType: TimeSpan
+    fullName: System.TimeSpan
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: Rssdp.Infrastructure.SsdpDeviceLocatorBase.SearchAsync(System.String,System.TimeSpan)
+    name: SearchAsync
+    nameWithType: SsdpDeviceLocatorBase.SearchAsync
+    fullName: Rssdp.Infrastructure.SsdpDeviceLocatorBase.SearchAsync
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.TimeSpan
+    name: TimeSpan
+    nameWithType: TimeSpan
+    fullName: System.TimeSpan
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: Rssdp.Infrastructure.SsdpDeviceLocatorBase.StartListeningForNotifications
+  commentId: M:Rssdp.Infrastructure.SsdpDeviceLocatorBase.StartListeningForNotifications
+  parent: Rssdp.Infrastructure.SsdpDeviceLocatorBase
+  isExternal: false
+  name: StartListeningForNotifications()
+  nameWithType: SsdpDeviceLocatorBase.StartListeningForNotifications()
+  fullName: Rssdp.Infrastructure.SsdpDeviceLocatorBase.StartListeningForNotifications()
+  spec.csharp:
+  - uid: Rssdp.Infrastructure.SsdpDeviceLocatorBase.StartListeningForNotifications
+    name: StartListeningForNotifications
+    nameWithType: SsdpDeviceLocatorBase.StartListeningForNotifications
+    fullName: Rssdp.Infrastructure.SsdpDeviceLocatorBase.StartListeningForNotifications
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: Rssdp.Infrastructure.SsdpDeviceLocatorBase.StartListeningForNotifications
+    name: StartListeningForNotifications
+    nameWithType: SsdpDeviceLocatorBase.StartListeningForNotifications
+    fullName: Rssdp.Infrastructure.SsdpDeviceLocatorBase.StartListeningForNotifications
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: Rssdp.Infrastructure.SsdpDeviceLocatorBase.StopListeningForNotifications
+  commentId: M:Rssdp.Infrastructure.SsdpDeviceLocatorBase.StopListeningForNotifications
+  parent: Rssdp.Infrastructure.SsdpDeviceLocatorBase
+  isExternal: false
+  name: StopListeningForNotifications()
+  nameWithType: SsdpDeviceLocatorBase.StopListeningForNotifications()
+  fullName: Rssdp.Infrastructure.SsdpDeviceLocatorBase.StopListeningForNotifications()
+  spec.csharp:
+  - uid: Rssdp.Infrastructure.SsdpDeviceLocatorBase.StopListeningForNotifications
+    name: StopListeningForNotifications
+    nameWithType: SsdpDeviceLocatorBase.StopListeningForNotifications
+    fullName: Rssdp.Infrastructure.SsdpDeviceLocatorBase.StopListeningForNotifications
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: Rssdp.Infrastructure.SsdpDeviceLocatorBase.StopListeningForNotifications
+    name: StopListeningForNotifications
+    nameWithType: SsdpDeviceLocatorBase.StopListeningForNotifications
+    fullName: Rssdp.Infrastructure.SsdpDeviceLocatorBase.StopListeningForNotifications
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: Rssdp.Infrastructure.SsdpDeviceLocatorBase.OnDeviceAvailable(Rssdp.DiscoveredSsdpDevice,System.Boolean)
+  commentId: M:Rssdp.Infrastructure.SsdpDeviceLocatorBase.OnDeviceAvailable(Rssdp.DiscoveredSsdpDevice,System.Boolean)
+  parent: Rssdp.Infrastructure.SsdpDeviceLocatorBase
+  isExternal: true
+  name: OnDeviceAvailable(DiscoveredSsdpDevice, Boolean)
+  nameWithType: SsdpDeviceLocatorBase.OnDeviceAvailable(DiscoveredSsdpDevice, Boolean)
+  fullName: Rssdp.Infrastructure.SsdpDeviceLocatorBase.OnDeviceAvailable(Rssdp.DiscoveredSsdpDevice, System.Boolean)
+  spec.csharp:
+  - uid: Rssdp.Infrastructure.SsdpDeviceLocatorBase.OnDeviceAvailable(Rssdp.DiscoveredSsdpDevice,System.Boolean)
+    name: OnDeviceAvailable
+    nameWithType: SsdpDeviceLocatorBase.OnDeviceAvailable
+    fullName: Rssdp.Infrastructure.SsdpDeviceLocatorBase.OnDeviceAvailable
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: Rssdp.DiscoveredSsdpDevice
+    name: DiscoveredSsdpDevice
+    nameWithType: DiscoveredSsdpDevice
+    fullName: Rssdp.DiscoveredSsdpDevice
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Boolean
+    name: Boolean
+    nameWithType: Boolean
+    fullName: System.Boolean
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: Rssdp.Infrastructure.SsdpDeviceLocatorBase.OnDeviceAvailable(Rssdp.DiscoveredSsdpDevice,System.Boolean)
+    name: OnDeviceAvailable
+    nameWithType: SsdpDeviceLocatorBase.OnDeviceAvailable
+    fullName: Rssdp.Infrastructure.SsdpDeviceLocatorBase.OnDeviceAvailable
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: Rssdp.DiscoveredSsdpDevice
+    name: DiscoveredSsdpDevice
+    nameWithType: DiscoveredSsdpDevice
+    fullName: Rssdp.DiscoveredSsdpDevice
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Boolean
+    name: Boolean
+    nameWithType: Boolean
+    fullName: System.Boolean
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: Rssdp.Infrastructure.SsdpDeviceLocatorBase.OnDeviceUnavailable(Rssdp.DiscoveredSsdpDevice,System.Boolean)
+  commentId: M:Rssdp.Infrastructure.SsdpDeviceLocatorBase.OnDeviceUnavailable(Rssdp.DiscoveredSsdpDevice,System.Boolean)
+  parent: Rssdp.Infrastructure.SsdpDeviceLocatorBase
+  isExternal: true
+  name: OnDeviceUnavailable(DiscoveredSsdpDevice, Boolean)
+  nameWithType: SsdpDeviceLocatorBase.OnDeviceUnavailable(DiscoveredSsdpDevice, Boolean)
+  fullName: Rssdp.Infrastructure.SsdpDeviceLocatorBase.OnDeviceUnavailable(Rssdp.DiscoveredSsdpDevice, System.Boolean)
+  spec.csharp:
+  - uid: Rssdp.Infrastructure.SsdpDeviceLocatorBase.OnDeviceUnavailable(Rssdp.DiscoveredSsdpDevice,System.Boolean)
+    name: OnDeviceUnavailable
+    nameWithType: SsdpDeviceLocatorBase.OnDeviceUnavailable
+    fullName: Rssdp.Infrastructure.SsdpDeviceLocatorBase.OnDeviceUnavailable
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: Rssdp.DiscoveredSsdpDevice
+    name: DiscoveredSsdpDevice
+    nameWithType: DiscoveredSsdpDevice
+    fullName: Rssdp.DiscoveredSsdpDevice
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Boolean
+    name: Boolean
+    nameWithType: Boolean
+    fullName: System.Boolean
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: Rssdp.Infrastructure.SsdpDeviceLocatorBase.OnDeviceUnavailable(Rssdp.DiscoveredSsdpDevice,System.Boolean)
+    name: OnDeviceUnavailable
+    nameWithType: SsdpDeviceLocatorBase.OnDeviceUnavailable
+    fullName: Rssdp.Infrastructure.SsdpDeviceLocatorBase.OnDeviceUnavailable
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: Rssdp.DiscoveredSsdpDevice
+    name: DiscoveredSsdpDevice
+    nameWithType: DiscoveredSsdpDevice
+    fullName: Rssdp.DiscoveredSsdpDevice
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Boolean
+    name: Boolean
+    nameWithType: Boolean
+    fullName: System.Boolean
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: Rssdp.Infrastructure.SsdpDeviceLocatorBase.IsSearching
+  commentId: P:Rssdp.Infrastructure.SsdpDeviceLocatorBase.IsSearching
+  parent: Rssdp.Infrastructure.SsdpDeviceLocatorBase
+  isExternal: false
+  name: IsSearching
+  nameWithType: SsdpDeviceLocatorBase.IsSearching
+  fullName: Rssdp.Infrastructure.SsdpDeviceLocatorBase.IsSearching
+- uid: Rssdp.Infrastructure.SsdpDeviceLocatorBase.NotificationFilter
+  commentId: P:Rssdp.Infrastructure.SsdpDeviceLocatorBase.NotificationFilter
+  parent: Rssdp.Infrastructure.SsdpDeviceLocatorBase
+  isExternal: false
+  name: NotificationFilter
+  nameWithType: SsdpDeviceLocatorBase.NotificationFilter
+  fullName: Rssdp.Infrastructure.SsdpDeviceLocatorBase.NotificationFilter
+- uid: Rssdp.Infrastructure.SsdpDeviceLocatorBase.Dispose(System.Boolean)
+  commentId: M:Rssdp.Infrastructure.SsdpDeviceLocatorBase.Dispose(System.Boolean)
+  parent: Rssdp.Infrastructure.SsdpDeviceLocatorBase
+  isExternal: true
+  name: Dispose(Boolean)
+  nameWithType: SsdpDeviceLocatorBase.Dispose(Boolean)
+  fullName: Rssdp.Infrastructure.SsdpDeviceLocatorBase.Dispose(System.Boolean)
+  spec.csharp:
+  - uid: Rssdp.Infrastructure.SsdpDeviceLocatorBase.Dispose(System.Boolean)
+    name: Dispose
+    nameWithType: SsdpDeviceLocatorBase.Dispose
+    fullName: Rssdp.Infrastructure.SsdpDeviceLocatorBase.Dispose
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Boolean
+    name: Boolean
+    nameWithType: Boolean
+    fullName: System.Boolean
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: Rssdp.Infrastructure.SsdpDeviceLocatorBase.Dispose(System.Boolean)
+    name: Dispose
+    nameWithType: SsdpDeviceLocatorBase.Dispose
+    fullName: Rssdp.Infrastructure.SsdpDeviceLocatorBase.Dispose
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Boolean
+    name: Boolean
+    nameWithType: Boolean
+    fullName: System.Boolean
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: Rssdp.Infrastructure.DisposableManagedObjectBase.ThrowIfDisposed
+  commentId: M:Rssdp.Infrastructure.DisposableManagedObjectBase.ThrowIfDisposed
+  parent: Rssdp.Infrastructure.DisposableManagedObjectBase
+  isExternal: false
+  name: ThrowIfDisposed()
+  nameWithType: DisposableManagedObjectBase.ThrowIfDisposed()
+  fullName: Rssdp.Infrastructure.DisposableManagedObjectBase.ThrowIfDisposed()
+  spec.csharp:
+  - uid: Rssdp.Infrastructure.DisposableManagedObjectBase.ThrowIfDisposed
+    name: ThrowIfDisposed
+    nameWithType: DisposableManagedObjectBase.ThrowIfDisposed
+    fullName: Rssdp.Infrastructure.DisposableManagedObjectBase.ThrowIfDisposed
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: Rssdp.Infrastructure.DisposableManagedObjectBase.ThrowIfDisposed
+    name: ThrowIfDisposed
+    nameWithType: DisposableManagedObjectBase.ThrowIfDisposed
+    fullName: Rssdp.Infrastructure.DisposableManagedObjectBase.ThrowIfDisposed
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: Rssdp.Infrastructure.DisposableManagedObjectBase.IsDisposed
+  commentId: P:Rssdp.Infrastructure.DisposableManagedObjectBase.IsDisposed
+  parent: Rssdp.Infrastructure.DisposableManagedObjectBase
+  isExternal: false
+  name: IsDisposed
+  nameWithType: DisposableManagedObjectBase.IsDisposed
+  fullName: Rssdp.Infrastructure.DisposableManagedObjectBase.IsDisposed
+- uid: Rssdp.Infrastructure.DisposableManagedObjectBase.Dispose
+  commentId: M:Rssdp.Infrastructure.DisposableManagedObjectBase.Dispose
+  parent: Rssdp.Infrastructure.DisposableManagedObjectBase
+  isExternal: false
+  name: Dispose()
+  nameWithType: DisposableManagedObjectBase.Dispose()
+  fullName: Rssdp.Infrastructure.DisposableManagedObjectBase.Dispose()
+  spec.csharp:
+  - uid: Rssdp.Infrastructure.DisposableManagedObjectBase.Dispose
+    name: Dispose
+    nameWithType: DisposableManagedObjectBase.Dispose
+    fullName: Rssdp.Infrastructure.DisposableManagedObjectBase.Dispose
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: Rssdp.Infrastructure.DisposableManagedObjectBase.Dispose
+    name: Dispose
+    nameWithType: DisposableManagedObjectBase.Dispose
+    fullName: Rssdp.Infrastructure.DisposableManagedObjectBase.Dispose
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  name: ToString()
+  nameWithType: Object.ToString()
+  fullName: System.Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    nameWithType: Object.ToString
+    fullName: System.Object.ToString
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    nameWithType: Object.ToString
+    fullName: System.Object.ToString
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  name: Equals(Object)
+  nameWithType: Object.Equals(Object)
+  fullName: System.Object.Equals(System.Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  name: Equals(Object, Object)
+  nameWithType: Object.Equals(Object, Object)
+  fullName: System.Object.Equals(System.Object, System.Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  name: ReferenceEquals(Object, Object)
+  nameWithType: Object.ReferenceEquals(Object, Object)
+  fullName: System.Object.ReferenceEquals(System.Object, System.Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    nameWithType: Object.ReferenceEquals
+    fullName: System.Object.ReferenceEquals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    nameWithType: Object.ReferenceEquals
+    fullName: System.Object.ReferenceEquals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  name: GetHashCode()
+  nameWithType: Object.GetHashCode()
+  fullName: System.Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    nameWithType: Object.GetHashCode
+    fullName: System.Object.GetHashCode
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    nameWithType: Object.GetHashCode
+    fullName: System.Object.GetHashCode
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  name: GetType()
+  nameWithType: Object.GetType()
+  fullName: System.Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    nameWithType: Object.GetType
+    fullName: System.Object.GetType
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    nameWithType: Object.GetType
+    fullName: System.Object.GetType
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  name: MemberwiseClone()
+  nameWithType: Object.MemberwiseClone()
+  fullName: System.Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    nameWithType: Object.MemberwiseClone
+    fullName: System.Object.MemberwiseClone
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    nameWithType: Object.MemberwiseClone
+    fullName: System.Object.MemberwiseClone
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
 - uid: System
   commentId: N:System
   isExternal: false
   name: System
   nameWithType: System
   fullName: System
+- uid: Rssdp.Infrastructure
+  commentId: N:Rssdp.Infrastructure
+  isExternal: false
+  name: Rssdp.Infrastructure
+  nameWithType: Rssdp.Infrastructure
+  fullName: Rssdp.Infrastructure
+- uid: Rssdp.Infrastructure.ISsdpCommunicationsServer
+  commentId: T:Rssdp.Infrastructure.ISsdpCommunicationsServer
+  parent: Rssdp.Infrastructure
+  isExternal: false
+  name: ISsdpCommunicationsServer
+  nameWithType: ISsdpCommunicationsServer
+  fullName: Rssdp.Infrastructure.ISsdpCommunicationsServer
+- uid: Rssdp.Infrastructure.ISocketFactory
+  commentId: T:Rssdp.Infrastructure.ISocketFactory
+  parent: Rssdp.Infrastructure
+  isExternal: false
+  name: ISocketFactory
+  nameWithType: ISocketFactory
+  fullName: Rssdp.Infrastructure.ISocketFactory
 - uid: Rssdp.SsdpDeviceLocator.#ctor*
   commentId: Overload:Rssdp.SsdpDeviceLocator.#ctor
   isExternal: false
   name: SsdpDeviceLocator
   nameWithType: SsdpDeviceLocator.SsdpDeviceLocator
   fullName: Rssdp.SsdpDeviceLocator.SsdpDeviceLocator
-- uid: ISsdpCommunicationsServer
-  isExternal: true
-  name: ISsdpCommunicationsServer
-  nameWithType: ISsdpCommunicationsServer
-  fullName: ISsdpCommunicationsServer
 - uid: System.String
   commentId: T:System.String
   parent: System

@@ -52,7 +52,7 @@ items:
   source:
     id: SsdpDevice
     path: ''
-    startLine: 3623
+    startLine: 3874
   assemblies:
   - cs.temp.dll
   namespace: Rssdp
@@ -102,7 +102,7 @@ items:
   source:
     id: DeviceAdded
     path: ''
-    startLine: 3647
+    startLine: 3898
   assemblies:
   - cs.temp.dll
   namespace: Rssdp
@@ -136,7 +136,7 @@ items:
   source:
     id: DeviceRemoved
     path: ''
-    startLine: 3654
+    startLine: 3905
   assemblies:
   - cs.temp.dll
   namespace: Rssdp
@@ -170,7 +170,7 @@ items:
   source:
     id: ServiceAdded
     path: ''
-    startLine: 3661
+    startLine: 3912
   assemblies:
   - cs.temp.dll
   namespace: Rssdp
@@ -204,7 +204,7 @@ items:
   source:
     id: ServiceRemoved
     path: ''
-    startLine: 3668
+    startLine: 3919
   assemblies:
   - cs.temp.dll
   namespace: Rssdp
@@ -238,7 +238,7 @@ items:
   source:
     id: .ctor
     path: ''
-    startLine: 3677
+    startLine: 3928
   assemblies:
   - cs.temp.dll
   namespace: Rssdp
@@ -266,7 +266,7 @@ items:
   source:
     id: .ctor
     path: ''
-    startLine: 3699
+    startLine: 3950
   assemblies:
   - cs.temp.dll
   namespace: Rssdp
@@ -306,7 +306,7 @@ items:
   source:
     id: DeviceType
     path: ''
-    startLine: 3726
+    startLine: 3977
   assemblies:
   - cs.temp.dll
   namespace: Rssdp
@@ -347,7 +347,7 @@ items:
   source:
     id: DeviceTypeNamespace
     path: ''
-    startLine: 3745
+    startLine: 3996
   assemblies:
   - cs.temp.dll
   namespace: Rssdp
@@ -388,7 +388,7 @@ items:
   source:
     id: DeviceVersion
     path: ''
-    startLine: 3764
+    startLine: 4015
   assemblies:
   - cs.temp.dll
   namespace: Rssdp
@@ -429,7 +429,7 @@ items:
   source:
     id: FullDeviceType
     path: ''
-    startLine: 3782
+    startLine: 4033
   assemblies:
   - cs.temp.dll
   namespace: Rssdp
@@ -463,7 +463,7 @@ items:
   source:
     id: Uuid
     path: ''
-    startLine: 3801
+    startLine: 4052
   assemblies:
   - cs.temp.dll
   namespace: Rssdp
@@ -497,7 +497,7 @@ items:
   source:
     id: Udn
     path: ''
-    startLine: 3811
+    startLine: 4062
   assemblies:
   - cs.temp.dll
   namespace: Rssdp
@@ -531,7 +531,7 @@ items:
   source:
     id: FriendlyName
     path: ''
-    startLine: 3830
+    startLine: 4081
   assemblies:
   - cs.temp.dll
   namespace: Rssdp
@@ -565,7 +565,7 @@ items:
   source:
     id: Manufacturer
     path: ''
-    startLine: 3835
+    startLine: 4086
   assemblies:
   - cs.temp.dll
   namespace: Rssdp
@@ -598,7 +598,7 @@ items:
   source:
     id: ManufacturerUrl
     path: ''
-    startLine: 3840
+    startLine: 4091
   assemblies:
   - cs.temp.dll
   namespace: Rssdp
@@ -631,7 +631,7 @@ items:
   source:
     id: ModelDescription
     path: ''
-    startLine: 3846
+    startLine: 4097
   assemblies:
   - cs.temp.dll
   namespace: Rssdp
@@ -665,7 +665,7 @@ items:
   source:
     id: ModelName
     path: ''
-    startLine: 3851
+    startLine: 4102
   assemblies:
   - cs.temp.dll
   namespace: Rssdp
@@ -698,7 +698,7 @@ items:
   source:
     id: ModelNumber
     path: ''
-    startLine: 3856
+    startLine: 4107
   assemblies:
   - cs.temp.dll
   namespace: Rssdp
@@ -731,7 +731,7 @@ items:
   source:
     id: ModelUrl
     path: ''
-    startLine: 3864
+    startLine: 4115
   assemblies:
   - cs.temp.dll
   namespace: Rssdp
@@ -765,7 +765,7 @@ items:
   source:
     id: SerialNumber
     path: ''
-    startLine: 3869
+    startLine: 4120
   assemblies:
   - cs.temp.dll
   namespace: Rssdp
@@ -798,7 +798,7 @@ items:
   source:
     id: Upc
     path: ''
-    startLine: 3877
+    startLine: 4128
   assemblies:
   - cs.temp.dll
   namespace: Rssdp
@@ -832,7 +832,7 @@ items:
   source:
     id: PresentationUrl
     path: ''
-    startLine: 3885
+    startLine: 4136
   assemblies:
   - cs.temp.dll
   namespace: Rssdp
@@ -866,7 +866,7 @@ items:
   source:
     id: Icons
     path: ''
-    startLine: 3892
+    startLine: 4143
   assemblies:
   - cs.temp.dll
   namespace: Rssdp
@@ -876,7 +876,7 @@ items:
     content: public IList<SsdpDeviceIcon> Icons { get; }
     parameters: []
     return:
-      type: IList{Rssdp.SsdpDeviceIcon}
+      type: System.Collections.Generic.IList{Rssdp.SsdpDeviceIcon}
     content.vb: Public ReadOnly Property Icons As IList(Of SsdpDeviceIcon)
   overload: Rssdp.SsdpDevice.Icons*
   modifiers.csharp:
@@ -899,7 +899,7 @@ items:
   source:
     id: Devices
     path: ''
-    startLine: 3903
+    startLine: 4154
   assemblies:
   - cs.temp.dll
   namespace: Rssdp
@@ -909,7 +909,7 @@ items:
     content: public IEnumerable<SsdpDevice> Devices { get; }
     parameters: []
     return:
-      type: IEnumerable{Rssdp.SsdpDevice}
+      type: System.Collections.Generic.IEnumerable{Rssdp.SsdpDevice}
     content.vb: Public ReadOnly Property Devices As IEnumerable(Of SsdpDevice)
   overload: Rssdp.SsdpDevice.Devices*
   seealso:
@@ -937,7 +937,7 @@ items:
   source:
     id: CustomProperties
     path: ''
-    startLine: 3912
+    startLine: 4163
   assemblies:
   - cs.temp.dll
   namespace: Rssdp
@@ -970,7 +970,7 @@ items:
   source:
     id: CustomResponseHeaders
     path: ''
-    startLine: 3927
+    startLine: 4178
   assemblies:
   - cs.temp.dll
   namespace: Rssdp
@@ -1004,7 +1004,7 @@ items:
   source:
     id: Services
     path: ''
-    startLine: 3940
+    startLine: 4191
   assemblies:
   - cs.temp.dll
   namespace: Rssdp
@@ -1014,7 +1014,7 @@ items:
     content: public IEnumerable<SsdpService> Services { get; }
     parameters: []
     return:
-      type: IEnumerable{Rssdp.SsdpService}
+      type: System.Collections.Generic.IEnumerable{Rssdp.SsdpService}
     content.vb: Public ReadOnly Property Services As IEnumerable(Of SsdpService)
   overload: Rssdp.SsdpDevice.Services*
   seealso:
@@ -1042,7 +1042,7 @@ items:
   source:
     id: AddDevice
     path: ''
-    startLine: 3963
+    startLine: 4214
   assemblies:
   - cs.temp.dll
   namespace: Rssdp
@@ -1085,7 +1085,7 @@ items:
   source:
     id: RemoveDevice
     path: ''
-    startLine: 3994
+    startLine: 4245
   assemblies:
   - cs.temp.dll
   namespace: Rssdp
@@ -1125,7 +1125,7 @@ items:
   source:
     id: OnDeviceAdded
     path: ''
-    startLine: 4017
+    startLine: 4268
   assemblies:
   - cs.temp.dll
   namespace: Rssdp
@@ -1164,7 +1164,7 @@ items:
   source:
     id: OnDeviceRemoved
     path: ''
-    startLine: 4030
+    startLine: 4281
   assemblies:
   - cs.temp.dll
   namespace: Rssdp
@@ -1204,7 +1204,7 @@ items:
   source:
     id: AddService
     path: ''
-    startLine: 4051
+    startLine: 4302
   assemblies:
   - cs.temp.dll
   namespace: Rssdp
@@ -1244,7 +1244,7 @@ items:
   source:
     id: RemoveService
     path: ''
-    startLine: 4078
+    startLine: 4329
   assemblies:
   - cs.temp.dll
   namespace: Rssdp
@@ -1284,7 +1284,7 @@ items:
   source:
     id: OnServiceAdded
     path: ''
-    startLine: 4098
+    startLine: 4349
   assemblies:
   - cs.temp.dll
   namespace: Rssdp
@@ -1323,7 +1323,7 @@ items:
   source:
     id: OnServiceRemoved
     path: ''
-    startLine: 4111
+    startLine: 4362
   assemblies:
   - cs.temp.dll
   namespace: Rssdp
@@ -1363,7 +1363,7 @@ items:
   source:
     id: WriteDeviceDescriptionXml
     path: ''
-    startLine: 4126
+    startLine: 4377
   assemblies:
   - cs.temp.dll
   namespace: Rssdp
@@ -1404,7 +1404,7 @@ items:
   source:
     id: StringToUri
     path: ''
-    startLine: 4161
+    startLine: 4412
   assemblies:
   - cs.temp.dll
   namespace: Rssdp
@@ -2235,20 +2235,21 @@ references:
   name: Icons
   nameWithType: SsdpDevice.Icons
   fullName: Rssdp.SsdpDevice.Icons
-- uid: IList{Rssdp.SsdpDeviceIcon}
-  commentId: '!:IList{Rssdp.SsdpDeviceIcon}'
-  definition: IList`1
+- uid: System.Collections.Generic.IList{Rssdp.SsdpDeviceIcon}
+  commentId: T:System.Collections.Generic.IList{Rssdp.SsdpDeviceIcon}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.IList`1
   name: IList<SsdpDeviceIcon>
   nameWithType: IList<SsdpDeviceIcon>
-  fullName: IList<Rssdp.SsdpDeviceIcon>
+  fullName: System.Collections.Generic.IList<Rssdp.SsdpDeviceIcon>
   nameWithType.vb: IList(Of SsdpDeviceIcon)
-  fullName.vb: IList(Of Rssdp.SsdpDeviceIcon)
+  fullName.vb: System.Collections.Generic.IList(Of Rssdp.SsdpDeviceIcon)
   name.vb: IList(Of SsdpDeviceIcon)
   spec.csharp:
-  - uid: IList`1
+  - uid: System.Collections.Generic.IList`1
     name: IList
     nameWithType: IList
-    fullName: IList
+    fullName: System.Collections.Generic.IList
     isExternal: true
   - name: <
     nameWithType: <
@@ -2261,10 +2262,10 @@ references:
     nameWithType: '>'
     fullName: '>'
   spec.vb:
-  - uid: IList`1
+  - uid: System.Collections.Generic.IList`1
     name: IList
     nameWithType: IList
-    fullName: IList
+    fullName: System.Collections.Generic.IList
     isExternal: true
   - name: '(Of '
     nameWithType: '(Of '
@@ -2276,65 +2277,72 @@ references:
   - name: )
     nameWithType: )
     fullName: )
-- uid: IList`1
-  commentId: '!:IList`1'
+- uid: System.Collections.Generic.IList`1
+  commentId: T:System.Collections.Generic.IList`1
   isExternal: true
-  name: IList<>
-  nameWithType: IList<>
-  fullName: IList<>
-  nameWithType.vb: IList(Of )
-  fullName.vb: IList(Of )
-  name.vb: IList(Of )
+  name: IList<T>
+  nameWithType: IList<T>
+  fullName: System.Collections.Generic.IList<T>
+  nameWithType.vb: IList(Of T)
+  fullName.vb: System.Collections.Generic.IList(Of T)
+  name.vb: IList(Of T)
   spec.csharp:
-  - uid: IList`1
+  - uid: System.Collections.Generic.IList`1
     name: IList
     nameWithType: IList
-    fullName: IList
+    fullName: System.Collections.Generic.IList
     isExternal: true
   - name: <
     nameWithType: <
     fullName: <
-  - name: ''
-    nameWithType: ''
-    fullName: ''
+  - name: T
+    nameWithType: T
+    fullName: T
   - name: '>'
     nameWithType: '>'
     fullName: '>'
   spec.vb:
-  - uid: IList`1
+  - uid: System.Collections.Generic.IList`1
     name: IList
     nameWithType: IList
-    fullName: IList
+    fullName: System.Collections.Generic.IList
     isExternal: true
   - name: '(Of '
     nameWithType: '(Of '
     fullName: '(Of '
-  - name: ''
-    nameWithType: ''
-    fullName: ''
+  - name: T
+    nameWithType: T
+    fullName: T
   - name: )
     nameWithType: )
     fullName: )
+- uid: System.Collections.Generic
+  commentId: N:System.Collections.Generic
+  isExternal: false
+  name: System.Collections.Generic
+  nameWithType: System.Collections.Generic
+  fullName: System.Collections.Generic
 - uid: Rssdp.SsdpDevice.Devices*
   commentId: Overload:Rssdp.SsdpDevice.Devices
   isExternal: false
   name: Devices
   nameWithType: SsdpDevice.Devices
   fullName: Rssdp.SsdpDevice.Devices
-- uid: IEnumerable{Rssdp.SsdpDevice}
-  commentId: '!:IEnumerable{Rssdp.SsdpDevice}'
-  definition: IEnumerable`1
+- uid: System.Collections.Generic.IEnumerable{Rssdp.SsdpDevice}
+  commentId: T:System.Collections.Generic.IEnumerable{Rssdp.SsdpDevice}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.IEnumerable`1
   name: IEnumerable<SsdpDevice>
   nameWithType: IEnumerable<SsdpDevice>
-  fullName: IEnumerable<Rssdp.SsdpDevice>
+  fullName: System.Collections.Generic.IEnumerable<Rssdp.SsdpDevice>
   nameWithType.vb: IEnumerable(Of SsdpDevice)
-  fullName.vb: IEnumerable(Of Rssdp.SsdpDevice)
+  fullName.vb: System.Collections.Generic.IEnumerable(Of Rssdp.SsdpDevice)
   name.vb: IEnumerable(Of SsdpDevice)
   spec.csharp:
-  - uid: IEnumerable`1
+  - uid: System.Collections.Generic.IEnumerable`1
     name: IEnumerable
     nameWithType: IEnumerable
-    fullName: IEnumerable
+    fullName: System.Collections.Generic.IEnumerable
     isExternal: true
   - name: <
     nameWithType: <
@@ -2347,10 +2355,10 @@ references:
     nameWithType: '>'
     fullName: '>'
   spec.vb:
-  - uid: IEnumerable`1
+  - uid: System.Collections.Generic.IEnumerable`1
     name: IEnumerable
     nameWithType: IEnumerable
-    fullName: IEnumerable
+    fullName: System.Collections.Generic.IEnumerable
     isExternal: true
   - name: '(Of '
     nameWithType: '(Of '
@@ -2362,41 +2370,42 @@ references:
   - name: )
     nameWithType: )
     fullName: )
-- uid: IEnumerable`1
+- uid: System.Collections.Generic.IEnumerable`1
+  commentId: T:System.Collections.Generic.IEnumerable`1
   isExternal: true
-  name: IEnumerable<>
-  nameWithType: IEnumerable<>
-  fullName: IEnumerable<>
-  nameWithType.vb: IEnumerable(Of )
-  fullName.vb: IEnumerable(Of )
-  name.vb: IEnumerable(Of )
+  name: IEnumerable<T>
+  nameWithType: IEnumerable<T>
+  fullName: System.Collections.Generic.IEnumerable<T>
+  nameWithType.vb: IEnumerable(Of T)
+  fullName.vb: System.Collections.Generic.IEnumerable(Of T)
+  name.vb: IEnumerable(Of T)
   spec.csharp:
-  - uid: IEnumerable`1
+  - uid: System.Collections.Generic.IEnumerable`1
     name: IEnumerable
     nameWithType: IEnumerable
-    fullName: IEnumerable
+    fullName: System.Collections.Generic.IEnumerable
     isExternal: true
   - name: <
     nameWithType: <
     fullName: <
-  - name: ''
-    nameWithType: ''
-    fullName: ''
+  - name: T
+    nameWithType: T
+    fullName: T
   - name: '>'
     nameWithType: '>'
     fullName: '>'
   spec.vb:
-  - uid: IEnumerable`1
+  - uid: System.Collections.Generic.IEnumerable`1
     name: IEnumerable
     nameWithType: IEnumerable
-    fullName: IEnumerable
+    fullName: System.Collections.Generic.IEnumerable
     isExternal: true
   - name: '(Of '
     nameWithType: '(Of '
     fullName: '(Of '
-  - name: ''
-    nameWithType: ''
-    fullName: ''
+  - name: T
+    nameWithType: T
+    fullName: T
   - name: )
     nameWithType: )
     fullName: )
@@ -2448,20 +2457,21 @@ references:
   name: Services
   nameWithType: SsdpDevice.Services
   fullName: Rssdp.SsdpDevice.Services
-- uid: IEnumerable{Rssdp.SsdpService}
-  commentId: '!:IEnumerable{Rssdp.SsdpService}'
-  definition: IEnumerable`1
+- uid: System.Collections.Generic.IEnumerable{Rssdp.SsdpService}
+  commentId: T:System.Collections.Generic.IEnumerable{Rssdp.SsdpService}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.IEnumerable`1
   name: IEnumerable<SsdpService>
   nameWithType: IEnumerable<SsdpService>
-  fullName: IEnumerable<Rssdp.SsdpService>
+  fullName: System.Collections.Generic.IEnumerable<Rssdp.SsdpService>
   nameWithType.vb: IEnumerable(Of SsdpService)
-  fullName.vb: IEnumerable(Of Rssdp.SsdpService)
+  fullName.vb: System.Collections.Generic.IEnumerable(Of Rssdp.SsdpService)
   name.vb: IEnumerable(Of SsdpService)
   spec.csharp:
-  - uid: IEnumerable`1
+  - uid: System.Collections.Generic.IEnumerable`1
     name: IEnumerable
     nameWithType: IEnumerable
-    fullName: IEnumerable
+    fullName: System.Collections.Generic.IEnumerable
     isExternal: true
   - name: <
     nameWithType: <
@@ -2474,10 +2484,10 @@ references:
     nameWithType: '>'
     fullName: '>'
   spec.vb:
-  - uid: IEnumerable`1
+  - uid: System.Collections.Generic.IEnumerable`1
     name: IEnumerable
     nameWithType: IEnumerable
-    fullName: IEnumerable
+    fullName: System.Collections.Generic.IEnumerable
     isExternal: true
   - name: '(Of '
     nameWithType: '(Of '

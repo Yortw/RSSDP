@@ -2470,11 +2470,11 @@ references:
   commentId: M:Rssdp.SsdpDeviceLocator.#ctor
   fullName: Rssdp.SsdpDeviceLocator.SsdpDeviceLocator()
   nameWithType: SsdpDeviceLocator.SsdpDeviceLocator()
-- uid: Rssdp.SsdpDeviceLocator.#ctor(ISsdpCommunicationsServer)
+- uid: Rssdp.SsdpDeviceLocator.#ctor(Rssdp.Infrastructure.ISsdpCommunicationsServer)
   name: SsdpDeviceLocator(ISsdpCommunicationsServer)
-  href: api/Rssdp.SsdpDeviceLocator.-ctor.html#Rssdp_SsdpDeviceLocator__ctor_ISsdpCommunicationsServer_
-  commentId: M:Rssdp.SsdpDeviceLocator.#ctor(ISsdpCommunicationsServer)
-  fullName: Rssdp.SsdpDeviceLocator.SsdpDeviceLocator(ISsdpCommunicationsServer)
+  href: api/Rssdp.SsdpDeviceLocator.-ctor.html#Rssdp_SsdpDeviceLocator__ctor_Rssdp_Infrastructure_ISsdpCommunicationsServer_
+  commentId: M:Rssdp.SsdpDeviceLocator.#ctor(Rssdp.Infrastructure.ISsdpCommunicationsServer)
+  fullName: Rssdp.SsdpDeviceLocator.SsdpDeviceLocator(Rssdp.Infrastructure.ISsdpCommunicationsServer)
   nameWithType: SsdpDeviceLocator.SsdpDeviceLocator(ISsdpCommunicationsServer)
 - uid: Rssdp.SsdpDeviceLocator.#ctor(System.String)
   name: SsdpDeviceLocator(String)
@@ -2681,17 +2681,17 @@ references:
   commentId: M:Rssdp.SsdpDevicePublisher.#ctor
   fullName: Rssdp.SsdpDevicePublisher.SsdpDevicePublisher()
   nameWithType: SsdpDevicePublisher.SsdpDevicePublisher()
-- uid: Rssdp.SsdpDevicePublisher.#ctor(ISsdpCommunicationsServer)
+- uid: Rssdp.SsdpDevicePublisher.#ctor(Rssdp.Infrastructure.ISsdpCommunicationsServer)
   name: SsdpDevicePublisher(ISsdpCommunicationsServer)
-  href: api/Rssdp.SsdpDevicePublisher.-ctor.html#Rssdp_SsdpDevicePublisher__ctor_ISsdpCommunicationsServer_
-  commentId: M:Rssdp.SsdpDevicePublisher.#ctor(ISsdpCommunicationsServer)
-  fullName: Rssdp.SsdpDevicePublisher.SsdpDevicePublisher(ISsdpCommunicationsServer)
+  href: api/Rssdp.SsdpDevicePublisher.-ctor.html#Rssdp_SsdpDevicePublisher__ctor_Rssdp_Infrastructure_ISsdpCommunicationsServer_
+  commentId: M:Rssdp.SsdpDevicePublisher.#ctor(Rssdp.Infrastructure.ISsdpCommunicationsServer)
+  fullName: Rssdp.SsdpDevicePublisher.SsdpDevicePublisher(Rssdp.Infrastructure.ISsdpCommunicationsServer)
   nameWithType: SsdpDevicePublisher.SsdpDevicePublisher(ISsdpCommunicationsServer)
-- uid: Rssdp.SsdpDevicePublisher.#ctor(ISsdpCommunicationsServer,Rssdp.ISsdpLogger)
+- uid: Rssdp.SsdpDevicePublisher.#ctor(Rssdp.Infrastructure.ISsdpCommunicationsServer,Rssdp.ISsdpLogger)
   name: SsdpDevicePublisher(ISsdpCommunicationsServer, ISsdpLogger)
-  href: api/Rssdp.SsdpDevicePublisher.-ctor.html#Rssdp_SsdpDevicePublisher__ctor_ISsdpCommunicationsServer_Rssdp_ISsdpLogger_
-  commentId: M:Rssdp.SsdpDevicePublisher.#ctor(ISsdpCommunicationsServer,Rssdp.ISsdpLogger)
-  fullName: Rssdp.SsdpDevicePublisher.SsdpDevicePublisher(ISsdpCommunicationsServer, Rssdp.ISsdpLogger)
+  href: api/Rssdp.SsdpDevicePublisher.-ctor.html#Rssdp_SsdpDevicePublisher__ctor_Rssdp_Infrastructure_ISsdpCommunicationsServer_Rssdp_ISsdpLogger_
+  commentId: M:Rssdp.SsdpDevicePublisher.#ctor(Rssdp.Infrastructure.ISsdpCommunicationsServer,Rssdp.ISsdpLogger)
+  fullName: Rssdp.SsdpDevicePublisher.SsdpDevicePublisher(Rssdp.Infrastructure.ISsdpCommunicationsServer, Rssdp.ISsdpLogger)
   nameWithType: SsdpDevicePublisher.SsdpDevicePublisher(ISsdpCommunicationsServer, ISsdpLogger)
 - uid: Rssdp.SsdpDevicePublisher.#ctor(System.Int32)
   name: SsdpDevicePublisher(Int32)
@@ -3095,13 +3095,13 @@ references:
   commentId: Overload:Rssdp.UdpSocket.ReceiveAsync
   fullName: Rssdp.UdpSocket.ReceiveAsync
   nameWithType: UdpSocket.ReceiveAsync
-- uid: Rssdp.UdpSocket.SendTo(System.Byte[],UdpEndPoint)
+- uid: Rssdp.UdpSocket.SendTo(System.Byte[],Rssdp.Infrastructure.UdpEndPoint)
   name: SendTo(Byte[], UdpEndPoint)
-  href: api/Rssdp.UdpSocket.SendTo.html#Rssdp_UdpSocket_SendTo_System_Byte___UdpEndPoint_
-  commentId: M:Rssdp.UdpSocket.SendTo(System.Byte[],UdpEndPoint)
+  href: api/Rssdp.UdpSocket.SendTo.html#Rssdp_UdpSocket_SendTo_System_Byte___Rssdp_Infrastructure_UdpEndPoint_
+  commentId: M:Rssdp.UdpSocket.SendTo(System.Byte[],Rssdp.Infrastructure.UdpEndPoint)
   name.vb: SendTo(Byte(), UdpEndPoint)
-  fullName: Rssdp.UdpSocket.SendTo(System.Byte[], UdpEndPoint)
-  fullName.vb: Rssdp.UdpSocket.SendTo(System.Byte(), UdpEndPoint)
+  fullName: Rssdp.UdpSocket.SendTo(System.Byte[], Rssdp.Infrastructure.UdpEndPoint)
+  fullName.vb: Rssdp.UdpSocket.SendTo(System.Byte(), Rssdp.Infrastructure.UdpEndPoint)
   nameWithType: UdpSocket.SendTo(Byte[], UdpEndPoint)
   nameWithType.vb: UdpSocket.SendTo(Byte(), UdpEndPoint)
 - uid: Rssdp.UdpSocket.SendTo*

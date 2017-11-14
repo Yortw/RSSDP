@@ -19,6 +19,8 @@ namespace RssdpPackageTests.Droid
 
 			base.OnCreate(bundle);
 
+			var publisher = new Rssdp.SsdpDevicePublisher();
+
 			global::Xamarin.Forms.Forms.Init(this, bundle);
 			LoadApplication(new App());
 		}

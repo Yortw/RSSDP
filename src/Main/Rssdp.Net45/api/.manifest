@@ -247,7 +247,7 @@
   "Rssdp.SsdpDeviceIcon.Width": "Rssdp.SsdpDeviceIcon.yml",
   "Rssdp.SsdpDeviceLocator": "Rssdp.SsdpDeviceLocator.yml",
   "Rssdp.SsdpDeviceLocator.#ctor": "Rssdp.SsdpDeviceLocator.yml",
-  "Rssdp.SsdpDeviceLocator.#ctor(ISsdpCommunicationsServer)": "Rssdp.SsdpDeviceLocator.yml",
+  "Rssdp.SsdpDeviceLocator.#ctor(Rssdp.Infrastructure.ISsdpCommunicationsServer)": "Rssdp.SsdpDeviceLocator.yml",
   "Rssdp.SsdpDeviceLocator.#ctor(System.String)": "Rssdp.SsdpDeviceLocator.yml",
   "Rssdp.SsdpDevicePropertiesCollection": "Rssdp.SsdpDevicePropertiesCollection.yml",
   "Rssdp.SsdpDevicePropertiesCollection.#ctor": "Rssdp.SsdpDevicePropertiesCollection.yml",
@@ -268,8 +268,8 @@
   "Rssdp.SsdpDeviceProperty.Value": "Rssdp.SsdpDeviceProperty.yml",
   "Rssdp.SsdpDevicePublisher": "Rssdp.SsdpDevicePublisher.yml",
   "Rssdp.SsdpDevicePublisher.#ctor": "Rssdp.SsdpDevicePublisher.yml",
-  "Rssdp.SsdpDevicePublisher.#ctor(ISsdpCommunicationsServer)": "Rssdp.SsdpDevicePublisher.yml",
-  "Rssdp.SsdpDevicePublisher.#ctor(ISsdpCommunicationsServer,Rssdp.ISsdpLogger)": "Rssdp.SsdpDevicePublisher.yml",
+  "Rssdp.SsdpDevicePublisher.#ctor(Rssdp.Infrastructure.ISsdpCommunicationsServer)": "Rssdp.SsdpDevicePublisher.yml",
+  "Rssdp.SsdpDevicePublisher.#ctor(Rssdp.Infrastructure.ISsdpCommunicationsServer,Rssdp.ISsdpLogger)": "Rssdp.SsdpDevicePublisher.yml",
   "Rssdp.SsdpDevicePublisher.#ctor(System.Int32)": "Rssdp.SsdpDevicePublisher.yml",
   "Rssdp.SsdpDevicePublisher.#ctor(System.Int32,System.Int32)": "Rssdp.SsdpDevicePublisher.yml",
   "Rssdp.SsdpDevicePublisher.#ctor(System.String)": "Rssdp.SsdpDevicePublisher.yml",
@@ -311,5 +311,5 @@
   "Rssdp.UdpSocket.#ctor(System.Net.Sockets.Socket,System.Int32,System.String)": "Rssdp.UdpSocket.yml",
   "Rssdp.UdpSocket.Dispose(System.Boolean)": "Rssdp.UdpSocket.yml",
   "Rssdp.UdpSocket.ReceiveAsync": "Rssdp.UdpSocket.yml",
-  "Rssdp.UdpSocket.SendTo(System.Byte[],UdpEndPoint)": "Rssdp.UdpSocket.yml"
+  "Rssdp.UdpSocket.SendTo(System.Byte[],Rssdp.Infrastructure.UdpEndPoint)": "Rssdp.UdpSocket.yml"
 }

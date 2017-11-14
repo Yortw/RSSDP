@@ -18,7 +18,7 @@ items:
   source:
     id: DeviceUnavailableEventArgs
     path: ''
-    startLine: 1512
+    startLine: 1763
   assemblies:
   - cs.temp.dll
   namespace: Rssdp
@@ -63,7 +63,7 @@ items:
   source:
     id: .ctor
     path: ''
-    startLine: 1530
+    startLine: 1781
   assemblies:
   - cs.temp.dll
   namespace: Rssdp
@@ -102,7 +102,7 @@ items:
   source:
     id: Expired
     path: ''
-    startLine: 1545
+    startLine: 1796
   assemblies:
   - cs.temp.dll
   namespace: Rssdp
@@ -135,7 +135,7 @@ items:
   source:
     id: DiscoveredDevice
     path: ''
-    startLine: 1553
+    startLine: 1804
   assemblies:
   - cs.temp.dll
   namespace: Rssdp
@@ -157,6 +157,11 @@ items:
 references:
 - uid: Rssdp.Infrastructure.SsdpDeviceLocatorBase.DeviceUnavailable
   commentId: E:Rssdp.Infrastructure.SsdpDeviceLocatorBase.DeviceUnavailable
+  parent: Rssdp.Infrastructure.SsdpDeviceLocatorBase
+  isExternal: false
+  name: DeviceUnavailable
+  nameWithType: SsdpDeviceLocatorBase.DeviceUnavailable
+  fullName: Rssdp.Infrastructure.SsdpDeviceLocatorBase.DeviceUnavailable
 - uid: Rssdp
   commentId: N:Rssdp
   isExternal: false
@@ -463,12 +468,25 @@ references:
   - name: )
     nameWithType: )
     fullName: )
+- uid: Rssdp.Infrastructure.SsdpDeviceLocatorBase
+  commentId: T:Rssdp.Infrastructure.SsdpDeviceLocatorBase
+  parent: Rssdp.Infrastructure
+  isExternal: false
+  name: SsdpDeviceLocatorBase
+  nameWithType: SsdpDeviceLocatorBase
+  fullName: Rssdp.Infrastructure.SsdpDeviceLocatorBase
 - uid: System
   commentId: N:System
   isExternal: false
   name: System
   nameWithType: System
   fullName: System
+- uid: Rssdp.Infrastructure
+  commentId: N:Rssdp.Infrastructure
+  isExternal: false
+  name: Rssdp.Infrastructure
+  nameWithType: Rssdp.Infrastructure
+  fullName: Rssdp.Infrastructure
 - uid: Rssdp.DiscoveredSsdpDevice
   commentId: T:Rssdp.DiscoveredSsdpDevice
   parent: Rssdp

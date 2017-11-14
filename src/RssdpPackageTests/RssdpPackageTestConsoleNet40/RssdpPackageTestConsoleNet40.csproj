@@ -49,8 +49,8 @@
       <HintPath>..\packages\Microsoft.Bcl.Async.1.0.168\lib\net40\Microsoft.Threading.Tasks.Extensions.Desktop.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Rssdp, Version=3.5.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\RssdpPackageTests\packages\Rssdp.3.5.1-beta\lib\net40\Rssdp.dll</HintPath>
+    <Reference Include="Rssdp, Version=3.5.8.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Rssdp.3.5.8-Alpha\lib\net40\Rssdp.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System" />

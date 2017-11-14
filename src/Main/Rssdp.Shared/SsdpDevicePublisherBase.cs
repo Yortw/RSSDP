@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
@@ -521,7 +521,7 @@ USN: {1}
 					SendSearchResponse(SsdpConstants.PnpDeviceTypeRootDevice, device, GetUsn(device.Udn, SsdpConstants.PnpDeviceTypeRootDevice), endPoint);
 			}
 
-			if (sendAll || searchTarget.StartsWith("uuid:"))
+			if (sendAll || searchTarget.StartsWith("uuid:", StringComparison.Ordinal))
 				SendSearchResponse(device.Udn, device, device.Udn, endPoint);
 
 			if (sendAll || searchTarget.Contains(":device:"))

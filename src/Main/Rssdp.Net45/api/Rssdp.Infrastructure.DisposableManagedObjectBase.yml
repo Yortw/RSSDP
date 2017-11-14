@@ -19,7 +19,7 @@ items:
   source:
     id: DisposableManagedObjectBase
     path: ''
-    startLine: 1749
+    startLine: 2000
   assemblies:
   - cs.temp.dll
   namespace: Rssdp.Infrastructure
@@ -36,6 +36,7 @@ items:
   - Rssdp.Infrastructure.SsdpCommunicationsServer
   - Rssdp.Infrastructure.SsdpDeviceLocatorBase
   - Rssdp.Infrastructure.SsdpDevicePublisherBase
+  - Rssdp.UdpSocket
   implements:
   - System.IDisposable
   inheritedMembers:
@@ -68,7 +69,7 @@ items:
   source:
     id: Dispose
     path: ''
-    startLine: 1758
+    startLine: 2009
   assemblies:
   - cs.temp.dll
   namespace: Rssdp.Infrastructure
@@ -102,7 +103,7 @@ items:
   source:
     id: ThrowIfDisposed
     path: ''
-    startLine: 1766
+    startLine: 2017
   assemblies:
   - cs.temp.dll
   namespace: Rssdp.Infrastructure
@@ -141,7 +142,7 @@ items:
   source:
     id: IsDisposed
     path: ''
-    startLine: 1779
+    startLine: 2030
   assemblies:
   - cs.temp.dll
   namespace: Rssdp.Infrastructure
@@ -177,7 +178,7 @@ items:
   source:
     id: Dispose
     path: ''
-    startLine: 1796
+    startLine: 2047
   assemblies:
   - cs.temp.dll
   namespace: Rssdp.Infrastructure

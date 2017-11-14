@@ -163,12 +163,14 @@ references:
   fullName: Rssdp.Infrastructure.SsdpConstants
 - uid: Rssdp.Infrastructure.SsdpDeviceLocatorBase
   commentId: T:Rssdp.Infrastructure.SsdpDeviceLocatorBase
+  parent: Rssdp.Infrastructure
   isExternal: false
   name: SsdpDeviceLocatorBase
   nameWithType: SsdpDeviceLocatorBase
   fullName: Rssdp.Infrastructure.SsdpDeviceLocatorBase
 - uid: Rssdp.Infrastructure.SsdpDevicePublisherBase
   commentId: T:Rssdp.Infrastructure.SsdpDevicePublisherBase
+  parent: Rssdp.Infrastructure
   isExternal: false
   name: SsdpDevicePublisherBase
   nameWithType: SsdpDevicePublisherBase

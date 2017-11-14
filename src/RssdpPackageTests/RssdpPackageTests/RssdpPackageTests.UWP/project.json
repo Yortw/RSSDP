@@ -1,9 +1,9 @@
 ﻿{
   "dependencies": {
-    "Microsoft.NETCore.UniversalWindowsPlatform": "5.2.3",
-    "Rssdp": "3.5.1-beta",
+    "Microsoft.NETCore.UniversalWindowsPlatform": "6.0.1",
+    "Rssdp": "3.5.8-Alpha",
     "System.ComponentModel": "4.3.0",
-    "Xamarin.Forms": "2.3.4.231"
+    "Xamarin.Forms": "2.4.0.74863"
   },
   "frameworks": {
     "uap10.0": {}
