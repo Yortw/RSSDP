@@ -85,3 +85,11 @@ TestResults
 /src/RssdpPackageTests/packages
 /src/Main/.vs/RSSDP/v15/sqlite3
 /src/Main/UpgradeLog.htm
+
+# VS stuff
+.vs
+/src/Main/.vs
+
+# Unwanted log files
+log.txt
+/src/Main/Rssdp.Net45/log.txt
