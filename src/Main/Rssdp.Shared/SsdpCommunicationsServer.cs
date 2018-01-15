@@ -64,6 +64,20 @@ namespace Rssdp.Infrastructure
 
 		#endregion
 
+		#region Public Properties
+
+		/// <summary>
+		/// The number of times the Udp message is sent. Any value less than 2 will result in one message being sent. SSDP spec recommends sending messages multiple times (not more than 3) to account for possible packet loss over UDP.
+		/// </summary>
+		public int UdpSendCount { get; set; } = 3;
+
+		/// <summary>
+		/// The delay between repeating messages (as specified in UdpSendCount).
+		/// </summary>
+		public TimeSpan UdpSendDelay { get; set; } = TimeSpan.FromMilliseconds(100);
+
+		#endregion
+
 		#region Constructors
 
 		/// <summary>
@@ -168,7 +182,7 @@ namespace Rssdp.Infrastructure
 			EnsureSendSocketCreated();
 
 			// SSDP spec recommends sending messages multiple times (not more than 3) to account for possible packet loss over UDP.
-			Repeat(SsdpConstants.UdpResendCount, TimeSpan.FromMilliseconds(100), () =>
+			Repeat(UdpSendCount, UdpSendDelay, () =>
 				{
 					SendMessageIfSocketNotDisposed(messageData, destination);
 				});
@@ -257,6 +271,9 @@ namespace Rssdp.Infrastructure
 
 		private static void Repeat(int repetitions, TimeSpan delay, Action work)
 		{
+			if (repetitions < 2)
+				repetitions = 1;
+
 			for (int cnt = 0; cnt < repetitions; cnt++)
 			{
 				work();
