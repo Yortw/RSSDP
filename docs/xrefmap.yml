@@ -814,6 +814,30 @@ references:
   commentId: Overload:Rssdp.Infrastructure.ISsdpCommunicationsServer.StopListeningForResponses
   fullName: Rssdp.Infrastructure.ISsdpCommunicationsServer.StopListeningForResponses
   nameWithType: ISsdpCommunicationsServer.StopListeningForResponses
+- uid: Rssdp.Infrastructure.ISsdpCommunicationsServer.UdpSendCount
+  name: UdpSendCount
+  href: api/Rssdp.Infrastructure.ISsdpCommunicationsServer.UdpSendCount.html#Rssdp_Infrastructure_ISsdpCommunicationsServer_UdpSendCount
+  commentId: P:Rssdp.Infrastructure.ISsdpCommunicationsServer.UdpSendCount
+  fullName: Rssdp.Infrastructure.ISsdpCommunicationsServer.UdpSendCount
+  nameWithType: ISsdpCommunicationsServer.UdpSendCount
+- uid: Rssdp.Infrastructure.ISsdpCommunicationsServer.UdpSendCount*
+  name: UdpSendCount
+  href: api/Rssdp.Infrastructure.ISsdpCommunicationsServer.UdpSendCount.html
+  commentId: Overload:Rssdp.Infrastructure.ISsdpCommunicationsServer.UdpSendCount
+  fullName: Rssdp.Infrastructure.ISsdpCommunicationsServer.UdpSendCount
+  nameWithType: ISsdpCommunicationsServer.UdpSendCount
+- uid: Rssdp.Infrastructure.ISsdpCommunicationsServer.UdpSendDelay
+  name: UdpSendDelay
+  href: api/Rssdp.Infrastructure.ISsdpCommunicationsServer.UdpSendDelay.html#Rssdp_Infrastructure_ISsdpCommunicationsServer_UdpSendDelay
+  commentId: P:Rssdp.Infrastructure.ISsdpCommunicationsServer.UdpSendDelay
+  fullName: Rssdp.Infrastructure.ISsdpCommunicationsServer.UdpSendDelay
+  nameWithType: ISsdpCommunicationsServer.UdpSendDelay
+- uid: Rssdp.Infrastructure.ISsdpCommunicationsServer.UdpSendDelay*
+  name: UdpSendDelay
+  href: api/Rssdp.Infrastructure.ISsdpCommunicationsServer.UdpSendDelay.html
+  commentId: Overload:Rssdp.Infrastructure.ISsdpCommunicationsServer.UdpSendDelay
+  fullName: Rssdp.Infrastructure.ISsdpCommunicationsServer.UdpSendDelay
+  nameWithType: ISsdpCommunicationsServer.UdpSendDelay
 - uid: Rssdp.Infrastructure.ISsdpDeviceLocator
   name: ISsdpDeviceLocator
   href: api/Rssdp.Infrastructure.ISsdpDeviceLocator.html
@@ -1276,12 +1300,54 @@ references:
   commentId: Overload:Rssdp.Infrastructure.SsdpCommunicationsServer.StopListeningForResponses
   fullName: Rssdp.Infrastructure.SsdpCommunicationsServer.StopListeningForResponses
   nameWithType: SsdpCommunicationsServer.StopListeningForResponses
+- uid: Rssdp.Infrastructure.SsdpCommunicationsServer.UdpSendCount
+  name: UdpSendCount
+  href: api/Rssdp.Infrastructure.SsdpCommunicationsServer.UdpSendCount.html#Rssdp_Infrastructure_SsdpCommunicationsServer_UdpSendCount
+  commentId: P:Rssdp.Infrastructure.SsdpCommunicationsServer.UdpSendCount
+  fullName: Rssdp.Infrastructure.SsdpCommunicationsServer.UdpSendCount
+  nameWithType: SsdpCommunicationsServer.UdpSendCount
+- uid: Rssdp.Infrastructure.SsdpCommunicationsServer.UdpSendCount*
+  name: UdpSendCount
+  href: api/Rssdp.Infrastructure.SsdpCommunicationsServer.UdpSendCount.html
+  commentId: Overload:Rssdp.Infrastructure.SsdpCommunicationsServer.UdpSendCount
+  fullName: Rssdp.Infrastructure.SsdpCommunicationsServer.UdpSendCount
+  nameWithType: SsdpCommunicationsServer.UdpSendCount
+- uid: Rssdp.Infrastructure.SsdpCommunicationsServer.UdpSendDelay
+  name: UdpSendDelay
+  href: api/Rssdp.Infrastructure.SsdpCommunicationsServer.UdpSendDelay.html#Rssdp_Infrastructure_SsdpCommunicationsServer_UdpSendDelay
+  commentId: P:Rssdp.Infrastructure.SsdpCommunicationsServer.UdpSendDelay
+  fullName: Rssdp.Infrastructure.SsdpCommunicationsServer.UdpSendDelay
+  nameWithType: SsdpCommunicationsServer.UdpSendDelay
+- uid: Rssdp.Infrastructure.SsdpCommunicationsServer.UdpSendDelay*
+  name: UdpSendDelay
+  href: api/Rssdp.Infrastructure.SsdpCommunicationsServer.UdpSendDelay.html
+  commentId: Overload:Rssdp.Infrastructure.SsdpCommunicationsServer.UdpSendDelay
+  fullName: Rssdp.Infrastructure.SsdpCommunicationsServer.UdpSendDelay
+  nameWithType: SsdpCommunicationsServer.UdpSendDelay
 - uid: Rssdp.Infrastructure.SsdpConstants
   name: SsdpConstants
   href: api/Rssdp.Infrastructure.SsdpConstants.html
   commentId: T:Rssdp.Infrastructure.SsdpConstants
   fullName: Rssdp.Infrastructure.SsdpConstants
   nameWithType: SsdpConstants
+- uid: Rssdp.Infrastructure.SsdpConstants.DefaultUdpResendCount
+  name: DefaultUdpResendCount
+  href: api/Rssdp.Infrastructure.SsdpConstants.DefaultUdpResendCount.html#Rssdp_Infrastructure_SsdpConstants_DefaultUdpResendCount
+  commentId: F:Rssdp.Infrastructure.SsdpConstants.DefaultUdpResendCount
+  fullName: Rssdp.Infrastructure.SsdpConstants.DefaultUdpResendCount
+  nameWithType: SsdpConstants.DefaultUdpResendCount
+- uid: Rssdp.Infrastructure.SsdpConstants.DefaultUdpResendDelay
+  name: DefaultUdpResendDelay
+  href: api/Rssdp.Infrastructure.SsdpConstants.DefaultUdpResendDelay.html#Rssdp_Infrastructure_SsdpConstants_DefaultUdpResendDelay
+  commentId: P:Rssdp.Infrastructure.SsdpConstants.DefaultUdpResendDelay
+  fullName: Rssdp.Infrastructure.SsdpConstants.DefaultUdpResendDelay
+  nameWithType: SsdpConstants.DefaultUdpResendDelay
+- uid: Rssdp.Infrastructure.SsdpConstants.DefaultUdpResendDelay*
+  name: DefaultUdpResendDelay
+  href: api/Rssdp.Infrastructure.SsdpConstants.DefaultUdpResendDelay.html
+  commentId: Overload:Rssdp.Infrastructure.SsdpConstants.DefaultUdpResendDelay
+  fullName: Rssdp.Infrastructure.SsdpConstants.DefaultUdpResendDelay
+  nameWithType: SsdpConstants.DefaultUdpResendDelay
 - uid: Rssdp.Infrastructure.SsdpConstants.DefaultUdpSocketBufferSize
   name: DefaultUdpSocketBufferSize
   href: api/Rssdp.Infrastructure.SsdpConstants.DefaultUdpSocketBufferSize.html#Rssdp_Infrastructure_SsdpConstants_DefaultUdpSocketBufferSize

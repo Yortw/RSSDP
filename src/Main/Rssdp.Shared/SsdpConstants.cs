@@ -65,7 +65,24 @@ namespace Rssdp.Infrastructure
 		internal const string SsdpKeepAliveNotification = "ssdp:alive";
 		internal const string SsdpByeByeNotification = "ssdp:byebye";
 
-		internal const int UdpResendCount = 3;
+		/// <summary>
+		/// The default number of times to resend each UDP packet. 
+		/// </summary>
+		/// <remarks>
+		/// <para>SSDP spec recommends sending messages multiple times (not more than 3) to account for possible packet loss over UDP.</para>
+		/// <para>This constant has a value of 3.</para>
+		/// </remarks>
+		public const int DefaultUdpResendCount = 3;
 
+		private static readonly TimeSpan _DefaultUdpResendDelay = TimeSpan.FromMilliseconds(100);
+
+		/// <summary>
+		/// The default time to delay between re-sends of UDP packets.
+		/// </summary>
+		/// <remarks>
+		/// <para>This property returns a value of 100 milliseconds.</para>
+		/// </remarks>
+		/// <seealso cref="DefaultUdpResendCount"/>
+		public static TimeSpan DefaultUdpResendDelay { get { return _DefaultUdpResendDelay; } } 
 	}
 }

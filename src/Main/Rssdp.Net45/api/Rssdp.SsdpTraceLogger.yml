@@ -23,7 +23,7 @@ items:
   source:
     id: SsdpTraceLogger
     path: ''
-    startLine: 8585
+    startLine: 8628
   assemblies:
   - cs.temp.dll
   namespace: Rssdp
@@ -203,7 +203,7 @@ items:
   source:
     id: LogInfo
     path: ''
-    startLine: 8591
+    startLine: 8634
   assemblies:
   - cs.temp.dll
   namespace: Rssdp
@@ -235,7 +235,7 @@ items:
   source:
     id: LogVerbose
     path: ''
-    startLine: 8600
+    startLine: 8643
   assemblies:
   - cs.temp.dll
   namespace: Rssdp
@@ -267,7 +267,7 @@ items:
   source:
     id: LogWarning
     path: ''
-    startLine: 8609
+    startLine: 8652
   assemblies:
   - cs.temp.dll
   namespace: Rssdp
@@ -299,7 +299,7 @@ items:
   source:
     id: LogError
     path: ''
-    startLine: 8618
+    startLine: 8661
   assemblies:
   - cs.temp.dll
   namespace: Rssdp

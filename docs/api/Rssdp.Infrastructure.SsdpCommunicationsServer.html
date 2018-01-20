@@ -772,6 +772,12 @@
                                 <li class="">
                                   <a href="Rssdp.Infrastructure.ISsdpCommunicationsServer.StopListeningForResponses.html" title="StopListeningForResponses" class="">StopListeningForResponses</a>
                                 </li>
+                                <li class="">
+                                  <a href="Rssdp.Infrastructure.ISsdpCommunicationsServer.UdpSendCount.html" title="UdpSendCount" class="">UdpSendCount</a>
+                                </li>
+                                <li class="">
+                                  <a href="Rssdp.Infrastructure.ISsdpCommunicationsServer.UdpSendDelay.html" title="UdpSendDelay" class="">UdpSendDelay</a>
+                                </li>
                               </ul>  </li>
                           <li class="">
                             <span class="expand-stub"></span>
@@ -919,12 +925,24 @@
                                 <li class="">
                                   <a href="Rssdp.Infrastructure.SsdpCommunicationsServer.StopListeningForResponses.html" title="StopListeningForResponses" class="">StopListeningForResponses</a>
                                 </li>
+                                <li class="">
+                                  <a href="Rssdp.Infrastructure.SsdpCommunicationsServer.UdpSendCount.html" title="UdpSendCount" class="">UdpSendCount</a>
+                                </li>
+                                <li class="">
+                                  <a href="Rssdp.Infrastructure.SsdpCommunicationsServer.UdpSendDelay.html" title="UdpSendDelay" class="">UdpSendDelay</a>
+                                </li>
                               </ul>  </li>
                           <li class="">
                             <span class="expand-stub"></span>
                             <a href="Rssdp.Infrastructure.SsdpConstants.html" title="SsdpConstants" class="">SsdpConstants</a>
                               
                               <ul class="nav level3">
+                                <li class="">
+                                  <a href="Rssdp.Infrastructure.SsdpConstants.DefaultUdpResendCount.html#Rssdp_Infrastructure_SsdpConstants_DefaultUdpResendCount" title="DefaultUdpResendCount" class="">DefaultUdpResendCount</a>
+                                </li>
+                                <li class="">
+                                  <a href="Rssdp.Infrastructure.SsdpConstants.DefaultUdpResendDelay.html" title="DefaultUdpResendDelay" class="">DefaultUdpResendDelay</a>
+                                </li>
                                 <li class="">
                                   <a href="Rssdp.Infrastructure.SsdpConstants.DefaultUdpSocketBufferSize.html#Rssdp_Infrastructure_SsdpConstants_DefaultUdpSocketBufferSize" title="DefaultUdpSocketBufferSize" class="">DefaultUdpSocketBufferSize</a>
                                 </li>
@@ -1176,6 +1194,20 @@
           <a class="xref" href="Rssdp.Infrastructure.SsdpCommunicationsServer.IsShared.html#Rssdp_Infrastructure_SsdpCommunicationsServer_IsShared">IsShared</a>
         </td>
         <td class="markdown level1 summary"><p>Gets or sets a boolean value indicating whether or not this instance is shared amongst multiple <a class="xref" href="Rssdp.Infrastructure.SsdpDeviceLocatorBase.html">SsdpDeviceLocatorBase</a> and/or <a class="xref" href="Rssdp.Infrastructure.ISsdpDevicePublisher.html">ISsdpDevicePublisher</a> instances.</p>
+</td>
+      </tr>
+      <tr>
+        <td id="Rssdp_Infrastructure_SsdpCommunicationsServer_UdpSendCount" data-uid="Rssdp.Infrastructure.SsdpCommunicationsServer.UdpSendCount">
+          <a class="xref" href="Rssdp.Infrastructure.SsdpCommunicationsServer.UdpSendCount.html#Rssdp_Infrastructure_SsdpCommunicationsServer_UdpSendCount">UdpSendCount</a>
+        </td>
+        <td class="markdown level1 summary"><p>The number of times the Udp message is sent. Any value less than 2 will result in one message being sent. SSDP spec recommends sending messages multiple times (not more than 3) to account for possible packet loss over UDP.</p>
+</td>
+      </tr>
+      <tr>
+        <td id="Rssdp_Infrastructure_SsdpCommunicationsServer_UdpSendDelay" data-uid="Rssdp.Infrastructure.SsdpCommunicationsServer.UdpSendDelay">
+          <a class="xref" href="Rssdp.Infrastructure.SsdpCommunicationsServer.UdpSendDelay.html#Rssdp_Infrastructure_SsdpCommunicationsServer_UdpSendDelay">UdpSendDelay</a>
+        </td>
+        <td class="markdown level1 summary"><p>The delay between repeating messages (as specified in UdpSendCount).</p>
 </td>
       </tr>
     </tbody>

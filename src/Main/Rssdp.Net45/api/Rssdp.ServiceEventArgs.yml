@@ -17,7 +17,7 @@ items:
   source:
     id: ServiceEventArgs
     path: ''
-    startLine: 3267
+    startLine: 3279
   assemblies:
   - cs.temp.dll
   namespace: Rssdp
@@ -62,7 +62,7 @@ items:
   source:
     id: .ctor
     path: ''
-    startLine: 3283
+    startLine: 3295
   assemblies:
   - cs.temp.dll
   namespace: Rssdp
@@ -98,7 +98,7 @@ items:
   source:
     id: Service
     path: ''
-    startLine: 3297
+    startLine: 3309
   assemblies:
   - cs.temp.dll
   namespace: Rssdp

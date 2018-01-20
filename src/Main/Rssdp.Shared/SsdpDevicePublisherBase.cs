@@ -669,11 +669,6 @@ USN: {1}
 					SendAliveNotifications(device, true);
 				}
 			}
-			catch (ObjectDisposedException ex)
-			{
-				_Log.LogWarning("Publisher stopped, exception " + ex.Message);
-				Dispose();
-			}
 			catch (Exception ex)
 			{
 				_Log.LogError("Publisher stopped, exception " + ex.Message);

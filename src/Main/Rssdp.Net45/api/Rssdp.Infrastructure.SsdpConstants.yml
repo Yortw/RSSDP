@@ -5,6 +5,8 @@ items:
   id: SsdpConstants
   parent: Rssdp.Infrastructure
   children:
+  - Rssdp.Infrastructure.SsdpConstants.DefaultUdpResendCount
+  - Rssdp.Infrastructure.SsdpConstants.DefaultUdpResendDelay
   - Rssdp.Infrastructure.SsdpConstants.DefaultUdpSocketBufferSize
   - Rssdp.Infrastructure.SsdpConstants.MaxUdpSocketBufferSize
   - Rssdp.Infrastructure.SsdpConstants.MulticastLinkLocalAddressV6
@@ -25,7 +27,7 @@ items:
   source:
     id: SsdpConstants
     path: ''
-    startLine: 3794
+    startLine: 3825
   assemblies:
   - cs.temp.dll
   namespace: Rssdp.Infrastructure
@@ -65,7 +67,7 @@ items:
   source:
     id: MulticastLinkLocalAddressV6
     path: ''
-    startLine: 3799
+    startLine: 3830
   assemblies:
   - cs.temp.dll
   namespace: Rssdp.Infrastructure
@@ -96,7 +98,7 @@ items:
   source:
     id: MulticastLocalAdminAddress
     path: ''
-    startLine: 3803
+    startLine: 3834
   assemblies:
   - cs.temp.dll
   namespace: Rssdp.Infrastructure
@@ -127,7 +129,7 @@ items:
   source:
     id: MulticastPort
     path: ''
-    startLine: 3807
+    startLine: 3838
   assemblies:
   - cs.temp.dll
   namespace: Rssdp.Infrastructure
@@ -158,7 +160,7 @@ items:
   source:
     id: SsdpDefaultMulticastTimeToLive
     path: ''
-    startLine: 3811
+    startLine: 3842
   assemblies:
   - cs.temp.dll
   namespace: Rssdp.Infrastructure
@@ -189,7 +191,7 @@ items:
   source:
     id: DefaultUdpSocketBufferSize
     path: ''
-    startLine: 3823
+    startLine: 3854
   assemblies:
   - cs.temp.dll
   namespace: Rssdp.Infrastructure
@@ -220,7 +222,7 @@ items:
   source:
     id: MaxUdpSocketBufferSize
     path: ''
-    startLine: 3827
+    startLine: 3858
   assemblies:
   - cs.temp.dll
   namespace: Rssdp.Infrastructure
@@ -251,7 +253,7 @@ items:
   source:
     id: UpnpDeviceTypeNamespace
     path: ''
-    startLine: 3832
+    startLine: 3863
   assemblies:
   - cs.temp.dll
   namespace: Rssdp.Infrastructure
@@ -282,7 +284,7 @@ items:
   source:
     id: UpnpDeviceTypeRootDevice
     path: ''
-    startLine: 3836
+    startLine: 3867
   assemblies:
   - cs.temp.dll
   namespace: Rssdp.Infrastructure
@@ -313,7 +315,7 @@ items:
   source:
     id: PnpDeviceTypeRootDevice
     path: ''
-    startLine: 3841
+    startLine: 3872
   assemblies:
   - cs.temp.dll
   namespace: Rssdp.Infrastructure
@@ -344,7 +346,7 @@ items:
   source:
     id: UpnpDeviceTypeBasicDevice
     path: ''
-    startLine: 3845
+    startLine: 3876
   assemblies:
   - cs.temp.dll
   namespace: Rssdp.Infrastructure
@@ -361,6 +363,77 @@ items:
   modifiers.vb:
   - Public
   - Const
+- uid: Rssdp.Infrastructure.SsdpConstants.DefaultUdpResendCount
+  commentId: F:Rssdp.Infrastructure.SsdpConstants.DefaultUdpResendCount
+  id: DefaultUdpResendCount
+  parent: Rssdp.Infrastructure.SsdpConstants
+  langs:
+  - csharp
+  - vb
+  name: DefaultUdpResendCount
+  nameWithType: SsdpConstants.DefaultUdpResendCount
+  fullName: Rssdp.Infrastructure.SsdpConstants.DefaultUdpResendCount
+  type: Field
+  source:
+    id: DefaultUdpResendCount
+    path: ''
+    startLine: 3888
+  assemblies:
+  - cs.temp.dll
+  namespace: Rssdp.Infrastructure
+  summary: "\nThe default number of times to resend each UDP packet. \n"
+  remarks: "\n<p>SSDP spec recommends sending messages multiple times (not more than 3) to account for possible packet loss over UDP.</p>\n<p>This constant has a value of 3.</p>\n"
+  example: []
+  syntax:
+    content: public const int DefaultUdpResendCount = 3
+    return:
+      type: System.Int32
+    content.vb: Public Const DefaultUdpResendCount As Integer = 3
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: Rssdp.Infrastructure.SsdpConstants.DefaultUdpResendDelay
+  commentId: P:Rssdp.Infrastructure.SsdpConstants.DefaultUdpResendDelay
+  id: DefaultUdpResendDelay
+  parent: Rssdp.Infrastructure.SsdpConstants
+  langs:
+  - csharp
+  - vb
+  name: DefaultUdpResendDelay
+  nameWithType: SsdpConstants.DefaultUdpResendDelay
+  fullName: Rssdp.Infrastructure.SsdpConstants.DefaultUdpResendDelay
+  type: Property
+  source:
+    id: DefaultUdpResendDelay
+    path: ''
+    startLine: 3899
+  assemblies:
+  - cs.temp.dll
+  namespace: Rssdp.Infrastructure
+  summary: "\nThe default time to delay between re-sends of UDP packets.\n"
+  remarks: "\n<p>This property returns a value of 100 milliseconds.</p>\n"
+  example: []
+  syntax:
+    content: public static TimeSpan DefaultUdpResendDelay { get; }
+    parameters: []
+    return:
+      type: System.TimeSpan
+    content.vb: Public Shared ReadOnly Property DefaultUdpResendDelay As TimeSpan
+  overload: Rssdp.Infrastructure.SsdpConstants.DefaultUdpResendDelay*
+  seealso:
+  - linkId: Rssdp.Infrastructure.SsdpConstants.DefaultUdpResendCount
+    commentId: F:Rssdp.Infrastructure.SsdpConstants.DefaultUdpResendCount
+  modifiers.csharp:
+  - public
+  - static
+  - get
+  modifiers.vb:
+  - Public
+  - Shared
+  - ReadOnly
 references:
 - uid: Rssdp.Infrastructure
   commentId: N:Rssdp.Infrastructure
@@ -674,3 +747,18 @@ references:
   name: Int32
   nameWithType: Int32
   fullName: System.Int32
+- uid: Rssdp.Infrastructure.SsdpConstants.DefaultUdpResendCount
+  commentId: F:Rssdp.Infrastructure.SsdpConstants.DefaultUdpResendCount
+- uid: Rssdp.Infrastructure.SsdpConstants.DefaultUdpResendDelay*
+  commentId: Overload:Rssdp.Infrastructure.SsdpConstants.DefaultUdpResendDelay
+  isExternal: false
+  name: DefaultUdpResendDelay
+  nameWithType: SsdpConstants.DefaultUdpResendDelay
+  fullName: Rssdp.Infrastructure.SsdpConstants.DefaultUdpResendDelay
+- uid: System.TimeSpan
+  commentId: T:System.TimeSpan
+  parent: System
+  isExternal: true
+  name: TimeSpan
+  nameWithType: TimeSpan
+  fullName: System.TimeSpan

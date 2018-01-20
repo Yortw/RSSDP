@@ -21,7 +21,7 @@ items:
   source:
     id: SsdpRootDevice
     path: ''
-    startLine: 7048
+    startLine: 7091
   assemblies:
   - cs.temp.dll
   namespace: Rssdp
@@ -99,7 +99,7 @@ items:
   source:
     id: .ctor
     path: ''
-    startLine: 7062
+    startLine: 7105
   assemblies:
   - cs.temp.dll
   namespace: Rssdp
@@ -127,7 +127,7 @@ items:
   source:
     id: .ctor
     path: ''
-    startLine: 7074
+    startLine: 7117
   assemblies:
   - cs.temp.dll
   namespace: Rssdp
@@ -172,7 +172,7 @@ items:
   source:
     id: CacheLifetime
     path: ''
-    startLine: 7097
+    startLine: 7140
   assemblies:
   - cs.temp.dll
   namespace: Rssdp
@@ -206,7 +206,7 @@ items:
   source:
     id: Location
     path: ''
-    startLine: 7105
+    startLine: 7148
   assemblies:
   - cs.temp.dll
   namespace: Rssdp
@@ -239,7 +239,7 @@ items:
   source:
     id: UrlBase
     path: ''
-    startLine: 7114
+    startLine: 7157
   assemblies:
   - cs.temp.dll
   namespace: Rssdp
@@ -273,7 +273,7 @@ items:
   source:
     id: ToDescriptionDocument
     path: ''
-    startLine: 7135
+    startLine: 7178
   assemblies:
   - cs.temp.dll
   namespace: Rssdp

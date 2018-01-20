@@ -59,9 +59,21 @@ namespace Rssdp.Infrastructure
 		bool IsShared { get; set; }
 
 		/// <summary>
-		/// 
+		/// Determines whether IPv4 or IPv5 sockets are used by this communications server.
 		/// </summary>
 		DeviceNetworkType DeviceNetworkType { get; }
+
+		/// <summary>
+		/// The number of times the Udp message is sent. Any value less than 2 will result in one message being sent. SSDP spec recommends sending messages multiple times (not more than 3) to account for possible packet loss over UDP.
+		/// </summary>
+		/// <seealso cref="UdpSendDelay"/>
+		int UdpSendCount { get; set; }
+
+		/// <summary>
+		/// The delay between repeating messages (as specified in UdpSendCount).
+		/// </summary>
+		/// <seealso cref="UdpSendCount"/>
+		TimeSpan UdpSendDelay { get; set; }
 
 		#endregion
 

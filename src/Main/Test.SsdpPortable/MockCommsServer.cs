@@ -185,6 +185,10 @@ namespace Test.RssdpPortable
 			get { return _deviceNetworkType; }
 		}
 
+		public int UdpSendCount { get; set; } = SsdpConstants.DefaultUdpResendCount;
+
+		public TimeSpan UdpSendDelay { get; set; } = SsdpConstants.DefaultUdpResendDelay;
+
 		#endregion
 
 		public void MockReceiveBroadcast(ReceivedUdpData broadcastMessage)

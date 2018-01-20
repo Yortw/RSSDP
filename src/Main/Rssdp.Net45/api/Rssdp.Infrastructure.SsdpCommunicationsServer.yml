@@ -17,6 +17,8 @@ items:
   - Rssdp.Infrastructure.SsdpCommunicationsServer.SendMessage(System.Byte[],Rssdp.Infrastructure.UdpEndPoint)
   - Rssdp.Infrastructure.SsdpCommunicationsServer.StopListeningForBroadcasts
   - Rssdp.Infrastructure.SsdpCommunicationsServer.StopListeningForResponses
+  - Rssdp.Infrastructure.SsdpCommunicationsServer.UdpSendCount
+  - Rssdp.Infrastructure.SsdpCommunicationsServer.UdpSendDelay
   langs:
   - csharp
   - vb
@@ -27,7 +29,7 @@ items:
   source:
     id: SsdpCommunicationsServer
     path: ''
-    startLine: 3362
+    startLine: 3374
   assemblies:
   - cs.temp.dll
   namespace: Rssdp.Infrastructure
@@ -78,7 +80,7 @@ items:
   source:
     id: RequestReceived
     path: ''
-    startLine: 3406
+    startLine: 3418
   assemblies:
   - cs.temp.dll
   namespace: Rssdp.Infrastructure
@@ -109,7 +111,7 @@ items:
   source:
     id: ResponseReceived
     path: ''
-    startLine: 3411
+    startLine: 3423
   assemblies:
   - cs.temp.dll
   namespace: Rssdp.Infrastructure
@@ -126,6 +128,82 @@ items:
   - public
   modifiers.vb:
   - Public
+- uid: Rssdp.Infrastructure.SsdpCommunicationsServer.UdpSendCount
+  commentId: P:Rssdp.Infrastructure.SsdpCommunicationsServer.UdpSendCount
+  id: UdpSendCount
+  parent: Rssdp.Infrastructure.SsdpCommunicationsServer
+  langs:
+  - csharp
+  - vb
+  name: UdpSendCount
+  nameWithType: SsdpCommunicationsServer.UdpSendCount
+  fullName: Rssdp.Infrastructure.SsdpCommunicationsServer.UdpSendCount
+  type: Property
+  source:
+    id: UdpSendCount
+    path: ''
+    startLine: 3433
+  assemblies:
+  - cs.temp.dll
+  namespace: Rssdp.Infrastructure
+  summary: "\nThe number of times the Udp message is sent. Any value less than 2 will result in one message being sent. SSDP spec recommends sending messages multiple times (not more than 3) to account for possible packet loss over UDP.\n"
+  example: []
+  syntax:
+    content: public int UdpSendCount { get; set; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public Property UdpSendCount As Integer
+  overload: Rssdp.Infrastructure.SsdpCommunicationsServer.UdpSendCount*
+  seealso:
+  - linkId: Rssdp.Infrastructure.SsdpCommunicationsServer.UdpSendDelay
+    commentId: P:Rssdp.Infrastructure.SsdpCommunicationsServer.UdpSendDelay
+  implements:
+  - Rssdp.Infrastructure.ISsdpCommunicationsServer.UdpSendCount
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: Rssdp.Infrastructure.SsdpCommunicationsServer.UdpSendDelay
+  commentId: P:Rssdp.Infrastructure.SsdpCommunicationsServer.UdpSendDelay
+  id: UdpSendDelay
+  parent: Rssdp.Infrastructure.SsdpCommunicationsServer
+  langs:
+  - csharp
+  - vb
+  name: UdpSendDelay
+  nameWithType: SsdpCommunicationsServer.UdpSendDelay
+  fullName: Rssdp.Infrastructure.SsdpCommunicationsServer.UdpSendDelay
+  type: Property
+  source:
+    id: UdpSendDelay
+    path: ''
+    startLine: 3439
+  assemblies:
+  - cs.temp.dll
+  namespace: Rssdp.Infrastructure
+  summary: "\nThe delay between repeating messages (as specified in UdpSendCount).\n"
+  example: []
+  syntax:
+    content: public TimeSpan UdpSendDelay { get; set; }
+    parameters: []
+    return:
+      type: System.TimeSpan
+    content.vb: Public Property UdpSendDelay As TimeSpan
+  overload: Rssdp.Infrastructure.SsdpCommunicationsServer.UdpSendDelay*
+  seealso:
+  - linkId: Rssdp.Infrastructure.SsdpCommunicationsServer.UdpSendCount
+    commentId: P:Rssdp.Infrastructure.SsdpCommunicationsServer.UdpSendCount
+  implements:
+  - Rssdp.Infrastructure.ISsdpCommunicationsServer.UdpSendDelay
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
 - uid: Rssdp.Infrastructure.SsdpCommunicationsServer.#ctor(Rssdp.Infrastructure.ISocketFactory)
   commentId: M:Rssdp.Infrastructure.SsdpCommunicationsServer.#ctor(Rssdp.Infrastructure.ISocketFactory)
   id: '#ctor(Rssdp.Infrastructure.ISocketFactory)'
@@ -140,7 +218,7 @@ items:
   source:
     id: .ctor
     path: ''
-    startLine: 3422
+    startLine: 3450
   assemblies:
   - cs.temp.dll
   namespace: Rssdp.Infrastructure
@@ -176,7 +254,7 @@ items:
   source:
     id: .ctor
     path: ''
-    startLine: 3433
+    startLine: 3461
   assemblies:
   - cs.temp.dll
   namespace: Rssdp.Infrastructure
@@ -215,7 +293,7 @@ items:
   source:
     id: .ctor
     path: ''
-    startLine: 3446
+    startLine: 3474
   assemblies:
   - cs.temp.dll
   namespace: Rssdp.Infrastructure
@@ -260,7 +338,7 @@ items:
   source:
     id: BeginListeningForBroadcasts
     path: ''
-    startLine: 3471
+    startLine: 3499
   assemblies:
   - cs.temp.dll
   namespace: Rssdp.Infrastructure
@@ -294,7 +372,7 @@ items:
   source:
     id: StopListeningForBroadcasts
     path: ''
-    startLine: 3489
+    startLine: 3517
   assemblies:
   - cs.temp.dll
   namespace: Rssdp.Infrastructure
@@ -328,7 +406,7 @@ items:
   source:
     id: SendMessage
     path: ''
-    startLine: 3510
+    startLine: 3538
   assemblies:
   - cs.temp.dll
   namespace: Rssdp.Infrastructure
@@ -375,7 +453,7 @@ items:
   source:
     id: StopListeningForResponses
     path: ''
-    startLine: 3529
+    startLine: 3557
   assemblies:
   - cs.temp.dll
   namespace: Rssdp.Infrastructure
@@ -409,7 +487,7 @@ items:
   source:
     id: IsShared
     path: ''
-    startLine: 3552
+    startLine: 3580
   assemblies:
   - cs.temp.dll
   namespace: Rssdp.Infrastructure
@@ -445,7 +523,7 @@ items:
   source:
     id: DeviceNetworkType
     path: ''
-    startLine: 3561
+    startLine: 3589
   assemblies:
   - cs.temp.dll
   namespace: Rssdp.Infrastructure
@@ -480,7 +558,7 @@ items:
   source:
     id: Dispose
     path: ''
-    startLine: 3571
+    startLine: 3599
   assemblies:
   - cs.temp.dll
   namespace: Rssdp.Infrastructure
@@ -1023,6 +1101,50 @@ references:
   - name: )
     nameWithType: )
     fullName: )
+- uid: Rssdp.Infrastructure.SsdpCommunicationsServer.UdpSendDelay
+  commentId: P:Rssdp.Infrastructure.SsdpCommunicationsServer.UdpSendDelay
+- uid: Rssdp.Infrastructure.SsdpCommunicationsServer.UdpSendCount*
+  commentId: Overload:Rssdp.Infrastructure.SsdpCommunicationsServer.UdpSendCount
+  isExternal: false
+  name: UdpSendCount
+  nameWithType: SsdpCommunicationsServer.UdpSendCount
+  fullName: Rssdp.Infrastructure.SsdpCommunicationsServer.UdpSendCount
+- uid: Rssdp.Infrastructure.ISsdpCommunicationsServer.UdpSendCount
+  commentId: P:Rssdp.Infrastructure.ISsdpCommunicationsServer.UdpSendCount
+  parent: Rssdp.Infrastructure.ISsdpCommunicationsServer
+  isExternal: false
+  name: UdpSendCount
+  nameWithType: ISsdpCommunicationsServer.UdpSendCount
+  fullName: Rssdp.Infrastructure.ISsdpCommunicationsServer.UdpSendCount
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  name: Int32
+  nameWithType: Int32
+  fullName: System.Int32
+- uid: Rssdp.Infrastructure.SsdpCommunicationsServer.UdpSendCount
+  commentId: P:Rssdp.Infrastructure.SsdpCommunicationsServer.UdpSendCount
+- uid: Rssdp.Infrastructure.SsdpCommunicationsServer.UdpSendDelay*
+  commentId: Overload:Rssdp.Infrastructure.SsdpCommunicationsServer.UdpSendDelay
+  isExternal: false
+  name: UdpSendDelay
+  nameWithType: SsdpCommunicationsServer.UdpSendDelay
+  fullName: Rssdp.Infrastructure.SsdpCommunicationsServer.UdpSendDelay
+- uid: Rssdp.Infrastructure.ISsdpCommunicationsServer.UdpSendDelay
+  commentId: P:Rssdp.Infrastructure.ISsdpCommunicationsServer.UdpSendDelay
+  parent: Rssdp.Infrastructure.ISsdpCommunicationsServer
+  isExternal: false
+  name: UdpSendDelay
+  nameWithType: ISsdpCommunicationsServer.UdpSendDelay
+  fullName: Rssdp.Infrastructure.ISsdpCommunicationsServer.UdpSendDelay
+- uid: System.TimeSpan
+  commentId: T:System.TimeSpan
+  parent: System
+  isExternal: true
+  name: TimeSpan
+  nameWithType: TimeSpan
+  fullName: System.TimeSpan
 - uid: Rssdp.Infrastructure.ISocketFactory
   commentId: T:Rssdp.Infrastructure.ISocketFactory
   parent: Rssdp.Infrastructure
@@ -1038,13 +1160,6 @@ references:
   fullName: Rssdp.Infrastructure.SsdpCommunicationsServer.SsdpCommunicationsServer
 - uid: System.ArgumentNullException
   commentId: T:System.ArgumentNullException
-- uid: System.Int32
-  commentId: T:System.Int32
-  parent: System
-  isExternal: true
-  name: Int32
-  nameWithType: Int32
-  fullName: System.Int32
 - uid: System.ArgumentOutOfRangeException
   commentId: T:System.ArgumentOutOfRangeException
 - uid: Rssdp.Infrastructure.SsdpCommunicationsServer.BeginListeningForBroadcasts*

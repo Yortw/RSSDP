@@ -5,5 +5,5 @@ using System.Reflection;
 [assembly: AssemblyCopyright("Released under the MIT license; http://choosealicense.com/licenses/mit/; https://github.com/Yortw/RSSDP")]
 [assembly: AssemblyTrademark("")]
 
-[assembly: AssemblyVersion("3.5.8.0")]
-[assembly: AssemblyFileVersion("3.5.8.0")]
+[assembly: AssemblyVersion("4.0.0.0")]
+[assembly: AssemblyFileVersion("4.0.0.0")]

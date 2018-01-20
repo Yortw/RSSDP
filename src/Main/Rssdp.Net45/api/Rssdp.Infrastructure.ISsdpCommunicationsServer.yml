@@ -13,6 +13,8 @@ items:
   - Rssdp.Infrastructure.ISsdpCommunicationsServer.SendMessage(System.Byte[],Rssdp.Infrastructure.UdpEndPoint)
   - Rssdp.Infrastructure.ISsdpCommunicationsServer.StopListeningForBroadcasts
   - Rssdp.Infrastructure.ISsdpCommunicationsServer.StopListeningForResponses
+  - Rssdp.Infrastructure.ISsdpCommunicationsServer.UdpSendCount
+  - Rssdp.Infrastructure.ISsdpCommunicationsServer.UdpSendDelay
   langs:
   - csharp
   - vb
@@ -247,7 +249,7 @@ items:
   assemblies:
   - cs.temp.dll
   namespace: Rssdp.Infrastructure
-  summary: "\n\n"
+  summary: "\nDetermines whether IPv4 or IPv5 sockets are used by this communications server.\n"
   example: []
   syntax:
     content: DeviceNetworkType DeviceNetworkType { get; }
@@ -260,6 +262,72 @@ items:
   - get
   modifiers.vb:
   - ReadOnly
+- uid: Rssdp.Infrastructure.ISsdpCommunicationsServer.UdpSendCount
+  commentId: P:Rssdp.Infrastructure.ISsdpCommunicationsServer.UdpSendCount
+  id: UdpSendCount
+  parent: Rssdp.Infrastructure.ISsdpCommunicationsServer
+  langs:
+  - csharp
+  - vb
+  name: UdpSendCount
+  nameWithType: ISsdpCommunicationsServer.UdpSendCount
+  fullName: Rssdp.Infrastructure.ISsdpCommunicationsServer.UdpSendCount
+  type: Property
+  source:
+    id: UdpSendCount
+    path: ''
+    startLine: 2718
+  assemblies:
+  - cs.temp.dll
+  namespace: Rssdp.Infrastructure
+  summary: "\nThe number of times the Udp message is sent. Any value less than 2 will result in one message being sent. SSDP spec recommends sending messages multiple times (not more than 3) to account for possible packet loss over UDP.\n"
+  example: []
+  syntax:
+    content: int UdpSendCount { get; set; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Property UdpSendCount As Integer
+  overload: Rssdp.Infrastructure.ISsdpCommunicationsServer.UdpSendCount*
+  seealso:
+  - linkId: Rssdp.Infrastructure.ISsdpCommunicationsServer.UdpSendDelay
+    commentId: P:Rssdp.Infrastructure.ISsdpCommunicationsServer.UdpSendDelay
+  modifiers.csharp:
+  - get
+  - set
+- uid: Rssdp.Infrastructure.ISsdpCommunicationsServer.UdpSendDelay
+  commentId: P:Rssdp.Infrastructure.ISsdpCommunicationsServer.UdpSendDelay
+  id: UdpSendDelay
+  parent: Rssdp.Infrastructure.ISsdpCommunicationsServer
+  langs:
+  - csharp
+  - vb
+  name: UdpSendDelay
+  nameWithType: ISsdpCommunicationsServer.UdpSendDelay
+  fullName: Rssdp.Infrastructure.ISsdpCommunicationsServer.UdpSendDelay
+  type: Property
+  source:
+    id: UdpSendDelay
+    path: ''
+    startLine: 2724
+  assemblies:
+  - cs.temp.dll
+  namespace: Rssdp.Infrastructure
+  summary: "\nThe delay between repeating messages (as specified in UdpSendCount).\n"
+  example: []
+  syntax:
+    content: TimeSpan UdpSendDelay { get; set; }
+    parameters: []
+    return:
+      type: System.TimeSpan
+    content.vb: Property UdpSendDelay As TimeSpan
+  overload: Rssdp.Infrastructure.ISsdpCommunicationsServer.UdpSendDelay*
+  seealso:
+  - linkId: Rssdp.Infrastructure.ISsdpCommunicationsServer.UdpSendCount
+    commentId: P:Rssdp.Infrastructure.ISsdpCommunicationsServer.UdpSendCount
+  modifiers.csharp:
+  - get
+  - set
 references:
 - uid: Rssdp.Infrastructure
   commentId: N:Rssdp.Infrastructure
@@ -536,3 +604,50 @@ references:
   name: Rssdp
   nameWithType: Rssdp
   fullName: Rssdp
+- uid: Rssdp.Infrastructure.ISsdpCommunicationsServer.UdpSendDelay
+  commentId: P:Rssdp.Infrastructure.ISsdpCommunicationsServer.UdpSendDelay
+  parent: Rssdp.Infrastructure.ISsdpCommunicationsServer
+  isExternal: false
+  name: UdpSendDelay
+  nameWithType: ISsdpCommunicationsServer.UdpSendDelay
+  fullName: Rssdp.Infrastructure.ISsdpCommunicationsServer.UdpSendDelay
+- uid: Rssdp.Infrastructure.ISsdpCommunicationsServer.UdpSendCount*
+  commentId: Overload:Rssdp.Infrastructure.ISsdpCommunicationsServer.UdpSendCount
+  isExternal: false
+  name: UdpSendCount
+  nameWithType: ISsdpCommunicationsServer.UdpSendCount
+  fullName: Rssdp.Infrastructure.ISsdpCommunicationsServer.UdpSendCount
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  name: Int32
+  nameWithType: Int32
+  fullName: System.Int32
+- uid: Rssdp.Infrastructure.ISsdpCommunicationsServer
+  commentId: T:Rssdp.Infrastructure.ISsdpCommunicationsServer
+  parent: Rssdp.Infrastructure
+  isExternal: false
+  name: ISsdpCommunicationsServer
+  nameWithType: ISsdpCommunicationsServer
+  fullName: Rssdp.Infrastructure.ISsdpCommunicationsServer
+- uid: Rssdp.Infrastructure.ISsdpCommunicationsServer.UdpSendCount
+  commentId: P:Rssdp.Infrastructure.ISsdpCommunicationsServer.UdpSendCount
+  parent: Rssdp.Infrastructure.ISsdpCommunicationsServer
+  isExternal: false
+  name: UdpSendCount
+  nameWithType: ISsdpCommunicationsServer.UdpSendCount
+  fullName: Rssdp.Infrastructure.ISsdpCommunicationsServer.UdpSendCount
+- uid: Rssdp.Infrastructure.ISsdpCommunicationsServer.UdpSendDelay*
+  commentId: Overload:Rssdp.Infrastructure.ISsdpCommunicationsServer.UdpSendDelay
+  isExternal: false
+  name: UdpSendDelay
+  nameWithType: ISsdpCommunicationsServer.UdpSendDelay
+  fullName: Rssdp.Infrastructure.ISsdpCommunicationsServer.UdpSendDelay
+- uid: System.TimeSpan
+  commentId: T:System.TimeSpan
+  parent: System
+  isExternal: true
+  name: TimeSpan
+  nameWithType: TimeSpan
+  fullName: System.TimeSpan

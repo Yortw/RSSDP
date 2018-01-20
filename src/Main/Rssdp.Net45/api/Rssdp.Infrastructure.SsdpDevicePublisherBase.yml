@@ -25,7 +25,7 @@ items:
   source:
     id: SsdpDevicePublisherBase
     path: ''
-    startLine: 5908
+    startLine: 5956
   assemblies:
   - cs.temp.dll
   namespace: Rssdp.Infrastructure
@@ -78,7 +78,7 @@ items:
   source:
     id: .ctor
     path: ''
-    startLine: 5985
+    startLine: 6033
   assemblies:
   - cs.temp.dll
   namespace: Rssdp.Infrastructure
@@ -116,7 +116,7 @@ items:
   source:
     id: .ctor
     path: ''
-    startLine: 5996
+    startLine: 6044
   assemblies:
   - cs.temp.dll
   namespace: Rssdp.Infrastructure
@@ -157,7 +157,7 @@ items:
   source:
     id: AddDevice
     path: ''
-    startLine: 6037
+    startLine: 6085
   assemblies:
   - cs.temp.dll
   namespace: Rssdp.Infrastructure
@@ -199,7 +199,7 @@ items:
   source:
     id: RemoveDevice
     path: ''
-    startLine: 6083
+    startLine: 6131
   assemblies:
   - cs.temp.dll
   namespace: Rssdp.Infrastructure
@@ -238,7 +238,7 @@ items:
   source:
     id: Log
     path: ''
-    startLine: 6127
+    startLine: 6175
   assemblies:
   - cs.temp.dll
   namespace: Rssdp.Infrastructure
@@ -272,7 +272,7 @@ items:
   source:
     id: Devices
     path: ''
-    startLine: 6135
+    startLine: 6183
   assemblies:
   - cs.temp.dll
   namespace: Rssdp.Infrastructure
@@ -307,7 +307,7 @@ items:
   source:
     id: SupportPnpRootDevice
     path: ''
-    startLine: 6150
+    startLine: 6198
   assemblies:
   - cs.temp.dll
   namespace: Rssdp.Infrastructure
@@ -353,7 +353,7 @@ items:
   source:
     id: StandardsMode
     path: ''
-    startLine: 6170
+    startLine: 6218
   assemblies:
   - cs.temp.dll
   namespace: Rssdp.Infrastructure
@@ -387,7 +387,7 @@ items:
   source:
     id: NotificationBroadcastInterval
     path: ''
-    startLine: 6196
+    startLine: 6244
   assemblies:
   - cs.temp.dll
   namespace: Rssdp.Infrastructure
@@ -421,7 +421,7 @@ items:
   source:
     id: Dispose
     path: ''
-    startLine: 6220
+    startLine: 6268
   assemblies:
   - cs.temp.dll
   namespace: Rssdp.Infrastructure
