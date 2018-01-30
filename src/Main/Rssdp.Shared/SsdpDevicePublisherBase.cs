@@ -65,7 +65,7 @@ NTS: ssdp:alive
 SERVER: {4}/{5} UPnP/1.0 RSSDP/{6}
 USN: {1} 
 LOCATION: {2}
-{3}
+{3}{10}
 
 "; //Blank line at end important, do not remove.
 
@@ -730,18 +730,26 @@ USN: {1}
 		{
 			var rootDevice = device.ToRootDevice();
 
-			return System.Text.UTF8Encoding.UTF8.GetBytes(String.Format(AliveNotificationMessageFormat,
-				notificationType,
-				uniqueServiceName,
-				rootDevice.Location,
-				CacheControlHeaderFromTimeSpan(rootDevice),
-				_OSName,
-				_OSVersion,
-				ServerVersion,
-				DateTime.UtcNow.ToString("r"),
-				hostAddress,
-				SsdpConstants.MulticastPort
-				));
+			var additionalheaders = FormatCustomHeadersForResponse(device);
+
+			return System.Text.UTF8Encoding.UTF8.GetBytes
+			(
+				String.Format
+				(
+					AliveNotificationMessageFormat,
+					notificationType,
+					uniqueServiceName,
+					rootDevice.Location,
+					CacheControlHeaderFromTimeSpan(rootDevice),
+					_OSName,
+					_OSVersion,
+					ServerVersion,
+					DateTime.UtcNow.ToString("r"),
+					hostAddress,
+					SsdpConstants.MulticastPort,
+					additionalheaders
+				)
+			);
 		}
 
 		#endregion

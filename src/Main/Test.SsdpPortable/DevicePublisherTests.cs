@@ -1021,6 +1021,38 @@ namespace Test.RssdpPortable
 		}
 
 		[TestMethod]
+		public void Publisher_AliveNotifications_ContainCustomHeaders()
+		{
+			var rootDevice = CreateValidRootDevice();
+			rootDevice.CacheLifetime = TimeSpan.FromMinutes(1);
+			rootDevice.CustomResponseHeaders.Add(new CustomHttpHeader("TestHeader", "I'm Here"));
+
+			var server = new MockCommsServer();
+			using (var publisher = new TestDevicePublisher(server))
+			{
+				publisher.AddDevice(rootDevice);
+#pragma warning disable CS0618 // Type or member is obsolete
+				publisher.SupportPnpRootDevice = false;
+#pragma warning restore CS0618 // Type or member is obsolete
+				server.WaitForMockBroadcast(10000);
+
+				//System.Threading.Thread.Sleep(100);
+
+				Assert.IsTrue(server.SentBroadcasts.Any(), "No broadcasts");
+				server.SentBroadcasts.Clear();
+
+				server.WaitForMockBroadcast(35000);
+
+				var sentMessages = GetAllSentBroadcasts(server);
+				var aliveNotifications = GetNotificationsByType(sentMessages, "ssdp:alive");
+
+				var deviceTypeNotifications = GetNotificationsForSearchTarget(aliveNotifications, rootDevice.FullDeviceType);
+
+				Assert.IsTrue(deviceTypeNotifications.First().Headers.Contains("TestHeader"));
+			}
+		}
+
+		[TestMethod]
 		public void Publisher_SendsPeriodicAliveNotifications_RepeatsNotifications()
 		{
 			var rootDevice = CreateValidRootDevice();

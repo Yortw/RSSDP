@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -125,7 +125,7 @@ namespace Rssdp
 		/// </summary>
 		public CustomHttpHeadersCollection()
 		{
-			_Headers = new Dictionary<string, CustomHttpHeader>();
+			_Headers = new Dictionary<string, CustomHttpHeader>(StringComparer.OrdinalIgnoreCase);
 		}
 
 		/// <summary>

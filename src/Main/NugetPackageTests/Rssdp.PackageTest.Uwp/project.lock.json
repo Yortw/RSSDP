@@ -16731,7 +16731,7 @@
       ]
     },
     "Rssdp/2.0.0.2": {
-      "sha512": "lRenUXTpCOCF4IJsIn7mVTg4Y0XpDR8Qc1XZbmfw7UPeqnmCJVCIxpXwogdTGTd4HlIc0Okm5dACRppEJiGqKg==",
+      "sha512": "wXu/0G2VhPxhcVVrPIon36tQ5FMZjuKquvg4sVCkNECt0yhReknN0uPpIgDxb2K+Hp58d8dFfgUzqBbVgHVMhw==",
       "type": "package",
       "path": "Rssdp/2.0.0.2",
       "files": [
