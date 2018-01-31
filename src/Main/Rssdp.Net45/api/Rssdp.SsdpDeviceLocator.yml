@@ -20,7 +20,7 @@ items:
   source:
     id: SsdpDeviceLocator
     path: ''
-    startLine: 8567
+    startLine: 8575
   assemblies:
   - cs.temp.dll
   namespace: Rssdp
@@ -144,7 +144,7 @@ items:
   source:
     id: .ctor
     path: ''
-    startLine: 8573
+    startLine: 8581
   assemblies:
   - cs.temp.dll
   namespace: Rssdp
@@ -172,7 +172,7 @@ items:
   source:
     id: .ctor
     path: ''
-    startLine: 8592
+    startLine: 8600
   assemblies:
   - cs.temp.dll
   namespace: Rssdp
@@ -204,7 +204,7 @@ items:
   source:
     id: .ctor
     path: ''
-    startLine: 8608
+    startLine: 8616
   assemblies:
   - cs.temp.dll
   namespace: Rssdp

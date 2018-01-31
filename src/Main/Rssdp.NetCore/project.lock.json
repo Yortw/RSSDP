@@ -1,6 +1,5 @@
 {
-  "locked": false,
-  "version": 2,
+  "version": 3,
   "targets": {
     ".NETStandard,Version=v1.3": {
       "Microsoft.NETCore.Platforms/1.1.0": {
@@ -3069,6 +3068,57 @@
     ],
     ".NETStandard,Version=v1.3": []
   },
-  "tools": {},
-  "projectFileToolGroups": {}
+  "packageFolders": {
+    "C:\\Users\\troy.ONTEMPO\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackagesFallback\\": {}
+  },
+  "project": {
+    "restore": {
+      "projectUniqueName": "C:\\Projects\\GitHub\\RSSDP\\src\\Main\\Rssdp.NetCore\\Rssdp.NetCore.csproj",
+      "projectName": "Rssdp.NetCore",
+      "projectPath": "C:\\Projects\\GitHub\\RSSDP\\src\\Main\\Rssdp.NetCore\\Rssdp.NetCore.csproj",
+      "projectJsonPath": "C:\\Projects\\GitHub\\RSSDP\\src\\Main\\Rssdp.NetCore\\project.json",
+      "packagesPath": "C:\\Users\\troy.ONTEMPO\\.nuget\\packages\\",
+      "outputPath": "C:\\Projects\\GitHub\\RSSDP\\src\\Main\\Rssdp.NetCore\\obj\\",
+      "projectStyle": "ProjectJson",
+      "fallbackFolders": [
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackagesFallback\\"
+      ],
+      "configFilePaths": [
+        "C:\\Users\\troy.ONTEMPO\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.Fallback.config"
+      ],
+      "sources": {
+        "C:\\Nuget.LocalRepository": {},
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+        "C:\\Users\\troy.ONTEMPO\\.dotnet\\NuGetFallbackFolder": {},
+        "\\\\frodo\\Internal Nuget Feed": {},
+        "https://api.nuget.org/v3/index.json": {}
+      }
+    },
+    "dependencies": {
+      "System.Collections": "[4.3.0, )",
+      "System.Diagnostics.Debug": "[4.3.0, )",
+      "System.Diagnostics.Tools": "[4.3.0, )",
+      "System.IO": "[4.3.0, )",
+      "System.Linq": "[4.3.0, )",
+      "System.Net.Http": "[4.3.2, )",
+      "System.Net.Primitives": "[4.3.0, )",
+      "System.Net.Sockets": "[4.3.0, )",
+      "System.Resources.ResourceManager": "[4.3.0, )",
+      "System.Runtime": "[4.3.0, )",
+      "System.Runtime.Extensions": "[4.3.0, )",
+      "System.Runtime.InteropServices.RuntimeInformation": "[4.3.0, )",
+      "System.Text.Encoding": "[4.3.0, )",
+      "System.Text.Encoding.Extensions": "[4.3.0, )",
+      "System.Threading": "[4.3.0, )",
+      "System.Threading.Tasks": "[4.3.0, )",
+      "System.Threading.Timer": "[4.3.0, )",
+      "System.Xml.ReaderWriter": "[4.3.0, )"
+    },
+    "frameworks": {
+      "netstandard1.3": {}
+    }
+  }
 }

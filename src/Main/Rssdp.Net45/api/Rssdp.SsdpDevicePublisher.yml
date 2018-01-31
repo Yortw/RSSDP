@@ -49,7 +49,7 @@ items:
   source:
     id: SsdpDevicePublisher
     path: ''
-    startLine: 9160
+    startLine: 9168
   assemblies:
   - cs.temp.dll
   namespace: Rssdp
@@ -956,7 +956,7 @@ items:
   source:
     id: .ctor
     path: ''
-    startLine: 8208
+    startLine: 8216
   assemblies:
   - cs.temp.dll
   namespace: Rssdp
@@ -985,7 +985,7 @@ items:
   source:
     id: .ctor
     path: ''
-    startLine: 8221
+    startLine: 8229
   assemblies:
   - cs.temp.dll
   namespace: Rssdp
@@ -1017,7 +1017,7 @@ items:
   source:
     id: .ctor
     path: ''
-    startLine: 8234
+    startLine: 8242
   assemblies:
   - cs.temp.dll
   namespace: Rssdp
@@ -1050,7 +1050,7 @@ items:
   source:
     id: .ctor
     path: ''
-    startLine: 8251
+    startLine: 8259
   assemblies:
   - cs.temp.dll
   namespace: Rssdp
@@ -1086,7 +1086,7 @@ items:
   source:
     id: .ctor
     path: ''
-    startLine: 9171
+    startLine: 9179
   assemblies:
   - cs.temp.dll
   namespace: Rssdp
@@ -1115,7 +1115,7 @@ items:
   source:
     id: .ctor
     path: ''
-    startLine: 9184
+    startLine: 9192
   assemblies:
   - cs.temp.dll
   namespace: Rssdp
@@ -1147,7 +1147,7 @@ items:
   source:
     id: .ctor
     path: ''
-    startLine: 9197
+    startLine: 9205
   assemblies:
   - cs.temp.dll
   namespace: Rssdp
@@ -1180,7 +1180,7 @@ items:
   source:
     id: .ctor
     path: ''
-    startLine: 9214
+    startLine: 9222
   assemblies:
   - cs.temp.dll
   namespace: Rssdp
