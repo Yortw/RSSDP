@@ -32,7 +32,7 @@ items:
   source:
     id: SocketFactory
     path: ''
-    startLine: 9100
+    startLine: 9098
   assemblies:
   - cs.temp.dll
   namespace: Rssdp
@@ -221,7 +221,7 @@ items:
   source:
     id: .ctor
     path: ''
-    startLine: 8120
+    startLine: 8118
   assemblies:
   - cs.temp.dll
   namespace: Rssdp
@@ -253,7 +253,7 @@ items:
   source:
     id: CreateUdpSocket
     path: ''
-    startLine: 8132
+    startLine: 8130
   assemblies:
   - cs.temp.dll
   namespace: Rssdp
@@ -288,7 +288,7 @@ items:
   source:
     id: DeviceNetworkType
     path: ''
-    startLine: 8153
+    startLine: 8151
   assemblies:
   - cs.temp.dll
   namespace: Rssdp
@@ -321,7 +321,7 @@ items:
   source:
     id: CreateUdpMulticastSocket
     path: ''
-    startLine: 8167
+    startLine: 8165
   assemblies:
   - cs.temp.dll
   namespace: Rssdp
@@ -359,7 +359,7 @@ items:
   source:
     id: CreateUdpMulticastSocket
     path: ''
-    startLine: 8181
+    startLine: 8179
   assemblies:
   - cs.temp.dll
   namespace: Rssdp
@@ -400,7 +400,7 @@ items:
   source:
     id: .ctor
     path: ''
-    startLine: 8717
+    startLine: 8715
   assemblies:
   - cs.temp.dll
   namespace: Rssdp
@@ -432,7 +432,7 @@ items:
   source:
     id: CreateUdpSocket
     path: ''
-    startLine: 8734
+    startLine: 8732
   assemblies:
   - cs.temp.dll
   namespace: Rssdp
@@ -467,7 +467,7 @@ items:
   source:
     id: CreateUdpMulticastSocket
     path: ''
-    startLine: 8763
+    startLine: 8761
   assemblies:
   - cs.temp.dll
   namespace: Rssdp
@@ -505,7 +505,7 @@ items:
   source:
     id: DeviceNetworkType
     path: ''
-    startLine: 8803
+    startLine: 8801
   assemblies:
   - cs.temp.dll
   namespace: Rssdp
@@ -538,7 +538,7 @@ items:
   source:
     id: .ctor
     path: ''
-    startLine: 9109
+    startLine: 9107
   assemblies:
   - cs.temp.dll
   namespace: Rssdp
@@ -570,7 +570,7 @@ items:
   source:
     id: CreateUdpSocket
     path: ''
-    startLine: 9125
+    startLine: 9123
   assemblies:
   - cs.temp.dll
   namespace: Rssdp
@@ -605,7 +605,7 @@ items:
   source:
     id: CreateUdpMulticastSocket
     path: ''
-    startLine: 9136
+    startLine: 9134
   assemblies:
   - cs.temp.dll
   namespace: Rssdp
@@ -643,7 +643,7 @@ items:
   source:
     id: DeviceNetworkType
     path: ''
-    startLine: 9145
+    startLine: 9143
   assemblies:
   - cs.temp.dll
   namespace: Rssdp

@@ -3085,6 +3085,7 @@
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackagesFallback\\"
       ],
       "configFilePaths": [
+        "C:\\Projects\\GitHub\\RSSDP\\src\\Main\\.nuget\\NuGet.Config",
         "C:\\Users\\troy.ONTEMPO\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.Fallback.config"

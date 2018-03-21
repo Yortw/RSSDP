@@ -29,7 +29,7 @@ items:
   source:
     id: SsdpDeviceLocatorBase
     path: ''
-    startLine: 4978
+    startLine: 4976
   assemblies:
   - cs.temp.dll
   namespace: Rssdp.Infrastructure
@@ -82,7 +82,7 @@ items:
   source:
     id: .ctor
     path: ''
-    startLine: 5010
+    startLine: 5008
   assemblies:
   - cs.temp.dll
   namespace: Rssdp.Infrastructure
@@ -114,7 +114,7 @@ items:
   source:
     id: DeviceAvailable
     path: ''
-    startLine: 5038
+    startLine: 5036
   assemblies:
   - cs.temp.dll
   namespace: Rssdp.Infrastructure
@@ -154,7 +154,7 @@ items:
   source:
     id: DeviceUnavailable
     path: ''
-    startLine: 5053
+    startLine: 5051
   assemblies:
   - cs.temp.dll
   namespace: Rssdp.Infrastructure
@@ -195,7 +195,7 @@ items:
   source:
     id: SearchAsync
     path: ''
-    startLine: 5065
+    startLine: 5063
   assemblies:
   - cs.temp.dll
   namespace: Rssdp.Infrastructure
@@ -226,7 +226,7 @@ items:
   source:
     id: SearchAsync
     path: ''
-    startLine: 5081
+    startLine: 5079
   assemblies:
   - cs.temp.dll
   namespace: Rssdp.Infrastructure
@@ -264,7 +264,7 @@ items:
   source:
     id: SearchAsync
     path: ''
-    startLine: 5091
+    startLine: 5089
   assemblies:
   - cs.temp.dll
   namespace: Rssdp.Infrastructure
@@ -299,7 +299,7 @@ items:
   source:
     id: SearchAsync
     path: ''
-    startLine: 5112
+    startLine: 5110
   assemblies:
   - cs.temp.dll
   namespace: Rssdp.Infrastructure
@@ -341,7 +341,7 @@ items:
   source:
     id: StartListeningForNotifications
     path: ''
-    startLine: 5181
+    startLine: 5179
   assemblies:
   - cs.temp.dll
   namespace: Rssdp.Infrastructure
@@ -383,7 +383,7 @@ items:
   source:
     id: StopListeningForNotifications
     path: ''
-    startLine: 5200
+    startLine: 5198
   assemblies:
   - cs.temp.dll
   namespace: Rssdp.Infrastructure
@@ -425,7 +425,7 @@ items:
   source:
     id: OnDeviceAvailable
     path: ''
-    startLine: 5213
+    startLine: 5211
   assemblies:
   - cs.temp.dll
   namespace: Rssdp.Infrastructure
@@ -465,7 +465,7 @@ items:
   source:
     id: OnDeviceUnavailable
     path: ''
-    startLine: 5228
+    startLine: 5226
   assemblies:
   - cs.temp.dll
   namespace: Rssdp.Infrastructure
@@ -505,7 +505,7 @@ items:
   source:
     id: IsSearching
     path: ''
-    startLine: 5247
+    startLine: 5245
   assemblies:
   - cs.temp.dll
   namespace: Rssdp.Infrastructure
@@ -541,7 +541,7 @@ items:
   source:
     id: NotificationFilter
     path: ''
-    startLine: 5267
+    startLine: 5265
   assemblies:
   - cs.temp.dll
   namespace: Rssdp.Infrastructure
@@ -586,7 +586,7 @@ items:
   source:
     id: Dispose
     path: ''
-    startLine: 5281
+    startLine: 5279
   assemblies:
   - cs.temp.dll
   namespace: Rssdp.Infrastructure
