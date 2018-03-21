@@ -336,11 +336,7 @@ namespace Rssdp.Infrastructure
 							cancelled = true;
 							break;
 						}
-						catch (ObjectDisposedException)
-						{
-							cancelled = true;
-						}
-						catch (TaskCanceledException)
+						catch (Exception)
 						{
 							cancelled = true;
 						}
@@ -410,6 +406,7 @@ namespace Rssdp.Infrastructure
 					responseMessage = _ResponseParser.Parse(data);
 				}
 				catch (ArgumentException) { } // Ignore invalid packets.
+				catch (FormatException) { } // Ignore invalid packets.
 
 				if (responseMessage != null)
 					OnResponseReceived(responseMessage, endPoint);
@@ -422,6 +419,7 @@ namespace Rssdp.Infrastructure
 					requestMessage = _RequestParser.Parse(data);
 				}
 				catch (ArgumentException) { } // Ignore invalid packets.
+				catch (FormatException) { } // Ignore invalid packets.
 
 				if (requestMessage != null)
 					OnRequestReceived(requestMessage, endPoint);
