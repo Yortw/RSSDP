@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -13,6 +13,17 @@ namespace Rssdp
 	/// </remarks>
 	public class SsdpTraceLogger : ISsdpLogger
 	{
+		private static object _lockObject;
+
+		/// <summary>
+		/// Gets or set the UseLocking flag that controls wrapping log writing with locking when required
+		/// </summary>
+		public static bool UseLocking
+		{
+			get { return _lockObject != null; }
+			set { _lockObject = value ? new object() : null; }
+		}
+
 		/// <summary>
 		/// Records a regular log message.
 		/// </summary>
@@ -51,11 +62,26 @@ namespace Rssdp
 
 		private static void WriteLogMessage(string category, string message)
 		{
+			var lockObject = _lockObject;
+			if (lockObject == null)
+			{
 #if SUPPORTS_TRACE
-			System.Diagnostics.Trace.WriteLine(DateTime.Now.ToString("G") + " " + message, category);
+				System.Diagnostics.Trace.WriteLine(DateTime.Now.ToString("G") + " " + message, category);
 #else
-			System.Diagnostics.Debug.WriteLine(DateTime.Now.ToString("G") + " [" + category + "] " + message);
+				System.Diagnostics.Debug.WriteLine(DateTime.Now.ToString("G") + " [" + category + "] " + message);
 #endif
+			}
+			else
+			{
+				lock(lockObject)
+				{
+#if SUPPORTS_TRACE
+					System.Diagnostics.Trace.WriteLine(DateTime.Now.ToString("G") + " " + message, category);
+#else
+					System.Diagnostics.Debug.WriteLine(DateTime.Now.ToString("G") + " [" + category + "] " + message);
+#endif
+				}
+			}
 		}
 
 	}
