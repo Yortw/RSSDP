@@ -555,7 +555,8 @@ USN: {1}
 			return String.Format("{0}::{1}", udn, fullDeviceType);
 		}
 
-		private void SendSearchResponse(string searchTarget, SsdpDevice device, string uniqueServiceName, UdpEndPoint endPoint)
+    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1031:DoNotCatchGeneralExceptionTypes", Justification = "When running async any exception could cause application crashes when search requester is not reachable")]
+    private void SendSearchResponse(string searchTarget, SsdpDevice device, string uniqueServiceName, UdpEndPoint endPoint)
 		{
 			var rootDevice = device.ToRootDevice();
 
@@ -573,7 +574,15 @@ USN: {1}
 					additionalheaders
 				);
 
-			_CommsServer.SendMessage(System.Text.UTF8Encoding.UTF8.GetBytes(message), endPoint);
+			try
+			{
+				_CommsServer.SendMessage(System.Text.UTF8Encoding.UTF8.GetBytes(message), endPoint);
+			}
+			catch (Exception ex) 
+			{
+				_Log.LogWarning( String.Format("Unable to send search response ({0}) to {1}: {2}", uniqueServiceName, endPoint.ToString(), ex.Message));
+				if (ex.IsCritical()) throw;
+			}
 
 			LogDeviceEventVerbose(String.Format("Sent search response ({0}) to {1}", uniqueServiceName, endPoint.ToString()), device);
 		}
