@@ -905,7 +905,7 @@ USN: {1}
 			if (device.CacheLifetime == TimeSpan.Zero)
 				return "CACHE-CONTROL: no-cache";
 			else
-				return String.Format("CACHE-CONTROL: max-age = {0}", device.CacheLifetime.TotalSeconds);
+				return String.Format("CACHE-CONTROL: public, max-age={0}", device.CacheLifetime.TotalSeconds);
 		}
 
 		private void LogDeviceEvent(string text, SsdpDevice device)
