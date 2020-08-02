@@ -49,10 +49,10 @@ namespace Rssdp.Infrastructure
 EXT:
 DATE: {7}
 {0}
-ST:{1}
+ST: {1}
 SERVER: {4}/{5} UPnP/1.0 RSSDP/{6}
-USN:{2}
-LOCATION:{3}{8}
+USN: {2}
+LOCATION: {3}{8}
 
 "; //Blank line at end important, do not remove.
 
@@ -905,7 +905,7 @@ USN: {1}
 			if (device.CacheLifetime == TimeSpan.Zero)
 				return "CACHE-CONTROL: no-cache";
 			else
-				return String.Format("CACHE-CONTROL: public, max-age={0}", device.CacheLifetime.TotalSeconds);
+				return String.Format("CACHE-CONTROL: max-age = {0}", device.CacheLifetime.TotalSeconds);
 		}
 
 		private void LogDeviceEvent(string text, SsdpDevice device)
