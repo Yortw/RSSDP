@@ -68,6 +68,18 @@
       "source_relative_path": "api/Rssdp.CustomHttpHeadersCollection.yml",
       "output": {
         ".html": {
+          "relative_path": "api/Rssdp.CustomHttpHeadersCollection.-ctor.html",
+          "hash": "NnsN9LMjvDMv55iVKAVuzQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Rssdp.CustomHttpHeadersCollection.yml",
+      "output": {
+        ".html": {
           "relative_path": "api/Rssdp.CustomHttpHeadersCollection.Add.html",
           "hash": "banqLx5IGAUU+1ex4jPq4A=="
         }
@@ -142,18 +154,6 @@
         ".html": {
           "relative_path": "api/Rssdp.CustomHttpHeadersCollection.html",
           "hash": "fxQ7Z5jmhd8IlWJbzEdBOQ=="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/Rssdp.CustomHttpHeadersCollection.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/Rssdp.CustomHttpHeadersCollection.-ctor.html",
-          "hash": "NnsN9LMjvDMv55iVKAVuzQ=="
         }
       },
       "is_incremental": false,
@@ -248,18 +248,6 @@
       "source_relative_path": "api/Rssdp.DeviceNetworkType.yml",
       "output": {
         ".html": {
-          "relative_path": "api/Rssdp.DeviceNetworkType.html",
-          "hash": "XY/7snGOmTbX5pCMxH8XGg=="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/Rssdp.DeviceNetworkType.yml",
-      "output": {
-        ".html": {
           "relative_path": "api/Rssdp.DeviceNetworkType.IPv4.html",
           "hash": "wcjtDfzqnpxJvvqcC29BLA=="
         }
@@ -274,6 +262,18 @@
         ".html": {
           "relative_path": "api/Rssdp.DeviceNetworkType.IPv6.html",
           "hash": "zsrRElnSrnfYFv5fUCO2tQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Rssdp.DeviceNetworkType.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Rssdp.DeviceNetworkType.html",
+          "hash": "XY/7snGOmTbX5pCMxH8XGg=="
         }
       },
       "is_incremental": false,
@@ -346,18 +346,6 @@
         ".html": {
           "relative_path": "api/Rssdp.DeviceUnavailableEventArgs.html",
           "hash": "a4pvDcq77QdIHC2wsEkp/g=="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/Rssdp.DiscoveredSsdpDevice.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/Rssdp.DiscoveredSsdpDevice.html",
-          "hash": "nj0bGW1qKtEFMFBIi3uA/Q=="
         }
       },
       "is_incremental": false,
@@ -466,6 +454,18 @@
         ".html": {
           "relative_path": "api/Rssdp.DiscoveredSsdpDevice.ToString.html",
           "hash": "zHw9EFsnXBK7H/wHj4HS6g=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Rssdp.DiscoveredSsdpDevice.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Rssdp.DiscoveredSsdpDevice.html",
+          "hash": "nj0bGW1qKtEFMFBIi3uA/Q=="
         }
       },
       "is_incremental": false,
@@ -608,18 +608,6 @@
       "source_relative_path": "api/Rssdp.Infrastructure.HttpParserBase-1.yml",
       "output": {
         ".html": {
-          "relative_path": "api/Rssdp.Infrastructure.HttpParserBase-1.html",
-          "hash": "k8mNdiU+bVg6v0W4hTBb8g=="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/Rssdp.Infrastructure.HttpParserBase-1.yml",
-      "output": {
-        ".html": {
           "relative_path": "api/Rssdp.Infrastructure.HttpParserBase-1.Parse.html",
           "hash": "IzgfNsEtV/8lRU8AnO76JA=="
         }
@@ -658,6 +646,18 @@
         ".html": {
           "relative_path": "api/Rssdp.Infrastructure.HttpParserBase-1.ParseHttpVersion.html",
           "hash": "p31qm1mlLgoyh4UPBYHOuA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Rssdp.Infrastructure.HttpParserBase-1.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Rssdp.Infrastructure.HttpParserBase-1.html",
+          "hash": "k8mNdiU+bVg6v0W4hTBb8g=="
         }
       },
       "is_incremental": false,
@@ -764,18 +764,6 @@
       "source_relative_path": "api/Rssdp.Infrastructure.ISocketFactory.yml",
       "output": {
         ".html": {
-          "relative_path": "api/Rssdp.Infrastructure.ISocketFactory.html",
-          "hash": "MW1SsasSfrl1UcwU/zNIPQ=="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/Rssdp.Infrastructure.ISocketFactory.yml",
-      "output": {
-        ".html": {
           "relative_path": "api/Rssdp.Infrastructure.ISocketFactory.CreateUdpSocket.html",
           "hash": "Xx6JjIzlI2zTfj+uG62Iig=="
         }
@@ -802,6 +790,18 @@
         ".html": {
           "relative_path": "api/Rssdp.Infrastructure.ISocketFactory.DeviceNetworkType.html",
           "hash": "Cqu0tqMlcEX51qkTqNYmMw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Rssdp.Infrastructure.ISocketFactory.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Rssdp.Infrastructure.ISocketFactory.html",
+          "hash": "MW1SsasSfrl1UcwU/zNIPQ=="
         }
       },
       "is_incremental": false,
@@ -1040,18 +1040,6 @@
       "source_relative_path": "api/Rssdp.Infrastructure.ISsdpDevicePublisher.yml",
       "output": {
         ".html": {
-          "relative_path": "api/Rssdp.Infrastructure.ISsdpDevicePublisher.html",
-          "hash": "qZt7C74v/gfXtxXMBz7oPQ=="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/Rssdp.Infrastructure.ISsdpDevicePublisher.yml",
-      "output": {
-        ".html": {
           "relative_path": "api/Rssdp.Infrastructure.ISsdpDevicePublisher.AddDevice.html",
           "hash": "I3R1mIu6UuuMIof3ubNBjQ=="
         }
@@ -1078,6 +1066,18 @@
         ".html": {
           "relative_path": "api/Rssdp.Infrastructure.ISsdpDevicePublisher.Devices.html",
           "hash": "ETCS4byNpG3c+RWTf71Hgw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Rssdp.Infrastructure.ISsdpDevicePublisher.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Rssdp.Infrastructure.ISsdpDevicePublisher.html",
+          "hash": "qZt7C74v/gfXtxXMBz7oPQ=="
         }
       },
       "is_incremental": false,
@@ -1124,18 +1124,6 @@
       "source_relative_path": "api/Rssdp.Infrastructure.IUpnpDeviceValidator.yml",
       "output": {
         ".html": {
-          "relative_path": "api/Rssdp.Infrastructure.IUpnpDeviceValidator.GetValidationErrors.html",
-          "hash": "W+ZLLShYYr1mIlvLIsIOug=="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/Rssdp.Infrastructure.IUpnpDeviceValidator.yml",
-      "output": {
-        ".html": {
           "relative_path": "api/Rssdp.Infrastructure.IUpnpDeviceValidator.ThrowIfDeviceInvalid.html",
           "hash": "0ynBMa5qvat0mnxYCcrmdg=="
         }
@@ -1148,8 +1136,8 @@
       "source_relative_path": "api/Rssdp.Infrastructure.IUpnpDeviceValidator.yml",
       "output": {
         ".html": {
-          "relative_path": "api/Rssdp.Infrastructure.IUpnpDeviceValidator.html",
-          "hash": "PKdXAWa+62T9Zs33ykt/ug=="
+          "relative_path": "api/Rssdp.Infrastructure.IUpnpDeviceValidator.GetValidationErrors.html",
+          "hash": "W+ZLLShYYr1mIlvLIsIOug=="
         }
       },
       "is_incremental": false,
@@ -1157,11 +1145,11 @@
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/Rssdp.Infrastructure.ReceivedUdpData.yml",
+      "source_relative_path": "api/Rssdp.Infrastructure.IUpnpDeviceValidator.yml",
       "output": {
         ".html": {
-          "relative_path": "api/Rssdp.Infrastructure.ReceivedUdpData.html",
-          "hash": "8IefJyEBdYfQTb2CQcMnaA=="
+          "relative_path": "api/Rssdp.Infrastructure.IUpnpDeviceValidator.html",
+          "hash": "PKdXAWa+62T9Zs33ykt/ug=="
         }
       },
       "is_incremental": false,
@@ -1198,6 +1186,18 @@
         ".html": {
           "relative_path": "api/Rssdp.Infrastructure.ReceivedUdpData.ReceivedFrom.html",
           "hash": "CR2T/H9TW+Pm1dRy2XE6cA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Rssdp.Infrastructure.ReceivedUdpData.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Rssdp.Infrastructure.ReceivedUdpData.html",
+          "hash": "8IefJyEBdYfQTb2CQcMnaA=="
         }
       },
       "is_incremental": false,
@@ -1304,54 +1304,6 @@
       "source_relative_path": "api/Rssdp.Infrastructure.SsdpCommunicationsServer.yml",
       "output": {
         ".html": {
-          "relative_path": "api/Rssdp.Infrastructure.SsdpCommunicationsServer.UdpSendCount.html",
-          "hash": "7sS0hvuQ90nUsEtqNkIakw=="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/Rssdp.Infrastructure.SsdpCommunicationsServer.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/Rssdp.Infrastructure.SsdpCommunicationsServer.UdpSendDelay.html",
-          "hash": "VFUSPYgJRerju5lOR45naw=="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/Rssdp.Infrastructure.SsdpCommunicationsServer.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/Rssdp.Infrastructure.SsdpCommunicationsServer.-ctor.html",
-          "hash": "aptsfGAIizBd+WwK7dnklQ=="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/Rssdp.Infrastructure.SsdpCommunicationsServer.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/Rssdp.Infrastructure.SsdpCommunicationsServer.BeginListeningForBroadcasts.html",
-          "hash": "Ti5VkrRXHfQ4pX/hwygN1g=="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/Rssdp.Infrastructure.SsdpCommunicationsServer.yml",
-      "output": {
-        ".html": {
           "relative_path": "api/Rssdp.Infrastructure.SsdpCommunicationsServer.StopListeningForBroadcasts.html",
           "hash": "qSBreT55dkRDc4uoC0QJCg=="
         }
@@ -1438,6 +1390,54 @@
         ".html": {
           "relative_path": "api/Rssdp.Infrastructure.SsdpCommunicationsServer.ResponseReceived.html",
           "hash": "yWNtsueg9pqUsWquPqTknA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Rssdp.Infrastructure.SsdpCommunicationsServer.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Rssdp.Infrastructure.SsdpCommunicationsServer.UdpSendCount.html",
+          "hash": "7sS0hvuQ90nUsEtqNkIakw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Rssdp.Infrastructure.SsdpCommunicationsServer.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Rssdp.Infrastructure.SsdpCommunicationsServer.UdpSendDelay.html",
+          "hash": "VFUSPYgJRerju5lOR45naw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Rssdp.Infrastructure.SsdpCommunicationsServer.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Rssdp.Infrastructure.SsdpCommunicationsServer.-ctor.html",
+          "hash": "aptsfGAIizBd+WwK7dnklQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Rssdp.Infrastructure.SsdpCommunicationsServer.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Rssdp.Infrastructure.SsdpCommunicationsServer.BeginListeningForBroadcasts.html",
+          "hash": "Ti5VkrRXHfQ4pX/hwygN1g=="
         }
       },
       "is_incremental": false,
@@ -1616,54 +1616,6 @@
       "source_relative_path": "api/Rssdp.Infrastructure.SsdpDeviceLocatorBase.yml",
       "output": {
         ".html": {
-          "relative_path": "api/Rssdp.Infrastructure.SsdpDeviceLocatorBase.IsSearching.html",
-          "hash": "cnNRkLi/DPu5IRTsf7h2WQ=="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/Rssdp.Infrastructure.SsdpDeviceLocatorBase.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/Rssdp.Infrastructure.SsdpDeviceLocatorBase.NotificationFilter.html",
-          "hash": "dX8l35QqxapDu2Jl2YnmyA=="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/Rssdp.Infrastructure.SsdpDeviceLocatorBase.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/Rssdp.Infrastructure.SsdpDeviceLocatorBase.Dispose.html",
-          "hash": "vplmBy5AyPw4XNim1ckjnw=="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/Rssdp.Infrastructure.SsdpDeviceLocatorBase.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/Rssdp.Infrastructure.SsdpDeviceLocatorBase.html",
-          "hash": "N/mPXL6zXSf40iI8I/fjjA=="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/Rssdp.Infrastructure.SsdpDeviceLocatorBase.yml",
-      "output": {
-        ".html": {
           "relative_path": "api/Rssdp.Infrastructure.SsdpDeviceLocatorBase.-ctor.html",
           "hash": "SoitwDmHyxEosprBvQouJQ=="
         }
@@ -1750,6 +1702,54 @@
         ".html": {
           "relative_path": "api/Rssdp.Infrastructure.SsdpDeviceLocatorBase.OnDeviceUnavailable.html",
           "hash": "L95375sS8s+cGFjRhLttjg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Rssdp.Infrastructure.SsdpDeviceLocatorBase.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Rssdp.Infrastructure.SsdpDeviceLocatorBase.IsSearching.html",
+          "hash": "cnNRkLi/DPu5IRTsf7h2WQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Rssdp.Infrastructure.SsdpDeviceLocatorBase.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Rssdp.Infrastructure.SsdpDeviceLocatorBase.NotificationFilter.html",
+          "hash": "dX8l35QqxapDu2Jl2YnmyA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Rssdp.Infrastructure.SsdpDeviceLocatorBase.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Rssdp.Infrastructure.SsdpDeviceLocatorBase.Dispose.html",
+          "hash": "vplmBy5AyPw4XNim1ckjnw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Rssdp.Infrastructure.SsdpDeviceLocatorBase.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Rssdp.Infrastructure.SsdpDeviceLocatorBase.html",
+          "hash": "N/mPXL6zXSf40iI8I/fjjA=="
         }
       },
       "is_incremental": false,
@@ -1880,18 +1880,6 @@
       "source_relative_path": "api/Rssdp.Infrastructure.UdpEndPoint.yml",
       "output": {
         ".html": {
-          "relative_path": "api/Rssdp.Infrastructure.UdpEndPoint.html",
-          "hash": "+kER7+vLyuulSi/RRQXIDA=="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/Rssdp.Infrastructure.UdpEndPoint.yml",
-      "output": {
-        ".html": {
           "relative_path": "api/Rssdp.Infrastructure.UdpEndPoint.IPAddress.html",
           "hash": "oRHzCFsa7PWOcKiGaGHWww=="
         }
@@ -1918,6 +1906,18 @@
         ".html": {
           "relative_path": "api/Rssdp.Infrastructure.UdpEndPoint.ToString.html",
           "hash": "AMX14d+qplWVAzaY2Bkjkw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Rssdp.Infrastructure.UdpEndPoint.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Rssdp.Infrastructure.UdpEndPoint.html",
+          "hash": "+kER7+vLyuulSi/RRQXIDA=="
         }
       },
       "is_incremental": false,
@@ -2228,92 +2228,20 @@
       "source_relative_path": "api/Rssdp.SsdpDevice.yml",
       "output": {
         ".html": {
-          "relative_path": "api/Rssdp.SsdpDevice.DeviceAdded.html",
-          "hash": "yFnjI1ZY2UnDF9iEjAerEw=="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/Rssdp.SsdpDevice.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/Rssdp.SsdpDevice.DeviceRemoved.html",
-          "hash": "uTMOjXK2odgFu/KCOwBTxg=="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/Rssdp.SsdpDevice.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/Rssdp.SsdpDevice.ServiceAdded.html",
-          "hash": "aBG2EtfC/ZABWHrf5aAj8w=="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/Rssdp.SsdpDevice.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/Rssdp.SsdpDevice.ServiceRemoved.html",
-          "hash": "p2Fp+qcXSgsXm+5J+nAESA=="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/Rssdp.SsdpDevice.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/Rssdp.SsdpDevice.-ctor.html",
-          "hash": "5UblWKL13lzx0BMVEd0ibQ=="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/Rssdp.SsdpDevice.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/Rssdp.SsdpDevice.DeviceType.html",
-          "hash": "bSkarCwsjfuhK1XeL5zj8g=="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/Rssdp.SsdpDevice.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/Rssdp.SsdpDevice.DeviceTypeNamespace.html",
-          "hash": "fs5feaQnaJ80RoVjbiesPA=="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/Rssdp.SsdpDevice.yml",
-      "output": {
-        ".html": {
           "relative_path": "api/Rssdp.SsdpDevice.DeviceVersion.html",
           "hash": "38Z9p1FXGeFKnUyphpAT0Q=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Rssdp.SsdpDevice.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Rssdp.SsdpDevice.FullDeviceType.html",
+          "hash": "v0NKXmai4uNW29Vy9CmkkQ=="
         }
       },
       "is_incremental": false,
@@ -2648,8 +2576,8 @@
       "source_relative_path": "api/Rssdp.SsdpDevice.yml",
       "output": {
         ".html": {
-          "relative_path": "api/Rssdp.SsdpDevice.html",
-          "hash": "zmeqhEu/sJBhvfCF2jlE1Q=="
+          "relative_path": "api/Rssdp.SsdpDevice.DeviceAdded.html",
+          "hash": "yFnjI1ZY2UnDF9iEjAerEw=="
         }
       },
       "is_incremental": false,
@@ -2660,8 +2588,80 @@
       "source_relative_path": "api/Rssdp.SsdpDevice.yml",
       "output": {
         ".html": {
-          "relative_path": "api/Rssdp.SsdpDevice.FullDeviceType.html",
-          "hash": "v0NKXmai4uNW29Vy9CmkkQ=="
+          "relative_path": "api/Rssdp.SsdpDevice.DeviceRemoved.html",
+          "hash": "uTMOjXK2odgFu/KCOwBTxg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Rssdp.SsdpDevice.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Rssdp.SsdpDevice.ServiceAdded.html",
+          "hash": "aBG2EtfC/ZABWHrf5aAj8w=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Rssdp.SsdpDevice.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Rssdp.SsdpDevice.ServiceRemoved.html",
+          "hash": "p2Fp+qcXSgsXm+5J+nAESA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Rssdp.SsdpDevice.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Rssdp.SsdpDevice.-ctor.html",
+          "hash": "5UblWKL13lzx0BMVEd0ibQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Rssdp.SsdpDevice.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Rssdp.SsdpDevice.DeviceType.html",
+          "hash": "bSkarCwsjfuhK1XeL5zj8g=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Rssdp.SsdpDevice.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Rssdp.SsdpDevice.DeviceTypeNamespace.html",
+          "hash": "fs5feaQnaJ80RoVjbiesPA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Rssdp.SsdpDevice.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Rssdp.SsdpDevice.html",
+          "hash": "zmeqhEu/sJBhvfCF2jlE1Q=="
         }
       },
       "is_incremental": false,
@@ -2768,8 +2768,8 @@
       "source_relative_path": "api/Rssdp.SsdpDeviceLocator.yml",
       "output": {
         ".html": {
-          "relative_path": "api/Rssdp.SsdpDeviceLocator.html",
-          "hash": "7iWpXa8ZyisW3DIh9r2hEg=="
+          "relative_path": "api/Rssdp.SsdpDeviceLocator.-ctor.html",
+          "hash": "kTUNWykRkIHD1iWhrY1uMA=="
         }
       },
       "is_incremental": false,
@@ -2780,20 +2780,8 @@
       "source_relative_path": "api/Rssdp.SsdpDeviceLocator.yml",
       "output": {
         ".html": {
-          "relative_path": "api/Rssdp.SsdpDeviceLocator.-ctor.html",
-          "hash": "kTUNWykRkIHD1iWhrY1uMA=="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/Rssdp.SsdpDevicePropertiesCollection.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/Rssdp.SsdpDevicePropertiesCollection.html",
-          "hash": "eSXbOiONBT169Dg0mWzkdQ=="
+          "relative_path": "api/Rssdp.SsdpDeviceLocator.html",
+          "hash": "7iWpXa8ZyisW3DIh9r2hEg=="
         }
       },
       "is_incremental": false,
@@ -2890,6 +2878,18 @@
         ".html": {
           "relative_path": "api/Rssdp.SsdpDevicePropertiesCollection.System-Collections-IEnumerable-GetEnumerator.html",
           "hash": "F4/syv84nH6h6RvPc+HB/w=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Rssdp.SsdpDevicePropertiesCollection.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Rssdp.SsdpDevicePropertiesCollection.html",
+          "hash": "eSXbOiONBT169Dg0mWzkdQ=="
         }
       },
       "is_incremental": false,
@@ -3092,42 +3092,6 @@
       "source_relative_path": "api/Rssdp.SsdpService.yml",
       "output": {
         ".html": {
-          "relative_path": "api/Rssdp.SsdpService.ControlUrl.html",
-          "hash": "c15wjfCqx0QbSypNZvwi2g=="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/Rssdp.SsdpService.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/Rssdp.SsdpService.EventSubUrl.html",
-          "hash": "M7CqUeK5Uyb6YijiiLPyrw=="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/Rssdp.SsdpService.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/Rssdp.SsdpService.WriteServiceDescriptionXml.html",
-          "hash": "iUTJdllfQGf8DRZKR4Vxrg=="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/Rssdp.SsdpService.yml",
-      "output": {
-        ".html": {
           "relative_path": "api/Rssdp.SsdpService.-ctor.html",
           "hash": "eamDSuMtdk+lXzYQcTkgfg=="
         }
@@ -3224,6 +3188,42 @@
       "source_relative_path": "api/Rssdp.SsdpService.yml",
       "output": {
         ".html": {
+          "relative_path": "api/Rssdp.SsdpService.ControlUrl.html",
+          "hash": "c15wjfCqx0QbSypNZvwi2g=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Rssdp.SsdpService.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Rssdp.SsdpService.EventSubUrl.html",
+          "hash": "M7CqUeK5Uyb6YijiiLPyrw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Rssdp.SsdpService.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Rssdp.SsdpService.WriteServiceDescriptionXml.html",
+          "hash": "iUTJdllfQGf8DRZKR4Vxrg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Rssdp.SsdpService.yml",
+      "output": {
+        ".html": {
           "relative_path": "api/Rssdp.SsdpService.html",
           "hash": "m27jdYPpN04B1DSldNlCqg=="
         }
@@ -3284,18 +3284,6 @@
       "source_relative_path": "api/Rssdp.SsdpTraceLogger.yml",
       "output": {
         ".html": {
-          "relative_path": "api/Rssdp.SsdpTraceLogger.html",
-          "hash": "tSdmcyudTO9LSoqgKbO1ow=="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/Rssdp.SsdpTraceLogger.yml",
-      "output": {
-        ".html": {
           "relative_path": "api/Rssdp.SsdpTraceLogger.LogInfo.html",
           "hash": "kDC+xIDQaA79Y5kwZxjZdw=="
         }
@@ -3341,11 +3329,11 @@
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/Rssdp.UdpSocket.yml",
+      "source_relative_path": "api/Rssdp.SsdpTraceLogger.yml",
       "output": {
         ".html": {
-          "relative_path": "api/Rssdp.UdpSocket.html",
-          "hash": "Zbi343zWtpwb+QupM1O4Uw=="
+          "relative_path": "api/Rssdp.SsdpTraceLogger.html",
+          "hash": "tSdmcyudTO9LSoqgKbO1ow=="
         }
       },
       "is_incremental": false,
@@ -3401,6 +3389,18 @@
     },
     {
       "type": "ManagedReference",
+      "source_relative_path": "api/Rssdp.UdpSocket.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Rssdp.UdpSocket.html",
+          "hash": "Zbi343zWtpwb+QupM1O4Uw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
       "source_relative_path": "api/Rssdp.yml",
       "output": {
         ".html": {
@@ -3442,7 +3442,7 @@
       "output": {
         ".html": {
           "relative_path": "index.html",
-          "hash": "V4ccAH7iSEzWsOx8z6mXWA=="
+          "hash": "l/B19ia/6AtPI0O1I27NDw=="
         }
       },
       "is_incremental": false,
@@ -3452,8 +3452,7 @@
   "incremental_info": [
     {
       "status": {
-        "can_incremental": false,
-        "details": "Cannot build incrementally because last build info is missing.",
+        "can_incremental": true,
         "incrementalPhase": "build"
       },
       "processors": {
@@ -3473,19 +3472,19 @@
           "incrementalPhase": "build"
         },
         "ConceptualDocumentProcessor": {
-          "can_incremental": false,
+          "can_incremental": true,
           "incrementalPhase": "build"
         },
         "ManagedReferenceDocumentProcessor": {
-          "can_incremental": false,
+          "can_incremental": true,
           "incrementalPhase": "build"
         }
       }
     },
     {
       "status": {
-        "can_incremental": false,
-        "details": "Cannot support incremental post processing, the reason is: last post processor info is null.",
+        "can_incremental": true,
+        "details": "Can support incremental post processing.",
         "incrementalPhase": "postProcessing"
       },
       "processors": {}

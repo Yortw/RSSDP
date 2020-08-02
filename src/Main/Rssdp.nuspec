@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
   <metadata>
     <id>Rssdp</id>
-    <version>4.0.2</version>
+    <version>4.0.3</version>
     <title>Rssdp</title>
     <authors>Troy Willmot</authors>
     <owners>Yortw</owners>
@@ -12,10 +12,11 @@
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>Really Simple Service Discovery Protocol - a 100% .Net implementation of the SSDP protocol for publishing custom/basic devices, and discovering all device types on a network.</description>
     <summary>A 100% .Net implementation of the SSDP protocol for basic and custom device types.</summary>
-    <releaseNotes>Suppressed exceptions on background threads.</releaseNotes>
+    <releaseNotes>Log and suppress errors when sending search responses to clients (i.e if client disconnects after sending search request). 
+    Add whitespace to search response HTTP headers to improve compatibility with some clients.</releaseNotes>
     <copyright>Copyright 2018</copyright>
     <language>en-AU</language>
-    <tags>portable xamarin ios android windowsphone winrt uwp mobile ssdp discovery device service protocol upnp netfx40 .net4</tags>
+    <tags>portable xamarin ios android winrt uwp mobile ssdp discovery device service protocol upnp netfx40 .net4 netstandard13</tags>
     <dependencies>
       <group targetFramework=".NetFramework4.0">
         <dependency id="Microsoft.Net.Http" version="2.2.29" />
@@ -27,11 +28,6 @@
       <group targetFramework="monoandroid">
       </group>
       <group targetFramework="Xamarin.iOS10">
-      </group>
-      <group targetFramework="WindowsPhone8">
-        <dependency id="Microsoft.Net.Http" version="2.2.29" />
-        <dependency id="Microsoft.Bcl.Async" version="1.0.168" />
-        <dependency id="Microsoft.Bcl.Build" version="1.0.21" />
       </group>
       <group targetFramework="WindowsPhoneApp8.1">
         <dependency id="Microsoft.Net.Http" version="2.2.29" />
