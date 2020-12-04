@@ -19,7 +19,7 @@ items:
   source:
     id: DisposableManagedObjectBase
     path: ''
-    startLine: 2000
+    startLine: 2013
   assemblies:
   - cs.temp.dll
   namespace: Rssdp.Infrastructure
@@ -69,7 +69,7 @@ items:
   source:
     id: Dispose
     path: ''
-    startLine: 2009
+    startLine: 2022
   assemblies:
   - cs.temp.dll
   namespace: Rssdp.Infrastructure
@@ -103,7 +103,7 @@ items:
   source:
     id: ThrowIfDisposed
     path: ''
-    startLine: 2017
+    startLine: 2030
   assemblies:
   - cs.temp.dll
   namespace: Rssdp.Infrastructure
@@ -142,7 +142,7 @@ items:
   source:
     id: IsDisposed
     path: ''
-    startLine: 2030
+    startLine: 2043
   assemblies:
   - cs.temp.dll
   namespace: Rssdp.Infrastructure
@@ -178,7 +178,7 @@ items:
   source:
     id: Dispose
     path: ''
-    startLine: 2047
+    startLine: 2060
   assemblies:
   - cs.temp.dll
   namespace: Rssdp.Infrastructure

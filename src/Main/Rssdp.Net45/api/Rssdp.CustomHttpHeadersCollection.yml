@@ -25,7 +25,7 @@ items:
   source:
     id: CustomHttpHeadersCollection
     path: ''
-    startLine: 1403
+    startLine: 1416
   assemblies:
   - cs.temp.dll
   namespace: Rssdp
@@ -69,7 +69,7 @@ items:
   source:
     id: .ctor
     path: ''
-    startLine: 1416
+    startLine: 1429
   assemblies:
   - cs.temp.dll
   namespace: Rssdp
@@ -97,7 +97,7 @@ items:
   source:
     id: .ctor
     path: ''
-    startLine: 1425
+    startLine: 1438
   assemblies:
   - cs.temp.dll
   namespace: Rssdp
@@ -129,7 +129,7 @@ items:
   source:
     id: Add
     path: ''
-    startLine: 1442
+    startLine: 1455
   assemblies:
   - cs.temp.dll
   namespace: Rssdp
@@ -166,7 +166,7 @@ items:
   source:
     id: Remove
     path: ''
-    startLine: 1464
+    startLine: 1477
   assemblies:
   - cs.temp.dll
   namespace: Rssdp
@@ -209,7 +209,7 @@ items:
   source:
     id: Remove
     path: ''
-    startLine: 1483
+    startLine: 1496
   assemblies:
   - cs.temp.dll
   namespace: Rssdp
@@ -248,7 +248,7 @@ items:
   source:
     id: Contains
     path: ''
-    startLine: 1500
+    startLine: 1513
   assemblies:
   - cs.temp.dll
   namespace: Rssdp
@@ -283,7 +283,7 @@ items:
   source:
     id: Contains
     path: ''
-    startLine: 1518
+    startLine: 1531
   assemblies:
   - cs.temp.dll
   namespace: Rssdp
@@ -318,7 +318,7 @@ items:
   source:
     id: Count
     path: ''
-    startLine: 1535
+    startLine: 1548
   assemblies:
   - cs.temp.dll
   namespace: Rssdp
@@ -351,7 +351,7 @@ items:
   source:
     id: this[]
     path: ''
-    startLine: 1546
+    startLine: 1559
   assemblies:
   - cs.temp.dll
   namespace: Rssdp
@@ -395,7 +395,7 @@ items:
   source:
     id: GetEnumerator
     path: ''
-    startLine: 1562
+    startLine: 1575
   assemblies:
   - cs.temp.dll
   namespace: Rssdp

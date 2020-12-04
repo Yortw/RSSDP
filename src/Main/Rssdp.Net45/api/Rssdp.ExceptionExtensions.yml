@@ -17,7 +17,7 @@ items:
   source:
     id: ExceptionExtensions
     path: ''
-    startLine: 8525
+    startLine: 8533
   assemblies:
   - cs.temp.dll
   namespace: Rssdp
@@ -58,7 +58,7 @@ items:
   source:
     id: IsCritical
     path: ''
-    startLine: 2094
+    startLine: 2107
   assemblies:
   - cs.temp.dll
   namespace: Rssdp
@@ -100,7 +100,7 @@ items:
   source:
     id: IsCritical
     path: ''
-    startLine: 8543
+    startLine: 8551
   assemblies:
   - cs.temp.dll
   namespace: Rssdp

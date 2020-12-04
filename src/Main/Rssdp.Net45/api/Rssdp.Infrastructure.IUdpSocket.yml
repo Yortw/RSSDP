@@ -17,7 +17,7 @@ items:
   source:
     id: IUdpSocket
     path: ''
-    startLine: 2963
+    startLine: 2976
   assemblies:
   - cs.temp.dll
   namespace: Rssdp.Infrastructure
@@ -50,7 +50,7 @@ items:
   source:
     id: ReceiveAsync
     path: ''
-    startLine: 2969
+    startLine: 2982
   assemblies:
   - cs.temp.dll
   namespace: Rssdp.Infrastructure
@@ -77,7 +77,7 @@ items:
   source:
     id: SendTo
     path: ''
-    startLine: 2976
+    startLine: 2989
   assemblies:
   - cs.temp.dll
   namespace: Rssdp.Infrastructure

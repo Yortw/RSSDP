@@ -25,7 +25,7 @@ items:
   source:
     id: ISsdpDeviceLocator
     path: ''
-    startLine: 2743
+    startLine: 2756
   assemblies:
   - cs.temp.dll
   namespace: Rssdp.Infrastructure
@@ -62,7 +62,7 @@ items:
   source:
     id: DeviceAvailable
     path: ''
-    startLine: 2755
+    startLine: 2768
   assemblies:
   - cs.temp.dll
   namespace: Rssdp.Infrastructure
@@ -96,7 +96,7 @@ items:
   source:
     id: DeviceUnavailable
     path: ''
-    startLine: 2764
+    startLine: 2777
   assemblies:
   - cs.temp.dll
   namespace: Rssdp.Infrastructure
@@ -128,7 +128,7 @@ items:
   source:
     id: NotificationFilter
     path: ''
-    startLine: 2784
+    startLine: 2797
   assemblies:
   - cs.temp.dll
   namespace: Rssdp.Infrastructure
@@ -168,7 +168,7 @@ items:
   source:
     id: IsSearching
     path: ''
-    startLine: 2793
+    startLine: 2806
   assemblies:
   - cs.temp.dll
   namespace: Rssdp.Infrastructure
@@ -199,7 +199,7 @@ items:
   source:
     id: SearchAsync
     path: ''
-    startLine: 2805
+    startLine: 2818
   assemblies:
   - cs.temp.dll
   namespace: Rssdp.Infrastructure
@@ -226,7 +226,7 @@ items:
   source:
     id: SearchAsync
     path: ''
-    startLine: 2818
+    startLine: 2831
   assemblies:
   - cs.temp.dll
   namespace: Rssdp.Infrastructure
@@ -260,7 +260,7 @@ items:
   source:
     id: SearchAsync
     path: ''
-    startLine: 2836
+    startLine: 2849
   assemblies:
   - cs.temp.dll
   namespace: Rssdp.Infrastructure
@@ -298,7 +298,7 @@ items:
   source:
     id: SearchAsync
     path: ''
-    startLine: 2843
+    startLine: 2856
   assemblies:
   - cs.temp.dll
   namespace: Rssdp.Infrastructure
@@ -329,7 +329,7 @@ items:
   source:
     id: StartListeningForNotifications
     path: ''
-    startLine: 2857
+    startLine: 2870
   assemblies:
   - cs.temp.dll
   namespace: Rssdp.Infrastructure
@@ -363,7 +363,7 @@ items:
   source:
     id: StopListeningForNotifications
     path: ''
-    startLine: 2870
+    startLine: 2883
   assemblies:
   - cs.temp.dll
   namespace: Rssdp.Infrastructure

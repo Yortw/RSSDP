@@ -18,7 +18,7 @@ items:
   source:
     id: DeviceUnavailableEventArgs
     path: ''
-    startLine: 1763
+    startLine: 1776
   assemblies:
   - cs.temp.dll
   namespace: Rssdp
@@ -63,7 +63,7 @@ items:
   source:
     id: .ctor
     path: ''
-    startLine: 1781
+    startLine: 1794
   assemblies:
   - cs.temp.dll
   namespace: Rssdp
@@ -102,7 +102,7 @@ items:
   source:
     id: Expired
     path: ''
-    startLine: 1796
+    startLine: 1809
   assemblies:
   - cs.temp.dll
   namespace: Rssdp
@@ -135,7 +135,7 @@ items:
   source:
     id: DiscoveredDevice
     path: ''
-    startLine: 1804
+    startLine: 1817
   assemblies:
   - cs.temp.dll
   namespace: Rssdp

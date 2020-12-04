@@ -19,7 +19,7 @@ items:
   source:
     id: ISsdpLogger
     path: ''
-    startLine: 2924
+    startLine: 2937
   assemblies:
   - cs.temp.dll
   namespace: Rssdp
@@ -48,7 +48,7 @@ items:
   source:
     id: LogInfo
     path: ''
-    startLine: 2931
+    startLine: 2944
   assemblies:
   - cs.temp.dll
   namespace: Rssdp
@@ -76,7 +76,7 @@ items:
   source:
     id: LogVerbose
     path: ''
-    startLine: 2937
+    startLine: 2950
   assemblies:
   - cs.temp.dll
   namespace: Rssdp
@@ -104,7 +104,7 @@ items:
   source:
     id: LogWarning
     path: ''
-    startLine: 2943
+    startLine: 2956
   assemblies:
   - cs.temp.dll
   namespace: Rssdp
@@ -132,7 +132,7 @@ items:
   source:
     id: LogError
     path: ''
-    startLine: 2949
+    startLine: 2962
   assemblies:
   - cs.temp.dll
   namespace: Rssdp

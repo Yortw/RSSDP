@@ -17,7 +17,7 @@ items:
   source:
     id: DeviceEventArgs
     path: ''
-    startLine: 1657
+    startLine: 1670
   assemblies:
   - cs.temp.dll
   namespace: Rssdp
@@ -62,7 +62,7 @@ items:
   source:
     id: .ctor
     path: ''
-    startLine: 1673
+    startLine: 1686
   assemblies:
   - cs.temp.dll
   namespace: Rssdp
@@ -98,7 +98,7 @@ items:
   source:
     id: Device
     path: ''
-    startLine: 1687
+    startLine: 1700
   assemblies:
   - cs.temp.dll
   namespace: Rssdp

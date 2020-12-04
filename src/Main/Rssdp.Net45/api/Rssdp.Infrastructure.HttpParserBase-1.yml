@@ -20,7 +20,7 @@ items:
   source:
     id: HttpParserBase
     path: ''
-    startLine: 2167
+    startLine: 2180
   assemblies:
   - cs.temp.dll
   namespace: Rssdp.Infrastructure
@@ -72,7 +72,7 @@ items:
   source:
     id: Parse
     path: ''
-    startLine: 2184
+    startLine: 2197
   assemblies:
   - cs.temp.dll
   namespace: Rssdp.Infrastructure
@@ -111,7 +111,7 @@ items:
   source:
     id: Parse
     path: ''
-    startLine: 2193
+    startLine: 2206
   assemblies:
   - cs.temp.dll
   namespace: Rssdp.Infrastructure
@@ -156,7 +156,7 @@ items:
   source:
     id: ParseStatusLine
     path: ''
-    startLine: 2251
+    startLine: 2264
   assemblies:
   - cs.temp.dll
   namespace: Rssdp.Infrastructure
@@ -195,7 +195,7 @@ items:
   source:
     id: IsContentHeader
     path: ''
-    startLine: 2257
+    startLine: 2270
   assemblies:
   - cs.temp.dll
   namespace: Rssdp.Infrastructure
@@ -233,7 +233,7 @@ items:
   source:
     id: ParseHttpVersion
     path: ''
-    startLine: 2264
+    startLine: 2277
   assemblies:
   - cs.temp.dll
   namespace: Rssdp.Infrastructure

@@ -18,7 +18,7 @@ items:
   source:
     id: SocketClosedException
     path: ''
-    startLine: 3331
+    startLine: 3344
   assemblies:
   - cs.temp.dll
   namespace: Rssdp
@@ -75,7 +75,7 @@ items:
   source:
     id: .ctor
     path: ''
-    startLine: 3336
+    startLine: 3349
   assemblies:
   - cs.temp.dll
   namespace: Rssdp
@@ -103,7 +103,7 @@ items:
   source:
     id: .ctor
     path: ''
-    startLine: 3341
+    startLine: 3354
   assemblies:
   - cs.temp.dll
   namespace: Rssdp
@@ -135,7 +135,7 @@ items:
   source:
     id: .ctor
     path: ''
-    startLine: 3347
+    startLine: 3360
   assemblies:
   - cs.temp.dll
   namespace: Rssdp

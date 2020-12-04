@@ -16,7 +16,7 @@ items:
   source:
     id: DeviceNetworkTypeExtensions
     path: ''
-    startLine: 1722
+    startLine: 1735
   assemblies:
   - cs.temp.dll
   namespace: Rssdp
@@ -57,7 +57,7 @@ items:
   source:
     id: GetMulticastIPAddress
     path: ''
-    startLine: 1730
+    startLine: 1743
   assemblies:
   - cs.temp.dll
   namespace: Rssdp

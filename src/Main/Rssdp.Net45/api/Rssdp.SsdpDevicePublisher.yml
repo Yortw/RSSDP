@@ -49,7 +49,7 @@ items:
   source:
     id: SsdpDevicePublisher
     path: ''
-    startLine: 9167
+    startLine: 9180
   assemblies:
   - cs.temp.dll
   namespace: Rssdp
@@ -304,7 +304,7 @@ items:
   source:
     id: .ctor
     path: ''
-    startLine: 237
+    startLine: 250
   assemblies:
   - cs.temp.dll
   namespace: Rssdp
@@ -333,7 +333,7 @@ items:
   source:
     id: .ctor
     path: ''
-    startLine: 249
+    startLine: 262
   assemblies:
   - cs.temp.dll
   namespace: Rssdp
@@ -361,40 +361,6 @@ items:
   name: SsdpDevicePublisher(ISsdpCommunicationsServer, ISsdpLogger)
   nameWithType: SsdpDevicePublisher.SsdpDevicePublisher(ISsdpCommunicationsServer, ISsdpLogger)
   fullName: Rssdp.SsdpDevicePublisher.SsdpDevicePublisher(Rssdp.Infrastructure.ISsdpCommunicationsServer, Rssdp.ISsdpLogger)
-  type: Constructor
-  source:
-    id: .ctor
-    path: ''
-    startLine: 261
-  assemblies:
-  - cs.temp.dll
-  namespace: Rssdp
-  summary: "\nFull constructor. \n"
-  remarks: "\n<p>Allows the caller to specify their own <xref href=\"Rssdp.Infrastructure.ISsdpCommunicationsServer\" data-throw-if-not-resolved=\"false\"></xref> implementation for full control over the networking, or for mocking/testing purposes..</p>\n"
-  example: []
-  syntax:
-    content: public SsdpDevicePublisher(ISsdpCommunicationsServer communicationsServer, ISsdpLogger log)
-    parameters:
-    - id: communicationsServer
-      type: Rssdp.Infrastructure.ISsdpCommunicationsServer
-    - id: log
-      type: Rssdp.ISsdpLogger
-    content.vb: Public Sub New(communicationsServer As ISsdpCommunicationsServer, log As ISsdpLogger)
-  overload: Rssdp.SsdpDevicePublisher.#ctor*
-  modifiers.csharp:
-  - public
-  modifiers.vb:
-  - Public
-- uid: Rssdp.SsdpDevicePublisher.#ctor(System.Int32)
-  commentId: M:Rssdp.SsdpDevicePublisher.#ctor(System.Int32)
-  id: '#ctor(System.Int32)'
-  parent: Rssdp.SsdpDevicePublisher
-  langs:
-  - csharp
-  - vb
-  name: SsdpDevicePublisher(Int32)
-  nameWithType: SsdpDevicePublisher.SsdpDevicePublisher(Int32)
-  fullName: Rssdp.SsdpDevicePublisher.SsdpDevicePublisher(System.Int32)
   type: Constructor
   source:
     id: .ctor
@@ -403,6 +369,40 @@ items:
   assemblies:
   - cs.temp.dll
   namespace: Rssdp
+  summary: "\nFull constructor. \n"
+  remarks: "\n<p>Allows the caller to specify their own <xref href=\"Rssdp.Infrastructure.ISsdpCommunicationsServer\" data-throw-if-not-resolved=\"false\"></xref> implementation for full control over the networking, or for mocking/testing purposes..</p>\n"
+  example: []
+  syntax:
+    content: public SsdpDevicePublisher(ISsdpCommunicationsServer communicationsServer, ISsdpLogger log)
+    parameters:
+    - id: communicationsServer
+      type: Rssdp.Infrastructure.ISsdpCommunicationsServer
+    - id: log
+      type: Rssdp.ISsdpLogger
+    content.vb: Public Sub New(communicationsServer As ISsdpCommunicationsServer, log As ISsdpLogger)
+  overload: Rssdp.SsdpDevicePublisher.#ctor*
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+- uid: Rssdp.SsdpDevicePublisher.#ctor(System.Int32)
+  commentId: M:Rssdp.SsdpDevicePublisher.#ctor(System.Int32)
+  id: '#ctor(System.Int32)'
+  parent: Rssdp.SsdpDevicePublisher
+  langs:
+  - csharp
+  - vb
+  name: SsdpDevicePublisher(Int32)
+  nameWithType: SsdpDevicePublisher.SsdpDevicePublisher(Int32)
+  fullName: Rssdp.SsdpDevicePublisher.SsdpDevicePublisher(System.Int32)
+  type: Constructor
+  source:
+    id: .ctor
+    path: ''
+    startLine: 287
+  assemblies:
+  - cs.temp.dll
+  namespace: Rssdp
   summary: "\nPartial constructor. \n"
   remarks: "\n<p>Uses the default <xref href=\"Rssdp.Infrastructure.ISsdpCommunicationsServer\" data-throw-if-not-resolved=\"false\"></xref> implementation and network settings for Windows and the SSDP specification, but specifies the local port to use for socket communications. Specify 0 to indicate the system should choose it&apos;s own port.</p>\n"
   example: []
@@ -432,7 +432,7 @@ items:
   source:
     id: .ctor
     path: ''
-    startLine: 286
+    startLine: 299
   assemblies:
   - cs.temp.dll
   namespace: Rssdp
@@ -464,7 +464,7 @@ items:
   source:
     id: .ctor
     path: ''
-    startLine: 303
+    startLine: 316
   assemblies:
   - cs.temp.dll
   namespace: Rssdp
@@ -500,7 +500,7 @@ items:
   source:
     id: .ctor
     path: ''
-    startLine: 433
+    startLine: 446
   assemblies:
   - cs.temp.dll
   namespace: Rssdp
@@ -529,7 +529,7 @@ items:
   source:
     id: .ctor
     path: ''
-    startLine: 446
+    startLine: 459
   assemblies:
   - cs.temp.dll
   namespace: Rssdp
@@ -561,7 +561,7 @@ items:
   source:
     id: .ctor
     path: ''
-    startLine: 459
+    startLine: 472
   assemblies:
   - cs.temp.dll
   namespace: Rssdp
@@ -594,7 +594,7 @@ items:
   source:
     id: .ctor
     path: ''
-    startLine: 476
+    startLine: 489
   assemblies:
   - cs.temp.dll
   namespace: Rssdp
@@ -630,7 +630,7 @@ items:
   source:
     id: .ctor
     path: ''
-    startLine: 562
+    startLine: 575
   assemblies:
   - cs.temp.dll
   namespace: Rssdp
@@ -659,7 +659,7 @@ items:
   source:
     id: .ctor
     path: ''
-    startLine: 575
+    startLine: 588
   assemblies:
   - cs.temp.dll
   namespace: Rssdp
@@ -691,7 +691,7 @@ items:
   source:
     id: .ctor
     path: ''
-    startLine: 587
+    startLine: 600
   assemblies:
   - cs.temp.dll
   namespace: Rssdp
@@ -725,7 +725,7 @@ items:
   source:
     id: .ctor
     path: ''
-    startLine: 600
+    startLine: 613
   assemblies:
   - cs.temp.dll
   namespace: Rssdp
@@ -758,7 +758,7 @@ items:
   source:
     id: .ctor
     path: ''
-    startLine: 612
+    startLine: 625
   assemblies:
   - cs.temp.dll
   namespace: Rssdp
@@ -790,7 +790,7 @@ items:
   source:
     id: .ctor
     path: ''
-    startLine: 629
+    startLine: 642
   assemblies:
   - cs.temp.dll
   namespace: Rssdp
@@ -826,7 +826,7 @@ items:
   source:
     id: .ctor
     path: ''
-    startLine: 794
+    startLine: 807
   assemblies:
   - cs.temp.dll
   namespace: Rssdp
@@ -855,7 +855,7 @@ items:
   source:
     id: .ctor
     path: ''
-    startLine: 806
+    startLine: 819
   assemblies:
   - cs.temp.dll
   namespace: Rssdp
@@ -887,7 +887,7 @@ items:
   source:
     id: .ctor
     path: ''
-    startLine: 819
+    startLine: 832
   assemblies:
   - cs.temp.dll
   namespace: Rssdp
@@ -920,7 +920,7 @@ items:
   source:
     id: .ctor
     path: ''
-    startLine: 836
+    startLine: 849
   assemblies:
   - cs.temp.dll
   namespace: Rssdp
@@ -956,7 +956,7 @@ items:
   source:
     id: .ctor
     path: ''
-    startLine: 8215
+    startLine: 8223
   assemblies:
   - cs.temp.dll
   namespace: Rssdp
@@ -985,7 +985,7 @@ items:
   source:
     id: .ctor
     path: ''
-    startLine: 8228
+    startLine: 8236
   assemblies:
   - cs.temp.dll
   namespace: Rssdp
@@ -1017,7 +1017,7 @@ items:
   source:
     id: .ctor
     path: ''
-    startLine: 8241
+    startLine: 8249
   assemblies:
   - cs.temp.dll
   namespace: Rssdp
@@ -1050,7 +1050,7 @@ items:
   source:
     id: .ctor
     path: ''
-    startLine: 8258
+    startLine: 8266
   assemblies:
   - cs.temp.dll
   namespace: Rssdp
@@ -1086,7 +1086,7 @@ items:
   source:
     id: .ctor
     path: ''
-    startLine: 9178
+    startLine: 9191
   assemblies:
   - cs.temp.dll
   namespace: Rssdp
@@ -1115,7 +1115,7 @@ items:
   source:
     id: .ctor
     path: ''
-    startLine: 9191
+    startLine: 9204
   assemblies:
   - cs.temp.dll
   namespace: Rssdp
@@ -1147,7 +1147,7 @@ items:
   source:
     id: .ctor
     path: ''
-    startLine: 9204
+    startLine: 9217
   assemblies:
   - cs.temp.dll
   namespace: Rssdp
@@ -1180,7 +1180,7 @@ items:
   source:
     id: .ctor
     path: ''
-    startLine: 9221
+    startLine: 9234
   assemblies:
   - cs.temp.dll
   namespace: Rssdp
