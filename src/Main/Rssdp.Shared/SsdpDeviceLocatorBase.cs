@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.IO;
@@ -26,13 +26,8 @@ namespace Rssdp.Infrastructure
 
 		private System.Threading.Timer _ExpireCachedDevicesTimer;
 
-		private const string HttpURequestMessageFormat = @"{0} * HTTP/1.1
-HOST: {1}:{2}
-MAN: ""{3}""
-MX: {5}
-ST: {4}
-
-";
+		// Changed to single line string with explicit \r\n - see https://github.com/Yortw/RSSDP/issues/103
+		private const string HttpURequestMessageFormat = "{0} * HTTP/1.1\r\nHOST: {1}:{2}\r\nST: {4}\r\nMAN: \"{3}\"\r\nMX: {5}\r\n\r\n";
 
 		private static readonly TimeSpan DefaultSearchWaitTime = TimeSpan.FromSeconds(4);
 		private static readonly TimeSpan OneSecond = TimeSpan.FromSeconds(1);
