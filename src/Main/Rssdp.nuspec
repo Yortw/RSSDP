@@ -6,7 +6,7 @@
     <title>Rssdp</title>
     <authors>Troy Willmot</authors>
     <owners>Yortw</owners>
-    <licenseUrl>https://github.com/Yortw/RSSDP/blob/master/LICENSE</licenseUrl>
+    <license type="expression">MIT</license>
     <projectUrl>https://github.com/Yortw/RSSDP</projectUrl>
     <iconUrl>https://raw.githubusercontent.com/Yortw/RSSDP/master/RssdpIcon.png</iconUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
