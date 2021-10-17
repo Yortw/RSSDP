@@ -16,4 +16,3 @@
 [assembly: System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", "CA2204:Literals should be spelled correctly", MessageId = "DeviceNetworkType", Scope = "member", Target = "Rssdp.SocketFactory.#SetMulticastSocketOptions(System.Net.Sockets.Socket,System.Int32)")]
 [assembly: System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "ip", Scope = "member", Target = "Rssdp.SocketFactory.#.ctor(System.String)")]
 [assembly: System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "ip", Scope = "member", Target = "Rssdp.SsdpDeviceLocator.#.ctor(System.String)")]
-
