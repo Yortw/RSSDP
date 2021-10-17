@@ -16,11 +16,11 @@ namespace Rssdp.Infrastructure
 
     #region Fields & Constants
 
-    private List<DiscoveredSsdpDevice> _Devices;
+    private readonly List<DiscoveredSsdpDevice> _Devices;
     private ISsdpCommunicationsServer _CommunicationsServer;
 
     private IList<DiscoveredSsdpDevice> _SearchResults;
-    private object _SearchResultsSynchroniser;
+    private readonly object _SearchResultsSynchroniser;
 
     private System.Threading.Timer _ExpireCachedDevicesTimer;
 
@@ -40,7 +40,7 @@ namespace Rssdp.Infrastructure
     /// <param name="communicationsServer">The <see cref="ISsdpCommunicationsServer"/> implementation to use for network communications.</param>
     protected SsdpDeviceLocatorBase(ISsdpCommunicationsServer communicationsServer)
     {
-      if (communicationsServer == null) throw new ArgumentNullException("communicationsServer");
+      if (communicationsServer == null) throw new ArgumentNullException(nameof(communicationsServer));
 
       _CommunicationsServer = communicationsServer;
       _CommunicationsServer.ResponseReceived += CommsServer_ResponseReceived;
@@ -143,7 +143,7 @@ namespace Rssdp.Infrastructure
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Performance", "CA1804:RemoveUnusedLocals", MessageId = "expireTask", Justification = "Task is not actually required, but capturing to local variable suppresses compiler warning")]
     public async Task<IEnumerable<DiscoveredSsdpDevice>> SearchAsync(string searchTarget, TimeSpan searchWaitTime)
     {
-      if (searchTarget == null) throw new ArgumentNullException("searchTarget");
+      if (searchTarget == null) throw new ArgumentNullException(nameof(searchTarget));
       if (searchTarget.Length == 0) throw new ArgumentException("searchTarget cannot be an empty string.", "searchTarget");
       if (searchWaitTime.TotalSeconds < 0) throw new ArgumentException("searchWaitTime must be a positive time.");
       if (searchWaitTime.TotalSeconds > 0 && searchWaitTime.TotalSeconds <= 1) throw new ArgumentException("searchWaitTime must be zero (if you are not using the result and relying entirely in the events), or greater than one second.");
@@ -181,7 +181,7 @@ namespace Rssdp.Infrastructure
           _SearchResults = null;
         }
 
-        var expireTask = RemoveExpiredDevicesFromCacheAsync();
+        _ = RemoveExpiredDevicesFromCacheAsync();
       }
       finally
       {
@@ -191,7 +191,10 @@ namespace Rssdp.Infrastructure
           if (server != null) // In case we were disposed while searching.
             server.StopListeningForResponses();
         }
-        catch (ObjectDisposedException) { }
+        catch (ObjectDisposedException)
+        {
+          // Empty
+        }
       }
 
       return retVal;
@@ -243,11 +246,9 @@ namespace Rssdp.Infrastructure
     /// <seealso cref="DeviceAvailable"/>
     protected virtual void OnDeviceAvailable(DiscoveredSsdpDevice device, bool isNewDevice)
     {
-      if (this.IsDisposed) return;
+      if (IsDisposed) return;
 
-      var handlers = this.DeviceAvailable;
-      if (handlers != null)
-        handlers(this, new DeviceAvailableEventArgs(device, isNewDevice));
+      DeviceAvailable?.Invoke(this, new DeviceAvailableEventArgs(device, isNewDevice));
     }
 
     /// <summary>
@@ -258,11 +259,9 @@ namespace Rssdp.Infrastructure
     /// <seealso cref="DeviceUnavailable"/>
     protected virtual void OnDeviceUnavailable(DiscoveredSsdpDevice device, bool expired)
     {
-      if (this.IsDisposed) return;
+      if (IsDisposed) return;
 
-      var handlers = this.DeviceUnavailable;
-      if (handlers != null)
-        handlers(this, new DeviceUnavailableEventArgs(device, expired));
+      DeviceUnavailable?.Invoke(this, new DeviceUnavailableEventArgs(device, expired));
     }
 
     #endregion
@@ -595,7 +594,7 @@ namespace Rssdp.Infrastructure
     {
       if (headerValue == null) return TimeSpan.Zero;
 
-      return (TimeSpan)(headerValue.MaxAge ?? headerValue.SharedMaxAge ?? TimeSpan.Zero);
+      return headerValue.MaxAge ?? headerValue.SharedMaxAge ?? TimeSpan.Zero;
     }
 
     #endregion
