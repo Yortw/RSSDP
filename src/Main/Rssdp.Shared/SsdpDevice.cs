@@ -96,7 +96,7 @@ namespace Rssdp
 
       using (var ms = new System.IO.MemoryStream(Encoding.UTF8.GetBytes(deviceDescriptionXml)))
       {
-        using (var reader = XmlReader.Create(ms))
+        using (var reader = XmlReader.Create(ms, new XmlReaderSettings { CloseInput = false }))
         {
           LoadDeviceProperties(reader, this);
         }

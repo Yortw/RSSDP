@@ -141,9 +141,9 @@ namespace Rssdp
 
     private void LoadFromDescriptionDocument(string deviceDescriptionXml)
     {
-      using (var ms = new System.IO.MemoryStream(Encoding.UTF8.GetBytes(deviceDescriptionXml)))
+      using (var ms = new MemoryStream(Encoding.UTF8.GetBytes(deviceDescriptionXml)))
       {
-        using (var reader = XmlReader.Create(ms))
+        using (var reader = XmlReader.Create(ms, new XmlReaderSettings { CloseInput = false }))
         {
           while (!reader.EOF)
           {

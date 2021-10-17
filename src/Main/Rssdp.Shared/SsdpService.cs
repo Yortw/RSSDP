@@ -36,7 +36,7 @@ namespace Rssdp
 
       using (var ms = new System.IO.MemoryStream(Encoding.UTF8.GetBytes(serviceDescriptionXml)))
       {
-        using (var reader = XmlReader.Create(ms))
+        using (var reader = XmlReader.Create(ms, new XmlReaderSettings { CloseInput = false }))
         {
           LoadServiceProperties(reader, this);
         }

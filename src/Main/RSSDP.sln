@@ -46,6 +46,7 @@ Global
 		Rssdp.Shared\Rssdp.Shared.projitems*{6878dade-111f-4fbd-91c7-e9c7479a84bb}*SharedItemsImports = 4
 		Rssdp.Shared\Rssdp.Shared.projitems*{899d3d92-5b01-49ce-bd90-a6c90d5321f1}*SharedItemsImports = 4
 		Rssdp.Shared\Rssdp.Shared.projitems*{ab769ed2-0a3d-41b7-a702-0e5b08da158e}*SharedItemsImports = 5
+		Rssdp.Shared\Rssdp.Shared.projitems*{b74c6f04-6516-4597-bda1-023036f80095}*SharedItemsImports = 5
 		Rssdp.Shared\Rssdp.Shared.projitems*{cc2b3fbe-239e-4967-b566-1a7e4d9eaf5d}*SharedItemsImports = 13
 	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
