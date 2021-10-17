@@ -93,6 +93,8 @@ namespace Rssdp
 
     protected override void Dispose(bool disposing)
     {
+      base.Dispose(disposing);
+
       if (disposing)
       {
         var socket = _Socket;
