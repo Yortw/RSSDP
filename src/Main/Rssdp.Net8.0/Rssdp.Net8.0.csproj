@@ -1,0 +1,25 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <Import Project="..\Rssdp.Shared\Rssdp.Shared.projitems" Label="Shared" />
+
+  <ItemGroup>
+    <Compile Include="..\Shared\SsdpDeviceLocator.cs" Link="SsdpDeviceLocator.cs" />
+    <Compile Include="..\Shared\SystemNetSockets\SocketFactory.cs" Link="SocketFactory.cs" />
+    <Compile Include="..\Shared\SystemNetSockets\UdpSocket.cs" Link="UdpSocket.cs" />
+  </ItemGroup>
+
+  <PropertyGroup>
+    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+    <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+    <AppendRuntimeIdentifierToOutputPath>false</AppendRuntimeIdentifierToOutputPath>
+    <BaseOutputPath>..\lib\net8.0\</BaseOutputPath>
+    <AssemblyName>Rssdp</AssemblyName>
+  </PropertyGroup>
+
+</Project>
