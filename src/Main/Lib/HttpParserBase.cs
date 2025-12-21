@@ -38,9 +38,9 @@ namespace Rssdp.Infrastructure
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2202:Do not dispose objects multiple times", Justification="Honestly, it's fine. MemoryStream doesn't mind.")]
 		protected virtual HttpContent Parse(T message, System.Net.Http.Headers.HttpHeaders headers, string data)
 		{
-			if (data == null) throw new ArgumentNullException("data");
-			if (data.Length == 0) throw new ArgumentException("data cannot be an empty string.", "data");
-			if (!LineTerminators.Any(data.Contains)) throw new ArgumentException("data is not a valid request, it does not contain any CRLF/LF terminators.", "data");
+			if (data == null) throw new ArgumentNullException(nameof(data));
+			if (data.Length == 0) throw new ArgumentException("data cannot be an empty string.", nameof(data));
+			if (!LineTerminators.Any(data.Contains)) throw new ArgumentException("data is not a valid request, it does not contain any CRLF/LF terminators.", nameof(data));
 
 			HttpContent retVal = null;
 			try
@@ -55,7 +55,7 @@ namespace Rssdp.Infrastructure
 					//First line is the 'request' line containing http protocol details like method, uri, http version etc.
 					ParseStatusLine(lines[0], message);
 
-					int lineIndex = ParseHeaders(headers, retVal.Headers, lines);
+					var lineIndex = ParseHeaders(headers, retVal.Headers, lines);
 
 					if (lineIndex < lines.Length - 1)
 					{
@@ -151,7 +151,7 @@ namespace Rssdp.Infrastructure
 		private int ParseHeaders(System.Net.Http.Headers.HttpHeaders headers, System.Net.Http.Headers.HttpHeaders contentHeaders, string[] lines)
 		{
 			//Blank line separates headers from content, so read headers until we find blank line.
-			int lineIndex = 1;
+			var lineIndex = 1;
 			string line = null, nextLine = null;
 			while (lineIndex + 1 < lines.Length && !String.IsNullOrEmpty((line = lines[lineIndex++])))
 			{
@@ -194,7 +194,7 @@ namespace Rssdp.Infrastructure
 				var segments = headerValue.Split(SeparatorCharacters);
 				if (headerValue.Contains("\""))
 				{
-					for (int segmentIndex = 0; segmentIndex < segments.Length; segmentIndex++)
+					for (var segmentIndex = 0; segmentIndex < segments.Length; segmentIndex++)
 					{
 						var segment = segments[segmentIndex];
 						if (segment.Trim().StartsWith("\"", StringComparison.OrdinalIgnoreCase))
@@ -213,7 +213,7 @@ namespace Rssdp.Infrastructure
 		private static string CombineQuotedSegments(string[] segments, ref int segmentIndex, string segment)
 		{
 			var trimmedSegment = segment.Trim();
-			for (int index = segmentIndex; index < segments.Length; index++)
+			for (var index = segmentIndex; index < segments.Length; index++)
 			{
 				if (trimmedSegment == "\"\"" ||
 					(
