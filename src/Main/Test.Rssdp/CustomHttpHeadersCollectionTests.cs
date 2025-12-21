@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Rssdp;
 
-namespace Test.RssdpPortable
+namespace Test.Rssdp
 {
 	[TestClass]
 	public class CustomHttpHeadersCollectionTests
