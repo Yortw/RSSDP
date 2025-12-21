@@ -39,7 +39,14 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-	  <None Remove="docfx.json" />
+	  <Compile Remove="api\**" />
+	  <EmbeddedResource Remove="api\**" />
+	  <None Remove="api\**" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <None Remove="favicon.ico" />
+	  <None Remove="log.txt" />
 	</ItemGroup>
 
 	<ItemGroup>

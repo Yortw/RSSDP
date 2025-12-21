@@ -11,7 +11,7 @@
 						"../docs/_site/**",
 						"**Bom**",
 						"**Test**",
-						"**/Test.SsdpPortable/**",
+						"**/Test.Rssdp/**",
 						"**PackageTest**",
 						"**/NugetPackageTests/**"
 					]
@@ -64,7 +64,7 @@
 		"globalMetadataFiles": [],
 		"globalMetadata": {
 			"_appTitle": "RSSDP",
-			"_appFaviconPath": "images/RssdpIcon.ico",
+			"_appFaviconPath": "favicon.ico",
 			"_appLogoPath": "images/RssdpIconSmall.png",
 			"_appFooter": "Copyright (c) 2015 Troy Willmot"
 		},
