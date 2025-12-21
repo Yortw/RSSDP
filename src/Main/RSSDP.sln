@@ -16,10 +16,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Rssdp.Samples", "Rssdp.Samp
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Rssdp.Net45", "Rssdp.Net45\Rssdp.Net45.csproj", "{1491D1A7-BBD0-4537-9F49-FDDD86D4989C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Rssdp.Android", "RSSDP.Android\Rssdp.Android.csproj", "{6878DADE-111F-4FBD-91C7-E9C7479A84BB}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Rssdp.iOS", "RSSDP.iOS\Rssdp.iOS.csproj", "{899D3D92-5B01-49CE-BD90-A6C90D5321F1}"
-EndProject
 Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "Rssdp.Shared", "Rssdp.Shared\Rssdp.Shared.shproj", "{CC2B3FBE-239E-4967-B566-1A7E4D9EAF5D}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Rssdp", "Lib\Rssdp.csproj", "{0E56610E-C039-46C3-A352-18426C3CFC53}"
@@ -84,38 +80,6 @@ Global
 		{1491D1A7-BBD0-4537-9F49-FDDD86D4989C}.Release|x64.Build.0 = Release|Any CPU
 		{1491D1A7-BBD0-4537-9F49-FDDD86D4989C}.Release|x86.ActiveCfg = Release|Any CPU
 		{1491D1A7-BBD0-4537-9F49-FDDD86D4989C}.Release|x86.Build.0 = Release|Any CPU
-		{6878DADE-111F-4FBD-91C7-E9C7479A84BB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{6878DADE-111F-4FBD-91C7-E9C7479A84BB}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{6878DADE-111F-4FBD-91C7-E9C7479A84BB}.Debug|ARM.ActiveCfg = Debug|Any CPU
-		{6878DADE-111F-4FBD-91C7-E9C7479A84BB}.Debug|ARM.Build.0 = Debug|Any CPU
-		{6878DADE-111F-4FBD-91C7-E9C7479A84BB}.Debug|x64.ActiveCfg = Debug|Any CPU
-		{6878DADE-111F-4FBD-91C7-E9C7479A84BB}.Debug|x64.Build.0 = Debug|Any CPU
-		{6878DADE-111F-4FBD-91C7-E9C7479A84BB}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{6878DADE-111F-4FBD-91C7-E9C7479A84BB}.Debug|x86.Build.0 = Debug|Any CPU
-		{6878DADE-111F-4FBD-91C7-E9C7479A84BB}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{6878DADE-111F-4FBD-91C7-E9C7479A84BB}.Release|Any CPU.Build.0 = Release|Any CPU
-		{6878DADE-111F-4FBD-91C7-E9C7479A84BB}.Release|ARM.ActiveCfg = Release|Any CPU
-		{6878DADE-111F-4FBD-91C7-E9C7479A84BB}.Release|ARM.Build.0 = Release|Any CPU
-		{6878DADE-111F-4FBD-91C7-E9C7479A84BB}.Release|x64.ActiveCfg = Release|Any CPU
-		{6878DADE-111F-4FBD-91C7-E9C7479A84BB}.Release|x64.Build.0 = Release|Any CPU
-		{6878DADE-111F-4FBD-91C7-E9C7479A84BB}.Release|x86.ActiveCfg = Release|Any CPU
-		{6878DADE-111F-4FBD-91C7-E9C7479A84BB}.Release|x86.Build.0 = Release|Any CPU
-		{899D3D92-5B01-49CE-BD90-A6C90D5321F1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{899D3D92-5B01-49CE-BD90-A6C90D5321F1}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{899D3D92-5B01-49CE-BD90-A6C90D5321F1}.Debug|ARM.ActiveCfg = Debug|Any CPU
-		{899D3D92-5B01-49CE-BD90-A6C90D5321F1}.Debug|ARM.Build.0 = Debug|Any CPU
-		{899D3D92-5B01-49CE-BD90-A6C90D5321F1}.Debug|x64.ActiveCfg = Debug|Any CPU
-		{899D3D92-5B01-49CE-BD90-A6C90D5321F1}.Debug|x64.Build.0 = Debug|Any CPU
-		{899D3D92-5B01-49CE-BD90-A6C90D5321F1}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{899D3D92-5B01-49CE-BD90-A6C90D5321F1}.Debug|x86.Build.0 = Debug|Any CPU
-		{899D3D92-5B01-49CE-BD90-A6C90D5321F1}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{899D3D92-5B01-49CE-BD90-A6C90D5321F1}.Release|Any CPU.Build.0 = Release|Any CPU
-		{899D3D92-5B01-49CE-BD90-A6C90D5321F1}.Release|ARM.ActiveCfg = Release|Any CPU
-		{899D3D92-5B01-49CE-BD90-A6C90D5321F1}.Release|ARM.Build.0 = Release|Any CPU
-		{899D3D92-5B01-49CE-BD90-A6C90D5321F1}.Release|x64.ActiveCfg = Release|Any CPU
-		{899D3D92-5B01-49CE-BD90-A6C90D5321F1}.Release|x64.Build.0 = Release|Any CPU
-		{899D3D92-5B01-49CE-BD90-A6C90D5321F1}.Release|x86.ActiveCfg = Release|Any CPU
-		{899D3D92-5B01-49CE-BD90-A6C90D5321F1}.Release|x86.Build.0 = Release|Any CPU
 		{0E56610E-C039-46C3-A352-18426C3CFC53}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{0E56610E-C039-46C3-A352-18426C3CFC53}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0E56610E-C039-46C3-A352-18426C3CFC53}.Debug|ARM.ActiveCfg = Debug|Any CPU
@@ -140,9 +104,6 @@ Global
 		SolutionGuid = {947F20D9-A1F2-4F7D-8C5B-B071E5DFE4C1}
 	EndGlobalSection
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
-		Rssdp.Shared\Rssdp.Shared.projitems*{1491d1a7-bbd0-4537-9f49-fddd86d4989c}*SharedItemsImports = 4
-		Rssdp.Shared\Rssdp.Shared.projitems*{6878dade-111f-4fbd-91c7-e9c7479a84bb}*SharedItemsImports = 4
-		Rssdp.Shared\Rssdp.Shared.projitems*{899d3d92-5b01-49ce-bd90-a6c90d5321f1}*SharedItemsImports = 4
 		Rssdp.Shared\Rssdp.Shared.projitems*{cc2b3fbe-239e-4967-b566-1a7e4d9eaf5d}*SharedItemsImports = 13
 	EndGlobalSection
 EndGlobal
