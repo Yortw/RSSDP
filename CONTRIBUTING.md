@@ -9,8 +9,6 @@ Following these guidelines helps to communicate that you respect the time of the
 * **Please include as much detail as possible**, including the .Net platform you're using (Desktop framework, Xamarin iOS/Android, Net Standard etc),
 your version of visual studio, the version of the project or nuget package you're using, exact error mesages/numbers and if possible sample code or 
 a link to a project that reproduces the issue.
-* **We endeavour to respond to issues quickly**, but the project is unpaid and run on the personal time of our contributors (of whom there are few, possibly only one). 
-We have day jobs, as well as lives, so while we will respond as soon as possible, it might take several days or a week. **If no response after a week, please feel free to ping the thread**.
 * **Please open one issue per problem/request/idea**. Combining multiple concepts/reports into a single issue makes it hard to track, read, and close appropriately.
 
 # Pull Requests and Code

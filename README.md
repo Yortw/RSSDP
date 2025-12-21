@@ -8,18 +8,15 @@ RSSDP is designed primarily to publish and discover custom or 'basic' devices, a
 looking to build a device for which a full UPnP device schema exists, this is not the library for you (sorry! though I guess you can fork and extend if you like).
 If you are looking for a way to discover a custom service (such as a proprietary REST or SOAP service) from a device, RSSDP might be the solution for you.
 
-[![GitHub license](https://img.shields.io/github/license/mashape/apistatus.svg)](https://github.com/Yortw/RSSDP/blob/master/LICENSE.md) 
+[![GitHub license](https://img.shields.io/github/license/mashape/apistatus.svg)](https://github.com/Yortw/RSSDP/blob/master/LICENSE) 
 
 ## Supported Platforms
 Currently;
 
-* .Net Framework 4.03+
-* Windows Phone Silverlight (8.0+) 
-* Xamarin.iOS Unified
-* Xamarin.Android (Only tested with emulator)
-* WinRT (Windows Store Apps 8.1)
-* UWP 10+ (Windows 10 Universal Programs)
-* .NET Core (ASP.NET Core 1.0+, .NET Standard 1.3+)
+* .Net Desktop Framework 4.8/4.81
+* .Net Standard 2.0
+* .NET 6.0, 8.0
+* UAP 10.0.16299
 
 ## Build Status
 [![Build status](https://ci.appveyor.com/api/projects/status/f4e33as09yx0lsn4?svg=true)](https://ci.appveyor.com/project/Yortw/rssdp)
@@ -216,4 +213,4 @@ Reference materials used while writing this library, or that may be useful to pe
 * [UPnP Developer Tools](http://opentools.homeip.net/dev-tools-for-upnp)
 
 ## Contributing
-We'd love your assistance! Please see the [CONTRIBUTING.md](CONTRIBUTING.md) file for information on how to contribute.
+We'd love your assistance! Please see the [CONTRIBUTING.md](https://github.com/Yortw/RSSDP/blob/master/CONTRIBUTING.md) file for information on how to contribute.
