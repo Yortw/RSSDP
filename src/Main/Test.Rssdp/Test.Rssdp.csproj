@@ -6,7 +6,7 @@
     <ProjectGuid>{D8A7D9BA-96CF-47F0-BB66-01025A113F6D}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Test.Rssdp</RootNamespace>
+    <RootNamespace>TestRssdp</RootNamespace>
     <AssemblyName>Test.Rssdp</AssemblyName>
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>

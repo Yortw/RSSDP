@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using Rssdp;
 using Rssdp.Infrastructure;
 
-namespace Test.Rssdp
+namespace TestRssdp
 {
 	public class MockCommsServer : DisposableManagedObjectBase, ISsdpCommunicationsServer
 	{

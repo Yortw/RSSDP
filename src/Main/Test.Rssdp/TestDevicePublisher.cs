@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Rssdp.Infrastructure;
 
-namespace Test.Rssdp
+namespace TestRssdp
 {
 	public class TestDevicePublisher : SsdpDevicePublisherBase
 	{

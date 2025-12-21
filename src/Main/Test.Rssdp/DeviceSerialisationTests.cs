@@ -5,7 +5,7 @@ using System.Xml.Linq;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Rssdp;
 
-namespace Test.Rssdp
+namespace TestRssdp
 {
 	[TestClass]
 	public class DeviceSerialisationTests

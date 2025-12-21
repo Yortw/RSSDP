@@ -8,7 +8,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Rssdp.Infrastructure;
 using Rssdp;
 
-namespace Test.Rssdp
+namespace TestRssdp
 {
 	[TestClass, System.Runtime.InteropServices.GuidAttribute("A330D44B-B20B-4E18-8B2F-86BD77A77549")]
 	public class CommServerTests

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Rssdp.Infrastructure;
 
-namespace Test.Rssdp
+namespace TestRssdp
 {
 	[TestClass]
 	public class HttpParserTests

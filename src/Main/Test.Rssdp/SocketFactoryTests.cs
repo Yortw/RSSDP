@@ -2,7 +2,7 @@ using System.Net;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Rssdp;
 
-namespace Test.Rssdp
+namespace TestRssdp
 {
 	[TestClass, System.Runtime.InteropServices.GuidAttribute("C921D87F-210B-4C62-BF87-84E6D89DEADB")]
 	public class SocketFactoryTests

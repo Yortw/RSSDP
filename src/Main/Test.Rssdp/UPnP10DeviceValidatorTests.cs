@@ -7,7 +7,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Rssdp;
 using Rssdp.Infrastructure;
 
-namespace Test.Rssdp
+namespace TestRssdp
 {
 	[TestClass]
 	public class UPnP10DeviceValidatorTests
