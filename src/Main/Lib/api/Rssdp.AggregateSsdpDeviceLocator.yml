@@ -1,0 +1,1785 @@
+### YamlMime:ManagedReference
+items:
+- uid: Rssdp.AggregateSsdpDeviceLocator
+  commentId: T:Rssdp.AggregateSsdpDeviceLocator
+  id: AggregateSsdpDeviceLocator
+  parent: Rssdp
+  children:
+  - Rssdp.AggregateSsdpDeviceLocator.#ctor(System.Boolean,System.Boolean,System.Func{System.Net.NetworkInformation.NetworkInterface,System.Boolean},Rssdp.ISsdpLogger)
+  - Rssdp.AggregateSsdpDeviceLocator.#ctor(System.Collections.Generic.IEnumerable{System.String},Rssdp.ISsdpLogger)
+  - Rssdp.AggregateSsdpDeviceLocator.DeviceAvailable
+  - Rssdp.AggregateSsdpDeviceLocator.DeviceUnavailable
+  - Rssdp.AggregateSsdpDeviceLocator.Dispose
+  - Rssdp.AggregateSsdpDeviceLocator.IsSearching
+  - Rssdp.AggregateSsdpDeviceLocator.NotificationFilter
+  - Rssdp.AggregateSsdpDeviceLocator.SearchAsync(System.String,System.Threading.CancellationToken)
+  - Rssdp.AggregateSsdpDeviceLocator.SearchAsync(System.String,System.TimeSpan,System.Threading.CancellationToken)
+  - Rssdp.AggregateSsdpDeviceLocator.SearchAsync(System.Threading.CancellationToken)
+  - Rssdp.AggregateSsdpDeviceLocator.SearchAsync(System.TimeSpan,System.Threading.CancellationToken)
+  - Rssdp.AggregateSsdpDeviceLocator.StartListeningForNotifications
+  - Rssdp.AggregateSsdpDeviceLocator.StartListeningForNotificationsAsync
+  - Rssdp.AggregateSsdpDeviceLocator.StopListeningForNotifications
+  - Rssdp.AggregateSsdpDeviceLocator.StopListeningForNotificationsAsync
+  langs:
+  - csharp
+  - vb
+  name: AggregateSsdpDeviceLocator
+  nameWithType: AggregateSsdpDeviceLocator
+  fullName: Rssdp.AggregateSsdpDeviceLocator
+  type: Class
+  source:
+    id: AggregateSsdpDeviceLocator
+    path: ''
+    startLine: 17
+  assemblies:
+  - cs.temp.dll
+  namespace: Rssdp
+  summary: "\nAggregates multiple <xref href=\"Rssdp.SsdpDeviceLocator\" data-throw-if-not-resolved=\"false\"></xref> instances bound to different local adapter IP addresses\nto enable discovery across multiple network interfaces.\n"
+  example: []
+  syntax:
+    content: 'public sealed class AggregateSsdpDeviceLocator : IDisposable, ISsdpDeviceLocator'
+    content.vb: >-
+      Public NotInheritable Class AggregateSsdpDeviceLocator
+          Implements IDisposable, ISsdpDeviceLocator
+  inheritance:
+  - System.Object
+  implements:
+  - System.IDisposable
+  - Rssdp.Infrastructure.ISsdpDeviceLocator
+  inheritedMembers:
+  - System.Object.ToString
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  modifiers.csharp:
+  - public
+  - sealed
+  - class
+  modifiers.vb:
+  - Public
+  - NotInheritable
+  - Class
+- uid: Rssdp.AggregateSsdpDeviceLocator.DeviceAvailable
+  commentId: E:Rssdp.AggregateSsdpDeviceLocator.DeviceAvailable
+  id: DeviceAvailable
+  parent: Rssdp.AggregateSsdpDeviceLocator
+  langs:
+  - csharp
+  - vb
+  name: DeviceAvailable
+  nameWithType: AggregateSsdpDeviceLocator.DeviceAvailable
+  fullName: Rssdp.AggregateSsdpDeviceLocator.DeviceAvailable
+  type: Event
+  source:
+    id: DeviceAvailable
+    path: ''
+    startLine: 29
+  assemblies:
+  - cs.temp.dll
+  namespace: Rssdp
+  summary: "\nRaised when a device becomes available or is found by a search request across any aggregated locator.\n"
+  example: []
+  syntax:
+    content: public event EventHandler<DeviceAvailableEventArgs> DeviceAvailable
+    return:
+      type: System.EventHandler{Rssdp.DeviceAvailableEventArgs}
+    content.vb: Public Event DeviceAvailable As EventHandler(Of DeviceAvailableEventArgs)
+  implements:
+  - Rssdp.Infrastructure.ISsdpDeviceLocator.DeviceAvailable
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+- uid: Rssdp.AggregateSsdpDeviceLocator.DeviceUnavailable
+  commentId: E:Rssdp.AggregateSsdpDeviceLocator.DeviceUnavailable
+  id: DeviceUnavailable
+  parent: Rssdp.AggregateSsdpDeviceLocator
+  langs:
+  - csharp
+  - vb
+  name: DeviceUnavailable
+  nameWithType: AggregateSsdpDeviceLocator.DeviceUnavailable
+  fullName: Rssdp.AggregateSsdpDeviceLocator.DeviceUnavailable
+  type: Event
+  source:
+    id: DeviceUnavailable
+    path: ''
+    startLine: 34
+  assemblies:
+  - cs.temp.dll
+  namespace: Rssdp
+  summary: "\nRaised when a device explicitly notifies of shutdown or expires from the cache across any aggregated locator.\n"
+  example: []
+  syntax:
+    content: public event EventHandler<DeviceUnavailableEventArgs> DeviceUnavailable
+    return:
+      type: System.EventHandler{Rssdp.DeviceUnavailableEventArgs}
+    content.vb: Public Event DeviceUnavailable As EventHandler(Of DeviceUnavailableEventArgs)
+  implements:
+  - Rssdp.Infrastructure.ISsdpDeviceLocator.DeviceUnavailable
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+- uid: Rssdp.AggregateSsdpDeviceLocator.#ctor(System.Collections.Generic.IEnumerable{System.String},Rssdp.ISsdpLogger)
+  commentId: M:Rssdp.AggregateSsdpDeviceLocator.#ctor(System.Collections.Generic.IEnumerable{System.String},Rssdp.ISsdpLogger)
+  id: '#ctor(System.Collections.Generic.IEnumerable{System.String},Rssdp.ISsdpLogger)'
+  parent: Rssdp.AggregateSsdpDeviceLocator
+  langs:
+  - csharp
+  - vb
+  name: AggregateSsdpDeviceLocator(IEnumerable<String>, ISsdpLogger)
+  nameWithType: AggregateSsdpDeviceLocator.AggregateSsdpDeviceLocator(IEnumerable<String>, ISsdpLogger)
+  fullName: Rssdp.AggregateSsdpDeviceLocator.AggregateSsdpDeviceLocator(System.Collections.Generic.IEnumerable<System.String>, Rssdp.ISsdpLogger)
+  type: Constructor
+  source:
+    id: .ctor
+    path: ''
+    startLine: 43
+  assemblies:
+  - cs.temp.dll
+  namespace: Rssdp
+  summary: "\nCreates an aggregate device locator that queries multiple network adapters.\n"
+  example: []
+  syntax:
+    content: public AggregateSsdpDeviceLocator(IEnumerable<string> localIpAddresses, ISsdpLogger logger = null)
+    parameters:
+    - id: localIpAddresses
+      type: System.Collections.Generic.IEnumerable{System.String}
+      description: A collection of local adapter IP addresses to bind individual locators to. Null/empty entries are ignored. Must contain at least one valid address.
+    - id: logger
+      type: Rssdp.ISsdpLogger
+      description: Optional logger for diagnostics.
+    content.vb: Public Sub New(localIpAddresses As IEnumerable(Of String), logger As ISsdpLogger = Nothing)
+  overload: Rssdp.AggregateSsdpDeviceLocator.#ctor*
+  exceptions:
+  - type: System.ArgumentNullException
+    commentId: T:System.ArgumentNullException
+    description: Thrown when <code data-dev-comment-type="paramref" class="paramref">localIpAddresses</code> is null.
+  - type: System.ArgumentException
+    commentId: T:System.ArgumentException
+    description: Thrown when no valid IP addresses are provided.
+  nameWithType.vb: AggregateSsdpDeviceLocator.AggregateSsdpDeviceLocator(IEnumerable(Of String), ISsdpLogger)
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+  fullName.vb: Rssdp.AggregateSsdpDeviceLocator.AggregateSsdpDeviceLocator(System.Collections.Generic.IEnumerable(Of System.String), Rssdp.ISsdpLogger)
+  name.vb: AggregateSsdpDeviceLocator(IEnumerable(Of String), ISsdpLogger)
+- uid: Rssdp.AggregateSsdpDeviceLocator.#ctor(System.Boolean,System.Boolean,System.Func{System.Net.NetworkInformation.NetworkInterface,System.Boolean},Rssdp.ISsdpLogger)
+  commentId: M:Rssdp.AggregateSsdpDeviceLocator.#ctor(System.Boolean,System.Boolean,System.Func{System.Net.NetworkInformation.NetworkInterface,System.Boolean},Rssdp.ISsdpLogger)
+  id: '#ctor(System.Boolean,System.Boolean,System.Func{System.Net.NetworkInformation.NetworkInterface,System.Boolean},Rssdp.ISsdpLogger)'
+  parent: Rssdp.AggregateSsdpDeviceLocator
+  langs:
+  - csharp
+  - vb
+  name: AggregateSsdpDeviceLocator(Boolean, Boolean, Func<NetworkInterface, Boolean>, ISsdpLogger)
+  nameWithType: AggregateSsdpDeviceLocator.AggregateSsdpDeviceLocator(Boolean, Boolean, Func<NetworkInterface, Boolean>, ISsdpLogger)
+  fullName: Rssdp.AggregateSsdpDeviceLocator.AggregateSsdpDeviceLocator(System.Boolean, System.Boolean, System.Func<System.Net.NetworkInformation.NetworkInterface, System.Boolean>, Rssdp.ISsdpLogger)
+  type: Constructor
+  source:
+    id: .ctor
+    path: ''
+    startLine: 69
+  assemblies:
+  - cs.temp.dll
+  namespace: Rssdp
+  summary: "\nCreates an aggregate device locator by discovering local adapter IP addresses.\n"
+  example: []
+  syntax:
+    content: public AggregateSsdpDeviceLocator(bool includeIpv4 = true, bool includeIpv6 = false, Func<NetworkInterface, bool> adapterFilter = null, ISsdpLogger logger = null)
+    parameters:
+    - id: includeIpv4
+      type: System.Boolean
+      description: If true, include IPv4 addresses.
+    - id: includeIpv6
+      type: System.Boolean
+      description: If true, include IPv6 addresses.
+    - id: adapterFilter
+      type: System.Func{System.Net.NetworkInformation.NetworkInterface,System.Boolean}
+      description: Optional filter to include only specific adapters. If null, a sensible default filter is applied.
+    - id: logger
+      type: Rssdp.ISsdpLogger
+      description: Optional logger for diagnostics.
+    content.vb: Public Sub New(includeIpv4 As Boolean = True, includeIpv6 As Boolean = False, adapterFilter As Func(Of NetworkInterface, Boolean) = Nothing, logger As ISsdpLogger = Nothing)
+  overload: Rssdp.AggregateSsdpDeviceLocator.#ctor*
+  nameWithType.vb: AggregateSsdpDeviceLocator.AggregateSsdpDeviceLocator(Boolean, Boolean, Func(Of NetworkInterface, Boolean), ISsdpLogger)
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+  fullName.vb: Rssdp.AggregateSsdpDeviceLocator.AggregateSsdpDeviceLocator(System.Boolean, System.Boolean, System.Func(Of System.Net.NetworkInformation.NetworkInterface, System.Boolean), Rssdp.ISsdpLogger)
+  name.vb: AggregateSsdpDeviceLocator(Boolean, Boolean, Func(Of NetworkInterface, Boolean), ISsdpLogger)
+- uid: Rssdp.AggregateSsdpDeviceLocator.IsSearching
+  commentId: P:Rssdp.AggregateSsdpDeviceLocator.IsSearching
+  id: IsSearching
+  parent: Rssdp.AggregateSsdpDeviceLocator
+  langs:
+  - csharp
+  - vb
+  name: IsSearching
+  nameWithType: AggregateSsdpDeviceLocator.IsSearching
+  fullName: Rssdp.AggregateSsdpDeviceLocator.IsSearching
+  type: Property
+  source:
+    id: IsSearching
+    path: ''
+    startLine: 77
+  assemblies:
+  - cs.temp.dll
+  namespace: Rssdp
+  summary: "\nIndicates whether a search is currently in progress across any aggregated locator.\n"
+  example: []
+  syntax:
+    content: public bool IsSearching { get; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Public ReadOnly Property IsSearching As Boolean
+  overload: Rssdp.AggregateSsdpDeviceLocator.IsSearching*
+  implements:
+  - Rssdp.Infrastructure.ISsdpDeviceLocator.IsSearching
+  modifiers.csharp:
+  - public
+  - get
+  modifiers.vb:
+  - Public
+  - ReadOnly
+- uid: Rssdp.AggregateSsdpDeviceLocator.NotificationFilter
+  commentId: P:Rssdp.AggregateSsdpDeviceLocator.NotificationFilter
+  id: NotificationFilter
+  parent: Rssdp.AggregateSsdpDeviceLocator
+  langs:
+  - csharp
+  - vb
+  name: NotificationFilter
+  nameWithType: AggregateSsdpDeviceLocator.NotificationFilter
+  fullName: Rssdp.AggregateSsdpDeviceLocator.NotificationFilter
+  type: Property
+  source:
+    id: NotificationFilter
+    path: ''
+    startLine: 89
+  assemblies:
+  - cs.temp.dll
+  namespace: Rssdp
+  summary: "\nGets or sets the filter for notifications. Notifications not matching the filter will not raise <xref href=\"Rssdp.AggregateSsdpDeviceLocator.DeviceAvailable\" data-throw-if-not-resolved=\"false\"></xref> or <xref href=\"Rssdp.AggregateSsdpDeviceLocator.DeviceUnavailable\" data-throw-if-not-resolved=\"false\"></xref>.\nThe value is applied to all aggregated locators.\n"
+  example: []
+  syntax:
+    content: public string NotificationFilter { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Property NotificationFilter As String
+  overload: Rssdp.AggregateSsdpDeviceLocator.NotificationFilter*
+  implements:
+  - Rssdp.Infrastructure.ISsdpDeviceLocator.NotificationFilter
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: Rssdp.AggregateSsdpDeviceLocator.StartListeningForNotifications
+  commentId: M:Rssdp.AggregateSsdpDeviceLocator.StartListeningForNotifications
+  id: StartListeningForNotifications
+  parent: Rssdp.AggregateSsdpDeviceLocator
+  langs:
+  - csharp
+  - vb
+  name: StartListeningForNotifications()
+  nameWithType: AggregateSsdpDeviceLocator.StartListeningForNotifications()
+  fullName: Rssdp.AggregateSsdpDeviceLocator.StartListeningForNotifications()
+  type: Method
+  source:
+    id: StartListeningForNotifications
+    path: ''
+    startLine: 109
+  assemblies:
+  - cs.temp.dll
+  namespace: Rssdp
+  summary: "\nStarts listening for broadcast notifications of device availability on all aggregated locators.\n"
+  example: []
+  syntax:
+    content: public void StartListeningForNotifications()
+    content.vb: Public Sub StartListeningForNotifications
+  overload: Rssdp.AggregateSsdpDeviceLocator.StartListeningForNotifications*
+  implements:
+  - Rssdp.Infrastructure.ISsdpDeviceLocator.StartListeningForNotifications
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+- uid: Rssdp.AggregateSsdpDeviceLocator.StartListeningForNotificationsAsync
+  commentId: M:Rssdp.AggregateSsdpDeviceLocator.StartListeningForNotificationsAsync
+  id: StartListeningForNotificationsAsync
+  parent: Rssdp.AggregateSsdpDeviceLocator
+  langs:
+  - csharp
+  - vb
+  name: StartListeningForNotificationsAsync()
+  nameWithType: AggregateSsdpDeviceLocator.StartListeningForNotificationsAsync()
+  fullName: Rssdp.AggregateSsdpDeviceLocator.StartListeningForNotificationsAsync()
+  type: Method
+  source:
+    id: StartListeningForNotificationsAsync
+    path: ''
+    startLine: 117
+  assemblies:
+  - cs.temp.dll
+  namespace: Rssdp
+  summary: "\nAsynchronously starts listening for multicast notifications on all aggregated locators and awaits per-adapter completion.\n"
+  example: []
+  syntax:
+    content: public async Task StartListeningForNotificationsAsync()
+    return:
+      type: System.Threading.Tasks.Task
+    content.vb: Public Function StartListeningForNotificationsAsync As Task
+  overload: Rssdp.AggregateSsdpDeviceLocator.StartListeningForNotificationsAsync*
+  modifiers.csharp:
+  - public
+  - async
+  modifiers.vb:
+  - Public
+- uid: Rssdp.AggregateSsdpDeviceLocator.StopListeningForNotifications
+  commentId: M:Rssdp.AggregateSsdpDeviceLocator.StopListeningForNotifications
+  id: StopListeningForNotifications
+  parent: Rssdp.AggregateSsdpDeviceLocator
+  langs:
+  - csharp
+  - vb
+  name: StopListeningForNotifications()
+  nameWithType: AggregateSsdpDeviceLocator.StopListeningForNotifications()
+  fullName: Rssdp.AggregateSsdpDeviceLocator.StopListeningForNotifications()
+  type: Method
+  source:
+    id: StopListeningForNotifications
+    path: ''
+    startLine: 152
+  assemblies:
+  - cs.temp.dll
+  namespace: Rssdp
+  summary: "\nStops listening for broadcast notifications on all aggregated locators.\n"
+  example: []
+  syntax:
+    content: public void StopListeningForNotifications()
+    content.vb: Public Sub StopListeningForNotifications
+  overload: Rssdp.AggregateSsdpDeviceLocator.StopListeningForNotifications*
+  implements:
+  - Rssdp.Infrastructure.ISsdpDeviceLocator.StopListeningForNotifications
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+- uid: Rssdp.AggregateSsdpDeviceLocator.StopListeningForNotificationsAsync
+  commentId: M:Rssdp.AggregateSsdpDeviceLocator.StopListeningForNotificationsAsync
+  id: StopListeningForNotificationsAsync
+  parent: Rssdp.AggregateSsdpDeviceLocator
+  langs:
+  - csharp
+  - vb
+  name: StopListeningForNotificationsAsync()
+  nameWithType: AggregateSsdpDeviceLocator.StopListeningForNotificationsAsync()
+  fullName: Rssdp.AggregateSsdpDeviceLocator.StopListeningForNotificationsAsync()
+  type: Method
+  source:
+    id: StopListeningForNotificationsAsync
+    path: ''
+    startLine: 160
+  assemblies:
+  - cs.temp.dll
+  namespace: Rssdp
+  summary: "\nAsynchronously stops listening for multicast notifications on all aggregated locators and awaits per-adapter completion.\n"
+  example: []
+  syntax:
+    content: public async Task StopListeningForNotificationsAsync()
+    return:
+      type: System.Threading.Tasks.Task
+    content.vb: Public Function StopListeningForNotificationsAsync As Task
+  overload: Rssdp.AggregateSsdpDeviceLocator.StopListeningForNotificationsAsync*
+  modifiers.csharp:
+  - public
+  - async
+  modifiers.vb:
+  - Public
+- uid: Rssdp.AggregateSsdpDeviceLocator.SearchAsync(System.Threading.CancellationToken)
+  commentId: M:Rssdp.AggregateSsdpDeviceLocator.SearchAsync(System.Threading.CancellationToken)
+  id: SearchAsync(System.Threading.CancellationToken)
+  parent: Rssdp.AggregateSsdpDeviceLocator
+  langs:
+  - csharp
+  - vb
+  name: SearchAsync(CancellationToken)
+  nameWithType: AggregateSsdpDeviceLocator.SearchAsync(CancellationToken)
+  fullName: Rssdp.AggregateSsdpDeviceLocator.SearchAsync(System.Threading.CancellationToken)
+  type: Method
+  source:
+    id: SearchAsync
+    path: ''
+    startLine: 196
+  assemblies:
+  - cs.temp.dll
+  namespace: Rssdp
+  summary: "\nAsynchronously performs a search for all devices using the default search timeout across all aggregated locators.\n"
+  example: []
+  syntax:
+    content: public Task<IEnumerable<DiscoveredSsdpDevice>> SearchAsync(CancellationToken cancellationToken = default(CancellationToken))
+    parameters:
+    - id: cancellationToken
+      type: System.Threading.CancellationToken
+      description: A token used to cancel the search across all locators.
+    return:
+      type: System.Threading.Tasks.Task{System.Collections.Generic.IEnumerable{Rssdp.DiscoveredSsdpDevice}}
+      description: A task whose result is a de-duplicated sequence of discovered devices.
+    content.vb: Public Function SearchAsync(cancellationToken As CancellationToken = Nothing) As Task(Of IEnumerable(Of DiscoveredSsdpDevice))
+  overload: Rssdp.AggregateSsdpDeviceLocator.SearchAsync*
+  implements:
+  - Rssdp.Infrastructure.ISsdpDeviceLocator.SearchAsync(System.Threading.CancellationToken)
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+- uid: Rssdp.AggregateSsdpDeviceLocator.SearchAsync(System.String,System.Threading.CancellationToken)
+  commentId: M:Rssdp.AggregateSsdpDeviceLocator.SearchAsync(System.String,System.Threading.CancellationToken)
+  id: SearchAsync(System.String,System.Threading.CancellationToken)
+  parent: Rssdp.AggregateSsdpDeviceLocator
+  langs:
+  - csharp
+  - vb
+  name: SearchAsync(String, CancellationToken)
+  nameWithType: AggregateSsdpDeviceLocator.SearchAsync(String, CancellationToken)
+  fullName: Rssdp.AggregateSsdpDeviceLocator.SearchAsync(System.String, System.Threading.CancellationToken)
+  type: Method
+  source:
+    id: SearchAsync
+    path: ''
+    startLine: 207
+  assemblies:
+  - cs.temp.dll
+  namespace: Rssdp
+  summary: "\nAsynchronously performs a search for the specified search target using the default timeout across all aggregated locators.\n"
+  example: []
+  syntax:
+    content: public Task<IEnumerable<DiscoveredSsdpDevice>> SearchAsync(string searchTarget, CancellationToken cancellationToken = default(CancellationToken))
+    parameters:
+    - id: searchTarget
+      type: System.String
+      description: Search criteria such as device type, root device, or UUID.
+    - id: cancellationToken
+      type: System.Threading.CancellationToken
+      description: A token used to cancel the search across all locators.
+    return:
+      type: System.Threading.Tasks.Task{System.Collections.Generic.IEnumerable{Rssdp.DiscoveredSsdpDevice}}
+      description: A task whose result is a de-duplicated sequence of discovered devices.
+    content.vb: Public Function SearchAsync(searchTarget As String, cancellationToken As CancellationToken = Nothing) As Task(Of IEnumerable(Of DiscoveredSsdpDevice))
+  overload: Rssdp.AggregateSsdpDeviceLocator.SearchAsync*
+  implements:
+  - Rssdp.Infrastructure.ISsdpDeviceLocator.SearchAsync(System.String,System.Threading.CancellationToken)
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+- uid: Rssdp.AggregateSsdpDeviceLocator.SearchAsync(System.String,System.TimeSpan,System.Threading.CancellationToken)
+  commentId: M:Rssdp.AggregateSsdpDeviceLocator.SearchAsync(System.String,System.TimeSpan,System.Threading.CancellationToken)
+  id: SearchAsync(System.String,System.TimeSpan,System.Threading.CancellationToken)
+  parent: Rssdp.AggregateSsdpDeviceLocator
+  langs:
+  - csharp
+  - vb
+  name: SearchAsync(String, TimeSpan, CancellationToken)
+  nameWithType: AggregateSsdpDeviceLocator.SearchAsync(String, TimeSpan, CancellationToken)
+  fullName: Rssdp.AggregateSsdpDeviceLocator.SearchAsync(System.String, System.TimeSpan, System.Threading.CancellationToken)
+  type: Method
+  source:
+    id: SearchAsync
+    path: ''
+    startLine: 219
+  assemblies:
+  - cs.temp.dll
+  namespace: Rssdp
+  summary: "\nAsynchronously performs a search for the specified search target using the provided timeout across all aggregated locators.\n"
+  example: []
+  syntax:
+    content: public Task<IEnumerable<DiscoveredSsdpDevice>> SearchAsync(string searchTarget, TimeSpan searchWaitTime, CancellationToken cancellationToken = default(CancellationToken))
+    parameters:
+    - id: searchTarget
+      type: System.String
+      description: Search criteria such as device type, root device, or UUID.
+    - id: searchWaitTime
+      type: System.TimeSpan
+      description: The time to wait for responses.
+    - id: cancellationToken
+      type: System.Threading.CancellationToken
+      description: A token used to cancel the search across all locators.
+    return:
+      type: System.Threading.Tasks.Task{System.Collections.Generic.IEnumerable{Rssdp.DiscoveredSsdpDevice}}
+      description: A task whose result is a de-duplicated sequence of discovered devices.
+    content.vb: Public Function SearchAsync(searchTarget As String, searchWaitTime As TimeSpan, cancellationToken As CancellationToken = Nothing) As Task(Of IEnumerable(Of DiscoveredSsdpDevice))
+  overload: Rssdp.AggregateSsdpDeviceLocator.SearchAsync*
+  implements:
+  - Rssdp.Infrastructure.ISsdpDeviceLocator.SearchAsync(System.String,System.TimeSpan,System.Threading.CancellationToken)
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+- uid: Rssdp.AggregateSsdpDeviceLocator.SearchAsync(System.TimeSpan,System.Threading.CancellationToken)
+  commentId: M:Rssdp.AggregateSsdpDeviceLocator.SearchAsync(System.TimeSpan,System.Threading.CancellationToken)
+  id: SearchAsync(System.TimeSpan,System.Threading.CancellationToken)
+  parent: Rssdp.AggregateSsdpDeviceLocator
+  langs:
+  - csharp
+  - vb
+  name: SearchAsync(TimeSpan, CancellationToken)
+  nameWithType: AggregateSsdpDeviceLocator.SearchAsync(TimeSpan, CancellationToken)
+  fullName: Rssdp.AggregateSsdpDeviceLocator.SearchAsync(System.TimeSpan, System.Threading.CancellationToken)
+  type: Method
+  source:
+    id: SearchAsync
+    path: ''
+    startLine: 230
+  assemblies:
+  - cs.temp.dll
+  namespace: Rssdp
+  summary: "\nAsynchronously performs a search for all devices using the provided timeout across all aggregated locators.\n"
+  example: []
+  syntax:
+    content: public Task<IEnumerable<DiscoveredSsdpDevice>> SearchAsync(TimeSpan searchWaitTime, CancellationToken cancellationToken = default(CancellationToken))
+    parameters:
+    - id: searchWaitTime
+      type: System.TimeSpan
+      description: The time to wait for responses.
+    - id: cancellationToken
+      type: System.Threading.CancellationToken
+      description: A token used to cancel the search across all locators.
+    return:
+      type: System.Threading.Tasks.Task{System.Collections.Generic.IEnumerable{Rssdp.DiscoveredSsdpDevice}}
+      description: A task whose result is a de-duplicated sequence of discovered devices.
+    content.vb: Public Function SearchAsync(searchWaitTime As TimeSpan, cancellationToken As CancellationToken = Nothing) As Task(Of IEnumerable(Of DiscoveredSsdpDevice))
+  overload: Rssdp.AggregateSsdpDeviceLocator.SearchAsync*
+  implements:
+  - Rssdp.Infrastructure.ISsdpDeviceLocator.SearchAsync(System.TimeSpan,System.Threading.CancellationToken)
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+- uid: Rssdp.AggregateSsdpDeviceLocator.Dispose
+  commentId: M:Rssdp.AggregateSsdpDeviceLocator.Dispose
+  id: Dispose
+  parent: Rssdp.AggregateSsdpDeviceLocator
+  langs:
+  - csharp
+  - vb
+  name: Dispose()
+  nameWithType: AggregateSsdpDeviceLocator.Dispose()
+  fullName: Rssdp.AggregateSsdpDeviceLocator.Dispose()
+  type: Method
+  source:
+    id: Dispose
+    path: ''
+    startLine: 323
+  assemblies:
+  - cs.temp.dll
+  namespace: Rssdp
+  summary: "\nDisposes the aggregate locator and all underlying locators, detaching event handlers.\n"
+  example: []
+  syntax:
+    content: public void Dispose()
+    content.vb: Public Sub Dispose
+  overload: Rssdp.AggregateSsdpDeviceLocator.Dispose*
+  implements:
+  - System.IDisposable.Dispose
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+references:
+- uid: Rssdp.SsdpDeviceLocator
+  commentId: T:Rssdp.SsdpDeviceLocator
+  name: SsdpDeviceLocator
+  nameWithType: SsdpDeviceLocator
+  fullName: Rssdp.SsdpDeviceLocator
+- uid: Rssdp
+  commentId: N:Rssdp
+  name: Rssdp
+  nameWithType: Rssdp
+  fullName: Rssdp
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  name: Object
+  nameWithType: Object
+  fullName: System.Object
+- uid: System.IDisposable
+  commentId: T:System.IDisposable
+  parent: System
+  isExternal: true
+  name: IDisposable
+  nameWithType: IDisposable
+  fullName: System.IDisposable
+- uid: Rssdp.Infrastructure.ISsdpDeviceLocator
+  commentId: T:Rssdp.Infrastructure.ISsdpDeviceLocator
+  parent: Rssdp.Infrastructure
+  name: ISsdpDeviceLocator
+  nameWithType: ISsdpDeviceLocator
+  fullName: Rssdp.Infrastructure.ISsdpDeviceLocator
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  name: ToString()
+  nameWithType: Object.ToString()
+  fullName: System.Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    nameWithType: Object.ToString
+    fullName: System.Object.ToString
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    nameWithType: Object.ToString
+    fullName: System.Object.ToString
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  name: Equals(Object)
+  nameWithType: Object.Equals(Object)
+  fullName: System.Object.Equals(System.Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  name: Equals(Object, Object)
+  nameWithType: Object.Equals(Object, Object)
+  fullName: System.Object.Equals(System.Object, System.Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  name: ReferenceEquals(Object, Object)
+  nameWithType: Object.ReferenceEquals(Object, Object)
+  fullName: System.Object.ReferenceEquals(System.Object, System.Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    nameWithType: Object.ReferenceEquals
+    fullName: System.Object.ReferenceEquals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    nameWithType: Object.ReferenceEquals
+    fullName: System.Object.ReferenceEquals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  name: GetHashCode()
+  nameWithType: Object.GetHashCode()
+  fullName: System.Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    nameWithType: Object.GetHashCode
+    fullName: System.Object.GetHashCode
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    nameWithType: Object.GetHashCode
+    fullName: System.Object.GetHashCode
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  name: GetType()
+  nameWithType: Object.GetType()
+  fullName: System.Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    nameWithType: Object.GetType
+    fullName: System.Object.GetType
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    nameWithType: Object.GetType
+    fullName: System.Object.GetType
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  name: MemberwiseClone()
+  nameWithType: Object.MemberwiseClone()
+  fullName: System.Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    nameWithType: Object.MemberwiseClone
+    fullName: System.Object.MemberwiseClone
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    nameWithType: Object.MemberwiseClone
+    fullName: System.Object.MemberwiseClone
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Rssdp.Infrastructure
+  commentId: N:Rssdp.Infrastructure
+  name: Rssdp.Infrastructure
+  nameWithType: Rssdp.Infrastructure
+  fullName: Rssdp.Infrastructure
+- uid: Rssdp.Infrastructure.ISsdpDeviceLocator.DeviceAvailable
+  commentId: E:Rssdp.Infrastructure.ISsdpDeviceLocator.DeviceAvailable
+  parent: Rssdp.Infrastructure.ISsdpDeviceLocator
+  name: DeviceAvailable
+  nameWithType: ISsdpDeviceLocator.DeviceAvailable
+  fullName: Rssdp.Infrastructure.ISsdpDeviceLocator.DeviceAvailable
+- uid: System.EventHandler{Rssdp.DeviceAvailableEventArgs}
+  commentId: T:System.EventHandler{Rssdp.DeviceAvailableEventArgs}
+  parent: System
+  definition: System.EventHandler`1
+  name: EventHandler<DeviceAvailableEventArgs>
+  nameWithType: EventHandler<DeviceAvailableEventArgs>
+  fullName: System.EventHandler<Rssdp.DeviceAvailableEventArgs>
+  nameWithType.vb: EventHandler(Of DeviceAvailableEventArgs)
+  fullName.vb: System.EventHandler(Of Rssdp.DeviceAvailableEventArgs)
+  name.vb: EventHandler(Of DeviceAvailableEventArgs)
+  spec.csharp:
+  - uid: System.EventHandler`1
+    name: EventHandler
+    nameWithType: EventHandler
+    fullName: System.EventHandler
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: Rssdp.DeviceAvailableEventArgs
+    name: DeviceAvailableEventArgs
+    nameWithType: DeviceAvailableEventArgs
+    fullName: Rssdp.DeviceAvailableEventArgs
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: System.EventHandler`1
+    name: EventHandler
+    nameWithType: EventHandler
+    fullName: System.EventHandler
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: Rssdp.DeviceAvailableEventArgs
+    name: DeviceAvailableEventArgs
+    nameWithType: DeviceAvailableEventArgs
+    fullName: Rssdp.DeviceAvailableEventArgs
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.EventHandler`1
+  commentId: T:System.EventHandler`1
+  isExternal: true
+  name: EventHandler<TEventArgs>
+  nameWithType: EventHandler<TEventArgs>
+  fullName: System.EventHandler<TEventArgs>
+  nameWithType.vb: EventHandler(Of TEventArgs)
+  fullName.vb: System.EventHandler(Of TEventArgs)
+  name.vb: EventHandler(Of TEventArgs)
+  spec.csharp:
+  - uid: System.EventHandler`1
+    name: EventHandler
+    nameWithType: EventHandler
+    fullName: System.EventHandler
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - name: TEventArgs
+    nameWithType: TEventArgs
+    fullName: TEventArgs
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: System.EventHandler`1
+    name: EventHandler
+    nameWithType: EventHandler
+    fullName: System.EventHandler
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - name: TEventArgs
+    nameWithType: TEventArgs
+    fullName: TEventArgs
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: Rssdp.Infrastructure.ISsdpDeviceLocator.DeviceUnavailable
+  commentId: E:Rssdp.Infrastructure.ISsdpDeviceLocator.DeviceUnavailable
+  parent: Rssdp.Infrastructure.ISsdpDeviceLocator
+  name: DeviceUnavailable
+  nameWithType: ISsdpDeviceLocator.DeviceUnavailable
+  fullName: Rssdp.Infrastructure.ISsdpDeviceLocator.DeviceUnavailable
+- uid: System.EventHandler{Rssdp.DeviceUnavailableEventArgs}
+  commentId: T:System.EventHandler{Rssdp.DeviceUnavailableEventArgs}
+  parent: System
+  definition: System.EventHandler`1
+  name: EventHandler<DeviceUnavailableEventArgs>
+  nameWithType: EventHandler<DeviceUnavailableEventArgs>
+  fullName: System.EventHandler<Rssdp.DeviceUnavailableEventArgs>
+  nameWithType.vb: EventHandler(Of DeviceUnavailableEventArgs)
+  fullName.vb: System.EventHandler(Of Rssdp.DeviceUnavailableEventArgs)
+  name.vb: EventHandler(Of DeviceUnavailableEventArgs)
+  spec.csharp:
+  - uid: System.EventHandler`1
+    name: EventHandler
+    nameWithType: EventHandler
+    fullName: System.EventHandler
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: Rssdp.DeviceUnavailableEventArgs
+    name: DeviceUnavailableEventArgs
+    nameWithType: DeviceUnavailableEventArgs
+    fullName: Rssdp.DeviceUnavailableEventArgs
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: System.EventHandler`1
+    name: EventHandler
+    nameWithType: EventHandler
+    fullName: System.EventHandler
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: Rssdp.DeviceUnavailableEventArgs
+    name: DeviceUnavailableEventArgs
+    nameWithType: DeviceUnavailableEventArgs
+    fullName: Rssdp.DeviceUnavailableEventArgs
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.ArgumentNullException
+  commentId: T:System.ArgumentNullException
+  isExternal: true
+- uid: System.ArgumentException
+  commentId: T:System.ArgumentException
+  isExternal: true
+- uid: Rssdp.AggregateSsdpDeviceLocator.#ctor*
+  commentId: Overload:Rssdp.AggregateSsdpDeviceLocator.#ctor
+  name: AggregateSsdpDeviceLocator
+  nameWithType: AggregateSsdpDeviceLocator.AggregateSsdpDeviceLocator
+  fullName: Rssdp.AggregateSsdpDeviceLocator.AggregateSsdpDeviceLocator
+- uid: System.Collections.Generic.IEnumerable{System.String}
+  commentId: T:System.Collections.Generic.IEnumerable{System.String}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.IEnumerable`1
+  name: IEnumerable<String>
+  nameWithType: IEnumerable<String>
+  fullName: System.Collections.Generic.IEnumerable<System.String>
+  nameWithType.vb: IEnumerable(Of String)
+  fullName.vb: System.Collections.Generic.IEnumerable(Of System.String)
+  name.vb: IEnumerable(Of String)
+  spec.csharp:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    nameWithType: IEnumerable
+    fullName: System.Collections.Generic.IEnumerable
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    nameWithType: IEnumerable
+    fullName: System.Collections.Generic.IEnumerable
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: Rssdp.ISsdpLogger
+  commentId: T:Rssdp.ISsdpLogger
+  parent: Rssdp
+  name: ISsdpLogger
+  nameWithType: ISsdpLogger
+  fullName: Rssdp.ISsdpLogger
+- uid: System.Collections.Generic.IEnumerable`1
+  commentId: T:System.Collections.Generic.IEnumerable`1
+  isExternal: true
+  name: IEnumerable<T>
+  nameWithType: IEnumerable<T>
+  fullName: System.Collections.Generic.IEnumerable<T>
+  nameWithType.vb: IEnumerable(Of T)
+  fullName.vb: System.Collections.Generic.IEnumerable(Of T)
+  name.vb: IEnumerable(Of T)
+  spec.csharp:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    nameWithType: IEnumerable
+    fullName: System.Collections.Generic.IEnumerable
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    nameWithType: IEnumerable
+    fullName: System.Collections.Generic.IEnumerable
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Collections.Generic
+  commentId: N:System.Collections.Generic
+  isExternal: true
+  name: System.Collections.Generic
+  nameWithType: System.Collections.Generic
+  fullName: System.Collections.Generic
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  name: Boolean
+  nameWithType: Boolean
+  fullName: System.Boolean
+- uid: System.Func{System.Net.NetworkInformation.NetworkInterface,System.Boolean}
+  commentId: T:System.Func{System.Net.NetworkInformation.NetworkInterface,System.Boolean}
+  parent: System
+  definition: System.Func`2
+  name: Func<NetworkInterface, Boolean>
+  nameWithType: Func<NetworkInterface, Boolean>
+  fullName: System.Func<System.Net.NetworkInformation.NetworkInterface, System.Boolean>
+  nameWithType.vb: Func(Of NetworkInterface, Boolean)
+  fullName.vb: System.Func(Of System.Net.NetworkInformation.NetworkInterface, System.Boolean)
+  name.vb: Func(Of NetworkInterface, Boolean)
+  spec.csharp:
+  - uid: System.Func`2
+    name: Func
+    nameWithType: Func
+    fullName: System.Func
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: System.Net.NetworkInformation.NetworkInterface
+    name: NetworkInterface
+    nameWithType: NetworkInterface
+    fullName: System.Net.NetworkInformation.NetworkInterface
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Boolean
+    name: Boolean
+    nameWithType: Boolean
+    fullName: System.Boolean
+    isExternal: true
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: System.Func`2
+    name: Func
+    nameWithType: Func
+    fullName: System.Func
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: System.Net.NetworkInformation.NetworkInterface
+    name: NetworkInterface
+    nameWithType: NetworkInterface
+    fullName: System.Net.NetworkInformation.NetworkInterface
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Boolean
+    name: Boolean
+    nameWithType: Boolean
+    fullName: System.Boolean
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Func`2
+  commentId: T:System.Func`2
+  isExternal: true
+  name: Func<T, TResult>
+  nameWithType: Func<T, TResult>
+  fullName: System.Func<T, TResult>
+  nameWithType.vb: Func(Of T, TResult)
+  fullName.vb: System.Func(Of T, TResult)
+  name.vb: Func(Of T, TResult)
+  spec.csharp:
+  - uid: System.Func`2
+    name: Func
+    nameWithType: Func
+    fullName: System.Func
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: TResult
+    nameWithType: TResult
+    fullName: TResult
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: System.Func`2
+    name: Func
+    nameWithType: Func
+    fullName: System.Func
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: TResult
+    nameWithType: TResult
+    fullName: TResult
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: Rssdp.AggregateSsdpDeviceLocator.IsSearching*
+  commentId: Overload:Rssdp.AggregateSsdpDeviceLocator.IsSearching
+  name: IsSearching
+  nameWithType: AggregateSsdpDeviceLocator.IsSearching
+  fullName: Rssdp.AggregateSsdpDeviceLocator.IsSearching
+- uid: Rssdp.Infrastructure.ISsdpDeviceLocator.IsSearching
+  commentId: P:Rssdp.Infrastructure.ISsdpDeviceLocator.IsSearching
+  parent: Rssdp.Infrastructure.ISsdpDeviceLocator
+  name: IsSearching
+  nameWithType: ISsdpDeviceLocator.IsSearching
+  fullName: Rssdp.Infrastructure.ISsdpDeviceLocator.IsSearching
+- uid: Rssdp.AggregateSsdpDeviceLocator.DeviceAvailable
+  commentId: E:Rssdp.AggregateSsdpDeviceLocator.DeviceAvailable
+  isExternal: true
+- uid: Rssdp.AggregateSsdpDeviceLocator.DeviceUnavailable
+  commentId: E:Rssdp.AggregateSsdpDeviceLocator.DeviceUnavailable
+  isExternal: true
+- uid: Rssdp.AggregateSsdpDeviceLocator.NotificationFilter*
+  commentId: Overload:Rssdp.AggregateSsdpDeviceLocator.NotificationFilter
+  name: NotificationFilter
+  nameWithType: AggregateSsdpDeviceLocator.NotificationFilter
+  fullName: Rssdp.AggregateSsdpDeviceLocator.NotificationFilter
+- uid: Rssdp.Infrastructure.ISsdpDeviceLocator.NotificationFilter
+  commentId: P:Rssdp.Infrastructure.ISsdpDeviceLocator.NotificationFilter
+  parent: Rssdp.Infrastructure.ISsdpDeviceLocator
+  name: NotificationFilter
+  nameWithType: ISsdpDeviceLocator.NotificationFilter
+  fullName: Rssdp.Infrastructure.ISsdpDeviceLocator.NotificationFilter
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  name: String
+  nameWithType: String
+  fullName: System.String
+- uid: Rssdp.AggregateSsdpDeviceLocator.StartListeningForNotifications*
+  commentId: Overload:Rssdp.AggregateSsdpDeviceLocator.StartListeningForNotifications
+  name: StartListeningForNotifications
+  nameWithType: AggregateSsdpDeviceLocator.StartListeningForNotifications
+  fullName: Rssdp.AggregateSsdpDeviceLocator.StartListeningForNotifications
+- uid: Rssdp.Infrastructure.ISsdpDeviceLocator.StartListeningForNotifications
+  commentId: M:Rssdp.Infrastructure.ISsdpDeviceLocator.StartListeningForNotifications
+  parent: Rssdp.Infrastructure.ISsdpDeviceLocator
+  name: StartListeningForNotifications()
+  nameWithType: ISsdpDeviceLocator.StartListeningForNotifications()
+  fullName: Rssdp.Infrastructure.ISsdpDeviceLocator.StartListeningForNotifications()
+  spec.csharp:
+  - uid: Rssdp.Infrastructure.ISsdpDeviceLocator.StartListeningForNotifications
+    name: StartListeningForNotifications
+    nameWithType: ISsdpDeviceLocator.StartListeningForNotifications
+    fullName: Rssdp.Infrastructure.ISsdpDeviceLocator.StartListeningForNotifications
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: Rssdp.Infrastructure.ISsdpDeviceLocator.StartListeningForNotifications
+    name: StartListeningForNotifications
+    nameWithType: ISsdpDeviceLocator.StartListeningForNotifications
+    fullName: Rssdp.Infrastructure.ISsdpDeviceLocator.StartListeningForNotifications
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: Rssdp.AggregateSsdpDeviceLocator.StartListeningForNotificationsAsync*
+  commentId: Overload:Rssdp.AggregateSsdpDeviceLocator.StartListeningForNotificationsAsync
+  name: StartListeningForNotificationsAsync
+  nameWithType: AggregateSsdpDeviceLocator.StartListeningForNotificationsAsync
+  fullName: Rssdp.AggregateSsdpDeviceLocator.StartListeningForNotificationsAsync
+- uid: System.Threading.Tasks.Task
+  commentId: T:System.Threading.Tasks.Task
+  parent: System.Threading.Tasks
+  isExternal: true
+  name: Task
+  nameWithType: Task
+  fullName: System.Threading.Tasks.Task
+- uid: System.Threading.Tasks
+  commentId: N:System.Threading.Tasks
+  isExternal: true
+  name: System.Threading.Tasks
+  nameWithType: System.Threading.Tasks
+  fullName: System.Threading.Tasks
+- uid: Rssdp.AggregateSsdpDeviceLocator.StopListeningForNotifications*
+  commentId: Overload:Rssdp.AggregateSsdpDeviceLocator.StopListeningForNotifications
+  name: StopListeningForNotifications
+  nameWithType: AggregateSsdpDeviceLocator.StopListeningForNotifications
+  fullName: Rssdp.AggregateSsdpDeviceLocator.StopListeningForNotifications
+- uid: Rssdp.Infrastructure.ISsdpDeviceLocator.StopListeningForNotifications
+  commentId: M:Rssdp.Infrastructure.ISsdpDeviceLocator.StopListeningForNotifications
+  parent: Rssdp.Infrastructure.ISsdpDeviceLocator
+  name: StopListeningForNotifications()
+  nameWithType: ISsdpDeviceLocator.StopListeningForNotifications()
+  fullName: Rssdp.Infrastructure.ISsdpDeviceLocator.StopListeningForNotifications()
+  spec.csharp:
+  - uid: Rssdp.Infrastructure.ISsdpDeviceLocator.StopListeningForNotifications
+    name: StopListeningForNotifications
+    nameWithType: ISsdpDeviceLocator.StopListeningForNotifications
+    fullName: Rssdp.Infrastructure.ISsdpDeviceLocator.StopListeningForNotifications
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: Rssdp.Infrastructure.ISsdpDeviceLocator.StopListeningForNotifications
+    name: StopListeningForNotifications
+    nameWithType: ISsdpDeviceLocator.StopListeningForNotifications
+    fullName: Rssdp.Infrastructure.ISsdpDeviceLocator.StopListeningForNotifications
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: Rssdp.AggregateSsdpDeviceLocator.StopListeningForNotificationsAsync*
+  commentId: Overload:Rssdp.AggregateSsdpDeviceLocator.StopListeningForNotificationsAsync
+  name: StopListeningForNotificationsAsync
+  nameWithType: AggregateSsdpDeviceLocator.StopListeningForNotificationsAsync
+  fullName: Rssdp.AggregateSsdpDeviceLocator.StopListeningForNotificationsAsync
+- uid: Rssdp.AggregateSsdpDeviceLocator.SearchAsync*
+  commentId: Overload:Rssdp.AggregateSsdpDeviceLocator.SearchAsync
+  name: SearchAsync
+  nameWithType: AggregateSsdpDeviceLocator.SearchAsync
+  fullName: Rssdp.AggregateSsdpDeviceLocator.SearchAsync
+- uid: Rssdp.Infrastructure.ISsdpDeviceLocator.SearchAsync(System.Threading.CancellationToken)
+  commentId: M:Rssdp.Infrastructure.ISsdpDeviceLocator.SearchAsync(System.Threading.CancellationToken)
+  parent: Rssdp.Infrastructure.ISsdpDeviceLocator
+  isExternal: true
+  name: SearchAsync(CancellationToken)
+  nameWithType: ISsdpDeviceLocator.SearchAsync(CancellationToken)
+  fullName: Rssdp.Infrastructure.ISsdpDeviceLocator.SearchAsync(System.Threading.CancellationToken)
+  spec.csharp:
+  - uid: Rssdp.Infrastructure.ISsdpDeviceLocator.SearchAsync(System.Threading.CancellationToken)
+    name: SearchAsync
+    nameWithType: ISsdpDeviceLocator.SearchAsync
+    fullName: Rssdp.Infrastructure.ISsdpDeviceLocator.SearchAsync
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    nameWithType: CancellationToken
+    fullName: System.Threading.CancellationToken
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: Rssdp.Infrastructure.ISsdpDeviceLocator.SearchAsync(System.Threading.CancellationToken)
+    name: SearchAsync
+    nameWithType: ISsdpDeviceLocator.SearchAsync
+    fullName: Rssdp.Infrastructure.ISsdpDeviceLocator.SearchAsync
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    nameWithType: CancellationToken
+    fullName: System.Threading.CancellationToken
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Threading.CancellationToken
+  commentId: T:System.Threading.CancellationToken
+  parent: System.Threading
+  isExternal: true
+  name: CancellationToken
+  nameWithType: CancellationToken
+  fullName: System.Threading.CancellationToken
+- uid: System.Threading.Tasks.Task{System.Collections.Generic.IEnumerable{Rssdp.DiscoveredSsdpDevice}}
+  commentId: T:System.Threading.Tasks.Task{System.Collections.Generic.IEnumerable{Rssdp.DiscoveredSsdpDevice}}
+  parent: System.Threading.Tasks
+  definition: System.Threading.Tasks.Task`1
+  name: Task<IEnumerable<DiscoveredSsdpDevice>>
+  nameWithType: Task<IEnumerable<DiscoveredSsdpDevice>>
+  fullName: System.Threading.Tasks.Task<System.Collections.Generic.IEnumerable<Rssdp.DiscoveredSsdpDevice>>
+  nameWithType.vb: Task(Of IEnumerable(Of DiscoveredSsdpDevice))
+  fullName.vb: System.Threading.Tasks.Task(Of System.Collections.Generic.IEnumerable(Of Rssdp.DiscoveredSsdpDevice))
+  name.vb: Task(Of IEnumerable(Of DiscoveredSsdpDevice))
+  spec.csharp:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    nameWithType: Task
+    fullName: System.Threading.Tasks.Task
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    nameWithType: IEnumerable
+    fullName: System.Collections.Generic.IEnumerable
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: Rssdp.DiscoveredSsdpDevice
+    name: DiscoveredSsdpDevice
+    nameWithType: DiscoveredSsdpDevice
+    fullName: Rssdp.DiscoveredSsdpDevice
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    nameWithType: Task
+    fullName: System.Threading.Tasks.Task
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    nameWithType: IEnumerable
+    fullName: System.Collections.Generic.IEnumerable
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: Rssdp.DiscoveredSsdpDevice
+    name: DiscoveredSsdpDevice
+    nameWithType: DiscoveredSsdpDevice
+    fullName: Rssdp.DiscoveredSsdpDevice
+  - name: )
+    nameWithType: )
+    fullName: )
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Threading
+  commentId: N:System.Threading
+  isExternal: true
+  name: System.Threading
+  nameWithType: System.Threading
+  fullName: System.Threading
+- uid: System.Threading.Tasks.Task`1
+  commentId: T:System.Threading.Tasks.Task`1
+  isExternal: true
+  name: Task<TResult>
+  nameWithType: Task<TResult>
+  fullName: System.Threading.Tasks.Task<TResult>
+  nameWithType.vb: Task(Of TResult)
+  fullName.vb: System.Threading.Tasks.Task(Of TResult)
+  name.vb: Task(Of TResult)
+  spec.csharp:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    nameWithType: Task
+    fullName: System.Threading.Tasks.Task
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - name: TResult
+    nameWithType: TResult
+    fullName: TResult
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    nameWithType: Task
+    fullName: System.Threading.Tasks.Task
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - name: TResult
+    nameWithType: TResult
+    fullName: TResult
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: Rssdp.Infrastructure.ISsdpDeviceLocator.SearchAsync(System.String,System.Threading.CancellationToken)
+  commentId: M:Rssdp.Infrastructure.ISsdpDeviceLocator.SearchAsync(System.String,System.Threading.CancellationToken)
+  parent: Rssdp.Infrastructure.ISsdpDeviceLocator
+  isExternal: true
+  name: SearchAsync(String, CancellationToken)
+  nameWithType: ISsdpDeviceLocator.SearchAsync(String, CancellationToken)
+  fullName: Rssdp.Infrastructure.ISsdpDeviceLocator.SearchAsync(System.String, System.Threading.CancellationToken)
+  spec.csharp:
+  - uid: Rssdp.Infrastructure.ISsdpDeviceLocator.SearchAsync(System.String,System.Threading.CancellationToken)
+    name: SearchAsync
+    nameWithType: ISsdpDeviceLocator.SearchAsync
+    fullName: Rssdp.Infrastructure.ISsdpDeviceLocator.SearchAsync
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    nameWithType: CancellationToken
+    fullName: System.Threading.CancellationToken
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: Rssdp.Infrastructure.ISsdpDeviceLocator.SearchAsync(System.String,System.Threading.CancellationToken)
+    name: SearchAsync
+    nameWithType: ISsdpDeviceLocator.SearchAsync
+    fullName: Rssdp.Infrastructure.ISsdpDeviceLocator.SearchAsync
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    nameWithType: CancellationToken
+    fullName: System.Threading.CancellationToken
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: Rssdp.Infrastructure.ISsdpDeviceLocator.SearchAsync(System.String,System.TimeSpan,System.Threading.CancellationToken)
+  commentId: M:Rssdp.Infrastructure.ISsdpDeviceLocator.SearchAsync(System.String,System.TimeSpan,System.Threading.CancellationToken)
+  parent: Rssdp.Infrastructure.ISsdpDeviceLocator
+  isExternal: true
+  name: SearchAsync(String, TimeSpan, CancellationToken)
+  nameWithType: ISsdpDeviceLocator.SearchAsync(String, TimeSpan, CancellationToken)
+  fullName: Rssdp.Infrastructure.ISsdpDeviceLocator.SearchAsync(System.String, System.TimeSpan, System.Threading.CancellationToken)
+  spec.csharp:
+  - uid: Rssdp.Infrastructure.ISsdpDeviceLocator.SearchAsync(System.String,System.TimeSpan,System.Threading.CancellationToken)
+    name: SearchAsync
+    nameWithType: ISsdpDeviceLocator.SearchAsync
+    fullName: Rssdp.Infrastructure.ISsdpDeviceLocator.SearchAsync
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.TimeSpan
+    name: TimeSpan
+    nameWithType: TimeSpan
+    fullName: System.TimeSpan
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    nameWithType: CancellationToken
+    fullName: System.Threading.CancellationToken
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: Rssdp.Infrastructure.ISsdpDeviceLocator.SearchAsync(System.String,System.TimeSpan,System.Threading.CancellationToken)
+    name: SearchAsync
+    nameWithType: ISsdpDeviceLocator.SearchAsync
+    fullName: Rssdp.Infrastructure.ISsdpDeviceLocator.SearchAsync
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.TimeSpan
+    name: TimeSpan
+    nameWithType: TimeSpan
+    fullName: System.TimeSpan
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    nameWithType: CancellationToken
+    fullName: System.Threading.CancellationToken
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.TimeSpan
+  commentId: T:System.TimeSpan
+  parent: System
+  isExternal: true
+  name: TimeSpan
+  nameWithType: TimeSpan
+  fullName: System.TimeSpan
+- uid: Rssdp.Infrastructure.ISsdpDeviceLocator.SearchAsync(System.TimeSpan,System.Threading.CancellationToken)
+  commentId: M:Rssdp.Infrastructure.ISsdpDeviceLocator.SearchAsync(System.TimeSpan,System.Threading.CancellationToken)
+  parent: Rssdp.Infrastructure.ISsdpDeviceLocator
+  isExternal: true
+  name: SearchAsync(TimeSpan, CancellationToken)
+  nameWithType: ISsdpDeviceLocator.SearchAsync(TimeSpan, CancellationToken)
+  fullName: Rssdp.Infrastructure.ISsdpDeviceLocator.SearchAsync(System.TimeSpan, System.Threading.CancellationToken)
+  spec.csharp:
+  - uid: Rssdp.Infrastructure.ISsdpDeviceLocator.SearchAsync(System.TimeSpan,System.Threading.CancellationToken)
+    name: SearchAsync
+    nameWithType: ISsdpDeviceLocator.SearchAsync
+    fullName: Rssdp.Infrastructure.ISsdpDeviceLocator.SearchAsync
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.TimeSpan
+    name: TimeSpan
+    nameWithType: TimeSpan
+    fullName: System.TimeSpan
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    nameWithType: CancellationToken
+    fullName: System.Threading.CancellationToken
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: Rssdp.Infrastructure.ISsdpDeviceLocator.SearchAsync(System.TimeSpan,System.Threading.CancellationToken)
+    name: SearchAsync
+    nameWithType: ISsdpDeviceLocator.SearchAsync
+    fullName: Rssdp.Infrastructure.ISsdpDeviceLocator.SearchAsync
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.TimeSpan
+    name: TimeSpan
+    nameWithType: TimeSpan
+    fullName: System.TimeSpan
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    nameWithType: CancellationToken
+    fullName: System.Threading.CancellationToken
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: Rssdp.AggregateSsdpDeviceLocator.Dispose*
+  commentId: Overload:Rssdp.AggregateSsdpDeviceLocator.Dispose
+  name: Dispose
+  nameWithType: AggregateSsdpDeviceLocator.Dispose
+  fullName: Rssdp.AggregateSsdpDeviceLocator.Dispose
+- uid: System.IDisposable.Dispose
+  commentId: M:System.IDisposable.Dispose
+  parent: System.IDisposable
+  isExternal: true
+  name: Dispose()
+  nameWithType: IDisposable.Dispose()
+  fullName: System.IDisposable.Dispose()
+  spec.csharp:
+  - uid: System.IDisposable.Dispose
+    name: Dispose
+    nameWithType: IDisposable.Dispose
+    fullName: System.IDisposable.Dispose
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.IDisposable.Dispose
+    name: Dispose
+    nameWithType: IDisposable.Dispose
+    fullName: System.IDisposable.Dispose
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )

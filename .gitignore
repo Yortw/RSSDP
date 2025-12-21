@@ -80,7 +80,6 @@ TestResults
 *.nupkg
 /src/Main/RSSDP.Portable/packages
 /src/Main/.nuget
-/src/Main/lib
 /src/Main/packages/
 /src/RssdpPackageTests/packages
 /src/Main/.vs/RSSDP/v15/sqlite3

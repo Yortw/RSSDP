@@ -1,0 +1,1069 @@
+### YamlMime:ManagedReference
+items:
+- uid: Rssdp.Infrastructure.HttpResponseParser
+  commentId: T:Rssdp.Infrastructure.HttpResponseParser
+  id: HttpResponseParser
+  parent: Rssdp.Infrastructure
+  children:
+  - Rssdp.Infrastructure.HttpResponseParser.IsContentHeader(System.String)
+  - Rssdp.Infrastructure.HttpResponseParser.Parse(System.String)
+  - Rssdp.Infrastructure.HttpResponseParser.ParseStatusLine(System.String,HttpResponseMessage)
+  langs:
+  - csharp
+  - vb
+  name: HttpResponseParser
+  nameWithType: HttpResponseParser
+  fullName: Rssdp.Infrastructure.HttpResponseParser
+  type: Class
+  source:
+    id: HttpResponseParser
+    path: ''
+    startLine: 1593
+  assemblies:
+  - cs.temp.dll
+  namespace: Rssdp.Infrastructure
+  summary: "\nParses a string into a <see cref=\"!:System.Net.Http.HttpResponseMessage\"></see> or throws an exception.\n"
+  example: []
+  syntax:
+    content: 'public sealed class HttpResponseParser : HttpParserBase<Http.HttpResponseMessage>'
+    content.vb: >-
+      Public NotInheritable Class HttpResponseParser
+          Inherits HttpParserBase(Of Http.HttpResponseMessage)
+  inheritance:
+  - System.Object
+  - Rssdp.Infrastructure.HttpParserBase{System.Net.Http.HttpResponseMessage}
+  inheritedMembers:
+  - Rssdp.Infrastructure.HttpParserBase{System.Net.Http.HttpResponseMessage}.Parse(System.Net.Http.HttpResponseMessage,System.Net.Http.Headers.HttpHeaders,System.String)
+  - Rssdp.Infrastructure.HttpParserBase{System.Net.Http.HttpResponseMessage}.ParseStatusLine(System.String,System.Net.Http.HttpResponseMessage)
+  - Rssdp.Infrastructure.HttpParserBase{System.Net.Http.HttpResponseMessage}.ParseHttpVersion(System.String)
+  - System.Object.ToString
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  modifiers.csharp:
+  - public
+  - sealed
+  - class
+  modifiers.vb:
+  - Public
+  - NotInheritable
+  - Class
+- uid: Rssdp.Infrastructure.HttpResponseParser.Parse(System.String)
+  commentId: M:Rssdp.Infrastructure.HttpResponseParser.Parse(System.String)
+  id: Parse(System.String)
+  parent: Rssdp.Infrastructure.HttpResponseParser
+  langs:
+  - csharp
+  - vb
+  name: Parse(String)
+  nameWithType: HttpResponseParser.Parse(String)
+  fullName: Rssdp.Infrastructure.HttpResponseParser.Parse(System.String)
+  type: Method
+  source:
+    id: Parse
+    path: ''
+    startLine: 1612
+  assemblies:
+  - cs.temp.dll
+  namespace: Rssdp.Infrastructure
+  summary: "\nParses the specified data into a <see cref=\"!:System.Net.Http.HttpResponseMessage\"></see> instance.\n"
+  example: []
+  syntax:
+    content: public override HttpResponseMessage Parse(string data)
+    parameters:
+    - id: data
+      type: System.String
+      description: A string containing the data to parse.
+    return:
+      type: HttpResponseMessage
+      description: A <see cref="!:System.Net.Http.HttpResponseMessage"></see> instance containing the parsed data.
+    content.vb: Public Overrides Function Parse(data As String) As HttpResponseMessage
+  overridden: Rssdp.Infrastructure.HttpParserBase{System.Net.Http.HttpResponseMessage}.Parse(System.String)
+  overload: Rssdp.Infrastructure.HttpResponseParser.Parse*
+  modifiers.csharp:
+  - public
+  - override
+  modifiers.vb:
+  - Public
+  - Overrides
+- uid: Rssdp.Infrastructure.HttpResponseParser.IsContentHeader(System.String)
+  commentId: M:Rssdp.Infrastructure.HttpResponseParser.IsContentHeader(System.String)
+  id: IsContentHeader(System.String)
+  parent: Rssdp.Infrastructure.HttpResponseParser
+  langs:
+  - csharp
+  - vb
+  name: IsContentHeader(String)
+  nameWithType: HttpResponseParser.IsContentHeader(String)
+  fullName: Rssdp.Infrastructure.HttpResponseParser.IsContentHeader(System.String)
+  type: Method
+  source:
+    id: IsContentHeader
+    path: ''
+    startLine: 1639
+  assemblies:
+  - cs.temp.dll
+  namespace: Rssdp.Infrastructure
+  summary: "\nReturns a boolean indicating whether the specified HTTP header name represents a content header (true), or a message header (false).\n"
+  example: []
+  syntax:
+    content: protected override bool IsContentHeader(string headerName)
+    parameters:
+    - id: headerName
+      type: System.String
+      description: A string containing the name of the header to return the type of.
+    return:
+      type: System.Boolean
+      description: A boolean, true if th specified header relates to HTTP content, otherwise false.
+    content.vb: Protected Overrides Function IsContentHeader(headerName As String) As Boolean
+  overridden: Rssdp.Infrastructure.HttpParserBase{System.Net.Http.HttpResponseMessage}.IsContentHeader(System.String)
+  overload: Rssdp.Infrastructure.HttpResponseParser.IsContentHeader*
+  modifiers.csharp:
+  - protected
+  - override
+  modifiers.vb:
+  - Protected
+  - Overrides
+- uid: Rssdp.Infrastructure.HttpResponseParser.ParseStatusLine(System.String,HttpResponseMessage)
+  commentId: M:Rssdp.Infrastructure.HttpResponseParser.ParseStatusLine(System.String,HttpResponseMessage)
+  id: ParseStatusLine(System.String,HttpResponseMessage)
+  parent: Rssdp.Infrastructure.HttpResponseParser
+  langs:
+  - csharp
+  - vb
+  name: ParseStatusLine(String, HttpResponseMessage)
+  nameWithType: HttpResponseParser.ParseStatusLine(String, HttpResponseMessage)
+  fullName: Rssdp.Infrastructure.HttpResponseParser.ParseStatusLine(System.String, HttpResponseMessage)
+  type: Method
+  source:
+    id: ParseStatusLine
+    path: ''
+    startLine: 1649
+  assemblies:
+  - cs.temp.dll
+  namespace: Rssdp.Infrastructure
+  summary: "\nUsed to parse the first line of an HTTP request or response and assign the values to the appropriate properties on the <code data-dev-comment-type=\"paramref\" class=\"paramref\">message</code>.\n"
+  example: []
+  syntax:
+    content: protected override void ParseStatusLine(string data, HttpResponseMessage message)
+    parameters:
+    - id: data
+      type: System.String
+      description: The first line of the HTTP message to be parsed.
+    - id: message
+      type: HttpResponseMessage
+      description: Either a <see cref="!:System.Net.Http.HttpResponseMessage"></see> or <see cref="!:System.Net.Http.HttpRequestMessage"></see> to assign the parsed values to.
+    content.vb: Protected Overrides Sub ParseStatusLine(data As String, message As HttpResponseMessage)
+  overload: Rssdp.Infrastructure.HttpResponseParser.ParseStatusLine*
+  modifiers.csharp:
+  - protected
+  - override
+  modifiers.vb:
+  - Protected
+  - Overrides
+references:
+- uid: Rssdp.Infrastructure
+  commentId: N:Rssdp.Infrastructure
+  name: Rssdp.Infrastructure
+  nameWithType: Rssdp.Infrastructure
+  fullName: Rssdp.Infrastructure
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  name: Object
+  nameWithType: Object
+  fullName: System.Object
+- uid: Rssdp.Infrastructure.HttpParserBase{System.Net.Http.HttpResponseMessage}
+  commentId: T:Rssdp.Infrastructure.HttpParserBase{System.Net.Http.HttpResponseMessage}
+  parent: Rssdp.Infrastructure
+  definition: Rssdp.Infrastructure.HttpParserBase`1
+  name: HttpParserBase<Http.HttpResponseMessage>
+  nameWithType: HttpParserBase<Http.HttpResponseMessage>
+  fullName: Rssdp.Infrastructure.HttpParserBase<System.Net.Http.HttpResponseMessage>
+  nameWithType.vb: HttpParserBase(Of Http.HttpResponseMessage)
+  fullName.vb: Rssdp.Infrastructure.HttpParserBase(Of System.Net.Http.HttpResponseMessage)
+  name.vb: HttpParserBase(Of Http.HttpResponseMessage)
+  spec.csharp:
+  - uid: Rssdp.Infrastructure.HttpParserBase`1
+    name: HttpParserBase
+    nameWithType: HttpParserBase
+    fullName: Rssdp.Infrastructure.HttpParserBase
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: System.Net.Http.HttpResponseMessage
+    name: Http.HttpResponseMessage
+    nameWithType: Http.HttpResponseMessage
+    fullName: System.Net.Http.HttpResponseMessage
+    isExternal: true
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: Rssdp.Infrastructure.HttpParserBase`1
+    name: HttpParserBase
+    nameWithType: HttpParserBase
+    fullName: Rssdp.Infrastructure.HttpParserBase
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: System.Net.Http.HttpResponseMessage
+    name: Http.HttpResponseMessage
+    nameWithType: Http.HttpResponseMessage
+    fullName: System.Net.Http.HttpResponseMessage
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: Rssdp.Infrastructure.HttpParserBase{System.Net.Http.HttpResponseMessage}.Parse(System.Net.Http.HttpResponseMessage,System.Net.Http.Headers.HttpHeaders,System.String)
+  commentId: M:Rssdp.Infrastructure.HttpParserBase{System.Net.Http.HttpResponseMessage}.Parse(System.Net.Http.HttpResponseMessage,System.Net.Http.Headers.HttpHeaders,System.String)
+  parent: Rssdp.Infrastructure.HttpParserBase{System.Net.Http.HttpResponseMessage}
+  definition: Rssdp.Infrastructure.HttpParserBase`1.Parse(`0,System.Net.Http.Headers.HttpHeaders,System.String)
+  name: Parse(Http.HttpResponseMessage, Http.Headers.HttpHeaders, String)
+  nameWithType: HttpParserBase<Http.HttpResponseMessage>.Parse(Http.HttpResponseMessage, Http.Headers.HttpHeaders, String)
+  fullName: Rssdp.Infrastructure.HttpParserBase<System.Net.Http.HttpResponseMessage>.Parse(System.Net.Http.HttpResponseMessage, System.Net.Http.Headers.HttpHeaders, System.String)
+  nameWithType.vb: HttpParserBase(Of Http.HttpResponseMessage).Parse(Http.HttpResponseMessage, Http.Headers.HttpHeaders, String)
+  fullName.vb: Rssdp.Infrastructure.HttpParserBase(Of System.Net.Http.HttpResponseMessage).Parse(System.Net.Http.HttpResponseMessage, System.Net.Http.Headers.HttpHeaders, System.String)
+  spec.csharp:
+  - uid: Rssdp.Infrastructure.HttpParserBase`1.Parse(`0,System.Net.Http.Headers.HttpHeaders,System.String)
+    name: Parse
+    nameWithType: HttpParserBase<Http.HttpResponseMessage>.Parse
+    fullName: Rssdp.Infrastructure.HttpParserBase<System.Net.Http.HttpResponseMessage>.Parse
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Net.Http.HttpResponseMessage
+    name: Http.HttpResponseMessage
+    nameWithType: Http.HttpResponseMessage
+    fullName: System.Net.Http.HttpResponseMessage
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Net.Http.Headers.HttpHeaders
+    name: Http.Headers.HttpHeaders
+    nameWithType: Http.Headers.HttpHeaders
+    fullName: System.Net.Http.Headers.HttpHeaders
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: Rssdp.Infrastructure.HttpParserBase`1.Parse(`0,System.Net.Http.Headers.HttpHeaders,System.String)
+    name: Parse
+    nameWithType: HttpParserBase(Of Http.HttpResponseMessage).Parse
+    fullName: Rssdp.Infrastructure.HttpParserBase(Of System.Net.Http.HttpResponseMessage).Parse
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Net.Http.HttpResponseMessage
+    name: Http.HttpResponseMessage
+    nameWithType: Http.HttpResponseMessage
+    fullName: System.Net.Http.HttpResponseMessage
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Net.Http.Headers.HttpHeaders
+    name: Http.Headers.HttpHeaders
+    nameWithType: Http.Headers.HttpHeaders
+    fullName: System.Net.Http.Headers.HttpHeaders
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: Rssdp.Infrastructure.HttpParserBase{System.Net.Http.HttpResponseMessage}.ParseStatusLine(System.String,System.Net.Http.HttpResponseMessage)
+  commentId: M:Rssdp.Infrastructure.HttpParserBase{System.Net.Http.HttpResponseMessage}.ParseStatusLine(System.String,System.Net.Http.HttpResponseMessage)
+  parent: Rssdp.Infrastructure.HttpParserBase{System.Net.Http.HttpResponseMessage}
+  definition: Rssdp.Infrastructure.HttpParserBase`1.ParseStatusLine(System.String,`0)
+  name: ParseStatusLine(String, Http.HttpResponseMessage)
+  nameWithType: HttpParserBase<Http.HttpResponseMessage>.ParseStatusLine(String, Http.HttpResponseMessage)
+  fullName: Rssdp.Infrastructure.HttpParserBase<System.Net.Http.HttpResponseMessage>.ParseStatusLine(System.String, System.Net.Http.HttpResponseMessage)
+  nameWithType.vb: HttpParserBase(Of Http.HttpResponseMessage).ParseStatusLine(String, Http.HttpResponseMessage)
+  fullName.vb: Rssdp.Infrastructure.HttpParserBase(Of System.Net.Http.HttpResponseMessage).ParseStatusLine(System.String, System.Net.Http.HttpResponseMessage)
+  spec.csharp:
+  - uid: Rssdp.Infrastructure.HttpParserBase`1.ParseStatusLine(System.String,`0)
+    name: ParseStatusLine
+    nameWithType: HttpParserBase<Http.HttpResponseMessage>.ParseStatusLine
+    fullName: Rssdp.Infrastructure.HttpParserBase<System.Net.Http.HttpResponseMessage>.ParseStatusLine
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Net.Http.HttpResponseMessage
+    name: Http.HttpResponseMessage
+    nameWithType: Http.HttpResponseMessage
+    fullName: System.Net.Http.HttpResponseMessage
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: Rssdp.Infrastructure.HttpParserBase`1.ParseStatusLine(System.String,`0)
+    name: ParseStatusLine
+    nameWithType: HttpParserBase(Of Http.HttpResponseMessage).ParseStatusLine
+    fullName: Rssdp.Infrastructure.HttpParserBase(Of System.Net.Http.HttpResponseMessage).ParseStatusLine
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Net.Http.HttpResponseMessage
+    name: Http.HttpResponseMessage
+    nameWithType: Http.HttpResponseMessage
+    fullName: System.Net.Http.HttpResponseMessage
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: Rssdp.Infrastructure.HttpParserBase{System.Net.Http.HttpResponseMessage}.ParseHttpVersion(System.String)
+  commentId: M:Rssdp.Infrastructure.HttpParserBase{System.Net.Http.HttpResponseMessage}.ParseHttpVersion(System.String)
+  parent: Rssdp.Infrastructure.HttpParserBase{System.Net.Http.HttpResponseMessage}
+  definition: Rssdp.Infrastructure.HttpParserBase`1.ParseHttpVersion(System.String)
+  name: ParseHttpVersion(String)
+  nameWithType: HttpParserBase<Http.HttpResponseMessage>.ParseHttpVersion(String)
+  fullName: Rssdp.Infrastructure.HttpParserBase<System.Net.Http.HttpResponseMessage>.ParseHttpVersion(System.String)
+  nameWithType.vb: HttpParserBase(Of Http.HttpResponseMessage).ParseHttpVersion(String)
+  fullName.vb: Rssdp.Infrastructure.HttpParserBase(Of System.Net.Http.HttpResponseMessage).ParseHttpVersion(System.String)
+  spec.csharp:
+  - uid: Rssdp.Infrastructure.HttpParserBase`1.ParseHttpVersion(System.String)
+    name: ParseHttpVersion
+    nameWithType: HttpParserBase<Http.HttpResponseMessage>.ParseHttpVersion
+    fullName: Rssdp.Infrastructure.HttpParserBase<System.Net.Http.HttpResponseMessage>.ParseHttpVersion
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: Rssdp.Infrastructure.HttpParserBase`1.ParseHttpVersion(System.String)
+    name: ParseHttpVersion
+    nameWithType: HttpParserBase(Of Http.HttpResponseMessage).ParseHttpVersion
+    fullName: Rssdp.Infrastructure.HttpParserBase(Of System.Net.Http.HttpResponseMessage).ParseHttpVersion
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  name: ToString()
+  nameWithType: Object.ToString()
+  fullName: System.Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    nameWithType: Object.ToString
+    fullName: System.Object.ToString
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    nameWithType: Object.ToString
+    fullName: System.Object.ToString
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  name: Equals(Object)
+  nameWithType: Object.Equals(Object)
+  fullName: System.Object.Equals(System.Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  name: Equals(Object, Object)
+  nameWithType: Object.Equals(Object, Object)
+  fullName: System.Object.Equals(System.Object, System.Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  name: ReferenceEquals(Object, Object)
+  nameWithType: Object.ReferenceEquals(Object, Object)
+  fullName: System.Object.ReferenceEquals(System.Object, System.Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    nameWithType: Object.ReferenceEquals
+    fullName: System.Object.ReferenceEquals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    nameWithType: Object.ReferenceEquals
+    fullName: System.Object.ReferenceEquals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  name: GetHashCode()
+  nameWithType: Object.GetHashCode()
+  fullName: System.Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    nameWithType: Object.GetHashCode
+    fullName: System.Object.GetHashCode
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    nameWithType: Object.GetHashCode
+    fullName: System.Object.GetHashCode
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  name: GetType()
+  nameWithType: Object.GetType()
+  fullName: System.Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    nameWithType: Object.GetType
+    fullName: System.Object.GetType
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    nameWithType: Object.GetType
+    fullName: System.Object.GetType
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  name: MemberwiseClone()
+  nameWithType: Object.MemberwiseClone()
+  fullName: System.Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    nameWithType: Object.MemberwiseClone
+    fullName: System.Object.MemberwiseClone
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    nameWithType: Object.MemberwiseClone
+    fullName: System.Object.MemberwiseClone
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Rssdp.Infrastructure.HttpParserBase`1
+  commentId: T:Rssdp.Infrastructure.HttpParserBase`1
+  name: HttpParserBase<T>
+  nameWithType: HttpParserBase<T>
+  fullName: Rssdp.Infrastructure.HttpParserBase<T>
+  nameWithType.vb: HttpParserBase(Of T)
+  fullName.vb: Rssdp.Infrastructure.HttpParserBase(Of T)
+  name.vb: HttpParserBase(Of T)
+  spec.csharp:
+  - uid: Rssdp.Infrastructure.HttpParserBase`1
+    name: HttpParserBase
+    nameWithType: HttpParserBase
+    fullName: Rssdp.Infrastructure.HttpParserBase
+  - name: <
+    nameWithType: <
+    fullName: <
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: Rssdp.Infrastructure.HttpParserBase`1
+    name: HttpParserBase
+    nameWithType: HttpParserBase
+    fullName: Rssdp.Infrastructure.HttpParserBase
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: Rssdp.Infrastructure.HttpParserBase`1.Parse(`0,System.Net.Http.Headers.HttpHeaders,System.String)
+  commentId: M:Rssdp.Infrastructure.HttpParserBase`1.Parse(`0,System.Net.Http.Headers.HttpHeaders,System.String)
+  isExternal: true
+  name: Parse(T, Http.Headers.HttpHeaders, String)
+  nameWithType: HttpParserBase<T>.Parse(T, Http.Headers.HttpHeaders, String)
+  fullName: Rssdp.Infrastructure.HttpParserBase<T>.Parse(T, System.Net.Http.Headers.HttpHeaders, System.String)
+  nameWithType.vb: HttpParserBase(Of T).Parse(T, Http.Headers.HttpHeaders, String)
+  fullName.vb: Rssdp.Infrastructure.HttpParserBase(Of T).Parse(T, System.Net.Http.Headers.HttpHeaders, System.String)
+  spec.csharp:
+  - uid: Rssdp.Infrastructure.HttpParserBase`1.Parse(`0,System.Net.Http.Headers.HttpHeaders,System.String)
+    name: Parse
+    nameWithType: HttpParserBase<T>.Parse
+    fullName: Rssdp.Infrastructure.HttpParserBase<T>.Parse
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Net.Http.Headers.HttpHeaders
+    name: Http.Headers.HttpHeaders
+    nameWithType: Http.Headers.HttpHeaders
+    fullName: System.Net.Http.Headers.HttpHeaders
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: Rssdp.Infrastructure.HttpParserBase`1.Parse(`0,System.Net.Http.Headers.HttpHeaders,System.String)
+    name: Parse
+    nameWithType: HttpParserBase(Of T).Parse
+    fullName: Rssdp.Infrastructure.HttpParserBase(Of T).Parse
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Net.Http.Headers.HttpHeaders
+    name: Http.Headers.HttpHeaders
+    nameWithType: Http.Headers.HttpHeaders
+    fullName: System.Net.Http.Headers.HttpHeaders
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: Rssdp.Infrastructure.HttpParserBase`1.ParseStatusLine(System.String,`0)
+  commentId: M:Rssdp.Infrastructure.HttpParserBase`1.ParseStatusLine(System.String,`0)
+  isExternal: true
+  name: ParseStatusLine(String, T)
+  nameWithType: HttpParserBase<T>.ParseStatusLine(String, T)
+  fullName: Rssdp.Infrastructure.HttpParserBase<T>.ParseStatusLine(System.String, T)
+  nameWithType.vb: HttpParserBase(Of T).ParseStatusLine(String, T)
+  fullName.vb: Rssdp.Infrastructure.HttpParserBase(Of T).ParseStatusLine(System.String, T)
+  spec.csharp:
+  - uid: Rssdp.Infrastructure.HttpParserBase`1.ParseStatusLine(System.String,`0)
+    name: ParseStatusLine
+    nameWithType: HttpParserBase<T>.ParseStatusLine
+    fullName: Rssdp.Infrastructure.HttpParserBase<T>.ParseStatusLine
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: Rssdp.Infrastructure.HttpParserBase`1.ParseStatusLine(System.String,`0)
+    name: ParseStatusLine
+    nameWithType: HttpParserBase(Of T).ParseStatusLine
+    fullName: Rssdp.Infrastructure.HttpParserBase(Of T).ParseStatusLine
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: Rssdp.Infrastructure.HttpParserBase`1.ParseHttpVersion(System.String)
+  commentId: M:Rssdp.Infrastructure.HttpParserBase`1.ParseHttpVersion(System.String)
+  isExternal: true
+  name: ParseHttpVersion(String)
+  nameWithType: HttpParserBase<T>.ParseHttpVersion(String)
+  fullName: Rssdp.Infrastructure.HttpParserBase<T>.ParseHttpVersion(System.String)
+  nameWithType.vb: HttpParserBase(Of T).ParseHttpVersion(String)
+  fullName.vb: Rssdp.Infrastructure.HttpParserBase(Of T).ParseHttpVersion(System.String)
+  spec.csharp:
+  - uid: Rssdp.Infrastructure.HttpParserBase`1.ParseHttpVersion(System.String)
+    name: ParseHttpVersion
+    nameWithType: HttpParserBase<T>.ParseHttpVersion
+    fullName: Rssdp.Infrastructure.HttpParserBase<T>.ParseHttpVersion
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: Rssdp.Infrastructure.HttpParserBase`1.ParseHttpVersion(System.String)
+    name: ParseHttpVersion
+    nameWithType: HttpParserBase(Of T).ParseHttpVersion
+    fullName: Rssdp.Infrastructure.HttpParserBase(Of T).ParseHttpVersion
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: Rssdp.Infrastructure.HttpParserBase{System.Net.Http.HttpResponseMessage}.Parse(System.String)
+  commentId: M:Rssdp.Infrastructure.HttpParserBase{System.Net.Http.HttpResponseMessage}.Parse(System.String)
+  parent: Rssdp.Infrastructure.HttpParserBase{System.Net.Http.HttpResponseMessage}
+  definition: Rssdp.Infrastructure.HttpParserBase`1.Parse(System.String)
+  name: Parse(String)
+  nameWithType: HttpParserBase<Http.HttpResponseMessage>.Parse(String)
+  fullName: Rssdp.Infrastructure.HttpParserBase<System.Net.Http.HttpResponseMessage>.Parse(System.String)
+  nameWithType.vb: HttpParserBase(Of Http.HttpResponseMessage).Parse(String)
+  fullName.vb: Rssdp.Infrastructure.HttpParserBase(Of System.Net.Http.HttpResponseMessage).Parse(System.String)
+  spec.csharp:
+  - uid: Rssdp.Infrastructure.HttpParserBase`1.Parse(System.String)
+    name: Parse
+    nameWithType: HttpParserBase<Http.HttpResponseMessage>.Parse
+    fullName: Rssdp.Infrastructure.HttpParserBase<System.Net.Http.HttpResponseMessage>.Parse
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: Rssdp.Infrastructure.HttpParserBase`1.Parse(System.String)
+    name: Parse
+    nameWithType: HttpParserBase(Of Http.HttpResponseMessage).Parse
+    fullName: Rssdp.Infrastructure.HttpParserBase(Of System.Net.Http.HttpResponseMessage).Parse
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: Rssdp.Infrastructure.HttpResponseParser.Parse*
+  commentId: Overload:Rssdp.Infrastructure.HttpResponseParser.Parse
+  name: Parse
+  nameWithType: HttpResponseParser.Parse
+  fullName: Rssdp.Infrastructure.HttpResponseParser.Parse
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  name: String
+  nameWithType: String
+  fullName: System.String
+- uid: HttpResponseMessage
+  isExternal: true
+  name: HttpResponseMessage
+  nameWithType: HttpResponseMessage
+  fullName: HttpResponseMessage
+- uid: Rssdp.Infrastructure.HttpParserBase`1.Parse(System.String)
+  commentId: M:Rssdp.Infrastructure.HttpParserBase`1.Parse(System.String)
+  isExternal: true
+  name: Parse(String)
+  nameWithType: HttpParserBase<T>.Parse(String)
+  fullName: Rssdp.Infrastructure.HttpParserBase<T>.Parse(System.String)
+  nameWithType.vb: HttpParserBase(Of T).Parse(String)
+  fullName.vb: Rssdp.Infrastructure.HttpParserBase(Of T).Parse(System.String)
+  spec.csharp:
+  - uid: Rssdp.Infrastructure.HttpParserBase`1.Parse(System.String)
+    name: Parse
+    nameWithType: HttpParserBase<T>.Parse
+    fullName: Rssdp.Infrastructure.HttpParserBase<T>.Parse
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: Rssdp.Infrastructure.HttpParserBase`1.Parse(System.String)
+    name: Parse
+    nameWithType: HttpParserBase(Of T).Parse
+    fullName: Rssdp.Infrastructure.HttpParserBase(Of T).Parse
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: Rssdp.Infrastructure.HttpParserBase{System.Net.Http.HttpResponseMessage}.IsContentHeader(System.String)
+  commentId: M:Rssdp.Infrastructure.HttpParserBase{System.Net.Http.HttpResponseMessage}.IsContentHeader(System.String)
+  parent: Rssdp.Infrastructure.HttpParserBase{System.Net.Http.HttpResponseMessage}
+  definition: Rssdp.Infrastructure.HttpParserBase`1.IsContentHeader(System.String)
+  name: IsContentHeader(String)
+  nameWithType: HttpParserBase<Http.HttpResponseMessage>.IsContentHeader(String)
+  fullName: Rssdp.Infrastructure.HttpParserBase<System.Net.Http.HttpResponseMessage>.IsContentHeader(System.String)
+  nameWithType.vb: HttpParserBase(Of Http.HttpResponseMessage).IsContentHeader(String)
+  fullName.vb: Rssdp.Infrastructure.HttpParserBase(Of System.Net.Http.HttpResponseMessage).IsContentHeader(System.String)
+  spec.csharp:
+  - uid: Rssdp.Infrastructure.HttpParserBase`1.IsContentHeader(System.String)
+    name: IsContentHeader
+    nameWithType: HttpParserBase<Http.HttpResponseMessage>.IsContentHeader
+    fullName: Rssdp.Infrastructure.HttpParserBase<System.Net.Http.HttpResponseMessage>.IsContentHeader
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: Rssdp.Infrastructure.HttpParserBase`1.IsContentHeader(System.String)
+    name: IsContentHeader
+    nameWithType: HttpParserBase(Of Http.HttpResponseMessage).IsContentHeader
+    fullName: Rssdp.Infrastructure.HttpParserBase(Of System.Net.Http.HttpResponseMessage).IsContentHeader
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: Rssdp.Infrastructure.HttpResponseParser.IsContentHeader*
+  commentId: Overload:Rssdp.Infrastructure.HttpResponseParser.IsContentHeader
+  name: IsContentHeader
+  nameWithType: HttpResponseParser.IsContentHeader
+  fullName: Rssdp.Infrastructure.HttpResponseParser.IsContentHeader
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  name: Boolean
+  nameWithType: Boolean
+  fullName: System.Boolean
+- uid: Rssdp.Infrastructure.HttpParserBase`1.IsContentHeader(System.String)
+  commentId: M:Rssdp.Infrastructure.HttpParserBase`1.IsContentHeader(System.String)
+  isExternal: true
+  name: IsContentHeader(String)
+  nameWithType: HttpParserBase<T>.IsContentHeader(String)
+  fullName: Rssdp.Infrastructure.HttpParserBase<T>.IsContentHeader(System.String)
+  nameWithType.vb: HttpParserBase(Of T).IsContentHeader(String)
+  fullName.vb: Rssdp.Infrastructure.HttpParserBase(Of T).IsContentHeader(System.String)
+  spec.csharp:
+  - uid: Rssdp.Infrastructure.HttpParserBase`1.IsContentHeader(System.String)
+    name: IsContentHeader
+    nameWithType: HttpParserBase<T>.IsContentHeader
+    fullName: Rssdp.Infrastructure.HttpParserBase<T>.IsContentHeader
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: Rssdp.Infrastructure.HttpParserBase`1.IsContentHeader(System.String)
+    name: IsContentHeader
+    nameWithType: HttpParserBase(Of T).IsContentHeader
+    fullName: Rssdp.Infrastructure.HttpParserBase(Of T).IsContentHeader
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: Rssdp.Infrastructure.HttpResponseParser.ParseStatusLine*
+  commentId: Overload:Rssdp.Infrastructure.HttpResponseParser.ParseStatusLine
+  name: ParseStatusLine
+  nameWithType: HttpResponseParser.ParseStatusLine
+  fullName: Rssdp.Infrastructure.HttpResponseParser.ParseStatusLine

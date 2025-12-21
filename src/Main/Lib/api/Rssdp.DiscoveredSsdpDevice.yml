@@ -1,0 +1,1164 @@
+### YamlMime:ManagedReference
+items:
+- uid: Rssdp.DiscoveredSsdpDevice
+  commentId: T:Rssdp.DiscoveredSsdpDevice
+  id: DiscoveredSsdpDevice
+  parent: Rssdp
+  children:
+  - Rssdp.DiscoveredSsdpDevice.#ctor(System.String,HttpHeaders)
+  - Rssdp.DiscoveredSsdpDevice.AsAt
+  - Rssdp.DiscoveredSsdpDevice.CacheLifetime
+  - Rssdp.DiscoveredSsdpDevice.DescriptionLocation
+  - Rssdp.DiscoveredSsdpDevice.GetDeviceInfo
+  - Rssdp.DiscoveredSsdpDevice.GetDeviceInfo(HttpClient)
+  - Rssdp.DiscoveredSsdpDevice.GetDeviceInfo(HttpClient,System.Nullable{XmlReaderSettings})
+  - Rssdp.DiscoveredSsdpDevice.IsExpired
+  - Rssdp.DiscoveredSsdpDevice.NotificationType
+  - Rssdp.DiscoveredSsdpDevice.ResponseHeaders
+  - Rssdp.DiscoveredSsdpDevice.ToString
+  - Rssdp.DiscoveredSsdpDevice.Usn
+  langs:
+  - csharp
+  - vb
+  name: DiscoveredSsdpDevice
+  nameWithType: DiscoveredSsdpDevice
+  fullName: Rssdp.DiscoveredSsdpDevice
+  type: Class
+  source:
+    id: DiscoveredSsdpDevice
+    path: ''
+    startLine: 926
+  assemblies:
+  - cs.temp.dll
+  namespace: Rssdp
+  summary: "\nRepresents a discovered device, containing basic information about the device and the location of it&apos;s full device description document. Also provides convenience methods for retrieving the device description document.\n"
+  example: []
+  syntax:
+    content: public sealed class DiscoveredSsdpDevice
+    content.vb: Public NotInheritable Class DiscoveredSsdpDevice
+  seealso:
+  - linkId: Rssdp.SsdpDevice
+    commentId: T:Rssdp.SsdpDevice
+  - linkId: Rssdp.Infrastructure.ISsdpDeviceLocator
+    commentId: T:Rssdp.Infrastructure.ISsdpDeviceLocator
+  inheritance:
+  - System.Object
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  modifiers.csharp:
+  - public
+  - sealed
+  - class
+  modifiers.vb:
+  - Public
+  - NotInheritable
+  - Class
+- uid: Rssdp.DiscoveredSsdpDevice.#ctor(System.String,HttpHeaders)
+  commentId: M:Rssdp.DiscoveredSsdpDevice.#ctor(System.String,HttpHeaders)
+  id: '#ctor(System.String,HttpHeaders)'
+  parent: Rssdp.DiscoveredSsdpDevice
+  langs:
+  - csharp
+  - vb
+  name: DiscoveredSsdpDevice(String, HttpHeaders)
+  nameWithType: DiscoveredSsdpDevice.DiscoveredSsdpDevice(String, HttpHeaders)
+  fullName: Rssdp.DiscoveredSsdpDevice.DiscoveredSsdpDevice(System.String, HttpHeaders)
+  type: Constructor
+  source:
+    id: .ctor
+    path: ''
+    startLine: 946
+  assemblies:
+  - cs.temp.dll
+  namespace: Rssdp
+  summary: "\nCreates a new <xref href=\"Rssdp.DiscoveredSsdpDevice\" data-throw-if-not-resolved=\"false\"></xref> instance.\n"
+  example: []
+  syntax:
+    content: public DiscoveredSsdpDevice(string notificationType, HttpHeaders responseHeaders)
+    parameters:
+    - id: notificationType
+      type: System.String
+      description: The value of the <xref href="Rssdp.DiscoveredSsdpDevice.NotificationType" data-throw-if-not-resolved="false"></xref> property, being either a uuid, device type, service type or upnp:rootdevice.
+    - id: responseHeaders
+      type: HttpHeaders
+      description: The headers from the SSDP device response message.
+    content.vb: Public Sub New(notificationType As String, responseHeaders As HttpHeaders)
+  overload: Rssdp.DiscoveredSsdpDevice.#ctor*
+  exceptions:
+  - type: System.ArgumentNullException
+    commentId: T:System.ArgumentNullException
+    description: Thrown if <code data-dev-comment-type="paramref" class="paramref">notificationType</code> or <code data-dev-comment-type="paramref" class="paramref">responseHeaders</code> is null.
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+- uid: Rssdp.DiscoveredSsdpDevice.NotificationType
+  commentId: P:Rssdp.DiscoveredSsdpDevice.NotificationType
+  id: NotificationType
+  parent: Rssdp.DiscoveredSsdpDevice
+  langs:
+  - csharp
+  - vb
+  name: NotificationType
+  nameWithType: DiscoveredSsdpDevice.NotificationType
+  fullName: Rssdp.DiscoveredSsdpDevice.NotificationType
+  type: Property
+  source:
+    id: NotificationType
+    path: ''
+    startLine: 961
+  assemblies:
+  - cs.temp.dll
+  namespace: Rssdp
+  summary: "\nSets or returns the type of notification, being either a uuid, device type, service type or upnp:rootdevice.\n"
+  example: []
+  syntax:
+    content: public string NotificationType { get; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public ReadOnly Property NotificationType As String
+  overload: Rssdp.DiscoveredSsdpDevice.NotificationType*
+  modifiers.csharp:
+  - public
+  - get
+  modifiers.vb:
+  - Public
+  - ReadOnly
+- uid: Rssdp.DiscoveredSsdpDevice.Usn
+  commentId: P:Rssdp.DiscoveredSsdpDevice.Usn
+  id: Usn
+  parent: Rssdp.DiscoveredSsdpDevice
+  langs:
+  - csharp
+  - vb
+  name: Usn
+  nameWithType: DiscoveredSsdpDevice.Usn
+  fullName: Rssdp.DiscoveredSsdpDevice.Usn
+  type: Property
+  source:
+    id: Usn
+    path: ''
+    startLine: 966
+  assemblies:
+  - cs.temp.dll
+  namespace: Rssdp
+  summary: "\nSets or returns the universal service name (USN) of the device.\n"
+  example: []
+  syntax:
+    content: public string Usn { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Property Usn As String
+  overload: Rssdp.DiscoveredSsdpDevice.Usn*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: Rssdp.DiscoveredSsdpDevice.DescriptionLocation
+  commentId: P:Rssdp.DiscoveredSsdpDevice.DescriptionLocation
+  id: DescriptionLocation
+  parent: Rssdp.DiscoveredSsdpDevice
+  langs:
+  - csharp
+  - vb
+  name: DescriptionLocation
+  nameWithType: DiscoveredSsdpDevice.DescriptionLocation
+  fullName: Rssdp.DiscoveredSsdpDevice.DescriptionLocation
+  type: Property
+  source:
+    id: DescriptionLocation
+    path: ''
+    startLine: 971
+  assemblies:
+  - cs.temp.dll
+  namespace: Rssdp
+  summary: "\nSets or returns a URL pointing to the device description document for this device.\n"
+  example: []
+  syntax:
+    content: public Uri DescriptionLocation { get; set; }
+    parameters: []
+    return:
+      type: System.Uri
+    content.vb: Public Property DescriptionLocation As Uri
+  overload: Rssdp.DiscoveredSsdpDevice.DescriptionLocation*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: Rssdp.DiscoveredSsdpDevice.CacheLifetime
+  commentId: P:Rssdp.DiscoveredSsdpDevice.CacheLifetime
+  id: CacheLifetime
+  parent: Rssdp.DiscoveredSsdpDevice
+  langs:
+  - csharp
+  - vb
+  name: CacheLifetime
+  nameWithType: DiscoveredSsdpDevice.CacheLifetime
+  fullName: Rssdp.DiscoveredSsdpDevice.CacheLifetime
+  type: Property
+  source:
+    id: CacheLifetime
+    path: ''
+    startLine: 976
+  assemblies:
+  - cs.temp.dll
+  namespace: Rssdp
+  summary: "\nSets or returns the length of time this information is valid for (from the <xref href=\"Rssdp.DiscoveredSsdpDevice.AsAt\" data-throw-if-not-resolved=\"false\"></xref> time).\n"
+  example: []
+  syntax:
+    content: public TimeSpan CacheLifetime { get; set; }
+    parameters: []
+    return:
+      type: System.TimeSpan
+    content.vb: Public Property CacheLifetime As TimeSpan
+  overload: Rssdp.DiscoveredSsdpDevice.CacheLifetime*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: Rssdp.DiscoveredSsdpDevice.AsAt
+  commentId: P:Rssdp.DiscoveredSsdpDevice.AsAt
+  id: AsAt
+  parent: Rssdp.DiscoveredSsdpDevice
+  langs:
+  - csharp
+  - vb
+  name: AsAt
+  nameWithType: DiscoveredSsdpDevice.AsAt
+  fullName: Rssdp.DiscoveredSsdpDevice.AsAt
+  type: Property
+  source:
+    id: AsAt
+    path: ''
+    startLine: 981
+  assemblies:
+  - cs.temp.dll
+  namespace: Rssdp
+  summary: "\nSets or returns the date and time this information was received.\n"
+  example: []
+  syntax:
+    content: public DateTimeOffset AsAt { get; set; }
+    parameters: []
+    return:
+      type: System.DateTimeOffset
+    content.vb: Public Property AsAt As DateTimeOffset
+  overload: Rssdp.DiscoveredSsdpDevice.AsAt*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: Rssdp.DiscoveredSsdpDevice.ResponseHeaders
+  commentId: P:Rssdp.DiscoveredSsdpDevice.ResponseHeaders
+  id: ResponseHeaders
+  parent: Rssdp.DiscoveredSsdpDevice
+  langs:
+  - csharp
+  - vb
+  name: ResponseHeaders
+  nameWithType: DiscoveredSsdpDevice.ResponseHeaders
+  fullName: Rssdp.DiscoveredSsdpDevice.ResponseHeaders
+  type: Property
+  source:
+    id: ResponseHeaders
+    path: ''
+    startLine: 997
+  assemblies:
+  - cs.temp.dll
+  namespace: Rssdp
+  summary: "\nReturns the headers from the SSDP device response message\n"
+  example: []
+  syntax:
+    content: public HttpHeaders ResponseHeaders { get; }
+    parameters: []
+    return:
+      type: HttpHeaders
+    content.vb: Public ReadOnly Property ResponseHeaders As HttpHeaders
+  overload: Rssdp.DiscoveredSsdpDevice.ResponseHeaders*
+  modifiers.csharp:
+  - public
+  - get
+  modifiers.vb:
+  - Public
+  - ReadOnly
+- uid: Rssdp.DiscoveredSsdpDevice.IsExpired
+  commentId: M:Rssdp.DiscoveredSsdpDevice.IsExpired
+  id: IsExpired
+  parent: Rssdp.DiscoveredSsdpDevice
+  langs:
+  - csharp
+  - vb
+  name: IsExpired()
+  nameWithType: DiscoveredSsdpDevice.IsExpired()
+  fullName: Rssdp.DiscoveredSsdpDevice.IsExpired()
+  type: Method
+  source:
+    id: IsExpired
+    path: ''
+    startLine: 1007
+  assemblies:
+  - cs.temp.dll
+  namespace: Rssdp
+  summary: "\nReturns true if this device information has expired, based on the current date/time, and the <xref href=\"Rssdp.DiscoveredSsdpDevice.CacheLifetime\" data-throw-if-not-resolved=\"false\"></xref> &amp; <xref href=\"Rssdp.DiscoveredSsdpDevice.AsAt\" data-throw-if-not-resolved=\"false\"></xref> properties.\n"
+  example: []
+  syntax:
+    content: public bool IsExpired()
+    return:
+      type: System.Boolean
+      description: ''
+    content.vb: Public Function IsExpired As Boolean
+  overload: Rssdp.DiscoveredSsdpDevice.IsExpired*
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+- uid: Rssdp.DiscoveredSsdpDevice.GetDeviceInfo
+  commentId: M:Rssdp.DiscoveredSsdpDevice.GetDeviceInfo
+  id: GetDeviceInfo
+  parent: Rssdp.DiscoveredSsdpDevice
+  langs:
+  - csharp
+  - vb
+  name: GetDeviceInfo()
+  nameWithType: DiscoveredSsdpDevice.GetDeviceInfo()
+  fullName: Rssdp.DiscoveredSsdpDevice.GetDeviceInfo()
+  type: Method
+  source:
+    id: GetDeviceInfo
+    path: ''
+    startLine: 1022
+  assemblies:
+  - cs.temp.dll
+  namespace: Rssdp
+  summary: "\nRetrieves the device description document specified by the <xref href=\"Rssdp.DiscoveredSsdpDevice.DescriptionLocation\" data-throw-if-not-resolved=\"false\"></xref> property.\n"
+  remarks: "\n<p>This method may choose to cache (or return cached) information if called multiple times within the <xref href=\"Rssdp.DiscoveredSsdpDevice.CacheLifetime\" data-throw-if-not-resolved=\"false\"></xref> period.</p>\n"
+  example: []
+  syntax:
+    content: public async Task<SsdpDevice> GetDeviceInfo()
+    return:
+      type: System.Threading.Tasks.Task{Rssdp.SsdpDevice}
+      description: An <xref href="Rssdp.SsdpDevice" data-throw-if-not-resolved="false"></xref> instance describing the full device details.
+    content.vb: Public Function GetDeviceInfo As Task(Of SsdpDevice)
+  overload: Rssdp.DiscoveredSsdpDevice.GetDeviceInfo*
+  exceptions:
+  - type: System.Exception
+    commentId: T:System.Exception
+    description: >-
+      This method using an HttpClient instance to retrieve the device description document, and as such any exception that can be thrown by HttpClient may be rethrown by this method.
+
+      On the UWP platform this is likely to be a <xref href="System.Exception" data-throw-if-not-resolved="false"></xref> instance and the hresult can be checked to determine the exact nature of the error. On other platforms it is likely to be a System.Net.WebException or System.Net.Http.HttpRequestException.
+
+      Check the documentation for HttpClient on the platform(s) you&apos;re using.
+  modifiers.csharp:
+  - public
+  - async
+  modifiers.vb:
+  - Public
+- uid: Rssdp.DiscoveredSsdpDevice.GetDeviceInfo(HttpClient)
+  commentId: M:Rssdp.DiscoveredSsdpDevice.GetDeviceInfo(HttpClient)
+  id: GetDeviceInfo(HttpClient)
+  parent: Rssdp.DiscoveredSsdpDevice
+  langs:
+  - csharp
+  - vb
+  name: GetDeviceInfo(HttpClient)
+  nameWithType: DiscoveredSsdpDevice.GetDeviceInfo(HttpClient)
+  fullName: Rssdp.DiscoveredSsdpDevice.GetDeviceInfo(HttpClient)
+  type: Method
+  source:
+    id: GetDeviceInfo
+    path: ''
+    startLine: 1044
+  assemblies:
+  - cs.temp.dll
+  namespace: Rssdp
+  summary: "\nRetrieves the device description document specified by the <xref href=\"Rssdp.DiscoveredSsdpDevice.DescriptionLocation\" data-throw-if-not-resolved=\"false\"></xref> property using the provided <see cref=\"!:System.Net.Http.HttpClient\"></see> instance.\n"
+  remarks: "\n<p>This method may choose to cache (or return cached) information if called multiple times within the <xref href=\"Rssdp.DiscoveredSsdpDevice.CacheLifetime\" data-throw-if-not-resolved=\"false\"></xref> period.</p>\n<p>This method performs no error handling, if an exception occurs downloading or parsing the document it will be thrown to the calling code. Ensure you setup correct error handling for these scenarios.</p>\n"
+  example: []
+  syntax:
+    content: public async Task<SsdpRootDevice> GetDeviceInfo(HttpClient downloadHttpClient)
+    parameters:
+    - id: downloadHttpClient
+      type: HttpClient
+      description: A <see cref="!:System.Net.Http.HttpClient"></see> to use when downloading the document data.
+    return:
+      type: System.Threading.Tasks.Task{Rssdp.SsdpRootDevice}
+      description: An <xref href="Rssdp.SsdpDevice" data-throw-if-not-resolved="false"></xref> instance describing the full device details.
+    content.vb: Public Function GetDeviceInfo(downloadHttpClient As HttpClient) As Task(Of SsdpRootDevice)
+  overload: Rssdp.DiscoveredSsdpDevice.GetDeviceInfo*
+  exceptions:
+  - type: System.Exception
+    commentId: T:System.Exception
+    description: >-
+      This method using an HttpClient instance to retrieve the device description document, and as such any exception that can be thrown by HttpClient may be rethrown by this method.
+
+      On the UWP platform this is likely to be a <xref href="System.Exception" data-throw-if-not-resolved="false"></xref> instance and the hresult can be checked to determine the exact nature of the error. On other platforms it is likely to be a System.Net.WebException or System.Net.Http.HttpRequestException.
+
+      Check the documentation for HttpClient on the platform(s) you&apos;re using.
+  - type: System.InvalidOperationException
+    commentId: T:System.InvalidOperationException
+    description: Thrown if the <xref href="Rssdp.DiscoveredSsdpDevice.DescriptionLocation" data-throw-if-not-resolved="false"></xref> property is not set.
+  modifiers.csharp:
+  - public
+  - async
+  modifiers.vb:
+  - Public
+- uid: Rssdp.DiscoveredSsdpDevice.GetDeviceInfo(HttpClient,System.Nullable{XmlReaderSettings})
+  commentId: M:Rssdp.DiscoveredSsdpDevice.GetDeviceInfo(HttpClient,System.Nullable{XmlReaderSettings})
+  id: GetDeviceInfo(HttpClient,System.Nullable{XmlReaderSettings})
+  parent: Rssdp.DiscoveredSsdpDevice
+  langs:
+  - csharp
+  - vb
+  name: GetDeviceInfo(HttpClient, Nullable<XmlReaderSettings>)
+  nameWithType: DiscoveredSsdpDevice.GetDeviceInfo(HttpClient, Nullable<XmlReaderSettings>)
+  fullName: Rssdp.DiscoveredSsdpDevice.GetDeviceInfo(HttpClient, System.Nullable<XmlReaderSettings>)
+  type: Method
+  source:
+    id: GetDeviceInfo
+    path: ''
+    startLine: 1063
+  assemblies:
+  - cs.temp.dll
+  namespace: Rssdp
+  summary: "\nRetrieves the device description document specified by the <xref href=\"Rssdp.DiscoveredSsdpDevice.DescriptionLocation\" data-throw-if-not-resolved=\"false\"></xref> property using the provided <see cref=\"!:System.Net.Http.HttpClient\"></see> instance.\n"
+  remarks: "\n<p>This method may choose to cache (or return cached) information if called multiple times within the <xref href=\"Rssdp.DiscoveredSsdpDevice.CacheLifetime\" data-throw-if-not-resolved=\"false\"></xref> period.</p>\n<p>This method performs no error handling, if an exception occurs downloading or parsing the document it will be thrown to the calling code. Ensure you setup correct error handling for these scenarios.</p>\n"
+  example: []
+  syntax:
+    content: public async Task<SsdpRootDevice> GetDeviceInfo(HttpClient downloadHttpClient, XmlReaderSettings? xmlReaderSettings)
+    parameters:
+    - id: downloadHttpClient
+      type: HttpClient
+      description: A <see cref="!:System.Net.Http.HttpClient"></see> to use when downloading the document data.
+    - id: xmlReaderSettings
+      type: System.Nullable{XmlReaderSettings}
+      description: A <see cref="!:XmlReaderSettings"></see> instance used to customise the reading and processing of the XML retrieved from the device. If null, default settings are used.
+    return:
+      type: System.Threading.Tasks.Task{Rssdp.SsdpRootDevice}
+      description: An <xref href="Rssdp.SsdpDevice" data-throw-if-not-resolved="false"></xref> instance describing the full device details.
+    content.vb: Public Function GetDeviceInfo(downloadHttpClient As HttpClient, xmlReaderSettings As XmlReaderSettings?) As Task(Of SsdpRootDevice)
+  overload: Rssdp.DiscoveredSsdpDevice.GetDeviceInfo*
+  exceptions:
+  - type: System.Exception
+    commentId: T:System.Exception
+    description: >-
+      This method using an HttpClient instance to retrieve the device description document, and as such any exception that can be thrown by HttpClient may be rethrown by this method.
+
+      On the UWP platform this is likely to be a <xref href="System.Exception" data-throw-if-not-resolved="false"></xref> instance and the hresult can be checked to determine the exact nature of the error. On other platforms it is likely to be a System.Net.WebException or System.Net.Http.HttpRequestException.
+
+      Check the documentation for HttpClient on the platform(s) you&apos;re using.
+  - type: System.InvalidOperationException
+    commentId: T:System.InvalidOperationException
+    description: Thrown if the <xref href="Rssdp.DiscoveredSsdpDevice.DescriptionLocation" data-throw-if-not-resolved="false"></xref> property is not set.
+  nameWithType.vb: DiscoveredSsdpDevice.GetDeviceInfo(HttpClient, Nullable(Of XmlReaderSettings))
+  modifiers.csharp:
+  - public
+  - async
+  modifiers.vb:
+  - Public
+  fullName.vb: Rssdp.DiscoveredSsdpDevice.GetDeviceInfo(HttpClient, System.Nullable(Of XmlReaderSettings))
+  name.vb: GetDeviceInfo(HttpClient, Nullable(Of XmlReaderSettings))
+- uid: Rssdp.DiscoveredSsdpDevice.ToString
+  commentId: M:Rssdp.DiscoveredSsdpDevice.ToString
+  id: ToString
+  parent: Rssdp.DiscoveredSsdpDevice
+  langs:
+  - csharp
+  - vb
+  name: ToString()
+  nameWithType: DiscoveredSsdpDevice.ToString()
+  fullName: Rssdp.DiscoveredSsdpDevice.ToString()
+  type: Method
+  source:
+    id: ToString
+    path: ''
+    startLine: 1091
+  assemblies:
+  - cs.temp.dll
+  namespace: Rssdp
+  summary: "\nReturns the device&apos;s <xref href=\"Rssdp.DiscoveredSsdpDevice.Usn\" data-throw-if-not-resolved=\"false\"></xref> value.\n"
+  example: []
+  syntax:
+    content: public override string ToString()
+    return:
+      type: System.String
+      description: A string containing the device&apos;s universal service name.
+    content.vb: Public Overrides Function ToString As String
+  overridden: System.Object.ToString
+  overload: Rssdp.DiscoveredSsdpDevice.ToString*
+  modifiers.csharp:
+  - public
+  - override
+  modifiers.vb:
+  - Public
+  - Overrides
+references:
+- uid: Rssdp.SsdpDevice
+  commentId: T:Rssdp.SsdpDevice
+  parent: Rssdp
+  name: SsdpDevice
+  nameWithType: SsdpDevice
+  fullName: Rssdp.SsdpDevice
+- uid: Rssdp.Infrastructure.ISsdpDeviceLocator
+  commentId: T:Rssdp.Infrastructure.ISsdpDeviceLocator
+  parent: Rssdp.Infrastructure
+  name: ISsdpDeviceLocator
+  nameWithType: ISsdpDeviceLocator
+  fullName: Rssdp.Infrastructure.ISsdpDeviceLocator
+- uid: Rssdp
+  commentId: N:Rssdp
+  name: Rssdp
+  nameWithType: Rssdp
+  fullName: Rssdp
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  name: Object
+  nameWithType: Object
+  fullName: System.Object
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  name: Equals(Object)
+  nameWithType: Object.Equals(Object)
+  fullName: System.Object.Equals(System.Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  name: Equals(Object, Object)
+  nameWithType: Object.Equals(Object, Object)
+  fullName: System.Object.Equals(System.Object, System.Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  name: ReferenceEquals(Object, Object)
+  nameWithType: Object.ReferenceEquals(Object, Object)
+  fullName: System.Object.ReferenceEquals(System.Object, System.Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    nameWithType: Object.ReferenceEquals
+    fullName: System.Object.ReferenceEquals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    nameWithType: Object.ReferenceEquals
+    fullName: System.Object.ReferenceEquals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  name: GetHashCode()
+  nameWithType: Object.GetHashCode()
+  fullName: System.Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    nameWithType: Object.GetHashCode
+    fullName: System.Object.GetHashCode
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    nameWithType: Object.GetHashCode
+    fullName: System.Object.GetHashCode
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  name: GetType()
+  nameWithType: Object.GetType()
+  fullName: System.Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    nameWithType: Object.GetType
+    fullName: System.Object.GetType
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    nameWithType: Object.GetType
+    fullName: System.Object.GetType
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  name: MemberwiseClone()
+  nameWithType: Object.MemberwiseClone()
+  fullName: System.Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    nameWithType: Object.MemberwiseClone
+    fullName: System.Object.MemberwiseClone
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    nameWithType: Object.MemberwiseClone
+    fullName: System.Object.MemberwiseClone
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: Rssdp.Infrastructure
+  commentId: N:Rssdp.Infrastructure
+  name: Rssdp.Infrastructure
+  nameWithType: Rssdp.Infrastructure
+  fullName: Rssdp.Infrastructure
+- uid: System
+  commentId: N:System
+  isExternal: true
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Rssdp.DiscoveredSsdpDevice
+  commentId: T:Rssdp.DiscoveredSsdpDevice
+  parent: Rssdp
+  name: DiscoveredSsdpDevice
+  nameWithType: DiscoveredSsdpDevice
+  fullName: Rssdp.DiscoveredSsdpDevice
+- uid: Rssdp.DiscoveredSsdpDevice.NotificationType
+  commentId: P:Rssdp.DiscoveredSsdpDevice.NotificationType
+  isExternal: true
+- uid: System.ArgumentNullException
+  commentId: T:System.ArgumentNullException
+  isExternal: true
+- uid: Rssdp.DiscoveredSsdpDevice.#ctor*
+  commentId: Overload:Rssdp.DiscoveredSsdpDevice.#ctor
+  name: DiscoveredSsdpDevice
+  nameWithType: DiscoveredSsdpDevice.DiscoveredSsdpDevice
+  fullName: Rssdp.DiscoveredSsdpDevice.DiscoveredSsdpDevice
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  name: String
+  nameWithType: String
+  fullName: System.String
+- uid: HttpHeaders
+  isExternal: true
+  name: HttpHeaders
+  nameWithType: HttpHeaders
+  fullName: HttpHeaders
+- uid: Rssdp.DiscoveredSsdpDevice.NotificationType*
+  commentId: Overload:Rssdp.DiscoveredSsdpDevice.NotificationType
+  name: NotificationType
+  nameWithType: DiscoveredSsdpDevice.NotificationType
+  fullName: Rssdp.DiscoveredSsdpDevice.NotificationType
+- uid: Rssdp.DiscoveredSsdpDevice.Usn*
+  commentId: Overload:Rssdp.DiscoveredSsdpDevice.Usn
+  name: Usn
+  nameWithType: DiscoveredSsdpDevice.Usn
+  fullName: Rssdp.DiscoveredSsdpDevice.Usn
+- uid: Rssdp.DiscoveredSsdpDevice.DescriptionLocation*
+  commentId: Overload:Rssdp.DiscoveredSsdpDevice.DescriptionLocation
+  name: DescriptionLocation
+  nameWithType: DiscoveredSsdpDevice.DescriptionLocation
+  fullName: Rssdp.DiscoveredSsdpDevice.DescriptionLocation
+- uid: System.Uri
+  commentId: T:System.Uri
+  parent: System
+  isExternal: true
+  name: Uri
+  nameWithType: Uri
+  fullName: System.Uri
+- uid: Rssdp.DiscoveredSsdpDevice.AsAt
+  commentId: P:Rssdp.DiscoveredSsdpDevice.AsAt
+  isExternal: true
+- uid: Rssdp.DiscoveredSsdpDevice.CacheLifetime*
+  commentId: Overload:Rssdp.DiscoveredSsdpDevice.CacheLifetime
+  name: CacheLifetime
+  nameWithType: DiscoveredSsdpDevice.CacheLifetime
+  fullName: Rssdp.DiscoveredSsdpDevice.CacheLifetime
+- uid: System.TimeSpan
+  commentId: T:System.TimeSpan
+  parent: System
+  isExternal: true
+  name: TimeSpan
+  nameWithType: TimeSpan
+  fullName: System.TimeSpan
+- uid: Rssdp.DiscoveredSsdpDevice.AsAt*
+  commentId: Overload:Rssdp.DiscoveredSsdpDevice.AsAt
+  name: AsAt
+  nameWithType: DiscoveredSsdpDevice.AsAt
+  fullName: Rssdp.DiscoveredSsdpDevice.AsAt
+- uid: System.DateTimeOffset
+  commentId: T:System.DateTimeOffset
+  parent: System
+  isExternal: true
+  name: DateTimeOffset
+  nameWithType: DateTimeOffset
+  fullName: System.DateTimeOffset
+- uid: Rssdp.DiscoveredSsdpDevice.ResponseHeaders*
+  commentId: Overload:Rssdp.DiscoveredSsdpDevice.ResponseHeaders
+  name: ResponseHeaders
+  nameWithType: DiscoveredSsdpDevice.ResponseHeaders
+  fullName: Rssdp.DiscoveredSsdpDevice.ResponseHeaders
+- uid: Rssdp.DiscoveredSsdpDevice.CacheLifetime
+  commentId: P:Rssdp.DiscoveredSsdpDevice.CacheLifetime
+  isExternal: true
+- uid: Rssdp.DiscoveredSsdpDevice.IsExpired*
+  commentId: Overload:Rssdp.DiscoveredSsdpDevice.IsExpired
+  name: IsExpired
+  nameWithType: DiscoveredSsdpDevice.IsExpired
+  fullName: Rssdp.DiscoveredSsdpDevice.IsExpired
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  name: Boolean
+  nameWithType: Boolean
+  fullName: System.Boolean
+- uid: Rssdp.DiscoveredSsdpDevice.DescriptionLocation
+  commentId: P:Rssdp.DiscoveredSsdpDevice.DescriptionLocation
+  isExternal: true
+- uid: System.Exception
+  commentId: T:System.Exception
+  parent: System
+  isExternal: true
+  name: Exception
+  nameWithType: Exception
+  fullName: System.Exception
+- uid: Rssdp.DiscoveredSsdpDevice.GetDeviceInfo*
+  commentId: Overload:Rssdp.DiscoveredSsdpDevice.GetDeviceInfo
+  name: GetDeviceInfo
+  nameWithType: DiscoveredSsdpDevice.GetDeviceInfo
+  fullName: Rssdp.DiscoveredSsdpDevice.GetDeviceInfo
+- uid: System.Threading.Tasks.Task{Rssdp.SsdpDevice}
+  commentId: T:System.Threading.Tasks.Task{Rssdp.SsdpDevice}
+  parent: System.Threading.Tasks
+  definition: System.Threading.Tasks.Task`1
+  name: Task<SsdpDevice>
+  nameWithType: Task<SsdpDevice>
+  fullName: System.Threading.Tasks.Task<Rssdp.SsdpDevice>
+  nameWithType.vb: Task(Of SsdpDevice)
+  fullName.vb: System.Threading.Tasks.Task(Of Rssdp.SsdpDevice)
+  name.vb: Task(Of SsdpDevice)
+  spec.csharp:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    nameWithType: Task
+    fullName: System.Threading.Tasks.Task
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: Rssdp.SsdpDevice
+    name: SsdpDevice
+    nameWithType: SsdpDevice
+    fullName: Rssdp.SsdpDevice
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    nameWithType: Task
+    fullName: System.Threading.Tasks.Task
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: Rssdp.SsdpDevice
+    name: SsdpDevice
+    nameWithType: SsdpDevice
+    fullName: Rssdp.SsdpDevice
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Threading.Tasks.Task`1
+  commentId: T:System.Threading.Tasks.Task`1
+  isExternal: true
+  name: Task<TResult>
+  nameWithType: Task<TResult>
+  fullName: System.Threading.Tasks.Task<TResult>
+  nameWithType.vb: Task(Of TResult)
+  fullName.vb: System.Threading.Tasks.Task(Of TResult)
+  name.vb: Task(Of TResult)
+  spec.csharp:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    nameWithType: Task
+    fullName: System.Threading.Tasks.Task
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - name: TResult
+    nameWithType: TResult
+    fullName: TResult
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    nameWithType: Task
+    fullName: System.Threading.Tasks.Task
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - name: TResult
+    nameWithType: TResult
+    fullName: TResult
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Threading.Tasks
+  commentId: N:System.Threading.Tasks
+  isExternal: true
+  name: System.Threading.Tasks
+  nameWithType: System.Threading.Tasks
+  fullName: System.Threading.Tasks
+- uid: System.InvalidOperationException
+  commentId: T:System.InvalidOperationException
+  isExternal: true
+- uid: HttpClient
+  isExternal: true
+  name: HttpClient
+  nameWithType: HttpClient
+  fullName: HttpClient
+- uid: System.Threading.Tasks.Task{Rssdp.SsdpRootDevice}
+  commentId: T:System.Threading.Tasks.Task{Rssdp.SsdpRootDevice}
+  parent: System.Threading.Tasks
+  definition: System.Threading.Tasks.Task`1
+  name: Task<SsdpRootDevice>
+  nameWithType: Task<SsdpRootDevice>
+  fullName: System.Threading.Tasks.Task<Rssdp.SsdpRootDevice>
+  nameWithType.vb: Task(Of SsdpRootDevice)
+  fullName.vb: System.Threading.Tasks.Task(Of Rssdp.SsdpRootDevice)
+  name.vb: Task(Of SsdpRootDevice)
+  spec.csharp:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    nameWithType: Task
+    fullName: System.Threading.Tasks.Task
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: Rssdp.SsdpRootDevice
+    name: SsdpRootDevice
+    nameWithType: SsdpRootDevice
+    fullName: Rssdp.SsdpRootDevice
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    nameWithType: Task
+    fullName: System.Threading.Tasks.Task
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: Rssdp.SsdpRootDevice
+    name: SsdpRootDevice
+    nameWithType: SsdpRootDevice
+    fullName: Rssdp.SsdpRootDevice
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Nullable{XmlReaderSettings}
+  commentId: T:System.Nullable{XmlReaderSettings}
+  parent: System
+  definition: System.Nullable`1
+  name: Nullable<XmlReaderSettings>
+  nameWithType: Nullable<XmlReaderSettings>
+  fullName: System.Nullable<XmlReaderSettings>
+  nameWithType.vb: Nullable(Of XmlReaderSettings)
+  fullName.vb: System.Nullable(Of XmlReaderSettings)
+  name.vb: Nullable(Of XmlReaderSettings)
+  spec.csharp:
+  - uid: System.Nullable`1
+    name: Nullable
+    nameWithType: Nullable
+    fullName: System.Nullable
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: XmlReaderSettings
+    name: XmlReaderSettings
+    nameWithType: XmlReaderSettings
+    fullName: XmlReaderSettings
+    isExternal: true
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: System.Nullable`1
+    name: Nullable
+    nameWithType: Nullable
+    fullName: System.Nullable
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: XmlReaderSettings
+    name: XmlReaderSettings
+    nameWithType: XmlReaderSettings
+    fullName: XmlReaderSettings
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Nullable`1
+  commentId: T:System.Nullable`1
+  isExternal: true
+  name: Nullable<T>
+  nameWithType: Nullable<T>
+  fullName: System.Nullable<T>
+  nameWithType.vb: Nullable(Of T)
+  fullName.vb: System.Nullable(Of T)
+  name.vb: Nullable(Of T)
+  spec.csharp:
+  - uid: System.Nullable`1
+    name: Nullable
+    nameWithType: Nullable
+    fullName: System.Nullable
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: System.Nullable`1
+    name: Nullable
+    nameWithType: Nullable
+    fullName: System.Nullable
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: Rssdp.DiscoveredSsdpDevice.Usn
+  commentId: P:Rssdp.DiscoveredSsdpDevice.Usn
+  isExternal: true
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  name: ToString()
+  nameWithType: Object.ToString()
+  fullName: System.Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    nameWithType: Object.ToString
+    fullName: System.Object.ToString
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    nameWithType: Object.ToString
+    fullName: System.Object.ToString
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: Rssdp.DiscoveredSsdpDevice.ToString*
+  commentId: Overload:Rssdp.DiscoveredSsdpDevice.ToString
+  name: ToString
+  nameWithType: DiscoveredSsdpDevice.ToString
+  fullName: Rssdp.DiscoveredSsdpDevice.ToString

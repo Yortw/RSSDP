@@ -1,0 +1,462 @@
+### YamlMime:ManagedReference
+items:
+- uid: Rssdp.DeviceEventArgs
+  commentId: T:Rssdp.DeviceEventArgs
+  id: DeviceEventArgs
+  parent: Rssdp
+  children:
+  - Rssdp.DeviceEventArgs.#ctor(Rssdp.SsdpDevice)
+  - Rssdp.DeviceEventArgs.Device
+  langs:
+  - csharp
+  - vb
+  name: DeviceEventArgs
+  nameWithType: DeviceEventArgs
+  fullName: Rssdp.DeviceEventArgs
+  type: Class
+  source:
+    id: DeviceEventArgs
+    path: ''
+    startLine: 771
+  assemblies:
+  - cs.temp.dll
+  namespace: Rssdp
+  summary: "\nEvent arguments for the <xref href=\"Rssdp.SsdpDevice.DeviceAdded\" data-throw-if-not-resolved=\"false\"></xref> and <xref href=\"Rssdp.SsdpDevice.DeviceRemoved\" data-throw-if-not-resolved=\"false\"></xref> events.\n"
+  example: []
+  syntax:
+    content: 'public sealed class DeviceEventArgs : EventArgs'
+    content.vb: >-
+      Public NotInheritable Class DeviceEventArgs
+          Inherits EventArgs
+  inheritance:
+  - System.Object
+  - System.EventArgs
+  inheritedMembers:
+  - System.EventArgs.Empty
+  - System.Object.ToString
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  modifiers.csharp:
+  - public
+  - sealed
+  - class
+  modifiers.vb:
+  - Public
+  - NotInheritable
+  - Class
+- uid: Rssdp.DeviceEventArgs.#ctor(Rssdp.SsdpDevice)
+  commentId: M:Rssdp.DeviceEventArgs.#ctor(Rssdp.SsdpDevice)
+  id: '#ctor(Rssdp.SsdpDevice)'
+  parent: Rssdp.DeviceEventArgs
+  langs:
+  - csharp
+  - vb
+  name: DeviceEventArgs(SsdpDevice)
+  nameWithType: DeviceEventArgs.DeviceEventArgs(SsdpDevice)
+  fullName: Rssdp.DeviceEventArgs.DeviceEventArgs(Rssdp.SsdpDevice)
+  type: Constructor
+  source:
+    id: .ctor
+    path: ''
+    startLine: 787
+  assemblies:
+  - cs.temp.dll
+  namespace: Rssdp
+  summary: "\nConstructs a new instance for the specified <xref href=\"Rssdp.SsdpDevice\" data-throw-if-not-resolved=\"false\"></xref>.\n"
+  example: []
+  syntax:
+    content: public DeviceEventArgs(SsdpDevice device)
+    parameters:
+    - id: device
+      type: Rssdp.SsdpDevice
+      description: The <xref href="Rssdp.SsdpDevice" data-throw-if-not-resolved="false"></xref> associated with the event this argument class is being used for.
+    content.vb: Public Sub New(device As SsdpDevice)
+  overload: Rssdp.DeviceEventArgs.#ctor*
+  exceptions:
+  - type: System.ArgumentNullException
+    commentId: T:System.ArgumentNullException
+    description: Thrown if the <code data-dev-comment-type="paramref" class="paramref">device</code> argument is null.
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+- uid: Rssdp.DeviceEventArgs.Device
+  commentId: P:Rssdp.DeviceEventArgs.Device
+  id: Device
+  parent: Rssdp.DeviceEventArgs
+  langs:
+  - csharp
+  - vb
+  name: Device
+  nameWithType: DeviceEventArgs.Device
+  fullName: Rssdp.DeviceEventArgs.Device
+  type: Property
+  source:
+    id: Device
+    path: ''
+    startLine: 801
+  assemblies:
+  - cs.temp.dll
+  namespace: Rssdp
+  summary: "\nReturns the <xref href=\"Rssdp.SsdpDevice\" data-throw-if-not-resolved=\"false\"></xref> instance the event is being raised for.\n"
+  example: []
+  syntax:
+    content: public SsdpDevice Device { get; }
+    parameters: []
+    return:
+      type: Rssdp.SsdpDevice
+    content.vb: Public ReadOnly Property Device As SsdpDevice
+  overload: Rssdp.DeviceEventArgs.Device*
+  modifiers.csharp:
+  - public
+  - get
+  modifiers.vb:
+  - Public
+  - ReadOnly
+references:
+- uid: Rssdp.SsdpDevice.DeviceAdded
+  commentId: E:Rssdp.SsdpDevice.DeviceAdded
+  parent: Rssdp.SsdpDevice
+  name: DeviceAdded
+  nameWithType: SsdpDevice.DeviceAdded
+  fullName: Rssdp.SsdpDevice.DeviceAdded
+- uid: Rssdp.SsdpDevice.DeviceRemoved
+  commentId: E:Rssdp.SsdpDevice.DeviceRemoved
+  parent: Rssdp.SsdpDevice
+  name: DeviceRemoved
+  nameWithType: SsdpDevice.DeviceRemoved
+  fullName: Rssdp.SsdpDevice.DeviceRemoved
+- uid: Rssdp
+  commentId: N:Rssdp
+  name: Rssdp
+  nameWithType: Rssdp
+  fullName: Rssdp
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  name: Object
+  nameWithType: Object
+  fullName: System.Object
+- uid: System.EventArgs
+  commentId: T:System.EventArgs
+  parent: System
+  isExternal: true
+  name: EventArgs
+  nameWithType: EventArgs
+  fullName: System.EventArgs
+- uid: System.EventArgs.Empty
+  commentId: F:System.EventArgs.Empty
+  parent: System.EventArgs
+  isExternal: true
+  name: Empty
+  nameWithType: EventArgs.Empty
+  fullName: System.EventArgs.Empty
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  name: ToString()
+  nameWithType: Object.ToString()
+  fullName: System.Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    nameWithType: Object.ToString
+    fullName: System.Object.ToString
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    nameWithType: Object.ToString
+    fullName: System.Object.ToString
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  name: Equals(Object)
+  nameWithType: Object.Equals(Object)
+  fullName: System.Object.Equals(System.Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  name: Equals(Object, Object)
+  nameWithType: Object.Equals(Object, Object)
+  fullName: System.Object.Equals(System.Object, System.Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  name: ReferenceEquals(Object, Object)
+  nameWithType: Object.ReferenceEquals(Object, Object)
+  fullName: System.Object.ReferenceEquals(System.Object, System.Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    nameWithType: Object.ReferenceEquals
+    fullName: System.Object.ReferenceEquals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    nameWithType: Object.ReferenceEquals
+    fullName: System.Object.ReferenceEquals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  name: GetHashCode()
+  nameWithType: Object.GetHashCode()
+  fullName: System.Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    nameWithType: Object.GetHashCode
+    fullName: System.Object.GetHashCode
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    nameWithType: Object.GetHashCode
+    fullName: System.Object.GetHashCode
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  name: GetType()
+  nameWithType: Object.GetType()
+  fullName: System.Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    nameWithType: Object.GetType
+    fullName: System.Object.GetType
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    nameWithType: Object.GetType
+    fullName: System.Object.GetType
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  name: MemberwiseClone()
+  nameWithType: Object.MemberwiseClone()
+  fullName: System.Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    nameWithType: Object.MemberwiseClone
+    fullName: System.Object.MemberwiseClone
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    nameWithType: Object.MemberwiseClone
+    fullName: System.Object.MemberwiseClone
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: Rssdp.SsdpDevice
+  commentId: T:Rssdp.SsdpDevice
+  parent: Rssdp
+  name: SsdpDevice
+  nameWithType: SsdpDevice
+  fullName: Rssdp.SsdpDevice
+- uid: System
+  commentId: N:System
+  isExternal: true
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: System.ArgumentNullException
+  commentId: T:System.ArgumentNullException
+  isExternal: true
+- uid: Rssdp.DeviceEventArgs.#ctor*
+  commentId: Overload:Rssdp.DeviceEventArgs.#ctor
+  name: DeviceEventArgs
+  nameWithType: DeviceEventArgs.DeviceEventArgs
+  fullName: Rssdp.DeviceEventArgs.DeviceEventArgs
+- uid: Rssdp.DeviceEventArgs.Device*
+  commentId: Overload:Rssdp.DeviceEventArgs.Device
+  name: Device
+  nameWithType: DeviceEventArgs.Device
+  fullName: Rssdp.DeviceEventArgs.Device

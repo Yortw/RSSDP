@@ -1,0 +1,833 @@
+### YamlMime:ManagedReference
+items:
+- uid: Rssdp.SsdpDevicePublisher
+  commentId: T:Rssdp.SsdpDevicePublisher
+  id: SsdpDevicePublisher
+  parent: Rssdp
+  children:
+  - Rssdp.SsdpDevicePublisher.#ctor
+  - Rssdp.SsdpDevicePublisher.#ctor(Rssdp.Infrastructure.ISsdpCommunicationsServer)
+  - Rssdp.SsdpDevicePublisher.#ctor(Rssdp.Infrastructure.ISsdpCommunicationsServer,Rssdp.ISsdpLogger)
+  - Rssdp.SsdpDevicePublisher.#ctor(System.Int32)
+  - Rssdp.SsdpDevicePublisher.#ctor(System.Int32,System.Int32)
+  - Rssdp.SsdpDevicePublisher.#ctor(System.String)
+  langs:
+  - csharp
+  - vb
+  name: SsdpDevicePublisher
+  nameWithType: SsdpDevicePublisher
+  fullName: Rssdp.SsdpDevicePublisher
+  type: Class
+  source:
+    id: SsdpDevicePublisher
+    path: ''
+    startLine: 5448
+  assemblies:
+  - cs.temp.dll
+  namespace: Rssdp
+  summary: "\nAllows publishing devices both as notification and responses to search requests.\n"
+  remarks: "\nThis is  the &apos;server&apos; part of the system. You add your devices to an instance of this class so clients can find them.\n"
+  example: []
+  syntax:
+    content: 'public class SsdpDevicePublisher : SsdpDevicePublisherBase, IDisposable, ISsdpDevicePublisher'
+    content.vb: >-
+      Public Class SsdpDevicePublisher
+          Inherits SsdpDevicePublisherBase
+          Implements IDisposable, ISsdpDevicePublisher
+  inheritance:
+  - System.Object
+  - Rssdp.Infrastructure.DisposableManagedObjectBase
+  - Rssdp.Infrastructure.SsdpDevicePublisherBase
+  implements:
+  - System.IDisposable
+  - Rssdp.Infrastructure.ISsdpDevicePublisher
+  inheritedMembers:
+  - Rssdp.Infrastructure.SsdpDevicePublisherBase.AddDevice(Rssdp.SsdpRootDevice)
+  - Rssdp.Infrastructure.SsdpDevicePublisherBase.RemoveDevice(Rssdp.SsdpRootDevice)
+  - Rssdp.Infrastructure.SsdpDevicePublisherBase.ActivitySource
+  - Rssdp.Infrastructure.SsdpDevicePublisherBase.Log
+  - Rssdp.Infrastructure.SsdpDevicePublisherBase.Devices
+  - Rssdp.Infrastructure.SsdpDevicePublisherBase.SupportPnpRootDevice
+  - Rssdp.Infrastructure.SsdpDevicePublisherBase.StandardsMode
+  - Rssdp.Infrastructure.SsdpDevicePublisherBase.NotificationBroadcastInterval
+  - Rssdp.Infrastructure.SsdpDevicePublisherBase.Dispose(System.Boolean)
+  - Rssdp.Infrastructure.DisposableManagedObjectBase.ThrowIfDisposed
+  - Rssdp.Infrastructure.DisposableManagedObjectBase.IsDisposed
+  - Rssdp.Infrastructure.DisposableManagedObjectBase.Dispose
+  - System.Object.ToString
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  modifiers.csharp:
+  - public
+  - class
+  modifiers.vb:
+  - Public
+  - Class
+- uid: Rssdp.SsdpDevicePublisher.#ctor
+  commentId: M:Rssdp.SsdpDevicePublisher.#ctor
+  id: '#ctor'
+  parent: Rssdp.SsdpDevicePublisher
+  langs:
+  - csharp
+  - vb
+  name: SsdpDevicePublisher()
+  nameWithType: SsdpDevicePublisher.SsdpDevicePublisher()
+  fullName: Rssdp.SsdpDevicePublisher.SsdpDevicePublisher()
+  type: Constructor
+  source:
+    id: .ctor
+    path: ''
+    startLine: 5459
+  assemblies:
+  - cs.temp.dll
+  namespace: Rssdp
+  summary: "\nDefault constructor. \n"
+  remarks: "\n<p>Uses the default <xref href=\"Rssdp.Infrastructure.ISsdpCommunicationsServer\" data-throw-if-not-resolved=\"false\"></xref> implementation and network settings for Windows and the SSDP specification.</p>\n"
+  example: []
+  syntax:
+    content: public SsdpDevicePublisher()
+    content.vb: Public Sub New
+  overload: Rssdp.SsdpDevicePublisher.#ctor*
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+- uid: Rssdp.SsdpDevicePublisher.#ctor(Rssdp.Infrastructure.ISsdpCommunicationsServer)
+  commentId: M:Rssdp.SsdpDevicePublisher.#ctor(Rssdp.Infrastructure.ISsdpCommunicationsServer)
+  id: '#ctor(Rssdp.Infrastructure.ISsdpCommunicationsServer)'
+  parent: Rssdp.SsdpDevicePublisher
+  langs:
+  - csharp
+  - vb
+  name: SsdpDevicePublisher(ISsdpCommunicationsServer)
+  nameWithType: SsdpDevicePublisher.SsdpDevicePublisher(ISsdpCommunicationsServer)
+  fullName: Rssdp.SsdpDevicePublisher.SsdpDevicePublisher(Rssdp.Infrastructure.ISsdpCommunicationsServer)
+  type: Constructor
+  source:
+    id: .ctor
+    path: ''
+    startLine: 5472
+  assemblies:
+  - cs.temp.dll
+  namespace: Rssdp
+  summary: "\nPartial constructor. \n"
+  remarks: "\n<p>Allows the caller to specify their own <xref href=\"Rssdp.Infrastructure.ISsdpCommunicationsServer\" data-throw-if-not-resolved=\"false\"></xref> implementation for full control over the networking, or for mocking/testing purposes..</p>\n"
+  example: []
+  syntax:
+    content: public SsdpDevicePublisher(ISsdpCommunicationsServer communicationsServer)
+    parameters:
+    - id: communicationsServer
+      type: Rssdp.Infrastructure.ISsdpCommunicationsServer
+    content.vb: Public Sub New(communicationsServer As ISsdpCommunicationsServer)
+  overload: Rssdp.SsdpDevicePublisher.#ctor*
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+- uid: Rssdp.SsdpDevicePublisher.#ctor(Rssdp.Infrastructure.ISsdpCommunicationsServer,Rssdp.ISsdpLogger)
+  commentId: M:Rssdp.SsdpDevicePublisher.#ctor(Rssdp.Infrastructure.ISsdpCommunicationsServer,Rssdp.ISsdpLogger)
+  id: '#ctor(Rssdp.Infrastructure.ISsdpCommunicationsServer,Rssdp.ISsdpLogger)'
+  parent: Rssdp.SsdpDevicePublisher
+  langs:
+  - csharp
+  - vb
+  name: SsdpDevicePublisher(ISsdpCommunicationsServer, ISsdpLogger)
+  nameWithType: SsdpDevicePublisher.SsdpDevicePublisher(ISsdpCommunicationsServer, ISsdpLogger)
+  fullName: Rssdp.SsdpDevicePublisher.SsdpDevicePublisher(Rssdp.Infrastructure.ISsdpCommunicationsServer, Rssdp.ISsdpLogger)
+  type: Constructor
+  source:
+    id: .ctor
+    path: ''
+    startLine: 5484
+  assemblies:
+  - cs.temp.dll
+  namespace: Rssdp
+  summary: "\nFull constructor. \n"
+  remarks: "\n<p>Allows the caller to specify their own <xref href=\"Rssdp.Infrastructure.ISsdpCommunicationsServer\" data-throw-if-not-resolved=\"false\"></xref> implementation for full control over the networking, or for mocking/testing purposes..</p>\n"
+  example: []
+  syntax:
+    content: public SsdpDevicePublisher(ISsdpCommunicationsServer communicationsServer, ISsdpLogger log)
+    parameters:
+    - id: communicationsServer
+      type: Rssdp.Infrastructure.ISsdpCommunicationsServer
+    - id: log
+      type: Rssdp.ISsdpLogger
+    content.vb: Public Sub New(communicationsServer As ISsdpCommunicationsServer, log As ISsdpLogger)
+  overload: Rssdp.SsdpDevicePublisher.#ctor*
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+- uid: Rssdp.SsdpDevicePublisher.#ctor(System.Int32)
+  commentId: M:Rssdp.SsdpDevicePublisher.#ctor(System.Int32)
+  id: '#ctor(System.Int32)'
+  parent: Rssdp.SsdpDevicePublisher
+  langs:
+  - csharp
+  - vb
+  name: SsdpDevicePublisher(Int32)
+  nameWithType: SsdpDevicePublisher.SsdpDevicePublisher(Int32)
+  fullName: Rssdp.SsdpDevicePublisher.SsdpDevicePublisher(System.Int32)
+  type: Constructor
+  source:
+    id: .ctor
+    path: ''
+    startLine: 5497
+  assemblies:
+  - cs.temp.dll
+  namespace: Rssdp
+  summary: "\nPartial constructor. \n"
+  remarks: "\n<p>Uses the default <xref href=\"Rssdp.Infrastructure.ISsdpCommunicationsServer\" data-throw-if-not-resolved=\"false\"></xref> implementation and network settings for Windows and the SSDP specification, but specifies the local port to use for socket communications. Specify 0 to indicate the system should choose it&apos;s own port.</p>\n"
+  example: []
+  syntax:
+    content: public SsdpDevicePublisher(int localPort)
+    parameters:
+    - id: localPort
+      type: System.Int32
+      description: The local port to use for socket communications, specify 0 to have the system choose it&apos;s own.
+    content.vb: Public Sub New(localPort As Integer)
+  overload: Rssdp.SsdpDevicePublisher.#ctor*
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+- uid: Rssdp.SsdpDevicePublisher.#ctor(System.String)
+  commentId: M:Rssdp.SsdpDevicePublisher.#ctor(System.String)
+  id: '#ctor(System.String)'
+  parent: Rssdp.SsdpDevicePublisher
+  langs:
+  - csharp
+  - vb
+  name: SsdpDevicePublisher(String)
+  nameWithType: SsdpDevicePublisher.SsdpDevicePublisher(String)
+  fullName: Rssdp.SsdpDevicePublisher.SsdpDevicePublisher(System.String)
+  type: Constructor
+  source:
+    id: .ctor
+    path: ''
+    startLine: 5509
+  assemblies:
+  - cs.temp.dll
+  namespace: Rssdp
+  summary: "\nPartial constructor. \n"
+  example: []
+  syntax:
+    content: public SsdpDevicePublisher(string ipAddress)
+    parameters:
+    - id: ipAddress
+      type: System.String
+      description: "The IP address of the local network adapter to bind sockets to. \nNull or empty string will use <see cref=\"!:IPAddress.Any\"></see>."
+    content.vb: Public Sub New(ipAddress As String)
+  overload: Rssdp.SsdpDevicePublisher.#ctor*
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+- uid: Rssdp.SsdpDevicePublisher.#ctor(System.Int32,System.Int32)
+  commentId: M:Rssdp.SsdpDevicePublisher.#ctor(System.Int32,System.Int32)
+  id: '#ctor(System.Int32,System.Int32)'
+  parent: Rssdp.SsdpDevicePublisher
+  langs:
+  - csharp
+  - vb
+  name: SsdpDevicePublisher(Int32, Int32)
+  nameWithType: SsdpDevicePublisher.SsdpDevicePublisher(Int32, Int32)
+  fullName: Rssdp.SsdpDevicePublisher.SsdpDevicePublisher(System.Int32, System.Int32)
+  type: Constructor
+  source:
+    id: .ctor
+    path: ''
+    startLine: 5526
+  assemblies:
+  - cs.temp.dll
+  namespace: Rssdp
+  summary: "\nPartial constructor. \n"
+  remarks: "\n<p>Uses the default <xref href=\"Rssdp.Infrastructure.ISsdpCommunicationsServer\" data-throw-if-not-resolved=\"false\"></xref> implementation and network settings for Windows and the SSDP specification, but specifies the local port to use and multicast time to live setting for socket communications.</p>\n<p>Specify 0 for the <code data-dev-comment-type=\"paramref\" class=\"paramref\">localPort</code> argument to indicate the system should choose it&apos;s own port.</p>\n<p>The <code data-dev-comment-type=\"paramref\" class=\"paramref\">multicastTimeToLive</code> is actually a number of &apos;hops&apos; on the network and not a time based argument.</p>\n"
+  example: []
+  syntax:
+    content: public SsdpDevicePublisher(int localPort, int multicastTimeToLive)
+    parameters:
+    - id: localPort
+      type: System.Int32
+      description: The local port to use for socket communications, specify 0 to have the system choose it&apos;s own.
+    - id: multicastTimeToLive
+      type: System.Int32
+      description: The number of hops a multicast packet can make before it expires. Must be 1 or greater.
+    content.vb: Public Sub New(localPort As Integer, multicastTimeToLive As Integer)
+  overload: Rssdp.SsdpDevicePublisher.#ctor*
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+references:
+- uid: Rssdp
+  commentId: N:Rssdp
+  name: Rssdp
+  nameWithType: Rssdp
+  fullName: Rssdp
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  name: Object
+  nameWithType: Object
+  fullName: System.Object
+- uid: Rssdp.Infrastructure.DisposableManagedObjectBase
+  commentId: T:Rssdp.Infrastructure.DisposableManagedObjectBase
+  parent: Rssdp.Infrastructure
+  name: DisposableManagedObjectBase
+  nameWithType: DisposableManagedObjectBase
+  fullName: Rssdp.Infrastructure.DisposableManagedObjectBase
+- uid: Rssdp.Infrastructure.SsdpDevicePublisherBase
+  commentId: T:Rssdp.Infrastructure.SsdpDevicePublisherBase
+  parent: Rssdp.Infrastructure
+  name: SsdpDevicePublisherBase
+  nameWithType: SsdpDevicePublisherBase
+  fullName: Rssdp.Infrastructure.SsdpDevicePublisherBase
+- uid: System.IDisposable
+  commentId: T:System.IDisposable
+  parent: System
+  isExternal: true
+  name: IDisposable
+  nameWithType: IDisposable
+  fullName: System.IDisposable
+- uid: Rssdp.Infrastructure.ISsdpDevicePublisher
+  commentId: T:Rssdp.Infrastructure.ISsdpDevicePublisher
+  parent: Rssdp.Infrastructure
+  name: ISsdpDevicePublisher
+  nameWithType: ISsdpDevicePublisher
+  fullName: Rssdp.Infrastructure.ISsdpDevicePublisher
+- uid: Rssdp.Infrastructure.SsdpDevicePublisherBase.AddDevice(Rssdp.SsdpRootDevice)
+  commentId: M:Rssdp.Infrastructure.SsdpDevicePublisherBase.AddDevice(Rssdp.SsdpRootDevice)
+  parent: Rssdp.Infrastructure.SsdpDevicePublisherBase
+  name: AddDevice(SsdpRootDevice)
+  nameWithType: SsdpDevicePublisherBase.AddDevice(SsdpRootDevice)
+  fullName: Rssdp.Infrastructure.SsdpDevicePublisherBase.AddDevice(Rssdp.SsdpRootDevice)
+  spec.csharp:
+  - uid: Rssdp.Infrastructure.SsdpDevicePublisherBase.AddDevice(Rssdp.SsdpRootDevice)
+    name: AddDevice
+    nameWithType: SsdpDevicePublisherBase.AddDevice
+    fullName: Rssdp.Infrastructure.SsdpDevicePublisherBase.AddDevice
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: Rssdp.SsdpRootDevice
+    name: SsdpRootDevice
+    nameWithType: SsdpRootDevice
+    fullName: Rssdp.SsdpRootDevice
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: Rssdp.Infrastructure.SsdpDevicePublisherBase.AddDevice(Rssdp.SsdpRootDevice)
+    name: AddDevice
+    nameWithType: SsdpDevicePublisherBase.AddDevice
+    fullName: Rssdp.Infrastructure.SsdpDevicePublisherBase.AddDevice
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: Rssdp.SsdpRootDevice
+    name: SsdpRootDevice
+    nameWithType: SsdpRootDevice
+    fullName: Rssdp.SsdpRootDevice
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: Rssdp.Infrastructure.SsdpDevicePublisherBase.RemoveDevice(Rssdp.SsdpRootDevice)
+  commentId: M:Rssdp.Infrastructure.SsdpDevicePublisherBase.RemoveDevice(Rssdp.SsdpRootDevice)
+  parent: Rssdp.Infrastructure.SsdpDevicePublisherBase
+  name: RemoveDevice(SsdpRootDevice)
+  nameWithType: SsdpDevicePublisherBase.RemoveDevice(SsdpRootDevice)
+  fullName: Rssdp.Infrastructure.SsdpDevicePublisherBase.RemoveDevice(Rssdp.SsdpRootDevice)
+  spec.csharp:
+  - uid: Rssdp.Infrastructure.SsdpDevicePublisherBase.RemoveDevice(Rssdp.SsdpRootDevice)
+    name: RemoveDevice
+    nameWithType: SsdpDevicePublisherBase.RemoveDevice
+    fullName: Rssdp.Infrastructure.SsdpDevicePublisherBase.RemoveDevice
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: Rssdp.SsdpRootDevice
+    name: SsdpRootDevice
+    nameWithType: SsdpRootDevice
+    fullName: Rssdp.SsdpRootDevice
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: Rssdp.Infrastructure.SsdpDevicePublisherBase.RemoveDevice(Rssdp.SsdpRootDevice)
+    name: RemoveDevice
+    nameWithType: SsdpDevicePublisherBase.RemoveDevice
+    fullName: Rssdp.Infrastructure.SsdpDevicePublisherBase.RemoveDevice
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: Rssdp.SsdpRootDevice
+    name: SsdpRootDevice
+    nameWithType: SsdpRootDevice
+    fullName: Rssdp.SsdpRootDevice
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: Rssdp.Infrastructure.SsdpDevicePublisherBase.ActivitySource
+  commentId: P:Rssdp.Infrastructure.SsdpDevicePublisherBase.ActivitySource
+  parent: Rssdp.Infrastructure.SsdpDevicePublisherBase
+  name: ActivitySource
+  nameWithType: SsdpDevicePublisherBase.ActivitySource
+  fullName: Rssdp.Infrastructure.SsdpDevicePublisherBase.ActivitySource
+- uid: Rssdp.Infrastructure.SsdpDevicePublisherBase.Log
+  commentId: P:Rssdp.Infrastructure.SsdpDevicePublisherBase.Log
+  parent: Rssdp.Infrastructure.SsdpDevicePublisherBase
+  name: Log
+  nameWithType: SsdpDevicePublisherBase.Log
+  fullName: Rssdp.Infrastructure.SsdpDevicePublisherBase.Log
+- uid: Rssdp.Infrastructure.SsdpDevicePublisherBase.Devices
+  commentId: P:Rssdp.Infrastructure.SsdpDevicePublisherBase.Devices
+  parent: Rssdp.Infrastructure.SsdpDevicePublisherBase
+  name: Devices
+  nameWithType: SsdpDevicePublisherBase.Devices
+  fullName: Rssdp.Infrastructure.SsdpDevicePublisherBase.Devices
+- uid: Rssdp.Infrastructure.SsdpDevicePublisherBase.SupportPnpRootDevice
+  commentId: P:Rssdp.Infrastructure.SsdpDevicePublisherBase.SupportPnpRootDevice
+  parent: Rssdp.Infrastructure.SsdpDevicePublisherBase
+  name: SupportPnpRootDevice
+  nameWithType: SsdpDevicePublisherBase.SupportPnpRootDevice
+  fullName: Rssdp.Infrastructure.SsdpDevicePublisherBase.SupportPnpRootDevice
+- uid: Rssdp.Infrastructure.SsdpDevicePublisherBase.StandardsMode
+  commentId: P:Rssdp.Infrastructure.SsdpDevicePublisherBase.StandardsMode
+  parent: Rssdp.Infrastructure.SsdpDevicePublisherBase
+  name: StandardsMode
+  nameWithType: SsdpDevicePublisherBase.StandardsMode
+  fullName: Rssdp.Infrastructure.SsdpDevicePublisherBase.StandardsMode
+- uid: Rssdp.Infrastructure.SsdpDevicePublisherBase.NotificationBroadcastInterval
+  commentId: P:Rssdp.Infrastructure.SsdpDevicePublisherBase.NotificationBroadcastInterval
+  parent: Rssdp.Infrastructure.SsdpDevicePublisherBase
+  name: NotificationBroadcastInterval
+  nameWithType: SsdpDevicePublisherBase.NotificationBroadcastInterval
+  fullName: Rssdp.Infrastructure.SsdpDevicePublisherBase.NotificationBroadcastInterval
+- uid: Rssdp.Infrastructure.SsdpDevicePublisherBase.Dispose(System.Boolean)
+  commentId: M:Rssdp.Infrastructure.SsdpDevicePublisherBase.Dispose(System.Boolean)
+  parent: Rssdp.Infrastructure.SsdpDevicePublisherBase
+  isExternal: true
+  name: Dispose(Boolean)
+  nameWithType: SsdpDevicePublisherBase.Dispose(Boolean)
+  fullName: Rssdp.Infrastructure.SsdpDevicePublisherBase.Dispose(System.Boolean)
+  spec.csharp:
+  - uid: Rssdp.Infrastructure.SsdpDevicePublisherBase.Dispose(System.Boolean)
+    name: Dispose
+    nameWithType: SsdpDevicePublisherBase.Dispose
+    fullName: Rssdp.Infrastructure.SsdpDevicePublisherBase.Dispose
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Boolean
+    name: Boolean
+    nameWithType: Boolean
+    fullName: System.Boolean
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: Rssdp.Infrastructure.SsdpDevicePublisherBase.Dispose(System.Boolean)
+    name: Dispose
+    nameWithType: SsdpDevicePublisherBase.Dispose
+    fullName: Rssdp.Infrastructure.SsdpDevicePublisherBase.Dispose
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Boolean
+    name: Boolean
+    nameWithType: Boolean
+    fullName: System.Boolean
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: Rssdp.Infrastructure.DisposableManagedObjectBase.ThrowIfDisposed
+  commentId: M:Rssdp.Infrastructure.DisposableManagedObjectBase.ThrowIfDisposed
+  parent: Rssdp.Infrastructure.DisposableManagedObjectBase
+  name: ThrowIfDisposed()
+  nameWithType: DisposableManagedObjectBase.ThrowIfDisposed()
+  fullName: Rssdp.Infrastructure.DisposableManagedObjectBase.ThrowIfDisposed()
+  spec.csharp:
+  - uid: Rssdp.Infrastructure.DisposableManagedObjectBase.ThrowIfDisposed
+    name: ThrowIfDisposed
+    nameWithType: DisposableManagedObjectBase.ThrowIfDisposed
+    fullName: Rssdp.Infrastructure.DisposableManagedObjectBase.ThrowIfDisposed
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: Rssdp.Infrastructure.DisposableManagedObjectBase.ThrowIfDisposed
+    name: ThrowIfDisposed
+    nameWithType: DisposableManagedObjectBase.ThrowIfDisposed
+    fullName: Rssdp.Infrastructure.DisposableManagedObjectBase.ThrowIfDisposed
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: Rssdp.Infrastructure.DisposableManagedObjectBase.IsDisposed
+  commentId: P:Rssdp.Infrastructure.DisposableManagedObjectBase.IsDisposed
+  parent: Rssdp.Infrastructure.DisposableManagedObjectBase
+  name: IsDisposed
+  nameWithType: DisposableManagedObjectBase.IsDisposed
+  fullName: Rssdp.Infrastructure.DisposableManagedObjectBase.IsDisposed
+- uid: Rssdp.Infrastructure.DisposableManagedObjectBase.Dispose
+  commentId: M:Rssdp.Infrastructure.DisposableManagedObjectBase.Dispose
+  parent: Rssdp.Infrastructure.DisposableManagedObjectBase
+  name: Dispose()
+  nameWithType: DisposableManagedObjectBase.Dispose()
+  fullName: Rssdp.Infrastructure.DisposableManagedObjectBase.Dispose()
+  spec.csharp:
+  - uid: Rssdp.Infrastructure.DisposableManagedObjectBase.Dispose
+    name: Dispose
+    nameWithType: DisposableManagedObjectBase.Dispose
+    fullName: Rssdp.Infrastructure.DisposableManagedObjectBase.Dispose
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: Rssdp.Infrastructure.DisposableManagedObjectBase.Dispose
+    name: Dispose
+    nameWithType: DisposableManagedObjectBase.Dispose
+    fullName: Rssdp.Infrastructure.DisposableManagedObjectBase.Dispose
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  name: ToString()
+  nameWithType: Object.ToString()
+  fullName: System.Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    nameWithType: Object.ToString
+    fullName: System.Object.ToString
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    nameWithType: Object.ToString
+    fullName: System.Object.ToString
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  name: Equals(Object)
+  nameWithType: Object.Equals(Object)
+  fullName: System.Object.Equals(System.Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  name: Equals(Object, Object)
+  nameWithType: Object.Equals(Object, Object)
+  fullName: System.Object.Equals(System.Object, System.Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  name: ReferenceEquals(Object, Object)
+  nameWithType: Object.ReferenceEquals(Object, Object)
+  fullName: System.Object.ReferenceEquals(System.Object, System.Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    nameWithType: Object.ReferenceEquals
+    fullName: System.Object.ReferenceEquals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    nameWithType: Object.ReferenceEquals
+    fullName: System.Object.ReferenceEquals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  name: GetHashCode()
+  nameWithType: Object.GetHashCode()
+  fullName: System.Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    nameWithType: Object.GetHashCode
+    fullName: System.Object.GetHashCode
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    nameWithType: Object.GetHashCode
+    fullName: System.Object.GetHashCode
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  name: GetType()
+  nameWithType: Object.GetType()
+  fullName: System.Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    nameWithType: Object.GetType
+    fullName: System.Object.GetType
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    nameWithType: Object.GetType
+    fullName: System.Object.GetType
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  name: MemberwiseClone()
+  nameWithType: Object.MemberwiseClone()
+  fullName: System.Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    nameWithType: Object.MemberwiseClone
+    fullName: System.Object.MemberwiseClone
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    nameWithType: Object.MemberwiseClone
+    fullName: System.Object.MemberwiseClone
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Rssdp.Infrastructure
+  commentId: N:Rssdp.Infrastructure
+  name: Rssdp.Infrastructure
+  nameWithType: Rssdp.Infrastructure
+  fullName: Rssdp.Infrastructure
+- uid: Rssdp.Infrastructure.ISsdpCommunicationsServer
+  commentId: T:Rssdp.Infrastructure.ISsdpCommunicationsServer
+  parent: Rssdp.Infrastructure
+  name: ISsdpCommunicationsServer
+  nameWithType: ISsdpCommunicationsServer
+  fullName: Rssdp.Infrastructure.ISsdpCommunicationsServer
+- uid: Rssdp.SsdpDevicePublisher.#ctor*
+  commentId: Overload:Rssdp.SsdpDevicePublisher.#ctor
+  name: SsdpDevicePublisher
+  nameWithType: SsdpDevicePublisher.SsdpDevicePublisher
+  fullName: Rssdp.SsdpDevicePublisher.SsdpDevicePublisher
+- uid: Rssdp.ISsdpLogger
+  commentId: T:Rssdp.ISsdpLogger
+  parent: Rssdp
+  name: ISsdpLogger
+  nameWithType: ISsdpLogger
+  fullName: Rssdp.ISsdpLogger
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  name: Int32
+  nameWithType: Int32
+  fullName: System.Int32
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  name: String
+  nameWithType: String
+  fullName: System.String

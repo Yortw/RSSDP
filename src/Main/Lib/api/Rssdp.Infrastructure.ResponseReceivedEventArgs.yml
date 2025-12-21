@@ -1,0 +1,502 @@
+### YamlMime:ManagedReference
+items:
+- uid: Rssdp.Infrastructure.ResponseReceivedEventArgs
+  commentId: T:Rssdp.Infrastructure.ResponseReceivedEventArgs
+  id: ResponseReceivedEventArgs
+  parent: Rssdp.Infrastructure
+  children:
+  - Rssdp.Infrastructure.ResponseReceivedEventArgs.#ctor(HttpResponseMessage,Rssdp.Infrastructure.UdpEndPoint)
+  - Rssdp.Infrastructure.ResponseReceivedEventArgs.Message
+  - Rssdp.Infrastructure.ResponseReceivedEventArgs.ReceivedFrom
+  langs:
+  - csharp
+  - vb
+  name: ResponseReceivedEventArgs
+  nameWithType: ResponseReceivedEventArgs
+  fullName: Rssdp.Infrastructure.ResponseReceivedEventArgs
+  type: Class
+  source:
+    id: ResponseReceivedEventArgs
+    path: ''
+    startLine: 2270
+  assemblies:
+  - cs.temp.dll
+  namespace: Rssdp.Infrastructure
+  summary: "\nProvides arguments for the <xref href=\"Rssdp.Infrastructure.ISsdpCommunicationsServer.ResponseReceived\" data-throw-if-not-resolved=\"false\"></xref> event.\n"
+  example: []
+  syntax:
+    content: 'public sealed class ResponseReceivedEventArgs : EventArgs'
+    content.vb: >-
+      Public NotInheritable Class ResponseReceivedEventArgs
+          Inherits EventArgs
+  inheritance:
+  - System.Object
+  - System.EventArgs
+  inheritedMembers:
+  - System.EventArgs.Empty
+  - System.Object.ToString
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  modifiers.csharp:
+  - public
+  - sealed
+  - class
+  modifiers.vb:
+  - Public
+  - NotInheritable
+  - Class
+- uid: Rssdp.Infrastructure.ResponseReceivedEventArgs.#ctor(HttpResponseMessage,Rssdp.Infrastructure.UdpEndPoint)
+  commentId: M:Rssdp.Infrastructure.ResponseReceivedEventArgs.#ctor(HttpResponseMessage,Rssdp.Infrastructure.UdpEndPoint)
+  id: '#ctor(HttpResponseMessage,Rssdp.Infrastructure.UdpEndPoint)'
+  parent: Rssdp.Infrastructure.ResponseReceivedEventArgs
+  langs:
+  - csharp
+  - vb
+  name: ResponseReceivedEventArgs(HttpResponseMessage, UdpEndPoint)
+  nameWithType: ResponseReceivedEventArgs.ResponseReceivedEventArgs(HttpResponseMessage, UdpEndPoint)
+  fullName: Rssdp.Infrastructure.ResponseReceivedEventArgs.ResponseReceivedEventArgs(HttpResponseMessage, Rssdp.Infrastructure.UdpEndPoint)
+  type: Constructor
+  source:
+    id: .ctor
+    path: ''
+    startLine: 2287
+  assemblies:
+  - cs.temp.dll
+  namespace: Rssdp.Infrastructure
+  summary: "\nFull constructor.\n"
+  example: []
+  syntax:
+    content: public ResponseReceivedEventArgs(HttpResponseMessage message, UdpEndPoint receivedFrom)
+    parameters:
+    - id: message
+      type: HttpResponseMessage
+      description: The <see cref="!:HttpResponseMessage"></see> that was received.
+    - id: receivedFrom
+      type: Rssdp.Infrastructure.UdpEndPoint
+      description: A <xref href="Rssdp.Infrastructure.UdpEndPoint" data-throw-if-not-resolved="false"></xref> representing the sender&apos;s address (sometimes used for replies).
+    content.vb: Public Sub New(message As HttpResponseMessage, receivedFrom As UdpEndPoint)
+  overload: Rssdp.Infrastructure.ResponseReceivedEventArgs.#ctor*
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+- uid: Rssdp.Infrastructure.ResponseReceivedEventArgs.Message
+  commentId: P:Rssdp.Infrastructure.ResponseReceivedEventArgs.Message
+  id: Message
+  parent: Rssdp.Infrastructure.ResponseReceivedEventArgs
+  langs:
+  - csharp
+  - vb
+  name: Message
+  nameWithType: ResponseReceivedEventArgs.Message
+  fullName: Rssdp.Infrastructure.ResponseReceivedEventArgs.Message
+  type: Property
+  source:
+    id: Message
+    path: ''
+    startLine: 2300
+  assemblies:
+  - cs.temp.dll
+  namespace: Rssdp.Infrastructure
+  summary: "\nThe <see cref=\"!:HttpResponseMessage\"></see> that was received.\n"
+  example: []
+  syntax:
+    content: public HttpResponseMessage Message { get; }
+    parameters: []
+    return:
+      type: HttpResponseMessage
+    content.vb: Public ReadOnly Property Message As HttpResponseMessage
+  overload: Rssdp.Infrastructure.ResponseReceivedEventArgs.Message*
+  modifiers.csharp:
+  - public
+  - get
+  modifiers.vb:
+  - Public
+  - ReadOnly
+- uid: Rssdp.Infrastructure.ResponseReceivedEventArgs.ReceivedFrom
+  commentId: P:Rssdp.Infrastructure.ResponseReceivedEventArgs.ReceivedFrom
+  id: ReceivedFrom
+  parent: Rssdp.Infrastructure.ResponseReceivedEventArgs
+  langs:
+  - csharp
+  - vb
+  name: ReceivedFrom
+  nameWithType: ResponseReceivedEventArgs.ReceivedFrom
+  fullName: Rssdp.Infrastructure.ResponseReceivedEventArgs.ReceivedFrom
+  type: Property
+  source:
+    id: ReceivedFrom
+    path: ''
+    startLine: 2308
+  assemblies:
+  - cs.temp.dll
+  namespace: Rssdp.Infrastructure
+  summary: "\nThe <xref href=\"Rssdp.Infrastructure.UdpEndPoint\" data-throw-if-not-resolved=\"false\"></xref> the response came from.\n"
+  example: []
+  syntax:
+    content: public UdpEndPoint ReceivedFrom { get; }
+    parameters: []
+    return:
+      type: Rssdp.Infrastructure.UdpEndPoint
+    content.vb: Public ReadOnly Property ReceivedFrom As UdpEndPoint
+  overload: Rssdp.Infrastructure.ResponseReceivedEventArgs.ReceivedFrom*
+  modifiers.csharp:
+  - public
+  - get
+  modifiers.vb:
+  - Public
+  - ReadOnly
+references:
+- uid: Rssdp.Infrastructure.ISsdpCommunicationsServer.ResponseReceived
+  commentId: E:Rssdp.Infrastructure.ISsdpCommunicationsServer.ResponseReceived
+  parent: Rssdp.Infrastructure.ISsdpCommunicationsServer
+  name: ResponseReceived
+  nameWithType: ISsdpCommunicationsServer.ResponseReceived
+  fullName: Rssdp.Infrastructure.ISsdpCommunicationsServer.ResponseReceived
+- uid: Rssdp.Infrastructure
+  commentId: N:Rssdp.Infrastructure
+  name: Rssdp.Infrastructure
+  nameWithType: Rssdp.Infrastructure
+  fullName: Rssdp.Infrastructure
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  name: Object
+  nameWithType: Object
+  fullName: System.Object
+- uid: System.EventArgs
+  commentId: T:System.EventArgs
+  parent: System
+  isExternal: true
+  name: EventArgs
+  nameWithType: EventArgs
+  fullName: System.EventArgs
+- uid: System.EventArgs.Empty
+  commentId: F:System.EventArgs.Empty
+  parent: System.EventArgs
+  isExternal: true
+  name: Empty
+  nameWithType: EventArgs.Empty
+  fullName: System.EventArgs.Empty
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  name: ToString()
+  nameWithType: Object.ToString()
+  fullName: System.Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    nameWithType: Object.ToString
+    fullName: System.Object.ToString
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    nameWithType: Object.ToString
+    fullName: System.Object.ToString
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  name: Equals(Object)
+  nameWithType: Object.Equals(Object)
+  fullName: System.Object.Equals(System.Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  name: Equals(Object, Object)
+  nameWithType: Object.Equals(Object, Object)
+  fullName: System.Object.Equals(System.Object, System.Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  name: ReferenceEquals(Object, Object)
+  nameWithType: Object.ReferenceEquals(Object, Object)
+  fullName: System.Object.ReferenceEquals(System.Object, System.Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    nameWithType: Object.ReferenceEquals
+    fullName: System.Object.ReferenceEquals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    nameWithType: Object.ReferenceEquals
+    fullName: System.Object.ReferenceEquals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  name: GetHashCode()
+  nameWithType: Object.GetHashCode()
+  fullName: System.Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    nameWithType: Object.GetHashCode
+    fullName: System.Object.GetHashCode
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    nameWithType: Object.GetHashCode
+    fullName: System.Object.GetHashCode
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  name: GetType()
+  nameWithType: Object.GetType()
+  fullName: System.Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    nameWithType: Object.GetType
+    fullName: System.Object.GetType
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    nameWithType: Object.GetType
+    fullName: System.Object.GetType
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  name: MemberwiseClone()
+  nameWithType: Object.MemberwiseClone()
+  fullName: System.Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    nameWithType: Object.MemberwiseClone
+    fullName: System.Object.MemberwiseClone
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    nameWithType: Object.MemberwiseClone
+    fullName: System.Object.MemberwiseClone
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: Rssdp.Infrastructure.ISsdpCommunicationsServer
+  commentId: T:Rssdp.Infrastructure.ISsdpCommunicationsServer
+  parent: Rssdp.Infrastructure
+  name: ISsdpCommunicationsServer
+  nameWithType: ISsdpCommunicationsServer
+  fullName: Rssdp.Infrastructure.ISsdpCommunicationsServer
+- uid: System
+  commentId: N:System
+  isExternal: true
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Rssdp.Infrastructure.UdpEndPoint
+  commentId: T:Rssdp.Infrastructure.UdpEndPoint
+  parent: Rssdp.Infrastructure
+  name: UdpEndPoint
+  nameWithType: UdpEndPoint
+  fullName: Rssdp.Infrastructure.UdpEndPoint
+- uid: Rssdp.Infrastructure.ResponseReceivedEventArgs.#ctor*
+  commentId: Overload:Rssdp.Infrastructure.ResponseReceivedEventArgs.#ctor
+  name: ResponseReceivedEventArgs
+  nameWithType: ResponseReceivedEventArgs.ResponseReceivedEventArgs
+  fullName: Rssdp.Infrastructure.ResponseReceivedEventArgs.ResponseReceivedEventArgs
+- uid: HttpResponseMessage
+  isExternal: true
+  name: HttpResponseMessage
+  nameWithType: HttpResponseMessage
+  fullName: HttpResponseMessage
+- uid: Rssdp.Infrastructure.ResponseReceivedEventArgs.Message*
+  commentId: Overload:Rssdp.Infrastructure.ResponseReceivedEventArgs.Message
+  name: Message
+  nameWithType: ResponseReceivedEventArgs.Message
+  fullName: Rssdp.Infrastructure.ResponseReceivedEventArgs.Message
+- uid: Rssdp.Infrastructure.ResponseReceivedEventArgs.ReceivedFrom*
+  commentId: Overload:Rssdp.Infrastructure.ResponseReceivedEventArgs.ReceivedFrom
+  name: ReceivedFrom
+  nameWithType: ResponseReceivedEventArgs.ReceivedFrom
+  fullName: Rssdp.Infrastructure.ResponseReceivedEventArgs.ReceivedFrom

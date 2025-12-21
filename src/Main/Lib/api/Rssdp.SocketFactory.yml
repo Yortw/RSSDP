@@ -1,0 +1,651 @@
+### YamlMime:ManagedReference
+items:
+- uid: Rssdp.SocketFactory
+  commentId: T:Rssdp.SocketFactory
+  id: SocketFactory
+  parent: Rssdp
+  children:
+  - Rssdp.SocketFactory.#ctor(System.String)
+  - Rssdp.SocketFactory.CreateUdpMulticastSocket(System.Int32,System.Int32)
+  - Rssdp.SocketFactory.CreateUdpSocket(System.Int32)
+  - Rssdp.SocketFactory.DeviceNetworkType
+  langs:
+  - csharp
+  - vb
+  name: SocketFactory
+  nameWithType: SocketFactory
+  fullName: Rssdp.SocketFactory
+  type: Class
+  source:
+    id: SocketFactory
+    path: ''
+    startLine: 2417
+  assemblies:
+  - cs.temp.dll
+  namespace: Rssdp
+  summary: "\nUsed by RSSDP components to create implementations of the <xref href=\"Rssdp.Infrastructure.IUdpSocket\" data-throw-if-not-resolved=\"false\"></xref> interface, to perform platform agnostic socket communications.\n"
+  example: []
+  syntax:
+    content: 'public sealed class SocketFactory : ISocketFactory'
+    content.vb: >-
+      Public NotInheritable Class SocketFactory
+          Implements ISocketFactory
+  inheritance:
+  - System.Object
+  implements:
+  - Rssdp.Infrastructure.ISocketFactory
+  inheritedMembers:
+  - System.Object.ToString
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  modifiers.csharp:
+  - public
+  - sealed
+  - class
+  modifiers.vb:
+  - Public
+  - NotInheritable
+  - Class
+- uid: Rssdp.SocketFactory.#ctor(System.String)
+  commentId: M:Rssdp.SocketFactory.#ctor(System.String)
+  id: '#ctor(System.String)'
+  parent: Rssdp.SocketFactory
+  langs:
+  - csharp
+  - vb
+  name: SocketFactory(String)
+  nameWithType: SocketFactory.SocketFactory(String)
+  fullName: Rssdp.SocketFactory.SocketFactory(System.String)
+  type: Constructor
+  source:
+    id: .ctor
+    path: ''
+    startLine: 2427
+  assemblies:
+  - cs.temp.dll
+  namespace: Rssdp
+  summary: "\nDefault constructor.\n"
+  example: []
+  syntax:
+    content: public SocketFactory(string ipAddress)
+    parameters:
+    - id: ipAddress
+      type: System.String
+      description: "The IP address of the local network adapter to bind sockets to. \nNull or empty string will use <see cref=\"!:IPAddress.Any\"></see>."
+    content.vb: Public Sub New(ipAddress As String)
+  overload: Rssdp.SocketFactory.#ctor*
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+- uid: Rssdp.SocketFactory.CreateUdpSocket(System.Int32)
+  commentId: M:Rssdp.SocketFactory.CreateUdpSocket(System.Int32)
+  id: CreateUdpSocket(System.Int32)
+  parent: Rssdp.SocketFactory
+  langs:
+  - csharp
+  - vb
+  name: CreateUdpSocket(Int32)
+  nameWithType: SocketFactory.CreateUdpSocket(Int32)
+  fullName: Rssdp.SocketFactory.CreateUdpSocket(System.Int32)
+  type: Method
+  source:
+    id: CreateUdpSocket
+    path: ''
+    startLine: 2444
+  assemblies:
+  - cs.temp.dll
+  namespace: Rssdp
+  summary: "\nCreates a new UDP socket that is a member of the SSDP multicast local admin group and binds it to the specified local port.\n"
+  example: []
+  syntax:
+    content: public IUdpSocket CreateUdpSocket(int localPort)
+    parameters:
+    - id: localPort
+      type: System.Int32
+      description: An integer specifying the local port to bind the socket to.
+    return:
+      type: Rssdp.Infrastructure.IUdpSocket
+      description: An implementation of the <xref href="Rssdp.Infrastructure.IUdpSocket" data-throw-if-not-resolved="false"></xref> interface used by RSSDP components to perform socket operations.
+    content.vb: Public Function CreateUdpSocket(localPort As Integer) As IUdpSocket
+  overload: Rssdp.SocketFactory.CreateUdpSocket*
+  implements:
+  - Rssdp.Infrastructure.ISocketFactory.CreateUdpSocket(System.Int32)
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+- uid: Rssdp.SocketFactory.CreateUdpMulticastSocket(System.Int32,System.Int32)
+  commentId: M:Rssdp.SocketFactory.CreateUdpMulticastSocket(System.Int32,System.Int32)
+  id: CreateUdpMulticastSocket(System.Int32,System.Int32)
+  parent: Rssdp.SocketFactory
+  langs:
+  - csharp
+  - vb
+  name: CreateUdpMulticastSocket(Int32, Int32)
+  nameWithType: SocketFactory.CreateUdpMulticastSocket(Int32, Int32)
+  fullName: Rssdp.SocketFactory.CreateUdpMulticastSocket(System.Int32, System.Int32)
+  type: Method
+  source:
+    id: CreateUdpMulticastSocket
+    path: ''
+    startLine: 2472
+  assemblies:
+  - cs.temp.dll
+  namespace: Rssdp
+  summary: "\nCreates a new UDP socket that is a member of the specified multicast IP address, and binds it to the specified local port.\n"
+  example: []
+  syntax:
+    content: public IUdpSocket CreateUdpMulticastSocket(int multicastTimeToLive, int localPort)
+    parameters:
+    - id: multicastTimeToLive
+      type: System.Int32
+      description: The multicast time to live value for the socket.
+    - id: localPort
+      type: System.Int32
+      description: The number of the local port to bind to.
+    return:
+      type: Rssdp.Infrastructure.IUdpSocket
+      description: ''
+    content.vb: Public Function CreateUdpMulticastSocket(multicastTimeToLive As Integer, localPort As Integer) As IUdpSocket
+  overload: Rssdp.SocketFactory.CreateUdpMulticastSocket*
+  implements:
+  - Rssdp.Infrastructure.ISocketFactory.CreateUdpMulticastSocket(System.Int32,System.Int32)
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+- uid: Rssdp.SocketFactory.DeviceNetworkType
+  commentId: P:Rssdp.SocketFactory.DeviceNetworkType
+  id: DeviceNetworkType
+  parent: Rssdp.SocketFactory
+  langs:
+  - csharp
+  - vb
+  name: DeviceNetworkType
+  nameWithType: SocketFactory.DeviceNetworkType
+  fullName: Rssdp.SocketFactory.DeviceNetworkType
+  type: Property
+  source:
+    id: DeviceNetworkType
+    path: ''
+    startLine: 2511
+  assemblies:
+  - cs.temp.dll
+  namespace: Rssdp
+  summary: "\nWhat type of sockets will be created: ipv6 or ipv4\n"
+  example: []
+  syntax:
+    content: public DeviceNetworkType DeviceNetworkType { get; }
+    parameters: []
+    return:
+      type: Rssdp.DeviceNetworkType
+    content.vb: Public ReadOnly Property DeviceNetworkType As DeviceNetworkType
+  overload: Rssdp.SocketFactory.DeviceNetworkType*
+  implements:
+  - Rssdp.Infrastructure.ISocketFactory.DeviceNetworkType
+  modifiers.csharp:
+  - public
+  - get
+  modifiers.vb:
+  - Public
+  - ReadOnly
+references:
+- uid: Rssdp.Infrastructure.IUdpSocket
+  commentId: T:Rssdp.Infrastructure.IUdpSocket
+  parent: Rssdp.Infrastructure
+  name: IUdpSocket
+  nameWithType: IUdpSocket
+  fullName: Rssdp.Infrastructure.IUdpSocket
+- uid: Rssdp
+  commentId: N:Rssdp
+  name: Rssdp
+  nameWithType: Rssdp
+  fullName: Rssdp
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  name: Object
+  nameWithType: Object
+  fullName: System.Object
+- uid: Rssdp.Infrastructure.ISocketFactory
+  commentId: T:Rssdp.Infrastructure.ISocketFactory
+  parent: Rssdp.Infrastructure
+  name: ISocketFactory
+  nameWithType: ISocketFactory
+  fullName: Rssdp.Infrastructure.ISocketFactory
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  name: ToString()
+  nameWithType: Object.ToString()
+  fullName: System.Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    nameWithType: Object.ToString
+    fullName: System.Object.ToString
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    nameWithType: Object.ToString
+    fullName: System.Object.ToString
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  name: Equals(Object)
+  nameWithType: Object.Equals(Object)
+  fullName: System.Object.Equals(System.Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  name: Equals(Object, Object)
+  nameWithType: Object.Equals(Object, Object)
+  fullName: System.Object.Equals(System.Object, System.Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  name: ReferenceEquals(Object, Object)
+  nameWithType: Object.ReferenceEquals(Object, Object)
+  fullName: System.Object.ReferenceEquals(System.Object, System.Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    nameWithType: Object.ReferenceEquals
+    fullName: System.Object.ReferenceEquals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    nameWithType: Object.ReferenceEquals
+    fullName: System.Object.ReferenceEquals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  name: GetHashCode()
+  nameWithType: Object.GetHashCode()
+  fullName: System.Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    nameWithType: Object.GetHashCode
+    fullName: System.Object.GetHashCode
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    nameWithType: Object.GetHashCode
+    fullName: System.Object.GetHashCode
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  name: GetType()
+  nameWithType: Object.GetType()
+  fullName: System.Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    nameWithType: Object.GetType
+    fullName: System.Object.GetType
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    nameWithType: Object.GetType
+    fullName: System.Object.GetType
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  name: MemberwiseClone()
+  nameWithType: Object.MemberwiseClone()
+  fullName: System.Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    nameWithType: Object.MemberwiseClone
+    fullName: System.Object.MemberwiseClone
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    nameWithType: Object.MemberwiseClone
+    fullName: System.Object.MemberwiseClone
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: Rssdp.Infrastructure
+  commentId: N:Rssdp.Infrastructure
+  name: Rssdp.Infrastructure
+  nameWithType: Rssdp.Infrastructure
+  fullName: Rssdp.Infrastructure
+- uid: System
+  commentId: N:System
+  isExternal: true
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Rssdp.SocketFactory.#ctor*
+  commentId: Overload:Rssdp.SocketFactory.#ctor
+  name: SocketFactory
+  nameWithType: SocketFactory.SocketFactory
+  fullName: Rssdp.SocketFactory.SocketFactory
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  name: String
+  nameWithType: String
+  fullName: System.String
+- uid: Rssdp.SocketFactory.CreateUdpSocket*
+  commentId: Overload:Rssdp.SocketFactory.CreateUdpSocket
+  name: CreateUdpSocket
+  nameWithType: SocketFactory.CreateUdpSocket
+  fullName: Rssdp.SocketFactory.CreateUdpSocket
+- uid: Rssdp.Infrastructure.ISocketFactory.CreateUdpSocket(System.Int32)
+  commentId: M:Rssdp.Infrastructure.ISocketFactory.CreateUdpSocket(System.Int32)
+  parent: Rssdp.Infrastructure.ISocketFactory
+  isExternal: true
+  name: CreateUdpSocket(Int32)
+  nameWithType: ISocketFactory.CreateUdpSocket(Int32)
+  fullName: Rssdp.Infrastructure.ISocketFactory.CreateUdpSocket(System.Int32)
+  spec.csharp:
+  - uid: Rssdp.Infrastructure.ISocketFactory.CreateUdpSocket(System.Int32)
+    name: CreateUdpSocket
+    nameWithType: ISocketFactory.CreateUdpSocket
+    fullName: Rssdp.Infrastructure.ISocketFactory.CreateUdpSocket
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Int32
+    name: Int32
+    nameWithType: Int32
+    fullName: System.Int32
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: Rssdp.Infrastructure.ISocketFactory.CreateUdpSocket(System.Int32)
+    name: CreateUdpSocket
+    nameWithType: ISocketFactory.CreateUdpSocket
+    fullName: Rssdp.Infrastructure.ISocketFactory.CreateUdpSocket
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Int32
+    name: Int32
+    nameWithType: Int32
+    fullName: System.Int32
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  name: Int32
+  nameWithType: Int32
+  fullName: System.Int32
+- uid: Rssdp.SocketFactory.CreateUdpMulticastSocket*
+  commentId: Overload:Rssdp.SocketFactory.CreateUdpMulticastSocket
+  name: CreateUdpMulticastSocket
+  nameWithType: SocketFactory.CreateUdpMulticastSocket
+  fullName: Rssdp.SocketFactory.CreateUdpMulticastSocket
+- uid: Rssdp.Infrastructure.ISocketFactory.CreateUdpMulticastSocket(System.Int32,System.Int32)
+  commentId: M:Rssdp.Infrastructure.ISocketFactory.CreateUdpMulticastSocket(System.Int32,System.Int32)
+  parent: Rssdp.Infrastructure.ISocketFactory
+  isExternal: true
+  name: CreateUdpMulticastSocket(Int32, Int32)
+  nameWithType: ISocketFactory.CreateUdpMulticastSocket(Int32, Int32)
+  fullName: Rssdp.Infrastructure.ISocketFactory.CreateUdpMulticastSocket(System.Int32, System.Int32)
+  spec.csharp:
+  - uid: Rssdp.Infrastructure.ISocketFactory.CreateUdpMulticastSocket(System.Int32,System.Int32)
+    name: CreateUdpMulticastSocket
+    nameWithType: ISocketFactory.CreateUdpMulticastSocket
+    fullName: Rssdp.Infrastructure.ISocketFactory.CreateUdpMulticastSocket
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Int32
+    name: Int32
+    nameWithType: Int32
+    fullName: System.Int32
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Int32
+    name: Int32
+    nameWithType: Int32
+    fullName: System.Int32
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: Rssdp.Infrastructure.ISocketFactory.CreateUdpMulticastSocket(System.Int32,System.Int32)
+    name: CreateUdpMulticastSocket
+    nameWithType: ISocketFactory.CreateUdpMulticastSocket
+    fullName: Rssdp.Infrastructure.ISocketFactory.CreateUdpMulticastSocket
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Int32
+    name: Int32
+    nameWithType: Int32
+    fullName: System.Int32
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Int32
+    name: Int32
+    nameWithType: Int32
+    fullName: System.Int32
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: Rssdp.SocketFactory.DeviceNetworkType*
+  commentId: Overload:Rssdp.SocketFactory.DeviceNetworkType
+  name: DeviceNetworkType
+  nameWithType: SocketFactory.DeviceNetworkType
+  fullName: Rssdp.SocketFactory.DeviceNetworkType
+- uid: Rssdp.Infrastructure.ISocketFactory.DeviceNetworkType
+  commentId: P:Rssdp.Infrastructure.ISocketFactory.DeviceNetworkType
+  parent: Rssdp.Infrastructure.ISocketFactory
+  name: DeviceNetworkType
+  nameWithType: ISocketFactory.DeviceNetworkType
+  fullName: Rssdp.Infrastructure.ISocketFactory.DeviceNetworkType
+- uid: Rssdp.DeviceNetworkType
+  commentId: T:Rssdp.DeviceNetworkType
+  parent: Rssdp
+  name: DeviceNetworkType
+  nameWithType: DeviceNetworkType
+  fullName: Rssdp.DeviceNetworkType
