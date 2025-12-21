@@ -1,0 +1,74 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<!-- <TargetFrameworks>netstandard2.0;net48;net6.0;net8.0;net8.0-android;net8.0-ios;uap10.0.16299</TargetFrameworks> -->
+		<TargetFrameworks>netstandard2.0;net48;net6.0;net8.0</TargetFrameworks>
+		<RootNamespace>Rssdp</RootNamespace>
+		<AssemblyName>Rssdp</AssemblyName>
+		<GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+		<PackageId>Rssdp</PackageId>
+		<Title>Rssdp</Title>
+		<Version>$(VersionPrefix)5.0.0</Version>
+		<Authors>Troy Willmot</Authors>
+		<Owners>Yortw</Owners>
+		<Description>Really Simple Service Discovery Protocol - a 100% .Net implementation of the SSDP protocol for publishing custom/basic devices, and discovering all device types on a network.</Description>
+		<Copyright>Copyright 2015, © Troy Willmot. All rights reserved.</Copyright>
+		<PackageProjectUrl>https://github.com/Yortw/RSSDP</PackageProjectUrl>
+		<PackageIcon>RssdpIcon.png</PackageIcon>
+		<PackageReadmeFile>README.md</PackageReadmeFile>
+		<PackageTags>ssdp discovery device service protocol upnp</PackageTags>
+		<PackageReleaseNotes>
+			* Modernised solution architecture
+			* Dropped unspported/old platforms
+			* Added support for newer platforms
+		</PackageReleaseNotes>
+		<RepositoryType>git</RepositoryType>
+		<RepositoryUrl>https://github.com/Yortw/RSSDP.git</RepositoryUrl>
+		<PackageLicenseExpression>MIT</PackageLicenseExpression>
+		<IncludeSymbols>True</IncludeSymbols>
+		<EnableNETAnalyzers>True</EnableNETAnalyzers>
+		<EnforceCodeStyleInBuild>True</EnforceCodeStyleInBuild>
+		<AnalysisLevel>latest-recommended</AnalysisLevel>
+		<SuppressTfmSupportBuildWarnings>true</SuppressTfmSupportBuildWarnings>
+
+		<!-- Required for UAP support -->
+		<AssetTargetFallback Condition="'$(TargetFramework)' == 'uap10.0.16299'">$(AssetTargetFallback);net472;netcore50</AssetTargetFallback>
+
+		<!-- Required for Android/iOS - specifies minimum supported OS versions -->
+		<SupportedOSPlatformVersion Condition="'$(TargetFramework)' == 'net8.0-android'">21.0</SupportedOSPlatformVersion>
+		<SupportedOSPlatformVersion Condition="'$(TargetFramework)' == 'net8.0-ios'">11.0</SupportedOSPlatformVersion>
+		<Product>Really Simple Service Discovery Protocol</Product>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<None Include="..\..\..\README.md">
+			<Pack>True</Pack>
+			<PackagePath>\</PackagePath>
+			<Visible>False</Visible>
+		</None>
+		<None Include="..\..\..\RssdpIcon.png">
+			<Pack>True</Pack>
+			<PackagePath>\</PackagePath>
+			<Visible>False</Visible>
+		</None>
+		<None Include="RssdpIcon.ico">
+			<Pack>True</Pack>
+			<PackagePath>\</PackagePath>
+			<Visible>False</Visible>
+		</None>
+	</ItemGroup>
+
+	<!-- UAP requires Microsoft.NETCore.UniversalWindowsPlatform -->
+	<ItemGroup Condition="'$(TargetFramework)' == 'uap10.0.16299'">
+		<PackageReference Include="Microsoft.NETCore.UniversalWindowsPlatform" Version="6.2.14" />
+	</ItemGroup>
+
+	<ItemGroup Condition="'$(TargetFramework)' == 'net48'">
+		<PackageReference Include="docfx.console" Version="2.59.4">
+			<PrivateAssets>all</PrivateAssets>
+			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+		</PackageReference>
+		<PackageReference Include="System.Net.Http" Version="4.3.4" />
+	</ItemGroup>
+
+</Project>
