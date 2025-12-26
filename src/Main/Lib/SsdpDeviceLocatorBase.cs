@@ -15,11 +15,11 @@ namespace Rssdp.Infrastructure
 
 		#region Fields & Constants
 
-		private List<DiscoveredSsdpDevice> _Devices;
+		private readonly List<DiscoveredSsdpDevice> _Devices;
 		private ISsdpCommunicationsServer _CommunicationsServer;
 
 		private List<DiscoveredSsdpDevice> _SearchResults;
-		private object _SearchResultsSynchroniser;
+		private readonly object _SearchResultsSynchroniser;
 
 		private System.Threading.Timer _ExpireCachedDevicesTimer;
 
@@ -187,8 +187,7 @@ namespace Rssdp.Infrastructure
 				var server = _CommunicationsServer;
 				try
 				{
-					if (server != null) // In case we were disposed while searching.
-						server.StopListeningForResponses();
+					server?.StopListeningForResponses(); // Null check in case we were disposed while searching.
 				}
 				catch (ObjectDisposedException) { }
 			}
@@ -244,9 +243,7 @@ namespace Rssdp.Infrastructure
 		{
 			if (this.IsDisposed) return;
 
-			var handlers = this.DeviceAvailable;
-			if (handlers != null)
-				handlers(this, new DeviceAvailableEventArgs(device, isNewDevice));
+			this.DeviceAvailable?.Invoke(this, new DeviceAvailableEventArgs(device, isNewDevice));
 		}
 
 		/// <summary>
@@ -259,9 +256,7 @@ namespace Rssdp.Infrastructure
 		{
 			if (this.IsDisposed) return;
 
-			var handlers = this.DeviceUnavailable;
-			if (handlers != null)
-				handlers(this, new DeviceUnavailableEventArgs(device, expired));
+			this.DeviceUnavailable?.Invoke(this, new DeviceUnavailableEventArgs(device, expired));
 		}
 
 		#endregion
@@ -314,8 +309,7 @@ namespace Rssdp.Infrastructure
 			if (disposing)
 			{
 				var timer = _ExpireCachedDevicesTimer;
-				if (timer != null)
-					timer.Dispose();
+				timer?.Dispose();
 
 				var commsServer = _CommunicationsServer;
 				_CommunicationsServer = null;
@@ -387,7 +381,9 @@ namespace Rssdp.Infrastructure
 					}
 				}
 				else
+				{
 					raiseEvent = true;
+				}
 			}
 
 			if (raiseEvent)
@@ -516,8 +512,8 @@ namespace Rssdp.Infrastructure
 		{
 			if (IsDisposed) return;
 
-			if (_ExpireCachedDevicesTimer == null)
-				_ExpireCachedDevicesTimer = new Timer(this.ExpireCachedDevices, null, System.Threading.Timeout.Infinite, System.Threading.Timeout.Infinite);
+			_ExpireCachedDevicesTimer ??= 
+				new Timer(this.ExpireCachedDevices, null, System.Threading.Timeout.Infinite, System.Threading.Timeout.Infinite);
 
 			_ExpireCachedDevicesTimer.Change(60000, System.Threading.Timeout.Infinite);
 		}
@@ -532,10 +528,9 @@ namespace Rssdp.Infrastructure
 		private static string GetFirstHeaderStringValue(string headerName, HttpResponseMessage message)
 		{
 			string retVal = null;
-			IEnumerable<string> values;
 			if (message.Headers.Contains(headerName))
 			{
-				message.Headers.TryGetValues(headerName, out values);
+				message.Headers.TryGetValues(headerName, out var values);
 				if (values != null)
 					retVal = values.FirstOrDefault();
 			}
@@ -546,10 +541,9 @@ namespace Rssdp.Infrastructure
 		private static string GetFirstHeaderStringValue(string headerName, HttpRequestMessage message)
 		{
 			string retVal = null;
-			IEnumerable<string> values;
 			if (message.Headers.Contains(headerName))
 			{
-				message.Headers.TryGetValues(headerName, out values);
+				message.Headers.TryGetValues(headerName, out var values);
 				if (values != null)
 					retVal = values.FirstOrDefault();
 			}
@@ -560,32 +554,28 @@ namespace Rssdp.Infrastructure
 		private static Uri GetFirstHeaderUriValue(string headerName, HttpRequestMessage request)
 		{
 			string value = null;
-			IEnumerable<string> values;
 			if (request.Headers.Contains(headerName))
 			{
-				request.Headers.TryGetValues(headerName, out values);
+				request.Headers.TryGetValues(headerName, out var values);
 				if (values != null)
 					value = values.FirstOrDefault();
 			}
 
-			Uri retVal;
-			Uri.TryCreate(value, UriKind.RelativeOrAbsolute, out retVal);
+			Uri.TryCreate(value, UriKind.RelativeOrAbsolute, out var retVal);
 			return retVal;
 		}
 
 		private static Uri GetFirstHeaderUriValue(string headerName, HttpResponseMessage response)
 		{
 			string value = null;
-			IEnumerable<string> values;
 			if (response.Headers.Contains(headerName))
 			{
-				response.Headers.TryGetValues(headerName, out values);
+				response.Headers.TryGetValues(headerName, out var values);
 				if (values != null)
 					value = values.FirstOrDefault();
 			}
 
-			Uri retVal;
-			Uri.TryCreate(value, UriKind.RelativeOrAbsolute, out retVal);
+			Uri.TryCreate(value, UriKind.RelativeOrAbsolute, out var retVal);
 			return retVal;
 		}
 
