@@ -14,8 +14,8 @@ namespace Rssdp.Infrastructure
 
 		#region Fields
 
-		private static readonly string[] LineTerminators = new string[] { "\r\n", "\n" };
-		private static readonly char[] SeparatorCharacters = new char[] { ',', ';' };
+		private static readonly string[] LineTerminators = ["\r\n", "\n"];
+		private static readonly char[] SeparatorCharacters = [',', ';'];
 
 		#endregion
 
@@ -35,7 +35,7 @@ namespace Rssdp.Infrastructure
 		/// <param name="headers">A reference to the <see cref="System.Net.Http.Headers.HttpHeaders"/> collection for the <paramref name="message"/> object.</param>
 		/// <param name="data">A string containing the data to be parsed.</param>
 		/// <returns>An <see cref="System.Net.Http.HttpContent"/> object containing the content of the parsed message.</returns>
-		[System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2202:Do not dispose objects multiple times", Justification="Honestly, it's fine. MemoryStream doesn't mind.")]
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2202:Do not dispose objects multiple times", Justification = "Honestly, it's fine. MemoryStream doesn't mind.")]
 		protected virtual HttpContent Parse(T message, System.Net.Http.Headers.HttpHeaders headers, string data)
 		{
 			if (data == null) throw new ArgumentNullException(nameof(data));
@@ -71,16 +71,14 @@ namespace Rssdp.Infrastructure
 				}
 				catch
 				{
-					if (contentStream != null)
-						contentStream.Dispose();
+					contentStream?.Dispose();
 
 					throw;
 				}
 			}
 			catch
 			{
-				if (retVal != null)
-					retVal.Dispose();
+				retVal?.Dispose();
 
 				throw;
 			}
@@ -152,7 +150,7 @@ namespace Rssdp.Infrastructure
 		{
 			//Blank line separates headers from content, so read headers until we find blank line.
 			var lineIndex = 1;
-			string line = null, nextLine = null;
+			string line, nextLine;
 			while (lineIndex + 1 < lines.Length && !String.IsNullOrEmpty((line = lines[lineIndex++])))
 			{
 				//If the following line starts with space or tab (or any whitespace), it is really part of this header but split for human readability.
@@ -165,7 +163,9 @@ namespace Rssdp.Infrastructure
 						lineIndex++;
 					}
 					else
+					{
 						break;
+					}
 				}
 
 				ParseHeader(line, headers, contentHeaders);
@@ -188,7 +188,9 @@ namespace Rssdp.Infrastructure
 
 			var indexOfSeparator = headerValue.IndexOfAny(SeparatorCharacters);
 			if (indexOfSeparator <= 0)
+			{
 				values.Add(headerValue);
+			}
 			else
 			{
 				var segments = headerValue.Split(SeparatorCharacters);
@@ -204,7 +206,9 @@ namespace Rssdp.Infrastructure
 					}
 				}
 				else
+				{
 					values.AddRange(segments);
+				}
 			}
 
 			return values;
