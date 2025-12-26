@@ -148,3 +148,5 @@ dotnet_code_quality_unused_parameters = all:suggestion
 # Diagnostics
 dotnet_diagnostic.CA1510.severity = none
 dotnet_diagnostic.CA1513.severity = none
+dotnet_diagnostic.IDE0028.severity = none
+dotnet_diagnostic.IDE0305.severity = none
