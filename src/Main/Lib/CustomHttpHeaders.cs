@@ -175,7 +175,7 @@ namespace Rssdp
 
 			lock (_Headers)
 			{
-				if (_Headers.ContainsKey(header.Name) && _Headers[header.Name] == header)
+				if (_Headers.TryGetValue(header.Name, out var existingHeader) && existingHeader == header)
 					return _Headers.Remove(header.Name);
 			}
 
@@ -211,11 +211,9 @@ namespace Rssdp
 
 			lock (_Headers)
 			{
-				if (_Headers.ContainsKey(header.Name))
-					return _Headers[header.Name] == header;
+				return _Headers.TryGetValue(header.Name, out var existingHeader)
+					&& existingHeader == header;
 			}
-
-			return false;
 		}
 
 		/// <summary>

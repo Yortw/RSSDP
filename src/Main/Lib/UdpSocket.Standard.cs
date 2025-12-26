@@ -159,7 +159,7 @@ namespace Rssdp
 
 		#region Private Classes
 
-		private class AsyncReceiveState
+		private sealed class AsyncReceiveState
 		{
 			public AsyncReceiveState(System.Net.Sockets.Socket socket, EndPoint endPoint)
 			{

@@ -1045,7 +1045,7 @@ USN: {1}
 
 		#region Private Classes
 
-		private class SearchRequest
+		private sealed class SearchRequest
 		{
 			public UdpEndPoint EndPoint { get; set; }
 			public DateTime Received { get; set; }

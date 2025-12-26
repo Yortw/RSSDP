@@ -81,7 +81,7 @@ namespace Rssdp
 			
 			lock (_Properties)
 			{
-				if (_Properties.ContainsKey(customDeviceProperty.FullName) && _Properties[customDeviceProperty.FullName] == customDeviceProperty)
+				if (_Properties.TryGetValue(customDeviceProperty.FullName, out var existingProperty) && existingProperty == customDeviceProperty)
 					return _Properties.Remove(customDeviceProperty.FullName);
 			}
 
@@ -118,11 +118,9 @@ namespace Rssdp
 
 			lock (_Properties)
 			{
-				if (_Properties.ContainsKey(customDeviceProperty.FullName))
-					return _Properties[customDeviceProperty.FullName] == customDeviceProperty;
+				return _Properties.TryGetValue(customDeviceProperty.FullName, out var existingProperty) 
+					&& existingProperty == customDeviceProperty;
 			}
-
-			return false;
 		}
 
 		/// <summary>
