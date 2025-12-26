@@ -408,16 +408,16 @@ USN: {1}
 		{
 			lock (_Devices)
 			{
-				if (String.Compare(SsdpConstants.SsdpDiscoverAllSTHeader, searchTarget, StringComparison.OrdinalIgnoreCase) == 0)
+				if (String.Equals(SsdpConstants.SsdpDiscoverAllSTHeader, searchTarget, StringComparison.OrdinalIgnoreCase))
 					devices = GetAllDevicesAsFlatEnumerable().ToArray();
-				else if (String.Compare(SsdpConstants.UpnpDeviceTypeRootDevice, searchTarget, StringComparison.OrdinalIgnoreCase) == 0 || (IsWindowsExplorerSupportEnabled && String.Compare(SsdpConstants.PnpDeviceTypeRootDevice, searchTarget, StringComparison.OrdinalIgnoreCase) == 0))
+				else if (String.Equals(SsdpConstants.UpnpDeviceTypeRootDevice, searchTarget, StringComparison.OrdinalIgnoreCase) || (IsWindowsExplorerSupportEnabled && String.Equals(SsdpConstants.PnpDeviceTypeRootDevice, searchTarget, StringComparison.OrdinalIgnoreCase)))
 					devices = _Devices.ToArray();
 				else if (searchTarget.Trim().StartsWith("uuid:", StringComparison.OrdinalIgnoreCase))
 				{
 					devices = (
 											from device
 											in GetAllDevicesAsFlatEnumerable()
-											where String.Compare(device.Uuid, searchTarget.Substring(5), StringComparison.OrdinalIgnoreCase) == 0
+											where String.Equals(device.Uuid, searchTarget.Substring(5), StringComparison.OrdinalIgnoreCase)
 											select device
 										).ToArray();
 				}
@@ -432,7 +432,7 @@ USN: {1}
 							(
 								from s in
 								device.Services
-								where String.Compare(s.FullServiceType, searchTarget, StringComparison.OrdinalIgnoreCase) == 0
+								where String.Equals(s.FullServiceType, searchTarget, StringComparison.OrdinalIgnoreCase)
 								select s
 							).Any()
 							select device
@@ -444,7 +444,7 @@ USN: {1}
 						(
 							from device
 							in GetAllDevicesAsFlatEnumerable()
-							where String.Compare(device.FullDeviceType, searchTarget, StringComparison.OrdinalIgnoreCase) == 0
+							where String.Equals(device.FullDeviceType, searchTarget, StringComparison.OrdinalIgnoreCase)
 							select device
 						).ToArray();
 					}
@@ -1038,7 +1038,7 @@ USN: {1}
 				else
 					ProcessSearchRequest(GetFirstHeaderValue(e.Message.Headers, "MX"), GetFirstHeaderValue(e.Message.Headers, "ST"), e.ReceivedFrom);
 			}
-			else if (String.Compare(e.Message.Method.Method, "NOTIFY", StringComparison.OrdinalIgnoreCase) != 0)
+			else if (!String.Equals(e.Message.Method.Method, "NOTIFY", StringComparison.OrdinalIgnoreCase))
 				_Log.LogWarning(String.Format(System.Globalization.CultureInfo.InvariantCulture, "Unknown request \"{0}\"received, ignoring.", e.Message.Method.Method));
 		}
 

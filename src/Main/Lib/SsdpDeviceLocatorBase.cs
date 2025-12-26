@@ -455,12 +455,12 @@ namespace Rssdp.Infrastructure
 
 		private void ProcessNotificationMessage(HttpRequestMessage message)
 		{
-			if (String.Compare(message.Method.Method, "Notify", StringComparison.OrdinalIgnoreCase) != 0) return;
+			if (!String.Equals(message.Method.Method, "Notify", StringComparison.OrdinalIgnoreCase)) return;
 
 			var notificationType = GetFirstHeaderStringValue("NTS", message);
-			if (String.Compare(notificationType, SsdpConstants.SsdpKeepAliveNotification, StringComparison.OrdinalIgnoreCase) == 0)
+			if (String.Equals(notificationType, SsdpConstants.SsdpKeepAliveNotification, StringComparison.OrdinalIgnoreCase))
 				ProcessAliveNotification(message);
-			else if (String.Compare(notificationType, SsdpConstants.SsdpByeByeNotification, StringComparison.OrdinalIgnoreCase) == 0)
+			else if (String.Equals(notificationType, SsdpConstants.SsdpByeByeNotification, StringComparison.OrdinalIgnoreCase))
 				ProcessByeByeNotification(message);
 		}
 
