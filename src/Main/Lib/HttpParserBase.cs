@@ -173,7 +173,7 @@ namespace Rssdp.Infrastructure
 			return lineIndex;
 		}
 
-		private static IList<string> ParseValues(string headerValue)
+		private static List<string> ParseValues(string headerValue)
 		{
 			// This really should be better and match the HTTP 1.1 spec,
 			// but this should actually be good enough for SSDP implementations

@@ -26,8 +26,8 @@ namespace Rssdp
 		private SsdpDevicePropertiesCollection _CustomProperties;
 		private CustomHttpHeadersCollection _CustomResponseHeaders;
 
-		private IList<SsdpDevice> _Devices;
-		private IList<SsdpService> _Services;
+		private List<SsdpDevice> _Devices;
+		private List<SsdpService> _Services;
 
 		#endregion
 

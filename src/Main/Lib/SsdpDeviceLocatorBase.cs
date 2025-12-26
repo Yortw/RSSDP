@@ -18,7 +18,7 @@ namespace Rssdp.Infrastructure
 		private List<DiscoveredSsdpDevice> _Devices;
 		private ISsdpCommunicationsServer _CommunicationsServer;
 
-		private IList<DiscoveredSsdpDevice> _SearchResults;
+		private List<DiscoveredSsdpDevice> _SearchResults;
 		private object _SearchResultsSynchroniser;
 
 		private System.Threading.Timer _ExpireCachedDevicesTimer;
@@ -638,7 +638,7 @@ namespace Rssdp.Infrastructure
 			}
 		}
 
-		private IEnumerable<DiscoveredSsdpDevice> GetUnexpiredDevices()
+		private DiscoveredSsdpDevice[] GetUnexpiredDevices()
 		{
 			lock (_Devices)
 			{
@@ -703,7 +703,7 @@ namespace Rssdp.Infrastructure
 			return (from d in devices where d.NotificationType == notificationType && d.Usn == usn select d).FirstOrDefault();
 		}
 
-		private static IEnumerable<DiscoveredSsdpDevice> FindExistingDeviceNotifications(IList<DiscoveredSsdpDevice> devices, string usn)
+		private static DiscoveredSsdpDevice[] FindExistingDeviceNotifications(IList<DiscoveredSsdpDevice> devices, string usn)
 		{
 			return (from d in devices where d.Usn == usn select d).ToArray();
 		}

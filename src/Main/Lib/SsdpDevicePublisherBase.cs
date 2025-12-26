@@ -21,14 +21,14 @@ namespace Rssdp.Infrastructure
 		private bool _SupportPnpRootDevice;
 		private SsdpStandardsMode _StandardsMode;
 
-		private IList<SsdpRootDevice> _Devices;
+		private List<SsdpRootDevice> _Devices;
 		private ReadOnlyEnumerable<SsdpRootDevice> _ReadOnlyDevices;
 
 		private System.Threading.Timer _RebroadcastAliveNotificationsTimer;
 		private TimeSpan _RebroadcastAliveNotificationsTimeSpan;
 		private DateTime _LastNotificationTime;
 
-		private IDictionary<string, SearchRequest> _RecentSearchRequests;
+		private Dictionary<string, SearchRequest> _RecentSearchRequests;
 		private IUpnpDeviceValidator _DeviceValidator;
 
 		private Random _Random;
@@ -193,12 +193,8 @@ USN: {1}
 			TimeSpan minCacheTime = TimeSpan.Zero;
 			lock (_Devices)
 			{
-				if (_Devices.Contains(device))
-				{
-					_Devices.Remove(device);
-					wasRemoved = true;
-					minCacheTime = GetMinimumNonZeroCacheLifetime();
-				}
+				wasRemoved = _Devices.Remove(device);
+				minCacheTime = GetMinimumNonZeroCacheLifetime();
 			}
 
 			if (wasRemoved)
@@ -872,10 +868,13 @@ USN: {1}
 
 		private TimeSpan GetMinimumNonZeroCacheLifetime()
 		{
-			var nonzeroCacheLifetimesQuery = (from device
-																				in _Devices
-											  where device.CacheLifetime != TimeSpan.Zero
-											  select device.CacheLifetime);
+			var nonzeroCacheLifetimesQuery = 
+			(
+				from device
+				in _Devices
+				where device.CacheLifetime != TimeSpan.Zero
+				select device.CacheLifetime
+			);
 
 			if (nonzeroCacheLifetimesQuery.Any())
 				return nonzeroCacheLifetimesQuery.Min();
