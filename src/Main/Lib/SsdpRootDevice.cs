@@ -40,7 +40,7 @@ namespace Rssdp
 		public SsdpRootDevice(Uri location, TimeSpan cacheLifetime, string deviceDescriptionXml)
 			: base(deviceDescriptionXml)
 		{
-			if (location == null) throw new ArgumentNullException("location");
+			if (location == null) throw new ArgumentNullException(nameof(location));
 
 			this.CacheLifetime = cacheLifetime;
 			this.Location = location;

@@ -49,9 +49,9 @@ namespace Rssdp
 		private static void WriteLogMessage(string category, string message)
 		{
 #if SUPPORTS_TRACE
-			System.Diagnostics.Trace.WriteLine(DateTime.Now.ToString("G") + " " + message, category);
+			System.Diagnostics.Trace.WriteLine(DateTime.Now.ToString("G", System.Globalization.CultureInfo.InvariantCulture) + " " + message, category);
 #else
-			System.Diagnostics.Debug.WriteLine(DateTime.Now.ToString("G") + " [" + category + "] " + message);
+			System.Diagnostics.Debug.WriteLine(DateTime.Now.ToString("G", System.Globalization.CultureInfo.InvariantCulture) + " [" + category + "] " + message);
 #endif
 		}
 

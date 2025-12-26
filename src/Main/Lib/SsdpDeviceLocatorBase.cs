@@ -39,7 +39,7 @@ namespace Rssdp.Infrastructure
 		/// <param name="communicationsServer">The <see cref="ISsdpCommunicationsServer"/> implementation to use for network communications.</param>
 		protected SsdpDeviceLocatorBase(ISsdpCommunicationsServer communicationsServer)
 		{
-			if (communicationsServer == null) throw new ArgumentNullException("communicationsServer");
+			if (communicationsServer == null) throw new ArgumentNullException(nameof(communicationsServer));
 
 			_CommunicationsServer = communicationsServer;
 			_CommunicationsServer.ResponseReceived += CommsServer_ResponseReceived;
@@ -142,10 +142,10 @@ namespace Rssdp.Infrastructure
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Performance", "CA1804:RemoveUnusedLocals", MessageId = "expireTask", Justification = "Task is not actually required, but capturing to local variable suppresses compiler warning")]
 		public async Task<IEnumerable<DiscoveredSsdpDevice>> SearchAsync(string searchTarget, TimeSpan searchWaitTime)
 		{
-			if (searchTarget == null) throw new ArgumentNullException("searchTarget");
-			if (searchTarget.Length == 0) throw new ArgumentException("searchTarget cannot be an empty string.", "searchTarget");
-			if (searchWaitTime.TotalSeconds < 0) throw new ArgumentException("searchWaitTime must be a positive time.");
-			if (searchWaitTime.TotalSeconds > 0 && searchWaitTime.TotalSeconds <= 1) throw new ArgumentException("searchWaitTime must be zero (if you are not using the result and relying entirely in the events), or greater than one second.");
+			if (searchTarget == null) throw new ArgumentNullException(nameof(searchTarget));
+			if (searchTarget.Length == 0) throw new ArgumentException("searchTarget cannot be an empty string.", nameof(searchTarget));
+			if (searchWaitTime.TotalSeconds < 0) throw new ArgumentException("searchWaitTime must be a positive time.", nameof(searchWaitTime));
+			if (searchWaitTime.TotalSeconds > 0 && searchWaitTime.TotalSeconds <= 1) throw new ArgumentException("searchWaitTime must be zero (if you are not using the result and relying entirely in the events), or greater than one second.", nameof(searchWaitTime));
 
 			ThrowIfDisposed();
 
@@ -408,7 +408,7 @@ namespace Rssdp.Infrastructure
 		private static byte[] BuildDiscoverMessage(string serviceType, TimeSpan mxValue, string multicastLocalAdminAddress)
 		{
 			return System.Text.UTF8Encoding.UTF8.GetBytes(
-				String.Format(HttpURequestMessageFormat,
+				String.Format(System.Globalization.CultureInfo.InvariantCulture, HttpURequestMessageFormat,
 					SsdpConstants.MSearchMethod,
 					multicastLocalAdminAddress,
 					SsdpConstants.MulticastPort,

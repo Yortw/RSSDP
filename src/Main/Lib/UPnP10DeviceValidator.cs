@@ -26,7 +26,7 @@ namespace Rssdp.Infrastructure
 		/// <returns>A non-null enumerable set of strings, empty if there are no validation errors, otherwise each string represents a discrete problem.</returns>
 		public IEnumerable<string> GetValidationErrors(SsdpRootDevice device)
 		{
-			if (device == null) throw new ArgumentNullException("device");
+			if (device == null) throw new ArgumentNullException(nameof(device));
 
 			var retVal = GetValidationErrors((SsdpDevice)device) as IList<string>;
 
@@ -49,7 +49,7 @@ namespace Rssdp.Infrastructure
 		/// <returns>A non-null enumerable set of strings, empty if there are no validation errors, otherwise each string represents a discrete problem.</returns>
 		public IEnumerable<string> GetValidationErrors(SsdpDevice device)
 		{
-			if (device == null) throw new ArgumentNullException("device");
+			if (device == null) throw new ArgumentNullException(nameof(device));
 
 			var retVal = new List<string>();
 

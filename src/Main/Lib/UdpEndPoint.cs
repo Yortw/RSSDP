@@ -27,7 +27,7 @@ namespace Rssdp.Infrastructure
 		/// <returns>A string containing <see cref="IPAddress"/>:<see cref="Port"/>.</returns>
 		public override string ToString()
 		{
-			return (this.IPAddress ?? String.Empty) + ":" + this.Port.ToString();
+			return (this.IPAddress ?? String.Empty) + ":" + this.Port.ToString(System.Globalization.CultureInfo.InvariantCulture);
 		}
 	}
 }

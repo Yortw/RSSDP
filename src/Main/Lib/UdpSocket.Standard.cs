@@ -22,7 +22,7 @@ namespace Rssdp
 
 		public UdpSocket(Socket socket, string ipAddress, int localPort)
 		{
-			if (socket == null) throw new ArgumentNullException("socket");
+			if (socket == null) throw new ArgumentNullException(nameof(socket));
 
 			_Socket = socket;
 			_LocalPort = localPort;
@@ -81,8 +81,8 @@ namespace Rssdp
 		{
 			ThrowIfDisposed();
 
-			if (messageData == null) throw new ArgumentNullException("messageData");
-			if (endPoint == null) throw new ArgumentNullException("endPoint");
+			if (messageData == null) throw new ArgumentNullException(nameof(messageData));
+			if (endPoint == null) throw new ArgumentNullException(nameof(endPoint));
 
 			_Socket.SendTo(messageData, new System.Net.IPEndPoint(IPAddress.Parse(endPoint.IPAddress), endPoint.Port));
 		}

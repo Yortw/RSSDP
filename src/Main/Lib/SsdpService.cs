@@ -81,7 +81,7 @@ namespace Rssdp
 			get
 			{
 				//From the spec; Period characters in the Vendor Domain Name MUST be replaced with hyphens in accordance with RFC 2141
-				return String.Format("urn:{0}:service:{1}:{2}",
+				return String.Format(System.Globalization.CultureInfo.InvariantCulture, "urn:{0}:service:{1}:{2}",
 				(this.ServiceTypeNamespace ?? String.Empty).Replace(".", "-"),
 				this.ServiceType ?? String.Empty,
 				this.ServiceVersion);
@@ -111,6 +111,7 @@ namespace Rssdp
 				//From the spec; Period characters in the Vendor Domain Name MUST be replaced with hyphens in accordance with RFC 2141
 				return String.Format
 				(
+					System.Globalization.CultureInfo.InvariantCulture,
 					"urn:{0}:serviceId:{1}",
 					(this.ServiceTypeNamespace == SsdpConstants.UpnpDeviceTypeNamespace ? "upnp-org" : this.ServiceTypeNamespace).Replace(".", "-"),
 					this.Uuid ?? String.Empty
@@ -142,7 +143,7 @@ namespace Rssdp
 		/// <exception cref="System.ArgumentNullException">Thrown if the <paramref name="writer"/> argument is null.</exception>
 		public virtual void WriteServiceDescriptionXml(XmlWriter writer)
 		{
-			if (writer == null) throw new ArgumentNullException("writer");
+			if (writer == null) throw new ArgumentNullException(nameof(writer));
 
 			writer.WriteStartElement("service");
 

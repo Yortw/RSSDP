@@ -106,10 +106,10 @@ namespace Rssdp.Infrastructure
 		/// <returns>A <see cref="Version"/> object containing the parsed version data.</returns>
 		protected static Version ParseHttpVersion(string versionData)
 		{
-			if (versionData == null) throw new ArgumentNullException("versionData");
+			if (versionData == null) throw new ArgumentNullException(nameof(versionData));
 
 			var versionSeparatorIndex = versionData.IndexOf('/');
-			if (versionSeparatorIndex <= 0 || versionSeparatorIndex == versionData.Length) throw new ArgumentException("request header line is invalid. Http Version not supplied or incorrect format.", "versionData");
+			if (versionSeparatorIndex <= 0 || versionSeparatorIndex == versionData.Length) throw new ArgumentException("request header line is invalid. Http Version not supplied or incorrect format.", nameof(versionData));
 
 			return Version.Parse(versionData.Substring(versionSeparatorIndex + 1));
 		}

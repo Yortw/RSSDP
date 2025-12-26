@@ -16,7 +16,7 @@ namespace Rssdp
 
 		public ReadOnlyEnumerable(IEnumerable<T> items)
 		{
-			if (items == null) throw new ArgumentNullException("items");
+			if (items == null) throw new ArgumentNullException(nameof(items));
 
 			_Items = items;
 		}

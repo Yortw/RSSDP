@@ -52,8 +52,8 @@ namespace Rssdp
 		/// <exception cref="System.ArgumentException">Thrown if the <see cref="SsdpDeviceProperty.FullName"/> property of the <paramref name="customDeviceProperty"/> argument  is null or empty string, or if the collection already contains an item with the same key.</exception>
 		public void Add(SsdpDeviceProperty customDeviceProperty)
 		{
-			if (customDeviceProperty == null) throw new ArgumentNullException("customDeviceProperty");
-			if (String.IsNullOrEmpty(customDeviceProperty.FullName)) throw new ArgumentException("customDeviceProperty.FullName cannot be null or empty.");
+			if (customDeviceProperty == null) throw new ArgumentNullException(nameof(customDeviceProperty));
+			if (String.IsNullOrEmpty(customDeviceProperty.FullName)) throw new ArgumentException("customDeviceProperty.FullName cannot be null or empty.", nameof(customDeviceProperty));
 
 			lock (_Properties)
 			{
@@ -76,9 +76,9 @@ namespace Rssdp
 		/// <exception cref="System.ArgumentException">Thrown if the <see cref="SsdpDeviceProperty.FullName"/> property of the <paramref name="customDeviceProperty"/> argument  is null or empty string, or if the collection already contains an item with the same key.</exception>
 		public bool Remove(SsdpDeviceProperty customDeviceProperty)
 		{
-			if (customDeviceProperty == null) throw new ArgumentNullException("customDeviceProperty");
-			if (String.IsNullOrEmpty(customDeviceProperty.FullName)) throw new ArgumentException("customDeviceProperty.FullName cannot be null or empty.");
-
+			if (customDeviceProperty == null) throw new ArgumentNullException(nameof(customDeviceProperty));
+			if (String.IsNullOrEmpty(customDeviceProperty.FullName)) throw new ArgumentException("customDeviceProperty.FullName cannot be null or empty.", nameof(customDeviceProperty));
+			
 			lock (_Properties)
 			{
 				if (_Properties.ContainsKey(customDeviceProperty.FullName) && _Properties[customDeviceProperty.FullName] == customDeviceProperty)
@@ -113,8 +113,8 @@ namespace Rssdp
 		/// <returns>True if the specified instance exists in the collection, otherwise false.</returns>
 		public bool Contains(SsdpDeviceProperty customDeviceProperty)
 		{
-			if (customDeviceProperty == null) throw new ArgumentNullException("customDeviceProperty");
-			if (String.IsNullOrEmpty(customDeviceProperty.FullName)) throw new ArgumentException("customDeviceProperty.FullName cannot be null or empty.");
+			if (customDeviceProperty == null) throw new ArgumentNullException(nameof(customDeviceProperty));
+			if (String.IsNullOrEmpty(customDeviceProperty.FullName)) throw new ArgumentException("customDeviceProperty.FullName cannot be null or empty.", nameof(customDeviceProperty));
 
 			lock (_Properties)
 			{

@@ -98,11 +98,11 @@ USN: {1}
 		/// <param name="log">An implementation of <see cref="ISsdpLogger"/> to be used for logging activity. May be null, in which case no logging is performed.</param>
 		protected SsdpDevicePublisherBase(ISsdpCommunicationsServer communicationsServer, string osName, string osVersion, ISsdpLogger log)
 		{
-			if (communicationsServer == null) throw new ArgumentNullException("communicationsServer");
-			if (osName == null) throw new ArgumentNullException("osName");
-			if (osName.Length == 0) throw new ArgumentException("osName cannot be an empty string.", "osName");
-			if (osVersion == null) throw new ArgumentNullException("osVersion");
-			if (osVersion.Length == 0) throw new ArgumentException("osVersion cannot be an empty string.", "osName");
+			if (communicationsServer == null) throw new ArgumentNullException(nameof(communicationsServer));
+			if (osName == null) throw new ArgumentNullException(nameof(osName));
+			if (osName.Length == 0) throw new ArgumentException("osName cannot be an empty string.", nameof(osName));
+			if (osVersion == null) throw new ArgumentNullException(nameof(osVersion));
+			if (osVersion.Length == 0) throw new ArgumentException("osVersion cannot be an empty string.", nameof(osVersion));
 
 			_Log = log ?? NullLogger.Instance;
 			_SupportPnpRootDevice = true;
@@ -140,7 +140,7 @@ USN: {1}
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Performance", "CA1804:RemoveUnusedLocals", MessageId = "t", Justification = "Capture task to local variable supresses compiler warning, but task is not really needed.")]
 		public void AddDevice(SsdpRootDevice device)
 		{
-			if (device == null) throw new ArgumentNullException("device");
+			if (device == null) throw new ArgumentNullException(nameof(device));
 
 			ThrowIfDisposed();
 
@@ -185,7 +185,7 @@ USN: {1}
 		/// <exception cref="System.ArgumentNullException">Thrown if the <paramref name="device"/> argument is null.</exception>
 		public void RemoveDevice(SsdpRootDevice device)
 		{
-			if (device == null) throw new ArgumentNullException("device");
+			if (device == null) throw new ArgumentNullException(nameof(device));
 
 			ThrowIfDisposed();
 
@@ -357,11 +357,11 @@ USN: {1}
 		{
 			if (String.IsNullOrEmpty(searchTarget))
 			{
-				_Log.LogWarning(String.Format("Invalid search request received From {0}, Target is null/empty.", endPoint.ToString()));
+				_Log.LogWarning(String.Format(System.Globalization.CultureInfo.InvariantCulture, "Invalid search request received From {0}, Target is null/empty.", endPoint.ToString()));
 				return;
 			}
 
-			_Log.LogInfo(String.Format("Search Request Received From {0}, Target = {1}", endPoint.ToString(), searchTarget));
+			_Log.LogInfo(String.Format(System.Globalization.CultureInfo.InvariantCulture, "Search Request Received From {0}, Target = {1}", endPoint.ToString(), searchTarget));
 
 			if (IsDuplicateSearchRequest(searchTarget, endPoint))
 			{
@@ -479,7 +479,7 @@ USN: {1}
 
 		private void SendSearchResponses(string searchTarget, UdpEndPoint endPoint, IEnumerable<SsdpDevice> devices)
 		{
-			_Log.LogInfo(String.Format("Sending search (target = {1}) responses for {0} devices", devices.Count(), searchTarget));
+			_Log.LogInfo(String.Format(System.Globalization.CultureInfo.InvariantCulture, "Sending search (target = {1}) responses for {0} devices", devices.Count(), searchTarget));
 
 			if (searchTarget.Contains(":service:"))
 			{
@@ -548,7 +548,7 @@ USN: {1}
 
 		private static string GetUsn(string udn, string fullDeviceType)
 		{
-			return String.Format("{0}::{1}", udn, fullDeviceType);
+			return String.Format(System.Globalization.CultureInfo.InvariantCulture, "{0}::{1}", udn, fullDeviceType);
 		}
 
 		private void SendSearchResponse(string searchTarget, SsdpDevice device, string uniqueServiceName, UdpEndPoint endPoint)
@@ -557,7 +557,7 @@ USN: {1}
 
 			var additionalheaders = FormatCustomHeadersForResponse(device);
 
-			var message = String.Format(DeviceSearchResponseMessageFormat,
+			var message = String.Format(System.Globalization.CultureInfo.InvariantCulture, DeviceSearchResponseMessageFormat,
 					CacheControlHeaderFromTimeSpan(rootDevice),
 					searchTarget,
 					uniqueServiceName,
@@ -571,7 +571,7 @@ USN: {1}
 
 			_CommsServer.SendMessage(System.Text.UTF8Encoding.UTF8.GetBytes(message), endPoint);
 
-			LogDeviceEventVerbose(String.Format("Sent search response ({0}) to {1}", uniqueServiceName, endPoint.ToString()), device);
+			LogDeviceEventVerbose(String.Format(System.Globalization.CultureInfo.InvariantCulture, "Sent search response ({0}) to {1}", uniqueServiceName, endPoint.ToString()), device);
 		}
 
 		private bool IsDuplicateSearchRequest(string searchTarget, UdpEndPoint endPoint)
@@ -714,7 +714,7 @@ USN: {1}
 				Port = SsdpConstants.MulticastPort
 			});
 
-			LogDeviceEvent(String.Format("Sent alive notification NT={0}, USN={1}", notificationType, uniqueServiceName), device);
+			LogDeviceEvent(String.Format(System.Globalization.CultureInfo.InvariantCulture, "Sent alive notification NT={0}, USN={1}", notificationType, uniqueServiceName), device);
 		}
 
 		private void SendAliveNotification(SsdpDevice device, SsdpService service)
@@ -732,6 +732,7 @@ USN: {1}
 			(
 				String.Format
 				(
+					System.Globalization.CultureInfo.InvariantCulture,
 					AliveNotificationMessageFormat,
 					notificationType,
 					uniqueServiceName,
@@ -764,7 +765,7 @@ USN: {1}
 			}
 
 			SendByeByeNotification(device, device.Udn, device.Udn);
-			SendByeByeNotification(device, String.Format("urn:{0}", device.FullDeviceType), GetUsn(device.Udn, device.FullDeviceType));
+			SendByeByeNotification(device, String.Format(System.Globalization.CultureInfo.InvariantCulture, "urn:{0}", device.FullDeviceType), GetUsn(device.Udn, device.FullDeviceType));
 
 			foreach (var service in device.Services)
 			{
@@ -790,7 +791,7 @@ USN: {1}
 				Port = SsdpConstants.MulticastPort
 			});
 
-			LogDeviceEvent(String.Format("Sent byebye notification, NT={0}, USN={1}", notificationType, uniqueServiceName), device);
+			LogDeviceEvent(String.Format(System.Globalization.CultureInfo.InvariantCulture, "Sent byebye notification, NT={0}, USN={1}", notificationType, uniqueServiceName), device);
 		}
 
 		private void SendByeByeNotification(SsdpDevice device, SsdpService service)
@@ -800,7 +801,7 @@ USN: {1}
 
 		private byte[] BuildByeByeMessage(string notificationType, string uniqueServiceName, string hostAddress)
 		{
-			var message = String.Format(ByeByeNotificationMessageFormat,
+			var message = String.Format(System.Globalization.CultureInfo.InvariantCulture, ByeByeNotificationMessageFormat,
 					notificationType,
 					uniqueServiceName,
 					_OSName,
@@ -866,7 +867,7 @@ USN: {1}
 			_RebroadcastAliveNotificationsTimeSpan = rebroadCastInterval;
 			_RebroadcastAliveNotificationsTimer = new System.Threading.Timer(SendAllAliveNotifications, null, nextBroadcastInterval, rebroadCastInterval);
 
-			_Log.LogInfo(String.Format("Rebroadcast Interval = {0}, Next Broadcast At = {1}", rebroadCastInterval.ToString(), nextBroadcastInterval.ToString()));
+			_Log.LogInfo(String.Format(System.Globalization.CultureInfo.InvariantCulture, "Rebroadcast Interval = {0}, Next Broadcast At = {1}", rebroadCastInterval.ToString(), nextBroadcastInterval.ToString()));
 		}
 
 		private TimeSpan GetMinimumNonZeroCacheLifetime()
@@ -901,7 +902,7 @@ USN: {1}
 			if (device.CacheLifetime == TimeSpan.Zero)
 				return "CACHE-CONTROL: no-cache";
 			else
-				return String.Format("CACHE-CONTROL: public, max-age={0}", device.CacheLifetime.TotalSeconds);
+				return String.Format(System.Globalization.CultureInfo.InvariantCulture, "CACHE-CONTROL: public, max-age={0}", device.CacheLifetime.TotalSeconds);
 		}
 
 		private void LogDeviceEvent(string text, SsdpDevice device)
@@ -1007,14 +1008,14 @@ USN: {1}
 			//Technically we should only do this once per service type,
 			//but if we add services during runtime there is no way to
 			//notify anyone except by resending this notification.
-			_Log.LogInfo(String.Format("Service added: {0} ({1})", e.Service.ServiceId, e.Service.FullServiceType));
+			_Log.LogInfo(String.Format(System.Globalization.CultureInfo.InvariantCulture, "Service added: {0} ({1})", e.Service.ServiceId, e.Service.FullServiceType));
 
 			SendAliveNotification((SsdpDevice)sender, e.Service);
 		}
 
 		private void device_ServiceRemoved(object sender, ServiceEventArgs e)
 		{
-			_Log.LogInfo(String.Format("Service removed: {0} ({1})", e.Service.ServiceId, e.Service.FullServiceType));
+			_Log.LogInfo(String.Format(System.Globalization.CultureInfo.InvariantCulture, "Service removed: {0} ({1})", e.Service.ServiceId, e.Service.FullServiceType));
 
 			var device = (SsdpDevice)sender;
 			//Only say this service type has disappeared if there are no 
@@ -1038,7 +1039,7 @@ USN: {1}
 					ProcessSearchRequest(GetFirstHeaderValue(e.Message.Headers, "MX"), GetFirstHeaderValue(e.Message.Headers, "ST"), e.ReceivedFrom);
 			}
 			else if (String.Compare(e.Message.Method.Method, "NOTIFY", StringComparison.OrdinalIgnoreCase) != 0)
-				_Log.LogWarning(String.Format("Unknown request \"{0}\"received, ignoring.", e.Message.Method.Method));
+				_Log.LogWarning(String.Format(System.Globalization.CultureInfo.InvariantCulture, "Unknown request \"{0}\"received, ignoring.", e.Message.Method.Method));
 		}
 
 		#endregion

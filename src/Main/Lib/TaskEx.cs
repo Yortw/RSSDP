@@ -26,14 +26,14 @@ namespace Rssdp
 
 		public static Task Delay(TimeSpan period)
 		{
-			if (period.TotalMilliseconds > int.MaxValue) throw new ArgumentOutOfRangeException("period", String.Format("period cannot be more than {0} millseconds.", period.TotalMilliseconds));
+			if (period.TotalMilliseconds > int.MaxValue) throw new ArgumentOutOfRangeException(nameof(period), String.Format(System.Globalization.CultureInfo.InvariantCulture, "period cannot be more than {0} millseconds.", period.TotalMilliseconds));
 			
 			return Delay(Convert.ToInt32(period.TotalMilliseconds));
 		}
 
 		public static Task Delay(int millisecondsDelay)
 		{
-			if (millisecondsDelay < -1) throw new ArgumentOutOfRangeException("millisecondsDelay", "millisecondsDelay must be -1 or greater.");
+			if (millisecondsDelay < -1) throw new ArgumentOutOfRangeException(nameof(millisecondsDelay), "millisecondsDelay must be -1 or greater.");
 
 			var tcs = new TaskCompletionSource<object>();
 			var timer = new Timer((state) => 

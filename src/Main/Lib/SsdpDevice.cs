@@ -93,8 +93,8 @@ namespace Rssdp
 		protected SsdpDevice(string deviceDescriptionXml)
 			: this()
 		{
-			if (deviceDescriptionXml == null) throw new ArgumentNullException("deviceDescriptionXml");
-			if (deviceDescriptionXml.Length == 0) throw new ArgumentException("deviceDescriptionXml cannot be an empty string.", "deviceDescriptionXml");
+			if (deviceDescriptionXml == null) throw new ArgumentNullException(nameof(deviceDescriptionXml));
+			if (deviceDescriptionXml.Length == 0) throw new ArgumentException("deviceDescriptionXml cannot be an empty string.", nameof(deviceDescriptionXml));
 
 			using (var ms = new System.IO.MemoryStream(System.Text.UTF8Encoding.UTF8.GetBytes(deviceDescriptionXml)))
 			{
@@ -177,7 +177,7 @@ namespace Rssdp
 		{
 			get
 			{
-				return String.Format("urn:{0}:device:{1}:{2}",
+				return String.Format(System.Globalization.CultureInfo.InvariantCulture, "urn:{0}:device:{1}:{2}",
 				this.DeviceTypeNamespace ?? String.Empty,
 				this.DeviceType ?? String.Empty,
 				this.DeviceVersion);
@@ -356,7 +356,7 @@ namespace Rssdp
 		/// <seealso cref="DeviceAdded"/>
 		public void AddDevice(SsdpEmbeddedDevice device)
 		{
-			if (device == null) throw new ArgumentNullException("device");
+			if (device == null) throw new ArgumentNullException(nameof(device));
 			if (device.RootDevice != null && device.RootDevice != this.ToRootDevice()) throw new InvalidOperationException("This device is already associated with a different root device (has been added as a child in another branch).");
 			if (device == this) throw new InvalidOperationException("Can't add device to itself.");
 
@@ -387,7 +387,7 @@ namespace Rssdp
 		/// <seealso cref="DeviceRemoved"/>
 		public void RemoveDevice(SsdpEmbeddedDevice device)
 		{
-			if (device == null) throw new ArgumentNullException("device");
+			if (device == null) throw new ArgumentNullException(nameof(device));
 
 			bool wasRemoved = false;
 			lock (_Devices)
@@ -519,8 +519,8 @@ namespace Rssdp
 		/// <exception cref="System.ArgumentNullException">Thrown if the <paramref name="writer"/> or <paramref name="device"/> argument is null.</exception>
 		protected virtual void WriteDeviceDescriptionXml(XmlWriter writer, SsdpDevice device)
 		{
-			if (writer == null) throw new ArgumentNullException("writer");
-			if (device == null) throw new ArgumentNullException("device");
+			if (writer == null) throw new ArgumentNullException(nameof(writer));
+			if (device == null) throw new ArgumentNullException(nameof(device));
 
 			writer.WriteStartElement("device");
 
@@ -585,9 +585,9 @@ namespace Rssdp
 					writer.WriteStartElement("icon");
 
 					writer.WriteElementString("mimetype", icon.MimeType);
-					writer.WriteElementString("width", icon.Width.ToString());
-					writer.WriteElementString("height", icon.Height.ToString());
-					writer.WriteElementString("depth", icon.ColorDepth.ToString());
+					writer.WriteElementString("width", icon.Width.ToString(System.Globalization.CultureInfo.InvariantCulture));
+					writer.WriteElementString("height", icon.Height.ToString(System.Globalization.CultureInfo.InvariantCulture));
+					writer.WriteElementString("depth", icon.ColorDepth.ToString(System.Globalization.CultureInfo.InvariantCulture));
 					writer.WriteElementString("url", icon.Url.ToString());
 
 					writer.WriteEndElement();

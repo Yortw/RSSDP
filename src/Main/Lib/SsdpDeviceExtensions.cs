@@ -20,7 +20,7 @@ namespace Rssdp
 		/// <exception cref="System.InvalidCastException">Thrown if <paramref name="device"/> is not an instance of or dervied from either <see cref="SsdpRootDevice"/> or <see cref="SsdpEmbeddedDevice"/>.</exception>
 		public static SsdpRootDevice ToRootDevice(this SsdpDevice device)
 		{
-			if (device == null) throw new System.ArgumentNullException("device");
+			if (device == null) throw new System.ArgumentNullException(nameof(device));
 
 			var rootDevice = device as SsdpRootDevice;
 			if (rootDevice == null)
