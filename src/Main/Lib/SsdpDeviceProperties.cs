@@ -14,7 +14,7 @@ namespace Rssdp
 
 		#region Fields
 
-		private Dictionary<string, SsdpDeviceProperty> _Properties;
+		private readonly Dictionary<string, SsdpDeviceProperty> _Properties;
 
 		#endregion
 

@@ -112,7 +112,7 @@ namespace Rssdp
 	{
 		#region Fields
 
-		private Dictionary<string, CustomHttpHeader> _Headers;
+		private readonly Dictionary<string, CustomHttpHeader> _Headers;
 
 		#endregion
 		

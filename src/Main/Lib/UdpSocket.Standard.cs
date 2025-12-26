@@ -13,8 +13,8 @@ namespace Rssdp
 
 		#region Fields
 
-		private System.Net.Sockets.Socket _Socket;
-		private int _LocalPort;
+		private readonly System.Net.Sockets.Socket _Socket;
+		private readonly int _LocalPort;
 
 		#endregion
 
@@ -45,8 +45,10 @@ namespace Rssdp
 			var tcs = new TaskCompletionSource<ReceivedUdpData>();
 
 			System.Net.EndPoint receivedFromEndPoint = new IPEndPoint(GetDefaultIpAddress(_Socket), 0);
-			var state = new AsyncReceiveState(_Socket, receivedFromEndPoint);
-			state.TaskCompletionSource = tcs;
+			var state = new AsyncReceiveState(_Socket, receivedFromEndPoint)
+			{
+				TaskCompletionSource = tcs
+			};
 #if NETSTANDARD1_3
 			_Socket.ReceiveFromAsync(new System.ArraySegment<Byte>(state.Buffer), System.Net.Sockets.SocketFlags.None, state.EndPoint)
 				.ContinueWith((task, asyncState) =>
@@ -96,8 +98,7 @@ namespace Rssdp
 			if (disposing)
 			{
 				var socket = _Socket;
-				if (socket != null)
-					socket.Dispose();
+				socket?.Dispose();
 			}
 		}
 

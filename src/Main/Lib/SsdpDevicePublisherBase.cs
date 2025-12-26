@@ -16,22 +16,22 @@ namespace Rssdp.Infrastructure
 		private ISsdpCommunicationsServer _CommsServer;
 		private string _OSName;
 		private string _OSVersion;
-		private ISsdpLogger _Log;
+		private readonly ISsdpLogger _Log;
 
 		private bool _SupportPnpRootDevice;
 		private SsdpStandardsMode _StandardsMode;
 
-		private List<SsdpRootDevice> _Devices;
-		private ReadOnlyEnumerable<SsdpRootDevice> _ReadOnlyDevices;
+		private readonly List<SsdpRootDevice> _Devices;
+		private readonly ReadOnlyEnumerable<SsdpRootDevice> _ReadOnlyDevices;
 
 		private System.Threading.Timer _RebroadcastAliveNotificationsTimer;
 		private TimeSpan _RebroadcastAliveNotificationsTimeSpan;
 		private DateTime _LastNotificationTime;
 
 		private Dictionary<string, SearchRequest> _RecentSearchRequests;
-		private IUpnpDeviceValidator _DeviceValidator;
+		private readonly IUpnpDeviceValidator _DeviceValidator;
 
-		private Random _Random;
+		private readonly Random _Random;
 		private TimeSpan _MinCacheTime;
 		private TimeSpan _NotificationBroadcastInterval;
 
@@ -368,7 +368,6 @@ USN: {1}
 			//Wait on random interval up to MX, as per SSDP spec.
 			//Also, as per UPnP 1.1/SSDP spec ignore missing/bank MX header (strict mode only). If over 120, assume random value between 0 and 120.
 			//Using 16 as minimum as that's often the minimum system clock frequency anyway.
-			int maxWaitInterval = 0;
 			if (String.IsNullOrEmpty(mx))
 			{
 				//Windows Explorer is poorly behaved and doesn't supply an MX header value.
@@ -381,7 +380,7 @@ USN: {1}
 				}
 			}
 
-			if (!Int32.TryParse(mx, out maxWaitInterval) || maxWaitInterval <= 0) return;
+			if (!Int32.TryParse(mx, out var maxWaitInterval) || maxWaitInterval <= 0) return;
 
 			if (maxWaitInterval > 120)
 				maxWaitInterval = _Random.Next(0, 120);
@@ -819,8 +818,7 @@ USN: {1}
 		{
 			var timer = _RebroadcastAliveNotificationsTimer;
 			_RebroadcastAliveNotificationsTimer = null;
-			if (timer != null)
-				timer.Dispose();
+			timer?.Dispose();
 		}
 
 		private void SetRebroadcastAliveNotificationsTimer(TimeSpan minCacheTime)
@@ -889,8 +887,7 @@ USN: {1}
 		private static string GetFirstHeaderValue(System.Net.Http.Headers.HttpRequestHeaders httpRequestHeaders, string headerName)
 		{
 			string retVal = null;
-			IEnumerable<String> values = null;
-			if (httpRequestHeaders.TryGetValues(headerName, out values) && values != null)
+			if (httpRequestHeaders.TryGetValues(headerName, out var values) && values != null)
 				retVal = values.FirstOrDefault();
 
 			return retVal;
@@ -921,8 +918,7 @@ USN: {1}
 
 		private static string GetDeviceEventLogMessage(string text, SsdpDevice device)
 		{
-			var rootDevice = device as SsdpRootDevice;
-			if (rootDevice != null)
+			if (device is SsdpRootDevice rootDevice)
 				return text + " " + device.DeviceType + " - " + device.Uuid + " - " + rootDevice.Location;
 			else
 				return text + " " + device.DeviceType + " - " + device.Uuid;
@@ -930,10 +926,10 @@ USN: {1}
 
 		private void ConnectToDeviceEvents(SsdpDevice device)
 		{
-			device.DeviceAdded += device_DeviceAdded;
-			device.DeviceRemoved += device_DeviceRemoved;
-			device.ServiceAdded += device_ServiceAdded;
-			device.ServiceRemoved += device_ServiceRemoved;
+			device.DeviceAdded += Device_DeviceAdded;
+			device.DeviceRemoved += Device_DeviceRemoved;
+			device.ServiceAdded += Device_ServiceAdded;
+			device.ServiceRemoved += Device_ServiceRemoved;
 
 			foreach (var childDevice in device.Devices)
 			{
@@ -943,10 +939,10 @@ USN: {1}
 
 		private void DisconnectFromDeviceEvents(SsdpDevice device)
 		{
-			device.DeviceAdded -= device_DeviceAdded;
-			device.DeviceRemoved -= device_DeviceRemoved;
-			device.ServiceAdded -= device_ServiceAdded;
-			device.ServiceRemoved -= device_ServiceRemoved;
+			device.DeviceAdded -= Device_DeviceAdded;
+			device.DeviceRemoved -= Device_DeviceRemoved;
+			device.ServiceAdded -= Device_ServiceAdded;
+			device.ServiceRemoved -= Device_ServiceRemoved;
 
 			foreach (var childDevice in device.Devices)
 			{
@@ -990,19 +986,19 @@ USN: {1}
 
 		#region Event Handlers
 
-		private void device_DeviceAdded(object sender, DeviceEventArgs e)
+		private void Device_DeviceAdded(object sender, DeviceEventArgs e)
 		{
 			SendAliveNotifications(e.Device, false);
 			ConnectToDeviceEvents(e.Device);
 		}
 
-		private void device_DeviceRemoved(object sender, DeviceEventArgs e)
+		private void Device_DeviceRemoved(object sender, DeviceEventArgs e)
 		{
 			SendByeByeNotifications(e.Device, false);
 			DisconnectFromDeviceEvents(e.Device);
 		}
 
-		private void device_ServiceAdded(object sender, ServiceEventArgs e)
+		private void Device_ServiceAdded(object sender, ServiceEventArgs e)
 		{
 			//Technically we should only do this once per service type,
 			//but if we add services during runtime there is no way to
@@ -1012,7 +1008,7 @@ USN: {1}
 			SendAliveNotification((SsdpDevice)sender, e.Service);
 		}
 
-		private void device_ServiceRemoved(object sender, ServiceEventArgs e)
+		private void Device_ServiceRemoved(object sender, ServiceEventArgs e)
 		{
 			_Log.LogInfo(String.Format(System.Globalization.CultureInfo.InvariantCulture, "Service removed: {0} ({1})", e.Service.ServiceId, e.Service.FullServiceType));
 
