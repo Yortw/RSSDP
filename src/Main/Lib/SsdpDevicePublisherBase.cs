@@ -14,8 +14,8 @@ namespace Rssdp.Infrastructure
 		#region Fields & Constants
 
 		private ISsdpCommunicationsServer _CommsServer;
-		private string _OSName;
-		private string _OSVersion;
+		private readonly string _OSName;
+		private readonly string _OSVersion;
 		private readonly ISsdpLogger _Log;
 
 		private bool _SupportPnpRootDevice;
@@ -171,7 +171,9 @@ USN: {1}
 				SendAliveNotifications(device, true);
 			}
 			else
+			{
 				LogDeviceEventWarning("AddDevice ignored (duplicate add)", device);
+			}
 		}
 
 		/// <summary>
@@ -210,7 +212,9 @@ USN: {1}
 				SetRebroadcastAliveNotificationsTimer(minCacheTime);
 			}
 			else
+			{
 				LogDeviceEventWarning("RemoveDevice ignored (device not in publisher)", device);
+			}
 		}
 
 		#endregion
@@ -372,7 +376,9 @@ USN: {1}
 			{
 				//Windows Explorer is poorly behaved and doesn't supply an MX header value.
 				if (IsWindowsExplorerSupportEnabled)
+				{
 					mx = "1";
+				}
 				else
 				{
 					_Log.LogWarning("Search Request ignored due to missing MX header. Set StandardsMode to relaxed to respond to these requests.");
@@ -404,9 +410,13 @@ USN: {1}
 			lock (_Devices)
 			{
 				if (String.Equals(SsdpConstants.SsdpDiscoverAllSTHeader, searchTarget, StringComparison.OrdinalIgnoreCase))
+				{
 					devices = GetAllDevicesAsFlatEnumerable().ToArray();
+				}
 				else if (String.Equals(SsdpConstants.UpnpDeviceTypeRootDevice, searchTarget, StringComparison.OrdinalIgnoreCase) || (IsWindowsExplorerSupportEnabled && String.Equals(SsdpConstants.PnpDeviceTypeRootDevice, searchTarget, StringComparison.OrdinalIgnoreCase)))
+				{
 					devices = _Devices.ToArray();
+				}
 				else if (searchTarget.Trim().StartsWith("uuid:", StringComparison.OrdinalIgnoreCase))
 				{
 					devices = (
@@ -576,9 +586,8 @@ USN: {1}
 			var newRequest = new SearchRequest() { EndPoint = endPoint, SearchTarget = searchTarget, Received = DateTime.UtcNow };
 			lock (_RecentSearchRequests)
 			{
-				if (_RecentSearchRequests.ContainsKey(newRequest.Key))
+				if (_RecentSearchRequests.TryGetValue(newRequest.Key, out var lastRequest))
 				{
-					var lastRequest = _RecentSearchRequests[newRequest.Key];
 					if (lastRequest.IsOld())
 						_RecentSearchRequests[newRequest.Key] = newRequest;
 					else
@@ -1034,7 +1043,9 @@ USN: {1}
 					ProcessSearchRequest(GetFirstHeaderValue(e.Message.Headers, "MX"), GetFirstHeaderValue(e.Message.Headers, "ST"), e.ReceivedFrom);
 			}
 			else if (!String.Equals(e.Message.Method.Method, "NOTIFY", StringComparison.OrdinalIgnoreCase))
+			{
 				_Log.LogWarning(String.Format(System.Globalization.CultureInfo.InvariantCulture, "Unknown request \"{0}\"received, ignoring.", e.Message.Method.Method));
+			}
 		}
 
 		#endregion

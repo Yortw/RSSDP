@@ -232,7 +232,11 @@ namespace Rssdp
 
 		private static void SetServiceIdPropertiesFromFullServiceId(SsdpService service, string value)
 		{
+#if NET6_0_OR_GREATER
+			if (String.IsNullOrEmpty(value) || !value.Contains(':'))
+#else
 			if (String.IsNullOrEmpty(value) || !value.Contains(":"))
+#endif
 				service.ServiceType = value;
 			else
 			{
@@ -246,25 +250,32 @@ namespace Rssdp
 
 		private static void SetServiceTypePropertiesFromFullDeviceType(SsdpService service, string value)
 		{
+#if NET6_0_OR_GREATER
+			if (String.IsNullOrEmpty(value) || !value.Contains(':'))
+#else
 			if (String.IsNullOrEmpty(value) || !value.Contains(":"))
+#endif
 				service.ServiceType = value;
 			else
 			{
 				var parts = value.Split(':');
 				if (parts.Length == 5)
 				{
-					int serviceVersion = 1;
-					if (Int32.TryParse(parts[4], out serviceVersion))
+					if (Int32.TryParse(parts[4], out var serviceVersion))
 					{
 						service.ServiceTypeNamespace = parts[1];
 						service.ServiceType = parts[3];
 						service.ServiceVersion = serviceVersion;
 					}
 					else
+					{
 						service.ServiceType = value;
+					}
 				}
 				else
+				{
 					service.ServiceType = value;
+				}
 			}
 		}
 
@@ -276,7 +287,7 @@ namespace Rssdp
 			return null;
 		}
 
-		#endregion
+#endregion
 
 	}
 }

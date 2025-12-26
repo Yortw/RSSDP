@@ -98,10 +98,14 @@ namespace Rssdp
 		{
 			if (String.IsNullOrEmpty(value)) return;
 
+#if NET6_0_OR_GREATER
+			if (value.Contains('\r') || value.Contains('\n')) throw new ArgumentException("Invalid value.", nameof(value));
+#else
 			if (value.Contains("\r") || value.Contains("\n")) throw new ArgumentException("Invalid value.", nameof(value));
+#endif
 		}
 
-		#endregion
+#endregion
 
 	}
 

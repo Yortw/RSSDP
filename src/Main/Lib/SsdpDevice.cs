@@ -23,11 +23,11 @@ namespace Rssdp
 		private string _DeviceType;
 		private string _DeviceTypeNamespace;
 		private int _DeviceVersion;
-		private SsdpDevicePropertiesCollection _CustomProperties;
-		private CustomHttpHeadersCollection _CustomResponseHeaders;
+		private readonly SsdpDevicePropertiesCollection _CustomProperties;
+		private readonly CustomHttpHeadersCollection _CustomResponseHeaders;
 
-		private List<SsdpDevice> _Devices;
-		private List<SsdpService> _Services;
+		private readonly List<SsdpDevice> _Devices;
+		private readonly List<SsdpService> _Services;
 
 		#endregion
 
@@ -80,7 +80,7 @@ namespace Rssdp
 			_CustomResponseHeaders = new CustomHttpHeadersCollection();
 			_CustomProperties = new SsdpDevicePropertiesCollection();
 			_Services = new List<SsdpService>();
-			this.Services =  new ReadOnlyEnumerable<SsdpService>(_Services);
+			this.Services = new ReadOnlyEnumerable<SsdpService>(_Services);
 		}
 
 		/// <summary>
@@ -410,9 +410,7 @@ namespace Rssdp
 		/// <seealso cref="DeviceAdded"/>		
 		protected virtual void OnDeviceAdded(SsdpEmbeddedDevice device)
 		{
-			var handlers = this.DeviceAdded;
-			if (handlers != null)
-				handlers(this, new DeviceEventArgs(device));
+			this.DeviceAdded?.Invoke(this, new DeviceEventArgs(device));
 		}
 
 		/// <summary>
@@ -423,9 +421,7 @@ namespace Rssdp
 		/// <see cref="DeviceRemoved"/>
 		protected virtual void OnDeviceRemoved(SsdpEmbeddedDevice device)
 		{
-			var handlers = this.DeviceRemoved;
-			if (handlers != null)
-				handlers(this, new DeviceEventArgs(device));
+			this.DeviceRemoved?.Invoke(this, new DeviceEventArgs(device));
 		}
 
 		#endregion
@@ -491,9 +487,7 @@ namespace Rssdp
 		/// <seealso cref="ServiceAdded"/>		
 		protected virtual void OnServiceAdded(SsdpService service)
 		{
-			var handlers = this.ServiceAdded;
-			if (handlers != null)
-				handlers(this, new ServiceEventArgs(service));
+			this.ServiceAdded?.Invoke(this, new ServiceEventArgs(service));
 		}
 
 		/// <summary>
@@ -504,9 +498,7 @@ namespace Rssdp
 		/// <see cref="ServiceRemoved"/>
 		protected virtual void OnServiceRemoved(SsdpService service)
 		{
-			var handlers = this.ServiceRemoved;
-			if (handlers != null)
-				handlers(this, new ServiceEventArgs(service));
+			this.ServiceRemoved?.Invoke(this, new ServiceEventArgs(service));
 		}
 
 		#endregion
@@ -757,7 +749,9 @@ namespace Rssdp
 						break;
 					}
 					else
+					{
 						return false;
+					}
 			}
 			return true;
 		}
@@ -771,7 +765,7 @@ namespace Rssdp
 
 			while (!reader.EOF)
 			{
-				while (!reader.EOF && reader.NodeType != XmlNodeType.Element && !(reader.NodeType == XmlNodeType.EndElement && reader.Name == "serviceList")) 
+				while (!reader.EOF && reader.NodeType != XmlNodeType.Element && !(reader.NodeType == XmlNodeType.EndElement && reader.Name == "serviceList"))
 				{
 					reader.Read();
 				}
@@ -782,31 +776,40 @@ namespace Rssdp
 					device.AddService(service);
 				}
 				else
+				{
 					break;
+				}
 			}
 		}
 
 		private static void SetDeviceTypePropertiesFromFullDeviceType(SsdpDevice device, string value)
 		{
+#if NET6_0_OR_GREATER
+			if (String.IsNullOrEmpty(value) || !value.Contains(':'))
+#else
 			if (String.IsNullOrEmpty(value) || !value.Contains(":"))
+#endif
 				device.DeviceType = value;
 			else
 			{
 				var parts = value.Split(':');
 				if (parts.Length == 5)
 				{
-					int deviceVersion = 1;
-					if (Int32.TryParse(parts[4], out deviceVersion))
+					if (Int32.TryParse(parts[4], out var deviceVersion))
 					{
 						device.DeviceTypeNamespace = parts[1];
 						device.DeviceType = parts[3];
 						device.DeviceVersion = deviceVersion;
 					}
 					else
+					{
 						device.DeviceType = value;
+					}
 				}
 				else
+				{
 					device.DeviceType = value;
+				}
 			}
 		}
 
@@ -818,76 +821,78 @@ namespace Rssdp
 				device.Uuid = device.Udn;
 		}
 
-	    private static void LoadIcons(XmlReader reader, SsdpDevice device)
-        {
-	        while (!reader.EOF && reader.NodeType != XmlNodeType.Element)
-	        {
-	            reader.Read();
-	        }
+		private static void LoadIcons(XmlReader reader, SsdpDevice device)
+		{
+			while (!reader.EOF && reader.NodeType != XmlNodeType.Element)
+			{
+				reader.Read();
+			}
 
-	        while (!reader.EOF)
-	        {
-	            while (!reader.EOF && reader.NodeType != XmlNodeType.Element && !(reader.NodeType == XmlNodeType.EndElement && reader.Name == "iconList"))
-	            {
-	                reader.Read();
-	            }
+			while (!reader.EOF)
+			{
+				while (!reader.EOF && reader.NodeType != XmlNodeType.Element && !(reader.NodeType == XmlNodeType.EndElement && reader.Name == "iconList"))
+				{
+					reader.Read();
+				}
 
-	            if (reader.LocalName == "icon")
-	            {
-	                var icon = new SsdpDeviceIcon();
-	                LoadIconProperties(reader, icon);
-	                device.Icons.Add(icon);
-	            }
-	            else
-	                break;
-	        }
-	    }
+				if (reader.LocalName == "icon")
+				{
+					var icon = new SsdpDeviceIcon();
+					LoadIconProperties(reader, icon);
+					device.Icons.Add(icon);
+				}
+				else
+				{
+					break;
+				}
+			}
+		}
 
-	    private static void LoadIconProperties(XmlReader reader, SsdpDeviceIcon icon)
-	    {
-	        while (!reader.EOF && (reader.LocalName != "icon" || reader.NodeType != XmlNodeType.Element))
-	        {
-	            reader.Read();
-	        }
+		private static void LoadIconProperties(XmlReader reader, SsdpDeviceIcon icon)
+		{
+			while (!reader.EOF && (reader.LocalName != "icon" || reader.NodeType != XmlNodeType.Element))
+			{
+				reader.Read();
+			}
 
-	        while (!reader.EOF)
-	        {
-	            if (reader.NodeType == XmlNodeType.EndElement && reader.Name == "icon")
-	            {
-	                reader.Read();
-	                break;
-	            }
+			while (!reader.EOF)
+			{
+				if (reader.NodeType == XmlNodeType.EndElement && reader.Name == "icon")
+				{
+					reader.Read();
+					break;
+				}
 
-	            switch (reader.LocalName)
-	            {
-	                case "depth":
-	                    icon.ColorDepth = reader.ReadElementContentAsInt();
-	                    break;
+				switch (reader.LocalName)
+				{
+					case "depth":
+						icon.ColorDepth = reader.ReadElementContentAsInt();
+						break;
 
-	                case "height":
-	                    icon.Height = reader.ReadElementContentAsInt();
-	                    break;
+					case "height":
+						icon.Height = reader.ReadElementContentAsInt();
+						break;
 
-	                case "width":
-	                    icon.Width = reader.ReadElementContentAsInt();
-	                    break;
+					case "width":
+						icon.Width = reader.ReadElementContentAsInt();
+						break;
 
-	                case "mimetype":
-	                    icon.MimeType = reader.ReadElementContentAsString();
-	                    break;
+					case "mimetype":
+						icon.MimeType = reader.ReadElementContentAsString();
+						break;
 
-	                case "url":
-	                    icon.Url = StringToUri(reader.ReadElementContentAsString());
-	                    break;
+					case "url":
+						icon.Url = StringToUri(reader.ReadElementContentAsString());
+						break;
 
-	                default:
-	                    reader.Read();
-	                    break;
-	            }
-	        }
-	    }
+					default:
+						reader.Read();
+						break;
+				}
+			}
+		}
 
-	    private void LoadChildDevices(XmlReader reader, SsdpDevice device)
+		private void LoadChildDevices(XmlReader reader, SsdpDevice device)
 		{
 			while (!reader.EOF && reader.NodeType != XmlNodeType.Element)
 			{
@@ -908,7 +913,9 @@ namespace Rssdp
 					device.AddDevice(childDevice);
 				}
 				else
+				{
 					break;
+				}
 			}
 		}
 

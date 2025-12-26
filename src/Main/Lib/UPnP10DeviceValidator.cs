@@ -68,14 +68,22 @@ namespace Rssdp.Infrastructure
 				retVal.Add("DeviceType is not set.");
 
 			if (String.IsNullOrEmpty(device.DeviceTypeNamespace))
+			{
 				retVal.Add("DeviceTypeNamespace is not set.");
+			}
 			else
 			{
 				if (IsOverLength(device.DeviceTypeNamespace, 64))
 					retVal.Add("DeviceTypeNamespace cannot be longer than 64 characters.");
 
+#if NET6_0_OR_GREATER
+				if (device.DeviceTypeNamespace.Contains('.'))
+#else
 				if (device.DeviceTypeNamespace.Contains("."))
+#endif
+				{
 					retVal.Add("Period (.) characters in the DeviceTypeNamespace property must be replaced with hyphens (-).");
+				}
 			}
 
 			if (device.DeviceVersion <= 0)
@@ -130,7 +138,7 @@ namespace Rssdp.Infrastructure
 			if (errors != null && errors.Any()) throw new InvalidOperationException("Invalid device settings : " + String.Join(Environment.NewLine, errors));
 		}
 
-		#endregion
+#endregion
 
 		#region Private Methods
 
@@ -201,21 +209,37 @@ namespace Rssdp.Infrastructure
 		private static void ValidateService(SsdpService service, List<string> retVal)
 		{
 			if (String.IsNullOrEmpty(service.ServiceType))
+			{
 				retVal.Add("ServiceType is missing");
-			else if (service.ServiceType.Contains("#"))
+				return;
+			}
+
+#if NET6_0_OR_GREATER
+			if (service.ServiceType.Contains('#'))
+#else
+			if (service.ServiceType.Contains("#"))
+#endif
+			{
 				retVal.Add("ServiceType cannot contain #");
+			}
 
 			if (String.IsNullOrEmpty(service.Uuid))
+			{
 				retVal.Add("ServiceId is missing");
+			}
 
 			if (service.ScpdUrl == null)
+			{
 				retVal.Add("ScpdUrl is missing");
+			}
 
 			if (service.ControlUrl == null)
+			{
 				retVal.Add("ControlUrl is missing");
+			}
 		}
 
-		#endregion
+#endregion
 
 	}
 }

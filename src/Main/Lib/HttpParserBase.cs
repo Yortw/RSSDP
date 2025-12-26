@@ -111,7 +111,11 @@ namespace Rssdp.Infrastructure
 			var versionSeparatorIndex = versionData.IndexOf('/');
 			if (versionSeparatorIndex <= 0 || versionSeparatorIndex == versionData.Length) throw new ArgumentException("request header line is invalid. Http Version not supplied or incorrect format.", nameof(versionData));
 
+#if NET6_0_OR_GREATER
+			return Version.Parse(versionData.AsSpan(versionSeparatorIndex + 1));
+#else
 			return Version.Parse(versionData.Substring(versionSeparatorIndex + 1));
+#endif
 		}
 
 		#endregion
@@ -194,7 +198,11 @@ namespace Rssdp.Infrastructure
 			else
 			{
 				var segments = headerValue.Split(SeparatorCharacters);
+#if NET6_0_OR_GREATER
+				if (headerValue.Contains('"'))
+#else
 				if (headerValue.Contains("\""))
+#endif
 				{
 					for (var segmentIndex = 0; segmentIndex < segments.Length; segmentIndex++)
 					{
@@ -241,7 +249,7 @@ namespace Rssdp.Infrastructure
 				return trimmedSegment;
 		}
 
-		#endregion
+#endregion
 
 	}
 }
