@@ -1045,19 +1045,19 @@ USN: {1}
 
 		#region Event Handlers
 
-		private void Device_DeviceAdded(object sender, DeviceEventArgs e)
+		private void Device_DeviceAdded(object? sender, DeviceEventArgs e)
 		{
 			SendAliveNotifications(e.Device, false);
 			ConnectToDeviceEvents(e.Device);
 		}
 
-		private void Device_DeviceRemoved(object sender, DeviceEventArgs e)
+		private void Device_DeviceRemoved(object? sender, DeviceEventArgs e)
 		{
 			SendByeByeNotifications(e.Device, false);
 			DisconnectFromDeviceEvents(e.Device);
 		}
 
-		private void Device_ServiceAdded(object sender, ServiceEventArgs e)
+		private void Device_ServiceAdded(object? sender, ServiceEventArgs e)
 		{
 			//Technically we should only do this once per service type,
 			//but if we add services during runtime there is no way to
@@ -1067,7 +1067,7 @@ USN: {1}
 			SendAliveNotification((SsdpDevice)sender, e.Service);
 		}
 
-		private void Device_ServiceRemoved(object sender, ServiceEventArgs e)
+		private void Device_ServiceRemoved(object? sender, ServiceEventArgs e)
 		{
 			_Log.LogInfo(String.Format(System.Globalization.CultureInfo.InvariantCulture, "Service removed: {0} ({1})", e.Service.ServiceId, e.Service.FullServiceType));
 
@@ -1078,7 +1078,7 @@ USN: {1}
 				SendByeByeNotification(device, e.Service);
 		}
 
-		private void CommsServer_RequestReceived(object sender, RequestReceivedEventArgs e)
+		private void CommsServer_RequestReceived(object? sender, RequestReceivedEventArgs e)
 		{
 			if (this.IsDisposed) return;
 
