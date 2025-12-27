@@ -255,7 +255,7 @@ namespace Rssdp.Infrastructure
 			var socket = _SendSocket;
 			if (socket != null)
 			{
-				_SendSocket.SendTo(messageData, destination);
+				socket.SendTo(messageData, destination);
 			}
 			else
 			{
@@ -391,7 +391,7 @@ namespace Rssdp.Infrastructure
 			//by checking for the static HTTP/ prefix on the start of the message.
 			if (data.StartsWith("HTTP/", StringComparison.OrdinalIgnoreCase))
 			{
-				HttpResponseMessage responseMessage = null;
+				HttpResponseMessage? responseMessage = null;
 				try
 				{
 					responseMessage = _ResponseParser.Parse(data);
@@ -404,7 +404,7 @@ namespace Rssdp.Infrastructure
 			}
 			else
 			{
-				HttpRequestMessage requestMessage = null;
+				HttpRequestMessage? requestMessage = null;
 				try
 				{
 					requestMessage = _RequestParser.Parse(data);

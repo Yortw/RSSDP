@@ -42,7 +42,7 @@ namespace Rssdp.Infrastructure
 			if (data.Length == 0) throw new ArgumentException("data cannot be an empty string.", nameof(data));
 			if (!LineTerminators.Any(data.Contains)) throw new ArgumentException("data is not a valid request, it does not contain any CRLF/LF terminators.", nameof(data));
 
-			HttpContent retVal = null;
+			HttpContent? retVal = null;
 			try
 			{
 				var contentStream = new System.IO.MemoryStream();

@@ -28,7 +28,7 @@ namespace Rssdp.Infrastructure
 		private TimeSpan _RebroadcastAliveNotificationsTimeSpan;
 		private DateTime _LastNotificationTime;
 
-		private Dictionary<string, SearchRequest>? _RecentSearchRequests;
+		private readonly Dictionary<string, SearchRequest> _RecentSearchRequests;
 		private readonly IUpnpDeviceValidator _DeviceValidator;
 
 		private readonly Random _Random;
@@ -367,7 +367,7 @@ USN: {1}
 					DisconnectFromDeviceEvents(device);
 				}
 
-				_RecentSearchRequests = null;
+				_RecentSearchRequests.Clear();
 			}
 		}
 
@@ -606,7 +606,14 @@ USN: {1}
 				additionalheaders
 			);
 
-			_CommsServer.SendMessage(System.Text.UTF8Encoding.UTF8.GetBytes(message), endPoint);
+			var commsServer = _CommsServer;
+			if (commsServer == null)
+			{
+				LogDeviceEventWarning("Cannot send search response, communications server is disposed.", device);
+				return;
+			}
+
+			commsServer.SendMessage(System.Text.UTF8Encoding.UTF8.GetBytes(message), endPoint);
 
 			LogDeviceEventVerbose(String.Format(System.Globalization.CultureInfo.InvariantCulture, "Sent search response ({0}) to {1}", uniqueServiceName, endPoint.ToString()), device);
 		}

@@ -231,7 +231,7 @@ namespace Rssdp
 		/// <summary>
 		/// Sets or returns a URL to the manufacturers web site. Optional.
 		/// </summary>
-		public Uri ManufacturerUrl { get; set; }
+		public Uri? ManufacturerUrl { get; set; }
 
 		/// <summary>
 		/// Sets or returns a description of this device model. Recommended.
@@ -255,7 +255,7 @@ namespace Rssdp
 		/// <remarks>
 		/// <para>Optional. May be relative to base URL.</para>
 		/// </remarks>
-		public Uri ModelUrl { get; set; }
+		public Uri? ModelUrl { get; set; }
 
 		/// <summary>
 		/// Sets or returns the serial number for this device. Recommended.
@@ -276,7 +276,7 @@ namespace Rssdp
 		/// <remarks>
 		/// <para>May be relative to base URL. </para>
 		/// </remarks>
-		public Uri PresentationUrl { get; set; }
+		public Uri? PresentationUrl { get; set; }
 
 		#endregion
 
@@ -574,6 +574,8 @@ namespace Rssdp
 
 				foreach (var icon in device.Icons)
 				{
+					if (icon.Url == null) continue;
+
 					writer.WriteStartElement("icon");
 
 					writer.WriteElementString("mimetype", icon.MimeType);
@@ -815,10 +817,13 @@ namespace Rssdp
 
 		private static void SetUuidFromUdn(SsdpDevice device)
 		{
-			if (device.Udn != null && device.Udn.StartsWith("uuid:", StringComparison.OrdinalIgnoreCase))
-				device.Uuid = device.Udn.Substring(5).Trim();
-			else
-				device.Uuid = device.Udn;
+			if (device.Udn != null)
+			{
+				if (device.Udn.StartsWith("uuid:", StringComparison.OrdinalIgnoreCase))
+					device.Uuid = device.Udn.Substring(5).Trim();
+				else
+					device.Uuid = device.Udn;
+			}
 		}
 
 		private static void LoadIcons(XmlReader reader, SsdpDevice device)

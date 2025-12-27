@@ -29,7 +29,7 @@ namespace Rssdp.Infrastructure
 		/// <returns>A <see cref="System.Net.Http.HttpResponseMessage"/> instance containing the parsed data.</returns>
 		public override HttpResponseMessage Parse(string data)
 		{
-			System.Net.Http.HttpResponseMessage retVal = null;
+			System.Net.Http.HttpResponseMessage? retVal = null;
 			try
 			{
 				retVal = new System.Net.Http.HttpResponseMessage();

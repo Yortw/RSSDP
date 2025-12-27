@@ -122,15 +122,15 @@ namespace Rssdp
 		/// <summary>
 		/// REQUIRED. URL for service description. (See section  2.5, “Service description” below.) MUST be relative to the URL at which the device description is located in accordance with section 5 of RFC 3986. Specified by UPnP vendor. Single URL. 
 		/// </summary>
-		public Uri ScpdUrl { get; set; }
+		public Uri? ScpdUrl { get; set; }
 		/// <summary>
 		/// REQUIRED. URL for control (see section  3, “Control”). MUST be relative to the URL at which the device description is located in accordance with section 5 of RFC 3986. Specified by UPnP vendor. Single URL. 
 		/// </summary>
-		public Uri ControlUrl { get; set; }
+		public Uri? ControlUrl { get; set; }
 		/// <summary>
 		/// URL for eventing (see section  4, “Eventing”). MUST be relative to the URL at which the device description is located in accordance with section 5 of RFC 3986. MUST be unique within the device; any two services MUST NOT have the same URL for eventing. If the service has no evented variables, this element MUST be present but MUST be empty(i.e., <eventSubURL></eventSubURL>.) Specified by UPnP vendor.Single URL.
 		/// </summary>
-		public Uri EventSubUrl { get; set; }
+		public Uri? EventSubUrl { get; set; }
 
 		#endregion
 

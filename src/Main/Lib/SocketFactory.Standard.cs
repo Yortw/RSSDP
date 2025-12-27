@@ -138,8 +138,9 @@ namespace Rssdp
 					long interfaceIndex = -1;
 
 #if !NETSTANDARD
-					if (_LocalIP != null & _LocalIP != IPAddress.IPv6Any)
-						interfaceIndex = GetInterfaceIndexFromIPAddress(_LocalIP);
+					var localIp = _LocalIP;
+					if (localIp != null && localIp != IPAddress.IPv6Any)
+						interfaceIndex = GetInterfaceIndexFromIPAddress(localIp);
 #endif
 
 					if (interfaceIndex >= 0)

@@ -173,7 +173,7 @@ namespace Rssdp.Infrastructure
 			if (searchWaitTime != TimeSpan.Zero && !this.IsDisposed)
 				await TaskEx.Delay(searchWaitTime).ConfigureAwait(false);
 
-			IEnumerable<DiscoveredSsdpDevice> retVal = null;
+			IEnumerable<DiscoveredSsdpDevice>? retVal = null;
 
 			try
 			{
@@ -214,9 +214,13 @@ namespace Rssdp.Infrastructure
 		{
 			ThrowIfDisposed();
 
-			_CommunicationsServer.RequestReceived -= CommsServer_RequestReceived;
-			_CommunicationsServer.RequestReceived += CommsServer_RequestReceived;
-			_CommunicationsServer.BeginListeningForBroadcasts();
+			var commsServerver = _CommunicationsServer;
+			if (commsServerver != null)
+			{
+				commsServerver.RequestReceived -= CommsServer_RequestReceived;
+				commsServerver.RequestReceived += CommsServer_RequestReceived;
+				commsServerver.BeginListeningForBroadcasts();
+			}
 		}
 
 		/// <summary>
@@ -233,7 +237,9 @@ namespace Rssdp.Infrastructure
 		{
 			ThrowIfDisposed();
 
-			_CommunicationsServer.RequestReceived -= CommsServer_RequestReceived;
+			var commsServer = _CommunicationsServer;
+			if (commsServer != null)
+				commsServer.RequestReceived -= CommsServer_RequestReceived;
 		}
 
 		/// <summary>
@@ -428,11 +434,13 @@ namespace Rssdp.Infrastructure
 
 		private void BroadcastDiscoverMessage(string serviceType, TimeSpan mxValue)
 		{
-			var multicastIpAddress = _CommunicationsServer.DeviceNetworkType.GetMulticastIPAddress();
+			var commsServer = _CommunicationsServer;
+			if (commsServer == null) throw new ObjectDisposedException(this.GetType().FullName);
 
+			var multicastIpAddress = commsServer.DeviceNetworkType.GetMulticastIPAddress();
 			var multicastMessage = BuildDiscoverMessage(serviceType, mxValue, multicastIpAddress);
 
-			_CommunicationsServer.SendMessage(multicastMessage, new UdpEndPoint
+			commsServer.SendMessage(multicastMessage, new UdpEndPoint
 			{
 				IPAddress = multicastIpAddress,
 				Port = SsdpConstants.MulticastPort
@@ -615,7 +623,7 @@ namespace Rssdp.Infrastructure
 		{
 			if (this.IsDisposed) return;
 
-			IEnumerable<DiscoveredSsdpDevice> expiredDevices = null;
+			IEnumerable<DiscoveredSsdpDevice>? expiredDevices = null;
 			lock (_Devices)
 			{
 				expiredDevices = (from device in _Devices where device.IsExpired() select device).ToArray();
@@ -649,7 +657,7 @@ namespace Rssdp.Infrastructure
 
 		private bool DeviceDied(string deviceUsn, bool expired)
 		{
-			IEnumerable<DiscoveredSsdpDevice> existingDevices = null;
+			IEnumerable<DiscoveredSsdpDevice>? existingDevices = null;
 			lock (_Devices)
 			{
 				existingDevices = FindExistingDeviceNotifications(_Devices, deviceUsn);
@@ -713,12 +721,12 @@ namespace Rssdp.Infrastructure
 
 		#region Event Handlers
 
-		private void CommsServer_ResponseReceived(object sender, ResponseReceivedEventArgs e)
+		private void CommsServer_ResponseReceived(object? sender, ResponseReceivedEventArgs e)
 		{
 			ProcessSearchResponseMessage(e.Message);
 		}
 
-		private void CommsServer_RequestReceived(object sender, RequestReceivedEventArgs e)
+		private void CommsServer_RequestReceived(object? sender, RequestReceivedEventArgs e)
 		{
 			ProcessNotificationMessage(e.Message);
 		}

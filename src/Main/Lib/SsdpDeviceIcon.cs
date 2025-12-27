@@ -23,7 +23,7 @@ namespace Rssdp
 		/// <para>Required. May be relative to base URL. Specified by UPnP vendor. Single URL.</para>
 		/// </remarks>
 		/// <seealso cref="MimeType"/>
-		public Uri Url { get; set; }
+		public Uri? Url { get; set; }
 			
 		/// <summary>
 		/// The width of the image in pixels.
