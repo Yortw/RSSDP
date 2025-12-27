@@ -116,17 +116,18 @@ namespace Rssdp
 			{
 				var bytesRead = receiveData();
 
-				var ipEndPoint = state.EndPoint as IPEndPoint;
-				state.TaskCompletionSource.SetResult(
+				var ipEndPoint = (IPEndPoint)state.EndPoint;
+				state.TaskCompletionSource.SetResult
+				(
 					new ReceivedUdpData()
 					{
 						Buffer = state.Buffer,
 						ReceivedBytes = bytesRead,
-						ReceivedFrom = new UdpEndPoint()
-						{
-							IPAddress = ipEndPoint.Address.ToString(),
-							Port = ipEndPoint.Port
-						}
+						ReceivedFrom = new UdpEndPoint
+						(
+							ipEndPoint.Address.ToString(),
+							ipEndPoint.Port
+						)
 					}
 				);
 			}

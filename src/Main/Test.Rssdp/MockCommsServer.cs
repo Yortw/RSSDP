@@ -132,11 +132,7 @@ namespace TestRssdp
 			{
 				Buffer = messageData,
 				ReceivedBytes = messageData.Length,
-				ReceivedFrom = new UdpEndPoint()
-				{
-					IPAddress = SsdpConstants.MulticastLocalAdminAddress,
-					Port = SsdpConstants.MulticastPort
-				}
+				ReceivedFrom = SsdpConstants.MulticastLocalAdminEndpoint
 			});
 
 			if (_ListenTask == null)

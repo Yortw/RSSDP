@@ -440,11 +440,15 @@ namespace Rssdp.Infrastructure
 			var multicastIpAddress = commsServer.DeviceNetworkType.GetMulticastIPAddress();
 			var multicastMessage = BuildDiscoverMessage(serviceType, mxValue, multicastIpAddress);
 
-			commsServer.SendMessage(multicastMessage, new UdpEndPoint
-			{
-				IPAddress = multicastIpAddress,
-				Port = SsdpConstants.MulticastPort
-			});
+			commsServer.SendMessage
+			(
+				multicastMessage, 
+				new UdpEndPoint
+				(
+					multicastIpAddress,
+					SsdpConstants.MulticastPort
+				)
+			);
 		}
 
 		private void ProcessSearchResponseMessage(HttpResponseMessage message)
@@ -506,16 +510,17 @@ namespace Rssdp.Infrastructure
 			if (!String.IsNullOrEmpty(notficationType))
 			{
 				var usn = GetFirstHeaderStringValue("USN", message);
+				if (String.IsNullOrEmpty(usn)) return;
 
-				if (!DeviceDied(usn, false))
+				if (!DeviceDied(usn!, false))
 				{
 					var deadDevice = new DiscoveredSsdpDevice()
 					{
 						AsAt = DateTime.UtcNow,
 						CacheLifetime = TimeSpan.Zero,
 						DescriptionLocation = null,
-						NotificationType = GetFirstHeaderStringValue("NT", message),
-						Usn = usn,
+						NotificationType = GetFirstHeaderStringValue("NT", message) ?? string.Empty,
+						Usn = usn!,
 						ResponseHeaders = message.Headers
 					};
 

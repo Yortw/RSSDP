@@ -1475,6 +1475,12 @@ references:
   commentId: F:Rssdp.Infrastructure.SsdpConstants.MulticastLocalAdminAddress
   fullName: Rssdp.Infrastructure.SsdpConstants.MulticastLocalAdminAddress
   nameWithType: SsdpConstants.MulticastLocalAdminAddress
+- uid: Rssdp.Infrastructure.SsdpConstants.MulticastLocalAdminEndpoint
+  name: MulticastLocalAdminEndpoint
+  href: api/Rssdp.Infrastructure.SsdpConstants.html#Rssdp_Infrastructure_SsdpConstants_MulticastLocalAdminEndpoint
+  commentId: F:Rssdp.Infrastructure.SsdpConstants.MulticastLocalAdminEndpoint
+  fullName: Rssdp.Infrastructure.SsdpConstants.MulticastLocalAdminEndpoint
+  nameWithType: SsdpConstants.MulticastLocalAdminEndpoint
 - uid: Rssdp.Infrastructure.SsdpConstants.MulticastPort
   name: MulticastPort
   href: api/Rssdp.Infrastructure.SsdpConstants.html#Rssdp_Infrastructure_SsdpConstants_MulticastPort
@@ -1805,6 +1811,19 @@ references:
   commentId: T:Rssdp.Infrastructure.UdpEndPoint
   fullName: Rssdp.Infrastructure.UdpEndPoint
   nameWithType: UdpEndPoint
+- uid: Rssdp.Infrastructure.UdpEndPoint.#ctor(System.String,System.Int32)
+  name: UdpEndPoint(String, Int32)
+  href: api/Rssdp.Infrastructure.UdpEndPoint.html#Rssdp_Infrastructure_UdpEndPoint__ctor_System_String_System_Int32_
+  commentId: M:Rssdp.Infrastructure.UdpEndPoint.#ctor(System.String,System.Int32)
+  fullName: Rssdp.Infrastructure.UdpEndPoint.UdpEndPoint(System.String, System.Int32)
+  nameWithType: UdpEndPoint.UdpEndPoint(String, Int32)
+- uid: Rssdp.Infrastructure.UdpEndPoint.#ctor*
+  name: UdpEndPoint
+  href: api/Rssdp.Infrastructure.UdpEndPoint.html#Rssdp_Infrastructure_UdpEndPoint__ctor_
+  commentId: Overload:Rssdp.Infrastructure.UdpEndPoint.#ctor
+  isSpec: "True"
+  fullName: Rssdp.Infrastructure.UdpEndPoint.UdpEndPoint
+  nameWithType: UdpEndPoint.UdpEndPoint
 - uid: Rssdp.Infrastructure.UdpEndPoint.IPAddress
   name: IPAddress
   href: api/Rssdp.Infrastructure.UdpEndPoint.html#Rssdp_Infrastructure_UdpEndPoint_IPAddress

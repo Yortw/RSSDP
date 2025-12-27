@@ -2106,11 +2106,7 @@ ST: {2}
  SsdpConstants.MulticastPort,
  searchTarget));
 
-			retVal.ReceivedFrom = new UdpEndPoint()
-			{
-				IPAddress = "192.168.1.100",
-				Port = 1701
-			};
+			retVal.ReceivedFrom = new UdpEndPoint("192.168.1.100", 1701);
 			retVal.ReceivedBytes = retVal.Buffer.Length;
 
 			return retVal;
@@ -2130,11 +2126,7 @@ ST: {2}
  SsdpConstants.MulticastPort,
  searchTarget));
 
-			retVal.ReceivedFrom = new UdpEndPoint()
-			{
-				IPAddress = "192.168.1.100",
-				Port = 1701
-			};
+			retVal.ReceivedFrom = new UdpEndPoint("192.168.1.100", 1701);
 			retVal.ReceivedBytes = retVal.Buffer.Length;
 
 			return retVal;
@@ -2156,11 +2148,7 @@ ST: {2}
  searchTarget,
  mxHeder));
 
-			retVal.ReceivedFrom = new UdpEndPoint()
-			{
-				IPAddress = "192.168.1.100",
-				Port = 1701
-			};
+			retVal.ReceivedFrom = new UdpEndPoint("192.168.1.100", 1701);
 			retVal.ReceivedBytes = retVal.Buffer.Length;
 
 			return retVal;
@@ -2180,11 +2168,7 @@ ST: {2}
  SsdpConstants.MulticastPort,
  searchTarget));
 
-			retVal.ReceivedFrom = new UdpEndPoint()
-			{
-				IPAddress = "192.168.1.100",
-				Port = 1701
-			};
+			retVal.ReceivedFrom = new UdpEndPoint("192.168.1.100", 1701);
 			retVal.ReceivedBytes = retVal.Buffer.Length;
 
 			return retVal;

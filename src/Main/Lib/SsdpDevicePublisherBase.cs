@@ -758,11 +758,15 @@ USN: {1}
 
 			var multicastMessage = BuildAliveMessage(device, notificationType, uniqueServiceName, multicastIpAddress);
 
-			commsServer.SendMessage(multicastMessage, new UdpEndPoint
-			{
-				IPAddress = multicastIpAddress,
-				Port = SsdpConstants.MulticastPort
-			});
+			commsServer.SendMessage
+			(
+				multicastMessage, 
+				new UdpEndPoint
+				(
+					multicastIpAddress,
+					SsdpConstants.MulticastPort
+				)
+			);
 
 			LogDeviceEvent(String.Format(System.Globalization.CultureInfo.InvariantCulture, "Sent alive notification NT={0}, USN={1}", notificationType, uniqueServiceName), device);
 		}
@@ -846,11 +850,15 @@ USN: {1}
 
 			var multicastMessage = BuildByeByeMessage(notificationType, uniqueServiceName, multicastIpAddress);
 
-			commsServer.SendMessage(multicastMessage, new UdpEndPoint
-			{
-				IPAddress = multicastIpAddress,
-				Port = SsdpConstants.MulticastPort
-			});
+			commsServer.SendMessage
+			(
+				multicastMessage, 
+				new UdpEndPoint
+				(
+					multicastIpAddress,
+					SsdpConstants.MulticastPort
+				)
+			);
 
 			LogDeviceEvent(String.Format(System.Globalization.CultureInfo.InvariantCulture, "Sent byebye notification, NT={0}, USN={1}", notificationType, uniqueServiceName), device);
 		}
@@ -1094,7 +1102,7 @@ USN: {1}
 
 			_Log.LogInfo(String.Format(System.Globalization.CultureInfo.InvariantCulture, "Service removed: {0} ({1})", e.Service.ServiceId, e.Service.FullServiceType));
 
-			var device = (SsdpDevice?)sender;
+			var device = (SsdpDevice)sender;
 			//Only say this service type has disappeared if there are no 
 			//services of this type left.
 			if (!DeviceHasServiceOfType(device, e.Service.FullServiceType))

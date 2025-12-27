@@ -1,4 +1,5 @@
 using System;
+using System.Net;
 
 namespace Rssdp.Infrastructure
 {
@@ -23,6 +24,11 @@ namespace Rssdp.Infrastructure
 		/// The default multicase TTL for SSDP multicast messages. Value is 4.
 		/// </summary>
 		public const int SsdpDefaultMulticastTimeToLive = 4;
+
+		/// <summary>
+		/// A <see cref="UdpEndPoint"/> configured with <see cref="MulticastLocalAdminAddress"/> and <see cref="MulticastPort"/>, representing the endpoint broadcast SSDP messages are sent to.
+		/// </summary>
+		public static readonly UdpEndPoint MulticastLocalAdminEndpoint = new(MulticastLocalAdminAddress, MulticastPort);
 
 		internal const string MSearchMethod = "M-SEARCH";
 

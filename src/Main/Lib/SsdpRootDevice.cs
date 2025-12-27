@@ -16,7 +16,7 @@ namespace Rssdp
 		
 		#region Fields
 
-		private Uri _UrlBase;
+		private Uri? _UrlBase;
 
 		#endregion
 

@@ -449,33 +449,33 @@ namespace TestRssdp
 		[TestMethod()]
 		public void DeviceLocator_Notifications_ContainHeaders()
 		{
-            var publishedDevice = CreateDeviceTree();
+			var publishedDevice = CreateDeviceTree();
 
-            var server = new MockCommsServer();
-            using (var deviceLocator = new MockDeviceLocator(server))
-            {
-                var discoveredDevices = new List<DiscoveredSsdpDevice>();
+			var server = new MockCommsServer();
+			using (var deviceLocator = new MockDeviceLocator(server))
+			{
+				var discoveredDevices = new List<DiscoveredSsdpDevice>();
 
-                using (var signal = new System.Threading.AutoResetEvent(false))
-                {
-                    deviceLocator.DeviceAvailable += (sender, args) =>
-                    {
-                        discoveredDevices.Add(args.DiscoveredDevice);
-                        signal.Set();
-                    };
-                    deviceLocator.StartListeningForNotifications();
+				using (var signal = new System.Threading.AutoResetEvent(false))
+				{
+					deviceLocator.DeviceAvailable += (sender, args) =>
+					{
+						discoveredDevices.Add(args.DiscoveredDevice);
+						signal.Set();
+					};
+					deviceLocator.StartListeningForNotifications();
 
-                    server.MockReceiveBroadcast(GetMockAliveNotification(publishedDevice));
-                    signal.WaitOne(10000);
-                }
+					server.MockReceiveBroadcast(GetMockAliveNotification(publishedDevice));
+					signal.WaitOne(10000);
+				}
 
-                var first = discoveredDevices.First();
+				var first = discoveredDevices.First();
 
-                Assert.IsTrue(discoveredDevices.Any());
-                Assert.IsNotNull(first.ResponseHeaders);
-                Assert.AreEqual(first.ResponseHeaders.GetValues("NTS").FirstOrDefault(), "ssdp:alive");
-            }
-        }
+				Assert.IsTrue(discoveredDevices.Any());
+				Assert.IsNotNull(first.ResponseHeaders);
+				Assert.AreEqual(first.ResponseHeaders.GetValues("NTS").FirstOrDefault(), "ssdp:alive");
+			}
+		}
 
 		[TestMethod()]
 		public void DeviceLocator_Notifications_SubsequentNotificationsUpdatesCachedCacheTime()
@@ -1092,7 +1092,7 @@ LOCATION:{3}{5}
 			var retVal = new ReceivedUdpData()
 			{
 				Buffer = System.Text.ASCIIEncoding.UTF8.GetBytes(responseText),
-				ReceivedFrom = new UdpEndPoint() { IPAddress = SsdpConstants.MulticastLocalAdminAddress, Port = SsdpConstants.MulticastPort }
+				ReceivedFrom = SsdpConstants.MulticastLocalAdminEndpoint
 			};
 			retVal.ReceivedBytes = retVal.Buffer.Length;
 
@@ -1127,11 +1127,7 @@ CACHE-CONTROL: public, max-age=1800
 			var retVal = new ReceivedUdpData()
 			{
 				Buffer = System.Text.UTF8Encoding.UTF8.GetBytes(data),
-				ReceivedFrom = new UdpEndPoint()
-				{
-					IPAddress = SsdpConstants.MulticastLocalAdminAddress,
-					Port = 1900
-				}
+				ReceivedFrom = SsdpConstants.MulticastLocalAdminEndpoint
 			};
 			retVal.ReceivedBytes = retVal.Buffer.Length;
 
@@ -1155,11 +1151,7 @@ USN: uuid:1234::test-schema:device:TestDeviceType:1
 			var retVal = new ReceivedUdpData()
 			{
 				Buffer = System.Text.UTF8Encoding.UTF8.GetBytes(data),
-				ReceivedFrom = new UdpEndPoint()
-				{
-					IPAddress = SsdpConstants.MulticastLocalAdminAddress,
-					Port = 1900
-				}
+				ReceivedFrom = SsdpConstants.MulticastLocalAdminEndpoint
 			};
 			retVal.ReceivedBytes = retVal.Buffer.Length;
 
@@ -1185,11 +1177,7 @@ USN: {2}
 			var retVal = new ReceivedUdpData()
 			{
 				Buffer = System.Text.UTF8Encoding.UTF8.GetBytes(data),
-				ReceivedFrom = new UdpEndPoint()
-				{
-					IPAddress = SsdpConstants.MulticastLocalAdminAddress,
-					Port = 1900
-				}
+				ReceivedFrom = SsdpConstants.MulticastLocalAdminEndpoint
 			};
 			retVal.ReceivedBytes = retVal.Buffer.Length;
 
@@ -1215,12 +1203,8 @@ CACHE-CONTROL: public, max-age=1800
 			var retVal = new ReceivedUdpData()
 			{
 				Buffer = System.Text.UTF8Encoding.UTF8.GetBytes(data),
-				ReceivedFrom = new UdpEndPoint()
-				{
-					IPAddress = SsdpConstants.MulticastLocalAdminAddress,
-					Port = 1900
-				}
-			};
+				ReceivedFrom = SsdpConstants.MulticastLocalAdminEndpoint
+		};
 			retVal.ReceivedBytes = retVal.Buffer.Length;
 
 			return retVal;
@@ -1251,12 +1235,8 @@ CACHE-CONTROL: public, max-age={4}
 			var retVal = new ReceivedUdpData()
 			{
 				Buffer = System.Text.UTF8Encoding.UTF8.GetBytes(data),
-				ReceivedFrom = new UdpEndPoint()
-				{
-					IPAddress = SsdpConstants.MulticastLocalAdminAddress,
-					Port = 1900
-				}
-			};
+				ReceivedFrom = SsdpConstants.MulticastLocalAdminEndpoint
+		};
 			retVal.ReceivedBytes = retVal.Buffer.Length;
 
 			return retVal;
