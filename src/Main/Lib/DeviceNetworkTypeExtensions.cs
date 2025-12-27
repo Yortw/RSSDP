@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using Rssdp.Infrastructure;
 
 namespace Rssdp
@@ -16,21 +16,12 @@ namespace Rssdp
 		/// <exception cref="ArgumentOutOfRangeException"></exception>
 		public static string GetMulticastIPAddress(this DeviceNetworkType deviceNetworkType)
 		{
-			string multicastIpAddress;
-
-			switch (deviceNetworkType)
+			var multicastIpAddress = deviceNetworkType switch
 			{
-				case DeviceNetworkType.IPv4:
-					multicastIpAddress = SsdpConstants.MulticastLocalAdminAddress;
-					break;
-
-				case DeviceNetworkType.IPv6:
-					multicastIpAddress = SsdpConstants.MulticastLinkLocalAddressV6;
-					break;
-				default:
-					throw new ArgumentOutOfRangeException(nameof(deviceNetworkType));
-			}
-
+				DeviceNetworkType.IPv4 => SsdpConstants.MulticastLocalAdminAddress,
+				DeviceNetworkType.IPv6 => SsdpConstants.MulticastLinkLocalAddressV6,
+				_ => throw new ArgumentOutOfRangeException(nameof(deviceNetworkType)),
+			};
 			return multicastIpAddress;
 		}
 	}
