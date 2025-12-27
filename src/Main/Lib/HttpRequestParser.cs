@@ -32,10 +32,8 @@ namespace Rssdp.Infrastructure
 
 			try
 			{
-				retVal = new System.Net.Http.HttpRequestMessage()
-				{
-					Content = Parse(retVal, retVal.Headers, data)
-				};
+				retVal = new System.Net.Http.HttpRequestMessage();
+				retVal.Content = Parse(retVal, retVal.Headers, data);
 
 				return retVal;
 			}
