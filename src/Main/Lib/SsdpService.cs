@@ -162,13 +162,13 @@ namespace Rssdp
 
 		#region Private Methods
 
-		private static void WriteNodeIfNotEmpty(XmlWriter writer, string nodeName, string value)
+		private static void WriteNodeIfNotEmpty(XmlWriter writer, string nodeName, string? value)
 		{
 			if (!String.IsNullOrEmpty(value))
 				writer.WriteElementString(nodeName, value);
 		}
 
-		private static void WriteNodeIfNotEmpty(XmlWriter writer, string nodeName, Uri value)
+		private static void WriteNodeIfNotEmpty(XmlWriter writer, string nodeName, Uri? value)
 		{
 			if (value != null)
 				writer.WriteElementString(nodeName, value.ToString());

@@ -28,14 +28,16 @@ namespace Rssdp.Infrastructure
 		{
 			if (device == null) throw new ArgumentNullException(nameof(device));
 
-			var retVal = GetValidationErrors((SsdpDevice)device) as IList<string>;
+			var retVal = GetValidationErrors((SsdpDevice)device);
+			if (retVal is not List<string> errorList)
+				errorList = new List<string>(retVal);
 
 			if (device.Location == null)
-				retVal.Add("Location cannot be null.");
+				errorList.Add("Location cannot be null.");
 			else if (!device.Location.IsAbsoluteUri)
-				retVal.Add("Location must be an absolute URL.");
+				errorList.Add("Location must be an absolute URL.");
 
-			return retVal;
+			return errorList;
 		}
 
 		/// <summary>

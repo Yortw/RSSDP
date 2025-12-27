@@ -537,7 +537,7 @@ namespace Rssdp.Infrastructure
 			_ExpireCachedDevicesTimer.Change(60000, System.Threading.Timeout.Infinite);
 		}
 
-		private void ExpireCachedDevices(object state)
+		private void ExpireCachedDevices(object? state)
 		{
 			RemoveExpiredDevicesFromCache();
 		}

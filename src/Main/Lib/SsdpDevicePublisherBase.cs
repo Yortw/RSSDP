@@ -665,7 +665,7 @@ USN: {1}
 		#region Alive
 
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1031:DoNotCatchGeneralExceptionTypes")]
-		private void SendAllAliveNotifications(object state)
+		private void SendAllAliveNotifications(object? state)
 		{
 			try
 			{
@@ -747,11 +747,18 @@ USN: {1}
 
 		private void SendAliveNotification(SsdpDevice device, string notificationType, string uniqueServiceName)
 		{
-			string multicastIpAddress = _CommsServer.DeviceNetworkType.GetMulticastIPAddress();
+			var commsServer = _CommsServer;
+			if (commsServer == null)
+			{
+				LogDeviceEventWarning("Cannot send alive notification, communications server is disposed.", device);
+				return;
+			}
+
+			string multicastIpAddress = commsServer.DeviceNetworkType.GetMulticastIPAddress();
 
 			var multicastMessage = BuildAliveMessage(device, notificationType, uniqueServiceName, multicastIpAddress);
 
-			_CommsServer.SendMessage(multicastMessage, new UdpEndPoint
+			commsServer.SendMessage(multicastMessage, new UdpEndPoint
 			{
 				IPAddress = multicastIpAddress,
 				Port = SsdpConstants.MulticastPort
@@ -828,11 +835,18 @@ USN: {1}
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", "CA2204:Literals should be spelled correctly", MessageId = "byebye", Justification = "Correct value for this type of notification in SSDP.")]
 		private void SendByeByeNotification(SsdpDevice device, string notificationType, string uniqueServiceName)
 		{
-			string multicastIpAddress = _CommsServer.DeviceNetworkType.GetMulticastIPAddress();
+			var commsServer = _CommsServer;
+			if (commsServer == null)
+			{
+				LogDeviceEventWarning("Cannot send byebye notification, communications server is disposed.", device);
+				return;
+			}
+
+			string multicastIpAddress = commsServer.DeviceNetworkType.GetMulticastIPAddress();
 
 			var multicastMessage = BuildByeByeMessage(notificationType, uniqueServiceName, multicastIpAddress);
 
-			_CommsServer.SendMessage(multicastMessage, new UdpEndPoint
+			commsServer.SendMessage(multicastMessage, new UdpEndPoint
 			{
 				IPAddress = multicastIpAddress,
 				Port = SsdpConstants.MulticastPort
@@ -1064,14 +1078,14 @@ USN: {1}
 			//notify anyone except by resending this notification.
 			_Log.LogInfo(String.Format(System.Globalization.CultureInfo.InvariantCulture, "Service added: {0} ({1})", e.Service.ServiceId, e.Service.FullServiceType));
 
-			SendAliveNotification((SsdpDevice)sender, e.Service);
+			SendAliveNotification((SsdpDevice?)sender, e.Service);
 		}
 
 		private void Device_ServiceRemoved(object? sender, ServiceEventArgs e)
 		{
 			_Log.LogInfo(String.Format(System.Globalization.CultureInfo.InvariantCulture, "Service removed: {0} ({1})", e.Service.ServiceId, e.Service.FullServiceType));
 
-			var device = (SsdpDevice)sender;
+			var device = (SsdpDevice?)sender;
 			//Only say this service type has disappeared if there are no 
 			//services of this type left.
 			if (!DeviceHasServiceOfType(device, e.Service.FullServiceType))

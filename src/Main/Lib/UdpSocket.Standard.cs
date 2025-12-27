@@ -50,10 +50,8 @@ namespace Rssdp
 			var tcs = new TaskCompletionSource<ReceivedUdpData>();
 
 			System.Net.EndPoint receivedFromEndPoint = new IPEndPoint(GetDefaultIpAddress(_Socket), 0);
-			var state = new AsyncReceiveState(_Socket, receivedFromEndPoint)
-			{
-				TaskCompletionSource = tcs
-			};
+			var state = new AsyncReceiveState(_Socket, receivedFromEndPoint, tcs);
+
 #if NETSTANDARD1_3
 			_Socket.ReceiveFromAsync(new System.ArraySegment<Byte>(state.Buffer), System.Net.Sockets.SocketFlags.None, state.EndPoint)
 				.ContinueWith((task, asyncState) =>
@@ -167,18 +165,19 @@ namespace Rssdp
 
 		private sealed class AsyncReceiveState
 		{
-			public AsyncReceiveState(System.Net.Sockets.Socket socket, EndPoint endPoint)
+			public AsyncReceiveState(System.Net.Sockets.Socket socket, EndPoint endPoint, TaskCompletionSource<ReceivedUdpData> taskCompletionSource)
 			{
 				this.Socket = socket;
 				this.EndPoint = endPoint;
+				this.TaskCompletionSource = taskCompletionSource;
 			}
 
 			public EndPoint EndPoint;
 			public byte[] Buffer = new byte[SsdpConstants.DefaultUdpSocketBufferSize];
 
-			public System.Net.Sockets.Socket Socket { get; private set; }
+			public System.Net.Sockets.Socket Socket { get; }
 
-			public TaskCompletionSource<ReceivedUdpData> TaskCompletionSource { get; set; }
+			public TaskCompletionSource<ReceivedUdpData> TaskCompletionSource { get; private set; }
 
 		}
 

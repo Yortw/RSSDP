@@ -13,7 +13,7 @@ namespace Rssdp
 		#region Fields
 
 		private string _Name;
-		private string _Value;
+		private string? _Value;
 
 		#endregion
 
@@ -31,8 +31,11 @@ namespace Rssdp
 		/// <exception cref="System.ArgumentException">Thrown if the name is an empty value, or contains an invalid character. Also thrown if the value contains a \r or \n character.</exception>
 		public CustomHttpHeader(string name, string value)
 		{
-			Name = name;
-			Value = value;
+			EnsureValidName(name);
+			EnsureValidValue(value);
+
+			_Name = name;
+			_Value = value;
 		}
 
 		#endregion
@@ -55,7 +58,7 @@ namespace Rssdp
 		/// <summary>
 		/// Returns the value of this header.
 		/// </summary>
-		public string Value
+		public string? Value
 		{
 			get { return _Value; }
 			private set
@@ -94,14 +97,14 @@ namespace Rssdp
 			}
 		}
 
-		private static void EnsureValidValue(string value)
+		private static void EnsureValidValue(string? value)
 		{
 			if (String.IsNullOrEmpty(value)) return;
 
 #if NET6_0_OR_GREATER
 			if (value.Contains('\r') || value.Contains('\n')) throw new ArgumentException("Invalid value.", nameof(value));
 #else
-			if (value.Contains("\r") || value.Contains("\n")) throw new ArgumentException("Invalid value.", nameof(value));
+			if (value!.Contains("\r") || value.Contains("\n")) throw new ArgumentException("Invalid value.", nameof(value));
 #endif
 		}
 

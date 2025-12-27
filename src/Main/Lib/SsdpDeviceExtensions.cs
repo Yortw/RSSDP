@@ -18,14 +18,21 @@ namespace Rssdp
 		/// <returns>The <see cref="SsdpRootDevice"/> instance associated with the device instance specified, or null otherwise.</returns>
 		/// <exception cref="System.ArgumentNullException">Thrown if <paramref name="device"/> is null.</exception>
 		/// <exception cref="System.InvalidCastException">Thrown if <paramref name="device"/> is not an instance of or dervied from either <see cref="SsdpRootDevice"/> or <see cref="SsdpEmbeddedDevice"/>.</exception>
-		public static SsdpRootDevice ToRootDevice(this SsdpDevice device)
+		public static SsdpRootDevice? ToRootDevice(this SsdpDevice device)
 		{
 			if (device == null) throw new System.ArgumentNullException(nameof(device));
 
-			if (device is not SsdpRootDevice rootDevice)
-				rootDevice = ((SsdpEmbeddedDevice)device).RootDevice;
+			SsdpRootDevice? retVal = null;
+			if (device is SsdpRootDevice rootDevice)
+			{
+				retVal = rootDevice;
+			}
+			else if (device is SsdpEmbeddedDevice embeddedDevice)
+			{
+				retVal = embeddedDevice.RootDevice;
+			}
 
-			return rootDevice;
+			return retVal;
 		}
 	}
 }
