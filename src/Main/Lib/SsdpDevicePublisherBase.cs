@@ -377,7 +377,7 @@ USN: {1}
 
 		#region Search Related Methods
 
-		private void ProcessSearchRequest(string mx, string searchTarget, UdpEndPoint endPoint)
+		private void ProcessSearchRequest(string? mx, string searchTarget, UdpEndPoint endPoint)
 		{
 			if (String.IsNullOrEmpty(searchTarget))
 			{
@@ -1170,7 +1170,7 @@ USN: {1}
 				{
 					ProcessSearchRequest
 					(
-						GetFirstHeaderValue(e.Message.Headers, "MX") ?? "1",
+						GetFirstHeaderValue(e.Message.Headers, "MX"),
 						GetFirstHeaderValue(e.Message.Headers, "ST") ?? SsdpConstants.SsdpDiscoverAllSTHeader,
 						e.ReceivedFrom
 					);
