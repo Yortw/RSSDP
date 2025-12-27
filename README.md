@@ -14,9 +14,9 @@ If you are looking for a way to discover a custom service (such as a proprietary
 Currently;
 
 * .Net Desktop Framework 4.8/4.81
-* .Net Standard 2.0
-* .NET 6.0, 8.0
-* UAP 10.0.16299
+* .NET 6.0, 8.0+
+* .NET 8.0-android
+* .Net Standard 2.0 for any other compatible framework
 
 ## Build Status
 [![Build status](https://ci.appveyor.com/api/projects/status/f4e33as09yx0lsn4?svg=true)](https://ci.appveyor.com/project/Yortw/rssdp)

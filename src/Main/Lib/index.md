@@ -13,13 +13,10 @@ If you are looking for a way to discover a custom service (such as a proprietary
 ## Supported Platforms
 Currently;
 
-* .Net Framework 4.03+
-* Windows Phone Silverlight (8.0+) 
-* Xamarin.iOS Unified
-* Xamarin.Android (Only tested with emulator)
-* WinRT (Windows Store Apps 8.1)
-* UWP 10+ (Windows 10 Universal Programs)
-* .NET Core (ASP.NET Core 1.0+, .NET Standard 1.3+)
+* .Net Desktop Framework 4.8/4.81
+* .NET 6.0, 8.0+
+* .NET 8.0-android
+* .Net Standard 2.0 for any other compatible framework
 
 ## Build Status
 [![Build status](https://ci.appveyor.com/api/projects/status/f4e33as09yx0lsn4?svg=true)](https://ci.appveyor.com/project/Yortw/rssdp)

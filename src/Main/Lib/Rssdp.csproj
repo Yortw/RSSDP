@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
-		<!-- <TargetFrameworks>netstandard2.0;net48;net6.0;net8.0;net8.0-android;net8.0-ios;uap10.0.16299</TargetFrameworks> -->
+		<!-- <TargetFrameworks>netstandard2.0;net48;net6.0;net8.0;net8.0-android;net8.0-ios</TargetFrameworks> -->
 		<TargetFrameworks>netstandard2.0;net48;net6.0;net8.0;net8.0-android34.0</TargetFrameworks>
 		<langversion>latest</langversion>
 		<RootNamespace>Rssdp</RootNamespace>
@@ -40,6 +40,7 @@
 		<SupportedOSPlatformVersion Condition="$(TargetFramework.StartsWith('net8.0-android'))">21.0</SupportedOSPlatformVersion>
 		<SupportedOSPlatformVersion Condition="$(TargetFramework.StartsWith('net8.0-ios'))">11.0</SupportedOSPlatformVersion>
 		<Product>Really Simple Service Discovery Protocol</Product>
+		<GenerateDocumentationFile>True</GenerateDocumentationFile>
 	</PropertyGroup>
 
 	<ItemGroup>
