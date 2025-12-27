@@ -1170,7 +1170,7 @@ USN: {1}
 				{
 					ProcessSearchRequest
 					(
-						GetFirstHeaderValue(e.Message.Headers, "MX") ?? "3",
+						GetFirstHeaderValue(e.Message.Headers, "MX") ?? "1",
 						GetFirstHeaderValue(e.Message.Headers, "ST") ?? SsdpConstants.SsdpDiscoverAllSTHeader,
 						e.ReceivedFrom
 					);

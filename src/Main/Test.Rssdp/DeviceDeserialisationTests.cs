@@ -208,37 +208,35 @@ namespace TestRssdp
 		[TestMethod]
 		public void DeserialisationConstructor_ThrowsOnNullDocument()
 		{
-			var rootDevice = new SsdpRootDevice();
-			var device = new SsdpEmbeddedDevice(null);
+			_ = new SsdpEmbeddedDevice(null);
 		}
 
 		[ExpectedException(typeof(System.ArgumentException))]
 		[TestMethod]
 		public void DeserialisationConstructor_ThrowsOnEmptyDocument()
 		{
-			var rootDevice = new SsdpRootDevice();
-			var device = new SsdpEmbeddedDevice(String.Empty);
+			_ = new SsdpEmbeddedDevice(String.Empty);
 		}
 
 		[ExpectedException(typeof(System.ArgumentException))]
 		[TestMethod]
 		public void RootDeviceDeserialisationConstructor_ThrowsOnEmptyDocument()
 		{
-			var rootDevice = new SsdpRootDevice(new Uri("http://somedevice:1700"), TimeSpan.FromMinutes(30), String.Empty);
+			_ = new SsdpRootDevice(new Uri("http://somedevice:1700"), TimeSpan.FromMinutes(30), String.Empty);
 		}
 
 		[ExpectedException(typeof(System.ArgumentNullException))]
 		[TestMethod]
 		public void RootDeviceDeserialisationConstructor_ThrowsOnNullDocument()
 		{
-			var rootDevice = new SsdpRootDevice(new Uri("http://somedevice:1700"), TimeSpan.FromMinutes(30), null);
+			_ = new SsdpRootDevice(new Uri("http://somedevice:1700"), TimeSpan.FromMinutes(30), null);
 		}
 
 		[ExpectedException(typeof(System.ArgumentNullException))]
 		[TestMethod]
 		public void RootDeviceDeserialisationConstructor_ThrowsOnLocation()
 		{
-			var rootDevice = new SsdpRootDevice(null, TimeSpan.FromMinutes(30), "<root />");
+			_ = new SsdpRootDevice(null, TimeSpan.FromMinutes(30), "<root />");
 		}
 
 		private void AssertDevicesAreSame(SsdpRootDevice originalDevice, SsdpRootDevice deserialisedDevice)
@@ -306,9 +304,9 @@ namespace TestRssdp
 				Uuid = Guid.NewGuid().ToString()
 			};
 
-			var customProp = new SsdpDeviceProperty() { Namespace = "custom-ns", Name = "TestProp1", Value = "Test" };
+			var customProp = new SsdpDeviceProperty("custom-ns", "TestProp1", "Test");
 			retVal.CustomProperties.Add(customProp);
-			customProp = new SsdpDeviceProperty() { Namespace = "custom-ns", Name = "TestProp2", Value = "Test" };
+			customProp = new SsdpDeviceProperty("custom-ns", "TestProp2", "Test");
 			retVal.CustomProperties.Add(customProp);
 
 			var icon = new SsdpDeviceIcon() { ColorDepth = 32, Height = 48, Width = 48, MimeType = "image/png", Url = new Uri("icons/48", UriKind.Relative) };

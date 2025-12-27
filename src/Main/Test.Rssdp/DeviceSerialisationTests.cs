@@ -20,7 +20,7 @@ namespace TestRssdp
 			var rootDevice = CreateSampleRootDevice();
 			rootDevice.Uuid = null;
 
-			var descriptionDocument = rootDevice.ToDescriptionDocument();
+			_ = rootDevice.ToDescriptionDocument();
 		}
 
 		[ExpectedException(typeof(System.InvalidOperationException))]
@@ -30,7 +30,7 @@ namespace TestRssdp
 			var rootDevice = CreateSampleRootDevice();
 			rootDevice.Uuid = String.Empty;
 
-			var descriptionDocument = rootDevice.ToDescriptionDocument();
+			_ = rootDevice.ToDescriptionDocument();
 		}
 
 		[TestMethod]
@@ -207,9 +207,9 @@ namespace TestRssdp
 				Uuid = Guid.NewGuid().ToString()
 			};
 
-			var customProp = new SsdpDeviceProperty() { Namespace = "custom-ns", Name = "TestProp1", Value = "Test" };
+			var customProp = new SsdpDeviceProperty("custom-ns", "TestProp1", "Test");
 			retVal.CustomProperties.Add(customProp);
-			customProp = new SsdpDeviceProperty() { Namespace = "custom-ns", Name = "TestProp2", Value = "Test" };
+			customProp = new SsdpDeviceProperty("custom-ns", "TestProp2", "Test");
 			retVal.CustomProperties.Add(customProp);
 
 			var icon = new SsdpDeviceIcon() { ColorDepth = 32, Height = 48, Width = 48, MimeType = "image/png", Url = new Uri("icons/48", UriKind.Relative) };

@@ -934,7 +934,7 @@ namespace Rssdp
 				return;
 			}
 
-			var newProp = new SsdpDeviceProperty() { Namespace = reader.Prefix, Name = reader.LocalName };
+			var newProp = new SsdpDeviceProperty(reader.Prefix, reader.LocalName);
 			int depth = reader.Depth;
 			reader.Read();
 			while (reader.NodeType == XmlNodeType.Whitespace || reader.NodeType == XmlNodeType.Comment)

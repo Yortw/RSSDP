@@ -18,20 +18,20 @@ namespace TestRssdp
 		[TestMethod]
 		public void SsdpDevicePropertiesCollection_CapacityConstructor_Succeeds()
 		{
-			var properties = new SsdpDevicePropertiesCollection(10);
+			_ = new SsdpDevicePropertiesCollection(10);
 		}
 
 		[TestMethod]
 		public void SsdpDevicePropertiesCollection_CapacityConstructor_SucceedsWithZeroValue()
 		{
-			var properties = new SsdpDevicePropertiesCollection(0);
+			_ = new SsdpDevicePropertiesCollection(0);
 		}
 
 		[TestMethod]
 		[ExpectedException(typeof(System.ArgumentOutOfRangeException))]
 		public void SsdpDevicePropertiesCollection_CapacityConstructor_FailsWithNegativeValue()
 		{
-			var properties = new SsdpDevicePropertiesCollection(-1);
+			_ = new SsdpDevicePropertiesCollection(-1);
 		}
 
 		#endregion
@@ -49,23 +49,11 @@ namespace TestRssdp
 
 		[TestMethod]
 		[ExpectedException(typeof(System.ArgumentException))]
-		public void SsdpDevicePropertiesCollection_Add_NullFullNameThrows()
-		{
-			var properties = new SsdpDevicePropertiesCollection();
-			var p = new SsdpDeviceProperty();
-			properties.Add(p);
-		}
-
-		[TestMethod]
-		[ExpectedException(typeof(System.ArgumentException))]
 		public void SsdpDevicePropertiesCollection_Add_EmptyFullNameThrows()
 		{
 			var properties = new SsdpDevicePropertiesCollection();
-			var p = new SsdpDeviceProperty()
-			{
-				Name = String.Empty,
-				Namespace = String.Empty
-			};
+			var p = new SsdpDeviceProperty(string.Empty, string.Empty, null);
+
 			properties.Add(p);
 		}
 
@@ -102,23 +90,10 @@ namespace TestRssdp
 
 		[TestMethod]
 		[ExpectedException(typeof(System.ArgumentException))]
-		public void SsdpDevicePropertiesCollection_Remove_NullFullNameThrows()
-		{
-			var properties = new SsdpDevicePropertiesCollection();
-			var p = new SsdpDeviceProperty();
-			properties.Remove(p);
-		}
-
-		[TestMethod]
-		[ExpectedException(typeof(System.ArgumentException))]
 		public void SsdpDevicePropertiesCollection_Remove_EmptyFullNameThrows()
 		{
 			var properties = new SsdpDevicePropertiesCollection();
-			var p = new SsdpDeviceProperty()
-				{
-					Name = String.Empty,
-					Namespace = String.Empty
-				};
+			var p = new SsdpDeviceProperty(string.Empty, string.Empty, null);
 			properties.Remove(p);
 		}
 
@@ -126,11 +101,7 @@ namespace TestRssdp
 		public void SsdpDevicePropertiesCollection_Remove_RemoveInstanceSucceeds()
 		{
 			var properties = new SsdpDevicePropertiesCollection();
-			var p = new SsdpDeviceProperty()
-			{
-				Name = "TestProp1",
-				Namespace = "TestNamespace"
-			};
+			var p = new SsdpDeviceProperty("TestNamespace", "TestProp1", null);
 
 			properties.Add(p);
 
@@ -142,17 +113,8 @@ namespace TestRssdp
 		public void SsdpDevicePropertiesCollection_Remove_RemoveInstanceForDifferentInstanceWithSameKeyReturnsFalse()
 		{
 			var properties = new SsdpDevicePropertiesCollection();
-			var p = new SsdpDeviceProperty()
-			{
-				Name = "TestProp1",
-				Namespace = "TestNamespace"
-			};
-
-			var p2 = new SsdpDeviceProperty()
-			{
-				Name = "TestProp1",
-				Namespace = "TestNamespace"
-			};
+			var p = new SsdpDeviceProperty("TestNamespace", "TestProp1", null);
+			var p2 = new SsdpDeviceProperty("TestNamespace", "TestProp1");
 
 			properties.Add(p);
 
@@ -164,11 +126,7 @@ namespace TestRssdp
 		public void SsdpDevicePropertiesCollection_Remove_RemoveByKeySucceeds()
 		{
 			var properties = new SsdpDevicePropertiesCollection();
-			var p = new SsdpDeviceProperty()
-			{
-				Name = "TestProp1",
-				Namespace = "TestNamespace"
-			};
+			var p = new SsdpDeviceProperty("TestNamespace", "TestProp1", null);
 
 			properties.Add(p);
 
@@ -206,35 +164,18 @@ namespace TestRssdp
 
 		[TestMethod]
 		[ExpectedException(typeof(System.ArgumentException))]
-		public void SsdpDevicePropertiesCollection_Contains_PropertyWithNullNameThrows()
-		{
-			var properties = new SsdpDevicePropertiesCollection();
-			var p = new SsdpDeviceProperty();
-			properties.Contains(p);
-		}
-
-		[TestMethod]
-		[ExpectedException(typeof(System.ArgumentException))]
 		public void SsdpDevicePropertiesCollection_Contains_PropertyWithEmptyNameThrows()
 		{
 			var properties = new SsdpDevicePropertiesCollection();
-			var p = new SsdpDeviceProperty()
-				{
-					Name = String.Empty,
-					Namespace=  String.Empty
-				};
+			var p = new SsdpDeviceProperty(string.Empty, string.Empty, null);
+
 			properties.Contains(p);
 		}
 		[TestMethod]
 		public void SsdpDevicePropertiesCollection_Contains_ReturnsTrueForExistingKey()
 		{
 			var properties = new SsdpDevicePropertiesCollection();
-			var prop = new SsdpDeviceProperty()
-			{
-				Name = "TestProperty",
-				Namespace = "MyNamespace",
-				Value = "1.0"
-			};
+			var prop = new SsdpDeviceProperty("MyNamespace", "TestProperty", "1.0");
 
 			properties.Add(prop);
 
@@ -245,12 +186,7 @@ namespace TestRssdp
 		public void SsdpDevicePropertiesCollection_Contains_ReturnsFalseForNonExistentKey()
 		{
 			var properties = new SsdpDevicePropertiesCollection();
-			var prop = new SsdpDeviceProperty()
-			{
-				Name = "TestProperty",
-				Namespace = "MyNamespace",
-				Value = "1.0"
-			};
+			var prop = new SsdpDeviceProperty("MyNamespace", "TestProperty", "1.0");
 
 			properties.Add(prop);
 
@@ -261,12 +197,7 @@ namespace TestRssdp
 		public void SsdpDevicePropertiesCollection_Contains_ReturnsTrueForExistingItem()
 		{
 			var properties = new SsdpDevicePropertiesCollection();
-			var prop = new SsdpDeviceProperty()
-			{
-				Name = "TestProperty",
-				Namespace = "MyNamespace",
-				Value = "1.0"
-			};
+			var prop = new SsdpDeviceProperty("MyNamespace", "TestProperty", "1.0");
 
 			properties.Add(prop);
 
@@ -277,19 +208,9 @@ namespace TestRssdp
 		public void SsdpDevicePropertiesCollection_Contains_ReturnsFalseForExistingKeyDifferentItem()
 		{
 			var properties = new SsdpDevicePropertiesCollection();
-			var prop = new SsdpDeviceProperty()
-			{
-				Name = "TestProperty",
-				Namespace = "MyNamespace",
-				Value = "1.0"
-			};
+			var prop = new SsdpDeviceProperty("MyNamespace", "TestProperty", "1.0");
 
-			var prop2 = new SsdpDeviceProperty()
-			{
-				Name = "TestProperty",
-				Namespace = "MyNamespace",
-				Value = "1.0"
-			};
+			var prop2 = new SsdpDeviceProperty("MyNamespace", "TestProperty", "1.0");
 
 			properties.Add(prop);
 
@@ -300,19 +221,8 @@ namespace TestRssdp
 		public void SsdpDevicePropertiesCollection_Contains_ReturnsFalseForNonExistentProperty()
 		{
 			var properties = new SsdpDevicePropertiesCollection();
-			var prop = new SsdpDeviceProperty()
-			{
-				Name = "TestProperty",
-				Namespace = "MyNamespace",
-				Value = "1.0"
-			};
-
-			var prop2 = new SsdpDeviceProperty()
-			{
-				Name = "TestProperty1",
-				Namespace = "MyNamespace",
-				Value = "1.0"
-			};
+			var prop = new SsdpDeviceProperty("MyNamespace", "TestProperty", "1.0");
+			var prop2 = new SsdpDeviceProperty("MyNamespace", "TestProperty1", "1.0");
 
 			properties.Add(prop);
 
@@ -327,12 +237,7 @@ namespace TestRssdp
 		public void SsdpDevicePropertiesCollection_GenericGetEnumerator_Success()
 		{
 			var properties = new SsdpDevicePropertiesCollection();
-			var prop = new SsdpDeviceProperty()
-			{
-				Name = "TestProperty",
-				Namespace = "MyNamespace",
-				Value = "1.0"
-			};
+			var prop = new SsdpDeviceProperty("MyNamespace", "TestProperty", "1.0");
 
 			properties.Add(prop);
 			var enumerator = properties.GetEnumerator();
@@ -346,12 +251,7 @@ namespace TestRssdp
 		public void SsdpDevicePropertiesCollection_GetEnumerator_Success()
 		{
 			var properties = new SsdpDevicePropertiesCollection();
-			var prop = new SsdpDeviceProperty()
-			{
-				Name = "TestProperty",
-				Namespace = "MyNamespace",
-				Value = "1.0"
-			};
+			var prop = new SsdpDeviceProperty("MyNamespace", "TestProperty", "1.0");
 
 			properties.Add(prop);
 			var enumerator = ((IEnumerable)properties).GetEnumerator();
@@ -369,12 +269,7 @@ namespace TestRssdp
 		public void SsdpDevicePropertiesCollection_Indexer_Succeeds()
 		{
 			var properties = new SsdpDevicePropertiesCollection();
-			var p = new SsdpDeviceProperty()
-			{
-				Name = "Test",
-				Namespace = "TestNamespace",
-				Value = "some value"
-			};
+			var p = new SsdpDeviceProperty("TestNamespace", "Test", "some value");
 			properties.Add(p);
 
 			Assert.AreEqual(p, properties[p.FullName]);
@@ -385,12 +280,8 @@ namespace TestRssdp
 		public void SsdpDevicePropertiesCollection_Indexer_ThrowsOnUnknownKey()
 		{
 			var properties = new SsdpDevicePropertiesCollection();
-			var p = new SsdpDeviceProperty()
-			{
-				Name = "Test",
-				Namespace = "TestNamespace",
-				Value = "some value"
-			};
+			var p = new SsdpDeviceProperty("TestNamespace", "Test", "some value");
+
 			properties.Add(p);
 
 			Assert.AreEqual(p, properties["NotAValidKey"]);
@@ -412,12 +303,7 @@ namespace TestRssdp
 		public void SsdpDevicePropertiesCollection_Count_ReturnsOneAfterItemAdded()
 		{
 			var properties = new SsdpDevicePropertiesCollection();
-			var prop = new SsdpDeviceProperty()
-			{
-				Name = "TestProperty",
-				Namespace = "MyNamespace",
-				Value = "1.0"
-			};
+			var prop = new SsdpDeviceProperty("MyNamespace", "TestProperty", "1.0");
 
 			properties.Add(prop);
 
@@ -428,12 +314,7 @@ namespace TestRssdp
 		public void SsdpDevicePropertiesCollection_Count_ReturnsZeroAfterLastItemRemoved()
 		{
 			var properties = new SsdpDevicePropertiesCollection();
-			var prop = new SsdpDeviceProperty()
-			{
-				Name = "TestProperty",
-				Namespace = "MyNamespace",
-				Value = "1.0"
-			};
+			var prop = new SsdpDeviceProperty("MyNamespace", "TestProperty", "1.0");
 
 			properties.Remove(prop);
 			Assert.AreEqual(0, properties.Count);

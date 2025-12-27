@@ -2878,6 +2878,25 @@ references:
   commentId: T:Rssdp.SsdpDeviceProperty
   fullName: Rssdp.SsdpDeviceProperty
   nameWithType: SsdpDeviceProperty
+- uid: Rssdp.SsdpDeviceProperty.#ctor(System.String,System.String)
+  name: SsdpDeviceProperty(String, String)
+  href: api/Rssdp.SsdpDeviceProperty.html#Rssdp_SsdpDeviceProperty__ctor_System_String_System_String_
+  commentId: M:Rssdp.SsdpDeviceProperty.#ctor(System.String,System.String)
+  fullName: Rssdp.SsdpDeviceProperty.SsdpDeviceProperty(System.String, System.String)
+  nameWithType: SsdpDeviceProperty.SsdpDeviceProperty(String, String)
+- uid: Rssdp.SsdpDeviceProperty.#ctor(System.String,System.String,System.String)
+  name: SsdpDeviceProperty(String, String, String)
+  href: api/Rssdp.SsdpDeviceProperty.html#Rssdp_SsdpDeviceProperty__ctor_System_String_System_String_System_String_
+  commentId: M:Rssdp.SsdpDeviceProperty.#ctor(System.String,System.String,System.String)
+  fullName: Rssdp.SsdpDeviceProperty.SsdpDeviceProperty(System.String, System.String, System.String)
+  nameWithType: SsdpDeviceProperty.SsdpDeviceProperty(String, String, String)
+- uid: Rssdp.SsdpDeviceProperty.#ctor*
+  name: SsdpDeviceProperty
+  href: api/Rssdp.SsdpDeviceProperty.html#Rssdp_SsdpDeviceProperty__ctor_
+  commentId: Overload:Rssdp.SsdpDeviceProperty.#ctor
+  isSpec: "True"
+  fullName: Rssdp.SsdpDeviceProperty.SsdpDeviceProperty
+  nameWithType: SsdpDeviceProperty.SsdpDeviceProperty
 - uid: Rssdp.SsdpDeviceProperty.FullName
   name: FullName
   href: api/Rssdp.SsdpDeviceProperty.html#Rssdp_SsdpDeviceProperty_FullName

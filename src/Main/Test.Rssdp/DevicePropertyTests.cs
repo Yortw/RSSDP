@@ -15,10 +15,7 @@ namespace TestRssdp
 		[TestMethod]
 		public void DeviceProperty_FullNameIsCorrectFormat()
 		{
-			var prop = new SsdpDeviceProperty();
-			prop.Namespace = "TestNamespace";
-			prop.Name = "TestPropName";
-			prop.Value = "TestValue";
+			var prop = new SsdpDeviceProperty("TestNamespace", "TestPropName", "TestValue");
 
 			Assert.AreEqual("TestNamespace:TestPropName", prop.FullName);
 		}
@@ -26,9 +23,7 @@ namespace TestRssdp
 		[TestMethod]
 		public void DeviceProperty_FullNameIsCorrectWithNoNamespaceSpecified()
 		{
-			var prop = new SsdpDeviceProperty();
-			prop.Name = "TestPropName";
-			prop.Value = "TestValue";
+			var prop = new SsdpDeviceProperty(string.Empty, "TestPropName", "TestValue");
 
 			Assert.AreEqual("TestPropName", prop.FullName);
 		}

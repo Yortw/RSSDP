@@ -9,14 +9,36 @@ namespace Rssdp
 	{
 
 		/// <summary>
+		/// Partial constructor.
+		/// </summary>
+		/// <param name="namespace">The namespace this property exists in.</param>
+		/// <param name="name">The name of this property.</param>
+		public SsdpDeviceProperty(string @namespace, string name) : this (@namespace, name, null)
+		{
+		}
+
+		/// <summary>
+		/// Full constructor.
+		/// </summary>
+		/// <param name="namespace">The namespace this property exists in.</param>
+		/// <param name="name">The name of this property.</param>
+		/// <param name="value">The value of this property.</param>
+		public SsdpDeviceProperty(string? @namespace, string name, string? value) 
+		{
+			this.Namespace = @namespace;
+			this.Name = name;
+			this.Value = value;
+		}
+
+		/// <summary>
 		/// Sets or returns the namespace this property exists in.
 		/// </summary>
-		public string Namespace { get; set; }
+		public string? Namespace { get; private set; }
 
 		/// <summary>
 		/// Sets or returns the name of this property.
 		/// </summary>
-		public string Name { get; set; }
+		public string Name { get; private set; }
 
 		/// <summary>
 		/// Returns the full name of this property (namespace and name).
