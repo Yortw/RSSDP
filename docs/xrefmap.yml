@@ -1134,19 +1134,6 @@ references:
   commentId: T:Rssdp.Infrastructure.ReceivedUdpData
   fullName: Rssdp.Infrastructure.ReceivedUdpData
   nameWithType: ReceivedUdpData
-- uid: Rssdp.Infrastructure.ReceivedUdpData.#ctor(Rssdp.Infrastructure.UdpEndPoint)
-  name: ReceivedUdpData(UdpEndPoint)
-  href: api/Rssdp.Infrastructure.ReceivedUdpData.html#Rssdp_Infrastructure_ReceivedUdpData__ctor_Rssdp_Infrastructure_UdpEndPoint_
-  commentId: M:Rssdp.Infrastructure.ReceivedUdpData.#ctor(Rssdp.Infrastructure.UdpEndPoint)
-  fullName: Rssdp.Infrastructure.ReceivedUdpData.ReceivedUdpData(Rssdp.Infrastructure.UdpEndPoint)
-  nameWithType: ReceivedUdpData.ReceivedUdpData(UdpEndPoint)
-- uid: Rssdp.Infrastructure.ReceivedUdpData.#ctor*
-  name: ReceivedUdpData
-  href: api/Rssdp.Infrastructure.ReceivedUdpData.html#Rssdp_Infrastructure_ReceivedUdpData__ctor_
-  commentId: Overload:Rssdp.Infrastructure.ReceivedUdpData.#ctor
-  isSpec: "True"
-  fullName: Rssdp.Infrastructure.ReceivedUdpData.ReceivedUdpData
-  nameWithType: ReceivedUdpData.ReceivedUdpData
 - uid: Rssdp.Infrastructure.ReceivedUdpData.Buffer
   name: Buffer
   href: api/Rssdp.Infrastructure.ReceivedUdpData.html#Rssdp_Infrastructure_ReceivedUdpData_Buffer

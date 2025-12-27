@@ -249,7 +249,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Rssdp.Infrastructure.ReceivedUdpData.html",
-          "hash": "Rh7TGgguo7myKlHb47wp2PMiulI0h4ykM+gzRzfpRSU="
+          "hash": "F9E2uj1I88p1rs4JL9ocsII/WWUYmtAK8S1oPsy8qrM="
         }
       },
       "is_incremental": false,
@@ -587,30 +587,32 @@
           "hash": "ix0/rybPfBBTp5/NIgkoDkEKeqZkY80RaxCNQrooS2g="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     }
   ],
   "incremental_info": [
     {
       "status": {
-        "can_incremental": true,
+        "can_incremental": false,
+        "details": "Disable incremental build by force rebuild option.",
         "incrementalPhase": "build",
         "total_file_count": 0,
-        "skipped_file_count": 0
+        "skipped_file_count": 0,
+        "full_build_reason_code": "ForceRebuild"
       },
       "processors": {
         "ConceptualDocumentProcessor": {
-          "can_incremental": true,
+          "can_incremental": false,
           "incrementalPhase": "build",
           "total_file_count": 1,
-          "skipped_file_count": 1
+          "skipped_file_count": 0
         },
         "ManagedReferenceDocumentProcessor": {
-          "can_incremental": true,
+          "can_incremental": false,
           "incrementalPhase": "build",
           "total_file_count": 47,
-          "skipped_file_count": 2
+          "skipped_file_count": 0
         },
         "ResourceDocumentProcessor": {
           "can_incremental": false,
@@ -630,8 +632,8 @@
     },
     {
       "status": {
-        "can_incremental": true,
-        "details": "Can support incremental post processing.",
+        "can_incremental": false,
+        "details": "Cannot support incremental post processing, the reason is: it's disabled.",
         "incrementalPhase": "postProcessing",
         "total_file_count": 0,
         "skipped_file_count": 0

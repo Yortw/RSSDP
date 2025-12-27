@@ -119,10 +119,11 @@ namespace Rssdp
 				var ipEndPoint = (IPEndPoint)state.EndPoint;
 				state.TaskCompletionSource.SetResult
 				(
-					new ReceivedUdpData(new UdpEndPoint(ipEndPoint.Address.ToString(), ipEndPoint.Port))
+					new ReceivedUdpData()
 					{
 						Buffer = state.Buffer,
-						ReceivedBytes = bytesRead
+						ReceivedBytes = bytesRead,
+						ReceivedFrom = new UdpEndPoint(ipEndPoint.Address.ToString(), ipEndPoint.Port)
 					}
 				);
 			}

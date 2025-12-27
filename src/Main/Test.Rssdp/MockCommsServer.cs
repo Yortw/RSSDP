@@ -118,7 +118,7 @@ namespace TestRssdp
 			}
 			else
 			{
-				SentMessages.Enqueue(new ReceivedUdpData(destination) { Buffer = messageData, ReceivedBytes = messageData.Length });
+				SentMessages.Enqueue(new ReceivedUdpData() { Buffer = messageData, ReceivedBytes = messageData.Length, ReceivedFrom = destination });
 				SetMessageSentSignal();
 			}
 		}
@@ -130,10 +130,11 @@ namespace TestRssdp
 
 		public void SendMulticastMessage(byte[] messageData)
 		{
-			SentBroadcasts.Enqueue(new ReceivedUdpData(SsdpConstants.MulticastLocalAdminEndpoint)
+			SentBroadcasts.Enqueue(new ReceivedUdpData()
 			{
 				Buffer = messageData,
-				ReceivedBytes = messageData.Length
+				ReceivedBytes = messageData.Length,
+				ReceivedFrom = SsdpConstants.MulticastLocalAdminEndpoint
 			});
 
 			if (_ListenTask == null)

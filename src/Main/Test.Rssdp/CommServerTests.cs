@@ -973,7 +973,7 @@ LOCATION:http://somedevice:1700
 
 			public void MockReceive(byte[] data, UdpEndPoint fromEndPoint)
 			{
-				_ReceiveQueue.Enqueue(new ReceivedUdpData(fromEndPoint) { Buffer = data, ReceivedBytes = data.Length });
+				_ReceiveQueue.Enqueue(new ReceivedUdpData() { Buffer = data, ReceivedBytes = data.Length, ReceivedFrom = fromEndPoint });
 				_DataAvailableSignal.Set();
 			}
 
@@ -1037,7 +1037,7 @@ LOCATION:http://somedevice:1700
 
 			public void ThrowSocketClosedException()
 			{
-				_ReceiveQueue.Enqueue(new ReceivedUdpData(SsdpConstants.MulticastLocalAdminEndpoint) { Buffer = null, ReceivedBytes = 0 });
+				_ReceiveQueue.Enqueue(new ReceivedUdpData() { Buffer = null, ReceivedBytes = 0, ReceivedFrom = SsdpConstants.MulticastLocalAdminEndpoint });
 				_DataAvailableSignal.Set();
 			}
 		}
