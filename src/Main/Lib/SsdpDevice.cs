@@ -544,7 +544,7 @@ namespace Rssdp
 		/// </summary>
 		/// <param name="value">The string value to convert.</param>
 		/// <returns>A <see cref="Uri"/>.</returns>
-		protected static Uri StringToUri(string value)
+		protected static Uri? StringToUri(string value)
 		{
 			if (!String.IsNullOrEmpty(value))
 				return new Uri(value, UriKind.RelativeOrAbsolute);

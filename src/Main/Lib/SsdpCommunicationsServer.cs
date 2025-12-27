@@ -422,7 +422,7 @@ namespace Rssdp.Infrastructure
 			//SSDP specification says only * is currently used but other uri's might
 			//be implemented in the future and should be ignored unless understood.
 			//Section 4.2 - http://tools.ietf.org/html/draft-cai-ssdp-v1-03#page-11
-			if (data.RequestUri.ToString() != "*") return;
+			if (data.RequestUri?.ToString() != "*") return;
 
 			this.RequestReceived?.Invoke(this, new RequestReceivedEventArgs(data, endPoint));
 		}

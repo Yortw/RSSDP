@@ -419,8 +419,7 @@ USN: {1}
 			TaskEx.Delay(_Random.Next(16, (maxWaitInterval * 1000))).ContinueWith((parentTask) =>
 			{
 				//Copying devices to local array here to avoid threading issues/enumerator exceptions.
-				IEnumerable<SsdpDevice> devices = null;
-				devices = GetDevicesMatchingSearchTarget(searchTarget, devices);
+				var devices = GetDevicesMatchingSearchTarget(searchTarget);
 
 				if (devices != null)
 					SendSearchResponses(searchTarget, endPoint, devices);
@@ -429,8 +428,9 @@ USN: {1}
 			});
 		}
 
-		private IEnumerable<SsdpDevice> GetDevicesMatchingSearchTarget(string searchTarget, IEnumerable<SsdpDevice> devices)
+		private IEnumerable<SsdpDevice>? GetDevicesMatchingSearchTarget(string searchTarget)
 		{
+			IEnumerable<SsdpDevice>? devices = null;
 			lock (_Devices)
 			{
 				if (String.Equals(SsdpConstants.SsdpDiscoverAllSTHeader, searchTarget, StringComparison.OrdinalIgnoreCase))
@@ -443,12 +443,13 @@ USN: {1}
 				}
 				else if (searchTarget.Trim().StartsWith("uuid:", StringComparison.OrdinalIgnoreCase))
 				{
-					devices = (
-											from device
-											in GetAllDevicesAsFlatEnumerable()
-											where String.Equals(device.Uuid, searchTarget.Substring(5), StringComparison.OrdinalIgnoreCase)
-											select device
-										).ToArray();
+					devices =
+					(
+						from device
+						in GetAllDevicesAsFlatEnumerable()
+						where String.Equals(device.Uuid, searchTarget.Substring(5), StringComparison.OrdinalIgnoreCase)
+						select device
+					).ToArray();
 				}
 				else if (searchTarget.StartsWith("urn:", StringComparison.OrdinalIgnoreCase))
 				{
@@ -861,7 +862,7 @@ USN: {1}
 			return System.Text.UTF8Encoding.UTF8.GetBytes(message);
 		}
 
-#endregion
+		#endregion
 
 		#region Rebroadcast Timer
 
@@ -933,11 +934,11 @@ USN: {1}
 
 		#endregion
 
-#endregion
+		#endregion
 
-		private static string GetFirstHeaderValue(System.Net.Http.Headers.HttpRequestHeaders httpRequestHeaders, string headerName)
+		private static string? GetFirstHeaderValue(System.Net.Http.Headers.HttpRequestHeaders httpRequestHeaders, string headerName)
 		{
-			string retVal = null;
+			string? retVal = null;
 			if (httpRequestHeaders.TryGetValues(headerName, out var values) && values != null)
 				retVal = values.FirstOrDefault();
 
@@ -1033,7 +1034,7 @@ USN: {1}
 			return true;
 		}
 
-#endregion
+		#endregion
 
 		#region Event Handlers
 

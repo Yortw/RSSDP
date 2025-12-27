@@ -279,7 +279,7 @@ namespace Rssdp
 			}
 		}
 
-		private static Uri StringToUri(string value)
+		private static Uri? StringToUri(string value)
 		{
 			if (!String.IsNullOrEmpty(value))
 				return new Uri(value, UriKind.RelativeOrAbsolute);

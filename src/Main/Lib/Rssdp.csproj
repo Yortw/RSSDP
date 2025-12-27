@@ -32,6 +32,7 @@
 		<AnalysisLevel>latest-recommended</AnalysisLevel>
 		<CheckEolWorkloads>false</CheckEolWorkloads>
 		<SuppressTfmSupportBuildWarnings>true</SuppressTfmSupportBuildWarnings>
+		<Nullable>enable</Nullable>
 
 		<!-- Required for UAP support -->
 		<AssetTargetFallback Condition="'$(TargetFramework)' == 'uap10.0.16299'">$(AssetTargetFallback);net472;netcore50</AssetTargetFallback>

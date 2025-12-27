@@ -9,7 +9,7 @@ namespace Rssdp
 	public class NullLogger : ISsdpLogger
 	{
 
-		private static ISsdpLogger s_Instance;
+		private static ISsdpLogger? s_Instance;
 
 		private NullLogger()
 		{

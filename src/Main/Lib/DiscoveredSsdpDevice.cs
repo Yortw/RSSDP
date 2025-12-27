@@ -18,7 +18,7 @@ namespace Rssdp
 		private SsdpRootDevice _Device;
 		private DateTimeOffset _AsAt;
 
-		private static HttpClient s_DefaultHttpClient;
+		private static HttpClient? s_DefaultHttpClient;
 
 		#endregion
 
@@ -37,7 +37,7 @@ namespace Rssdp
 		/// <summary>
 		/// Sets or returns a URL pointing to the device description document for this device.
 		/// </summary>
-		public Uri DescriptionLocation { get; set; }
+		public Uri? DescriptionLocation { get; set; }
 
 		/// <summary>
 		/// Sets or returns the length of time this information is valid for (from the <see cref="AsAt"/> time).

@@ -31,7 +31,12 @@ namespace Rssdp
 
 			_Socket.Bind(new IPEndPoint(ip, _LocalPort));
 			if (_LocalPort == 0)
-				_LocalPort = ((IPEndPoint) _Socket.LocalEndPoint).Port;
+			{
+				if (_Socket.LocalEndPoint is not IPEndPoint endPoint)
+					throw new ArgumentException("No localPort specified and unable to determine port after socket bound. Please specify a port.", nameof(localPort));
+
+				_LocalPort = endPoint.Port;
+			}
 		}
 
 		#endregion

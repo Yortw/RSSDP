@@ -536,9 +536,9 @@ namespace Rssdp.Infrastructure
 
 		#region Header/Message Processing Utilities
 
-		private static string GetFirstHeaderStringValue(string headerName, HttpResponseMessage message)
+		private static string? GetFirstHeaderStringValue(string headerName, HttpResponseMessage message)
 		{
-			string retVal = null;
+			string? retVal = null;
 			if (message.Headers.Contains(headerName))
 			{
 				message.Headers.TryGetValues(headerName, out var values);
@@ -549,9 +549,9 @@ namespace Rssdp.Infrastructure
 			return retVal;
 		}
 
-		private static string GetFirstHeaderStringValue(string headerName, HttpRequestMessage message)
+		private static string? GetFirstHeaderStringValue(string headerName, HttpRequestMessage message)
 		{
-			string retVal = null;
+			string? retVal = null;
 			if (message.Headers.Contains(headerName))
 			{
 				message.Headers.TryGetValues(headerName, out var values);
@@ -562,9 +562,9 @@ namespace Rssdp.Infrastructure
 			return retVal;
 		}
 
-		private static Uri GetFirstHeaderUriValue(string headerName, HttpRequestMessage request)
+		private static Uri? GetFirstHeaderUriValue(string headerName, HttpRequestMessage request)
 		{
-			string value = null;
+			string? value = null;
 			if (request.Headers.Contains(headerName))
 			{
 				request.Headers.TryGetValues(headerName, out var values);
@@ -576,9 +576,9 @@ namespace Rssdp.Infrastructure
 			return retVal;
 		}
 
-		private static Uri GetFirstHeaderUriValue(string headerName, HttpResponseMessage response)
+		private static Uri? GetFirstHeaderUriValue(string headerName, HttpResponseMessage response)
 		{
-			string value = null;
+			string? value = null;
 			if (response.Headers.Contains(headerName))
 			{
 				response.Headers.TryGetValues(headerName, out var values);
@@ -699,7 +699,7 @@ namespace Rssdp.Infrastructure
 				return searchWaitTime.Subtract(OneSecond);
 		}
 
-		private static DiscoveredSsdpDevice FindExistingDeviceNotification(IEnumerable<DiscoveredSsdpDevice> devices, string notificationType, string usn)
+		private static DiscoveredSsdpDevice? FindExistingDeviceNotification(IEnumerable<DiscoveredSsdpDevice> devices, string notificationType, string usn)
 		{
 			return (from d in devices where d.NotificationType == notificationType && d.Usn == usn select d).FirstOrDefault();
 		}
