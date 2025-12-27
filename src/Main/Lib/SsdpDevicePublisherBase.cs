@@ -90,13 +90,26 @@ USN: {1}
 		}
 
 		/// <summary>
+		/// Partial constructor.
+		/// </summary>
+		/// <param name="communicationsServer">The <see cref="ISsdpCommunicationsServer"/> implementation, used to send and receive SSDP network messages.</param>
+		/// <param name="osName">Then name of the operating system running the server.</param>
+		/// <param name="osVersion">The version of the operating system running the server.</param>
+		/// <param name="log">An implementation of <see cref="ISsdpLogger"/> to be used for logging activity. May be null, in which case no logging is performed.</param>
+		protected SsdpDevicePublisherBase(ISsdpCommunicationsServer communicationsServer, string osName, string osVersion, ISsdpLogger log) : this(communicationsServer, osName, osVersion, log, new Upnp10DeviceValidator())
+		{
+		}
+
+
+		/// <summary>
 		/// Full constructor.
 		/// </summary>
 		/// <param name="communicationsServer">The <see cref="ISsdpCommunicationsServer"/> implementation, used to send and receive SSDP network messages.</param>
 		/// <param name="osName">Then name of the operating system running the server.</param>
 		/// <param name="osVersion">The version of the operating system running the server.</param>
 		/// <param name="log">An implementation of <see cref="ISsdpLogger"/> to be used for logging activity. May be null, in which case no logging is performed.</param>
-		protected SsdpDevicePublisherBase(ISsdpCommunicationsServer communicationsServer, string osName, string osVersion, ISsdpLogger log)
+		/// <param name="deviceValidator">An implementation of <see cref="IUpnpDeviceValidator"/> to be used to validate devices being added to the publisher.</param>
+		protected SsdpDevicePublisherBase(ISsdpCommunicationsServer communicationsServer, string osName, string osVersion, ISsdpLogger log, IUpnpDeviceValidator deviceValidator)
 		{
 			if (communicationsServer == null) throw new ArgumentNullException(nameof(communicationsServer));
 			if (osName == null) throw new ArgumentNullException(nameof(osName));
@@ -110,7 +123,7 @@ USN: {1}
 			_ReadOnlyDevices = new ReadOnlyEnumerable<SsdpRootDevice>(_Devices);
 			_RecentSearchRequests = new Dictionary<string, SearchRequest>(StringComparer.OrdinalIgnoreCase);
 			_Random = new Random();
-			_DeviceValidator = new Upnp10DeviceValidator(); //Should probably inject this later, but for now we only support 1.0.
+			_DeviceValidator = deviceValidator ?? new Upnp10DeviceValidator();
 
 			_CommsServer = communicationsServer;
 			_CommsServer.RequestReceived += CommsServer_RequestReceived;

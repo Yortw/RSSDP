@@ -1682,6 +1682,12 @@ references:
   commentId: M:Rssdp.Infrastructure.SsdpDevicePublisherBase.#ctor(Rssdp.Infrastructure.ISsdpCommunicationsServer,System.String,System.String,Rssdp.ISsdpLogger)
   fullName: Rssdp.Infrastructure.SsdpDevicePublisherBase.SsdpDevicePublisherBase(Rssdp.Infrastructure.ISsdpCommunicationsServer, System.String, System.String, Rssdp.ISsdpLogger)
   nameWithType: SsdpDevicePublisherBase.SsdpDevicePublisherBase(ISsdpCommunicationsServer, String, String, ISsdpLogger)
+- uid: Rssdp.Infrastructure.SsdpDevicePublisherBase.#ctor(Rssdp.Infrastructure.ISsdpCommunicationsServer,System.String,System.String,Rssdp.ISsdpLogger,Rssdp.Infrastructure.IUpnpDeviceValidator)
+  name: SsdpDevicePublisherBase(ISsdpCommunicationsServer, String, String, ISsdpLogger, IUpnpDeviceValidator)
+  href: api/Rssdp.Infrastructure.SsdpDevicePublisherBase.html#Rssdp_Infrastructure_SsdpDevicePublisherBase__ctor_Rssdp_Infrastructure_ISsdpCommunicationsServer_System_String_System_String_Rssdp_ISsdpLogger_Rssdp_Infrastructure_IUpnpDeviceValidator_
+  commentId: M:Rssdp.Infrastructure.SsdpDevicePublisherBase.#ctor(Rssdp.Infrastructure.ISsdpCommunicationsServer,System.String,System.String,Rssdp.ISsdpLogger,Rssdp.Infrastructure.IUpnpDeviceValidator)
+  fullName: Rssdp.Infrastructure.SsdpDevicePublisherBase.SsdpDevicePublisherBase(Rssdp.Infrastructure.ISsdpCommunicationsServer, System.String, System.String, Rssdp.ISsdpLogger, Rssdp.Infrastructure.IUpnpDeviceValidator)
+  nameWithType: SsdpDevicePublisherBase.SsdpDevicePublisherBase(ISsdpCommunicationsServer, String, String, ISsdpLogger, IUpnpDeviceValidator)
 - uid: Rssdp.Infrastructure.SsdpDevicePublisherBase.#ctor*
   name: SsdpDevicePublisherBase
   href: api/Rssdp.Infrastructure.SsdpDevicePublisherBase.html#Rssdp_Infrastructure_SsdpDevicePublisherBase__ctor_
