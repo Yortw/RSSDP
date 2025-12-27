@@ -13,10 +13,10 @@ namespace Rssdp.Infrastructure
 
 		#region Fields & Constants
 
-		private static readonly string[] ContentHeaderNames = new string[]
-				{
-					"Allow", "Content-Disposition", "Content-Encoding", "Content-Language", "Content-Length", "Content-Location", "Content-MD5", "Content-Range", "Content-Type", "Expires", "Last-Modified"
-				};
+		private static readonly string[] ContentHeaderNames =
+		[
+			"Allow", "Content-Disposition", "Content-Encoding", "Content-Language", "Content-Length", "Content-Location", "Content-MD5", "Content-Range", "Content-Type", "Expires", "Last-Modified"
+		];
 
 		#endregion
 
@@ -32,16 +32,16 @@ namespace Rssdp.Infrastructure
 			System.Net.Http.HttpResponseMessage retVal = null;
 			try
 			{
-				retVal = new System.Net.Http.HttpResponseMessage();
-
-				retVal.Content = Parse(retVal, retVal.Headers, data);
+				retVal = new System.Net.Http.HttpResponseMessage()
+				{
+					Content = Parse(retVal, retVal.Headers, data)
+				};
 
 				return retVal;
 			}
 			catch
 			{
-				if (retVal != null)
-					retVal.Dispose();
+				retVal?.Dispose();
 
 				throw;
 			}
@@ -76,8 +76,7 @@ namespace Rssdp.Infrastructure
 
 			message.Version = ParseHttpVersion(parts[0].Trim());
 
-			int statusCode = -1;
-			if (!Int32.TryParse(parts[1].Trim(), out statusCode))
+			if (!Int32.TryParse(parts[1].Trim(), out int statusCode))
 				throw new ArgumentException("data status line is invalid. Status code is not a valid integer.", nameof(data));
 
 			message.StatusCode = (HttpStatusCode)statusCode;

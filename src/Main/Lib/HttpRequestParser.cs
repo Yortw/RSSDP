@@ -12,10 +12,10 @@ namespace Rssdp.Infrastructure
 
 		#region Fields & Constants
 
-		private readonly string[] ContentHeaderNames = new string[]
-				{
-					"Allow", "Content-Disposition", "Content-Encoding", "Content-Language", "Content-Length", "Content-Location", "Content-MD5", "Content-Range", "Content-Type", "Expires", "Last-Modified"
-				};
+		private readonly string[] ContentHeaderNames =
+		[
+			"Allow", "Content-Disposition", "Content-Encoding", "Content-Language", "Content-Length", "Content-Location", "Content-MD5", "Content-Range", "Content-Type", "Expires", "Last-Modified"
+		];
 
 		#endregion
 
@@ -32,16 +32,16 @@ namespace Rssdp.Infrastructure
 
 			try
 			{
-				retVal = new System.Net.Http.HttpRequestMessage();
-
-				retVal.Content = Parse(retVal, retVal.Headers, data);
+				retVal = new System.Net.Http.HttpRequestMessage()
+				{
+					Content = Parse(retVal, retVal.Headers, data)
+				};
 
 				return retVal;
 			}
 			finally
 			{
-				if (retVal != null)
-					retVal.Dispose();
+				retVal?.Dispose();
 			}
 		}
 
@@ -63,8 +63,7 @@ namespace Rssdp.Infrastructure
 			if (parts.Length < 3) throw new ArgumentException("Status line is invalid. Insufficient status parts.", nameof(data));
 
 			message.Method = new HttpMethod(parts[0].Trim());
-			Uri requestUri;
-			if (Uri.TryCreate(parts[1].Trim(), UriKind.RelativeOrAbsolute, out requestUri))
+			if (Uri.TryCreate(parts[1].Trim(), UriKind.RelativeOrAbsolute, out var requestUri))
 				message.RequestUri = requestUri;
 			else
 				System.Diagnostics.Debug.WriteLine(parts[1]);

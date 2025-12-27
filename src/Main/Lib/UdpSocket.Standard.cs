@@ -179,15 +179,12 @@ namespace Rssdp
 
 		private static IPAddress GetDefaultIpAddress(Socket socket)
 		{
-			switch (socket.AddressFamily)
+			return socket.AddressFamily switch
 			{
-				case AddressFamily.InterNetwork:
-					return IPAddress.Any;
-				case AddressFamily.InterNetworkV6:
-					return IPAddress.IPv6Any;
-			}
-
-			return IPAddress.None;
+				AddressFamily.InterNetwork => IPAddress.Any,
+				AddressFamily.InterNetworkV6 => IPAddress.IPv6Any,
+				_ => IPAddress.None,
+			};
 		}
 		#endregion
 

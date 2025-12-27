@@ -22,8 +22,7 @@ namespace Rssdp
 		{
 			if (device == null) throw new System.ArgumentNullException(nameof(device));
 
-			var rootDevice = device as SsdpRootDevice;
-			if (rootDevice == null)
+			if (device is not SsdpRootDevice rootDevice)
 				rootDevice = ((SsdpEmbeddedDevice)device).RootDevice;
 
 			return rootDevice;

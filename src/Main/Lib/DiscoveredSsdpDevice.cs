@@ -158,8 +158,7 @@ namespace Rssdp
 				}
 				catch
 				{
-					if (handler != null)
-						handler.Dispose();
+					handler?.Dispose();
 
 					throw;
 				}

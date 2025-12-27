@@ -8,7 +8,7 @@ namespace Rssdp
 
 		#region Fields
 
-		private IEnumerable<T> _Items;
+		private readonly IEnumerable<T> _Items;
 
 		#endregion
 

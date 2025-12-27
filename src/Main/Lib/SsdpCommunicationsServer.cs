@@ -28,19 +28,19 @@ namespace Rssdp.Infrastructure
 		  
 		*/
 
-		private object _BroadcastListenSocketSynchroniser = new object();
+		private readonly object _BroadcastListenSocketSynchroniser = new ();
 		private IUdpSocket _BroadcastListenSocket;
 
-		private object _SendSocketSynchroniser = new object();
+		private readonly object _SendSocketSynchroniser = new ();
 		private IUdpSocket _SendSocket;
 
-		private HttpRequestParser _RequestParser;
-		private HttpResponseParser _ResponseParser;
+		private readonly HttpRequestParser _RequestParser;
+		private readonly HttpResponseParser _ResponseParser;
 
-		private ISocketFactory _SocketFactory;
+		private readonly ISocketFactory _SocketFactory;
 
-		private int _LocalPort;
-		private int _MulticastTtl;
+		private readonly int _LocalPort;
+		private readonly int _MulticastTtl;
 
 		private bool _IsShared;
 
@@ -140,8 +140,7 @@ namespace Rssdp.Infrastructure
 			{
 				lock (_BroadcastListenSocketSynchroniser)
 				{
-					if (_BroadcastListenSocket == null)
-						_BroadcastListenSocket = ListenForBroadcastsAsync();
+					_BroadcastListenSocket ??= ListenForBroadcastsAsync();
 				}
 			}
 		}
@@ -198,8 +197,7 @@ namespace Rssdp.Infrastructure
 			{
 				var socket = _SendSocket;
 				_SendSocket = null;
-				if (socket != null)
-					socket.Dispose();
+				socket?.Dispose();
 			}
 		}
 
@@ -238,14 +236,12 @@ namespace Rssdp.Infrastructure
 			{
 				lock (_BroadcastListenSocketSynchroniser)
 				{
-					if (_BroadcastListenSocket != null)
-						_BroadcastListenSocket.Dispose();
+					_BroadcastListenSocket?.Dispose();
 				}
 
 				lock (_SendSocketSynchroniser)
 				{
-					if (_SendSocket != null)
-						_SendSocket.Dispose();
+					_SendSocket?.Dispose();
 				}
 			}
 		}
@@ -320,7 +316,7 @@ namespace Rssdp.Infrastructure
 								// Strange cannot convert compiler error here if I don't explicitly
 								// assign or cast to Action first. Assignment is easier to read,
 								// so went with that.
-								Action processWork = () => ProcessMessage(System.Text.UTF8Encoding.UTF8.GetString(result.Buffer, 0, result.ReceivedBytes), result.ReceivedFrom);
+								void processWork() => ProcessMessage(System.Text.UTF8Encoding.UTF8.GetString(result.Buffer, 0, result.ReceivedBytes), result.ReceivedFrom);
 								var processTask = TaskEx.Run(processWork);
 							}
 						}
@@ -382,8 +378,7 @@ namespace Rssdp.Infrastructure
 			{
 				lock (_SendSocketSynchroniser)
 				{
-					if (_SendSocket == null)
-						_SendSocket = CreateSocketAndListenForResponsesAsync();
+					_SendSocket ??= CreateSocketAndListenForResponsesAsync();
 				}
 			}
 		}
@@ -429,16 +424,12 @@ namespace Rssdp.Infrastructure
 			//Section 4.2 - http://tools.ietf.org/html/draft-cai-ssdp-v1-03#page-11
 			if (data.RequestUri.ToString() != "*") return;
 
-			var handlers = this.RequestReceived;
-			if (handlers != null)
-				handlers(this, new RequestReceivedEventArgs(data, endPoint));
+			this.RequestReceived?.Invoke(this, new RequestReceivedEventArgs(data, endPoint));
 		}
 
 		private void OnResponseReceived(HttpResponseMessage data, UdpEndPoint endPoint)
 		{
-			var handlers = this.ResponseReceived;
-			if (handlers != null)
-				handlers(this, new ResponseReceivedEventArgs(data, endPoint));
+			this.ResponseReceived?.Invoke(this, new ResponseReceivedEventArgs(data, endPoint));
 		}
 
 		#endregion

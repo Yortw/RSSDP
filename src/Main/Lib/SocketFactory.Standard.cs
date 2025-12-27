@@ -14,7 +14,7 @@ namespace Rssdp
 	public sealed class SocketFactory : ISocketFactory
 	{
 		private readonly DeviceNetworkType _DeviceNetworkType;
-		private IPAddress _LocalIP;
+		private readonly IPAddress _LocalIP;
 
 		/// <summary>
 		/// Default constructor.
@@ -54,8 +54,7 @@ namespace Rssdp
 			}
 			catch
 			{
-				if (retVal != null)
-					retVal.Dispose();
+				retVal?.Dispose();
 
 				throw;
 			}
@@ -97,8 +96,7 @@ namespace Rssdp
 			}
 			catch
 			{
-				if (retVal != null)
-					retVal.Dispose();
+				retVal?.Dispose();
 
 				throw;
 			}
@@ -183,15 +181,12 @@ namespace Rssdp
 
 		private static DeviceNetworkType GetDeviceNetworkType(AddressFamily addressFamily)
 		{
-			switch (addressFamily)
+			return addressFamily switch
 			{
-				case AddressFamily.InterNetwork:
-					return DeviceNetworkType.IPv4;
-				case AddressFamily.InterNetworkV6:
-					return DeviceNetworkType.IPv6;
-				default:
-					throw new ArgumentOutOfRangeException(nameof(addressFamily), addressFamily, null);
-			}
+				AddressFamily.InterNetwork => DeviceNetworkType.IPv4,
+				AddressFamily.InterNetworkV6 => DeviceNetworkType.IPv6,
+				_ => throw new ArgumentOutOfRangeException(nameof(addressFamily), addressFamily, null),
+			};
 		}
 	}
 }

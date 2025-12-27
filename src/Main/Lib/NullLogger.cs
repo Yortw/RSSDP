@@ -20,7 +20,7 @@ namespace Rssdp
 		/// </summary>
 		public static ISsdpLogger Instance
 		{
-			get { return s_Instance ?? (s_Instance = new NullLogger()); }
+			get { return s_Instance ??= new NullLogger(); }
 		}
 
 		/// <summary>
