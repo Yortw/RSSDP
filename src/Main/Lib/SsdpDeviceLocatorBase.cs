@@ -712,7 +712,7 @@ namespace Rssdp.Infrastructure
 				return searchWaitTime.Subtract(OneSecond);
 		}
 
-		private static DiscoveredSsdpDevice? FindExistingDeviceNotification(IEnumerable<DiscoveredSsdpDevice> devices, string notificationType, string usn)
+		private static DiscoveredSsdpDevice? FindExistingDeviceNotification(IEnumerable<DiscoveredSsdpDevice> devices, string notificationType, string? usn)
 		{
 			return (from d in devices where d.NotificationType == notificationType && d.Usn == usn select d).FirstOrDefault();
 		}

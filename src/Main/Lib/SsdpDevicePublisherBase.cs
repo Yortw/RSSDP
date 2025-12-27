@@ -590,6 +590,17 @@ USN: {1}
 		private void SendSearchResponse(string searchTarget, SsdpDevice device, string uniqueServiceName, UdpEndPoint endPoint)
 		{
 			var rootDevice = device.ToRootDevice();
+			if (rootDevice == null)
+			{
+				LogDeviceEventWarning("Cannot send search response, device is not part of a root device.", device);
+				return;
+			}
+
+			if (rootDevice.Location == null)
+			{
+				LogDeviceEventWarning("Cannot send search response, root device Location is null.", device);
+				return;
+			}
 
 			var additionalheaders = FormatCustomHeadersForResponse(device);
 
@@ -628,7 +639,7 @@ USN: {1}
 		{
 			var isDuplicateRequest = false;
 
-			var newRequest = new SearchRequest(endPoint, searchTarget, DateTime.UtcNow );
+			var newRequest = new SearchRequest(endPoint, searchTarget, DateTime.UtcNow);
 			lock (_RecentSearchRequests)
 			{
 				if (_RecentSearchRequests.TryGetValue(newRequest.Key, out var lastRequest))
@@ -772,7 +783,7 @@ USN: {1}
 
 			commsServer.SendMessage
 			(
-				multicastMessage, 
+				multicastMessage,
 				new UdpEndPoint
 				(
 					multicastIpAddress,
@@ -791,6 +802,17 @@ USN: {1}
 		private byte[] BuildAliveMessage(SsdpDevice device, string notificationType, string uniqueServiceName, string hostAddress)
 		{
 			var rootDevice = device.ToRootDevice();
+			if (rootDevice == null)
+			{
+				LogDeviceEventWarning("Cannot build alive message, device is not part of a root device.", device);
+				throw new InvalidOperationException("Device is not part of a root device.");
+			}
+
+			if (rootDevice.Location == null)
+			{
+				LogDeviceEventWarning("Cannot build alive message, root device Location is null.", device);
+				throw new InvalidOperationException("Root device Location is null.");
+			}
 
 			var additionalheaders = FormatCustomHeadersForResponse(device);
 
@@ -870,7 +892,7 @@ USN: {1}
 
 			commsServer.SendMessage
 			(
-				multicastMessage, 
+				multicastMessage,
 				new UdpEndPoint
 				(
 					multicastIpAddress,
@@ -1137,11 +1159,22 @@ USN: {1}
 			{
 				//According to SSDP/UPnP spec, ignore message if missing these headers.
 				if (!e.Message.Headers.Contains("MX") && !IsRelaxedStandardsMode)
+				{
 					_Log.LogWarning("Ignoring search request - missing MX header. Set StandardsMode to relaxed to process these search requests.");
+				}
 				else if (!e.Message.Headers.Contains("MAN") && !IsRelaxedStandardsMode)
+				{
 					_Log.LogWarning("Ignoring search request - missing MAN header. Set StandardsMode to relaxed to process these search requests.");
+				}
 				else
-					ProcessSearchRequest(GetFirstHeaderValue(e.Message.Headers, "MX"), GetFirstHeaderValue(e.Message.Headers, "ST"), e.ReceivedFrom);
+				{
+					ProcessSearchRequest
+					(
+						GetFirstHeaderValue(e.Message.Headers, "MX") ?? "3",
+						GetFirstHeaderValue(e.Message.Headers, "ST") ?? SsdpConstants.SsdpDiscoverAllSTHeader,
+						e.ReceivedFrom
+					);
+				}
 			}
 			else if (!String.Equals(e.Message.Method.Method, "NOTIFY", StringComparison.OrdinalIgnoreCase))
 			{

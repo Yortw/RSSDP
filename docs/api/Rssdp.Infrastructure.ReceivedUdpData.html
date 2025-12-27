@@ -275,6 +275,53 @@
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public sealed class ReceivedUdpData</code></pre>
   </div>
+  <h3 id="constructors">Constructors
+  </h3>
+  
+  
+  <a id="Rssdp_Infrastructure_ReceivedUdpData__ctor_" data-uid="Rssdp.Infrastructure.ReceivedUdpData.#ctor*"></a>
+  <h4 id="Rssdp_Infrastructure_ReceivedUdpData__ctor_Rssdp_Infrastructure_UdpEndPoint_" data-uid="Rssdp.Infrastructure.ReceivedUdpData.#ctor(Rssdp.Infrastructure.UdpEndPoint)">ReceivedUdpData(UdpEndPoint)</h4>
+  <div class="markdown level1 summary"><p>Full constructor.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ReceivedUdpData(UdpEndPoint receivedFrom)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Rssdp.Infrastructure.UdpEndPoint.html">UdpEndPoint</a></td>
+        <td><span class="parametername">receivedFrom</span></td>
+        <td><p>A <a class="xref" href="Rssdp.Infrastructure.UdpEndPoint.html">UdpEndPoint</a> representing the address and port the data was received from.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.ArgumentNullException</span></td>
+        <td><p>Thrown if <code data-dev-comment-type="paramref" class="paramref">receivedFrom</code> is null.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
   <h3 id="properties">Properties
   </h3>
   
@@ -338,7 +385,7 @@
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public UdpEndPoint ReceivedFrom { get; set; }</code></pre>
+    <pre><code class="lang-csharp hljs">public UdpEndPoint ReceivedFrom { get; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">

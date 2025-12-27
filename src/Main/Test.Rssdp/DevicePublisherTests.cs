@@ -2095,7 +2095,7 @@ namespace TestRssdp
 
 		private ReceivedUdpData GetSearchRequestMessage(string searchTarget)
 		{
-			var retVal = new ReceivedUdpData
+			var retVal = new ReceivedUdpData(new UdpEndPoint("192.168.1.100", 1701))
 			{
 				Buffer = System.Text.UTF8Encoding.UTF8.GetBytes(String.Format(@"M-SEARCH * HTTP/1.1
 HOST: {0}:{1}
@@ -2106,9 +2106,7 @@ ST: {2}
 ",
 	 SsdpConstants.MulticastLocalAdminAddress,
 	 SsdpConstants.MulticastPort,
-	 searchTarget)),
-
-				ReceivedFrom = new UdpEndPoint("192.168.1.100", 1701)
+	 searchTarget))
 			};
 			retVal.ReceivedBytes = retVal.Buffer.Length;
 
@@ -2117,7 +2115,7 @@ ST: {2}
 
 		private ReceivedUdpData GetSearchRequestMessageWithoutMXHeader(string searchTarget)
 		{
-			var retVal = new ReceivedUdpData
+			var retVal = new ReceivedUdpData(new UdpEndPoint("192.168.1.100", 1701))
 			{
 				Buffer = System.Text.UTF8Encoding.UTF8.GetBytes(String.Format(@"M-SEARCH * HTTP/1.1
 HOST: {0}:{1}
@@ -2128,8 +2126,6 @@ ST: {2}
 	 SsdpConstants.MulticastLocalAdminAddress,
 	 SsdpConstants.MulticastPort,
 	 searchTarget)),
-
-				ReceivedFrom = new UdpEndPoint("192.168.1.100", 1701)
 			};
 			retVal.ReceivedBytes = retVal.Buffer.Length;
 
@@ -2138,7 +2134,7 @@ ST: {2}
 
 		private ReceivedUdpData GetSearchRequestMessageWithCustomMXHeader(string searchTarget, string mxHeder)
 		{
-			var retVal = new ReceivedUdpData
+			var retVal = new ReceivedUdpData(new UdpEndPoint("192.168.1.100", 1701))
 			{
 				Buffer = System.Text.UTF8Encoding.UTF8.GetBytes(String.Format(@"M-SEARCH * HTTP/1.1
 HOST: {0}:{1}
@@ -2150,9 +2146,7 @@ ST: {2}
 	 SsdpConstants.MulticastLocalAdminAddress,
 	 SsdpConstants.MulticastPort,
 	 searchTarget,
-	 mxHeder)),
-
-				ReceivedFrom = new UdpEndPoint("192.168.1.100", 1701)
+	 mxHeder))
 			};
 			retVal.ReceivedBytes = retVal.Buffer.Length;
 
@@ -2161,7 +2155,7 @@ ST: {2}
 
 		private ReceivedUdpData GetSearchRequestMessageWithoutManHeader(string searchTarget)
 		{
-			var retVal = new ReceivedUdpData
+			var retVal = new ReceivedUdpData(new UdpEndPoint("192.168.1.100", 1701))
 			{
 				Buffer = System.Text.UTF8Encoding.UTF8.GetBytes(String.Format(@"M-SEARCH * HTTP/1.1
 HOST: {0}:{1}
@@ -2172,8 +2166,6 @@ ST: {2}
 	 SsdpConstants.MulticastLocalAdminAddress,
 	 SsdpConstants.MulticastPort,
 	 searchTarget)),
-
-				ReceivedFrom = new UdpEndPoint("192.168.1.100", 1701)
 			};
 			retVal.ReceivedBytes = retVal.Buffer.Length;
 

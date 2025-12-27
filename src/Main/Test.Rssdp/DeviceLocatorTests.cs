@@ -1090,10 +1090,10 @@ LOCATION:{3}{5}
  otherHeaders
  );
 
-			var retVal = new ReceivedUdpData()
+			var retVal = new ReceivedUdpData(SsdpConstants.MulticastLocalAdminEndpoint)
 			{
 				Buffer = System.Text.ASCIIEncoding.UTF8.GetBytes(responseText),
-				ReceivedFrom = SsdpConstants.MulticastLocalAdminEndpoint
+				ReceivedBytes = responseText.Length
 			};
 			retVal.ReceivedBytes = retVal.Buffer.Length;
 
@@ -1124,10 +1124,10 @@ CACHE-CONTROL: public, max-age=1800
 	 DateTime.UtcNow.ToString("r")
 	 );
 
-			var retVal = new ReceivedUdpData()
+			var retVal = new ReceivedUdpData(SsdpConstants.MulticastLocalAdminEndpoint)
 			{
 				Buffer = System.Text.UTF8Encoding.UTF8.GetBytes(data),
-				ReceivedFrom = SsdpConstants.MulticastLocalAdminEndpoint
+				ReceivedBytes = data.Length
 			};
 			retVal.ReceivedBytes = retVal.Buffer.Length;
 
@@ -1148,10 +1148,10 @@ USN: uuid:1234::test-schema:device:TestDeviceType:1
 	 DateTime.UtcNow.ToString("r")
 	 );
 
-			var retVal = new ReceivedUdpData()
+			var retVal = new ReceivedUdpData(SsdpConstants.MulticastLocalAdminEndpoint)
 			{
 				Buffer = System.Text.UTF8Encoding.UTF8.GetBytes(data),
-				ReceivedFrom = SsdpConstants.MulticastLocalAdminEndpoint
+				ReceivedBytes = data.Length
 			};
 			retVal.ReceivedBytes = retVal.Buffer.Length;
 
@@ -1174,10 +1174,10 @@ USN: {2}
 	String.Format("{0}::{1}", device.Udn, device.FullDeviceType)
 	 );
 
-			var retVal = new ReceivedUdpData()
+			var retVal = new ReceivedUdpData(SsdpConstants.MulticastLocalAdminEndpoint)
 			{
 				Buffer = System.Text.UTF8Encoding.UTF8.GetBytes(data),
-				ReceivedFrom = SsdpConstants.MulticastLocalAdminEndpoint
+				ReceivedBytes = data.Length
 			};
 			retVal.ReceivedBytes = retVal.Buffer.Length;
 
@@ -1200,11 +1200,11 @@ CACHE-CONTROL: public, max-age=1800
 	 DateTime.UtcNow.ToString("r")
 	 );
 
-			var retVal = new ReceivedUdpData()
+			var retVal = new ReceivedUdpData(SsdpConstants.MulticastLocalAdminEndpoint)
 			{
 				Buffer = System.Text.UTF8Encoding.UTF8.GetBytes(data),
-				ReceivedFrom = SsdpConstants.MulticastLocalAdminEndpoint
-		};
+				ReceivedBytes = data.Length
+			};
 			retVal.ReceivedBytes = retVal.Buffer.Length;
 
 			return retVal;
@@ -1232,11 +1232,11 @@ CACHE-CONTROL: public, max-age={4}
 		rootDevice.CacheLifetime.TotalSeconds
 	 );
 
-			var retVal = new ReceivedUdpData()
+			var retVal = new ReceivedUdpData(SsdpConstants.MulticastLocalAdminEndpoint)
 			{
 				Buffer = System.Text.UTF8Encoding.UTF8.GetBytes(data),
-				ReceivedFrom = SsdpConstants.MulticastLocalAdminEndpoint
-		};
+				ReceivedBytes = data.Length
+			};
 			retVal.ReceivedBytes = retVal.Buffer.Length;
 
 			return retVal;
