@@ -1000,7 +1000,7 @@ LOCATION:http://somedevice:1700
 							else
 							{
 								var message = _ReceiveQueue.Dequeue();
-								if (message.Buffer == null && message.ReceivedBytes == 0 && message.ReceivedFrom == null)
+								if ((message.Buffer == null || message.Buffer.Length == 0) && message.ReceivedBytes == 0 && message.ReceivedFrom == null)
 									tcs.SetException(new SocketClosedException());
 								else
 									tcs.SetResult(message);
