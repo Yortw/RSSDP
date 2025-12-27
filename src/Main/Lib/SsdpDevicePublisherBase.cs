@@ -52,6 +52,9 @@ LOCATION: {3}{8}
 
 "; //Blank line at end important, do not remove.
 
+#if NET8_0_OR_GREATER
+		private static readonly System.Text.CompositeFormat DeviceSearchResponseMessageFormatComposite = System.Text.CompositeFormat.Parse(DeviceSearchResponseMessageFormat);
+#endif
 
 		private const string AliveNotificationMessageFormat = @"NOTIFY * HTTP/1.1
 HOST: {8}:{9}
@@ -65,6 +68,10 @@ LOCATION: {2}
 
 "; //Blank line at end important, do not remove.
 
+#if NET8_0_OR_GREATER
+		private static readonly System.Text.CompositeFormat AliveNotificationMessageFormatComposite = System.Text.CompositeFormat.Parse(AliveNotificationMessageFormat);
+#endif
+
 		private const string ByeByeNotificationMessageFormat = @"NOTIFY * HTTP/1.1
 HOST: {6}:{7}
 DATE: {5}
@@ -74,6 +81,10 @@ SERVER: {2}/{3} UPnP/1.0 RSSDP/{4}
 USN: {1}
 
 ";
+
+#if NET8_0_OR_GREATER
+		private static readonly System.Text.CompositeFormat ByeByeNotificationMessageFormatComposite = System.Text.CompositeFormat.Parse(ByeByeNotificationMessageFormat);
+#endif
 
 		#endregion
 
@@ -443,7 +454,7 @@ USN: {1}
 				{
 					if (searchTarget.Contains(":service:"))
 					{
-						devices = 
+						devices =
 						(
 							from device in GetAllDevicesAsFlatEnumerable()
 							where
@@ -575,17 +586,24 @@ USN: {1}
 
 			var additionalheaders = FormatCustomHeadersForResponse(device);
 
-			var message = String.Format(System.Globalization.CultureInfo.InvariantCulture, DeviceSearchResponseMessageFormat,
-					CacheControlHeaderFromTimeSpan(rootDevice),
-					searchTarget,
-					uniqueServiceName,
-					rootDevice.Location,
-					_OSName,
-					_OSVersion,
-					ServerVersion,
-					DateTime.UtcNow.ToString("r"),
-					additionalheaders
-				);
+			var message = String.Format
+			(
+				System.Globalization.CultureInfo.InvariantCulture,
+#if NET8_0_OR_GREATER
+				DeviceSearchResponseMessageFormatComposite,
+#else
+				DeviceSearchResponseMessageFormat,
+#endif
+				CacheControlHeaderFromTimeSpan(rootDevice),
+				searchTarget,
+				uniqueServiceName,
+				rootDevice.Location,
+				_OSName,
+				_OSVersion,
+				ServerVersion,
+				DateTime.UtcNow.ToString("r"),
+				additionalheaders
+			);
 
 			_CommsServer.SendMessage(System.Text.UTF8Encoding.UTF8.GetBytes(message), endPoint);
 
@@ -750,7 +768,11 @@ USN: {1}
 				String.Format
 				(
 					System.Globalization.CultureInfo.InvariantCulture,
+#if NET8_0_OR_GREATER
+					AliveNotificationMessageFormatComposite,
+#else
 					AliveNotificationMessageFormat,
+#endif
 					notificationType,
 					uniqueServiceName,
 					rootDevice.Location,
@@ -818,21 +840,28 @@ USN: {1}
 
 		private byte[] BuildByeByeMessage(string notificationType, string uniqueServiceName, string hostAddress)
 		{
-			var message = String.Format(System.Globalization.CultureInfo.InvariantCulture, ByeByeNotificationMessageFormat,
-					notificationType,
-					uniqueServiceName,
-					_OSName,
-					_OSVersion,
-					ServerVersion,
-					DateTime.UtcNow.ToString("r"),
-					hostAddress,
-					SsdpConstants.MulticastPort
-				);
+			var message = String.Format
+			(
+				System.Globalization.CultureInfo.InvariantCulture,
+#if NET8_0_OR_GREATER
+				ByeByeNotificationMessageFormatComposite,
+#else
+				ByeByeNotificationMessageFormat,
+#endif
+				notificationType,
+				uniqueServiceName,
+				_OSName,
+				_OSVersion,
+				ServerVersion,
+				DateTime.UtcNow.ToString("r"),
+				hostAddress,
+				SsdpConstants.MulticastPort
+			);
 
 			return System.Text.UTF8Encoding.UTF8.GetBytes(message);
 		}
 
-		#endregion
+#endregion
 
 		#region Rebroadcast Timer
 
@@ -888,7 +917,7 @@ USN: {1}
 
 		private TimeSpan GetMinimumNonZeroCacheLifetime()
 		{
-			var nonzeroCacheLifetimesQuery = 
+			var nonzeroCacheLifetimesQuery =
 			(
 				from device
 				in _Devices
@@ -904,7 +933,7 @@ USN: {1}
 
 		#endregion
 
-		#endregion
+#endregion
 
 		private static string GetFirstHeaderValue(System.Net.Http.Headers.HttpRequestHeaders httpRequestHeaders, string headerName)
 		{
@@ -1004,7 +1033,7 @@ USN: {1}
 			return true;
 		}
 
-		#endregion
+#endregion
 
 		#region Event Handlers
 

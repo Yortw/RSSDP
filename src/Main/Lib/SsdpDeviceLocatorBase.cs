@@ -25,6 +25,9 @@ namespace Rssdp.Infrastructure
 
 		// Changed to single line string with explicit \r\n - see https://github.com/Yortw/RSSDP/issues/103
 		private const string HttpURequestMessageFormat = "{0} * HTTP/1.1\r\nHOST: {1}:{2}\r\nST: {4}\r\nMAN: \"{3}\"\r\nMX: {5}\r\n\r\n";
+#if NET8_0_OR_GREATER
+		private static readonly System.Text.CompositeFormat HttpURequestMessageCompositeFormat = System.Text.CompositeFormat.Parse(HttpURequestMessageFormat);
+#endif
 
 		private static readonly TimeSpan DefaultSearchWaitTime = TimeSpan.FromSeconds(4);
 		private static readonly TimeSpan OneSecond = TimeSpan.FromSeconds(1);
@@ -403,8 +406,16 @@ namespace Rssdp.Infrastructure
 
 		private static byte[] BuildDiscoverMessage(string serviceType, TimeSpan mxValue, string multicastLocalAdminAddress)
 		{
-			return System.Text.UTF8Encoding.UTF8.GetBytes(
-				String.Format(System.Globalization.CultureInfo.InvariantCulture, HttpURequestMessageFormat,
+			return System.Text.UTF8Encoding.UTF8.GetBytes
+			(
+				String.Format
+				(
+					System.Globalization.CultureInfo.InvariantCulture,
+		#if NET8_0_OR_GREATER
+					HttpURequestMessageCompositeFormat,
+		#else
+					HttpURequestMessageFormat,
+		#endif
 					SsdpConstants.MSearchMethod,
 					multicastLocalAdminAddress,
 					SsdpConstants.MulticastPort,
@@ -588,7 +599,7 @@ namespace Rssdp.Infrastructure
 
 		#endregion
 
-		#endregion
+#endregion
 
 		#region Expiry and Device Removal
 
@@ -698,7 +709,7 @@ namespace Rssdp.Infrastructure
 			return (from d in devices where d.Usn == usn select d).ToArray();
 		}
 
-		#endregion
+#endregion
 
 		#region Event Handlers
 
