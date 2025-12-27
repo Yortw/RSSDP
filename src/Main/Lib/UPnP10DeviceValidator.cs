@@ -217,9 +217,9 @@ namespace Rssdp.Infrastructure
 			}
 
 #if NET6_0_OR_GREATER
-			if (service.ServiceType.Contains('#'))
+			if (service.ServiceType?.Contains('#') ?? false)
 #else
-			if (service.ServiceType.Contains("#"))
+			if (service.ServiceType?.Contains("#") ?? false)
 #endif
 			{
 				retVal.Add("ServiceType cannot contain #");

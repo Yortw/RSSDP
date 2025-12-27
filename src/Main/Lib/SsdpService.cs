@@ -51,7 +51,7 @@ namespace Rssdp
 		///	<seealso cref="ServiceTypeNamespace"/>
 		///	<seealso cref="ServiceVersion"/>
 		///	<seealso cref="FullServiceType"/>
-		public string ServiceType { get; set; }
+		public string? ServiceType { get; set; }
 
 		/// <summary>
 		/// Sets or returns the namespace for the <seealso cref="ServiceType"/> of this service. Optional but defaults to the UPnP schema so should be changed if <seealso cref="ServiceType"/> is not an official UPnP service type.
@@ -96,7 +96,7 @@ namespace Rssdp
 		/// <para>For UPnP 1.0 this can be any unique string. For UPnP 1.1 this should be a 128 bit number formatted in a specific way, preferably generated using the time and MAC based algorithm. See section 1.1.4 of http://upnp.org/specs/arch/UPnP-arch-DeviceArchitecture-v1.1.pdf for details.</para>
 		/// <para>Technically this library implements UPnP 1.0, so any value is allowed, but we advise using UPnP 1.1 compatible values for good behaviour and forward compatibility with future versions.</para>
 		/// </remarks>
-		public string Uuid { get; set; }
+		public string? Uuid { get; set; }
 
 		/// <summary>
 		/// Returns the full service type string.

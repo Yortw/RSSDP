@@ -21,7 +21,7 @@ namespace Rssdp.Infrastructure
 		private List<DiscoveredSsdpDevice>? _SearchResults;
 		private readonly object _SearchResultsSynchroniser;
 
-		private System.Threading.Timer _ExpireCachedDevicesTimer;
+		private System.Threading.Timer? _ExpireCachedDevicesTimer;
 
 		// Changed to single line string with explicit \r\n - see https://github.com/Yortw/RSSDP/issues/103
 		private const string HttpURequestMessageFormat = "{0} * HTTP/1.1\r\nHOST: {1}:{2}\r\nST: {4}\r\nMAN: \"{3}\"\r\nMX: {5}\r\n\r\n";
@@ -603,7 +603,7 @@ namespace Rssdp.Infrastructure
 			return retVal;
 		}
 
-		private static TimeSpan CacheAgeFromHeader(System.Net.Http.Headers.CacheControlHeaderValue headerValue)
+		private static TimeSpan CacheAgeFromHeader(System.Net.Http.Headers.CacheControlHeaderValue? headerValue)
 		{
 			if (headerValue == null) return TimeSpan.Zero;
 

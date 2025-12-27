@@ -26,7 +26,7 @@ namespace Rssdp
 		/// <summary>
 		/// Sets or returns the value of this property.
 		/// </summary>
-		public string Value { get; set; }
+		public string? Value { get; set; }
 
 	}
 }
