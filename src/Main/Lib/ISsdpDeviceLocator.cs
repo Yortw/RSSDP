@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 
 namespace Rssdp.Infrastructure
 {
@@ -23,7 +23,7 @@ namespace Rssdp.Infrastructure
 		/// <seealso cref="DeviceUnavailable"/>
 		/// <seealso cref="StartListeningForNotifications"/>
 		/// <seealso cref="StopListeningForNotifications"/>
-		event EventHandler<DeviceAvailableEventArgs> DeviceAvailable;
+		event EventHandler<DeviceAvailableEventArgs>? DeviceAvailable;
 		
 		/// <summary>
 		/// Event raised when a device explicitly notifies of shutdown or a device expires from the cache.
@@ -32,7 +32,7 @@ namespace Rssdp.Infrastructure
 		/// <seealso cref="DeviceAvailable"/>
 		/// <seealso cref="StartListeningForNotifications"/>
 		/// <seealso cref="StopListeningForNotifications"/>
-		event EventHandler<DeviceUnavailableEventArgs> DeviceUnavailable;
+		event EventHandler<DeviceUnavailableEventArgs>? DeviceUnavailable;
 
 		#endregion
 

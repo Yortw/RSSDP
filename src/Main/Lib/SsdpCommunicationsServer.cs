@@ -51,12 +51,12 @@ namespace Rssdp.Infrastructure
 		/// <summary>
 		/// Raised when a HTTPU request message is received by a socket (unicast or multicast).
 		/// </summary>
-		public event EventHandler<RequestReceivedEventArgs> RequestReceived;
+		public event EventHandler<RequestReceivedEventArgs>? RequestReceived;
 
 		/// <summary>
 		/// Raised when an HTTPU response message is received by a socket (unicast or multicast).
 		/// </summary>
-		public event EventHandler<ResponseReceivedEventArgs> ResponseReceived;
+		public event EventHandler<ResponseReceivedEventArgs>? ResponseReceived;
 
 		#endregion
 

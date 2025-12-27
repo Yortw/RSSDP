@@ -68,7 +68,7 @@ namespace Rssdp.Infrastructure
 		/// <seealso cref="DeviceUnavailable"/>
 		/// <seealso cref="StartListeningForNotifications"/>
 		/// <seealso cref="StopListeningForNotifications"/>
-		public event EventHandler<DeviceAvailableEventArgs> DeviceAvailable;
+		public event EventHandler<DeviceAvailableEventArgs>? DeviceAvailable;
 
 		/// <summary>
 		/// Raised when a notification is received that indicates a device has shutdown or otherwise become unavailable.
@@ -83,7 +83,7 @@ namespace Rssdp.Infrastructure
 		/// <seealso cref="DeviceAvailable"/>
 		/// <seealso cref="StartListeningForNotifications"/>
 		/// <seealso cref="StopListeningForNotifications"/>
-		public event EventHandler<DeviceUnavailableEventArgs> DeviceUnavailable;
+		public event EventHandler<DeviceUnavailableEventArgs>? DeviceUnavailable;
 
 		#endregion
 

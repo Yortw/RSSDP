@@ -107,19 +107,24 @@ namespace Rssdp
 		/// <param name="downloadHttpClient">A <see cref="System.Net.Http.HttpClient"/> to use when downloading the document data.</param>
 		/// <exception cref="System.Exception">This method using an HttpClient instance to retrieve the device description document, and as such any exception that can be thrown by HttpClient may be rethrown by this method.
 		/// On the UWP platform this is likely to be a <see cref="System.Exception"/> instance and the hresult can be checked to determine the exact nature of the error. On other platforms it is likely to be a System.Net.WebException or System.Net.Http.HttpRequestException.
-		/// Check the documentation for HttpClient on the platform(s) you're using.</exception> 
+		/// Check the documentation for HttpClient on the platform(s) you're using.</exception>
+		/// <exception cref="System.InvalidOperationException">Thrown if the <see cref="DescriptionLocation"/> property is not set.</exception>
 		/// <returns>An <see cref="SsdpDevice"/> instance describing the full device details.</returns>
 		public async Task<SsdpRootDevice> GetDeviceInfo(HttpClient downloadHttpClient)
 		{
 			if (_Device == null || this.IsExpired())
 			{
-				var rawDescriptionDocument = await downloadHttpClient.GetAsync(this.DescriptionLocation);
+				var descriptionLocation = this.DescriptionLocation;
+				if (descriptionLocation == null)
+					throw new InvalidOperationException("DescriptionLocation property is not set.");
+
+				var rawDescriptionDocument = await downloadHttpClient.GetAsync(descriptionLocation);
 				rawDescriptionDocument.EnsureSuccessStatusCode();
 
 				// Not using ReadAsStringAsync() here as some devices return the content type as utf-8 not UTF-8,
 				// which causes an (unneccesary) exception.
 				var data = await rawDescriptionDocument.Content.ReadAsByteArrayAsync();
-				_Device = new SsdpRootDevice(this.DescriptionLocation, this.CacheLifetime, System.Text.UTF8Encoding.UTF8.GetString(data, 0, data.Length));
+				_Device = new SsdpRootDevice(descriptionLocation, this.CacheLifetime, System.Text.UTF8Encoding.UTF8.GetString(data, 0, data.Length));
 			}
 
 			return _Device;

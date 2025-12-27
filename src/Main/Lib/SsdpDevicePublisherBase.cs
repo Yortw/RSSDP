@@ -622,7 +622,7 @@ USN: {1}
 		{
 			var isDuplicateRequest = false;
 
-			var newRequest = new SearchRequest() { EndPoint = endPoint, SearchTarget = searchTarget, Received = DateTime.UtcNow };
+			var newRequest = new SearchRequest(endPoint, searchTarget, DateTime.UtcNow );
 			lock (_RecentSearchRequests)
 			{
 				if (_RecentSearchRequests.TryGetValue(newRequest.Key, out var lastRequest))
@@ -966,9 +966,9 @@ USN: {1}
 			return retVal;
 		}
 
-		private static string CacheControlHeaderFromTimeSpan(SsdpRootDevice device)
+		private static string CacheControlHeaderFromTimeSpan(SsdpRootDevice? device)
 		{
-			if (device.CacheLifetime == TimeSpan.Zero)
+			if (device == null || device.CacheLifetime == TimeSpan.Zero)
 				return "CACHE-CONTROL: no-cache";
 			else
 				return String.Format(System.Globalization.CultureInfo.InvariantCulture, "CACHE-CONTROL: public, max-age={0}", device.CacheLifetime.TotalSeconds);
@@ -1067,22 +1067,31 @@ USN: {1}
 
 		private void Device_DeviceRemoved(object? sender, DeviceEventArgs e)
 		{
+			if (this.IsDisposed) return;
+			if (sender == null) return;
+
 			SendByeByeNotifications(e.Device, false);
 			DisconnectFromDeviceEvents(e.Device);
 		}
 
 		private void Device_ServiceAdded(object? sender, ServiceEventArgs e)
 		{
+			if (this.IsDisposed) return;
+			if (sender == null) return;
+
 			//Technically we should only do this once per service type,
 			//but if we add services during runtime there is no way to
 			//notify anyone except by resending this notification.
 			_Log.LogInfo(String.Format(System.Globalization.CultureInfo.InvariantCulture, "Service added: {0} ({1})", e.Service.ServiceId, e.Service.FullServiceType));
 
-			SendAliveNotification((SsdpDevice?)sender, e.Service);
+			SendAliveNotification((SsdpDevice)sender, e.Service);
 		}
 
 		private void Device_ServiceRemoved(object? sender, ServiceEventArgs e)
 		{
+			if (this.IsDisposed) return;
+			if (sender == null) return;
+
 			_Log.LogInfo(String.Format(System.Globalization.CultureInfo.InvariantCulture, "Service removed: {0} ({1})", e.Service.ServiceId, e.Service.FullServiceType));
 
 			var device = (SsdpDevice?)sender;
@@ -1095,6 +1104,8 @@ USN: {1}
 		private void CommsServer_RequestReceived(object? sender, RequestReceivedEventArgs e)
 		{
 			if (this.IsDisposed) return;
+			if (sender == null) return;
+
 
 			if (e.Message.Method.Method == SsdpConstants.MSearchMethod)
 			{
@@ -1118,9 +1129,16 @@ USN: {1}
 
 		private sealed class SearchRequest
 		{
-			public UdpEndPoint EndPoint { get; set; }
-			public DateTime Received { get; set; }
-			public string SearchTarget { get; set; }
+			public SearchRequest(UdpEndPoint endpoint, string searchTarget, DateTime received)
+			{
+				this.EndPoint = endpoint;
+				this.SearchTarget = searchTarget;
+				this.Received = received;
+			}
+
+			public UdpEndPoint EndPoint { get; private set; }
+			public DateTime Received { get; private set; }
+			public string SearchTarget { get; private set; }
 
 			public string Key
 			{

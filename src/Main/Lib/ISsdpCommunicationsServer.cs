@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 
 namespace Rssdp.Infrastructure
 {
@@ -13,12 +13,12 @@ namespace Rssdp.Infrastructure
 		/// <summary>
 		/// Raised when a HTTPU request message is received by a socket (unicast or multicast).
 		/// </summary>
-		event EventHandler<RequestReceivedEventArgs> RequestReceived;
+		event EventHandler<RequestReceivedEventArgs>? RequestReceived;
 
 		/// <summary>
 		/// Raised when an HTTPU response message is received by a socket (unicast or multicast).
 		/// </summary>
-		event EventHandler<ResponseReceivedEventArgs> ResponseReceived;
+		event EventHandler<ResponseReceivedEventArgs>? ResponseReceived;
 
 		#endregion
 

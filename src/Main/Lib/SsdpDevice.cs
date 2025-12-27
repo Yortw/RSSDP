@@ -38,28 +38,28 @@ namespace Rssdp
 		/// </summary>
 		/// <seealso cref="AddDevice"/>
 		/// <seealso cref="DeviceAdded"/>
-		public event EventHandler<DeviceEventArgs> DeviceAdded;
+		public event EventHandler<DeviceEventArgs>? DeviceAdded;
 
 		/// <summary>
 		/// Raised when a child device is removed.
 		/// </summary>
 		/// <seealso cref="RemoveDevice"/>
 		/// <seealso cref="DeviceRemoved"/>
-		public event EventHandler<DeviceEventArgs> DeviceRemoved;
+		public event EventHandler<DeviceEventArgs>? DeviceRemoved;
 
 		/// <summary>
 		/// Raised when a new service is added.
 		/// </summary>
 		/// <seealso cref="AddService"/>
 		/// <seealso cref="ServiceAdded"/>
-		public event EventHandler<ServiceEventArgs> ServiceAdded;
+		public event EventHandler<ServiceEventArgs>? ServiceAdded;
 
 		/// <summary>
 		/// Raised when a service is removed.
 		/// </summary>
 		/// <seealso cref="RemoveService"/>
 		/// <seealso cref="OnServiceRemoved"/>
-		public event EventHandler<ServiceEventArgs> ServiceRemoved;
+		public event EventHandler<ServiceEventArgs>? ServiceRemoved;
 
 		#endregion
 
