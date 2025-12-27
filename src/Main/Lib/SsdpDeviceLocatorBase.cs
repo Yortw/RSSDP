@@ -16,9 +16,9 @@ namespace Rssdp.Infrastructure
 		#region Fields & Constants
 
 		private readonly List<DiscoveredSsdpDevice> _Devices;
-		private ISsdpCommunicationsServer _CommunicationsServer;
+		private ISsdpCommunicationsServer? _CommunicationsServer;
 
-		private List<DiscoveredSsdpDevice> _SearchResults;
+		private List<DiscoveredSsdpDevice>? _SearchResults;
 		private readonly object _SearchResultsSynchroniser;
 
 		private System.Threading.Timer _ExpireCachedDevicesTimer;

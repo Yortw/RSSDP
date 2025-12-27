@@ -29,10 +29,10 @@ namespace Rssdp.Infrastructure
 		*/
 
 		private readonly object _BroadcastListenSocketSynchroniser = new ();
-		private IUdpSocket _BroadcastListenSocket;
+		private IUdpSocket? _BroadcastListenSocket;
 
 		private readonly object _SendSocketSynchroniser = new ();
-		private IUdpSocket _SendSocket;
+		private IUdpSocket? _SendSocket;
 
 		private readonly HttpRequestParser _RequestParser;
 		private readonly HttpResponseParser _ResponseParser;

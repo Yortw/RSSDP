@@ -35,7 +35,7 @@ namespace Rssdp
 		{
 			if (millisecondsDelay < -1) throw new ArgumentOutOfRangeException(nameof(millisecondsDelay), "millisecondsDelay must be -1 or greater.");
 
-			var tcs = new TaskCompletionSource<object>();
+			var tcs = new TaskCompletionSource<object?>();
 			var timer = new Timer((state) => 
 				{
 					tcs.SetResult(null);

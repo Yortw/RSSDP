@@ -15,7 +15,7 @@ namespace Rssdp
 
 		#region Fields
 
-		private SsdpRootDevice _Device;
+		private SsdpRootDevice? _Device;
 		private DateTimeOffset _AsAt;
 
 		private static HttpClient? s_DefaultHttpClient;

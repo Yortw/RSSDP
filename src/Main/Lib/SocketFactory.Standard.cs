@@ -21,7 +21,7 @@ namespace Rssdp
 		/// </summary>
 		/// <param name="ipAddress">The IP address of the local network adapter to bind sockets to. 
 		/// Null or empty string will use <see cref="IPAddress.Any"/>.</param>
-		public SocketFactory(string ipAddress)
+		public SocketFactory(string? ipAddress)
 		{
 			if (String.IsNullOrEmpty(ipAddress))
 				_LocalIP = IPAddress.Any;

@@ -13,7 +13,7 @@ namespace Rssdp.Infrastructure
 
 		#region Fields & Constants
 
-		private ISsdpCommunicationsServer _CommsServer;
+		private ISsdpCommunicationsServer? _CommsServer;
 		private readonly string _OSName;
 		private readonly string _OSVersion;
 		private readonly ISsdpLogger _Log;
@@ -24,11 +24,11 @@ namespace Rssdp.Infrastructure
 		private readonly List<SsdpRootDevice> _Devices;
 		private readonly ReadOnlyEnumerable<SsdpRootDevice> _ReadOnlyDevices;
 
-		private System.Threading.Timer _RebroadcastAliveNotificationsTimer;
+		private System.Threading.Timer? _RebroadcastAliveNotificationsTimer;
 		private TimeSpan _RebroadcastAliveNotificationsTimeSpan;
 		private DateTime _LastNotificationTime;
 
-		private Dictionary<string, SearchRequest> _RecentSearchRequests;
+		private Dictionary<string, SearchRequest>? _RecentSearchRequests;
 		private readonly IUpnpDeviceValidator _DeviceValidator;
 
 		private readonly Random _Random;
