@@ -19,7 +19,7 @@ namespace TestRssdp
 		[TestMethod()]
 		public void DeviceLocator_Constructor_ThrowsOnNullCommsServer()
 		{
-			var deviceLocator = new MockDeviceLocator(null);
+			_ = new MockDeviceLocator(null);
 		}
 
 		#endregion
@@ -699,6 +699,7 @@ namespace TestRssdp
 			var t = deviceLocator.SearchAsync(searchTarget, TimeSpan.FromSeconds(10));
 			var t2 = deviceLocator.SearchAsync(searchTarget, TimeSpan.FromSeconds(1.5));
 			t2.GetAwaiter().GetResult();
+			t.GetAwaiter().GetResult();
 		}
 
 		[TestMethod]
@@ -1050,14 +1051,14 @@ namespace TestRssdp
 		[TestMethod]
 		public void DeviceAvailableEventArgs_Constructor_ThrowsOnNullDevice()
 		{
-			var args = new DeviceAvailableEventArgs(null, true);
+			_ = new DeviceAvailableEventArgs(null, true);
 		}
 
 		[ExpectedException(typeof(System.ArgumentNullException))]
 		[TestMethod]
 		public void DeviceUnavailableEventArgs_Constructor_ThrowsOnNullDevice()
 		{
-			var args = new DeviceUnavailableEventArgs(null, false);
+			_ = new DeviceUnavailableEventArgs(null, false);
 		}
 
 		#endregion
@@ -1101,8 +1102,7 @@ LOCATION:{3}{5}
 
 		private object GetFirstHeaderValue(System.Net.Http.HttpRequestMessage request, string headerName)
 		{
-			IEnumerable<string> values = null;
-			if (request.Headers.TryGetValues(headerName, out values))
+			if (request.Headers.TryGetValues(headerName, out var values))
 				return values.First();
 
 			return null;

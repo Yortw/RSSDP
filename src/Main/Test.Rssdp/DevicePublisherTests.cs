@@ -21,7 +21,7 @@ namespace TestRssdp
 		[TestMethod]
 		public void Publisher_Constructor_ThrowsOnNullCommsServer()
 		{
-			var rootDevice = new SsdpRootDevice()
+			_ = new SsdpRootDevice()
 			{
 				FriendlyName = "Basic Device 1",
 				Manufacturer = "Test Manufacturer",
@@ -35,14 +35,14 @@ namespace TestRssdp
 				Location = new Uri("http://testdevice:1700/xml")
 			};
 
-			var publisher = new TestDevicePublisher(null);
+			_ = new TestDevicePublisher(null);
 		}
 
 		[ExpectedException(typeof(System.ArgumentNullException))]
 		[TestMethod]
 		public void Publisher_Constructor_ThrowsOnNullOS()
 		{
-			var rootDevice = new SsdpRootDevice()
+			_ = new SsdpRootDevice()
 			{
 				FriendlyName = "Basic Device 1",
 				Manufacturer = "Test Manufacturer",
@@ -57,14 +57,14 @@ namespace TestRssdp
 			};
 
 			var server = new MockCommsServer();
-			var publisher = new TestDevicePublisher(server, null, "1.1");
+			_ = new TestDevicePublisher(server, null, "1.1");
 		}
 
 		[ExpectedException(typeof(System.ArgumentNullException))]
 		[TestMethod]
 		public void Publisher_Constructor_ThrowsOnNullOSVersion()
 		{
-			var rootDevice = new SsdpRootDevice()
+			_ = new SsdpRootDevice()
 			{
 				FriendlyName = "Basic Device 1",
 				Manufacturer = "Test Manufacturer",
@@ -79,14 +79,14 @@ namespace TestRssdp
 			};
 
 			var server = new MockCommsServer();
-			var publisher = new TestDevicePublisher(server, "TestOS", null);
+			_ = new TestDevicePublisher(server, "TestOS", null);
 		}
 
 		[ExpectedException(typeof(System.ArgumentException))]
 		[TestMethod]
 		public void Publisher_Constructor_ThrowsOnEmptyOS()
 		{
-			var rootDevice = new SsdpRootDevice()
+			_ = new SsdpRootDevice()
 			{
 				FriendlyName = "Basic Device 1",
 				Manufacturer = "Test Manufacturer",
@@ -101,14 +101,14 @@ namespace TestRssdp
 			};
 
 			var server = new MockCommsServer();
-			var publisher = new TestDevicePublisher(server, String.Empty, "1.1");
+			_ = new TestDevicePublisher(server, String.Empty, "1.1");
 		}
 
 		[ExpectedException(typeof(System.ArgumentException))]
 		[TestMethod]
 		public void Publisher_Constructor_ThrowsOnEmptyOSVersion()
 		{
-			var rootDevice = new SsdpRootDevice()
+			_ = new SsdpRootDevice()
 			{
 				FriendlyName = "Basic Device 1",
 				Manufacturer = "Test Manufacturer",
@@ -123,7 +123,7 @@ namespace TestRssdp
 			};
 
 			var server = new MockCommsServer();
-			var publisher = new TestDevicePublisher(server, "TestOS", String.Empty);
+			_ = new TestDevicePublisher(server, "TestOS", String.Empty);
 		}
 
 		#endregion
@@ -164,8 +164,10 @@ namespace TestRssdp
 		[TestMethod]
 		public void Publisher_DoesNotDisposeSharedCommsServer()
 		{
-			var server = new MockCommsServer();
-			server.IsShared = true;
+			var server = new MockCommsServer
+			{
+				IsShared = true
+			};
 			var publisher = new TestDevicePublisher(server);
 			publisher.Dispose();
 			Assert.IsFalse(server.IsDisposed);
@@ -2093,20 +2095,21 @@ namespace TestRssdp
 
 		private ReceivedUdpData GetSearchRequestMessage(string searchTarget)
 		{
-			var retVal = new ReceivedUdpData();
-
-			retVal.Buffer = System.Text.UTF8Encoding.UTF8.GetBytes(String.Format(@"M-SEARCH * HTTP/1.1
+			var retVal = new ReceivedUdpData
+			{
+				Buffer = System.Text.UTF8Encoding.UTF8.GetBytes(String.Format(@"M-SEARCH * HTTP/1.1
 HOST: {0}:{1}
 MAN: ""ssdp:discover""
 MX: 1
 ST: {2}
 
 ",
- SsdpConstants.MulticastLocalAdminAddress,
- SsdpConstants.MulticastPort,
- searchTarget));
+	 SsdpConstants.MulticastLocalAdminAddress,
+	 SsdpConstants.MulticastPort,
+	 searchTarget)),
 
-			retVal.ReceivedFrom = new UdpEndPoint("192.168.1.100", 1701);
+				ReceivedFrom = new UdpEndPoint("192.168.1.100", 1701)
+			};
 			retVal.ReceivedBytes = retVal.Buffer.Length;
 
 			return retVal;
@@ -2114,19 +2117,20 @@ ST: {2}
 
 		private ReceivedUdpData GetSearchRequestMessageWithoutMXHeader(string searchTarget)
 		{
-			var retVal = new ReceivedUdpData();
-
-			retVal.Buffer = System.Text.UTF8Encoding.UTF8.GetBytes(String.Format(@"M-SEARCH * HTTP/1.1
+			var retVal = new ReceivedUdpData
+			{
+				Buffer = System.Text.UTF8Encoding.UTF8.GetBytes(String.Format(@"M-SEARCH * HTTP/1.1
 HOST: {0}:{1}
 MAN: ""ssdp:discover""
 ST: {2}
 
 ",
- SsdpConstants.MulticastLocalAdminAddress,
- SsdpConstants.MulticastPort,
- searchTarget));
+	 SsdpConstants.MulticastLocalAdminAddress,
+	 SsdpConstants.MulticastPort,
+	 searchTarget)),
 
-			retVal.ReceivedFrom = new UdpEndPoint("192.168.1.100", 1701);
+				ReceivedFrom = new UdpEndPoint("192.168.1.100", 1701)
+			};
 			retVal.ReceivedBytes = retVal.Buffer.Length;
 
 			return retVal;
@@ -2134,21 +2138,22 @@ ST: {2}
 
 		private ReceivedUdpData GetSearchRequestMessageWithCustomMXHeader(string searchTarget, string mxHeder)
 		{
-			var retVal = new ReceivedUdpData();
-
-			retVal.Buffer = System.Text.UTF8Encoding.UTF8.GetBytes(String.Format(@"M-SEARCH * HTTP/1.1
+			var retVal = new ReceivedUdpData
+			{
+				Buffer = System.Text.UTF8Encoding.UTF8.GetBytes(String.Format(@"M-SEARCH * HTTP/1.1
 HOST: {0}:{1}
 MX:{3}
 MAN: ""ssdp:discover""
 ST: {2}
 
 ",
- SsdpConstants.MulticastLocalAdminAddress,
- SsdpConstants.MulticastPort,
- searchTarget,
- mxHeder));
+	 SsdpConstants.MulticastLocalAdminAddress,
+	 SsdpConstants.MulticastPort,
+	 searchTarget,
+	 mxHeder)),
 
-			retVal.ReceivedFrom = new UdpEndPoint("192.168.1.100", 1701);
+				ReceivedFrom = new UdpEndPoint("192.168.1.100", 1701)
+			};
 			retVal.ReceivedBytes = retVal.Buffer.Length;
 
 			return retVal;
@@ -2156,19 +2161,20 @@ ST: {2}
 
 		private ReceivedUdpData GetSearchRequestMessageWithoutManHeader(string searchTarget)
 		{
-			var retVal = new ReceivedUdpData();
-
-			retVal.Buffer = System.Text.UTF8Encoding.UTF8.GetBytes(String.Format(@"M-SEARCH * HTTP/1.1
+			var retVal = new ReceivedUdpData
+			{
+				Buffer = System.Text.UTF8Encoding.UTF8.GetBytes(String.Format(@"M-SEARCH * HTTP/1.1
 HOST: {0}:{1}
 MX: 1
 ST: {2}
 
 ",
- SsdpConstants.MulticastLocalAdminAddress,
- SsdpConstants.MulticastPort,
- searchTarget));
+	 SsdpConstants.MulticastLocalAdminAddress,
+	 SsdpConstants.MulticastPort,
+	 searchTarget)),
 
-			retVal.ReceivedFrom = new UdpEndPoint("192.168.1.100", 1701);
+				ReceivedFrom = new UdpEndPoint("192.168.1.100", 1701)
+			};
 			retVal.ReceivedBytes = retVal.Buffer.Length;
 
 			return retVal;

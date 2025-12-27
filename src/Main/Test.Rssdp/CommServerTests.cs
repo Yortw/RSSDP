@@ -20,14 +20,14 @@ namespace TestRssdp
 		public void CommsServer_FullConstructor_CompleteSuccessfullyWithValidArguments()
 		{
 			var socketFactory = new MockSocketFactory();
-			var server = new SsdpCommunicationsServer(socketFactory, 1701, 4);
+			_ = new SsdpCommunicationsServer(socketFactory, 1701, 4);
 		}
 
 		[TestMethod]
 		public void CommsServer_PartialConstructor_CompleteSuccessfullyWithValidArguments()
 		{
 			var socketFactory = new MockSocketFactory();
-			var server = new SsdpCommunicationsServer(socketFactory, 1701);
+			_ = new SsdpCommunicationsServer(socketFactory, 1701);
 		}
 
 		[TestMethod]
@@ -45,21 +45,21 @@ namespace TestRssdp
 		[TestMethod]
 		public void CommsServer_MinimumConstructor_NullSocketFactoryThrowsExeption()
 		{
-			var server = new SsdpCommunicationsServer(null);
+			_ = new SsdpCommunicationsServer(null);
 		}
 
 		[ExpectedException(typeof(System.ArgumentNullException))]
 		[TestMethod]
 		public void CommsServer_FactoryAndSocketConstructor_NullSocketFactoryThrowsExeption()
 		{
-			var server = new SsdpCommunicationsServer(null, 1701);
+			_ = new SsdpCommunicationsServer(null, 1701);
 		}
 
 		[ExpectedException(typeof(System.ArgumentNullException))]
 		[TestMethod]
 		public void CommsServer_FullConstructor_NullSocketFactoryThrowsExeption()
 		{
-			var server = new SsdpCommunicationsServer(null, 1701, 4);
+			_ = new SsdpCommunicationsServer(null, 1701, 4);
 		}
 
 		[ExpectedException(typeof(System.ArgumentOutOfRangeException))]
@@ -67,7 +67,7 @@ namespace TestRssdp
 		public void CommsServer_FullConstructor_NegativeMulticastTtlThrowsException()
 		{
 			var socketFactory = new MockSocketFactory();
-			var server = new SsdpCommunicationsServer(socketFactory, 1701, -1);
+			_ = new SsdpCommunicationsServer(socketFactory, 1701, -1);
 		}
 
 		[ExpectedException(typeof(System.ArgumentOutOfRangeException))]
@@ -75,7 +75,7 @@ namespace TestRssdp
 		public void CommsServer_FullConstructor_ZeroMulticastTtlThrowsException()
 		{
 			var socketFactory = new MockSocketFactory();
-			var server = new SsdpCommunicationsServer(socketFactory, 1701, 0);
+			_ = new SsdpCommunicationsServer(socketFactory, 1701, 0);
 		}
 
 		[TestMethod]
@@ -880,8 +880,10 @@ LOCATION:http://somedevice:1700
 		public void CommsServer_IsSharedPropertyReturnsSetValue()
 		{
 			var socketFactory = new MockSocketFactory();
-			var server = new SsdpCommunicationsServer(socketFactory, 1701, 4);
-			server.IsShared = true;
+			var server = new SsdpCommunicationsServer(socketFactory, 1701, 4)
+			{
+				IsShared = true
+			};
 			Assert.IsTrue(server.IsShared);
 			server.IsShared = false;
 			Assert.IsFalse(server.IsShared);
@@ -932,14 +934,14 @@ LOCATION:http://somedevice:1700
 		private class MockSocket : DisposableManagedObjectBase, IUdpSocket
 		{
 
-			private int _LocalPort;
-			private string _IpAddress;
-			private int _MulticastTimeToLive;
+			private readonly int _LocalPort;
+			private readonly string _IpAddress;
+			private readonly int _MulticastTimeToLive;
 
 			private byte[] _LastMessage;
 			private UdpEndPoint _LastSentTo;
 
-			private System.Collections.Generic.Queue<ReceivedUdpData> _ReceiveQueue = new Queue<ReceivedUdpData>();
+			private readonly System.Collections.Generic.Queue<ReceivedUdpData> _ReceiveQueue = new Queue<ReceivedUdpData>();
 			private System.Threading.ManualResetEvent _DataAvailableSignal = new System.Threading.ManualResetEvent(false);
 
 			public MockSocket(int localPort)
@@ -992,7 +994,9 @@ LOCATION:http://somedevice:1700
 								signal.WaitOne();
 
 							if (this.IsDisposed)
+							{
 								tcs.SetCanceled();
+							}
 							else
 							{
 								var message = _ReceiveQueue.Dequeue();

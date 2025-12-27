@@ -13,24 +13,24 @@ namespace TestRssdp
 	{
 
 		private System.Threading.ManualResetEvent _BroadcastAvailableSignal = new System.Threading.ManualResetEvent(false);
-		private System.Collections.Generic.Queue<ReceivedUdpData> _ReceivedBroadcastsQueue = new Queue<ReceivedUdpData>();
+		private readonly System.Collections.Generic.Queue<ReceivedUdpData> _ReceivedBroadcastsQueue = new Queue<ReceivedUdpData>();
 
 		private System.Threading.ManualResetEvent _MessageAvailableSignal = new System.Threading.ManualResetEvent(false);
-		private System.Collections.Generic.Queue<ReceivedUdpData> _ReceivedMessageQueue = new Queue<ReceivedUdpData>();
+		private readonly System.Collections.Generic.Queue<ReceivedUdpData> _ReceivedMessageQueue = new Queue<ReceivedUdpData>();
 
-		private System.Threading.AutoResetEvent _MessageProcessedSignal = new System.Threading.AutoResetEvent(false);
+		private readonly System.Threading.AutoResetEvent _MessageProcessedSignal = new System.Threading.AutoResetEvent(false);
 
-		private HttpRequestParser _RequestParser = new HttpRequestParser();
-		private HttpResponseParser _ResponseParser = new HttpResponseParser();
+		private readonly HttpRequestParser _RequestParser = new HttpRequestParser();
+		private readonly HttpResponseParser _ResponseParser = new HttpResponseParser();
 
 		public System.Collections.Generic.Queue<ReceivedUdpData> SentMessages = new Queue<ReceivedUdpData>();
 		public System.Collections.Generic.Queue<ReceivedUdpData> SentBroadcasts = new Queue<ReceivedUdpData>();
 
-		private System.Threading.ManualResetEvent _SentBroadcastSignal = new System.Threading.ManualResetEvent(false);
-		private System.Threading.ManualResetEvent _SentMessageSignal = new System.Threading.ManualResetEvent(false);
+		private readonly System.Threading.ManualResetEvent _SentBroadcastSignal = new System.Threading.ManualResetEvent(false);
+		private readonly System.Threading.ManualResetEvent _SentMessageSignal = new System.Threading.ManualResetEvent(false);
 
-		private System.Threading.Timer _MessageSentSignalTimer;
-		private System.Threading.Timer _BroadcastSentSignalTimer;
+		private readonly System.Threading.Timer _MessageSentSignalTimer;
+		private readonly System.Threading.Timer _BroadcastSentSignalTimer;
 
 		private System.Threading.Tasks.Task _ListenTask;
 
@@ -84,7 +84,7 @@ namespace TestRssdp
 								if (this.IsDisposed) break;
 
 								var data = _ReceivedBroadcastsQueue.Dequeue();
-								Action processWork = () => ProcessMessage(System.Text.UTF8Encoding.UTF8.GetString(data.Buffer, 0, data.ReceivedBytes), data.ReceivedFrom);
+								void processWork() => ProcessMessage(System.Text.UTF8Encoding.UTF8.GetString(data.Buffer, 0, data.ReceivedBytes), data.ReceivedFrom);
 								var processTask = TaskEx.Run(processWork);
 
 							}
@@ -113,7 +113,9 @@ namespace TestRssdp
 		{
 			if (SsdpConstants.MulticastLocalAdminAddress.Equals(destination.IPAddress) ||
 				SsdpConstants.MulticastLinkLocalAddressV6.Equals(destination.IPAddress))
+			{
 				SendMulticastMessage(messageData);
+			}
 			else
 			{
 				SentMessages.Enqueue(new ReceivedUdpData() { Buffer = messageData, ReceivedBytes = messageData.Length, ReceivedFrom = destination });
@@ -152,7 +154,7 @@ namespace TestRssdp
 								if (this.IsDisposed) break;
 
 								var data = _ReceivedMessageQueue.Dequeue();
-								Action processWork = () => ProcessMessage(System.Text.UTF8Encoding.UTF8.GetString(data.Buffer, 0, data.ReceivedBytes), data.ReceivedFrom);
+								void processWork() => ProcessMessage(System.Text.UTF8Encoding.UTF8.GetString(data.Buffer, 0, data.ReceivedBytes), data.ReceivedFrom);
 								var processTask = TaskEx.Run(processWork);
 							}
 							_MessageAvailableSignal.Reset();
@@ -269,16 +271,12 @@ namespace TestRssdp
 			//Section 4.2 - http://tools.ietf.org/html/draft-cai-ssdp-v1-03#page-11
 			if (data.RequestUri.ToString() != "*") return;
 
-			var handlers = this.RequestReceived;
-			if (handlers != null)
-				handlers(this, new RequestReceivedEventArgs(data, endPoint));
+			this.RequestReceived?.Invoke(this, new RequestReceivedEventArgs(data, endPoint));
 		}
 
 		private void OnResponseReceived(HttpResponseMessage data, UdpEndPoint endPoint)
 		{
-			var handlers = this.ResponseReceived;
-			if (handlers != null)
-				handlers(this, new ResponseReceivedEventArgs(data, endPoint));
+			this.ResponseReceived?.Invoke(this, new ResponseReceivedEventArgs(data, endPoint));
 		}
 
 	}
