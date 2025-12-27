@@ -146,7 +146,9 @@ namespace Rssdp.Infrastructure
 
 		private static void ValidateUpc(SsdpDevice device, List<string> retVal)
 		{
-			if (device.Upc.Length != 12)
+			if (string.IsNullOrEmpty(device.Upc)) return;
+
+			if (device.Upc!.Length != 12)
 				retVal.Add("Upc, if provided, should be 12 digits.");
 
 			foreach (char c in device.Upc)
@@ -161,10 +163,18 @@ namespace Rssdp.Infrastructure
 
 		private static void ValidateUdn(SsdpDevice device, List<string> retVal)
 		{
-			if (!device.Udn.StartsWith("uuid:", StringComparison.OrdinalIgnoreCase))
+			if (string.IsNullOrEmpty(device.Udn))
+			{
+				retVal.Add("No UDN is specified, a UDN is required.");
+			}
+			else if (!device.Udn!.StartsWith("uuid:", StringComparison.OrdinalIgnoreCase))
+			{
 				retVal.Add("UDN must begin with uuid:. Correct format is uuid:<uuid>");
+			}
 			else if (device.Udn.Substring(5).Trim() != device.Uuid)
+			{
 				retVal.Add("UDN incorrect. Correct format is uuid:<uuid>");
+			}
 		}
 
 		private static void ValidateIcons(SsdpDevice device, List<string> retVal)
@@ -195,9 +205,9 @@ namespace Rssdp.Infrastructure
 			}
 		}
 		
-		private static bool IsOverLength(string value, int maxLength)
+		private static bool IsOverLength(string? value, int maxLength)
 		{
-			return !String.IsNullOrEmpty(value) && value.Length > maxLength;
+			return !String.IsNullOrEmpty(value) && value!.Length > maxLength;
 		}
 
 		private static void ValidateChildServices(SsdpDevice device, List<string> retVal)

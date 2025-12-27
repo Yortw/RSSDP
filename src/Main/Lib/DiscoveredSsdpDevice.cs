@@ -32,7 +32,7 @@ namespace Rssdp
 		/// <summary>
 		/// Sets or returns the universal service name (USN) of the device.
 		/// </summary>
-		public string Usn { get; set; }
+		public string? Usn { get; set; }
 
 		/// <summary>
 		/// Sets or returns a URL pointing to the device description document for this device.
@@ -140,7 +140,7 @@ namespace Rssdp
 		/// <returns>A string containing the device's universal service name.</returns>
 		public override string ToString()
 		{
-			return this.Usn;
+			return this.Usn ?? string.Empty;
 		}
 
 		#endregion

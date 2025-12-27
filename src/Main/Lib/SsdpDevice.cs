@@ -19,7 +19,7 @@ namespace Rssdp
 
 		#region Fields
 
-		private string _Udn;
+		private string? _Udn;
 		private string _DeviceType;
 		private string _DeviceTypeNamespace;
 		private int _DeviceVersion;
@@ -202,7 +202,7 @@ namespace Rssdp
 		/// <para>The setter is provided to allow for devices that do not correctly follow the specification (when we discover them), rather than to intentionally deviate from the specification.</para>
 		/// <para>If a value is explicitly set, it is used verbatim, and so any prefix (such as uuid:) must be provided in the value.</para>
 		/// </remarks>
-		public string Udn
+		public string? Udn
 		{
 			get
 			{
@@ -221,12 +221,12 @@ namespace Rssdp
 		/// Sets or returns a friendly/display name for this device on the network. Something the user can identify the device/instance by, i.e Lounge Main Light. Required.
 		/// </summary>
 		/// <remarks><para>A short description for the end user. </para></remarks>
-		public string FriendlyName { get; set; }
+		public string? FriendlyName { get; set; }
 
 		/// <summary>
 		/// Sets or returns the name of the manufacturer of this device. Required.
 		/// </summary>
-		public string Manufacturer { get; set; }
+		public string? Manufacturer { get; set; }
 
 		/// <summary>
 		/// Sets or returns a URL to the manufacturers web site. Optional.
@@ -237,17 +237,17 @@ namespace Rssdp
 		/// Sets or returns a description of this device model. Recommended.
 		/// </summary>
 		/// <remarks><para>A long description for the end user.</para></remarks>
-		public string ModelDescription { get; set; }
+		public string? ModelDescription { get; set; }
 
 		/// <summary>
 		/// Sets or returns the name of this model. Required.
 		/// </summary>
-		public string ModelName { get; set; }
+		public string? ModelName { get; set; }
 
 		/// <summary>
 		/// Sets or returns the number of this model. Recommended.
 		/// </summary>
-		public string ModelNumber { get; set; }
+		public string? ModelNumber { get; set; }
 
 		/// <summary>
 		/// Sets or returns a URL to a web page with details of this device model. Optional.
@@ -260,7 +260,7 @@ namespace Rssdp
 		/// <summary>
 		/// Sets or returns the serial number for this device. Recommended.
 		/// </summary>
-		public string SerialNumber { get; set; }
+		public string? SerialNumber { get; set; }
 
 		/// <summary>
 		/// Sets or returns the universal product code of the device, if any. Optional.
@@ -268,7 +268,7 @@ namespace Rssdp
 		/// <remarks>
 		/// <para>If not blank, must be exactly 12 numeric digits.</para>
 		/// </remarks>
-		public string Upc { get; set; }
+		public string? Upc { get; set; }
 
 		/// <summary>
 		/// Sets or returns the URL to a web page that can be used to configure/manager/use the device. Recommended.

@@ -536,22 +536,28 @@ USN: {1}
 			//Device type - response once
 			//Service type - respond once per service type 
 
+			if (string.IsNullOrEmpty(device.Udn))
+			{
+				_Log.LogWarning("Device has no UDN, cannot send search response.");
+				return;
+			}
+
 			bool isRootDevice = (device as SsdpRootDevice) != null;
 			bool sendAll = searchTarget == SsdpConstants.SsdpDiscoverAllSTHeader;
 			bool sendRootDevices = searchTarget == SsdpConstants.UpnpDeviceTypeRootDevice || searchTarget == SsdpConstants.PnpDeviceTypeRootDevice;
 
 			if (isRootDevice && (sendAll || sendRootDevices))
 			{
-				SendSearchResponse(SsdpConstants.UpnpDeviceTypeRootDevice, device, GetUsn(device.Udn, SsdpConstants.UpnpDeviceTypeRootDevice), endPoint);
+				SendSearchResponse(SsdpConstants.UpnpDeviceTypeRootDevice, device, GetUsn(device.Udn!, SsdpConstants.UpnpDeviceTypeRootDevice), endPoint);
 				if (IsWindowsExplorerSupportEnabled)
-					SendSearchResponse(SsdpConstants.PnpDeviceTypeRootDevice, device, GetUsn(device.Udn, SsdpConstants.PnpDeviceTypeRootDevice), endPoint);
+					SendSearchResponse(SsdpConstants.PnpDeviceTypeRootDevice, device, GetUsn(device.Udn!, SsdpConstants.PnpDeviceTypeRootDevice), endPoint);
 			}
 
 			if (sendAll || searchTarget.StartsWith("uuid:", StringComparison.Ordinal))
-				SendSearchResponse(device.Udn, device, device.Udn, endPoint);
+				SendSearchResponse(device.Udn!, device, device.Udn!, endPoint);
 
 			if (sendAll || searchTarget.Contains(":device:"))
-				SendSearchResponse(device.FullDeviceType, device, GetUsn(device.Udn, device.FullDeviceType), endPoint);
+				SendSearchResponse(device.FullDeviceType, device, GetUsn(device.Udn!, device.FullDeviceType), endPoint);
 
 			if (searchTarget == SsdpConstants.SsdpDiscoverAllSTHeader)
 			{
@@ -722,17 +728,23 @@ USN: {1}
 
 		private void SendAliveNotifications(SsdpDevice device, bool isRoot)
 		{
+			if (string.IsNullOrEmpty(device.Udn))
+			{
+				LogDeviceEventWarning("Device UDN is null or empty, cannot send alive notification for device.", device);
+				return;
+			}
+
 			if (isRoot)
 			{
-				SendAliveNotification(device, SsdpConstants.UpnpDeviceTypeRootDevice, GetUsn(device.Udn, SsdpConstants.UpnpDeviceTypeRootDevice));
+				SendAliveNotification(device, SsdpConstants.UpnpDeviceTypeRootDevice, GetUsn(device.Udn!, SsdpConstants.UpnpDeviceTypeRootDevice));
 #pragma warning disable CS0618 // Type or member is obsolete
 				if (this.SupportPnpRootDevice)
 #pragma warning restore CS0618 // Type or member is obsolete
-					SendAliveNotification(device, SsdpConstants.PnpDeviceTypeRootDevice, GetUsn(device.Udn, SsdpConstants.PnpDeviceTypeRootDevice));
+					SendAliveNotification(device, SsdpConstants.PnpDeviceTypeRootDevice, GetUsn(device.Udn!, SsdpConstants.PnpDeviceTypeRootDevice));
 			}
 
-			SendAliveNotification(device, device.Udn, device.Udn);
-			SendAliveNotification(device, device.FullDeviceType, GetUsn(device.Udn, device.FullDeviceType));
+			SendAliveNotification(device, device.Udn!, device.Udn!);
+			SendAliveNotification(device, device.FullDeviceType, GetUsn(device.Udn!, device.FullDeviceType));
 
 			foreach (var service in device.Services)
 			{
@@ -815,15 +827,21 @@ USN: {1}
 		{
 			if (isRoot)
 			{
-				SendByeByeNotification(device, SsdpConstants.UpnpDeviceTypeRootDevice, GetUsn(device.Udn, SsdpConstants.UpnpDeviceTypeRootDevice));
+				if (string.IsNullOrEmpty(device.Udn))
+				{
+					_Log.LogWarning("Device UDN is null or empty, cannot send byebye notification for root device.");
+					return;
+				}
+
+				SendByeByeNotification(device, SsdpConstants.UpnpDeviceTypeRootDevice, GetUsn(device.Udn!, SsdpConstants.UpnpDeviceTypeRootDevice));
 #pragma warning disable CS0618 // Type or member is obsolete
 				if (this.SupportPnpRootDevice)
 #pragma warning restore CS0618 // Type or member is obsolete
-					SendByeByeNotification(device, "pnp:rootdevice", GetUsn(device.Udn, "pnp:rootdevice"));
+					SendByeByeNotification(device, "pnp:rootdevice", GetUsn(device.Udn!, "pnp:rootdevice"));
 			}
 
-			SendByeByeNotification(device, device.Udn, device.Udn);
-			SendByeByeNotification(device, String.Format(System.Globalization.CultureInfo.InvariantCulture, "urn:{0}", device.FullDeviceType), GetUsn(device.Udn, device.FullDeviceType));
+			SendByeByeNotification(device, device.Udn!, device.Udn!);
+			SendByeByeNotification(device, String.Format(System.Globalization.CultureInfo.InvariantCulture, "urn:{0}", device.FullDeviceType), GetUsn(device.Udn!, device.FullDeviceType));
 
 			foreach (var service in device.Services)
 			{

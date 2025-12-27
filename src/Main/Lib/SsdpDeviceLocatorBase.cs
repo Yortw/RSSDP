@@ -462,7 +462,7 @@ namespace Rssdp.Infrastructure
 				{
 					DescriptionLocation = location,
 					Usn = GetFirstHeaderStringValue("USN", message),
-					NotificationType = GetFirstHeaderStringValue("ST", message),
+					NotificationType = GetFirstHeaderStringValue("ST", message) ?? string.Empty,
 					CacheLifetime = CacheAgeFromHeader(message.Headers.CacheControl),
 					AsAt = DateTimeOffset.Now,
 					ResponseHeaders = message.Headers
@@ -492,7 +492,7 @@ namespace Rssdp.Infrastructure
 				{
 					DescriptionLocation = location,
 					Usn = GetFirstHeaderStringValue("USN", message),
-					NotificationType = GetFirstHeaderStringValue("NT", message),
+					NotificationType = GetFirstHeaderStringValue("NT", message) ?? string.Empty,
 					CacheLifetime = CacheAgeFromHeader(message.Headers.CacheControl),
 					AsAt = DateTimeOffset.Now,
 					ResponseHeaders = message.Headers

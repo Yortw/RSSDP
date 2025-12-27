@@ -14,7 +14,7 @@ namespace Rssdp
 		/// <para>Required. Icon's MIME type (cf. RFC 2045, 2046, and 2387). Single MIME image type. At least one icon should be of type “image/png” (Portable Network Graphics, see IETF RFC 2083).</para> 
 		/// </remarks>
 		/// <seealso cref="Url"/>
-		public string MimeType { get; set; }
+		public string? MimeType { get; set; }
 
 		/// <summary>
 		/// The URL that can be called with an HTTP GET command to retrieve the image data.
