@@ -2,8 +2,8 @@
 
 	<PropertyGroup>
 		<!-- <TargetFrameworks>netstandard2.0;net48;net6.0;net8.0;net8.0-android;net8.0-ios;uap10.0.16299</TargetFrameworks> -->
-		<TargetFrameworks>netstandard2.0;net48;net6.0;net8.0</TargetFrameworks>
-		<langversion>latest</langversion>	
+		<TargetFrameworks>netstandard2.0;net48;net6.0;net8.0;net8.0-android34.0</TargetFrameworks>
+		<langversion>latest</langversion>
 		<RootNamespace>Rssdp</RootNamespace>
 		<AssemblyName>Rssdp</AssemblyName>
 		<GeneratePackageOnBuild>True</GeneratePackageOnBuild>
@@ -18,9 +18,11 @@
 		<PackageIcon>RssdpIcon.png</PackageIcon>
 		<PackageReadmeFile>README.md</PackageReadmeFile>
 		<PackageTags>ssdp discovery device service protocol upnp</PackageTags>
-		<PackageReleaseNotes>* Modernised solution to use single multi-target project, in built package creation etc.
-* Dropped unsupported/dead platforms
-* Added support for newer platforms</PackageReleaseNotes>
+		<PackageReleaseNotes>
+			* Modernised solution to use single multi-target project, in built package creation etc.
+			* Dropped unsupported/dead platforms
+			* Added support for newer platforms
+		</PackageReleaseNotes>
 		<RepositoryType>git</RepositoryType>
 		<RepositoryUrl>https://github.com/Yortw/RSSDP.git</RepositoryUrl>
 		<PackageLicenseExpression>MIT</PackageLicenseExpression>
@@ -28,26 +30,27 @@
 		<EnableNETAnalyzers>True</EnableNETAnalyzers>
 		<EnforceCodeStyleInBuild>True</EnforceCodeStyleInBuild>
 		<AnalysisLevel>latest-recommended</AnalysisLevel>
+		<CheckEolWorkloads>false</CheckEolWorkloads>
 		<SuppressTfmSupportBuildWarnings>true</SuppressTfmSupportBuildWarnings>
 
 		<!-- Required for UAP support -->
 		<AssetTargetFallback Condition="'$(TargetFramework)' == 'uap10.0.16299'">$(AssetTargetFallback);net472;netcore50</AssetTargetFallback>
 
 		<!-- Required for Android/iOS - specifies minimum supported OS versions -->
-		<SupportedOSPlatformVersion Condition="'$(TargetFramework)' == 'net8.0-android'">21.0</SupportedOSPlatformVersion>
-		<SupportedOSPlatformVersion Condition="'$(TargetFramework)' == 'net8.0-ios'">11.0</SupportedOSPlatformVersion>
+		<SupportedOSPlatformVersion Condition="$(TargetFramework.StartsWith('net8.0-android'))">21.0</SupportedOSPlatformVersion>
+		<SupportedOSPlatformVersion Condition="$(TargetFramework.StartsWith('net8.0-ios'))">11.0</SupportedOSPlatformVersion>
 		<Product>Really Simple Service Discovery Protocol</Product>
 	</PropertyGroup>
 
 	<ItemGroup>
-	  <Compile Remove="api\**" />
-	  <EmbeddedResource Remove="api\**" />
-	  <None Remove="api\**" />
+		<Compile Remove="api\**" />
+		<EmbeddedResource Remove="api\**" />
+		<None Remove="api\**" />
 	</ItemGroup>
 
 	<ItemGroup>
-	  <None Remove="favicon.ico" />
-	  <None Remove="log.txt" />
+		<None Remove="favicon.ico" />
+		<None Remove="log.txt" />
 	</ItemGroup>
 
 	<ItemGroup>
