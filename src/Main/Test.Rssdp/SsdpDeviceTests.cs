@@ -145,14 +145,14 @@ namespace TestRssdp
 		[TestMethod]
 		public void SsdpDevice_ConstructorThrowsArgumentNullIfNotRootDevice()
 		{
-			var device = new SsdpEmbeddedDevice(null);
+			_ = new SsdpEmbeddedDevice(null);
 		}
 
 		[ExpectedException(typeof(System.ArgumentNullException))]
 		[TestMethod]
 		public void DeviceEventArgs_ConstructorThrowsOnNullDevice()
 		{
-			var args = new DeviceEventArgs(null);
+			_ = new DeviceEventArgs(null);
 		}
 
 		#endregion
@@ -162,16 +162,20 @@ namespace TestRssdp
 		[TestMethod]
 		public void SsdpDevice_NullDeviceTypeNamespaceReturnsNull()
 		{
-			var rootDevice = new SsdpRootDevice();
-			rootDevice.DeviceTypeNamespace = null;
+			var rootDevice = new SsdpRootDevice
+			{
+				DeviceTypeNamespace = null
+			};
 			Assert.AreEqual(null, rootDevice.DeviceTypeNamespace);
 		}
 
 		[TestMethod]
 		public void SsdpDevice_EmptyDeviceTypeNamespaceReturnsEmpty()
 		{
-			var rootDevice = new SsdpRootDevice();
-			rootDevice.DeviceTypeNamespace = String.Empty;
+			var rootDevice = new SsdpRootDevice
+			{
+				DeviceTypeNamespace = String.Empty
+			};
 			Assert.AreEqual(String.Empty, rootDevice.DeviceTypeNamespace);
 		}
 
@@ -182,8 +186,10 @@ namespace TestRssdp
 		[TestMethod]
 		public void SsdpDevice_NullDeviceTypeReturnsNull()
 		{
-			var rootDevice = new SsdpRootDevice();
-			rootDevice.DeviceType = null;
+			var rootDevice = new SsdpRootDevice
+			{
+				DeviceType = null
+			};
 			Assert.AreEqual(null, rootDevice.DeviceType);
 		}
 
@@ -581,9 +587,9 @@ namespace TestRssdp
 			var device = new SsdpRootDevice(new Uri("http://192.168.1.11/UPnP/DeviceDescription"), TimeSpan.FromMinutes(30), docString);
 			Assert.IsFalse(device.CustomProperties.Contains("pv:extension"));
 			Assert.AreEqual(device.Manufacturer, "PacketVideo");
-			Assert.AreEqual(device.ManufacturerUrl, "http://www.pv.com");
+			Assert.AreEqual(device.ManufacturerUrl, new Uri("http://www.pv.com"));
 			Assert.AreEqual(device.ModelName, "TwonkyServer");
-			Assert.AreEqual(device.ModelUrl, "http://www.twonky.com");
+			Assert.AreEqual(device.ModelUrl, new Uri("http://www.twonky.com"));
 			Assert.AreEqual(device.ModelDescription, "TwonkyServer (Windows, T-206)");
 			Assert.AreEqual(device.ModelNumber, "8.4");
 			Assert.AreEqual(device.SerialNumber, "8.4");
