@@ -216,8 +216,7 @@ async static void deviceLocator_DeviceAvailable(object sender, DeviceAvailableEv
 <pre><code class="lang-C#">var devicePublisher = new SsdpDevicePublisher(IPAddress.IPv6Any.ToString());
 var devicePublisher = new SsdpDevicePublisher(&quot;fe80::dc06:c198:7078:afdd&quot;);
 var deviceLocator = new SsdpDeviceLocator(&quot;fe80::dc06:c198:7078:afdd&quot;);
-</code></pre><h5 id="for-projects-ipv6-is-not-supported-on-windowsphonesl-or-winrt-but-is-for-uwp">For projects: IPv6 is not supported on WindowsPhoneSL or WinRT (but is for UWP).</h5>
-<h2 id="why-rssdp">Why RSSDP?</h2>
+</code></pre><h2 id="why-rssdp">Why RSSDP?</h2>
 <p><em>Aren&#39;t there already lots of SSDP implementations?</em></p>
 <p>I needed to find a custom/proprietary service on local networks from a mobile device. I decided this had been done before and I shouldn&#39;t re-invent the wheel so I started looking for 
 existing, standard protocols that did this. I decided Zeroconf and SSDP seemed like the best two, and Zeroconf looked like the more efficient, less overhead option. Unfortunately I also need a solution where</p>

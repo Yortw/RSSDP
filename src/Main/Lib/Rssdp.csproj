@@ -89,4 +89,27 @@
 		<PackageReference Include="System.Diagnostics.DiagnosticSource" Version="10.0.1" />
 	</ItemGroup>
 
+	<!-- Copies ../../README.md to Lib/index.md before every project build -->
+	<Target Name="CopyReadmeToLibIndex" BeforeTargets="BeforeBuild">
+		<!-- Resolve SolutionDir if available, otherwise fall back to the project directory -->
+		<PropertyGroup>
+			<_BaseDir Condition="'$(SolutionDir)' != ''">$(SolutionDir)</_BaseDir>
+			<_BaseDir Condition="'$(_BaseDir)' == ''">$(MSBuildProjectDirectory)\</_BaseDir>
+
+			<!-- Paths are expressed relative to the solution folder, as requested -->
+			<_Source>$(_BaseDir)..\..\README.md</_Source>
+			<_DestDir>$(_BaseDir)Lib\</_DestDir>
+			<_Dest>$(_DestDir)index.md</_Dest>
+		</PropertyGroup>
+
+		<!-- Ensure destination directory exists -->
+		<MakeDir Directories="$(_DestDir)" Condition="!Exists('$(_DestDir)')" />
+
+		<!-- Perform the copy (silently skip if source does not exist) -->
+		<Copy SourceFiles="$(_Source)"
+          DestinationFiles="$(_Dest)"
+          SkipUnchangedFiles="true"
+          Condition="Exists('$(_Source)')" />
+	</Target>
+
 </Project>
