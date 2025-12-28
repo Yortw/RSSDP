@@ -24,6 +24,7 @@
 * Modernised internal code with newer syntax
 * Add nullability annotations/support
 * Updated/reduced dependencies
+* Added activity tracing, an be connected to logging systems/open API/application insights etc.
 * Note: there are some breaking changes at the code level which may or may not affect client application code depending on your usage</PackageReleaseNotes>
 		<RepositoryType>git</RepositoryType>
 		<RepositoryUrl>https://github.com/Yortw/RSSDP.git</RepositoryUrl>
