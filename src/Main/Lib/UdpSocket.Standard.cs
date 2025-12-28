@@ -1,6 +1,7 @@
 #if !UAP && !WINDOWS_UWP
 
 using System;
+using System.Linq;
 using System.Net;
 using System.Net.Sockets;
 using System.Threading.Tasks;
@@ -52,32 +53,43 @@ namespace Rssdp
 			System.Net.EndPoint receivedFromEndPoint = new IPEndPoint(GetDefaultIpAddress(_Socket), 0);
 			var state = new AsyncReceiveState(_Socket, receivedFromEndPoint, tcs);
 
-#if NETSTANDARD1_3
 			_Socket.ReceiveFromAsync(new System.ArraySegment<Byte>(state.Buffer), System.Net.Sockets.SocketFlags.None, state.EndPoint)
 				.ContinueWith((task, asyncState) =>
 				{
-					if (this.IsDisposed) return;
+					if (this.IsDisposed)
+					{
+						tcs.TrySetCanceled(); // Dont' leave clients waiting on tcs.Task hanging if task not completed yet.
+						return;
+					}
 
 					try
 					{
 						if (task.Status != TaskStatus.Faulted)
 						{
-							var receiveState = asyncState as AsyncReceiveState;
-							receiveState.EndPoint = task.Result.RemoteEndPoint;
-							ProcessResponse(receiveState, () => task.Result.ReceivedBytes);
-						}
-					}
-					catch (ObjectDisposedException) { if (!this.IsDisposed) throw; } //Only rethrow disposed exceptions if we're NOT disposed, because then they are unexpected.
-				}, state);
-#else
-			try
-			{
-				_Socket.BeginReceiveFrom(state.Buffer, 0, state.Buffer.Length, System.Net.Sockets.SocketFlags.None, ref state.EndPoint,
-					new AsyncCallback((result) => ProcessResponse(state, () => state.Socket.EndReceiveFrom(result, ref state.EndPoint))), state);
-			}
-			catch (ObjectDisposedException) { if (!this.IsDisposed) throw; } //Only rethrow disposed exceptions if we're NOT disposed, because then they are unexpected.
+							if (asyncState is AsyncReceiveState receiveState)
+							{
+								receiveState.EndPoint = task.Result.RemoteEndPoint;
+								ProcessResponse(receiveState, () => task.Result.ReceivedBytes);
+								return;
+							}
 
-#endif
+							tcs.TrySetException(new InvalidOperationException("asyncState was not an AsyncReceiveState instance.")); // Dont' leave clients waiting on tcs.Task hanging if task not completed yet.
+							return;
+						}
+
+						tcs.TrySetException(task.Exception?.InnerExceptions.FirstOrDefault() ?? new InvalidOperationException("An unknown error occurred during socket receive operation.")); // Dont' leave clients waiting on tcs.Task hanging if task not completed yet.
+					}
+					catch (ObjectDisposedException odex) 
+					{
+						if (!this.IsDisposed) //Only rethrow disposed exceptions if we're NOT disposed, because then they are unexpected.
+						{
+							tcs.TrySetException(odex);
+							throw;
+						}
+
+						tcs.TrySetCanceled(); // If we are disposed and anyone is still waiting on tcs.task, tell them we cancelled.
+					} 
+				}, state);
 
 			return tcs.Task;
 		}
@@ -138,15 +150,6 @@ namespace Rssdp
 				else
 					state.TaskCompletionSource.SetCanceled();
 			}
-#if NETSTANDARD
-			// Unrecoverable exceptions should not be getting caught and will be dealt with on a broad level by a high-level catch-all handler
-			// https://github.com/dotnet/corefx/blob/master/Documentation/coding-guidelines/breaking-change-rules.md#exceptions
-#else
-			catch (StackOverflowException) // Handle this manually as we may not be able to call a sub method to check exception type etc.
-			{
-				throw;
-			}
-#endif
 			catch (Exception ex)
 			{
 				if (ex.IsCritical()) //Critical exceptions that indicate memory corruption etc. shouldn't be caught.
