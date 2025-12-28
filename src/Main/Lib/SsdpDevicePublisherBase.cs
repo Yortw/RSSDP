@@ -379,6 +379,12 @@ USN: {1}
 
 		private void ProcessSearchRequest(string? mx, string searchTarget, UdpEndPoint endPoint)
 		{
+			if (endPoint == null)
+			{
+				_Log.LogWarning("Cannot respond to search request, unknown source endpoint.");
+				return;
+			}
+
 			if (String.IsNullOrEmpty(searchTarget))
 			{
 				_Log.LogWarning(String.Format(System.Globalization.CultureInfo.InvariantCulture, "Invalid search request received From {0}, Target is null/empty.", endPoint.ToString()));
@@ -1201,7 +1207,7 @@ USN: {1}
 
 			public string Key
 			{
-				get { return this.SearchTarget + ":" + this.EndPoint.ToString(); }
+				get { return this.SearchTarget + ":" + this.EndPoint?.ToString(); }
 			}
 
 			public bool IsOld()

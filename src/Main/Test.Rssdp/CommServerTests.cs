@@ -1037,7 +1037,7 @@ LOCATION:http://somedevice:1700
 
 			public void ThrowSocketClosedException()
 			{
-				_ReceiveQueue.Enqueue(new ReceivedUdpData() { Buffer = null, ReceivedBytes = 0, ReceivedFrom = SsdpConstants.MulticastLocalAdminEndpoint });
+				_ReceiveQueue.Enqueue(new ReceivedUdpData() { Buffer = null, ReceivedBytes = 0, ReceivedFrom = null });
 				_DataAvailableSignal.Set();
 			}
 		}

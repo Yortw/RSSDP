@@ -2127,6 +2127,7 @@ ST: {2}
 	 SsdpConstants.MulticastLocalAdminAddress,
 	 SsdpConstants.MulticastPort,
 	 searchTarget)),
+				ReceivedFrom = new UdpEndPoint("192.168.1.100", 1701)
 			};
 			retVal.ReceivedBytes = retVal.Buffer.Length;
 
