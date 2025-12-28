@@ -84,6 +84,11 @@ namespace Rssdp.Infrastructure
 		public const string PublisherActivitySourceName = "Rssdp.SsdpDevicePublisher";
 
 		/// <summary>
+		/// The name of the activity source tracing information is emitted from in the locator objects.
+		/// </summary>
+		public const string LocatorActivitySourceName = "Rssdp.SsdpDeviceLocator";
+		
+		/// <summary>
 		/// The default time to delay between re-sends of UDP packets.
 		/// </summary>
 		/// <remarks>

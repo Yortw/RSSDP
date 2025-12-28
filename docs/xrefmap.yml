@@ -1470,6 +1470,12 @@ references:
   commentId: F:Rssdp.Infrastructure.SsdpConstants.DefaultUdpSocketBufferSize
   fullName: Rssdp.Infrastructure.SsdpConstants.DefaultUdpSocketBufferSize
   nameWithType: SsdpConstants.DefaultUdpSocketBufferSize
+- uid: Rssdp.Infrastructure.SsdpConstants.LocatorActivitySourceName
+  name: LocatorActivitySourceName
+  href: api/Rssdp.Infrastructure.SsdpConstants.html#Rssdp_Infrastructure_SsdpConstants_LocatorActivitySourceName
+  commentId: F:Rssdp.Infrastructure.SsdpConstants.LocatorActivitySourceName
+  fullName: Rssdp.Infrastructure.SsdpConstants.LocatorActivitySourceName
+  nameWithType: SsdpConstants.LocatorActivitySourceName
 - uid: Rssdp.Infrastructure.SsdpConstants.MaxUdpSocketBufferSize
   name: MaxUdpSocketBufferSize
   href: api/Rssdp.Infrastructure.SsdpConstants.html#Rssdp_Infrastructure_SsdpConstants_MaxUdpSocketBufferSize
@@ -1555,6 +1561,19 @@ references:
   isSpec: "True"
   fullName: Rssdp.Infrastructure.SsdpDeviceLocatorBase.SsdpDeviceLocatorBase
   nameWithType: SsdpDeviceLocatorBase.SsdpDeviceLocatorBase
+- uid: Rssdp.Infrastructure.SsdpDeviceLocatorBase.ActivitySource
+  name: ActivitySource
+  href: api/Rssdp.Infrastructure.SsdpDeviceLocatorBase.html#Rssdp_Infrastructure_SsdpDeviceLocatorBase_ActivitySource
+  commentId: P:Rssdp.Infrastructure.SsdpDeviceLocatorBase.ActivitySource
+  fullName: Rssdp.Infrastructure.SsdpDeviceLocatorBase.ActivitySource
+  nameWithType: SsdpDeviceLocatorBase.ActivitySource
+- uid: Rssdp.Infrastructure.SsdpDeviceLocatorBase.ActivitySource*
+  name: ActivitySource
+  href: api/Rssdp.Infrastructure.SsdpDeviceLocatorBase.html#Rssdp_Infrastructure_SsdpDeviceLocatorBase_ActivitySource_
+  commentId: Overload:Rssdp.Infrastructure.SsdpDeviceLocatorBase.ActivitySource
+  isSpec: "True"
+  fullName: Rssdp.Infrastructure.SsdpDeviceLocatorBase.ActivitySource
+  nameWithType: SsdpDeviceLocatorBase.ActivitySource
 - uid: Rssdp.Infrastructure.SsdpDeviceLocatorBase.DeviceAvailable
   name: DeviceAvailable
   href: api/Rssdp.Infrastructure.SsdpDeviceLocatorBase.html#Rssdp_Infrastructure_SsdpDeviceLocatorBase_DeviceAvailable

@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Net.Http;
 using System.Threading;
@@ -29,6 +30,9 @@ namespace Rssdp.Infrastructure
 		private static readonly System.Text.CompositeFormat HttpURequestMessageCompositeFormat = System.Text.CompositeFormat.Parse(HttpURequestMessageFormat);
 #endif
 
+		private readonly System.Diagnostics.ActivitySource _ActivitySource;
+		private System.Diagnostics.Activity? _CurrentSearchActivity;
+
 		private static readonly TimeSpan DefaultSearchWaitTime = TimeSpan.FromSeconds(4);
 		private static readonly TimeSpan OneSecond = TimeSpan.FromSeconds(1);
 
@@ -49,6 +53,9 @@ namespace Rssdp.Infrastructure
 
 			_SearchResultsSynchroniser = new object();
 			_Devices = new List<DiscoveredSsdpDevice>();
+
+			// Create ActivitySource with stable name/version for consumers to subscribe via name.
+			_ActivitySource = new System.Diagnostics.ActivitySource(SsdpConstants.LocatorActivitySourceName, this.GetType().Assembly.GetName().Version?.ToString());
 		}
 
 		#endregion
@@ -152,50 +159,74 @@ namespace Rssdp.Infrastructure
 
 			ThrowIfDisposed();
 
-			if (_SearchResults != null) throw new InvalidOperationException("Search already in progress. Only one search at a time is allowed.");
-			_SearchResults = new List<DiscoveredSsdpDevice>();
-
-			// If searchWaitTime == 0 then we are only going to report unexpired cached items, not actually do a search.
-			if (searchWaitTime > TimeSpan.Zero)
-				BroadcastDiscoverMessage(searchTarget, SearchTimeToMXValue(searchWaitTime));
-
-			lock (_SearchResultsSynchroniser)
-			{
-				foreach (var device in GetUnexpiredDevices().Where(NotificationTypeMatchesFilter))
-				{
-					if (this.IsDisposed) break;
-
-					DeviceFound(device, false);
-				}
-			}
-
-
-			if (searchWaitTime != TimeSpan.Zero && !this.IsDisposed)
-				await TaskEx.Delay(searchWaitTime).ConfigureAwait(false);
-
-			IEnumerable<DiscoveredSsdpDevice>? retVal = null;
-
+			System.Diagnostics.Activity? activity = null;
 			try
 			{
-				lock (_SearchResultsSynchroniser)
+				if (_ActivitySource.HasListeners())
 				{
-					retVal = _SearchResults;
-					_SearchResults = null;
+					_CurrentSearchActivity = activity = _ActivitySource.StartActivity("ssdp.search", System.Diagnostics.ActivityKind.Client);
+					activity?.SetTag("ssdp.st", searchTarget);
+					activity?.SetTag("ssdp.waittime", searchWaitTime);
 				}
 
-				var expireTask = RemoveExpiredDevicesFromCacheAsync();
+				if (_SearchResults != null) throw new InvalidOperationException("Search already in progress. Only one search at a time is allowed.");
+				_SearchResults = new List<DiscoveredSsdpDevice>();
+
+				// If searchWaitTime == 0 then we are only going to report unexpired cached items, not actually do a search.
+				if (searchWaitTime > TimeSpan.Zero)
+					BroadcastDiscoverMessage(searchTarget, SearchTimeToMXValue(searchWaitTime));
+
+				lock (_SearchResultsSynchroniser)
+				{
+					foreach (var device in GetUnexpiredDevices().Where(NotificationTypeMatchesFilter))
+					{
+						if (this.IsDisposed) break;
+
+						DeviceFound(device, false);
+					}
+				}
+
+				var searchResult = _SearchResults;
+				if ((searchResult?.Count ?? 0) == 0)
+					activity?.AddEvent(new ActivityEvent("ssdp.search.loadedcacheddevices", tags: new ActivityTagsCollection { { "device.count", searchResult!.Count } }));
+
+				if (searchWaitTime != TimeSpan.Zero && !this.IsDisposed)
+					await TaskEx.Delay(searchWaitTime).ConfigureAwait(false);
+
+				IEnumerable<DiscoveredSsdpDevice>? retVal = null;
+
+				try
+				{
+					lock (_SearchResultsSynchroniser)
+					{
+						retVal = _SearchResults;
+						_SearchResults = null;
+					}
+
+					var expireTask = RemoveExpiredDevicesFromCacheAsync();
+				}
+				finally
+				{
+					var server = _CommunicationsServer;
+					try
+					{
+						server?.StopListeningForResponses(); // Null check in case we were disposed while searching.
+					}
+					catch (ObjectDisposedException) { }
+				}
+
+				return retVal;
+			}
+			catch (Exception ex)
+			{
+				activity?.SetStatus(System.Diagnostics.ActivityStatusCode.Error, ex.GetType().FullName + ": " + ex.Message);
+				throw;
 			}
 			finally
 			{
-				var server = _CommunicationsServer;
-				try
-				{
-					server?.StopListeningForResponses(); // Null check in case we were disposed while searching.
-				}
-				catch (ObjectDisposedException) { }
+				_CurrentSearchActivity = null;
+				activity?.Dispose();
 			}
-
-			return retVal;
 		}
 
 		#endregion
@@ -271,6 +302,14 @@ namespace Rssdp.Infrastructure
 		#endregion
 
 		#region Public Properties
+
+		/// <summary>
+		/// Provides the diagnostic ActivitySource used by this locator for distributed tracing.
+		/// </summary>
+		protected System.Diagnostics.ActivitySource ActivitySource
+		{
+			get { return _ActivitySource; }
+		}
 
 		/// <summary>
 		/// Returns a boolean indicating whether or not a search is currently in progress.
@@ -458,7 +497,8 @@ namespace Rssdp.Infrastructure
 			var location = GetFirstHeaderUriValue("Location", message);
 			if (location != null)
 			{
-				var device = new DiscoveredSsdpDevice(GetFirstHeaderStringValue("ST", message) ?? string.Empty, message.Headers)
+				var st = GetFirstHeaderStringValue("ST", message) ?? string.Empty;
+				var device = new DiscoveredSsdpDevice(st, message.Headers)
 				{
 					DescriptionLocation = location,
 					Usn = GetFirstHeaderStringValue("USN", message),
@@ -467,6 +507,22 @@ namespace Rssdp.Infrastructure
 				};
 
 				AddOrUpdateDiscoveredDevice(device);
+
+				var activity = _CurrentSearchActivity;
+				if (activity != null)
+				{
+					var aEvent = new ActivityEvent
+					(
+						"ssdp.search.response.received", 
+						tags: new ActivityTagsCollection
+						{
+							{ "ssdp.st", st },
+							{ "ssdp.usn", device.Usn },
+							{ "ssdp.location", location.ToString() }
+						}
+					);
+					activity.AddEvent(aEvent);
+				}
 			}
 		}
 
@@ -483,46 +539,90 @@ namespace Rssdp.Infrastructure
 
 		private void ProcessAliveNotification(HttpRequestMessage message)
 		{
-			var location = GetFirstHeaderUriValue("Location", message);
-			if (location != null)
+			System.Diagnostics.Activity? activity = null;
+			try
 			{
-				var device = new DiscoveredSsdpDevice(GetFirstHeaderStringValue("NT", message) ?? string.Empty, message.Headers)
+				var nt = GetFirstHeaderStringValue("NT", message) ?? string.Empty;
+				var usn = GetFirstHeaderStringValue("USN", message);
+
+				if (_ActivitySource.HasListeners())
 				{
-					DescriptionLocation = location,
-					Usn = GetFirstHeaderStringValue("USN", message),
-					CacheLifetime = CacheAgeFromHeader(message.Headers.CacheControl),
-					AsAt = DateTimeOffset.Now,
-				};
+					activity = _ActivitySource.StartActivity("ssdp.notification.alive", System.Diagnostics.ActivityKind.Consumer);
+					activity?.SetTag("ssdp.nt", nt);
+					activity?.SetTag("ssdp.usn", usn);
+				}
 
-				AddOrUpdateDiscoveredDevice(device);
+				var location = GetFirstHeaderUriValue("Location", message);
+				if (location != null)
+				{
+					var device = new DiscoveredSsdpDevice(nt, message.Headers)
+					{
+						DescriptionLocation = location,
+						Usn = usn,
+						CacheLifetime = CacheAgeFromHeader(message.Headers.CacheControl),
+						AsAt = DateTimeOffset.Now,
+					};
 
-				ResetExpireCachedDevicesTimer();
+					AddOrUpdateDiscoveredDevice(device);
+
+					ResetExpireCachedDevicesTimer();
+				}
+			}
+			catch (Exception ex)
+			{
+				activity?.SetStatus(System.Diagnostics.ActivityStatusCode.Error, ex.GetType().FullName + ": " + ex.Message);
+				throw;
+			}
+			finally
+			{
+				activity?.Dispose();
 			}
 		}
 
 		private void ProcessByeByeNotification(HttpRequestMessage message)
 		{
-			var notficationType = GetFirstHeaderStringValue("NT", message);
+			var notficationType = GetFirstHeaderStringValue("NT", message) ?? string.Empty;
 			if (!String.IsNullOrEmpty(notficationType))
 			{
 				var usn = GetFirstHeaderStringValue("USN", message);
-				if (String.IsNullOrEmpty(usn)) return;
-
-				if (!DeviceDied(usn!, false))
+				System.Diagnostics.Activity? activity = null;
+				try
 				{
-					var deadDevice = new DiscoveredSsdpDevice(GetFirstHeaderStringValue("NT", message) ?? string.Empty, message.Headers)
+					if (_ActivitySource.HasListeners())
 					{
-						AsAt = DateTime.UtcNow,
-						CacheLifetime = TimeSpan.Zero,
-						DescriptionLocation = null,
-						Usn = usn!,
-					};
+						activity = _ActivitySource.StartActivity("ssdp.notification.alive", System.Diagnostics.ActivityKind.Consumer);
+						activity?.SetTag("ssdp.nt", notficationType);
+						activity?.SetTag("ssdp.usn", usn);
+					}
 
-					if (NotificationTypeMatchesFilter(deadDevice))
-						OnDeviceUnavailable(deadDevice, false);
+
+					if (String.IsNullOrEmpty(usn)) return;
+
+					if (!DeviceDied(usn!, false))
+					{
+						var deadDevice = new DiscoveredSsdpDevice(notficationType, message.Headers)
+						{
+							AsAt = DateTime.UtcNow,
+							CacheLifetime = TimeSpan.Zero,
+							DescriptionLocation = null,
+							Usn = usn!,
+						};
+
+						if (NotificationTypeMatchesFilter(deadDevice))
+							OnDeviceUnavailable(deadDevice, false);
+					}
+
+					ResetExpireCachedDevicesTimer();
 				}
-
-				ResetExpireCachedDevicesTimer();
+				catch (Exception ex)
+				{
+					activity?.SetStatus(System.Diagnostics.ActivityStatusCode.Error, ex.GetType().FullName + ": " + ex.Message);
+					throw;
+				}
+				finally
+				{
+					activity?.Dispose();
+				}
 			}
 		}
 
