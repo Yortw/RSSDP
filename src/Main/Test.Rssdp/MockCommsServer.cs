@@ -85,7 +85,7 @@ namespace TestRssdp
 
 								var data = _ReceivedBroadcastsQueue.Dequeue();
 								void processWork() => ProcessMessage(System.Text.UTF8Encoding.UTF8.GetString(data.Buffer, 0, data.ReceivedBytes), data.ReceivedFrom);
-								var processTask = TaskEx.Run(processWork);
+								var processTask = Task.Run(processWork);
 
 							}
 							_BroadcastAvailableSignal.Reset();
@@ -155,7 +155,7 @@ namespace TestRssdp
 
 								var data = _ReceivedMessageQueue.Dequeue();
 								void processWork() => ProcessMessage(System.Text.UTF8Encoding.UTF8.GetString(data.Buffer, 0, data.ReceivedBytes), data.ReceivedFrom);
-								var processTask = TaskEx.Run(processWork);
+								var processTask = Task.Run(processWork);
 							}
 							_MessageAvailableSignal.Reset();
 						}
