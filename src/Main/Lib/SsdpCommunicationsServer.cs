@@ -311,11 +311,8 @@ namespace Rssdp.Infrastructure
 						{
 							var result = await socket.ReceiveAsync().ConfigureAwait(false);
 
-							if (result.ReceivedBytes > 0)
+							if (result.Buffer != null && result.ReceivedBytes > 0 && result.ReceivedFrom != null)
 							{
-								// Strange cannot convert compiler error here if I don't explicitly
-								// assign or cast to Action first. Assignment is easier to read,
-								// so went with that.
 								void processWork() => ProcessMessage(System.Text.UTF8Encoding.UTF8.GetString(result.Buffer, 0, result.ReceivedBytes), result.ReceivedFrom);
 								var processTask = TaskEx.Run(processWork);
 							}

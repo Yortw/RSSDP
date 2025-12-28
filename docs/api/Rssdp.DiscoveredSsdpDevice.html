@@ -272,6 +272,59 @@
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public sealed class DiscoveredSsdpDevice</code></pre>
   </div>
+  <h3 id="constructors">Constructors
+  </h3>
+  
+  
+  <a id="Rssdp_DiscoveredSsdpDevice__ctor_" data-uid="Rssdp.DiscoveredSsdpDevice.#ctor*"></a>
+  <h4 id="Rssdp_DiscoveredSsdpDevice__ctor_System_String_HttpHeaders_" data-uid="Rssdp.DiscoveredSsdpDevice.#ctor(System.String,HttpHeaders)">DiscoveredSsdpDevice(String, HttpHeaders)</h4>
+  <div class="markdown level1 summary"><p>Creates a new <a class="xref" href="Rssdp.DiscoveredSsdpDevice.html">DiscoveredSsdpDevice</a> instance.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public DiscoveredSsdpDevice(string notificationType, HttpHeaders responseHeaders)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">notificationType</span></td>
+        <td><p>The value of the <a class="xref" href="Rssdp.DiscoveredSsdpDevice.html#Rssdp_DiscoveredSsdpDevice_NotificationType">NotificationType</a> property, being either a uuid, device type, service type or upnp:rootdevice.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">HttpHeaders</span></td>
+        <td><span class="parametername">responseHeaders</span></td>
+        <td><p>The headers from the SSDP device response message.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.ArgumentNullException</span></td>
+        <td><p>Thrown if <code data-dev-comment-type="paramref" class="paramref">notificationType</code> or <code data-dev-comment-type="paramref" class="paramref">responseHeaders</code> is null.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
   <h3 id="properties">Properties
   </h3>
   
@@ -361,7 +414,7 @@
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public string NotificationType { get; set; }</code></pre>
+    <pre><code class="lang-csharp hljs">public string NotificationType { get; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -387,7 +440,7 @@
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public HttpHeaders ResponseHeaders { get; set; }</code></pre>
+    <pre><code class="lang-csharp hljs">public HttpHeaders ResponseHeaders { get; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">

@@ -22,12 +22,30 @@ namespace Rssdp
 
 		#endregion
 
+		#region Constructors
+
+		/// <summary>
+		/// Creates a new <see cref="DiscoveredSsdpDevice"/> instance.
+		/// </summary>
+		/// <param name="notificationType">The value of the <see cref="NotificationType"/> property, being either a uuid, device type, service type or upnp:rootdevice.</param>
+		/// <param name="responseHeaders">The headers from the SSDP device response message.</param>
+		/// <exception cref="ArgumentNullException">Thrown if <paramref name="notificationType"/> or <paramref name="responseHeaders"/> is null.</exception>
+		public DiscoveredSsdpDevice(string notificationType, HttpHeaders responseHeaders)
+		{
+			this.NotificationType = notificationType ?? throw new ArgumentNullException(nameof(notificationType));
+			this.ResponseHeaders = responseHeaders ?? throw new ArgumentNullException(nameof(responseHeaders));
+			this.CacheLifetime = TimeSpan.Zero;
+			this.AsAt = DateTimeOffset.Now;
+		}
+
+		#endregion
+
 		#region Public Properties
 
 		/// <summary>
 		/// Sets or returns the type of notification, being either a uuid, device type, service type or upnp:rootdevice.
 		/// </summary>
-		public string NotificationType { get; set; }
+		public string NotificationType { get; private set; }
 
 		/// <summary>
 		/// Sets or returns the universal service name (USN) of the device.
@@ -63,7 +81,7 @@ namespace Rssdp
 		/// <summary>
 		/// Returns the headers from the SSDP device response message
 		/// </summary>
-		public HttpHeaders ResponseHeaders { get; set; }
+		public HttpHeaders ResponseHeaders { get; private set; }
 
 		#endregion
 

@@ -365,6 +365,19 @@ references:
   commentId: T:Rssdp.DiscoveredSsdpDevice
   fullName: Rssdp.DiscoveredSsdpDevice
   nameWithType: DiscoveredSsdpDevice
+- uid: Rssdp.DiscoveredSsdpDevice.#ctor(System.String,HttpHeaders)
+  name: DiscoveredSsdpDevice(String, HttpHeaders)
+  href: api/Rssdp.DiscoveredSsdpDevice.html#Rssdp_DiscoveredSsdpDevice__ctor_System_String_HttpHeaders_
+  commentId: M:Rssdp.DiscoveredSsdpDevice.#ctor(System.String,HttpHeaders)
+  fullName: Rssdp.DiscoveredSsdpDevice.DiscoveredSsdpDevice(System.String, HttpHeaders)
+  nameWithType: DiscoveredSsdpDevice.DiscoveredSsdpDevice(String, HttpHeaders)
+- uid: Rssdp.DiscoveredSsdpDevice.#ctor*
+  name: DiscoveredSsdpDevice
+  href: api/Rssdp.DiscoveredSsdpDevice.html#Rssdp_DiscoveredSsdpDevice__ctor_
+  commentId: Overload:Rssdp.DiscoveredSsdpDevice.#ctor
+  isSpec: "True"
+  fullName: Rssdp.DiscoveredSsdpDevice.DiscoveredSsdpDevice
+  nameWithType: DiscoveredSsdpDevice.DiscoveredSsdpDevice
 - uid: Rssdp.DiscoveredSsdpDevice.AsAt
   name: AsAt
   href: api/Rssdp.DiscoveredSsdpDevice.html#Rssdp_DiscoveredSsdpDevice_AsAt

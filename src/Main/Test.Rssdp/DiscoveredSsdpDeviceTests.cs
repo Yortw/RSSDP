@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
+using System.Net.Http.Headers;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
@@ -18,32 +19,47 @@ namespace TestRssdp
 		[TestMethod]
 		public void DiscoveredDevice_IsExpired_DoesNotImmediatelyReportTrue()
 		{
-			var discoveredDevice = new DiscoveredSsdpDevice();
-			discoveredDevice.AsAt = DateTimeOffset.Now;
-			discoveredDevice.CacheLifetime = TimeSpan.FromSeconds(1);
+			using (var requestMessage = new HttpRequestMessage())
+			{
+				var discoveredDevice = new DiscoveredSsdpDevice("upnp:rootdevice", requestMessage.Headers)
+				{
+					AsAt = DateTimeOffset.Now,
+					CacheLifetime = TimeSpan.FromSeconds(1)
+				};
 
-			Assert.IsFalse(discoveredDevice.IsExpired());
+				Assert.IsFalse(discoveredDevice.IsExpired());
+			}
 		}
 
 		[TestMethod]
 		public void DiscoveredDevice_IsExpired_ImmediatelyReportsTrueIfCacheLifetimeIsZero()
 		{
-			var discoveredDevice = new DiscoveredSsdpDevice();
-			discoveredDevice.AsAt = DateTimeOffset.Now;
-			discoveredDevice.CacheLifetime = TimeSpan.Zero;
+			using (var requestMessage = new HttpRequestMessage())
+			{
+				var discoveredDevice = new DiscoveredSsdpDevice("upnp:rootdevice", requestMessage.Headers)
+				{
+					AsAt = DateTimeOffset.Now,
+					CacheLifetime = TimeSpan.Zero
+				};
 
-			Assert.IsTrue(discoveredDevice.IsExpired());
+				Assert.IsTrue(discoveredDevice.IsExpired());
+			}
 		}
 
 		[TestMethod]
 		public void DiscoveredDevice_IsExpired_ReportsTrueAfterCacheLifetimeExpires()
 		{
-			var discoveredDevice = new DiscoveredSsdpDevice();
-			discoveredDevice.AsAt = DateTimeOffset.Now;
-			discoveredDevice.CacheLifetime = TimeSpan.FromMilliseconds(100);
-			System.Threading.Thread.Sleep(500);
+			using (var requestMessage = new HttpRequestMessage())
+			{
+				var discoveredDevice = new DiscoveredSsdpDevice("upnp:rootdevice", requestMessage.Headers)
+				{
+					AsAt = DateTimeOffset.Now,
+					CacheLifetime = TimeSpan.FromMilliseconds(100)
+				};
+				System.Threading.Thread.Sleep(500);
 
-			Assert.IsTrue(discoveredDevice.IsExpired());
+				Assert.IsTrue(discoveredDevice.IsExpired());
+			}
 		}
 
 		#endregion
@@ -55,24 +71,29 @@ namespace TestRssdp
 		{
 			var publishedDevice = new SsdpRootDevice()
 			{
-				Location = new Uri("http://192.168.1.100:1702/description"), 
+				Location = new Uri("http://192.168.1.100:1702/description"),
 				CacheLifetime = TimeSpan.FromMinutes(1),
 				DeviceType = "TestDeviceType",
 				Uuid = System.Guid.NewGuid().ToString()
 			};
 
-			var discoveredDevice = new DiscoveredSsdpDevice();
-			discoveredDevice.Usn = "test usn";
-			discoveredDevice.AsAt = DateTimeOffset.Now;
-			discoveredDevice.CacheLifetime = TimeSpan.FromSeconds(1);
-			discoveredDevice.DescriptionLocation = publishedDevice.Location;
+			using (var requestMessage = new HttpRequestMessage())
+			{
+				var discoveredDevice = new DiscoveredSsdpDevice("upnp:rootdevice", requestMessage.Headers)
+				{
+					Usn = "test usn",
+					AsAt = DateTimeOffset.Now,
+					CacheLifetime = TimeSpan.FromSeconds(1),
+					DescriptionLocation = publishedDevice.Location
+				};
 
-			var client = new MockHttpClient(publishedDevice.ToDescriptionDocument());
-			var device = discoveredDevice.GetDeviceInfo(client).GetAwaiter().GetResult();
+				var client = new MockHttpClient(publishedDevice.ToDescriptionDocument());
+				var device = discoveredDevice.GetDeviceInfo(client).GetAwaiter().GetResult();
 
-			Assert.IsNotNull(client.LastRequest);
-			Assert.AreEqual(device.Uuid, publishedDevice.Uuid);
-			Assert.AreEqual(device.DeviceType, publishedDevice.DeviceType);
+				Assert.IsNotNull(client.LastRequest);
+				Assert.AreEqual(device.Uuid, publishedDevice.Uuid);
+				Assert.AreEqual(device.DeviceType, publishedDevice.DeviceType);
+			}
 		}
 
 		[TestMethod]
@@ -86,21 +107,26 @@ namespace TestRssdp
 				Uuid = System.Guid.NewGuid().ToString()
 			};
 
-			var discoveredDevice = new DiscoveredSsdpDevice();
-			discoveredDevice.Usn = "test usn";
-			discoveredDevice.AsAt = DateTimeOffset.Now;
-			discoveredDevice.CacheLifetime = publishedDevice.CacheLifetime;
-			discoveredDevice.DescriptionLocation = publishedDevice.Location;
+			using (var requestMessage = new HttpRequestMessage())
+			{
+				var discoveredDevice = new DiscoveredSsdpDevice("upnp:rootdevice", requestMessage.Headers)
+				{
+					Usn = "test usn",
+					AsAt = DateTimeOffset.Now,
+					CacheLifetime = publishedDevice.CacheLifetime,
+					DescriptionLocation = publishedDevice.Location
+				};
 
-			var client = new MockHttpClient(publishedDevice.ToDescriptionDocument());
-			var device = discoveredDevice.GetDeviceInfo(client).GetAwaiter().GetResult();
+				var client = new MockHttpClient(publishedDevice.ToDescriptionDocument());
+				_ = discoveredDevice.GetDeviceInfo(client).GetAwaiter().GetResult();
 
-			client = new MockHttpClient(publishedDevice.ToDescriptionDocument());
-			device = discoveredDevice.GetDeviceInfo(client).GetAwaiter().GetResult();
+				client = new MockHttpClient(publishedDevice.ToDescriptionDocument());
+				var device = discoveredDevice.GetDeviceInfo(client).GetAwaiter().GetResult();
 
-			Assert.IsNull(client.LastRequest);
-			Assert.AreEqual(device.Uuid, publishedDevice.Uuid);
-			Assert.AreEqual(device.DeviceType, publishedDevice.DeviceType);
+				Assert.IsNull(client.LastRequest);
+				Assert.AreEqual(device.Uuid, publishedDevice.Uuid);
+				Assert.AreEqual(device.DeviceType, publishedDevice.DeviceType);
+			}
 		}
 
 		[TestMethod]
@@ -114,22 +140,27 @@ namespace TestRssdp
 				Uuid = System.Guid.NewGuid().ToString()
 			};
 
-			var discoveredDevice = new DiscoveredSsdpDevice();
-			discoveredDevice.Usn = "test usn";
-			discoveredDevice.AsAt = DateTimeOffset.Now;
-			discoveredDevice.CacheLifetime = publishedDevice.CacheLifetime;
-			discoveredDevice.DescriptionLocation = publishedDevice.Location;
+			using (var requestMessage = new HttpRequestMessage())
+			{
+				var discoveredDevice = new DiscoveredSsdpDevice("upnp:rootdevice", requestMessage.Headers)
+				{
+					Usn = "test usn",
+					AsAt = DateTimeOffset.Now,
+					CacheLifetime = publishedDevice.CacheLifetime,
+					DescriptionLocation = publishedDevice.Location
+				};
 
-			var client = new MockHttpClient(publishedDevice.ToDescriptionDocument());
-			var device = discoveredDevice.GetDeviceInfo(client).GetAwaiter().GetResult();
+				var client = new MockHttpClient(publishedDevice.ToDescriptionDocument());
+				_ = discoveredDevice.GetDeviceInfo(client).GetAwaiter().GetResult();
 
-			System.Threading.Thread.Sleep(3000);
-			client = new MockHttpClient(publishedDevice.ToDescriptionDocument());
-			device = discoveredDevice.GetDeviceInfo(client).GetAwaiter().GetResult();
+				System.Threading.Thread.Sleep(3000);
+				client = new MockHttpClient(publishedDevice.ToDescriptionDocument());
+				var device = discoveredDevice.GetDeviceInfo(client).GetAwaiter().GetResult();
 
-			Assert.IsNotNull(client.LastRequest);
-			Assert.AreEqual(device.Uuid, publishedDevice.Uuid);
-			Assert.AreEqual(device.DeviceType, publishedDevice.DeviceType);
+				Assert.IsNotNull(client.LastRequest);
+				Assert.AreEqual(device.Uuid, publishedDevice.Uuid);
+				Assert.AreEqual(device.DeviceType, publishedDevice.DeviceType);
+			}
 		}
 
 		[ExpectedException(typeof(HttpRequestException))]
@@ -144,13 +175,18 @@ namespace TestRssdp
 				Uuid = System.Guid.NewGuid().ToString()
 			};
 
-			var discoveredDevice = new DiscoveredSsdpDevice();
-			discoveredDevice.Usn = "test usn";
-			discoveredDevice.AsAt = DateTimeOffset.Now;
-			discoveredDevice.CacheLifetime = TimeSpan.FromSeconds(1);
-			discoveredDevice.DescriptionLocation = publishedDevice.Location;
+			using (var requestMessage = new HttpRequestMessage())
+			{
+				var discoveredDevice = new DiscoveredSsdpDevice("upnp:rootdevice", requestMessage.Headers)
+				{
+					Usn = "test usn",
+					AsAt = DateTimeOffset.Now,
+					CacheLifetime = TimeSpan.FromSeconds(1),
+					DescriptionLocation = publishedDevice.Location
+				};
 
-			var device = discoveredDevice.GetDeviceInfo().GetAwaiter().GetResult();
+				_ = discoveredDevice.GetDeviceInfo().GetAwaiter().GetResult();
+			}
 		}
 
 		#endregion
@@ -158,24 +194,29 @@ namespace TestRssdp
 		[TestMethod]
 		public void DiscoveredDevice_ToStringReturnsUsn()
 		{
-			var discoveredDevice = new DiscoveredSsdpDevice();
-			discoveredDevice.Usn = "test usn";
-			discoveredDevice.AsAt = DateTimeOffset.Now;
-			discoveredDevice.CacheLifetime = TimeSpan.FromSeconds(1);
-			System.Threading.Thread.Sleep(1000);
+			using (var requestMessage = new HttpRequestMessage())
+			{
+				var discoveredDevice = new DiscoveredSsdpDevice("upnp:rootdevice", requestMessage.Headers)
+				{
+					Usn = "test usn",
+					AsAt = DateTimeOffset.Now,
+					CacheLifetime = TimeSpan.FromSeconds(1)
+				};
+				System.Threading.Thread.Sleep(1000);
 
-			Assert.AreEqual(discoveredDevice.Usn, discoveredDevice.ToString());
+				Assert.AreEqual(discoveredDevice.Usn, discoveredDevice.ToString());
+			}
 		}
 
 		private class MockHttpClient : HttpClient
 		{
-			private MockHttpHandler _InnerHandler;
+			private readonly MockHttpHandler _InnerHandler;
 
-			public MockHttpClient(string responseData) : this(responseData, new MockHttpHandler(responseData))
+			public MockHttpClient(string responseData) : this(new MockHttpHandler(responseData))
 			{
 			}
 
-			public MockHttpClient(string responseData, MockHttpHandler handler)
+			public MockHttpClient(MockHttpHandler handler)
 				: base(handler)
 			{
 				_InnerHandler = handler;
@@ -191,7 +232,7 @@ namespace TestRssdp
 		{
 
 			private HttpRequestMessage _LastRequest;
-			private string _ResponseData;
+			private readonly string _ResponseData;
 
 			public MockHttpHandler(string responseData)
 			{
@@ -202,7 +243,7 @@ namespace TestRssdp
 			{
 				_LastRequest = request;
 
-				HttpResponseMessage result = null;
+				HttpResponseMessage result;
 				if (request.RequestUri.ToString() == "http://192.168.1.100:1702/description")
 				{
 					result = new HttpResponseMessage(System.Net.HttpStatusCode.OK)
@@ -212,7 +253,9 @@ namespace TestRssdp
 					};
 				}
 				else
+				{
 					result = new HttpResponseMessage(System.Net.HttpStatusCode.NotFound) { RequestMessage = request };
+				}
 
 				var tcs = new TaskCompletionSource<HttpResponseMessage>();
 				tcs.TrySetResult(result);

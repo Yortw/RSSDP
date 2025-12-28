@@ -52,7 +52,7 @@ namespace Rssdp.Infrastructure
 		/// <seealso cref="DeviceUnavailable"/>
 		/// <seealso cref="StartListeningForNotifications"/>
 		/// <seealso cref="StopListeningForNotifications"/>
-		string NotificationFilter
+		string? NotificationFilter
 		{
 			get;
 			set;

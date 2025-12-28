@@ -298,7 +298,7 @@ namespace Rssdp.Infrastructure
 		/// <seealso cref="ISsdpDeviceLocator.DeviceUnavailable"/>
 		/// <seealso cref="ISsdpDeviceLocator.StartListeningForNotifications"/>
 		/// <seealso cref="ISsdpDeviceLocator.StopListeningForNotifications"/>
-		public string NotificationFilter
+		public string? NotificationFilter
 		{
 			get;
 			set;
@@ -458,14 +458,12 @@ namespace Rssdp.Infrastructure
 			var location = GetFirstHeaderUriValue("Location", message);
 			if (location != null)
 			{
-				var device = new DiscoveredSsdpDevice()
+				var device = new DiscoveredSsdpDevice(GetFirstHeaderStringValue("ST", message) ?? string.Empty, message.Headers)
 				{
 					DescriptionLocation = location,
 					Usn = GetFirstHeaderStringValue("USN", message),
-					NotificationType = GetFirstHeaderStringValue("ST", message) ?? string.Empty,
 					CacheLifetime = CacheAgeFromHeader(message.Headers.CacheControl),
 					AsAt = DateTimeOffset.Now,
-					ResponseHeaders = message.Headers
 				};
 
 				AddOrUpdateDiscoveredDevice(device);
@@ -488,14 +486,12 @@ namespace Rssdp.Infrastructure
 			var location = GetFirstHeaderUriValue("Location", message);
 			if (location != null)
 			{
-				var device = new DiscoveredSsdpDevice()
+				var device = new DiscoveredSsdpDevice(GetFirstHeaderStringValue("NT", message) ?? string.Empty, message.Headers)
 				{
 					DescriptionLocation = location,
 					Usn = GetFirstHeaderStringValue("USN", message),
-					NotificationType = GetFirstHeaderStringValue("NT", message) ?? string.Empty,
 					CacheLifetime = CacheAgeFromHeader(message.Headers.CacheControl),
 					AsAt = DateTimeOffset.Now,
-					ResponseHeaders = message.Headers
 				};
 
 				AddOrUpdateDiscoveredDevice(device);
@@ -514,14 +510,12 @@ namespace Rssdp.Infrastructure
 
 				if (!DeviceDied(usn!, false))
 				{
-					var deadDevice = new DiscoveredSsdpDevice()
+					var deadDevice = new DiscoveredSsdpDevice(GetFirstHeaderStringValue("NT", message) ?? string.Empty, message.Headers)
 					{
 						AsAt = DateTime.UtcNow,
 						CacheLifetime = TimeSpan.Zero,
 						DescriptionLocation = null,
-						NotificationType = GetFirstHeaderStringValue("NT", message) ?? string.Empty,
 						Usn = usn!,
-						ResponseHeaders = message.Headers
 					};
 
 					if (NotificationTypeMatchesFilter(deadDevice))
