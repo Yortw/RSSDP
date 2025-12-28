@@ -37,10 +37,7 @@ namespace Rssdp.Infrastructure
 
 		private const string ServerVersion = "1.0";
 
-		// Diagnostics: ActivitySource for tracing (only on modern TFMs)
-#if NET6_0_OR_GREATER
 		private readonly System.Diagnostics.ActivitySource _ActivitySource;
-#endif
 
 		#endregion
 
@@ -147,24 +144,12 @@ USN: {1}
 			_OSVersion = osVersion;
 
 			// Create ActivitySource with stable name/version for consumers to subscribe via name.
-#if NET6_0_OR_GREATER
-			_ActivitySource = new System.Diagnostics.ActivitySource("Rssdp.Infrastructure.SsdpDevicePublisher", ServerVersion);
-#endif
+			_ActivitySource = new System.Diagnostics.ActivitySource(SsdpConstants.PublisherActivitySourceName, ServerVersion);
 
 			_Log.LogInfo("Publisher started.");
 			_CommsServer.BeginListeningForBroadcasts();
 			_Log.LogInfo("Publisher started listening for broadcasts.");
 		}
-
-		/// <summary>
-		/// Provides the diagnostic ActivitySource used by this publisher for distributed tracing.
-		/// </summary>
-#if NET6_0_OR_GREATER
-		protected System.Diagnostics.ActivitySource ActivitySource
-		{
-			get { return _ActivitySource; }
-		}
-#endif
 
 		#endregion
 
@@ -264,6 +249,14 @@ USN: {1}
 		#endregion
 
 		#region Public Properties
+
+		/// <summary>
+		/// Provides the diagnostic ActivitySource used by this publisher for distributed tracing.
+		/// </summary>
+		protected System.Diagnostics.ActivitySource ActivitySource
+		{
+			get { return _ActivitySource; }
+		}
 
 		/// <summary>
 		/// Returns a reference to the injected <see cref="ISsdpLogger"/> instance.
@@ -615,8 +608,6 @@ USN: {1}
 
 		private void SendSearchResponse(string searchTarget, SsdpDevice device, string uniqueServiceName, UdpEndPoint endPoint)
 		{
-			// Diagnostics: start activity for producing a search response
-#if NET6_0_OR_GREATER
 			System.Diagnostics.Activity? activity = null;
 			if (_ActivitySource.HasListeners())
 			{
@@ -627,16 +618,18 @@ USN: {1}
 				activity?.SetTag("device.type", device.FullDeviceType);
 				activity?.SetTag("net.peer", endPoint.ToString());
 			}
-#endif
+
 			var rootDevice = device.ToRootDevice();
 			if (rootDevice == null)
 			{
+				activity?.SetStatus(System.Diagnostics.ActivityStatusCode.Error, "Cannot send search response, communications server is disposed.");
 				LogDeviceEventWarning("Cannot send search response, device is not part of a root device.", device);
 				return;
 			}
 
 			if (rootDevice.Location == null)
 			{
+				activity?.SetStatus(System.Diagnostics.ActivityStatusCode.Error, "Cannot send search response, communications server is disposed.");
 				LogDeviceEventWarning("Cannot send search response, root device Location is null.", device);
 				return;
 			}
@@ -665,15 +658,14 @@ USN: {1}
 			var commsServer = _CommsServer;
 			if (commsServer == null)
 			{
+				activity?.SetStatus(System.Diagnostics.ActivityStatusCode.Error, "Cannot send search response, communications server is disposed.");
 				LogDeviceEventWarning("Cannot send search response, communications server is disposed.", device);
 				return;
 			}
 
 			commsServer.SendMessage(System.Text.UTF8Encoding.UTF8.GetBytes(message), endPoint);
 
-#if NET6_0_OR_GREATER
 			activity?.Dispose();
-#endif
 
 			LogDeviceEventVerbose(String.Format(System.Globalization.CultureInfo.InvariantCulture, "Sent search response ({0}) to {1}", uniqueServiceName, endPoint.ToString()), device);
 		}
@@ -813,7 +805,6 @@ USN: {1}
 
 		private void SendAliveNotification(SsdpDevice device, string notificationType, string uniqueServiceName)
 		{
-#if NET6_0_OR_GREATER
 			System.Diagnostics.Activity? activity = null;
 			if (_ActivitySource.HasListeners())
 			{
@@ -823,10 +814,11 @@ USN: {1}
 				activity?.SetTag("device.udn", device.Udn);
 				activity?.SetTag("device.type", device.FullDeviceType);
 			}
-#endif
+
 			var commsServer = _CommsServer;
 			if (commsServer == null)
 			{
+				activity?.SetStatus(System.Diagnostics.ActivityStatusCode.Error, "Cannot send alive notification, communications server is disposed.");
 				LogDeviceEventWarning("Cannot send alive notification, communications server is disposed.", device);
 				return;
 			}
@@ -847,9 +839,7 @@ USN: {1}
 
 			LogDeviceEvent(String.Format(System.Globalization.CultureInfo.InvariantCulture, "Sent alive notification NT={0}, USN={1}", notificationType, uniqueServiceName), device);
 
-#if NET6_0_OR_GREATER
 			activity?.Dispose();
-#endif
 		}
 
 		private void SendAliveNotification(SsdpDevice device, SsdpService service)
@@ -937,7 +927,6 @@ USN: {1}
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", "CA2204:Literals should be spelled correctly", MessageId = "byebye", Justification = "Correct value for this type of notification in SSDP.")]
 		private void SendByeByeNotification(SsdpDevice device, string notificationType, string uniqueServiceName)
 		{
-#if NET6_0_OR_GREATER
 			System.Diagnostics.Activity? activity = null;
 			if (_ActivitySource.HasListeners())
 			{
@@ -947,10 +936,11 @@ USN: {1}
 				activity?.SetTag("device.udn", device.Udn);
 				activity?.SetTag("device.type", device.FullDeviceType);
 			}
-#endif
+
 			var commsServer = _CommsServer;
 			if (commsServer == null)
 			{
+				activity?.SetStatus(System.Diagnostics.ActivityStatusCode.Error, "Cannot send byebye notification, communications server is disposed.");
 				LogDeviceEventWarning("Cannot send byebye notification, communications server is disposed.", device);
 				return;
 			}
@@ -971,9 +961,7 @@ USN: {1}
 
 			LogDeviceEvent(String.Format(System.Globalization.CultureInfo.InvariantCulture, "Sent byebye notification, NT={0}, USN={1}", notificationType, uniqueServiceName), device);
 
-#if NET6_0_OR_GREATER
 			activity?.Dispose();
-#endif
 		}
 
 		private void SendByeByeNotification(SsdpDevice device, SsdpService service)
@@ -1227,7 +1215,6 @@ USN: {1}
 			if (this.IsDisposed) return;
 			if (sender == null) return;
 
-#if NET6_0_OR_GREATER
 			System.Diagnostics.Activity? activity = null;
 			if (_ActivitySource.HasListeners())
 			{
@@ -1237,18 +1224,18 @@ USN: {1}
 				activity?.SetTag("ssdp.headers.mx", e.Message.Headers.Contains("MX"));
 				activity?.SetTag("ssdp.headers.man", e.Message.Headers.Contains("MAN"));
 			}
-#endif
-
 
 			if (e.Message.Method.Method == SsdpConstants.MSearchMethod)
 			{
 				//According to SSDP/UPnP spec, ignore message if missing these headers.
 				if (!e.Message.Headers.Contains("MX") && !IsRelaxedStandardsMode)
 				{
+					activity?.SetStatus(System.Diagnostics.ActivityStatusCode.Error, "Ignoring search request - missing MX header. Set StandardsMode to relaxed to process these search requests.");
 					_Log.LogWarning("Ignoring search request - missing MX header. Set StandardsMode to relaxed to process these search requests.");
 				}
 				else if (!e.Message.Headers.Contains("MAN") && !IsRelaxedStandardsMode)
 				{
+					activity?.SetStatus(System.Diagnostics.ActivityStatusCode.Error, "Ignoring search request - missing MAN header. Set StandardsMode to relaxed to process these search requests.");
 					_Log.LogWarning("Ignoring search request - missing MAN header. Set StandardsMode to relaxed to process these search requests.");
 				}
 				else
@@ -1263,12 +1250,12 @@ USN: {1}
 			}
 			else if (!String.Equals(e.Message.Method.Method, "NOTIFY", StringComparison.OrdinalIgnoreCase))
 			{
-				_Log.LogWarning(String.Format(System.Globalization.CultureInfo.InvariantCulture, "Unknown request \"{0}\"received, ignoring.", e.Message.Method.Method));
+				var errorMessage = String.Format(System.Globalization.CultureInfo.InvariantCulture, "Unknown request \"{0}\"received, ignoring.", e.Message.Method.Method);
+				activity?.SetStatus(System.Diagnostics.ActivityStatusCode.Error, errorMessage);
+				_Log.LogWarning(errorMessage);
 			}
 
-#if NET6_0_OR_GREATER
 			activity?.Dispose();
-#endif
 		}
 
 		#endregion

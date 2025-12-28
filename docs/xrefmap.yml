@@ -1506,6 +1506,12 @@ references:
   commentId: F:Rssdp.Infrastructure.SsdpConstants.PnpDeviceTypeRootDevice
   fullName: Rssdp.Infrastructure.SsdpConstants.PnpDeviceTypeRootDevice
   nameWithType: SsdpConstants.PnpDeviceTypeRootDevice
+- uid: Rssdp.Infrastructure.SsdpConstants.PublisherActivitySourceName
+  name: PublisherActivitySourceName
+  href: api/Rssdp.Infrastructure.SsdpConstants.html#Rssdp_Infrastructure_SsdpConstants_PublisherActivitySourceName
+  commentId: F:Rssdp.Infrastructure.SsdpConstants.PublisherActivitySourceName
+  fullName: Rssdp.Infrastructure.SsdpConstants.PublisherActivitySourceName
+  nameWithType: SsdpConstants.PublisherActivitySourceName
 - uid: Rssdp.Infrastructure.SsdpConstants.SsdpDefaultMulticastTimeToLive
   name: SsdpDefaultMulticastTimeToLive
   href: api/Rssdp.Infrastructure.SsdpConstants.html#Rssdp_Infrastructure_SsdpConstants_SsdpDefaultMulticastTimeToLive
@@ -1714,6 +1720,19 @@ references:
   isSpec: "True"
   fullName: Rssdp.Infrastructure.SsdpDevicePublisherBase.SsdpDevicePublisherBase
   nameWithType: SsdpDevicePublisherBase.SsdpDevicePublisherBase
+- uid: Rssdp.Infrastructure.SsdpDevicePublisherBase.ActivitySource
+  name: ActivitySource
+  href: api/Rssdp.Infrastructure.SsdpDevicePublisherBase.html#Rssdp_Infrastructure_SsdpDevicePublisherBase_ActivitySource
+  commentId: P:Rssdp.Infrastructure.SsdpDevicePublisherBase.ActivitySource
+  fullName: Rssdp.Infrastructure.SsdpDevicePublisherBase.ActivitySource
+  nameWithType: SsdpDevicePublisherBase.ActivitySource
+- uid: Rssdp.Infrastructure.SsdpDevicePublisherBase.ActivitySource*
+  name: ActivitySource
+  href: api/Rssdp.Infrastructure.SsdpDevicePublisherBase.html#Rssdp_Infrastructure_SsdpDevicePublisherBase_ActivitySource_
+  commentId: Overload:Rssdp.Infrastructure.SsdpDevicePublisherBase.ActivitySource
+  isSpec: "True"
+  fullName: Rssdp.Infrastructure.SsdpDevicePublisherBase.ActivitySource
+  nameWithType: SsdpDevicePublisherBase.ActivitySource
 - uid: Rssdp.Infrastructure.SsdpDevicePublisherBase.AddDevice(Rssdp.SsdpRootDevice)
   name: AddDevice(SsdpRootDevice)
   href: api/Rssdp.Infrastructure.SsdpDevicePublisherBase.html#Rssdp_Infrastructure_SsdpDevicePublisherBase_AddDevice_Rssdp_SsdpRootDevice_

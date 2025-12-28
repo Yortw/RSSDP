@@ -79,6 +79,11 @@ namespace Rssdp.Infrastructure
 		private static readonly TimeSpan _DefaultUdpResendDelay = TimeSpan.FromMilliseconds(100);
 
 		/// <summary>
+		/// The name of the activity source tracing information is emitted from in the publisher objects.
+		/// </summary>
+		public const string PublisherActivitySourceName = "Rssdp.SsdpDevicePublisher";
+
+		/// <summary>
 		/// The default time to delay between re-sends of UDP packets.
 		/// </summary>
 		/// <remarks>
