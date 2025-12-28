@@ -179,8 +179,6 @@ var devicePublisher = new SsdpDevicePublisher("fe80::dc06:c198:7078:afdd");
 var deviceLocator = new SsdpDeviceLocator("fe80::dc06:c198:7078:afdd");
 ```
 
-##### For projects: IPv6 is not supported on WindowsPhoneSL or WinRT (but is for UWP).
-
 ## Why RSSDP?
 *Aren't there already lots of SSDP implementations?*
 
