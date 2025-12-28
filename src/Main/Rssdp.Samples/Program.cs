@@ -14,7 +14,7 @@ namespace Rssdp.Samples
 		private static SsdpDeviceLocator _BroadcastListener;
 		private static HttpListener _HttpServer;
 
-		static void Main(string[] args)
+		static void Main()
 		{
 			ShowMenu();
 		}
@@ -96,8 +96,8 @@ namespace Rssdp.Samples
 			if (_BroadcastListener != null)
 			{
 				Console.WriteLine("Closing previous listener...");
-				_BroadcastListener.DeviceAvailable -= _BroadcastListener_DeviceAvailable;
-				_BroadcastListener.DeviceUnavailable -= _BroadcastListener_DeviceUnavailable;
+				_BroadcastListener.DeviceAvailable -= BroadcastListener_DeviceAvailable;
+				_BroadcastListener.DeviceUnavailable -= BroadcastListener_DeviceUnavailable;
 
 				_BroadcastListener.StopListeningForNotifications();
 				_BroadcastListener.Dispose();
@@ -105,20 +105,20 @@ namespace Rssdp.Samples
 
 			Console.WriteLine("Starting broadcast listener");
 			_BroadcastListener = new SsdpDeviceLocator();
-			_BroadcastListener.DeviceAvailable += _BroadcastListener_DeviceAvailable;
-			_BroadcastListener.DeviceUnavailable += _BroadcastListener_DeviceUnavailable;
+			_BroadcastListener.DeviceAvailable += BroadcastListener_DeviceAvailable;
+			_BroadcastListener.DeviceUnavailable += BroadcastListener_DeviceUnavailable;
 			_BroadcastListener.StartListeningForNotifications();
 			Console.WriteLine("Now listening for broadcasts");
 		}
 
-		static void _BroadcastListener_DeviceUnavailable(object sender, DeviceUnavailableEventArgs e)
+		static void BroadcastListener_DeviceUnavailable(object sender, DeviceUnavailableEventArgs e)
 		{
 			Console.ForegroundColor = ConsoleColor.Cyan;
 			Console.WriteLine("ByeBye Broadcast: " + e.DiscoveredDevice.Usn + " @ " + e.DiscoveredDevice.DescriptionLocation);
 			Console.ForegroundColor = ConsoleColor.Gray;
 		}
 
-		static void _BroadcastListener_DeviceAvailable(object sender, DeviceAvailableEventArgs e)
+		static void BroadcastListener_DeviceAvailable(object sender, DeviceAvailableEventArgs e)
 		{
 			Console.ForegroundColor = ConsoleColor.Cyan;
 			Console.WriteLine("Alive Broadcast: " + e.DiscoveredDevice.Usn + " @ " + e.DiscoveredDevice.DescriptionLocation);
@@ -133,10 +133,7 @@ namespace Rssdp.Samples
 				_DevicePublisher.Dispose();
 			}
 
-			if (_HttpServer != null)
-			{
-				_HttpServer.Close();
-			}
+			_HttpServer?.Close();
 
 			// Create a device publisher
 			_DevicePublisher = new SsdpDevicePublisher
