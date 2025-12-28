@@ -66,7 +66,7 @@ namespace Rssdp.Infrastructure
 		/// Raised for when 
 		/// <list type="bullet">
 		/// <item>An 'alive' notification is received that a device, regardless of whether or not that device is not already in the cache or has previously raised this event.</item>
-		/// <item>For each item found during a device <see cref="SearchAsync()"/> (cached or not), allowing clients to respond to found devices before the entire search is complete.</item>
+		/// <item>For each item found during a device <see cref="SearchAsync(CancellationToken)"/> (cached or not), allowing clients to respond to found devices before the entire search is complete.</item>
 		/// <item>Only if the notification type matches the <see cref="NotificationFilter"/> property. By default the filter is null, meaning all notifications raise events (regardless of ant </item>
 		/// </list>
 		/// <para>This event may be raised from a background thread, if interacting with UI or other objects with specific thread affinity invoking to the relevant thread is required.</para>
@@ -101,10 +101,11 @@ namespace Rssdp.Infrastructure
 		/// <summary>
 		/// Performs a search for all devices using the default search timeout.
 		/// </summary>
+		/// <param name="cancellationToken">An optional <see cref="CancellationToken"/> that can be used to cancel the search request.</param>
 		/// <returns>A task whose result is an <see cref="IEnumerable{T}"/> of <see cref="DiscoveredSsdpDevice" /> instances, representing all found devices.</returns>
-		public Task<IEnumerable<DiscoveredSsdpDevice>> SearchAsync()
+		public Task<IEnumerable<DiscoveredSsdpDevice>> SearchAsync(CancellationToken cancellationToken = default)
 		{
-			return SearchAsync(SsdpConstants.SsdpDiscoverAllSTHeader, DefaultSearchWaitTime);
+			return SearchAsync(SsdpConstants.SsdpDiscoverAllSTHeader, DefaultSearchWaitTime, cancellationToken);
 		}
 
 		/// <summary>
@@ -117,20 +118,22 @@ namespace Rssdp.Infrastructure
 		/// <item><term>Device type</term><description>Fully qualified device type starting with urn: i.e urn:schemas-upnp-org:Basic:1</description></item>
 		/// </list>
 		/// </param>
+		/// <param name="cancellationToken">An optional <see cref="CancellationToken"/> that can be used to cancel the search request.</param>
 		/// <returns>A task whose result is an <see cref="IEnumerable{T}"/> of <see cref="DiscoveredSsdpDevice" /> instances, representing all found devices.</returns>
-		public Task<IEnumerable<DiscoveredSsdpDevice>> SearchAsync(string searchTarget)
+		public Task<IEnumerable<DiscoveredSsdpDevice>> SearchAsync(string searchTarget, CancellationToken cancellationToken = default)
 		{
-			return SearchAsync(searchTarget, DefaultSearchWaitTime);
+			return SearchAsync(searchTarget, DefaultSearchWaitTime, cancellationToken);
 		}
 
 		/// <summary>
 		/// Performs a search for all devices using the specified search timeout.
 		/// </summary>
 		/// <param name="searchWaitTime">The amount of time to wait for network responses to the search request. Longer values will likely return more devices, but increase search time. A value between 1 and 5 seconds is recommended by the UPnP 1.1 specification, this method requires the value be greater 1 second if it is not zero. Specify TimeSpan.Zero to return only devices already in the cache.</param>
+		/// <param name="cancellationToken">An optional <see cref="CancellationToken"/> that can be used to cancel the search request.</param>
 		/// <returns>A task whose result is an <see cref="IEnumerable{T}"/> of <see cref="DiscoveredSsdpDevice" /> instances, representing all found devices.</returns>
-		public Task<IEnumerable<DiscoveredSsdpDevice>> SearchAsync(TimeSpan searchWaitTime)
+		public Task<IEnumerable<DiscoveredSsdpDevice>> SearchAsync(TimeSpan searchWaitTime, CancellationToken cancellationToken = default)
 		{
-			return SearchAsync(SsdpConstants.SsdpDiscoverAllSTHeader, searchWaitTime);
+			return SearchAsync(SsdpConstants.SsdpDiscoverAllSTHeader, searchWaitTime, cancellationToken);
 		}
 
 		/// <summary>
@@ -145,12 +148,13 @@ namespace Rssdp.Infrastructure
 		/// </list>
 		/// </param>
 		/// <param name="searchWaitTime">The amount of time to wait for network responses to the search request. Longer values will likely return more devices, but increase search time. A value between 1 and 5 seconds is recommended by the UPnP 1.1 specification, this method requires the value be greater 1 second if it is not zero. Specify TimeSpan.Zero to return only devices already in the cache.</param>
+		/// <param name="cancellationToken">An optional <see cref="CancellationToken"/> that can be used to cancel the search request.</param>
 		/// <remarks>
 		/// <para>By design RSSDP does not support 'publishing services' as it is intended for use with non-standard UPnP devices that don't publish UPnP style services. However, it is still possible to use RSSDP to search for devices implemetning these services if you know the service type.</para>
 		/// </remarks>
 		/// <returns>A task whose result is an <see cref="IEnumerable{T}"/> of <see cref="DiscoveredSsdpDevice" /> instances, representing all found devices.</returns>
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Performance", "CA1804:RemoveUnusedLocals", MessageId = "expireTask", Justification = "Task is not actually required, but capturing to local variable suppresses compiler warning")]
-		public async Task<IEnumerable<DiscoveredSsdpDevice>> SearchAsync(string searchTarget, TimeSpan searchWaitTime)
+		public async Task<IEnumerable<DiscoveredSsdpDevice>> SearchAsync(string searchTarget, TimeSpan searchWaitTime, CancellationToken cancellationToken = default)
 		{
 			if (searchTarget == null) throw new ArgumentNullException(nameof(searchTarget));
 			if (searchTarget.Length == 0) throw new ArgumentException("searchTarget cannot be an empty string.", nameof(searchTarget));
@@ -181,6 +185,7 @@ namespace Rssdp.Infrastructure
 					foreach (var device in GetUnexpiredDevices().Where(NotificationTypeMatchesFilter))
 					{
 						if (this.IsDisposed) break;
+						cancellationToken.ThrowIfCancellationRequested();
 
 						DeviceFound(device, false);
 					}
@@ -191,7 +196,7 @@ namespace Rssdp.Infrastructure
 					activity?.AddEvent(new ActivityEvent("ssdp.search.loadedcacheddevices", tags: new ActivityTagsCollection { { "device.count", searchResult!.Count } }));
 
 				if (searchWaitTime != TimeSpan.Zero && !this.IsDisposed)
-					await TaskEx.Delay(searchWaitTime).ConfigureAwait(false);
+					await Task.Delay(searchWaitTime, cancellationToken).ConfigureAwait(false);
 
 				IEnumerable<DiscoveredSsdpDevice>? retVal = null;
 

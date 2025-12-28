@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -734,6 +735,27 @@ namespace TestRssdp
 			}
 		}
 
+		[TestMethod]
+		public async Task DeviceLocator_SearchAsync_AllowsCancellation()
+		{
+			var server = new MockCommsServer();
+			var deviceLocator = new MockDeviceLocator(server);
+
+			var sw = new Stopwatch();
+			sw.Start();
+			var cts = new System.Threading.CancellationTokenSource();
+			_ = Task.Delay(1000).ContinueWith((pt) => cts.Cancel());
+
+			await Assert.ThrowsExceptionAsync<TaskCanceledException>(async () =>
+			{
+				await deviceLocator.SearchAsync(TimeSpan.FromSeconds(60), cts.Token);
+			});
+
+			sw.Stop();
+
+			Assert.IsTrue(sw.Elapsed.TotalSeconds < 5);
+		}
+
 		[TestMethod()]
 		public void DeviceLocator_Notifications_HandlesByeByeDuringSearch()
 		{
@@ -1016,6 +1038,7 @@ namespace TestRssdp
 				Assert.IsTrue(results.First().Usn == device.Usn);
 			}
 		}
+
 
 		#region IsSearching Tests
 

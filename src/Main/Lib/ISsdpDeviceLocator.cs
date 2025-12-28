@@ -1,4 +1,5 @@
 using System;
+using System.Threading;
 
 namespace Rssdp.Infrastructure
 {
@@ -73,7 +74,7 @@ namespace Rssdp.Infrastructure
 		/// Aynchronously performs a search for all devices using the default search timeout, and returns an awaitable task that can be used to retrieve the results.
 		/// </summary>
 		/// <returns>A task whose result is an <see cref="System.Collections.Generic.IEnumerable{T}"/> of <see cref="DiscoveredSsdpDevice" /> instances, representing all found devices.</returns>
-		System.Threading.Tasks.Task<System.Collections.Generic.IEnumerable<DiscoveredSsdpDevice>> SearchAsync();
+		System.Threading.Tasks.Task<System.Collections.Generic.IEnumerable<DiscoveredSsdpDevice>> SearchAsync(CancellationToken cancellationToken = default);
 
 		/// <summary>
 		/// Performs a search for the specified search target (criteria) and default search timeout.
@@ -85,8 +86,9 @@ namespace Rssdp.Infrastructure
 		/// <item><term>Device type</term><description>Fully qualified device type starting with urn: i.e urn:schemas-upnp-org:Basic:1</description></item>
 		/// </list>
 		/// </param>
+		/// <param name="cancellationToken">An optional <see cref="CancellationToken"/> that can be used to cancel the search request.</param>
 		/// <returns>A task whose result is an <see cref="System.Collections.Generic.IEnumerable{T}"/> of <see cref="DiscoveredSsdpDevice" /> instances, representing all found devices.</returns>
-		System.Threading.Tasks.Task<System.Collections.Generic.IEnumerable<DiscoveredSsdpDevice>> SearchAsync(string searchTarget);
+		System.Threading.Tasks.Task<System.Collections.Generic.IEnumerable<DiscoveredSsdpDevice>> SearchAsync(string searchTarget, CancellationToken cancellationToken = default);
 
 		/// <summary>
 		/// Performs a search for the specified search target (criteria) and search timeout.
@@ -100,18 +102,20 @@ namespace Rssdp.Infrastructure
 		/// </list>
 		/// </param>
 		/// <param name="searchWaitTime">The amount of time to wait for network responses to the search request. Longer values will likely return more devices, but increase search time. A value between 1 and 5 is recommended by the UPnP 1.1 specification. Specify TimeSpan.Zero to return only devices already in the cache.</param>
+		/// <param name="cancellationToken">An optional <see cref="CancellationToken"/> that can be used to cancel the search request.</param>
 		/// <remarks>
 		/// <para>By design RSSDP does not support 'publishing services' as it is intended for use with non-standard UPnP devices that don't publish UPnP style services. However, it is still possible to use RSSDP to search for devices implemetning these services if you know the service type.</para>
 		/// </remarks>
 		/// <returns>A task whose result is an <see cref="System.Collections.Generic.IEnumerable{T}"/> of <see cref="DiscoveredSsdpDevice" /> instances, representing all found devices.</returns>
-		System.Threading.Tasks.Task<System.Collections.Generic.IEnumerable<DiscoveredSsdpDevice>> SearchAsync(string searchTarget, TimeSpan searchWaitTime);
+		System.Threading.Tasks.Task<System.Collections.Generic.IEnumerable<DiscoveredSsdpDevice>> SearchAsync(string searchTarget, TimeSpan searchWaitTime, CancellationToken cancellationToken = default);
 
 		/// <summary>
 		/// Performs a search for all devices using the specified search timeout.
 		/// </summary>
 		/// <param name="searchWaitTime">The amount of time to wait for network responses to the search request. Longer values will likely return more devices, but increase search time. A value between 1 and 5 is recommended by the UPnP 1.1 specification. Specify TimeSpan.Zero to return only devices already in the cache.</param>
+		/// <param name="cancellationToken">An optional <see cref="CancellationToken"/> that can be used to cancel the search request.</param>
 		/// <returns>A task whose result is an <see cref="System.Collections.Generic.IEnumerable{T}"/> of <see cref="DiscoveredSsdpDevice" /> instances, representing all found devices.</returns>
-		System.Threading.Tasks.Task<System.Collections.Generic.IEnumerable<DiscoveredSsdpDevice>> SearchAsync(TimeSpan searchWaitTime);
+		System.Threading.Tasks.Task<System.Collections.Generic.IEnumerable<DiscoveredSsdpDevice>> SearchAsync(TimeSpan searchWaitTime, CancellationToken cancellationToken = default);
 
 		#endregion
 				

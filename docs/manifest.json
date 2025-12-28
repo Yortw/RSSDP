@@ -201,7 +201,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Rssdp.Infrastructure.ISsdpDeviceLocator.html",
-          "hash": "WN9Qosgip8J1Arv5dDUdz3VR1A9hU6K3JFquVxJxzXk="
+          "hash": "W8rt8weecsLP0XXFqvjghH/CLVt7gDDI4r13vQRhqxQ="
         }
       },
       "is_incremental": false,
@@ -309,7 +309,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Rssdp.Infrastructure.SsdpDeviceLocatorBase.html",
-          "hash": "b0cfoL9TP2UazBxkVolD9RiCkRy36+4CDOUTCVVKzi8="
+          "hash": "Gzw1OeuJZ2A8HNULkYZ0hGmxD2aGoqHN+bAv6HsqU6Q="
         }
       },
       "is_incremental": false,
