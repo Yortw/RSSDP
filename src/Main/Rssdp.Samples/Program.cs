@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Rssdp;
 using System.Net;
+using Rssdp.Infrastructure;
 
 namespace Rssdp.Samples
 {
@@ -13,6 +14,10 @@ namespace Rssdp.Samples
 		private static SsdpDevicePublisher _DevicePublisher;
 		private static SsdpDeviceLocator _BroadcastListener;
 		private static HttpListener _HttpServer;
+
+		private static System.Diagnostics.ActivityListener _ActivityListener;
+
+		private static bool _TracingEnabled;
 
 		static void Main()
 		{
@@ -49,6 +54,7 @@ namespace Rssdp.Samples
 			Console.WriteLine("B to search for basic devices");
 			Console.WriteLine("U to search for published device by UUID");
 			Console.WriteLine("L to listen for notifications");
+			Console.WriteLine("T to toggle diagnostic activity tracing (currently: " + (_TracingEnabled ? "ON" : "OFF") + ")");
 			Console.WriteLine("X to exit");
 			Console.WriteLine();
 		}
@@ -81,6 +87,10 @@ namespace Rssdp.Samples
 					ListenForBroadcasts();
 					break;
 
+				case "T":
+					ToggleTracing();
+					break;
+
 				case "?":
 					WriteOutOptions();
 					break;
@@ -88,6 +98,95 @@ namespace Rssdp.Samples
 				default:
 					Console.WriteLine("Unknown command. Press ? for a list of valid commands.");
 					break;
+			}
+		}
+
+		private static void ToggleTracing()
+		{
+			if (_TracingEnabled)
+			{
+				DisableTracing();
+			}
+			else
+			{
+				EnableTracing();
+			}
+		}
+
+		private static void EnableTracing()
+		{
+			if (_TracingEnabled) return;
+
+			_ActivityListener = new System.Diagnostics.ActivityListener
+			{
+				ShouldListenTo = (source) =>
+				{
+					// Subscribe to RSSDP sources
+					return source.Name == SsdpConstants.LocatorActivitySourceName || source.Name == SsdpConstants.PublisherActivitySourceName;
+				},
+				Sample = (ref System.Diagnostics.ActivityCreationOptions<System.Diagnostics.ActivityContext> options) => System.Diagnostics.ActivitySamplingResult.AllDataAndRecorded,
+				ActivityStarted = (activity) =>
+				{
+					Console.ForegroundColor = ConsoleColor.DarkYellow;
+					Console.WriteLine($"[Activity START] {activity.OperationName} | Source={activity.Source.Name} | Kind={activity.Kind} | Id={activity.Id}");
+					WriteActivityTags(activity);
+					Console.ForegroundColor = ConsoleColor.Gray;
+				},
+				ActivityStopped = (activity) =>
+				{
+					Console.ForegroundColor = ConsoleColor.DarkYellow;
+					Console.WriteLine($"[Activity STOP ] {activity.OperationName} | Source={activity.Source.Name} | Kind={activity.Kind} | Id={activity.Id} | Status={activity.Status} | Duration={activity.Duration}");
+					WriteActivityTags(activity);
+					WriteActivityEvents(activity);
+					Console.ForegroundColor = ConsoleColor.Gray;
+				}
+			};
+
+			System.Diagnostics.ActivitySource.AddActivityListener(_ActivityListener);
+			_TracingEnabled = true;
+			Console.WriteLine("Diagnostic activity tracing ENABLED.");
+
+		}
+
+		private static void DisableTracing()
+		{
+			if (!_TracingEnabled) return;
+			try
+			{				
+				_ActivityListener?.Dispose();
+			}
+			catch { }
+			finally
+			{
+				_ActivityListener = null;
+
+				_TracingEnabled = false;
+				Console.WriteLine("Diagnostic activity tracing DISABLED.");
+			}
+		}
+
+		private static void WriteActivityTags(System.Diagnostics.Activity activity)
+		{
+			if (activity == null) return;
+			foreach (var tag in activity.Tags)
+			{
+				Console.WriteLine($"  tag: {tag.Key} = {tag.Value}");
+			}
+		}
+
+		private static void WriteActivityEvents(System.Diagnostics.Activity activity)
+		{
+			if (activity == null) return;
+			foreach (var ev in activity.Events)
+			{
+				Console.WriteLine($"  event: {ev.Name} @ {ev.Timestamp.ToLocalTime()}");
+				if (ev.Tags != null)
+				{
+					foreach (var tag in ev.Tags)
+					{
+						Console.WriteLine($"    {tag.Key} = {tag.Value}");
+					}
+				}
 			}
 		}
 
