@@ -18,11 +18,13 @@
 		<PackageIcon>RssdpIcon.png</PackageIcon>
 		<PackageReadmeFile>README.md</PackageReadmeFile>
 		<PackageTags>ssdp discovery device service protocol upnp</PackageTags>
-		<PackageReleaseNotes>
-			* Modernised solution to use single multi-target project, in built package creation etc.
-			* Dropped unsupported/dead platforms
-			* Added support for newer platforms
-		</PackageReleaseNotes>
+		<PackageReleaseNotes>* Modernised solution to use single multi-target project, in built package creation etc.
+* Dropped unsupported/dead platforms
+* Added support for newer platforms
+* Modernised internal code with newer syntax
+* Add nullability annotations/support
+* Updated/reduced dependencies
+* Note: there are some breaking changes at the code level which may or may not affect client application code depending on your usage</PackageReleaseNotes>
 		<RepositoryType>git</RepositoryType>
 		<RepositoryUrl>https://github.com/Yortw/RSSDP.git</RepositoryUrl>
 		<PackageLicenseExpression>MIT</PackageLicenseExpression>
