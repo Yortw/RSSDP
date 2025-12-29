@@ -7,7 +7,7 @@
              x:Class="RssdpPackageTestMauiApp.MainPage"
              x:DataType="local:MainPage">
 
-	<ListView BackgroundColor="WhiteSmoke" Margin="4" ItemsSource="{Binding Source={x:Reference Page}, Path=Devices}" HasUnevenRows="True">
+	<ListView Margin="4" ItemsSource="{Binding Source={x:Reference Page}, Path=Devices}" HasUnevenRows="True">
 		<ListView.ItemTemplate>
 			<DataTemplate x:DataType="rssdp:DiscoveredSsdpDevice">
 				<ViewCell>

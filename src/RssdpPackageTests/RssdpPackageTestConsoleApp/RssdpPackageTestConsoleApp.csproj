@@ -10,7 +10,7 @@
 	</PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Rssdp" Version="4.0.4" />
+    <PackageReference Include="Rssdp" Version="5.0.0-beta1" />
   </ItemGroup>
 
 </Project>
