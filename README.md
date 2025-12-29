@@ -186,9 +186,8 @@ I needed to find a custom/proprietary service on local networks from a mobile de
 existing, standard protocols that did this. I decided Zeroconf and SSDP seemed like the best two, and Zeroconf looked like the more efficient, less overhead option. Unfortunately I also need a solution where
 
 * I could publish a device. Many other libraries only focus on discovery.
-* the publish component runs on (at least) .Net 4.0, without relying on any external services. Many other implementations are just wrappers around a Windows or Linux service, which I couldn't guarantee would be installed/enabled etc.
-* the discovery component (at least) runs on Windows Phone and Xamarin.iOS. Preferably also .Net 4.0, Xamain.Android, WinRT and Compact Framework projects. A lot of other implementations don't support the Xamarin platforms.
-* the API was consistent across platforms so I can write as little code with as little conditional compilation as possible (especially in Xamarin Forms projects).
+* the library supported a number of .Net platforms, including (initially) some that were already old or niche.
+* the API was consistent across platforms so I can write as little code with as little conditional compilation as possible (especially in Xamarin Forms/now MAUI projects).
 * the library wasn't massive and didn't have huge numbers of dependencies, I want to keep my deployment footprint as small as possible.
 * the library guided me (at least a little) towards publishing devices correctly, i.e correct device types, not leaving out required fields etc.
 
