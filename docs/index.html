@@ -222,9 +222,8 @@ var deviceLocator = new SsdpDeviceLocator(&quot;fe80::dc06:c198:7078:afdd&quot;)
 existing, standard protocols that did this. I decided Zeroconf and SSDP seemed like the best two, and Zeroconf looked like the more efficient, less overhead option. Unfortunately I also need a solution where</p>
 <ul>
 <li>I could publish a device. Many other libraries only focus on discovery.</li>
-<li>the publish component runs on (at least) .Net 4.0, without relying on any external services. Many other implementations are just wrappers around a Windows or Linux service, which I couldn&#39;t guarantee would be installed/enabled etc.</li>
-<li>the discovery component (at least) runs on Windows Phone and Xamarin.iOS. Preferably also .Net 4.0, Xamain.Android, WinRT and Compact Framework projects. A lot of other implementations don&#39;t support the Xamarin platforms.</li>
-<li>the API was consistent across platforms so I can write as little code with as little conditional compilation as possible (especially in Xamarin Forms projects).</li>
+<li>the library supported a number of .Net platforms, including (initially) some that were already old or niche.</li>
+<li>the API was consistent across platforms so I can write as little code with as little conditional compilation as possible (especially in Xamarin Forms/now MAUI projects).</li>
 <li>the library wasn&#39;t massive and didn&#39;t have huge numbers of dependencies, I want to keep my deployment footprint as small as possible.</li>
 <li>the library guided me (at least a little) towards publishing devices correctly, i.e correct device types, not leaving out required fields etc.</li>
 </ul>
