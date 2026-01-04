@@ -164,13 +164,40 @@ namespace Rssdp
 					else 
 						tasks.Add(locator.SearchAsync(searchTarget!, searchWaitTime!.Value, cancellationToken));
 				}
+				
+				IEnumerable<DiscoveredSsdpDevice> merged;
+				try
+				{
+					// will throw if any fault
+					await Task.WhenAll(tasks).ConfigureAwait(false);
+				}
+				catch (AggregateException)
+				{
+					// Ignore here; we'll inspect individual task statuses below
+				}
 
-				var results = await Task.WhenAll(tasks).ConfigureAwait(false);
-				// Flatten and de-duplicate by USN and DescriptionLocation.
-				var merged = results.SelectMany(r => r ?? [])
-														.GroupBy(d => new { d.Usn, d.DescriptionLocation })
-														.Select(g => g.First())
-														.ToList();
+				var successfulResults = tasks
+					.Where(t => t.Status == TaskStatus.RanToCompletion && t.Result != null)
+					.SelectMany(t => t.Result);
+
+				if (!successfulResults.Any())
+				{
+					// If everything failed, rethrow the first exception to preserve failure behavior
+					var firstFault = tasks.FirstOrDefault(t => t.IsFaulted);
+					if (firstFault?.Exception != null)
+					{
+						throw firstFault.Exception.Flatten();
+					}
+					// Otherwise return empty
+					return Array.Empty<DiscoveredSsdpDevice>();
+				}
+
+				// Flatten and de-duplicate by USN and DescriptionLocation from successful tasks only.
+				merged = successfulResults
+					.GroupBy(d => new { d.Usn, d.DescriptionLocation })
+					.Select(g => g.First())
+					.ToList();
+
 				return merged;
 			}
 			finally
