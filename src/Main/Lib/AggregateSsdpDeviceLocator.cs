@@ -92,16 +92,41 @@ namespace Rssdp
 		/// </summary>
 		public void StartListeningForNotifications()
 		{
-			foreach (var locator in _Locators)
+			StartListeningForNotificationsAsync().GetAwaiter().GetResult();
+		}
+
+		/// <summary>
+		/// Asynchronously starts listening for multicast notifications on all aggregated locators and awaits per-adapter completion.
+		/// </summary>
+		public async Task StartListeningForNotificationsAsync()
+		{
+			var tasks = new List<Task>(_Locators.Count);
+			for (int i = 0; i < _Locators.Count; i++)
 			{
-				try
+				var locator = _Locators[i];
+				var ip = i < _AdapterIps.Count ? _AdapterIps[i] : "unknown";
+				tasks.Add(Task.Run(() =>
 				{
-					locator.StartListeningForNotifications();
-				}
-				catch (Exception ex)
-				{
-					_Logger?.LogWarning($"Failed to start notifications on adapter: {ex.Message}");
-				}
+					try
+					{
+						locator.StartListeningForNotifications();
+					}
+					catch (Exception ex)
+					{
+						_Logger?.LogWarning($"Failed to start notifications on adapter {ip}: {ex.Message}");
+						throw;
+					}
+				}));
+			}
+
+			try
+			{
+				await Task.WhenAll(tasks).ConfigureAwait(false);
+			}
+			catch (AggregateException agg)
+			{
+				// Already logged per-adapter; keep aggregate for caller visibility
+				_Logger?.LogWarning($"One or more adapters failed to start notifications: {agg.GetBaseException().Message}");
 			}
 		}
 
@@ -110,16 +135,40 @@ namespace Rssdp
 		/// </summary>
 		public void StopListeningForNotifications()
 		{
-			foreach (var locator in _Locators)
+			StopListeningForNotificationsAsync().GetAwaiter().GetResult();
+		}
+
+		/// <summary>
+		/// Asynchronously stops listening for multicast notifications on all aggregated locators and awaits per-adapter completion.
+		/// </summary>
+		public async Task StopListeningForNotificationsAsync()
+		{
+			var tasks = new List<Task>(_Locators.Count);
+			for (int i = 0; i < _Locators.Count; i++)
 			{
-				try
+				var locator = _Locators[i];
+				var ip = i < _AdapterIps.Count ? _AdapterIps[i] : "unknown";
+				tasks.Add(Task.Run(() =>
 				{
-					locator.StopListeningForNotifications();
-				}
-				catch (Exception ex)
-				{
-					_Logger?.LogWarning($"Failed to stop notifications on adapter: {ex.Message}");
-				}
+					try
+					{
+						locator.StopListeningForNotifications();
+					}
+					catch (Exception ex)
+					{
+						_Logger?.LogWarning($"Failed to stop notifications on adapter {ip}: {ex.Message}");
+						throw;
+					}
+				}));
+			}
+
+			try
+			{
+				await Task.WhenAll(tasks).ConfigureAwait(false);
+			}
+			catch (AggregateException agg)
+			{
+				_Logger?.LogWarning($"One or more adapters failed to stop notifications: {agg.GetBaseException().Message}");
 			}
 		}
 
