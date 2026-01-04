@@ -263,12 +263,36 @@ namespace Rssdp
 
 		private void OnDeviceAvailable(object? sender, DeviceAvailableEventArgs e)
 		{
-			DeviceAvailable?.Invoke(this, e);
+			var handlers = DeviceAvailable;
+			if (handlers == null) return;
+			foreach (EventHandler<DeviceAvailableEventArgs> handler in handlers.GetInvocationList())
+			{
+				try
+				{
+					handler(this, e);
+				}
+				catch (Exception ex)
+				{
+					_Logger?.LogWarning($"DeviceAvailable handler threw: {ex.GetBaseException().Message}");
+				}
+			}
 		}
 
 		private void OnDeviceUnavailable(object? sender, DeviceUnavailableEventArgs e)
 		{
-			DeviceUnavailable?.Invoke(this, e);
+			var handlers = DeviceUnavailable;
+			if (handlers == null) return;
+			foreach (EventHandler<DeviceUnavailableEventArgs> handler in handlers.GetInvocationList())
+			{
+				try
+				{
+					handler(this, e);
+				}
+				catch (Exception ex)
+				{
+					_Logger?.LogWarning($"DeviceUnavailable handler threw: {ex.GetBaseException().Message}");
+				}
+			}
 		}
 	}
 }
