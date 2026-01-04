@@ -18,6 +18,8 @@ Currently;
 * .NET 8.0-android
 * .Net Standard 2.0 for any other compatible framework
 
+Note: iOS should be supported by one of these targets (most likely Net 8.0) but I currently lack the hardware to test on.
+
 ## Build Status
  ![NuGet Publish](https://github.com/Yortw/RSSDP/actions/workflows/nuget-publish.yml/badge.svg) ![PR Gate](https://github.com/Yortw/RSSDP/actions/workflows/pr-gate.yml/badge.svg?branch=main)
 
@@ -178,6 +180,25 @@ var devicePublisher = new SsdpDevicePublisher(IPAddress.IPv6Any.ToString());
 var devicePublisher = new SsdpDevicePublisher("fe80::dc06:c198:7078:afdd");
 var deviceLocator = new SsdpDeviceLocator("fe80::dc06:c198:7078:afdd");
 ```
+
+#### Migrating from older versions of RSSDP
+V5 introduces some breaking changes. These should be pretty minor and mostly revolve around improving nullability support. You'll find some classes no longer have parameterless constructors, and some properties are now read-only.
+If you're just searching for devices you probably won't notice. If you're publishing devices you'll likely notice *SsdpDeviceProperty** now requires the Namespace and Name properties to be passed via contructor, i.e
+
+```C#
+new Rssdp.SsdpDeviceProperty() { Namespace = "my-system", Name = "TenantIdentifier", Value = "mytenant" };
+```
+
+becomes 
+
+```C#
+new Rssdp.SsdpDeviceProperty("my-system", "TenantIdentifier") { Value = "mytenant" };
+```
+
+The following classes have a similar breaking change but are typically instantiated internally, so most clients won't be affected;
+
+* UdpEndpoint
+* DiscoveredSsdpDevice
 
 ## Why RSSDP?
 *Aren't there already lots of SSDP implementations?*
