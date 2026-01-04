@@ -1,11 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
-VisualStudioVersion = 17.14.36811.4 d17.14
+VisualStudioVersion = 17.14.36811.4
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RssdpPackageTestConsoleApp", "RssdpPackageTestConsoleApp\RssdpPackageTestConsoleApp.csproj", "{EA8B5F8B-9CDF-4C54-8524-9379624C6E6A}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RssdpPackageTestMauiApp", "RssdpPackageTestMauiApp\RssdpPackageTestMauiApp.csproj", "{6F316FBD-2D43-4227-AB3A-B4338A965C18}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RssdpUwpPackageTests", "RssdpUwpPackageTests\RssdpUwpPackageTests.csproj", "{79BD21D1-F41A-4A0F-8C83-3AB0305B0D58}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -22,6 +24,12 @@ Global
 		{6F316FBD-2D43-4227-AB3A-B4338A965C18}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
 		{6F316FBD-2D43-4227-AB3A-B4338A965C18}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6F316FBD-2D43-4227-AB3A-B4338A965C18}.Release|Any CPU.Build.0 = Release|Any CPU
+		{79BD21D1-F41A-4A0F-8C83-3AB0305B0D58}.Debug|Any CPU.ActiveCfg = Debug|x64
+		{79BD21D1-F41A-4A0F-8C83-3AB0305B0D58}.Debug|Any CPU.Build.0 = Debug|x64
+		{79BD21D1-F41A-4A0F-8C83-3AB0305B0D58}.Debug|Any CPU.Deploy.0 = Debug|x64
+		{79BD21D1-F41A-4A0F-8C83-3AB0305B0D58}.Release|Any CPU.ActiveCfg = Release|x64
+		{79BD21D1-F41A-4A0F-8C83-3AB0305B0D58}.Release|Any CPU.Build.0 = Release|x64
+		{79BD21D1-F41A-4A0F-8C83-3AB0305B0D58}.Release|Any CPU.Deploy.0 = Release|x64
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
