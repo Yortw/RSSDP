@@ -9,7 +9,7 @@
 		<GeneratePackageOnBuild>True</GeneratePackageOnBuild>
 		<PackageId>Rssdp</PackageId>
 		<Title>Rssdp</Title>
-		<Version>$(VersionPrefix)5.0.0-beta1</Version>
+		<Version>$(VersionPrefix)5.0.0-beta2</Version>
 		<Authors>Troy Willmot</Authors>
 		<Owners>Yortw</Owners>
 		<Description>Really Simple Service Discovery Protocol - a 100% .Net implementation of the SSDP protocol for publishing custom/basic devices, and discovering all device types on a network.</Description>
