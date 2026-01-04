@@ -84,6 +84,9 @@
                         
                         <ul class="nav level2">
                           <li class="">
+                            <a href="Rssdp.AggregateSsdpDeviceLocator.html" title="AggregateSsdpDeviceLocator" class="">AggregateSsdpDeviceLocator</a>
+                          </li>
+                          <li class="">
                             <a href="Rssdp.CustomHttpHeader.html" title="CustomHttpHeader" class="">CustomHttpHeader</a>
                           </li>
                           <li class="">
@@ -243,13 +246,80 @@
   <div class="inheritance">
     <h5>Inheritance</h5>
     <div class="level0"><span class="xref">System.Object</span></div>
-    <div class="level1"><span class="xref">SsdpDevicePublisher</span></div>
+    <div class="level1"><a class="xref" href="Rssdp.Infrastructure.DisposableManagedObjectBase.html">DisposableManagedObjectBase</a></div>
+    <div class="level2"><a class="xref" href="Rssdp.Infrastructure.SsdpDevicePublisherBase.html">SsdpDevicePublisherBase</a></div>
+    <div class="level3"><span class="xref">SsdpDevicePublisher</span></div>
+  </div>
+  <div class="implements">
+    <h5>Implements</h5>
+    <div><span class="xref">System.IDisposable</span></div>
+    <div><a class="xref" href="Rssdp.Infrastructure.ISsdpDevicePublisher.html">ISsdpDevicePublisher</a></div>
+  </div>
+  <div class="inheritedMembers">
+    <h5>Inherited Members</h5>
+    <div>
+      <a class="xref" href="Rssdp.Infrastructure.SsdpDevicePublisherBase.html#Rssdp_Infrastructure_SsdpDevicePublisherBase_AddDevice_Rssdp_SsdpRootDevice_">SsdpDevicePublisherBase.AddDevice(SsdpRootDevice)</a>
+    </div>
+    <div>
+      <a class="xref" href="Rssdp.Infrastructure.SsdpDevicePublisherBase.html#Rssdp_Infrastructure_SsdpDevicePublisherBase_RemoveDevice_Rssdp_SsdpRootDevice_">SsdpDevicePublisherBase.RemoveDevice(SsdpRootDevice)</a>
+    </div>
+    <div>
+      <a class="xref" href="Rssdp.Infrastructure.SsdpDevicePublisherBase.html#Rssdp_Infrastructure_SsdpDevicePublisherBase_ActivitySource">SsdpDevicePublisherBase.ActivitySource</a>
+    </div>
+    <div>
+      <a class="xref" href="Rssdp.Infrastructure.SsdpDevicePublisherBase.html#Rssdp_Infrastructure_SsdpDevicePublisherBase_Log">SsdpDevicePublisherBase.Log</a>
+    </div>
+    <div>
+      <a class="xref" href="Rssdp.Infrastructure.SsdpDevicePublisherBase.html#Rssdp_Infrastructure_SsdpDevicePublisherBase_Devices">SsdpDevicePublisherBase.Devices</a>
+    </div>
+    <div>
+      <a class="xref" href="Rssdp.Infrastructure.SsdpDevicePublisherBase.html#Rssdp_Infrastructure_SsdpDevicePublisherBase_SupportPnpRootDevice">SsdpDevicePublisherBase.SupportPnpRootDevice</a>
+    </div>
+    <div>
+      <a class="xref" href="Rssdp.Infrastructure.SsdpDevicePublisherBase.html#Rssdp_Infrastructure_SsdpDevicePublisherBase_StandardsMode">SsdpDevicePublisherBase.StandardsMode</a>
+    </div>
+    <div>
+      <a class="xref" href="Rssdp.Infrastructure.SsdpDevicePublisherBase.html#Rssdp_Infrastructure_SsdpDevicePublisherBase_NotificationBroadcastInterval">SsdpDevicePublisherBase.NotificationBroadcastInterval</a>
+    </div>
+    <div>
+      <a class="xref" href="Rssdp.Infrastructure.SsdpDevicePublisherBase.html#Rssdp_Infrastructure_SsdpDevicePublisherBase_Dispose_System_Boolean_">SsdpDevicePublisherBase.Dispose(Boolean)</a>
+    </div>
+    <div>
+      <a class="xref" href="Rssdp.Infrastructure.DisposableManagedObjectBase.html#Rssdp_Infrastructure_DisposableManagedObjectBase_ThrowIfDisposed">DisposableManagedObjectBase.ThrowIfDisposed()</a>
+    </div>
+    <div>
+      <a class="xref" href="Rssdp.Infrastructure.DisposableManagedObjectBase.html#Rssdp_Infrastructure_DisposableManagedObjectBase_IsDisposed">DisposableManagedObjectBase.IsDisposed</a>
+    </div>
+    <div>
+      <a class="xref" href="Rssdp.Infrastructure.DisposableManagedObjectBase.html#Rssdp_Infrastructure_DisposableManagedObjectBase_Dispose">DisposableManagedObjectBase.Dispose()</a>
+    </div>
+    <div>
+      <span class="xref">System.Object.ToString()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.Equals(System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.Equals(System.Object, System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.ReferenceEquals(System.Object, System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.GetHashCode()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.GetType()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.MemberwiseClone()</span>
+    </div>
   </div>
   <h6><strong>Namespace</strong>: <a class="xref" href="Rssdp.html">Rssdp</a></h6>
   <h6><strong>Assembly</strong>: cs.temp.dll.dll</h6>
   <h5 id="Rssdp_SsdpDevicePublisher_syntax">Syntax</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public class SsdpDevicePublisher : SsdpDevicePublisherBase</code></pre>
+    <pre><code class="lang-csharp hljs">public class SsdpDevicePublisher : SsdpDevicePublisherBase, IDisposable, ISsdpDevicePublisher</code></pre>
   </div>
   <h5 id="Rssdp_SsdpDevicePublisher_remarks"><strong>Remarks</strong></h5>
   <div class="markdown level0 remarks"><p>This is  the &apos;server&apos; part of the system. You add your devices to an instance of this class so clients can find them.</p>
@@ -268,12 +338,12 @@
     <pre><code class="lang-csharp hljs">public SsdpDevicePublisher()</code></pre>
   </div>
   <h5 id="Rssdp_SsdpDevicePublisher__ctor_remarks">Remarks</h5>
-  <div class="markdown level1 remarks"><p>Uses the default <see cref="!:ISsdpCommunicationsServer"></see> implementation and network settings for Windows and the SSDP specification.</p>
+  <div class="markdown level1 remarks"><p>Uses the default <a class="xref" href="Rssdp.Infrastructure.ISsdpCommunicationsServer.html">ISsdpCommunicationsServer</a> implementation and network settings for Windows and the SSDP specification.</p>
 </div>
   
   
   <a id="Rssdp_SsdpDevicePublisher__ctor_" data-uid="Rssdp.SsdpDevicePublisher.#ctor*"></a>
-  <h4 id="Rssdp_SsdpDevicePublisher__ctor_ISsdpCommunicationsServer_" data-uid="Rssdp.SsdpDevicePublisher.#ctor(ISsdpCommunicationsServer)">SsdpDevicePublisher(ISsdpCommunicationsServer)</h4>
+  <h4 id="Rssdp_SsdpDevicePublisher__ctor_Rssdp_Infrastructure_ISsdpCommunicationsServer_" data-uid="Rssdp.SsdpDevicePublisher.#ctor(Rssdp.Infrastructure.ISsdpCommunicationsServer)">SsdpDevicePublisher(ISsdpCommunicationsServer)</h4>
   <div class="markdown level1 summary"><p>Partial constructor. </p>
 </div>
   <div class="markdown level1 conceptual"></div>
@@ -292,19 +362,19 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">ISsdpCommunicationsServer</span></td>
+        <td><a class="xref" href="Rssdp.Infrastructure.ISsdpCommunicationsServer.html">ISsdpCommunicationsServer</a></td>
         <td><span class="parametername">communicationsServer</span></td>
         <td></td>
       </tr>
     </tbody>
   </table>
-  <h5 id="Rssdp_SsdpDevicePublisher__ctor_ISsdpCommunicationsServer__remarks">Remarks</h5>
-  <div class="markdown level1 remarks"><p>Allows the caller to specify their own <see cref="!:ISsdpCommunicationsServer"></see> implementation for full control over the networking, or for mocking/testing purposes..</p>
+  <h5 id="Rssdp_SsdpDevicePublisher__ctor_Rssdp_Infrastructure_ISsdpCommunicationsServer__remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>Allows the caller to specify their own <a class="xref" href="Rssdp.Infrastructure.ISsdpCommunicationsServer.html">ISsdpCommunicationsServer</a> implementation for full control over the networking, or for mocking/testing purposes..</p>
 </div>
   
   
   <a id="Rssdp_SsdpDevicePublisher__ctor_" data-uid="Rssdp.SsdpDevicePublisher.#ctor*"></a>
-  <h4 id="Rssdp_SsdpDevicePublisher__ctor_ISsdpCommunicationsServer_Rssdp_ISsdpLogger_" data-uid="Rssdp.SsdpDevicePublisher.#ctor(ISsdpCommunicationsServer,Rssdp.ISsdpLogger)">SsdpDevicePublisher(ISsdpCommunicationsServer, ISsdpLogger)</h4>
+  <h4 id="Rssdp_SsdpDevicePublisher__ctor_Rssdp_Infrastructure_ISsdpCommunicationsServer_Rssdp_ISsdpLogger_" data-uid="Rssdp.SsdpDevicePublisher.#ctor(Rssdp.Infrastructure.ISsdpCommunicationsServer,Rssdp.ISsdpLogger)">SsdpDevicePublisher(ISsdpCommunicationsServer, ISsdpLogger)</h4>
   <div class="markdown level1 summary"><p>Full constructor. </p>
 </div>
   <div class="markdown level1 conceptual"></div>
@@ -323,7 +393,7 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">ISsdpCommunicationsServer</span></td>
+        <td><a class="xref" href="Rssdp.Infrastructure.ISsdpCommunicationsServer.html">ISsdpCommunicationsServer</a></td>
         <td><span class="parametername">communicationsServer</span></td>
         <td></td>
       </tr>
@@ -334,8 +404,8 @@
       </tr>
     </tbody>
   </table>
-  <h5 id="Rssdp_SsdpDevicePublisher__ctor_ISsdpCommunicationsServer_Rssdp_ISsdpLogger__remarks">Remarks</h5>
-  <div class="markdown level1 remarks"><p>Allows the caller to specify their own <see cref="!:ISsdpCommunicationsServer"></see> implementation for full control over the networking, or for mocking/testing purposes..</p>
+  <h5 id="Rssdp_SsdpDevicePublisher__ctor_Rssdp_Infrastructure_ISsdpCommunicationsServer_Rssdp_ISsdpLogger__remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>Allows the caller to specify their own <a class="xref" href="Rssdp.Infrastructure.ISsdpCommunicationsServer.html">ISsdpCommunicationsServer</a> implementation for full control over the networking, or for mocking/testing purposes..</p>
 </div>
   
   
@@ -367,7 +437,7 @@
     </tbody>
   </table>
   <h5 id="Rssdp_SsdpDevicePublisher__ctor_System_Int32__remarks">Remarks</h5>
-  <div class="markdown level1 remarks"><p>Uses the default <see cref="!:ISsdpCommunicationsServer"></see> implementation and network settings for Windows and the SSDP specification, but specifies the local port to use for socket communications. Specify 0 to indicate the system should choose it&apos;s own port.</p>
+  <div class="markdown level1 remarks"><p>Uses the default <a class="xref" href="Rssdp.Infrastructure.ISsdpCommunicationsServer.html">ISsdpCommunicationsServer</a> implementation and network settings for Windows and the SSDP specification, but specifies the local port to use for socket communications. Specify 0 to indicate the system should choose it&apos;s own port.</p>
 </div>
   
   
@@ -405,7 +475,7 @@
     </tbody>
   </table>
   <h5 id="Rssdp_SsdpDevicePublisher__ctor_System_Int32_System_Int32__remarks">Remarks</h5>
-  <div class="markdown level1 remarks"><p>Uses the default <see cref="!:ISsdpCommunicationsServer"></see> implementation and network settings for Windows and the SSDP specification, but specifies the local port to use and multicast time to live setting for socket communications.</p>
+  <div class="markdown level1 remarks"><p>Uses the default <a class="xref" href="Rssdp.Infrastructure.ISsdpCommunicationsServer.html">ISsdpCommunicationsServer</a> implementation and network settings for Windows and the SSDP specification, but specifies the local port to use and multicast time to live setting for socket communications.</p>
 <p>Specify 0 for the <code data-dev-comment-type="paramref" class="paramref">localPort</code> argument to indicate the system should choose it&apos;s own port.</p>
 <p>The <code data-dev-comment-type="paramref" class="paramref">multicastTimeToLive</code> is actually a number of &apos;hops&apos; on the network and not a time based argument.</p>
 </div>
@@ -439,6 +509,13 @@ Null or empty string will use <see cref="!:IPAddress.Any"></see>.</p>
       </tr>
     </tbody>
   </table>
+  <h3 id="implements">Implements</h3>
+  <div>
+      <span class="xref">System.IDisposable</span>
+  </div>
+  <div>
+      <a class="xref" href="Rssdp.Infrastructure.ISsdpDevicePublisher.html">ISsdpDevicePublisher</a>
+  </div>
 </article>
           </div>
           

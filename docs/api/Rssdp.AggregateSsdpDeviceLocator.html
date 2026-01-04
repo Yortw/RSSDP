@@ -5,10 +5,10 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Class CustomHttpHeadersCollection
+    <title>Class AggregateSsdpDeviceLocator
    | RSSDP </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Class CustomHttpHeadersCollection
+    <meta name="title" content="Class AggregateSsdpDeviceLocator
    | RSSDP ">
     <meta name="generator" content="docfx 2.59.4.0">
     
@@ -83,14 +83,14 @@
                       <a href="Rssdp.html" title="Rssdp" class="">Rssdp</a>
                         
                         <ul class="nav level2">
-                          <li class="">
-                            <a href="Rssdp.AggregateSsdpDeviceLocator.html" title="AggregateSsdpDeviceLocator" class="">AggregateSsdpDeviceLocator</a>
+                          <li class="active">
+                            <a href="Rssdp.AggregateSsdpDeviceLocator.html" title="AggregateSsdpDeviceLocator" class="active">AggregateSsdpDeviceLocator</a>
                           </li>
                           <li class="">
                             <a href="Rssdp.CustomHttpHeader.html" title="CustomHttpHeader" class="">CustomHttpHeader</a>
                           </li>
-                          <li class="active">
-                            <a href="Rssdp.CustomHttpHeadersCollection.html" title="CustomHttpHeadersCollection" class="active">CustomHttpHeadersCollection</a>
+                          <li class="">
+                            <a href="Rssdp.CustomHttpHeadersCollection.html" title="CustomHttpHeadersCollection" class="">CustomHttpHeadersCollection</a>
                           </li>
                           <li class="">
                             <a href="Rssdp.DeviceAvailableEventArgs.html" title="DeviceAvailableEventArgs" class="">DeviceAvailableEventArgs</a>
@@ -235,23 +235,24 @@
         </div>
         <div class="article row grid-right">
           <div class="col-md-10">
-            <article class="content wrap" id="_content" data-uid="Rssdp.CustomHttpHeadersCollection">
+            <article class="content wrap" id="_content" data-uid="Rssdp.AggregateSsdpDeviceLocator">
   
   
-  <h1 id="Rssdp_CustomHttpHeadersCollection" data-uid="Rssdp.CustomHttpHeadersCollection" class="text-break">Class CustomHttpHeadersCollection
+  <h1 id="Rssdp_AggregateSsdpDeviceLocator" data-uid="Rssdp.AggregateSsdpDeviceLocator" class="text-break">Class AggregateSsdpDeviceLocator
   </h1>
-  <div class="markdown level0 summary"><p>Represents a collection of custom HTTP headers, keyed by name.</p>
+  <div class="markdown level0 summary"><p>Aggregates multiple <a class="xref" href="Rssdp.SsdpDeviceLocator.html">SsdpDeviceLocator</a> instances bound to different local adapter IP addresses
+to enable discovery across multiple network interfaces.</p>
 </div>
   <div class="markdown level0 conceptual"></div>
   <div class="inheritance">
     <h5>Inheritance</h5>
     <div class="level0"><span class="xref">System.Object</span></div>
-    <div class="level1"><span class="xref">CustomHttpHeadersCollection</span></div>
+    <div class="level1"><span class="xref">AggregateSsdpDeviceLocator</span></div>
   </div>
   <div class="implements">
     <h5>Implements</h5>
-    <div><span class="xref">System.Collections.Generic.IEnumerable</span>&lt;<a class="xref" href="Rssdp.CustomHttpHeader.html">CustomHttpHeader</a>&gt;</div>
-    <div><span class="xref">System.Collections.IEnumerable</span></div>
+    <div><span class="xref">System.IDisposable</span></div>
+    <div><a class="xref" href="Rssdp.Infrastructure.ISsdpDeviceLocator.html">ISsdpDeviceLocator</a></div>
   </div>
   <div class="inheritedMembers">
     <h5>Inherited Members</h5>
@@ -279,33 +280,22 @@
   </div>
   <h6><strong>Namespace</strong>: <a class="xref" href="Rssdp.html">Rssdp</a></h6>
   <h6><strong>Assembly</strong>: cs.temp.dll.dll</h6>
-  <h5 id="Rssdp_CustomHttpHeadersCollection_syntax">Syntax</h5>
+  <h5 id="Rssdp_AggregateSsdpDeviceLocator_syntax">Syntax</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public class CustomHttpHeadersCollection : IEnumerable&lt;CustomHttpHeader&gt;, IEnumerable</code></pre>
+    <pre><code class="lang-csharp hljs">public sealed class AggregateSsdpDeviceLocator : IDisposable, ISsdpDeviceLocator</code></pre>
   </div>
   <h3 id="constructors">Constructors
   </h3>
   
   
-  <a id="Rssdp_CustomHttpHeadersCollection__ctor_" data-uid="Rssdp.CustomHttpHeadersCollection.#ctor*"></a>
-  <h4 id="Rssdp_CustomHttpHeadersCollection__ctor" data-uid="Rssdp.CustomHttpHeadersCollection.#ctor">CustomHttpHeadersCollection()</h4>
-  <div class="markdown level1 summary"><p>Default constructor.</p>
+  <a id="Rssdp_AggregateSsdpDeviceLocator__ctor_" data-uid="Rssdp.AggregateSsdpDeviceLocator.#ctor*"></a>
+  <h4 id="Rssdp_AggregateSsdpDeviceLocator__ctor_System_Collections_Generic_IEnumerable_System_String__" data-uid="Rssdp.AggregateSsdpDeviceLocator.#ctor(System.Collections.Generic.IEnumerable{System.String})">AggregateSsdpDeviceLocator(IEnumerable&lt;String&gt;)</h4>
+  <div class="markdown level1 summary"><p>Creates an aggregate device locator that queries multiple network adapters.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public CustomHttpHeadersCollection()</code></pre>
-  </div>
-  
-  
-  <a id="Rssdp_CustomHttpHeadersCollection__ctor_" data-uid="Rssdp.CustomHttpHeadersCollection.#ctor*"></a>
-  <h4 id="Rssdp_CustomHttpHeadersCollection__ctor_System_Int32_" data-uid="Rssdp.CustomHttpHeadersCollection.#ctor(System.Int32)">CustomHttpHeadersCollection(Int32)</h4>
-  <div class="markdown level1 summary"><p>Full constructor.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public CustomHttpHeadersCollection(int capacity)</code></pre>
+    <pre><code class="lang-csharp hljs">public AggregateSsdpDeviceLocator(IEnumerable&lt;string&gt; localIpAddresses)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -318,9 +308,30 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.Int32</span></td>
-        <td><span class="parametername">capacity</span></td>
-        <td><p>Specifies the initial capacity of the collection.</p>
+        <td><span class="xref">System.Collections.Generic.IEnumerable</span>&lt;<span class="xref">System.String</span>&gt;</td>
+        <td><span class="parametername">localIpAddresses</span></td>
+        <td><p>A collection of local adapter IP addresses to bind individual locators to. Null/empty entries are ignored. Must contain at least one valid address.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.ArgumentNullException</span></td>
+        <td><p>Thrown when <code data-dev-comment-type="paramref" class="paramref">localIpAddresses</code> is null.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.ArgumentException</span></td>
+        <td><p>Thrown when no valid IP addresses are provided.</p>
 </td>
       </tr>
     </tbody>
@@ -329,14 +340,14 @@
   </h3>
   
   
-  <a id="Rssdp_CustomHttpHeadersCollection_Count_" data-uid="Rssdp.CustomHttpHeadersCollection.Count*"></a>
-  <h4 id="Rssdp_CustomHttpHeadersCollection_Count" data-uid="Rssdp.CustomHttpHeadersCollection.Count">Count</h4>
-  <div class="markdown level1 summary"><p>Returns the number of items in the collection.</p>
+  <a id="Rssdp_AggregateSsdpDeviceLocator_IsSearching_" data-uid="Rssdp.AggregateSsdpDeviceLocator.IsSearching*"></a>
+  <h4 id="Rssdp_AggregateSsdpDeviceLocator_IsSearching" data-uid="Rssdp.AggregateSsdpDeviceLocator.IsSearching">IsSearching</h4>
+  <div class="markdown level1 summary"><p>Indicates whether a search is currently in progress across any aggregated locator.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public int Count { get; }</code></pre>
+    <pre><code class="lang-csharp hljs">public bool IsSearching { get; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -348,40 +359,23 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.Int32</span></td>
+        <td><span class="xref">System.Boolean</span></td>
         <td></td>
       </tr>
     </tbody>
   </table>
   
   
-  <a id="Rssdp_CustomHttpHeadersCollection_Item_" data-uid="Rssdp.CustomHttpHeadersCollection.Item*"></a>
-  <h4 id="Rssdp_CustomHttpHeadersCollection_Item_System_String_" data-uid="Rssdp.CustomHttpHeadersCollection.Item(System.String)">Item[String]</h4>
-  <div class="markdown level1 summary"><p>Returns the <a class="xref" href="Rssdp.CustomHttpHeader.html">CustomHttpHeader</a> instance from the collection that has the specified <a class="xref" href="Rssdp.CustomHttpHeader.html#Rssdp_CustomHttpHeader_Name">Name</a> value.</p>
+  <a id="Rssdp_AggregateSsdpDeviceLocator_NotificationFilter_" data-uid="Rssdp.AggregateSsdpDeviceLocator.NotificationFilter*"></a>
+  <h4 id="Rssdp_AggregateSsdpDeviceLocator_NotificationFilter" data-uid="Rssdp.AggregateSsdpDeviceLocator.NotificationFilter">NotificationFilter</h4>
+  <div class="markdown level1 summary"><p>Gets or sets the filter for notifications. Notifications not matching the filter will not raise <a class="xref" href="Rssdp.AggregateSsdpDeviceLocator.html#Rssdp_AggregateSsdpDeviceLocator_DeviceAvailable">DeviceAvailable</a> or <a class="xref" href="Rssdp.AggregateSsdpDeviceLocator.html#Rssdp_AggregateSsdpDeviceLocator_DeviceUnavailable">DeviceUnavailable</a>.
+The value is applied to all aggregated locators.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public CustomHttpHeader this[string name] { get; }</code></pre>
+    <pre><code class="lang-csharp hljs">public string NotificationFilter { get; set; }</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.String</span></td>
-        <td><span class="parametername">name</span></td>
-        <td><p>The full name of the property to return.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
     <thead>
@@ -392,25 +386,8 @@
     </thead>
     <tbody>
       <tr>
-        <td><a class="xref" href="Rssdp.CustomHttpHeader.html">CustomHttpHeader</a></td>
-        <td><p>A <a class="xref" href="Rssdp.CustomHttpHeader.html">CustomHttpHeader</a> instance from the collection.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="exceptions">Exceptions</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Condition</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Collections.Generic.KeyNotFoundException</span></td>
-        <td><p>Thrown if no item exists in the collection with the specified <code data-dev-comment-type="paramref" class="paramref">name</code> value.</p>
-</td>
+        <td><span class="xref">System.String</span></td>
+        <td></td>
       </tr>
     </tbody>
   </table>
@@ -418,107 +395,25 @@
   </h3>
   
   
-  <a id="Rssdp_CustomHttpHeadersCollection_Add_" data-uid="Rssdp.CustomHttpHeadersCollection.Add*"></a>
-  <h4 id="Rssdp_CustomHttpHeadersCollection_Add_Rssdp_CustomHttpHeader_" data-uid="Rssdp.CustomHttpHeadersCollection.Add(Rssdp.CustomHttpHeader)">Add(CustomHttpHeader)</h4>
-  <div class="markdown level1 summary"><p>Adds a <a class="xref" href="Rssdp.CustomHttpHeader.html">CustomHttpHeader</a> instance to the collection.</p>
+  <a id="Rssdp_AggregateSsdpDeviceLocator_Dispose_" data-uid="Rssdp.AggregateSsdpDeviceLocator.Dispose*"></a>
+  <h4 id="Rssdp_AggregateSsdpDeviceLocator_Dispose" data-uid="Rssdp.AggregateSsdpDeviceLocator.Dispose">Dispose()</h4>
+  <div class="markdown level1 summary"><p>Disposes the aggregate locator and all underlying locators, detaching event handlers.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public void Add(CustomHttpHeader header)</code></pre>
+    <pre><code class="lang-csharp hljs">public void Dispose()</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Rssdp.CustomHttpHeader.html">CustomHttpHeader</a></td>
-        <td><span class="parametername">header</span></td>
-        <td><p>The <a class="xref" href="Rssdp.CustomHttpHeader.html">CustomHttpHeader</a> instance to add to the collection.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 id="Rssdp_CustomHttpHeadersCollection_Add_Rssdp_CustomHttpHeader__remarks">Remarks</h5>
-  <div class="markdown level1 remarks"><p>
-</div>
-  <h5 class="exceptions">Exceptions</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Condition</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.ArgumentNullException</span></td>
-        <td><p>Thrown if <code data-dev-comment-type="paramref" class="paramref">header</code> is null.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
   
   
-  <a id="Rssdp_CustomHttpHeadersCollection_Contains_" data-uid="Rssdp.CustomHttpHeadersCollection.Contains*"></a>
-  <h4 id="Rssdp_CustomHttpHeadersCollection_Contains_Rssdp_CustomHttpHeader_" data-uid="Rssdp.CustomHttpHeadersCollection.Contains(Rssdp.CustomHttpHeader)">Contains(CustomHttpHeader)</h4>
-  <div class="markdown level1 summary"><p>Returns a boolean indicating whether or not the specified <a class="xref" href="Rssdp.CustomHttpHeader.html">CustomHttpHeader</a> instance is in the collection.</p>
+  <a id="Rssdp_AggregateSsdpDeviceLocator_SearchAsync_" data-uid="Rssdp.AggregateSsdpDeviceLocator.SearchAsync*"></a>
+  <h4 id="Rssdp_AggregateSsdpDeviceLocator_SearchAsync_System_String_System_Threading_CancellationToken_" data-uid="Rssdp.AggregateSsdpDeviceLocator.SearchAsync(System.String,System.Threading.CancellationToken)">SearchAsync(String, CancellationToken)</h4>
+  <div class="markdown level1 summary"><p>Asynchronously performs a search for the specified search target using the default timeout across all aggregated locators.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public bool Contains(CustomHttpHeader header)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Rssdp.CustomHttpHeader.html">CustomHttpHeader</a></td>
-        <td><span class="parametername">header</span></td>
-        <td><p>An <a class="xref" href="Rssdp.CustomHttpHeader.html">CustomHttpHeader</a> instance to check the collection for.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Boolean</span></td>
-        <td><p>True if the specified instance exists in the collection, otherwise false.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  
-  
-  <a id="Rssdp_CustomHttpHeadersCollection_Contains_" data-uid="Rssdp.CustomHttpHeadersCollection.Contains*"></a>
-  <h4 id="Rssdp_CustomHttpHeadersCollection_Contains_System_String_" data-uid="Rssdp.CustomHttpHeadersCollection.Contains(System.String)">Contains(String)</h4>
-  <div class="markdown level1 summary"><p>Returns a boolean indicating whether or not a <a class="xref" href="Rssdp.CustomHttpHeader.html">CustomHttpHeader</a> instance with the specified full name value exists in the collection.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public bool Contains(string headerName)</code></pre>
+    <pre><code class="lang-csharp hljs">public Task&lt;IEnumerable&lt;DiscoveredSsdpDevice&gt;&gt; SearchAsync(string searchTarget, CancellationToken cancellationToken = default(CancellationToken))</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -532,8 +427,14 @@
     <tbody>
       <tr>
         <td><span class="xref">System.String</span></td>
-        <td><span class="parametername">headerName</span></td>
-        <td><p>A string containing the full name of the <a class="xref" href="Rssdp.CustomHttpHeader.html">CustomHttpHeader</a> instance to check for.</p>
+        <td><span class="parametername">searchTarget</span></td>
+        <td><p>Search criteria such as device type, root device, or UUID.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Threading.CancellationToken</span></td>
+        <td><span class="parametername">cancellationToken</span></td>
+        <td><p>A token used to cancel the search across all locators.</p>
 </td>
       </tr>
     </tbody>
@@ -548,117 +449,22 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.Boolean</span></td>
-        <td><p>True if an item with the specified full name exists in the collection, otherwise false.</p>
+        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<span class="xref">System.Collections.Generic.IEnumerable</span>&lt;<a class="xref" href="Rssdp.DiscoveredSsdpDevice.html">DiscoveredSsdpDevice</a>&gt;&gt;</td>
+        <td><p>A task whose result is a de-duplicated sequence of discovered devices.</p>
 </td>
       </tr>
     </tbody>
   </table>
   
   
-  <a id="Rssdp_CustomHttpHeadersCollection_GetEnumerator_" data-uid="Rssdp.CustomHttpHeadersCollection.GetEnumerator*"></a>
-  <h4 id="Rssdp_CustomHttpHeadersCollection_GetEnumerator" data-uid="Rssdp.CustomHttpHeadersCollection.GetEnumerator">GetEnumerator()</h4>
-  <div class="markdown level1 summary"><p>Returns an enumerator of <a class="xref" href="Rssdp.CustomHttpHeader.html">CustomHttpHeader</a> instances in this collection.</p>
+  <a id="Rssdp_AggregateSsdpDeviceLocator_SearchAsync_" data-uid="Rssdp.AggregateSsdpDeviceLocator.SearchAsync*"></a>
+  <h4 id="Rssdp_AggregateSsdpDeviceLocator_SearchAsync_System_String_System_TimeSpan_System_Threading_CancellationToken_" data-uid="Rssdp.AggregateSsdpDeviceLocator.SearchAsync(System.String,System.TimeSpan,System.Threading.CancellationToken)">SearchAsync(String, TimeSpan, CancellationToken)</h4>
+  <div class="markdown level1 summary"><p>Asynchronously performs a search for the specified search target using the provided timeout across all aggregated locators.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public IEnumerator&lt;CustomHttpHeader&gt; GetEnumerator()</code></pre>
-  </div>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Collections.Generic.IEnumerator</span>&lt;<a class="xref" href="Rssdp.CustomHttpHeader.html">CustomHttpHeader</a>&gt;</td>
-        <td><p>An enumerator of <a class="xref" href="Rssdp.CustomHttpHeader.html">CustomHttpHeader</a> instances in this collection.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  
-  
-  <a id="Rssdp_CustomHttpHeadersCollection_Remove_" data-uid="Rssdp.CustomHttpHeadersCollection.Remove*"></a>
-  <h4 id="Rssdp_CustomHttpHeadersCollection_Remove_Rssdp_CustomHttpHeader_" data-uid="Rssdp.CustomHttpHeadersCollection.Remove(Rssdp.CustomHttpHeader)">Remove(CustomHttpHeader)</h4>
-  <div class="markdown level1 summary"><p>Removes the specified header instance from the collection.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public bool Remove(CustomHttpHeader header)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Rssdp.CustomHttpHeader.html">CustomHttpHeader</a></td>
-        <td><span class="parametername">header</span></td>
-        <td><p>The <a class="xref" href="Rssdp.CustomHttpHeader.html">CustomHttpHeader</a> instance to remove from the collection.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Boolean</span></td>
-        <td><p>True if an item was removed from the collection, otherwise false (because it did not exist or was not the same instance).</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 id="Rssdp_CustomHttpHeadersCollection_Remove_Rssdp_CustomHttpHeader__remarks">Remarks</h5>
-  <div class="markdown level1 remarks"><p>Only removes the specified header if that instance was in the collection, if another header with the same name exists in the collection it is not removed.</p>
-</div>
-  <h5 class="exceptions">Exceptions</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Condition</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.ArgumentNullException</span></td>
-        <td><p>Thrown if the <code data-dev-comment-type="paramref" class="paramref">header</code> is null.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 id="Rssdp_CustomHttpHeadersCollection_Remove_Rssdp_CustomHttpHeader__seealso">See Also</h5>
-  <div class="seealso">
-      <div><a class="xref" href="Rssdp.CustomHttpHeadersCollection.html#Rssdp_CustomHttpHeadersCollection_Remove_System_String_">Remove(String)</a></div>
-  </div>
-  
-  
-  <a id="Rssdp_CustomHttpHeadersCollection_Remove_" data-uid="Rssdp.CustomHttpHeadersCollection.Remove*"></a>
-  <h4 id="Rssdp_CustomHttpHeadersCollection_Remove_System_String_" data-uid="Rssdp.CustomHttpHeadersCollection.Remove(System.String)">Remove(String)</h4>
-  <div class="markdown level1 summary"><p>Removes the property with the specified key (<a class="xref" href="Rssdp.CustomHttpHeader.html#Rssdp_CustomHttpHeader_Name">Name</a> from the collection.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public bool Remove(string headerName)</code></pre>
+    <pre><code class="lang-csharp hljs">public Task&lt;IEnumerable&lt;DiscoveredSsdpDevice&gt;&gt; SearchAsync(string searchTarget, TimeSpan searchWaitTime, CancellationToken cancellationToken = default(CancellationToken))</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -672,8 +478,20 @@
     <tbody>
       <tr>
         <td><span class="xref">System.String</span></td>
-        <td><span class="parametername">headerName</span></td>
-        <td><p>The name of the <a class="xref" href="Rssdp.CustomHttpHeader.html">CustomHttpHeader</a> instance to remove from the collection.</p>
+        <td><span class="parametername">searchTarget</span></td>
+        <td><p>Search criteria such as device type, root device, or UUID.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.TimeSpan</span></td>
+        <td><span class="parametername">searchWaitTime</span></td>
+        <td><p>The time to wait for responses.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Threading.CancellationToken</span></td>
+        <td><span class="parametername">cancellationToken</span></td>
+        <td><p>A token used to cancel the search across all locators.</p>
 </td>
       </tr>
     </tbody>
@@ -688,34 +506,188 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.Boolean</span></td>
-        <td><p>True if an item was removed from the collection, otherwise false (because no item exists in the collection with that key).</p>
+        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<span class="xref">System.Collections.Generic.IEnumerable</span>&lt;<a class="xref" href="Rssdp.DiscoveredSsdpDevice.html">DiscoveredSsdpDevice</a>&gt;&gt;</td>
+        <td><p>A task whose result is a de-duplicated sequence of discovered devices.</p>
 </td>
       </tr>
     </tbody>
   </table>
-  <h5 class="exceptions">Exceptions</h5>
+  
+  
+  <a id="Rssdp_AggregateSsdpDeviceLocator_SearchAsync_" data-uid="Rssdp.AggregateSsdpDeviceLocator.SearchAsync*"></a>
+  <h4 id="Rssdp_AggregateSsdpDeviceLocator_SearchAsync_System_Threading_CancellationToken_" data-uid="Rssdp.AggregateSsdpDeviceLocator.SearchAsync(System.Threading.CancellationToken)">SearchAsync(CancellationToken)</h4>
+  <div class="markdown level1 summary"><p>Asynchronously performs a search for all devices using the default search timeout across all aggregated locators.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;IEnumerable&lt;DiscoveredSsdpDevice&gt;&gt; SearchAsync(CancellationToken cancellationToken = default(CancellationToken))</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
     <thead>
       <tr>
         <th>Type</th>
-        <th>Condition</th>
+        <th>Name</th>
+        <th>Description</th>
       </tr>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.ArgumentException</span></td>
-        <td><p>Thrown if the <code data-dev-comment-type="paramref" class="paramref">headerName</code> argument is null or empty string.</p>
+        <td><span class="xref">System.Threading.CancellationToken</span></td>
+        <td><span class="parametername">cancellationToken</span></td>
+        <td><p>A token used to cancel the search across all locators.</p>
 </td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<span class="xref">System.Collections.Generic.IEnumerable</span>&lt;<a class="xref" href="Rssdp.DiscoveredSsdpDevice.html">DiscoveredSsdpDevice</a>&gt;&gt;</td>
+        <td><p>A task whose result is a de-duplicated sequence of discovered devices.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="Rssdp_AggregateSsdpDeviceLocator_SearchAsync_" data-uid="Rssdp.AggregateSsdpDeviceLocator.SearchAsync*"></a>
+  <h4 id="Rssdp_AggregateSsdpDeviceLocator_SearchAsync_System_TimeSpan_System_Threading_CancellationToken_" data-uid="Rssdp.AggregateSsdpDeviceLocator.SearchAsync(System.TimeSpan,System.Threading.CancellationToken)">SearchAsync(TimeSpan, CancellationToken)</h4>
+  <div class="markdown level1 summary"><p>Asynchronously performs a search for all devices using the provided timeout across all aggregated locators.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;IEnumerable&lt;DiscoveredSsdpDevice&gt;&gt; SearchAsync(TimeSpan searchWaitTime, CancellationToken cancellationToken = default(CancellationToken))</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.TimeSpan</span></td>
+        <td><span class="parametername">searchWaitTime</span></td>
+        <td><p>The time to wait for responses.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Threading.CancellationToken</span></td>
+        <td><span class="parametername">cancellationToken</span></td>
+        <td><p>A token used to cancel the search across all locators.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<span class="xref">System.Collections.Generic.IEnumerable</span>&lt;<a class="xref" href="Rssdp.DiscoveredSsdpDevice.html">DiscoveredSsdpDevice</a>&gt;&gt;</td>
+        <td><p>A task whose result is a de-duplicated sequence of discovered devices.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="Rssdp_AggregateSsdpDeviceLocator_StartListeningForNotifications_" data-uid="Rssdp.AggregateSsdpDeviceLocator.StartListeningForNotifications*"></a>
+  <h4 id="Rssdp_AggregateSsdpDeviceLocator_StartListeningForNotifications" data-uid="Rssdp.AggregateSsdpDeviceLocator.StartListeningForNotifications">StartListeningForNotifications()</h4>
+  <div class="markdown level1 summary"><p>Starts listening for broadcast notifications of device availability on all aggregated locators.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void StartListeningForNotifications()</code></pre>
+  </div>
+  
+  
+  <a id="Rssdp_AggregateSsdpDeviceLocator_StopListeningForNotifications_" data-uid="Rssdp.AggregateSsdpDeviceLocator.StopListeningForNotifications*"></a>
+  <h4 id="Rssdp_AggregateSsdpDeviceLocator_StopListeningForNotifications" data-uid="Rssdp.AggregateSsdpDeviceLocator.StopListeningForNotifications">StopListeningForNotifications()</h4>
+  <div class="markdown level1 summary"><p>Stops listening for broadcast notifications on all aggregated locators.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void StopListeningForNotifications()</code></pre>
+  </div>
+  <h3 id="events">Events
+  </h3>
+  
+  
+  <h4 id="Rssdp_AggregateSsdpDeviceLocator_DeviceAvailable" data-uid="Rssdp.AggregateSsdpDeviceLocator.DeviceAvailable">DeviceAvailable</h4>
+  <div class="markdown level1 summary"><p>Raised when a device becomes available or is found by a search request across any aggregated locator.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public event EventHandler&lt;DeviceAvailableEventArgs&gt; DeviceAvailable</code></pre>
+  </div>
+  <h5 class="eventType">Event Type</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.EventHandler</span>&lt;<a class="xref" href="Rssdp.DeviceAvailableEventArgs.html">DeviceAvailableEventArgs</a>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <h4 id="Rssdp_AggregateSsdpDeviceLocator_DeviceUnavailable" data-uid="Rssdp.AggregateSsdpDeviceLocator.DeviceUnavailable">DeviceUnavailable</h4>
+  <div class="markdown level1 summary"><p>Raised when a device explicitly notifies of shutdown or expires from the cache across any aggregated locator.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public event EventHandler&lt;DeviceUnavailableEventArgs&gt; DeviceUnavailable</code></pre>
+  </div>
+  <h5 class="eventType">Event Type</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.EventHandler</span>&lt;<a class="xref" href="Rssdp.DeviceUnavailableEventArgs.html">DeviceUnavailableEventArgs</a>&gt;</td>
+        <td></td>
       </tr>
     </tbody>
   </table>
   <h3 id="implements">Implements</h3>
   <div>
-      <span class="xref">System.Collections.Generic.IEnumerable&lt;T&gt;</span>
+      <span class="xref">System.IDisposable</span>
   </div>
   <div>
-      <span class="xref">System.Collections.IEnumerable</span>
+      <a class="xref" href="Rssdp.Infrastructure.ISsdpDeviceLocator.html">ISsdpDeviceLocator</a>
   </div>
 </article>
           </div>

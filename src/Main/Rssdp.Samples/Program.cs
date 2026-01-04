@@ -55,6 +55,7 @@ namespace Rssdp.Samples
 			Console.WriteLine("U to search for published device by UUID");
 			Console.WriteLine("L to listen for notifications");
 			Console.WriteLine("T to toggle diagnostic activity tracing (currently: " + (_TracingEnabled ? "ON" : "OFF") + ")");
+			Console.WriteLine("M to search multiple networks (adapters)");
 			Console.WriteLine("X to exit");
 			Console.WriteLine();
 		}
@@ -81,6 +82,10 @@ namespace Rssdp.Samples
 
 				case "U":
 					SearchForDevicesByUuid().Wait();
+					break;
+
+				case "M":
+					SearchForMultipleAdapters().Wait();
 					break;
 
 				case "L":
@@ -152,7 +157,7 @@ namespace Rssdp.Samples
 		{
 			if (!_TracingEnabled) return;
 			try
-			{				
+			{
 				_ActivityListener?.Dispose();
 			}
 			catch { }
@@ -356,6 +361,49 @@ namespace Rssdp.Samples
 			Console.WriteLine("Searching for all devices...");
 
 			using (var deviceLocator = new SsdpDeviceLocator())
+			{
+				var results = await deviceLocator.SearchAsync();
+				foreach (var device in results)
+				{
+					WriteOutDevices(device);
+				}
+			}
+		}
+
+		private static async Task SearchForMultipleAdapters()
+		{
+			Console.WriteLine("Searching for all devices on multiple adapters...");
+
+			var adapters = 
+			(
+				from a in System.Net.NetworkInformation.NetworkInterface.GetAllNetworkInterfaces()
+				where a.OperationalStatus == System.Net.NetworkInformation.OperationalStatus.Up
+				&& a.NetworkInterfaceType != System.Net.NetworkInformation.NetworkInterfaceType.Loopback
+				&& a.SupportsMulticast
+				&& !a.IsReceiveOnly
+				&&
+				(
+					a.NetworkInterfaceType == System.Net.NetworkInformation.NetworkInterfaceType.Ethernet
+					|| a.NetworkInterfaceType == System.Net.NetworkInformation.NetworkInterfaceType.Wireless80211
+					|| a.NetworkInterfaceType == System.Net.NetworkInformation.NetworkInterfaceType.GigabitEthernet
+					|| a.NetworkInterfaceType == System.Net.NetworkInformation.NetworkInterfaceType.FastEthernetFx
+					|| a.NetworkInterfaceType == System.Net.NetworkInformation.NetworkInterfaceType.FastEthernetT
+				)
+				select a
+			).ToList();
+
+			var addresses = 
+			(
+				from ip in adapters.SelectMany((a) => a.GetIPProperties().UnicastAddresses)
+				where ip.Address.AddressFamily == System.Net.Sockets.AddressFamily.InterNetwork
+					|| ip.Address.AddressFamily == System.Net.Sockets.AddressFamily.InterNetworkV6
+				select ip.Address.ToString()
+			).ToList();
+
+			var adapterListText = String.Join(", ", addresses);
+			Console.WriteLine($"Searching on adapters with the following adddreses; {adapterListText}");
+
+			using (var deviceLocator = new AggregateSsdpDeviceLocator(addresses))
 			{
 				var results = await deviceLocator.SearchAsync();
 				foreach (var device in results)

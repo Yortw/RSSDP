@@ -84,6 +84,9 @@
                         
                         <ul class="nav level2">
                           <li class="">
+                            <a href="Rssdp.AggregateSsdpDeviceLocator.html" title="AggregateSsdpDeviceLocator" class="">AggregateSsdpDeviceLocator</a>
+                          </li>
+                          <li class="">
                             <a href="Rssdp.CustomHttpHeader.html" title="CustomHttpHeader" class="">CustomHttpHeader</a>
                           </li>
                           <li class="">
@@ -237,13 +240,41 @@
   
   <h1 id="Rssdp_SocketFactory" data-uid="Rssdp.SocketFactory" class="text-break">Class SocketFactory
   </h1>
-  <div class="markdown level0 summary"><p>Used by RSSDP components to create implementations of the <see cref="!:IUdpSocket"></see> interface, to perform platform agnostic socket communications.</p>
+  <div class="markdown level0 summary"><p>Used by RSSDP components to create implementations of the <a class="xref" href="Rssdp.Infrastructure.IUdpSocket.html">IUdpSocket</a> interface, to perform platform agnostic socket communications.</p>
 </div>
   <div class="markdown level0 conceptual"></div>
   <div class="inheritance">
     <h5>Inheritance</h5>
     <div class="level0"><span class="xref">System.Object</span></div>
     <div class="level1"><span class="xref">SocketFactory</span></div>
+  </div>
+  <div class="implements">
+    <h5>Implements</h5>
+    <div><a class="xref" href="Rssdp.Infrastructure.ISocketFactory.html">ISocketFactory</a></div>
+  </div>
+  <div class="inheritedMembers">
+    <h5>Inherited Members</h5>
+    <div>
+      <span class="xref">System.Object.ToString()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.Equals(System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.Equals(System.Object, System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.ReferenceEquals(System.Object, System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.GetHashCode()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.GetType()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.MemberwiseClone()</span>
+    </div>
   </div>
   <h6><strong>Namespace</strong>: <a class="xref" href="Rssdp.html">Rssdp</a></h6>
   <h6><strong>Assembly</strong>: cs.temp.dll.dll</h6>
@@ -358,7 +389,7 @@ Null or empty string will use <see cref="!:IPAddress.Any"></see>.</p>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">IUdpSocket</span></td>
+        <td><a class="xref" href="Rssdp.Infrastructure.IUdpSocket.html">IUdpSocket</a></td>
         <td></td>
       </tr>
     </tbody>
@@ -402,12 +433,16 @@ Null or empty string will use <see cref="!:IPAddress.Any"></see>.</p>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">IUdpSocket</span></td>
-        <td><p>An implementation of the <see cref="!:IUdpSocket"></see> interface used by RSSDP components to perform socket operations.</p>
+        <td><a class="xref" href="Rssdp.Infrastructure.IUdpSocket.html">IUdpSocket</a></td>
+        <td><p>An implementation of the <a class="xref" href="Rssdp.Infrastructure.IUdpSocket.html">IUdpSocket</a> interface used by RSSDP components to perform socket operations.</p>
 </td>
       </tr>
     </tbody>
   </table>
+  <h3 id="implements">Implements</h3>
+  <div>
+      <a class="xref" href="Rssdp.Infrastructure.ISocketFactory.html">ISocketFactory</a>
+  </div>
 </article>
           </div>
           

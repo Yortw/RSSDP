@@ -7,6 +7,136 @@ references:
   commentId: N:Rssdp
   fullName: Rssdp
   nameWithType: Rssdp
+- uid: Rssdp.AggregateSsdpDeviceLocator
+  name: AggregateSsdpDeviceLocator
+  href: api/Rssdp.AggregateSsdpDeviceLocator.html
+  commentId: T:Rssdp.AggregateSsdpDeviceLocator
+  fullName: Rssdp.AggregateSsdpDeviceLocator
+  nameWithType: AggregateSsdpDeviceLocator
+- uid: Rssdp.AggregateSsdpDeviceLocator.#ctor(System.Collections.Generic.IEnumerable{System.String})
+  name: AggregateSsdpDeviceLocator(IEnumerable<String>)
+  href: api/Rssdp.AggregateSsdpDeviceLocator.html#Rssdp_AggregateSsdpDeviceLocator__ctor_System_Collections_Generic_IEnumerable_System_String__
+  commentId: M:Rssdp.AggregateSsdpDeviceLocator.#ctor(System.Collections.Generic.IEnumerable{System.String})
+  name.vb: AggregateSsdpDeviceLocator(IEnumerable(Of String))
+  fullName: Rssdp.AggregateSsdpDeviceLocator.AggregateSsdpDeviceLocator(System.Collections.Generic.IEnumerable<System.String>)
+  fullName.vb: Rssdp.AggregateSsdpDeviceLocator.AggregateSsdpDeviceLocator(System.Collections.Generic.IEnumerable(Of System.String))
+  nameWithType: AggregateSsdpDeviceLocator.AggregateSsdpDeviceLocator(IEnumerable<String>)
+  nameWithType.vb: AggregateSsdpDeviceLocator.AggregateSsdpDeviceLocator(IEnumerable(Of String))
+- uid: Rssdp.AggregateSsdpDeviceLocator.#ctor*
+  name: AggregateSsdpDeviceLocator
+  href: api/Rssdp.AggregateSsdpDeviceLocator.html#Rssdp_AggregateSsdpDeviceLocator__ctor_
+  commentId: Overload:Rssdp.AggregateSsdpDeviceLocator.#ctor
+  isSpec: "True"
+  fullName: Rssdp.AggregateSsdpDeviceLocator.AggregateSsdpDeviceLocator
+  nameWithType: AggregateSsdpDeviceLocator.AggregateSsdpDeviceLocator
+- uid: Rssdp.AggregateSsdpDeviceLocator.DeviceAvailable
+  name: DeviceAvailable
+  href: api/Rssdp.AggregateSsdpDeviceLocator.html#Rssdp_AggregateSsdpDeviceLocator_DeviceAvailable
+  commentId: E:Rssdp.AggregateSsdpDeviceLocator.DeviceAvailable
+  fullName: Rssdp.AggregateSsdpDeviceLocator.DeviceAvailable
+  nameWithType: AggregateSsdpDeviceLocator.DeviceAvailable
+- uid: Rssdp.AggregateSsdpDeviceLocator.DeviceUnavailable
+  name: DeviceUnavailable
+  href: api/Rssdp.AggregateSsdpDeviceLocator.html#Rssdp_AggregateSsdpDeviceLocator_DeviceUnavailable
+  commentId: E:Rssdp.AggregateSsdpDeviceLocator.DeviceUnavailable
+  fullName: Rssdp.AggregateSsdpDeviceLocator.DeviceUnavailable
+  nameWithType: AggregateSsdpDeviceLocator.DeviceUnavailable
+- uid: Rssdp.AggregateSsdpDeviceLocator.Dispose
+  name: Dispose()
+  href: api/Rssdp.AggregateSsdpDeviceLocator.html#Rssdp_AggregateSsdpDeviceLocator_Dispose
+  commentId: M:Rssdp.AggregateSsdpDeviceLocator.Dispose
+  fullName: Rssdp.AggregateSsdpDeviceLocator.Dispose()
+  nameWithType: AggregateSsdpDeviceLocator.Dispose()
+- uid: Rssdp.AggregateSsdpDeviceLocator.Dispose*
+  name: Dispose
+  href: api/Rssdp.AggregateSsdpDeviceLocator.html#Rssdp_AggregateSsdpDeviceLocator_Dispose_
+  commentId: Overload:Rssdp.AggregateSsdpDeviceLocator.Dispose
+  isSpec: "True"
+  fullName: Rssdp.AggregateSsdpDeviceLocator.Dispose
+  nameWithType: AggregateSsdpDeviceLocator.Dispose
+- uid: Rssdp.AggregateSsdpDeviceLocator.IsSearching
+  name: IsSearching
+  href: api/Rssdp.AggregateSsdpDeviceLocator.html#Rssdp_AggregateSsdpDeviceLocator_IsSearching
+  commentId: P:Rssdp.AggregateSsdpDeviceLocator.IsSearching
+  fullName: Rssdp.AggregateSsdpDeviceLocator.IsSearching
+  nameWithType: AggregateSsdpDeviceLocator.IsSearching
+- uid: Rssdp.AggregateSsdpDeviceLocator.IsSearching*
+  name: IsSearching
+  href: api/Rssdp.AggregateSsdpDeviceLocator.html#Rssdp_AggregateSsdpDeviceLocator_IsSearching_
+  commentId: Overload:Rssdp.AggregateSsdpDeviceLocator.IsSearching
+  isSpec: "True"
+  fullName: Rssdp.AggregateSsdpDeviceLocator.IsSearching
+  nameWithType: AggregateSsdpDeviceLocator.IsSearching
+- uid: Rssdp.AggregateSsdpDeviceLocator.NotificationFilter
+  name: NotificationFilter
+  href: api/Rssdp.AggregateSsdpDeviceLocator.html#Rssdp_AggregateSsdpDeviceLocator_NotificationFilter
+  commentId: P:Rssdp.AggregateSsdpDeviceLocator.NotificationFilter
+  fullName: Rssdp.AggregateSsdpDeviceLocator.NotificationFilter
+  nameWithType: AggregateSsdpDeviceLocator.NotificationFilter
+- uid: Rssdp.AggregateSsdpDeviceLocator.NotificationFilter*
+  name: NotificationFilter
+  href: api/Rssdp.AggregateSsdpDeviceLocator.html#Rssdp_AggregateSsdpDeviceLocator_NotificationFilter_
+  commentId: Overload:Rssdp.AggregateSsdpDeviceLocator.NotificationFilter
+  isSpec: "True"
+  fullName: Rssdp.AggregateSsdpDeviceLocator.NotificationFilter
+  nameWithType: AggregateSsdpDeviceLocator.NotificationFilter
+- uid: Rssdp.AggregateSsdpDeviceLocator.SearchAsync(System.String,System.Threading.CancellationToken)
+  name: SearchAsync(String, CancellationToken)
+  href: api/Rssdp.AggregateSsdpDeviceLocator.html#Rssdp_AggregateSsdpDeviceLocator_SearchAsync_System_String_System_Threading_CancellationToken_
+  commentId: M:Rssdp.AggregateSsdpDeviceLocator.SearchAsync(System.String,System.Threading.CancellationToken)
+  fullName: Rssdp.AggregateSsdpDeviceLocator.SearchAsync(System.String, System.Threading.CancellationToken)
+  nameWithType: AggregateSsdpDeviceLocator.SearchAsync(String, CancellationToken)
+- uid: Rssdp.AggregateSsdpDeviceLocator.SearchAsync(System.String,System.TimeSpan,System.Threading.CancellationToken)
+  name: SearchAsync(String, TimeSpan, CancellationToken)
+  href: api/Rssdp.AggregateSsdpDeviceLocator.html#Rssdp_AggregateSsdpDeviceLocator_SearchAsync_System_String_System_TimeSpan_System_Threading_CancellationToken_
+  commentId: M:Rssdp.AggregateSsdpDeviceLocator.SearchAsync(System.String,System.TimeSpan,System.Threading.CancellationToken)
+  fullName: Rssdp.AggregateSsdpDeviceLocator.SearchAsync(System.String, System.TimeSpan, System.Threading.CancellationToken)
+  nameWithType: AggregateSsdpDeviceLocator.SearchAsync(String, TimeSpan, CancellationToken)
+- uid: Rssdp.AggregateSsdpDeviceLocator.SearchAsync(System.Threading.CancellationToken)
+  name: SearchAsync(CancellationToken)
+  href: api/Rssdp.AggregateSsdpDeviceLocator.html#Rssdp_AggregateSsdpDeviceLocator_SearchAsync_System_Threading_CancellationToken_
+  commentId: M:Rssdp.AggregateSsdpDeviceLocator.SearchAsync(System.Threading.CancellationToken)
+  fullName: Rssdp.AggregateSsdpDeviceLocator.SearchAsync(System.Threading.CancellationToken)
+  nameWithType: AggregateSsdpDeviceLocator.SearchAsync(CancellationToken)
+- uid: Rssdp.AggregateSsdpDeviceLocator.SearchAsync(System.TimeSpan,System.Threading.CancellationToken)
+  name: SearchAsync(TimeSpan, CancellationToken)
+  href: api/Rssdp.AggregateSsdpDeviceLocator.html#Rssdp_AggregateSsdpDeviceLocator_SearchAsync_System_TimeSpan_System_Threading_CancellationToken_
+  commentId: M:Rssdp.AggregateSsdpDeviceLocator.SearchAsync(System.TimeSpan,System.Threading.CancellationToken)
+  fullName: Rssdp.AggregateSsdpDeviceLocator.SearchAsync(System.TimeSpan, System.Threading.CancellationToken)
+  nameWithType: AggregateSsdpDeviceLocator.SearchAsync(TimeSpan, CancellationToken)
+- uid: Rssdp.AggregateSsdpDeviceLocator.SearchAsync*
+  name: SearchAsync
+  href: api/Rssdp.AggregateSsdpDeviceLocator.html#Rssdp_AggregateSsdpDeviceLocator_SearchAsync_
+  commentId: Overload:Rssdp.AggregateSsdpDeviceLocator.SearchAsync
+  isSpec: "True"
+  fullName: Rssdp.AggregateSsdpDeviceLocator.SearchAsync
+  nameWithType: AggregateSsdpDeviceLocator.SearchAsync
+- uid: Rssdp.AggregateSsdpDeviceLocator.StartListeningForNotifications
+  name: StartListeningForNotifications()
+  href: api/Rssdp.AggregateSsdpDeviceLocator.html#Rssdp_AggregateSsdpDeviceLocator_StartListeningForNotifications
+  commentId: M:Rssdp.AggregateSsdpDeviceLocator.StartListeningForNotifications
+  fullName: Rssdp.AggregateSsdpDeviceLocator.StartListeningForNotifications()
+  nameWithType: AggregateSsdpDeviceLocator.StartListeningForNotifications()
+- uid: Rssdp.AggregateSsdpDeviceLocator.StartListeningForNotifications*
+  name: StartListeningForNotifications
+  href: api/Rssdp.AggregateSsdpDeviceLocator.html#Rssdp_AggregateSsdpDeviceLocator_StartListeningForNotifications_
+  commentId: Overload:Rssdp.AggregateSsdpDeviceLocator.StartListeningForNotifications
+  isSpec: "True"
+  fullName: Rssdp.AggregateSsdpDeviceLocator.StartListeningForNotifications
+  nameWithType: AggregateSsdpDeviceLocator.StartListeningForNotifications
+- uid: Rssdp.AggregateSsdpDeviceLocator.StopListeningForNotifications
+  name: StopListeningForNotifications()
+  href: api/Rssdp.AggregateSsdpDeviceLocator.html#Rssdp_AggregateSsdpDeviceLocator_StopListeningForNotifications
+  commentId: M:Rssdp.AggregateSsdpDeviceLocator.StopListeningForNotifications
+  fullName: Rssdp.AggregateSsdpDeviceLocator.StopListeningForNotifications()
+  nameWithType: AggregateSsdpDeviceLocator.StopListeningForNotifications()
+- uid: Rssdp.AggregateSsdpDeviceLocator.StopListeningForNotifications*
+  name: StopListeningForNotifications
+  href: api/Rssdp.AggregateSsdpDeviceLocator.html#Rssdp_AggregateSsdpDeviceLocator_StopListeningForNotifications_
+  commentId: Overload:Rssdp.AggregateSsdpDeviceLocator.StopListeningForNotifications
+  isSpec: "True"
+  fullName: Rssdp.AggregateSsdpDeviceLocator.StopListeningForNotifications
+  nameWithType: AggregateSsdpDeviceLocator.StopListeningForNotifications
 - uid: Rssdp.CustomHttpHeader
   name: CustomHttpHeader
   href: api/Rssdp.CustomHttpHeader.html
@@ -183,23 +313,6 @@ references:
   isSpec: "True"
   fullName: Rssdp.CustomHttpHeadersCollection.Remove
   nameWithType: CustomHttpHeadersCollection.Remove
-- uid: Rssdp.CustomHttpHeadersCollection.System#Collections#IEnumerable#GetEnumerator
-  name: IEnumerable.GetEnumerator()
-  href: api/Rssdp.CustomHttpHeadersCollection.html#Rssdp_CustomHttpHeadersCollection_System_Collections_IEnumerable_GetEnumerator
-  commentId: M:Rssdp.CustomHttpHeadersCollection.System#Collections#IEnumerable#GetEnumerator
-  name.vb: System.Collections.IEnumerable.GetEnumerator()
-  fullName: Rssdp.CustomHttpHeadersCollection.System.Collections.IEnumerable.GetEnumerator()
-  nameWithType: CustomHttpHeadersCollection.IEnumerable.GetEnumerator()
-  nameWithType.vb: CustomHttpHeadersCollection.System.Collections.IEnumerable.GetEnumerator()
-- uid: Rssdp.CustomHttpHeadersCollection.System#Collections#IEnumerable#GetEnumerator*
-  name: IEnumerable.GetEnumerator
-  href: api/Rssdp.CustomHttpHeadersCollection.html#Rssdp_CustomHttpHeadersCollection_System_Collections_IEnumerable_GetEnumerator_
-  commentId: Overload:Rssdp.CustomHttpHeadersCollection.System#Collections#IEnumerable#GetEnumerator
-  isSpec: "True"
-  name.vb: System.Collections.IEnumerable.GetEnumerator
-  fullName: Rssdp.CustomHttpHeadersCollection.System.Collections.IEnumerable.GetEnumerator
-  nameWithType: CustomHttpHeadersCollection.IEnumerable.GetEnumerator
-  nameWithType.vb: CustomHttpHeadersCollection.System.Collections.IEnumerable.GetEnumerator
 - uid: Rssdp.DeviceAvailableEventArgs
   name: DeviceAvailableEventArgs
   href: api/Rssdp.DeviceAvailableEventArgs.html
@@ -966,29 +1079,29 @@ references:
   isSpec: "True"
   fullName: Rssdp.Infrastructure.ISsdpDeviceLocator.NotificationFilter
   nameWithType: ISsdpDeviceLocator.NotificationFilter
-- uid: Rssdp.Infrastructure.ISsdpDeviceLocator.SearchAsync(CancellationToken)
-  name: SearchAsync(CancellationToken)
-  href: api/Rssdp.Infrastructure.ISsdpDeviceLocator.html#Rssdp_Infrastructure_ISsdpDeviceLocator_SearchAsync_CancellationToken_
-  commentId: M:Rssdp.Infrastructure.ISsdpDeviceLocator.SearchAsync(CancellationToken)
-  fullName: Rssdp.Infrastructure.ISsdpDeviceLocator.SearchAsync(CancellationToken)
-  nameWithType: ISsdpDeviceLocator.SearchAsync(CancellationToken)
-- uid: Rssdp.Infrastructure.ISsdpDeviceLocator.SearchAsync(System.String,CancellationToken)
+- uid: Rssdp.Infrastructure.ISsdpDeviceLocator.SearchAsync(System.String,System.Threading.CancellationToken)
   name: SearchAsync(String, CancellationToken)
-  href: api/Rssdp.Infrastructure.ISsdpDeviceLocator.html#Rssdp_Infrastructure_ISsdpDeviceLocator_SearchAsync_System_String_CancellationToken_
-  commentId: M:Rssdp.Infrastructure.ISsdpDeviceLocator.SearchAsync(System.String,CancellationToken)
-  fullName: Rssdp.Infrastructure.ISsdpDeviceLocator.SearchAsync(System.String, CancellationToken)
+  href: api/Rssdp.Infrastructure.ISsdpDeviceLocator.html#Rssdp_Infrastructure_ISsdpDeviceLocator_SearchAsync_System_String_System_Threading_CancellationToken_
+  commentId: M:Rssdp.Infrastructure.ISsdpDeviceLocator.SearchAsync(System.String,System.Threading.CancellationToken)
+  fullName: Rssdp.Infrastructure.ISsdpDeviceLocator.SearchAsync(System.String, System.Threading.CancellationToken)
   nameWithType: ISsdpDeviceLocator.SearchAsync(String, CancellationToken)
-- uid: Rssdp.Infrastructure.ISsdpDeviceLocator.SearchAsync(System.String,System.TimeSpan,CancellationToken)
+- uid: Rssdp.Infrastructure.ISsdpDeviceLocator.SearchAsync(System.String,System.TimeSpan,System.Threading.CancellationToken)
   name: SearchAsync(String, TimeSpan, CancellationToken)
-  href: api/Rssdp.Infrastructure.ISsdpDeviceLocator.html#Rssdp_Infrastructure_ISsdpDeviceLocator_SearchAsync_System_String_System_TimeSpan_CancellationToken_
-  commentId: M:Rssdp.Infrastructure.ISsdpDeviceLocator.SearchAsync(System.String,System.TimeSpan,CancellationToken)
-  fullName: Rssdp.Infrastructure.ISsdpDeviceLocator.SearchAsync(System.String, System.TimeSpan, CancellationToken)
+  href: api/Rssdp.Infrastructure.ISsdpDeviceLocator.html#Rssdp_Infrastructure_ISsdpDeviceLocator_SearchAsync_System_String_System_TimeSpan_System_Threading_CancellationToken_
+  commentId: M:Rssdp.Infrastructure.ISsdpDeviceLocator.SearchAsync(System.String,System.TimeSpan,System.Threading.CancellationToken)
+  fullName: Rssdp.Infrastructure.ISsdpDeviceLocator.SearchAsync(System.String, System.TimeSpan, System.Threading.CancellationToken)
   nameWithType: ISsdpDeviceLocator.SearchAsync(String, TimeSpan, CancellationToken)
-- uid: Rssdp.Infrastructure.ISsdpDeviceLocator.SearchAsync(System.TimeSpan,CancellationToken)
+- uid: Rssdp.Infrastructure.ISsdpDeviceLocator.SearchAsync(System.Threading.CancellationToken)
+  name: SearchAsync(CancellationToken)
+  href: api/Rssdp.Infrastructure.ISsdpDeviceLocator.html#Rssdp_Infrastructure_ISsdpDeviceLocator_SearchAsync_System_Threading_CancellationToken_
+  commentId: M:Rssdp.Infrastructure.ISsdpDeviceLocator.SearchAsync(System.Threading.CancellationToken)
+  fullName: Rssdp.Infrastructure.ISsdpDeviceLocator.SearchAsync(System.Threading.CancellationToken)
+  nameWithType: ISsdpDeviceLocator.SearchAsync(CancellationToken)
+- uid: Rssdp.Infrastructure.ISsdpDeviceLocator.SearchAsync(System.TimeSpan,System.Threading.CancellationToken)
   name: SearchAsync(TimeSpan, CancellationToken)
-  href: api/Rssdp.Infrastructure.ISsdpDeviceLocator.html#Rssdp_Infrastructure_ISsdpDeviceLocator_SearchAsync_System_TimeSpan_CancellationToken_
-  commentId: M:Rssdp.Infrastructure.ISsdpDeviceLocator.SearchAsync(System.TimeSpan,CancellationToken)
-  fullName: Rssdp.Infrastructure.ISsdpDeviceLocator.SearchAsync(System.TimeSpan, CancellationToken)
+  href: api/Rssdp.Infrastructure.ISsdpDeviceLocator.html#Rssdp_Infrastructure_ISsdpDeviceLocator_SearchAsync_System_TimeSpan_System_Threading_CancellationToken_
+  commentId: M:Rssdp.Infrastructure.ISsdpDeviceLocator.SearchAsync(System.TimeSpan,System.Threading.CancellationToken)
+  fullName: Rssdp.Infrastructure.ISsdpDeviceLocator.SearchAsync(System.TimeSpan, System.Threading.CancellationToken)
   nameWithType: ISsdpDeviceLocator.SearchAsync(TimeSpan, CancellationToken)
 - uid: Rssdp.Infrastructure.ISsdpDeviceLocator.SearchAsync*
   name: SearchAsync
@@ -1651,29 +1764,29 @@ references:
   isSpec: "True"
   fullName: Rssdp.Infrastructure.SsdpDeviceLocatorBase.OnDeviceUnavailable
   nameWithType: SsdpDeviceLocatorBase.OnDeviceUnavailable
-- uid: Rssdp.Infrastructure.SsdpDeviceLocatorBase.SearchAsync(CancellationToken)
-  name: SearchAsync(CancellationToken)
-  href: api/Rssdp.Infrastructure.SsdpDeviceLocatorBase.html#Rssdp_Infrastructure_SsdpDeviceLocatorBase_SearchAsync_CancellationToken_
-  commentId: M:Rssdp.Infrastructure.SsdpDeviceLocatorBase.SearchAsync(CancellationToken)
-  fullName: Rssdp.Infrastructure.SsdpDeviceLocatorBase.SearchAsync(CancellationToken)
-  nameWithType: SsdpDeviceLocatorBase.SearchAsync(CancellationToken)
-- uid: Rssdp.Infrastructure.SsdpDeviceLocatorBase.SearchAsync(System.String,CancellationToken)
+- uid: Rssdp.Infrastructure.SsdpDeviceLocatorBase.SearchAsync(System.String,System.Threading.CancellationToken)
   name: SearchAsync(String, CancellationToken)
-  href: api/Rssdp.Infrastructure.SsdpDeviceLocatorBase.html#Rssdp_Infrastructure_SsdpDeviceLocatorBase_SearchAsync_System_String_CancellationToken_
-  commentId: M:Rssdp.Infrastructure.SsdpDeviceLocatorBase.SearchAsync(System.String,CancellationToken)
-  fullName: Rssdp.Infrastructure.SsdpDeviceLocatorBase.SearchAsync(System.String, CancellationToken)
+  href: api/Rssdp.Infrastructure.SsdpDeviceLocatorBase.html#Rssdp_Infrastructure_SsdpDeviceLocatorBase_SearchAsync_System_String_System_Threading_CancellationToken_
+  commentId: M:Rssdp.Infrastructure.SsdpDeviceLocatorBase.SearchAsync(System.String,System.Threading.CancellationToken)
+  fullName: Rssdp.Infrastructure.SsdpDeviceLocatorBase.SearchAsync(System.String, System.Threading.CancellationToken)
   nameWithType: SsdpDeviceLocatorBase.SearchAsync(String, CancellationToken)
-- uid: Rssdp.Infrastructure.SsdpDeviceLocatorBase.SearchAsync(System.String,System.TimeSpan,CancellationToken)
+- uid: Rssdp.Infrastructure.SsdpDeviceLocatorBase.SearchAsync(System.String,System.TimeSpan,System.Threading.CancellationToken)
   name: SearchAsync(String, TimeSpan, CancellationToken)
-  href: api/Rssdp.Infrastructure.SsdpDeviceLocatorBase.html#Rssdp_Infrastructure_SsdpDeviceLocatorBase_SearchAsync_System_String_System_TimeSpan_CancellationToken_
-  commentId: M:Rssdp.Infrastructure.SsdpDeviceLocatorBase.SearchAsync(System.String,System.TimeSpan,CancellationToken)
-  fullName: Rssdp.Infrastructure.SsdpDeviceLocatorBase.SearchAsync(System.String, System.TimeSpan, CancellationToken)
+  href: api/Rssdp.Infrastructure.SsdpDeviceLocatorBase.html#Rssdp_Infrastructure_SsdpDeviceLocatorBase_SearchAsync_System_String_System_TimeSpan_System_Threading_CancellationToken_
+  commentId: M:Rssdp.Infrastructure.SsdpDeviceLocatorBase.SearchAsync(System.String,System.TimeSpan,System.Threading.CancellationToken)
+  fullName: Rssdp.Infrastructure.SsdpDeviceLocatorBase.SearchAsync(System.String, System.TimeSpan, System.Threading.CancellationToken)
   nameWithType: SsdpDeviceLocatorBase.SearchAsync(String, TimeSpan, CancellationToken)
-- uid: Rssdp.Infrastructure.SsdpDeviceLocatorBase.SearchAsync(System.TimeSpan,CancellationToken)
+- uid: Rssdp.Infrastructure.SsdpDeviceLocatorBase.SearchAsync(System.Threading.CancellationToken)
+  name: SearchAsync(CancellationToken)
+  href: api/Rssdp.Infrastructure.SsdpDeviceLocatorBase.html#Rssdp_Infrastructure_SsdpDeviceLocatorBase_SearchAsync_System_Threading_CancellationToken_
+  commentId: M:Rssdp.Infrastructure.SsdpDeviceLocatorBase.SearchAsync(System.Threading.CancellationToken)
+  fullName: Rssdp.Infrastructure.SsdpDeviceLocatorBase.SearchAsync(System.Threading.CancellationToken)
+  nameWithType: SsdpDeviceLocatorBase.SearchAsync(CancellationToken)
+- uid: Rssdp.Infrastructure.SsdpDeviceLocatorBase.SearchAsync(System.TimeSpan,System.Threading.CancellationToken)
   name: SearchAsync(TimeSpan, CancellationToken)
-  href: api/Rssdp.Infrastructure.SsdpDeviceLocatorBase.html#Rssdp_Infrastructure_SsdpDeviceLocatorBase_SearchAsync_System_TimeSpan_CancellationToken_
-  commentId: M:Rssdp.Infrastructure.SsdpDeviceLocatorBase.SearchAsync(System.TimeSpan,CancellationToken)
-  fullName: Rssdp.Infrastructure.SsdpDeviceLocatorBase.SearchAsync(System.TimeSpan, CancellationToken)
+  href: api/Rssdp.Infrastructure.SsdpDeviceLocatorBase.html#Rssdp_Infrastructure_SsdpDeviceLocatorBase_SearchAsync_System_TimeSpan_System_Threading_CancellationToken_
+  commentId: M:Rssdp.Infrastructure.SsdpDeviceLocatorBase.SearchAsync(System.TimeSpan,System.Threading.CancellationToken)
+  fullName: Rssdp.Infrastructure.SsdpDeviceLocatorBase.SearchAsync(System.TimeSpan, System.Threading.CancellationToken)
   nameWithType: SsdpDeviceLocatorBase.SearchAsync(TimeSpan, CancellationToken)
 - uid: Rssdp.Infrastructure.SsdpDeviceLocatorBase.SearchAsync*
   name: SearchAsync
@@ -2756,11 +2869,11 @@ references:
   commentId: M:Rssdp.SsdpDeviceLocator.#ctor
   fullName: Rssdp.SsdpDeviceLocator.SsdpDeviceLocator()
   nameWithType: SsdpDeviceLocator.SsdpDeviceLocator()
-- uid: Rssdp.SsdpDeviceLocator.#ctor(ISsdpCommunicationsServer)
+- uid: Rssdp.SsdpDeviceLocator.#ctor(Rssdp.Infrastructure.ISsdpCommunicationsServer)
   name: SsdpDeviceLocator(ISsdpCommunicationsServer)
-  href: api/Rssdp.SsdpDeviceLocator.html#Rssdp_SsdpDeviceLocator__ctor_ISsdpCommunicationsServer_
-  commentId: M:Rssdp.SsdpDeviceLocator.#ctor(ISsdpCommunicationsServer)
-  fullName: Rssdp.SsdpDeviceLocator.SsdpDeviceLocator(ISsdpCommunicationsServer)
+  href: api/Rssdp.SsdpDeviceLocator.html#Rssdp_SsdpDeviceLocator__ctor_Rssdp_Infrastructure_ISsdpCommunicationsServer_
+  commentId: M:Rssdp.SsdpDeviceLocator.#ctor(Rssdp.Infrastructure.ISsdpCommunicationsServer)
+  fullName: Rssdp.SsdpDeviceLocator.SsdpDeviceLocator(Rssdp.Infrastructure.ISsdpCommunicationsServer)
   nameWithType: SsdpDeviceLocator.SsdpDeviceLocator(ISsdpCommunicationsServer)
 - uid: Rssdp.SsdpDeviceLocator.#ctor(System.String)
   name: SsdpDeviceLocator(String)
@@ -2999,17 +3112,17 @@ references:
   commentId: M:Rssdp.SsdpDevicePublisher.#ctor
   fullName: Rssdp.SsdpDevicePublisher.SsdpDevicePublisher()
   nameWithType: SsdpDevicePublisher.SsdpDevicePublisher()
-- uid: Rssdp.SsdpDevicePublisher.#ctor(ISsdpCommunicationsServer)
+- uid: Rssdp.SsdpDevicePublisher.#ctor(Rssdp.Infrastructure.ISsdpCommunicationsServer)
   name: SsdpDevicePublisher(ISsdpCommunicationsServer)
-  href: api/Rssdp.SsdpDevicePublisher.html#Rssdp_SsdpDevicePublisher__ctor_ISsdpCommunicationsServer_
-  commentId: M:Rssdp.SsdpDevicePublisher.#ctor(ISsdpCommunicationsServer)
-  fullName: Rssdp.SsdpDevicePublisher.SsdpDevicePublisher(ISsdpCommunicationsServer)
+  href: api/Rssdp.SsdpDevicePublisher.html#Rssdp_SsdpDevicePublisher__ctor_Rssdp_Infrastructure_ISsdpCommunicationsServer_
+  commentId: M:Rssdp.SsdpDevicePublisher.#ctor(Rssdp.Infrastructure.ISsdpCommunicationsServer)
+  fullName: Rssdp.SsdpDevicePublisher.SsdpDevicePublisher(Rssdp.Infrastructure.ISsdpCommunicationsServer)
   nameWithType: SsdpDevicePublisher.SsdpDevicePublisher(ISsdpCommunicationsServer)
-- uid: Rssdp.SsdpDevicePublisher.#ctor(ISsdpCommunicationsServer,Rssdp.ISsdpLogger)
+- uid: Rssdp.SsdpDevicePublisher.#ctor(Rssdp.Infrastructure.ISsdpCommunicationsServer,Rssdp.ISsdpLogger)
   name: SsdpDevicePublisher(ISsdpCommunicationsServer, ISsdpLogger)
-  href: api/Rssdp.SsdpDevicePublisher.html#Rssdp_SsdpDevicePublisher__ctor_ISsdpCommunicationsServer_Rssdp_ISsdpLogger_
-  commentId: M:Rssdp.SsdpDevicePublisher.#ctor(ISsdpCommunicationsServer,Rssdp.ISsdpLogger)
-  fullName: Rssdp.SsdpDevicePublisher.SsdpDevicePublisher(ISsdpCommunicationsServer, Rssdp.ISsdpLogger)
+  href: api/Rssdp.SsdpDevicePublisher.html#Rssdp_SsdpDevicePublisher__ctor_Rssdp_Infrastructure_ISsdpCommunicationsServer_Rssdp_ISsdpLogger_
+  commentId: M:Rssdp.SsdpDevicePublisher.#ctor(Rssdp.Infrastructure.ISsdpCommunicationsServer,Rssdp.ISsdpLogger)
+  fullName: Rssdp.SsdpDevicePublisher.SsdpDevicePublisher(Rssdp.Infrastructure.ISsdpCommunicationsServer, Rssdp.ISsdpLogger)
   nameWithType: SsdpDevicePublisher.SsdpDevicePublisher(ISsdpCommunicationsServer, ISsdpLogger)
 - uid: Rssdp.SsdpDevicePublisher.#ctor(System.Int32)
   name: SsdpDevicePublisher(Int32)

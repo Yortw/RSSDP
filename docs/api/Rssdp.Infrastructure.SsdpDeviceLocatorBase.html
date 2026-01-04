@@ -84,6 +84,9 @@
                         
                         <ul class="nav level2">
                           <li class="">
+                            <a href="Rssdp.AggregateSsdpDeviceLocator.html" title="AggregateSsdpDeviceLocator" class="">AggregateSsdpDeviceLocator</a>
+                          </li>
+                          <li class="">
                             <a href="Rssdp.CustomHttpHeader.html" title="CustomHttpHeader" class="">CustomHttpHeader</a>
                           </li>
                           <li class="">
@@ -245,6 +248,7 @@
     <div class="level0"><span class="xref">System.Object</span></div>
     <div class="level1"><a class="xref" href="Rssdp.Infrastructure.DisposableManagedObjectBase.html">DisposableManagedObjectBase</a></div>
     <div class="level2"><span class="xref">SsdpDeviceLocatorBase</span></div>
+      <div class="level3"><a class="xref" href="Rssdp.SsdpDeviceLocator.html">SsdpDeviceLocator</a></div>
   </div>
   <div class="implements">
     <h5>Implements</h5>
@@ -533,58 +537,13 @@
   
   
   <a id="Rssdp_Infrastructure_SsdpDeviceLocatorBase_SearchAsync_" data-uid="Rssdp.Infrastructure.SsdpDeviceLocatorBase.SearchAsync*"></a>
-  <h4 id="Rssdp_Infrastructure_SsdpDeviceLocatorBase_SearchAsync_CancellationToken_" data-uid="Rssdp.Infrastructure.SsdpDeviceLocatorBase.SearchAsync(CancellationToken)">SearchAsync(CancellationToken)</h4>
-  <div class="markdown level1 summary"><p>Performs a search for all devices using the default search timeout.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public Task&lt;IEnumerable&lt;DiscoveredSsdpDevice&gt;&gt; SearchAsync(CancellationToken cancellationToken = null)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">CancellationToken</span></td>
-        <td><span class="parametername">cancellationToken</span></td>
-        <td><p>An optional <see cref="!:CancellationToken"></see> that can be used to cancel the search request.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">Task</span>&lt;<span class="xref">System.Collections.Generic.IEnumerable</span>&lt;<a class="xref" href="Rssdp.DiscoveredSsdpDevice.html">DiscoveredSsdpDevice</a>&gt;&gt;</td>
-        <td><p>A task whose result is an <span class="xref">System.Collections.Generic.IEnumerable&lt;T&gt;</span> of <a class="xref" href="Rssdp.DiscoveredSsdpDevice.html">DiscoveredSsdpDevice</a> instances, representing all found devices.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  
-  
-  <a id="Rssdp_Infrastructure_SsdpDeviceLocatorBase_SearchAsync_" data-uid="Rssdp.Infrastructure.SsdpDeviceLocatorBase.SearchAsync*"></a>
-  <h4 id="Rssdp_Infrastructure_SsdpDeviceLocatorBase_SearchAsync_System_String_CancellationToken_" data-uid="Rssdp.Infrastructure.SsdpDeviceLocatorBase.SearchAsync(System.String,CancellationToken)">SearchAsync(String, CancellationToken)</h4>
+  <h4 id="Rssdp_Infrastructure_SsdpDeviceLocatorBase_SearchAsync_System_String_System_Threading_CancellationToken_" data-uid="Rssdp.Infrastructure.SsdpDeviceLocatorBase.SearchAsync(System.String,System.Threading.CancellationToken)">SearchAsync(String, CancellationToken)</h4>
   <div class="markdown level1 summary"><p>Performs a search for the specified search target (criteria) and default search timeout.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public Task&lt;IEnumerable&lt;DiscoveredSsdpDevice&gt;&gt; SearchAsync(string searchTarget, CancellationToken cancellationToken = null)</code></pre>
+    <pre><code class="lang-csharp hljs">public Task&lt;IEnumerable&lt;DiscoveredSsdpDevice&gt;&gt; SearchAsync(string searchTarget, CancellationToken cancellationToken = default(CancellationToken))</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -604,9 +563,9 @@
 </td>
       </tr>
       <tr>
-        <td><span class="xref">CancellationToken</span></td>
+        <td><span class="xref">System.Threading.CancellationToken</span></td>
         <td><span class="parametername">cancellationToken</span></td>
-        <td><p>An optional <see cref="!:CancellationToken"></see> that can be used to cancel the search request.</p>
+        <td><p>An optional <span class="xref">System.Threading.CancellationToken</span> that can be used to cancel the search request.</p>
 </td>
       </tr>
     </tbody>
@@ -621,7 +580,7 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">Task</span>&lt;<span class="xref">System.Collections.Generic.IEnumerable</span>&lt;<a class="xref" href="Rssdp.DiscoveredSsdpDevice.html">DiscoveredSsdpDevice</a>&gt;&gt;</td>
+        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<span class="xref">System.Collections.Generic.IEnumerable</span>&lt;<a class="xref" href="Rssdp.DiscoveredSsdpDevice.html">DiscoveredSsdpDevice</a>&gt;&gt;</td>
         <td><p>A task whose result is an <span class="xref">System.Collections.Generic.IEnumerable&lt;T&gt;</span> of <a class="xref" href="Rssdp.DiscoveredSsdpDevice.html">DiscoveredSsdpDevice</a> instances, representing all found devices.</p>
 </td>
       </tr>
@@ -630,13 +589,13 @@
   
   
   <a id="Rssdp_Infrastructure_SsdpDeviceLocatorBase_SearchAsync_" data-uid="Rssdp.Infrastructure.SsdpDeviceLocatorBase.SearchAsync*"></a>
-  <h4 id="Rssdp_Infrastructure_SsdpDeviceLocatorBase_SearchAsync_System_String_System_TimeSpan_CancellationToken_" data-uid="Rssdp.Infrastructure.SsdpDeviceLocatorBase.SearchAsync(System.String,System.TimeSpan,CancellationToken)">SearchAsync(String, TimeSpan, CancellationToken)</h4>
+  <h4 id="Rssdp_Infrastructure_SsdpDeviceLocatorBase_SearchAsync_System_String_System_TimeSpan_System_Threading_CancellationToken_" data-uid="Rssdp.Infrastructure.SsdpDeviceLocatorBase.SearchAsync(System.String,System.TimeSpan,System.Threading.CancellationToken)">SearchAsync(String, TimeSpan, CancellationToken)</h4>
   <div class="markdown level1 summary"><p>Performs a search for the specified search target (criteria) and search timeout.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public async Task&lt;IEnumerable&lt;DiscoveredSsdpDevice&gt;&gt; SearchAsync(string searchTarget, TimeSpan searchWaitTime, CancellationToken cancellationToken = null)</code></pre>
+    <pre><code class="lang-csharp hljs">public async Task&lt;IEnumerable&lt;DiscoveredSsdpDevice&gt;&gt; SearchAsync(string searchTarget, TimeSpan searchWaitTime, CancellationToken cancellationToken = default(CancellationToken))</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -662,9 +621,9 @@
 </td>
       </tr>
       <tr>
-        <td><span class="xref">CancellationToken</span></td>
+        <td><span class="xref">System.Threading.CancellationToken</span></td>
         <td><span class="parametername">cancellationToken</span></td>
-        <td><p>An optional <see cref="!:CancellationToken"></see> that can be used to cancel the search request.</p>
+        <td><p>An optional <span class="xref">System.Threading.CancellationToken</span> that can be used to cancel the search request.</p>
 </td>
       </tr>
     </tbody>
@@ -679,25 +638,70 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">Task</span>&lt;<span class="xref">System.Collections.Generic.IEnumerable</span>&lt;<a class="xref" href="Rssdp.DiscoveredSsdpDevice.html">DiscoveredSsdpDevice</a>&gt;&gt;</td>
+        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<span class="xref">System.Collections.Generic.IEnumerable</span>&lt;<a class="xref" href="Rssdp.DiscoveredSsdpDevice.html">DiscoveredSsdpDevice</a>&gt;&gt;</td>
         <td><p>A task whose result is an <span class="xref">System.Collections.Generic.IEnumerable&lt;T&gt;</span> of <a class="xref" href="Rssdp.DiscoveredSsdpDevice.html">DiscoveredSsdpDevice</a> instances, representing all found devices.</p>
 </td>
       </tr>
     </tbody>
   </table>
-  <h5 id="Rssdp_Infrastructure_SsdpDeviceLocatorBase_SearchAsync_System_String_System_TimeSpan_CancellationToken__remarks">Remarks</h5>
+  <h5 id="Rssdp_Infrastructure_SsdpDeviceLocatorBase_SearchAsync_System_String_System_TimeSpan_System_Threading_CancellationToken__remarks">Remarks</h5>
   <div class="markdown level1 remarks"><p>By design RSSDP does not support &apos;publishing services&apos; as it is intended for use with non-standard UPnP devices that don&apos;t publish UPnP style services. However, it is still possible to use RSSDP to search for devices implemetning these services if you know the service type.</p>
 </div>
   
   
   <a id="Rssdp_Infrastructure_SsdpDeviceLocatorBase_SearchAsync_" data-uid="Rssdp.Infrastructure.SsdpDeviceLocatorBase.SearchAsync*"></a>
-  <h4 id="Rssdp_Infrastructure_SsdpDeviceLocatorBase_SearchAsync_System_TimeSpan_CancellationToken_" data-uid="Rssdp.Infrastructure.SsdpDeviceLocatorBase.SearchAsync(System.TimeSpan,CancellationToken)">SearchAsync(TimeSpan, CancellationToken)</h4>
+  <h4 id="Rssdp_Infrastructure_SsdpDeviceLocatorBase_SearchAsync_System_Threading_CancellationToken_" data-uid="Rssdp.Infrastructure.SsdpDeviceLocatorBase.SearchAsync(System.Threading.CancellationToken)">SearchAsync(CancellationToken)</h4>
+  <div class="markdown level1 summary"><p>Performs a search for all devices using the default search timeout.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;IEnumerable&lt;DiscoveredSsdpDevice&gt;&gt; SearchAsync(CancellationToken cancellationToken = default(CancellationToken))</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Threading.CancellationToken</span></td>
+        <td><span class="parametername">cancellationToken</span></td>
+        <td><p>An optional <span class="xref">System.Threading.CancellationToken</span> that can be used to cancel the search request.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<span class="xref">System.Collections.Generic.IEnumerable</span>&lt;<a class="xref" href="Rssdp.DiscoveredSsdpDevice.html">DiscoveredSsdpDevice</a>&gt;&gt;</td>
+        <td><p>A task whose result is an <span class="xref">System.Collections.Generic.IEnumerable&lt;T&gt;</span> of <a class="xref" href="Rssdp.DiscoveredSsdpDevice.html">DiscoveredSsdpDevice</a> instances, representing all found devices.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="Rssdp_Infrastructure_SsdpDeviceLocatorBase_SearchAsync_" data-uid="Rssdp.Infrastructure.SsdpDeviceLocatorBase.SearchAsync*"></a>
+  <h4 id="Rssdp_Infrastructure_SsdpDeviceLocatorBase_SearchAsync_System_TimeSpan_System_Threading_CancellationToken_" data-uid="Rssdp.Infrastructure.SsdpDeviceLocatorBase.SearchAsync(System.TimeSpan,System.Threading.CancellationToken)">SearchAsync(TimeSpan, CancellationToken)</h4>
   <div class="markdown level1 summary"><p>Performs a search for all devices using the specified search timeout.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public Task&lt;IEnumerable&lt;DiscoveredSsdpDevice&gt;&gt; SearchAsync(TimeSpan searchWaitTime, CancellationToken cancellationToken = null)</code></pre>
+    <pre><code class="lang-csharp hljs">public Task&lt;IEnumerable&lt;DiscoveredSsdpDevice&gt;&gt; SearchAsync(TimeSpan searchWaitTime, CancellationToken cancellationToken = default(CancellationToken))</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -716,9 +720,9 @@
 </td>
       </tr>
       <tr>
-        <td><span class="xref">CancellationToken</span></td>
+        <td><span class="xref">System.Threading.CancellationToken</span></td>
         <td><span class="parametername">cancellationToken</span></td>
-        <td><p>An optional <see cref="!:CancellationToken"></see> that can be used to cancel the search request.</p>
+        <td><p>An optional <span class="xref">System.Threading.CancellationToken</span> that can be used to cancel the search request.</p>
 </td>
       </tr>
     </tbody>
@@ -733,7 +737,7 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">Task</span>&lt;<span class="xref">System.Collections.Generic.IEnumerable</span>&lt;<a class="xref" href="Rssdp.DiscoveredSsdpDevice.html">DiscoveredSsdpDevice</a>&gt;&gt;</td>
+        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<span class="xref">System.Collections.Generic.IEnumerable</span>&lt;<a class="xref" href="Rssdp.DiscoveredSsdpDevice.html">DiscoveredSsdpDevice</a>&gt;&gt;</td>
         <td><p>A task whose result is an <span class="xref">System.Collections.Generic.IEnumerable&lt;T&gt;</span> of <a class="xref" href="Rssdp.DiscoveredSsdpDevice.html">DiscoveredSsdpDevice</a> instances, representing all found devices.</p>
 </td>
       </tr>
@@ -817,7 +821,7 @@
   
   <h4 id="Rssdp_Infrastructure_SsdpDeviceLocatorBase_DeviceAvailable" data-uid="Rssdp.Infrastructure.SsdpDeviceLocatorBase.DeviceAvailable">DeviceAvailable</h4>
   <div class="markdown level1 summary"><p>Raised for when 
-<ul><li>An &apos;alive&apos; notification is received that a device, regardless of whether or not that device is not already in the cache or has previously raised this event.</li><li>For each item found during a device <a class="xref" href="Rssdp.Infrastructure.SsdpDeviceLocatorBase.html#Rssdp_Infrastructure_SsdpDeviceLocatorBase_SearchAsync_CancellationToken_">SearchAsync(CancellationToken)</a> (cached or not), allowing clients to respond to found devices before the entire search is complete.</li><li>Only if the notification type matches the <a class="xref" href="Rssdp.Infrastructure.SsdpDeviceLocatorBase.html#Rssdp_Infrastructure_SsdpDeviceLocatorBase_NotificationFilter">NotificationFilter</a> property. By default the filter is null, meaning all notifications raise events (regardless of ant </li></ul>
+<ul><li>An &apos;alive&apos; notification is received that a device, regardless of whether or not that device is not already in the cache or has previously raised this event.</li><li>For each item found during a device <a class="xref" href="Rssdp.Infrastructure.SsdpDeviceLocatorBase.html#Rssdp_Infrastructure_SsdpDeviceLocatorBase_SearchAsync_System_Threading_CancellationToken_">SearchAsync(CancellationToken)</a> (cached or not), allowing clients to respond to found devices before the entire search is complete.</li><li>Only if the notification type matches the <a class="xref" href="Rssdp.Infrastructure.SsdpDeviceLocatorBase.html#Rssdp_Infrastructure_SsdpDeviceLocatorBase_NotificationFilter">NotificationFilter</a> property. By default the filter is null, meaning all notifications raise events (regardless of ant </li></ul>
 <p>This event may be raised from a background thread, if interacting with UI or other objects with specific thread affinity invoking to the relevant thread is required.</p></p>
 </div>
   <div class="markdown level1 conceptual"></div>

@@ -5,11 +5,23 @@
   "files": [
     {
       "type": "ManagedReference",
+      "source_relative_path": "api/Rssdp.AggregateSsdpDeviceLocator.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Rssdp.AggregateSsdpDeviceLocator.html",
+          "hash": "Y45vsWU2Ljz8EVo8EYoYWU9/9rRQaGx1e7k0pW2BffI="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
       "source_relative_path": "api/Rssdp.CustomHttpHeader.yml",
       "output": {
         ".html": {
           "relative_path": "api/Rssdp.CustomHttpHeader.html",
-          "hash": "z+Whz2jDl9lirwU0wB6E9ZHLOxG3Jsqlkdg/D7bTx9o="
+          "hash": "99ckxg02dafTH9nwfNcM3+EW6+6OT7eAntv7e+eAw1M="
         }
       },
       "is_incremental": false,
@@ -21,7 +33,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Rssdp.CustomHttpHeadersCollection.html",
-          "hash": "hjFlfFjDTmfzX33Xedx86v4IbA8vCuV0sZQSW9VVf3s="
+          "hash": "lA+D0ov1AuxIeiIRjNe6INd51sXFRnKwse3JvVHtBMc="
         }
       },
       "is_incremental": false,
@@ -33,7 +45,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Rssdp.DeviceAvailableEventArgs.html",
-          "hash": "88uy/wIXuVS1ud/xAVXjjJSAyI13E46znMMJsoYMtK4="
+          "hash": "xP1k6YzBiwh8/5AbuMNEynrDYM6Ou+iWbJnfxvfen8M="
         }
       },
       "is_incremental": false,
@@ -45,7 +57,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Rssdp.DeviceEventArgs.html",
-          "hash": "G04Ik8GtCcfSH9Hd3kIE9afK2Ejp3Tjd2MaHOPG9L9s="
+          "hash": "6rv9CFBJRF43OGAfpNDz34Oh/s33qaeakvmecJhz0vA="
         }
       },
       "is_incremental": false,
@@ -57,7 +69,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Rssdp.DeviceNetworkType.html",
-          "hash": "nb0nPAxim7NuqQ5vTgpBCJGrpdqW/xiUl9sSAoYWWVE="
+          "hash": "FjfzVTFVpsd29KnX7ZXM5XpUSA0PbivvdLDwaNXbtRM="
         }
       },
       "is_incremental": false,
@@ -69,7 +81,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Rssdp.DeviceNetworkTypeExtensions.html",
-          "hash": "tgCUvrskTxRdSwPiHtqCYz1BVY66ZywlOy/0tI8Ez0g="
+          "hash": "sOWMwUlh5r2IlSoPR4cwUCPGj1GSd86uEc1W7GJZXMU="
         }
       },
       "is_incremental": false,
@@ -81,7 +93,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Rssdp.DeviceUnavailableEventArgs.html",
-          "hash": "rhWU2n33UICjg4Em+xtmNubA2i4aNeBO7QHrTBqpjgY="
+          "hash": "4jS+OsShPD3PS5LVhbHVvxLftLRGYOf06n8UJUdxRVQ="
         }
       },
       "is_incremental": false,
@@ -93,7 +105,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Rssdp.DiscoveredSsdpDevice.html",
-          "hash": "ZP55+exPnumk5cJXslRIzlLQsAspWyJp7k+9c+otvV8="
+          "hash": "knPMC9QO9b3I8TKxiJTR93yvoc3w2MQ8KFttq9WfiCk="
         }
       },
       "is_incremental": false,
@@ -105,7 +117,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Rssdp.ExceptionExtensions.html",
-          "hash": "fYskLgojgkk+s6r3i4+ukLkXjOQMMjhmbwTYngtd6gY="
+          "hash": "eWz9C1JMOjv6zeqLvYtDmDJBMO1Qx4HMSBRf+XtVIoo="
         }
       },
       "is_incremental": false,
@@ -117,7 +129,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Rssdp.ISsdpLogger.html",
-          "hash": "Zv+sl+kOZMdgB9mmtxtJg8kv0wS0uwS2O6tbYSk4TEI="
+          "hash": "lldT0BboAxIzv2AZuX2PtggqT02c3pPkaiQl5vOXj7g="
         }
       },
       "is_incremental": false,
@@ -129,7 +141,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Rssdp.Infrastructure.DisposableManagedObjectBase.html",
-          "hash": "3jGmGWfZADn3D4utg6Ds9QtHDJP1ig8DkCORlCWat+M="
+          "hash": "kuzTT5T5OgoESTJMI1bFMcgfckDWVK40ZfudQwZbfP8="
         }
       },
       "is_incremental": false,
@@ -141,7 +153,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Rssdp.Infrastructure.HttpParserBase-1.html",
-          "hash": "cQlzpR/tX9/E1l/XIYvtskooi0iw5bg3dN7gD6y0uOU="
+          "hash": "RQVM/cao6XGVAreyHOB0GCmuZ+YcAMdE2pTb4/X4Mp0="
         }
       },
       "is_incremental": false,
@@ -153,7 +165,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Rssdp.Infrastructure.HttpRequestParser.html",
-          "hash": "w/CFOAEGXJPDD9416Y6Zsa5S7dHS+YgZAQ30d+lT5Us="
+          "hash": "3m7sibnvuCY3JWjD/X05OSl3ylfyMeW6hbFRnvejfk0="
         }
       },
       "is_incremental": false,
@@ -165,7 +177,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Rssdp.Infrastructure.HttpResponseParser.html",
-          "hash": "XWGGSODxKY4fKV6kHkHF3y009kAw8pM57lG+OjhuRfE="
+          "hash": "WvTMH0Xn/90J9zmaNtNrdp3PTL5rPzW+J3HU6eeq6Ak="
         }
       },
       "is_incremental": false,
@@ -177,7 +189,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Rssdp.Infrastructure.ISocketFactory.html",
-          "hash": "+lL3uOpd0PseRjpAnZeLx+wQ5YsMBmEeeUd2Y7pfE1c="
+          "hash": "yq+7K4EgKkRLPp0JkMIwTigfnXilqhVmCUahb769qjc="
         }
       },
       "is_incremental": false,
@@ -189,7 +201,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Rssdp.Infrastructure.ISsdpCommunicationsServer.html",
-          "hash": "/12WQOG5NXAimr1EDmfbBfGYcSBTO45BSxNLxYtm+Uw="
+          "hash": "Fg/HD4hSZYm1xa/vGTDwo05HHJ6vlE+SXIpQ7Ep7WmQ="
         }
       },
       "is_incremental": false,
@@ -201,7 +213,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Rssdp.Infrastructure.ISsdpDeviceLocator.html",
-          "hash": "W8rt8weecsLP0XXFqvjghH/CLVt7gDDI4r13vQRhqxQ="
+          "hash": "nK33SXLNavmdKq5Of6tZIFzx7RRM2sMNFx7jsVW+HmU="
         }
       },
       "is_incremental": false,
@@ -213,7 +225,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Rssdp.Infrastructure.ISsdpDevicePublisher.html",
-          "hash": "FBXzKL2ZkAv5GB5ewmYewpXE3qE/+n+JmhTcpGu3p0s="
+          "hash": "b3HDU/SIydeEpiHxuxZdRad5h1vvvvJDvHj5XsQnoXc="
         }
       },
       "is_incremental": false,
@@ -225,7 +237,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Rssdp.Infrastructure.IUdpSocket.html",
-          "hash": "bHlpjQ/JX5G2nlCfVRk2/YdV6iNZSx5IYmc/axkmnkw="
+          "hash": "IZWVPsjRt48sb+mjJsj1umPSjtlxrOAHNUx4DkKR+R4="
         }
       },
       "is_incremental": false,
@@ -237,7 +249,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Rssdp.Infrastructure.IUpnpDeviceValidator.html",
-          "hash": "WVKfqRqgFA+Wt63E3mFBUvQFjeKD1rt8Fha3T+c3+Hg="
+          "hash": "Y0IyCRGzL5Eus5OapIPYBXe0CO9RYVVpSOYrr6Ueh+4="
         }
       },
       "is_incremental": false,
@@ -249,7 +261,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Rssdp.Infrastructure.ReceivedUdpData.html",
-          "hash": "F9E2uj1I88p1rs4JL9ocsII/WWUYmtAK8S1oPsy8qrM="
+          "hash": "6+ulHQXZOmy+DZN2oYCFTo+epihLdDQXtn05x9m+FI0="
         }
       },
       "is_incremental": false,
@@ -261,7 +273,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Rssdp.Infrastructure.RequestReceivedEventArgs.html",
-          "hash": "HGyw3bW3kKd2BCKJwM/Yz0uZDxl+MPFa7arNmbnzx8Y="
+          "hash": "TjzgOiU5g0Xak2BtVqC03Jx2/n5qW5UAGjBaAdosmiI="
         }
       },
       "is_incremental": false,
@@ -273,7 +285,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Rssdp.Infrastructure.ResponseReceivedEventArgs.html",
-          "hash": "NEvUSohkMwxNDW2D7j9H/xOvObjzmLtn1vf+eKYxivw="
+          "hash": "oCERV8xEEfPOpWrY4h5GqGXb9VpNr3DV07CDri7gU2c="
         }
       },
       "is_incremental": false,
@@ -285,7 +297,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Rssdp.Infrastructure.SsdpCommunicationsServer.html",
-          "hash": "hxt1mhU+pSGqt6Rw8VGSa+fe+wkKydJwQalEtKhqbq4="
+          "hash": "9LLMCMZwjF/cXdWvuBbsjRu88yNuxYGf9jXbDLODEDc="
         }
       },
       "is_incremental": false,
@@ -297,7 +309,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Rssdp.Infrastructure.SsdpConstants.html",
-          "hash": "4aDy6M5hC1oo/XbLt3dTlpTHV80ScMBHG1jbCB1rmP0="
+          "hash": "mu1HVCe4qu3tSuAXJlX1XLwAothoPdrdVBuY5pmxVAQ="
         }
       },
       "is_incremental": false,
@@ -309,7 +321,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Rssdp.Infrastructure.SsdpDeviceLocatorBase.html",
-          "hash": "Gzw1OeuJZ2A8HNULkYZ0hGmxD2aGoqHN+bAv6HsqU6Q="
+          "hash": "4MOeaNQ5QgIPswE18+ChEo9Dl8WeRYTeavqWqz+XEkc="
         }
       },
       "is_incremental": false,
@@ -321,7 +333,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Rssdp.Infrastructure.SsdpDevicePublisherBase.html",
-          "hash": "gKRWx2gNPDFlgGjIpcHYgIyz9sEfZt1JnW5Rk58tOTw="
+          "hash": "MbOrHa0mEQl7e1wdfpvS4m67PwKvOy1L3F8qp71ufAc="
         }
       },
       "is_incremental": false,
@@ -333,7 +345,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Rssdp.Infrastructure.UdpEndPoint.html",
-          "hash": "z06YzXXQLTGdzrkW1YDCFqIxMnwwobM7LtZUIr+SsCw="
+          "hash": "iGSeczjaUOUZ1Tw7BOG0AygJRfIsN5HKGf6+GLaIPoE="
         }
       },
       "is_incremental": false,
@@ -345,7 +357,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Rssdp.Infrastructure.Upnp10DeviceValidator.html",
-          "hash": "M6b+gdUGMn0L2mxt9G6Gz3RKYqS3rNpvuip1JNooy4M="
+          "hash": "zPRnTWiajCfxO4hADIDyLWXNcbmNMX3BaFb+IqGB0UQ="
         }
       },
       "is_incremental": false,
@@ -357,7 +369,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Rssdp.Infrastructure.html",
-          "hash": "J9bLv9GCsx5yFo2ugZkN65DsWYZF2OSBWv80UiskWZc="
+          "hash": "SyCQjaiKdJRj6bnNINTnqoKHTDGOiQpZ56HdW0Du1P0="
         }
       },
       "is_incremental": false,
@@ -369,7 +381,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Rssdp.NullLogger.html",
-          "hash": "6aXo6B2stX7Yqdbmw8ZDCBxLoO/EpdwJcYhm5EE1utk="
+          "hash": "PBQWJgSJPchO4q4S+4lFomeXl6Gge2cnGPeUb8reE7M="
         }
       },
       "is_incremental": false,
@@ -381,7 +393,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Rssdp.ServiceEventArgs.html",
-          "hash": "5zqz1UDEKDbHsYY7KWDZj2P//+0NYQRR2FpS62UF42c="
+          "hash": "9c1kwLYQFaRvHEzRKBM+xYzPRh5EB5cJHVSJgu6WbVY="
         }
       },
       "is_incremental": false,
@@ -393,7 +405,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Rssdp.SocketClosedException.html",
-          "hash": "uHBn+jV4m0s6U5wESteLWlQA9w7G7VUgiN6+vyxB+ks="
+          "hash": "r72opEKgaOliz6q6Tffqp2vY18hxdBbWthgeoFVRt58="
         }
       },
       "is_incremental": false,
@@ -405,7 +417,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Rssdp.SocketFactory.html",
-          "hash": "BgVhZiINvwLyDzT4MD7hI9U/YAJN7MGrQATUfZ5MlXg="
+          "hash": "8Dafx/BwZRdt3whSAI0SdOZNXMhlv6UTJk+MFE4Yg64="
         }
       },
       "is_incremental": false,
@@ -417,7 +429,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Rssdp.SsdpDevice.html",
-          "hash": "/vGlrwee4XPQBkLVMZi7ou6LjIwZ6bKUQ9R8o9qmuKw="
+          "hash": "c484AEXJNIycf7/rC/QoKd0FnjkCvU7tiuKw2gArMu0="
         }
       },
       "is_incremental": false,
@@ -429,7 +441,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Rssdp.SsdpDeviceExtensions.html",
-          "hash": "N8ZUP1a+tZ02SyvtAIAwWU5eThtS3yDZXU+6Z028t7c="
+          "hash": "Hv5RnmYT7Ou8mnSVatubwQC0hKArAu2sn9zXnrbjJLE="
         }
       },
       "is_incremental": false,
@@ -441,7 +453,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Rssdp.SsdpDeviceIcon.html",
-          "hash": "UdzyE2sSqzuWenLVEVUd13dwGz8kJnw2BEywSLDOu1c="
+          "hash": "rz3euVseDJtKqQkOBFOS0OSRGCavyr9DumlAdN+Am3g="
         }
       },
       "is_incremental": false,
@@ -453,7 +465,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Rssdp.SsdpDeviceLocator.html",
-          "hash": "rkGvXMLs6RGAODssTrDZUNa2GnTrGQrv0n7y4ll2kIw="
+          "hash": "57xwYEeHdPknz3U2ga1Es/ZoNDwBiiJ67z4uTy39qus="
         }
       },
       "is_incremental": false,
@@ -465,7 +477,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Rssdp.SsdpDevicePropertiesCollection.html",
-          "hash": "UCW2kaDqiYStgRHhVMJtieouIlrJScStBqEvblhMVTA="
+          "hash": "waCEGVDg3NxyU195ynFvvJGIPfORKVKffyNJeI6ur0Q="
         }
       },
       "is_incremental": false,
@@ -477,7 +489,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Rssdp.SsdpDeviceProperty.html",
-          "hash": "qnDMILuez2cHl1KSTb1IMVfU5ZGvOT1v63dtQWK3Ghs="
+          "hash": "10PXBlYe2Wp2Ht+IQnj2ftTHkcM82DSkrVQomAdFmSs="
         }
       },
       "is_incremental": false,
@@ -489,7 +501,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Rssdp.SsdpDevicePublisher.html",
-          "hash": "AG0GEfcWDllQd6HgnygRGj3rQZAIk1ecBRNz0i99K0I="
+          "hash": "7gXb15oSdltXaN9DkgZTtVuR3ZfmXopFPNQ+AWtrJHI="
         }
       },
       "is_incremental": false,
@@ -501,7 +513,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Rssdp.SsdpEmbeddedDevice.html",
-          "hash": "Jc3FT1xQVyJi3sJLGZMUy4eb2NsiP8FnPY2nqs97j1M="
+          "hash": "LNt+DRWtpZJFFcuJSFCBHgkAHkSX2sXxdGEw+8US25U="
         }
       },
       "is_incremental": false,
@@ -513,7 +525,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Rssdp.SsdpRootDevice.html",
-          "hash": "0Wu8BujWOrXiuTwPx7jti68y/w0Qf7hpd/8aNUplvTI="
+          "hash": "u7ydXJi8Yx3U8rlZlV0o8J7U9EPTUHj2e50uS4EXbYI="
         }
       },
       "is_incremental": false,
@@ -525,7 +537,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Rssdp.SsdpService.html",
-          "hash": "X9v9oqIOOCIDZD5xL/6LQU9CtZZJ5U3SHSNCCD2YLlw="
+          "hash": "v2x9qaMccq1ReM36xC51rPEZza/LykhxxVJ7IsQ0XRw="
         }
       },
       "is_incremental": false,
@@ -537,7 +549,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Rssdp.SsdpStandardsMode.html",
-          "hash": "Uq0+O7aPwfdTe/ZgPZjjZxmQLab6TgYbd651aKwSUGQ="
+          "hash": "oIu+oU7MZJFnzPt1VET+l4dH2+A9e+NB1+ntWgHEQNg="
         }
       },
       "is_incremental": false,
@@ -549,7 +561,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Rssdp.SsdpTraceLogger.html",
-          "hash": "IYNzZbt4S3tVZ3tQRQlsVqLE07P+DYNzgT72rn3cPjs="
+          "hash": "rZ0P16LobfV0MxlOhlqxfyCqQC4KK5dUz34YGbOXrxk="
         }
       },
       "is_incremental": false,
@@ -561,7 +573,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Rssdp.html",
-          "hash": "iNgJs4oiLTkIFt5SukJcRcsIekDV9ZSMOpOcaUqfKZk="
+          "hash": "67mHsZ4UQMo2UVl4F69CFmZ9pE0Ch2CSDBaTqm0p37g="
         }
       },
       "is_incremental": false,
@@ -584,7 +596,7 @@
       "output": {
         ".html": {
           "relative_path": "index.html",
-          "hash": "y54W2FOaqpTODctfQCNnPM68Ndh7/szih/5goVUNyp4="
+          "hash": "tlob2ldGlzfBQRlFEy5g64XYMUoRqQnIhBk0Am8Q9pA="
         }
       },
       "is_incremental": false,
@@ -611,7 +623,7 @@
         "ManagedReferenceDocumentProcessor": {
           "can_incremental": false,
           "incrementalPhase": "build",
-          "total_file_count": 47,
+          "total_file_count": 48,
           "skipped_file_count": 0
         },
         "ResourceDocumentProcessor": {
