@@ -1,4 +1,4 @@
-name: NuGet Publish
+name: RSSDP NuGet Publish
 
 on:
   workflow_dispatch:
