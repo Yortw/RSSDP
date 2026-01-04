@@ -1,4 +1,4 @@
-# (Really) Simple Service Discovery Protocol For .Net
+﻿# (Really) Simple Service Discovery Protocol For .Net
 
 ## What is RSSDP ?
 RSSDP is a 100% .Net implementation of the Simple Service Discovery (SSDP) protocol that is part of the Universal Plug and Play (UPnP) standard. SSDP allows you
@@ -180,6 +180,51 @@ var devicePublisher = new SsdpDevicePublisher(IPAddress.IPv6Any.ToString());
 var devicePublisher = new SsdpDevicePublisher("fe80::dc06:c198:7078:afdd");
 var deviceLocator = new SsdpDeviceLocator("fe80::dc06:c198:7078:afdd");
 ```
+
+### Android Permissions
+The RSSDP package tests solution in this repo contains a working (device search) Android sample which can be used as a reference.
+You'll require the following permissions in your AndroidManifest.xml file;
+```xml
+<uses-permission android:name="android.permission.INTERNET" />
+<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+<uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+<uses-permission android:name="android.permission.CHANGE_WIFI_MULTICAST_STATE" />
+```
+
+#### iOS Permissions
+iOS requires apps to declare the types of network services they intend to use in their Info.plist file. I don't have the hardware to test this so I can't provide a guaranteed working example, 
+but the MAUI project in the Rssdp package tests solution contains an iOS project which may be of some help.
+
+iOS requires explicit privacy text and an entitlement to use UDP multicast (needed by SSDP on 239.255.255.250:1900). Configure the following:
+
+- Add `NSLocalNetworkUsageDescription` to `Info.plist` with a human-readable reason. iOS will prompt the user to allow local network access.
+- Add the Multicast Networking entitlement (`com.apple.developer.networking.multicast`) in your app entitlements and set it to true.
+
+Example `Info.plist` entries:
+
+```xml
+<key>NSLocalNetworkUsageDescription</key>
+<string>This app discovers local devices using SSDP multicast.</string>
+```
+
+Example `Entitlements.plist` entries:
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+  <dict>
+    <key>com.apple.developer.networking.multicast</key>
+    <true/>
+  </dict>
+</plist>
+```
+
+Notes:
+
+- Test on a physical device; the iOS simulator does not fully support multicast networking.
+- Ensure the device is on a Wi‑Fi network that permits multicast/broadcast. Some routers/APs block multicast by default.
+- For IPv6 networks, create `SsdpDeviceLocator` or `SsdpDevicePublisher` with an IPv6 address if needed (see IPv6 support section above).
 
 #### Migrating from older versions of RSSDP
 V5 introduces some breaking changes. These should be pretty minor and mostly revolve around improving nullability support. You'll find some classes no longer have parameterless constructors, and some properties are now read-only.
