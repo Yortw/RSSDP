@@ -18,20 +18,22 @@
 		<PackageIcon>RssdpIcon.png</PackageIcon>
 		<PackageReadmeFile>README.md</PackageReadmeFile>
 		<PackageTags>ssdp discovery device service protocol upnp</PackageTags>
-		<PackageReleaseNotes>* Modernised solution to use single multi-target project, in built package creation etc.
-* Dropped unsupported/dead platforms
-* Added support for newer platforms
-* Modernised internal code with newer syntax
-* Add nullability annotations/support
-* Updated/reduced dependencies
-* Added activity tracing, an be connected to logging systems/open API/application insights etc.
-* Fixed some possible hangs/race conditions on socket handling
-* Added support for cancellation tokens on the location SearchAsync methods
-* Added AggregateSsdpDeviceLocator simplifying searching across multiple network adapters
-* Changed to use github actions for builds/tests/publishing
-* Update sample and package test projects
-* Minor updates to readme etc.
-* Note: there are some breaking changes at the code level which may or may not affect client application code depending on your usage</PackageReleaseNotes>
+		<PackageReleaseNotes>
+			* Modernised solution to use single multi-target project, in built package creation etc.
+			* Dropped unsupported/dead platforms
+			* Added support for newer platforms
+			* Modernised internal code with newer syntax
+			* Add nullability annotations/support
+			* Updated/reduced dependencies
+			* Added activity tracing, an be connected to logging systems/open API/application insights etc.
+			* Fixed some possible hangs/race conditions on socket handling
+			* Added support for cancellation tokens on the location SearchAsync methods
+			* Added AggregateSsdpDeviceLocator simplifying searching across multiple network adapters
+			* Changed to use github actions for builds/tests/publishing
+			* Update sample and package test projects
+			* Minor updates to readme etc.
+			* Improved XML reading for device description documents, making it more secure and tolerant of bad characters, and added support for custom xml reader settings.
+			* Note: there are some breaking changes at the code level which may or may not affect client application code depending on your usage</PackageReleaseNotes>
 		<RepositoryType>git</RepositoryType>
 		<RepositoryUrl>https://github.com/Yortw/RSSDP.git</RepositoryUrl>
 		<PackageLicenseExpression>MIT</PackageLicenseExpression>

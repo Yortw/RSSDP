@@ -405,7 +405,7 @@
   
   <a id="Rssdp_SsdpRootDevice__ctor_" data-uid="Rssdp.SsdpRootDevice.#ctor*"></a>
   <h4 id="Rssdp_SsdpRootDevice__ctor_System_Uri_System_TimeSpan_System_String_" data-uid="Rssdp.SsdpRootDevice.#ctor(System.Uri,System.TimeSpan,System.String)">SsdpRootDevice(Uri, TimeSpan, String)</h4>
-  <div class="markdown level1 summary"><p>Deserialisation constructor.</p>
+  <div class="markdown level1 summary"><p>Partial deserialisation constructor.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
@@ -438,6 +438,74 @@
         <td><span class="xref">System.String</span></td>
         <td><span class="parametername">deviceDescriptionXml</span></td>
         <td><p>The device description XML as a string.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.ArgumentNullException</span></td>
+        <td><p>Thrown if the <code data-dev-comment-type="paramref" class="paramref">deviceDescriptionXml</code> or <code data-dev-comment-type="paramref" class="paramref">location</code> arguments are null.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.ArgumentException</span></td>
+        <td><p>Thrown if the <code data-dev-comment-type="paramref" class="paramref">deviceDescriptionXml</code> argument is empty.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="Rssdp_SsdpRootDevice__ctor_" data-uid="Rssdp.SsdpRootDevice.#ctor*"></a>
+  <h4 id="Rssdp_SsdpRootDevice__ctor_System_Uri_System_TimeSpan_System_String_System_Nullable_XmlReaderSettings__" data-uid="Rssdp.SsdpRootDevice.#ctor(System.Uri,System.TimeSpan,System.String,System.Nullable{XmlReaderSettings})">SsdpRootDevice(Uri, TimeSpan, String, Nullable&lt;XmlReaderSettings&gt;)</h4>
+  <div class="markdown level1 summary"><p>Full deserialisation constructor.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public SsdpRootDevice(Uri location, TimeSpan cacheLifetime, string deviceDescriptionXml, XmlReaderSettings? xmlReaderSettings)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Uri</span></td>
+        <td><span class="parametername">location</span></td>
+        <td><p>The url from which the device description document was retrieved.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.TimeSpan</span></td>
+        <td><span class="parametername">cacheLifetime</span></td>
+        <td><p>A <span class="xref">System.TimeSpan</span> representing the time maximum period of time the device description can be cached for.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">deviceDescriptionXml</span></td>
+        <td><p>The device description XML as a string.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Nullable</span>&lt;<span class="xref">XmlReaderSettings</span>&gt;</td>
+        <td><span class="parametername">xmlReaderSettings</span></td>
+        <td><p>A <see cref="!:XmlReaderSettings"></see> providing options for how to read and process the XML in <code data-dev-comment-type="paramref" class="paramref">deviceDescriptionXml</code>. If null, default settings are used.</p>
 </td>
       </tr>
     </tbody>

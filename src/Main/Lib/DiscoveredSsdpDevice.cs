@@ -2,6 +2,7 @@ using System;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Threading.Tasks;
+using System.Xml;
 
 namespace Rssdp
 {
@@ -110,7 +111,7 @@ namespace Rssdp
 		{
 			var device = _Device;
 			if (device == null || this.IsExpired())
-				return await GetDeviceInfo(GetDefaultClient());
+				return await GetDeviceInfo(GetDefaultClient()).ConfigureAwait(false);
 			else
 				return device;
 		}
@@ -130,19 +131,38 @@ namespace Rssdp
 		/// <returns>An <see cref="SsdpDevice"/> instance describing the full device details.</returns>
 		public async Task<SsdpRootDevice> GetDeviceInfo(HttpClient downloadHttpClient)
 		{
+			return await GetDeviceInfo(downloadHttpClient, null).ConfigureAwait(false);
+		}
+
+		/// <summary>
+		/// Retrieves the device description document specified by the <see cref="DescriptionLocation"/> property using the provided <see cref="System.Net.Http.HttpClient"/> instance.
+		/// </summary>
+		/// <remarks>
+		/// <para>This method may choose to cache (or return cached) information if called multiple times within the <see cref="CacheLifetime"/> period.</para>
+		/// <para>This method performs no error handling, if an exception occurs downloading or parsing the document it will be thrown to the calling code. Ensure you setup correct error handling for these scenarios.</para>
+		/// </remarks>
+		/// <param name="downloadHttpClient">A <see cref="System.Net.Http.HttpClient"/> to use when downloading the document data.</param>
+		/// <param name="xmlReaderSettings">A <see cref="XmlReaderSettings"/> instance used to customise the reading and processing of the XML retrieved from the device. If null, default settings are used.</param>
+		/// <exception cref="System.Exception">This method using an HttpClient instance to retrieve the device description document, and as such any exception that can be thrown by HttpClient may be rethrown by this method.
+		/// On the UWP platform this is likely to be a <see cref="System.Exception"/> instance and the hresult can be checked to determine the exact nature of the error. On other platforms it is likely to be a System.Net.WebException or System.Net.Http.HttpRequestException.
+		/// Check the documentation for HttpClient on the platform(s) you're using.</exception>
+		/// <exception cref="System.InvalidOperationException">Thrown if the <see cref="DescriptionLocation"/> property is not set.</exception>
+		/// <returns>An <see cref="SsdpDevice"/> instance describing the full device details.</returns>
+		public async Task<SsdpRootDevice> GetDeviceInfo(HttpClient downloadHttpClient, XmlReaderSettings? xmlReaderSettings)
+		{
 			if (_Device == null || this.IsExpired())
 			{
 				var descriptionLocation = this.DescriptionLocation;
 				if (descriptionLocation == null)
 					throw new InvalidOperationException("DescriptionLocation property is not set.");
 
-				var rawDescriptionDocument = await downloadHttpClient.GetAsync(descriptionLocation);
+				var rawDescriptionDocument = await downloadHttpClient.GetAsync(descriptionLocation).ConfigureAwait(false);
 				rawDescriptionDocument.EnsureSuccessStatusCode();
 
 				// Not using ReadAsStringAsync() here as some devices return the content type as utf-8 not UTF-8,
 				// which causes an (unneccesary) exception.
-				var data = await rawDescriptionDocument.Content.ReadAsByteArrayAsync();
-				_Device = new SsdpRootDevice(descriptionLocation, this.CacheLifetime, System.Text.UTF8Encoding.UTF8.GetString(data, 0, data.Length));
+				var data = await rawDescriptionDocument.Content.ReadAsByteArrayAsync().ConfigureAwait(false);
+				_Device = new SsdpRootDevice(descriptionLocation, this.CacheLifetime, System.Text.UTF8Encoding.UTF8.GetString(data, 0, data.Length), xmlReaderSettings);
 			}
 
 			return _Device;

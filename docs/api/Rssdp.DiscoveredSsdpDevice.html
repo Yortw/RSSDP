@@ -610,6 +610,84 @@ Check the documentation for HttpClient on the platform(s) you&apos;re using.</p>
   </table>
   
   
+  <a id="Rssdp_DiscoveredSsdpDevice_GetDeviceInfo_" data-uid="Rssdp.DiscoveredSsdpDevice.GetDeviceInfo*"></a>
+  <h4 id="Rssdp_DiscoveredSsdpDevice_GetDeviceInfo_HttpClient_System_Nullable_XmlReaderSettings__" data-uid="Rssdp.DiscoveredSsdpDevice.GetDeviceInfo(HttpClient,System.Nullable{XmlReaderSettings})">GetDeviceInfo(HttpClient, Nullable&lt;XmlReaderSettings&gt;)</h4>
+  <div class="markdown level1 summary"><p>Retrieves the device description document specified by the <a class="xref" href="Rssdp.DiscoveredSsdpDevice.html#Rssdp_DiscoveredSsdpDevice_DescriptionLocation">DescriptionLocation</a> property using the provided <see cref="!:System.Net.Http.HttpClient"></see> instance.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public async Task&lt;SsdpRootDevice&gt; GetDeviceInfo(HttpClient downloadHttpClient, XmlReaderSettings? xmlReaderSettings)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">HttpClient</span></td>
+        <td><span class="parametername">downloadHttpClient</span></td>
+        <td><p>A <see cref="!:System.Net.Http.HttpClient"></see> to use when downloading the document data.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Nullable</span>&lt;<span class="xref">XmlReaderSettings</span>&gt;</td>
+        <td><span class="parametername">xmlReaderSettings</span></td>
+        <td><p>A <see cref="!:XmlReaderSettings"></see> instance used to customise the reading and processing of the XML retrieved from the device. If null, default settings are used.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<a class="xref" href="Rssdp.SsdpRootDevice.html">SsdpRootDevice</a>&gt;</td>
+        <td><p>An <a class="xref" href="Rssdp.SsdpDevice.html">SsdpDevice</a> instance describing the full device details.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="Rssdp_DiscoveredSsdpDevice_GetDeviceInfo_HttpClient_System_Nullable_XmlReaderSettings___remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>This method may choose to cache (or return cached) information if called multiple times within the <a class="xref" href="Rssdp.DiscoveredSsdpDevice.html#Rssdp_DiscoveredSsdpDevice_CacheLifetime">CacheLifetime</a> period.</p>
+<p>This method performs no error handling, if an exception occurs downloading or parsing the document it will be thrown to the calling code. Ensure you setup correct error handling for these scenarios.</p>
+</div>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Exception</span></td>
+        <td><p>This method using an HttpClient instance to retrieve the device description document, and as such any exception that can be thrown by HttpClient may be rethrown by this method.
+On the UWP platform this is likely to be a <span class="xref">System.Exception</span> instance and the hresult can be checked to determine the exact nature of the error. On other platforms it is likely to be a System.Net.WebException or System.Net.Http.HttpRequestException.
+Check the documentation for HttpClient on the platform(s) you&apos;re using.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.InvalidOperationException</span></td>
+        <td><p>Thrown if the <a class="xref" href="Rssdp.DiscoveredSsdpDevice.html#Rssdp_DiscoveredSsdpDevice_DescriptionLocation">DescriptionLocation</a> property is not set.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
   <a id="Rssdp_DiscoveredSsdpDevice_IsExpired_" data-uid="Rssdp.DiscoveredSsdpDevice.IsExpired*"></a>
   <h4 id="Rssdp_DiscoveredSsdpDevice_IsExpired" data-uid="Rssdp.DiscoveredSsdpDevice.IsExpired">IsExpired()</h4>
   <div class="markdown level1 summary"><p>Returns true if this device information has expired, based on the current date/time, and the <a class="xref" href="Rssdp.DiscoveredSsdpDevice.html#Rssdp_DiscoveredSsdpDevice_CacheLifetime">CacheLifetime</a> &amp; <a class="xref" href="Rssdp.DiscoveredSsdpDevice.html#Rssdp_DiscoveredSsdpDevice_AsAt">AsAt</a> properties.</p>

@@ -577,6 +577,15 @@ references:
   commentId: M:Rssdp.DiscoveredSsdpDevice.GetDeviceInfo(HttpClient)
   fullName: Rssdp.DiscoveredSsdpDevice.GetDeviceInfo(HttpClient)
   nameWithType: DiscoveredSsdpDevice.GetDeviceInfo(HttpClient)
+- uid: Rssdp.DiscoveredSsdpDevice.GetDeviceInfo(HttpClient,System.Nullable{XmlReaderSettings})
+  name: GetDeviceInfo(HttpClient, Nullable<XmlReaderSettings>)
+  href: api/Rssdp.DiscoveredSsdpDevice.html#Rssdp_DiscoveredSsdpDevice_GetDeviceInfo_HttpClient_System_Nullable_XmlReaderSettings__
+  commentId: M:Rssdp.DiscoveredSsdpDevice.GetDeviceInfo(HttpClient,System.Nullable{XmlReaderSettings})
+  name.vb: GetDeviceInfo(HttpClient, Nullable(Of XmlReaderSettings))
+  fullName: Rssdp.DiscoveredSsdpDevice.GetDeviceInfo(HttpClient, System.Nullable<XmlReaderSettings>)
+  fullName.vb: Rssdp.DiscoveredSsdpDevice.GetDeviceInfo(HttpClient, System.Nullable(Of XmlReaderSettings))
+  nameWithType: DiscoveredSsdpDevice.GetDeviceInfo(HttpClient, Nullable<XmlReaderSettings>)
+  nameWithType.vb: DiscoveredSsdpDevice.GetDeviceInfo(HttpClient, Nullable(Of XmlReaderSettings))
 - uid: Rssdp.DiscoveredSsdpDevice.GetDeviceInfo*
   name: GetDeviceInfo
   href: api/Rssdp.DiscoveredSsdpDevice.html#Rssdp_DiscoveredSsdpDevice_GetDeviceInfo_
@@ -3240,6 +3249,15 @@ references:
   commentId: M:Rssdp.SsdpRootDevice.#ctor(System.Uri,System.TimeSpan,System.String)
   fullName: Rssdp.SsdpRootDevice.SsdpRootDevice(System.Uri, System.TimeSpan, System.String)
   nameWithType: SsdpRootDevice.SsdpRootDevice(Uri, TimeSpan, String)
+- uid: Rssdp.SsdpRootDevice.#ctor(System.Uri,System.TimeSpan,System.String,System.Nullable{XmlReaderSettings})
+  name: SsdpRootDevice(Uri, TimeSpan, String, Nullable<XmlReaderSettings>)
+  href: api/Rssdp.SsdpRootDevice.html#Rssdp_SsdpRootDevice__ctor_System_Uri_System_TimeSpan_System_String_System_Nullable_XmlReaderSettings__
+  commentId: M:Rssdp.SsdpRootDevice.#ctor(System.Uri,System.TimeSpan,System.String,System.Nullable{XmlReaderSettings})
+  name.vb: SsdpRootDevice(Uri, TimeSpan, String, Nullable(Of XmlReaderSettings))
+  fullName: Rssdp.SsdpRootDevice.SsdpRootDevice(System.Uri, System.TimeSpan, System.String, System.Nullable<XmlReaderSettings>)
+  fullName.vb: Rssdp.SsdpRootDevice.SsdpRootDevice(System.Uri, System.TimeSpan, System.String, System.Nullable(Of XmlReaderSettings))
+  nameWithType: SsdpRootDevice.SsdpRootDevice(Uri, TimeSpan, String, Nullable<XmlReaderSettings>)
+  nameWithType.vb: SsdpRootDevice.SsdpRootDevice(Uri, TimeSpan, String, Nullable(Of XmlReaderSettings))
 - uid: Rssdp.SsdpRootDevice.#ctor*
   name: SsdpRootDevice
   href: api/Rssdp.SsdpRootDevice.html#Rssdp_SsdpRootDevice__ctor_

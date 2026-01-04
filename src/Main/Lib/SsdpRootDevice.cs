@@ -1,4 +1,5 @@
 using System;
+using System.IO;
 using System.Xml;
 using Rssdp.Infrastructure;
 
@@ -18,6 +19,20 @@ namespace Rssdp
 
 		private Uri? _UrlBase;
 
+		//Block external entity resolution, DTD attacks, and limit resource usage, disable character checks.
+		private static readonly XmlReaderSettings SecureLenientXmlReaderSettings = new () 
+		{ 
+			CheckCharacters = false, 
+			MaxCharactersInDocument = 2097152, //2MB, prevent DOS attacks with large documents,
+			MaxCharactersFromEntities = 1048576, //1MB from entities
+			ValidationType = ValidationType.None,
+			DtdProcessing = DtdProcessing.Ignore,
+			XmlResolver = null,
+			IgnoreComments = true,
+			IgnoreWhitespace = true,
+			IgnoreProcessingInstructions = true
+		};
+
 		#endregion
 
 		#region Constructors
@@ -30,7 +45,7 @@ namespace Rssdp
 		}
 
 		/// <summary>
-		/// Deserialisation constructor.
+		/// Partial deserialisation constructor.
 		/// </summary>
 		/// <param name="location">The url from which the device description document was retrieved.</param>
 		/// <param name="cacheLifetime">A <see cref="System.TimeSpan"/> representing the time maximum period of time the device description can be cached for.</param>
@@ -38,6 +53,20 @@ namespace Rssdp
 		/// <exception cref="System.ArgumentNullException">Thrown if the <paramref name="deviceDescriptionXml"/> or <paramref name="location"/> arguments are null.</exception>
 		/// <exception cref="System.ArgumentException">Thrown if the <paramref name="deviceDescriptionXml"/> argument is empty.</exception>
 		public SsdpRootDevice(Uri location, TimeSpan cacheLifetime, string deviceDescriptionXml)
+			: this(location, cacheLifetime, deviceDescriptionXml, null)
+		{
+		}
+
+		/// <summary>
+		/// Full deserialisation constructor.
+		/// </summary>
+		/// <param name="location">The url from which the device description document was retrieved.</param>
+		/// <param name="cacheLifetime">A <see cref="System.TimeSpan"/> representing the time maximum period of time the device description can be cached for.</param>
+		/// <param name="deviceDescriptionXml">The device description XML as a string.</param>
+		/// <param name="xmlReaderSettings">A <see cref="XmlReaderSettings"/> providing options for how to read and process the XML in <paramref name="deviceDescriptionXml"/>. If null, default settings are used.</param>
+		/// <exception cref="System.ArgumentNullException">Thrown if the <paramref name="deviceDescriptionXml"/> or <paramref name="location"/> arguments are null.</exception>
+		/// <exception cref="System.ArgumentException">Thrown if the <paramref name="deviceDescriptionXml"/> argument is empty.</exception>
+		public SsdpRootDevice(Uri location, TimeSpan cacheLifetime, string deviceDescriptionXml, XmlReaderSettings? xmlReaderSettings)
 			: base(deviceDescriptionXml)
 		{
 			if (location == null) throw new ArgumentNullException(nameof(location));
@@ -45,7 +74,7 @@ namespace Rssdp
 			this.CacheLifetime = cacheLifetime;
 			this.Location = location;
 
-			LoadFromDescriptionDocument(deviceDescriptionXml);
+			LoadFromDescriptionDocument(deviceDescriptionXml, xmlReaderSettings);
 		}
 
 		#endregion
@@ -139,11 +168,10 @@ namespace Rssdp
 
 		#region Deserialisation Methods
 
-		private void LoadFromDescriptionDocument(string deviceDescriptionXml)
+		private void LoadFromDescriptionDocument(string deviceDescriptionXml, XmlReaderSettings? xmlReaderSettings)
 		{
-			using (var ms = new System.IO.MemoryStream(System.Text.UTF8Encoding.UTF8.GetBytes(deviceDescriptionXml)))
+			using (var reader = LoadXmlStringAsReader(deviceDescriptionXml, xmlReaderSettings ?? SecureLenientXmlReaderSettings))
 			{
-				var reader = XmlReader.Create(ms);
 				while (!reader.EOF)
 				{
 					reader.Read();
@@ -165,7 +193,63 @@ namespace Rssdp
 			}
 		}
 
+		private static XmlReader LoadXmlStringAsReader(string deviceDescriptionXml, XmlReaderSettings xmlReaderSettings)
+		{
+			try
+			{
+				return XmlReader.Create(new StringReader(deviceDescriptionXml), xmlReaderSettings);
+			}
+			catch (XmlException)
+			{
+				//Try sanitizing the string to remove invalid XML characters
+				string sanitized = SanitizeXmlString(deviceDescriptionXml);
+				return XmlReader.Create(new StringReader(sanitized), xmlReaderSettings);
+			}
+		}
+
 		#endregion
+
+		private static string SanitizeXmlString(string xml)
+		{
+			if (string.IsNullOrEmpty(xml)) return xml;
+			// Filter out characters that are not allowed by XML 1.0.
+			// Allowed ranges: 0x9, 0xA, 0xD, 0x20-0xD7FF, 0xE000-0xFFFD, 0x10000-0x10FFFF
+			var sb = new System.Text.StringBuilder(xml.Length);
+			for (int i = 0; i < xml.Length; i++)
+			{
+				int codePoint;
+				char c = xml[i];
+				if (char.IsHighSurrogate(c) && i + 1 < xml.Length && char.IsLowSurrogate(xml[i + 1]))
+				{
+					codePoint = char.ConvertToUtf32(c, xml[i + 1]);
+					// Advance past the low surrogate
+					i++;
+				}
+				else
+				{
+					codePoint = c;
+				}
+
+				bool allowed =
+					(codePoint == 0x9) ||
+					(codePoint == 0xA) ||
+					(codePoint == 0xD) ||
+					(codePoint >= 0x20 && codePoint <= 0xD7FF) ||
+					(codePoint >= 0xE000 && codePoint <= 0xFFFD) ||
+					(codePoint >= 0x10000 && codePoint <= 0x10FFFF);
+
+				if (allowed)
+				{
+					// Append as original sequence
+					if (codePoint <= 0xFFFF)
+						sb.Append((char)codePoint);
+					else
+						sb.Append(char.ConvertFromUtf32(codePoint));
+				}
+				// else skip invalid code point (e.g., U+0000)
+			}
+			return sb.ToString();
+		}
 
 		#endregion
 

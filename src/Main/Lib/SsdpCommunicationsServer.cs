@@ -321,7 +321,7 @@ namespace Rssdp.Infrastructure
 						{
 							if (this.IsDisposed) return; //No error or reconnect if we're shutdown.
 
-							await ReconnectBroadcastListeningSocket();
+							await ReconnectBroadcastListeningSocket().ConfigureAwait(false);
 							cancelled = true;
 							break;
 						}
@@ -330,13 +330,13 @@ namespace Rssdp.Infrastructure
 							cancelled = true;
 						}
 					}
-				});
+				}).ConfigureAwait(false);
 			}
 			catch
 			{
 				if (this.IsDisposed) return;
 
-				await ReconnectBroadcastListeningSocket();
+				await ReconnectBroadcastListeningSocket().ConfigureAwait(false);
 			}
 		}
 
@@ -364,7 +364,7 @@ namespace Rssdp.Infrastructure
 				}
 				catch
 				{
-					await Task.Delay(30000);
+					await Task.Delay(30000).ConfigureAwait(false);
 				}
 			}
 		}
