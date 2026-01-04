@@ -15,6 +15,8 @@ namespace Rssdp
 	public sealed class AggregateSsdpDeviceLocator : IDisposable, ISsdpDeviceLocator
 	{
 		private readonly List<SsdpDeviceLocator> _Locators;
+		private readonly List<string> _AdapterIps = new List<string>();
+		private readonly ISsdpLogger? _Logger;
 		private string? _NotificationFilter;
 		private bool _IsSearching;
 
@@ -34,13 +36,17 @@ namespace Rssdp
 		/// <param name="localIpAddresses">A collection of local adapter IP addresses to bind individual locators to. Null/empty entries are ignored. Must contain at least one valid address.</param>
 		/// <exception cref="ArgumentNullException">Thrown when <paramref name="localIpAddresses"/> is null.</exception>
 		/// <exception cref="ArgumentException">Thrown when no valid IP addresses are provided.</exception>
-		public AggregateSsdpDeviceLocator(IEnumerable<string> localIpAddresses)
+		public AggregateSsdpDeviceLocator(IEnumerable<string> localIpAddresses, ISsdpLogger? logger = null)
 		{
 			if (localIpAddresses == null) throw new ArgumentNullException(nameof(localIpAddresses));
 			var list = localIpAddresses.Where(a => !string.IsNullOrWhiteSpace(a)).Distinct().ToList();
 			if (list.Count == 0) throw new ArgumentException("No IP addresses provided.", nameof(localIpAddresses));
 
+			_Logger = logger;
+			_Logger?.LogVerbose($"AggregateSsdpDeviceLocator initializing {list.Count} adapter(s).");
+
 			_Locators = list.Select(ip => new SsdpDeviceLocator(ip)).ToList();
+			_AdapterIps.AddRange(list);
 
 			foreach (var locator in _Locators)
 			{
@@ -88,7 +94,14 @@ namespace Rssdp
 		{
 			foreach (var locator in _Locators)
 			{
-				locator.StartListeningForNotifications();
+				try
+				{
+					locator.StartListeningForNotifications();
+				}
+				catch (Exception ex)
+				{
+					_Logger?.LogWarning($"Failed to start notifications on adapter: {ex.Message}");
+				}
 			}
 		}
 
@@ -99,7 +112,14 @@ namespace Rssdp
 		{
 			foreach (var locator in _Locators)
 			{
-				locator.StopListeningForNotifications();
+				try
+				{
+					locator.StopListeningForNotifications();
+				}
+				catch (Exception ex)
+				{
+					_Logger?.LogWarning($"Failed to stop notifications on adapter: {ex.Message}");
+				}
 			}
 		}
 
@@ -173,7 +193,18 @@ namespace Rssdp
 				}
 				catch (AggregateException)
 				{
-					// Ignore here; we'll inspect individual task statuses below
+					// Inspect individual task statuses below
+				}
+
+				// Log any task failures against their adapter IP
+				for (int i = 0; i < tasks.Count; i++)
+				{
+					var task = tasks[i];
+					if (task.IsFaulted)
+					{
+						var ip = i < _AdapterIps.Count ? _AdapterIps[i] : "unknown";
+						_Logger?.LogWarning($"Adapter {ip} search failed: {task.Exception?.GetBaseException().Message}");
+					}
 				}
 
 				var successfulResults = tasks
@@ -186,12 +217,15 @@ namespace Rssdp
 					var firstFault = tasks.FirstOrDefault(t => t.IsFaulted);
 					if (firstFault?.Exception != null)
 					{
+						_Logger?.LogError($"All adapter searches failed: {firstFault.Exception.GetBaseException().Message}");
 						throw firstFault.Exception.Flatten();
 					}
+					_Logger?.LogWarning("All adapter searches returned no results.");
 					// Otherwise return empty
 					return Array.Empty<DiscoveredSsdpDevice>();
 				}
 
+				_Logger?.LogVerbose($"Merging results from {successfulResults.Count()} adapter(s).");
 				// Flatten and de-duplicate by USN and DescriptionLocation from successful tasks only.
 				merged = successfulResults
 					.GroupBy(d => new { d.Usn, d.DescriptionLocation })
