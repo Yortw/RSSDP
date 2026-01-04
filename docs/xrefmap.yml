@@ -13,15 +13,24 @@ references:
   commentId: T:Rssdp.AggregateSsdpDeviceLocator
   fullName: Rssdp.AggregateSsdpDeviceLocator
   nameWithType: AggregateSsdpDeviceLocator
-- uid: Rssdp.AggregateSsdpDeviceLocator.#ctor(System.Collections.Generic.IEnumerable{System.String})
-  name: AggregateSsdpDeviceLocator(IEnumerable<String>)
-  href: api/Rssdp.AggregateSsdpDeviceLocator.html#Rssdp_AggregateSsdpDeviceLocator__ctor_System_Collections_Generic_IEnumerable_System_String__
-  commentId: M:Rssdp.AggregateSsdpDeviceLocator.#ctor(System.Collections.Generic.IEnumerable{System.String})
-  name.vb: AggregateSsdpDeviceLocator(IEnumerable(Of String))
-  fullName: Rssdp.AggregateSsdpDeviceLocator.AggregateSsdpDeviceLocator(System.Collections.Generic.IEnumerable<System.String>)
-  fullName.vb: Rssdp.AggregateSsdpDeviceLocator.AggregateSsdpDeviceLocator(System.Collections.Generic.IEnumerable(Of System.String))
-  nameWithType: AggregateSsdpDeviceLocator.AggregateSsdpDeviceLocator(IEnumerable<String>)
-  nameWithType.vb: AggregateSsdpDeviceLocator.AggregateSsdpDeviceLocator(IEnumerable(Of String))
+- uid: Rssdp.AggregateSsdpDeviceLocator.#ctor(System.Boolean,System.Boolean,System.Func{System.Net.NetworkInformation.NetworkInterface,System.Boolean},Rssdp.ISsdpLogger)
+  name: AggregateSsdpDeviceLocator(Boolean, Boolean, Func<NetworkInterface, Boolean>, ISsdpLogger)
+  href: api/Rssdp.AggregateSsdpDeviceLocator.html#Rssdp_AggregateSsdpDeviceLocator__ctor_System_Boolean_System_Boolean_System_Func_System_Net_NetworkInformation_NetworkInterface_System_Boolean__Rssdp_ISsdpLogger_
+  commentId: M:Rssdp.AggregateSsdpDeviceLocator.#ctor(System.Boolean,System.Boolean,System.Func{System.Net.NetworkInformation.NetworkInterface,System.Boolean},Rssdp.ISsdpLogger)
+  name.vb: AggregateSsdpDeviceLocator(Boolean, Boolean, Func(Of NetworkInterface, Boolean), ISsdpLogger)
+  fullName: Rssdp.AggregateSsdpDeviceLocator.AggregateSsdpDeviceLocator(System.Boolean, System.Boolean, System.Func<System.Net.NetworkInformation.NetworkInterface, System.Boolean>, Rssdp.ISsdpLogger)
+  fullName.vb: Rssdp.AggregateSsdpDeviceLocator.AggregateSsdpDeviceLocator(System.Boolean, System.Boolean, System.Func(Of System.Net.NetworkInformation.NetworkInterface, System.Boolean), Rssdp.ISsdpLogger)
+  nameWithType: AggregateSsdpDeviceLocator.AggregateSsdpDeviceLocator(Boolean, Boolean, Func<NetworkInterface, Boolean>, ISsdpLogger)
+  nameWithType.vb: AggregateSsdpDeviceLocator.AggregateSsdpDeviceLocator(Boolean, Boolean, Func(Of NetworkInterface, Boolean), ISsdpLogger)
+- uid: Rssdp.AggregateSsdpDeviceLocator.#ctor(System.Collections.Generic.IEnumerable{System.String},Rssdp.ISsdpLogger)
+  name: AggregateSsdpDeviceLocator(IEnumerable<String>, ISsdpLogger)
+  href: api/Rssdp.AggregateSsdpDeviceLocator.html#Rssdp_AggregateSsdpDeviceLocator__ctor_System_Collections_Generic_IEnumerable_System_String__Rssdp_ISsdpLogger_
+  commentId: M:Rssdp.AggregateSsdpDeviceLocator.#ctor(System.Collections.Generic.IEnumerable{System.String},Rssdp.ISsdpLogger)
+  name.vb: AggregateSsdpDeviceLocator(IEnumerable(Of String), ISsdpLogger)
+  fullName: Rssdp.AggregateSsdpDeviceLocator.AggregateSsdpDeviceLocator(System.Collections.Generic.IEnumerable<System.String>, Rssdp.ISsdpLogger)
+  fullName.vb: Rssdp.AggregateSsdpDeviceLocator.AggregateSsdpDeviceLocator(System.Collections.Generic.IEnumerable(Of System.String), Rssdp.ISsdpLogger)
+  nameWithType: AggregateSsdpDeviceLocator.AggregateSsdpDeviceLocator(IEnumerable<String>, ISsdpLogger)
+  nameWithType.vb: AggregateSsdpDeviceLocator.AggregateSsdpDeviceLocator(IEnumerable(Of String), ISsdpLogger)
 - uid: Rssdp.AggregateSsdpDeviceLocator.#ctor*
   name: AggregateSsdpDeviceLocator
   href: api/Rssdp.AggregateSsdpDeviceLocator.html#Rssdp_AggregateSsdpDeviceLocator__ctor_
@@ -124,6 +133,19 @@ references:
   isSpec: "True"
   fullName: Rssdp.AggregateSsdpDeviceLocator.StartListeningForNotifications
   nameWithType: AggregateSsdpDeviceLocator.StartListeningForNotifications
+- uid: Rssdp.AggregateSsdpDeviceLocator.StartListeningForNotificationsAsync
+  name: StartListeningForNotificationsAsync()
+  href: api/Rssdp.AggregateSsdpDeviceLocator.html#Rssdp_AggregateSsdpDeviceLocator_StartListeningForNotificationsAsync
+  commentId: M:Rssdp.AggregateSsdpDeviceLocator.StartListeningForNotificationsAsync
+  fullName: Rssdp.AggregateSsdpDeviceLocator.StartListeningForNotificationsAsync()
+  nameWithType: AggregateSsdpDeviceLocator.StartListeningForNotificationsAsync()
+- uid: Rssdp.AggregateSsdpDeviceLocator.StartListeningForNotificationsAsync*
+  name: StartListeningForNotificationsAsync
+  href: api/Rssdp.AggregateSsdpDeviceLocator.html#Rssdp_AggregateSsdpDeviceLocator_StartListeningForNotificationsAsync_
+  commentId: Overload:Rssdp.AggregateSsdpDeviceLocator.StartListeningForNotificationsAsync
+  isSpec: "True"
+  fullName: Rssdp.AggregateSsdpDeviceLocator.StartListeningForNotificationsAsync
+  nameWithType: AggregateSsdpDeviceLocator.StartListeningForNotificationsAsync
 - uid: Rssdp.AggregateSsdpDeviceLocator.StopListeningForNotifications
   name: StopListeningForNotifications()
   href: api/Rssdp.AggregateSsdpDeviceLocator.html#Rssdp_AggregateSsdpDeviceLocator_StopListeningForNotifications
@@ -137,6 +159,19 @@ references:
   isSpec: "True"
   fullName: Rssdp.AggregateSsdpDeviceLocator.StopListeningForNotifications
   nameWithType: AggregateSsdpDeviceLocator.StopListeningForNotifications
+- uid: Rssdp.AggregateSsdpDeviceLocator.StopListeningForNotificationsAsync
+  name: StopListeningForNotificationsAsync()
+  href: api/Rssdp.AggregateSsdpDeviceLocator.html#Rssdp_AggregateSsdpDeviceLocator_StopListeningForNotificationsAsync
+  commentId: M:Rssdp.AggregateSsdpDeviceLocator.StopListeningForNotificationsAsync
+  fullName: Rssdp.AggregateSsdpDeviceLocator.StopListeningForNotificationsAsync()
+  nameWithType: AggregateSsdpDeviceLocator.StopListeningForNotificationsAsync()
+- uid: Rssdp.AggregateSsdpDeviceLocator.StopListeningForNotificationsAsync*
+  name: StopListeningForNotificationsAsync
+  href: api/Rssdp.AggregateSsdpDeviceLocator.html#Rssdp_AggregateSsdpDeviceLocator_StopListeningForNotificationsAsync_
+  commentId: Overload:Rssdp.AggregateSsdpDeviceLocator.StopListeningForNotificationsAsync
+  isSpec: "True"
+  fullName: Rssdp.AggregateSsdpDeviceLocator.StopListeningForNotificationsAsync
+  nameWithType: AggregateSsdpDeviceLocator.StopListeningForNotificationsAsync
 - uid: Rssdp.CustomHttpHeader
   name: CustomHttpHeader
   href: api/Rssdp.CustomHttpHeader.html

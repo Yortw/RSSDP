@@ -85,7 +85,7 @@ namespace Rssdp.Samples
 					break;
 
 				case "M":
-					SearchForMultipleAdapters().Wait();
+					SearchOnMultipleAdapters().Wait();
 					break;
 
 				case "L":
@@ -370,7 +370,7 @@ namespace Rssdp.Samples
 			}
 		}
 
-		private static async Task SearchForMultipleAdapters()
+		private static async Task SearchOnMultipleAdapters()
 		{
 			Console.WriteLine("Searching for all devices on multiple adapters...");
 
