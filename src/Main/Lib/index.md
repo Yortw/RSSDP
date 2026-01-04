@@ -19,7 +19,7 @@ Currently;
 * .Net Standard 2.0 for any other compatible framework
 
 ## Build Status
-[![Build status](https://ci.appveyor.com/api/projects/status/f4e33as09yx0lsn4?svg=true)](https://ci.appveyor.com/project/Yortw/rssdp)
+ ![NuGet Publish](https://github.com/Yortw/RSSDP/actions/workflows/nuget-publish.yml/badge.svg) ![PR Gate](https://github.com/Yortw/RSSDP/actions/workflows/pr-gate.yml/badge.svg?branch=main)
 
 ## How do I use RSSDP?
 *We got your samples right here*
