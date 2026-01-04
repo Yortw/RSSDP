@@ -82,8 +82,9 @@ If you are looking for a way to discover a custom service (such as a proprietary
 <li>.NET 8.0-android</li>
 <li>.Net Standard 2.0 for any other compatible framework</li>
 </ul>
+<p>Note: iOS should be supported by one of these targets (most likely Net 8.0) but I currently lack the hardware to test on.</p>
 <h2 id="build-status">Build Status</h2>
-<p> <img src="https://github.com/Yortw/RSSDP/actions/workflows/nuget-publish.yml/badge.svg" alt="NuGet Publish"> <img src="https://github.com/Yortw/RSSDP/actions/workflows/pr-gate.yml/badge.svg?branch=main" alt="PR Gate"></p>
+<p><a href="https://ci.appveyor.com/project/Yortw/rssdp"><img src="https://ci.appveyor.com/api/projects/status/f4e33as09yx0lsn4?svg=true" alt="Build status"></a></p>
 <h2 id="how-do-i-use-rssdp">How do I use RSSDP?</h2>
 <p><em>We got your samples right here</em></p>
 <p>There is a sample console applicaton included in the repository. If you don&#39;t want to &quot;read the source, Luke&quot;, then here&#39;s some tips and examples to get you started. You can also check out our <a href="https://github.com/Yortw/RSSDP/wiki/Frequently-Asked-Questions">FAQ</a> and our <a href="http://yortw.github.io/RSSDP/api/Rssdp.html">API Reference documentation</a>.</p>
@@ -216,7 +217,51 @@ async static void deviceLocator_DeviceAvailable(object sender, DeviceAvailableEv
 <pre><code class="lang-C#">var devicePublisher = new SsdpDevicePublisher(IPAddress.IPv6Any.ToString());
 var devicePublisher = new SsdpDevicePublisher(&quot;fe80::dc06:c198:7078:afdd&quot;);
 var deviceLocator = new SsdpDeviceLocator(&quot;fe80::dc06:c198:7078:afdd&quot;);
-</code></pre><h2 id="why-rssdp">Why RSSDP?</h2>
+</code></pre><h3 id="android-permissions">Android Permissions</h3>
+<p>The RSSDP package tests solution in this repo contains a working (device search) Android sample which can be used as a reference.
+You&#39;ll require the following permissions in your AndroidManifest.xml file;</p>
+<pre><code class="lang-xml">&lt;uses-permission android:name=&quot;android.permission.INTERNET&quot; /&gt;
+&lt;uses-permission android:name=&quot;android.permission.ACCESS_NETWORK_STATE&quot; /&gt;
+&lt;uses-permission android:name=&quot;android.permission.ACCESS_WIFI_STATE&quot; /&gt;
+&lt;uses-permission android:name=&quot;android.permission.CHANGE_WIFI_MULTICAST_STATE&quot; /&gt;
+</code></pre><h4 id="ios-permissions">iOS Permissions</h4>
+<p>iOS requires apps to declare the types of network services they intend to use in their Info.plist file. I don&#39;t have the hardware to test this so I can&#39;t provide a guaranteed working example, 
+but the MAUI project in the Rssdp package tests solution contains an iOS project which may be of some help.</p>
+<p>iOS requires explicit privacy text and an entitlement to use UDP multicast (needed by SSDP on 239.255.255.250:1900). Configure the following:</p>
+<ul>
+<li>Add <code>NSLocalNetworkUsageDescription</code> to <code>Info.plist</code> with a human-readable reason. iOS will prompt the user to allow local network access.</li>
+<li>Add the Multicast Networking entitlement (<code>com.apple.developer.networking.multicast</code>) in your app entitlements and set it to true.</li>
+</ul>
+<p>Example <code>Info.plist</code> entries:</p>
+<pre><code class="lang-xml">&lt;key&gt;NSLocalNetworkUsageDescription&lt;/key&gt;
+&lt;string&gt;This app discovers local devices using SSDP multicast.&lt;/string&gt;
+</code></pre><p>Example <code>Entitlements.plist</code> entries:</p>
+<pre><code class="lang-xml">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;!DOCTYPE plist PUBLIC &quot;-//Apple//DTD PLIST 1.0//EN&quot; &quot;http://www.apple.com/DTDs/PropertyList-1.0.dtd&quot;&gt;
+&lt;plist version=&quot;1.0&quot;&gt;
+  &lt;dict&gt;
+    &lt;key&gt;com.apple.developer.networking.multicast&lt;/key&gt;
+    &lt;true/&gt;
+  &lt;/dict&gt;
+&lt;/plist&gt;
+</code></pre><p>Notes:</p>
+<ul>
+<li>Test on a physical device; the iOS simulator does not fully support multicast networking.</li>
+<li>Ensure the device is on a Wi‑Fi network that permits multicast/broadcast. Some routers/APs block multicast by default.</li>
+<li>For IPv6 networks, create <code>SsdpDeviceLocator</code> or <code>SsdpDevicePublisher</code> with an IPv6 address if needed (see IPv6 support section above).</li>
+</ul>
+<h4 id="migrating-from-older-versions-of-rssdp">Migrating from older versions of RSSDP</h4>
+<p>V5 introduces some breaking changes. These should be pretty minor and mostly revolve around improving nullability support. You&#39;ll find some classes no longer have parameterless constructors, and some properties are now read-only.
+If you&#39;re just searching for devices you probably won&#39;t notice. If you&#39;re publishing devices you&#39;ll likely notice <em>SsdpDeviceProperty</em>* now requires the Namespace and Name properties to be passed via contructor, i.e</p>
+<pre><code class="lang-C#">new Rssdp.SsdpDeviceProperty() { Namespace = &quot;my-system&quot;, Name = &quot;TenantIdentifier&quot;, Value = &quot;mytenant&quot; };
+</code></pre><p>becomes </p>
+<pre><code class="lang-C#">new Rssdp.SsdpDeviceProperty(&quot;my-system&quot;, &quot;TenantIdentifier&quot;) { Value = &quot;mytenant&quot; };
+</code></pre><p>The following classes have a similar breaking change but are typically instantiated internally, so most clients won&#39;t be affected;</p>
+<ul>
+<li>UdpEndpoint</li>
+<li>DiscoveredSsdpDevice</li>
+</ul>
+<h2 id="why-rssdp">Why RSSDP?</h2>
 <p><em>Aren&#39;t there already lots of SSDP implementations?</em></p>
 <p>I needed to find a custom/proprietary service on local networks from a mobile device. I decided this had been done before and I shouldn&#39;t re-invent the wheel so I started looking for 
 existing, standard protocols that did this. I decided Zeroconf and SSDP seemed like the best two, and Zeroconf looked like the more efficient, less overhead option. Unfortunately I also need a solution where</p>
@@ -254,7 +299,7 @@ haven&#39;t really considered how many variations of a wheel might be needed.</p
               <div class="contribution">
                 <ul class="nav">
                   <li>
-                    <a href="https://github.com/Yortw/RSSDP/blob/feature/v5/gh-actions/src/Main/Lib/index.md/#L1" class="contribution-link">Improve this Doc</a>
+                    <a href="https://github.com/Yortw/RSSDP/blob/mod/v5/src/Main/Lib/index.md/#L1" class="contribution-link">Improve this Doc</a>
                   </li>
                 </ul>
               </div>

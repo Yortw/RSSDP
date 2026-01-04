@@ -717,7 +717,7 @@ namespace Rssdp.Infrastructure
 
 		private Task RemoveExpiredDevicesFromCacheAsync()
 		{
-			return TaskEx.Run(() =>
+			return Task.Run(() =>
 			{
 				RemoveExpiredDevicesFromCache();
 			});

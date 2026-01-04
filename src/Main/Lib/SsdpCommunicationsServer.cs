@@ -273,7 +273,7 @@ namespace Rssdp.Infrastructure
 				work();
 
 				if (delay != TimeSpan.Zero)
-					TaskEx.Delay(delay).Wait();
+					System.Threading.Thread.Sleep(delay);
 			}
 		}
 
@@ -301,7 +301,7 @@ namespace Rssdp.Infrastructure
 			// Tasks are captured to local variables even if we don't use them just to avoid compiler warnings.
 			try
 			{
-				await TaskEx.Run(async () =>
+				await Task.Run(async () =>
 				{
 
 					var cancelled = false;
@@ -314,7 +314,7 @@ namespace Rssdp.Infrastructure
 							if (result.Buffer != null && result.ReceivedBytes > 0 && result.ReceivedFrom != null)
 							{
 								void processWork() => ProcessMessage(System.Text.UTF8Encoding.UTF8.GetString(result.Buffer, 0, result.ReceivedBytes), result.ReceivedFrom);
-								var processTask = TaskEx.Run(processWork);
+								var processTask = Task.Run(processWork);
 							}
 						}
 						catch (SocketClosedException)
@@ -364,7 +364,7 @@ namespace Rssdp.Infrastructure
 				}
 				catch
 				{
-					await TaskEx.Delay(30000);
+					await Task.Delay(30000);
 				}
 			}
 		}

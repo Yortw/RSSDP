@@ -435,7 +435,7 @@ USN: {1}
 				maxWaitInterval = _Random.Next(0, 120);
 
 			//Do not block synchronously as that may tie up a threadpool thread for several seconds.
-			TaskEx.Delay(_Random.Next(16, (maxWaitInterval * 1000))).ContinueWith((parentTask) =>
+			System.Threading.Tasks.Task.Delay(_Random.Next(16, (maxWaitInterval * 1000))).ContinueWith((parentTask) =>
 			{
 				//Copying devices to local array here to avoid threading issues/enumerator exceptions.
 				var devices = GetDevicesMatchingSearchTarget(searchTarget);
@@ -708,7 +708,7 @@ USN: {1}
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Performance", "CA1804:RemoveUnusedLocals", MessageId = "t", Justification = "Capturing task to local variable avoids compiler warning, but value is otherwise not required.")]
 		private void CleanUpRecentSearchRequestsAsync()
 		{
-			var t = TaskEx.Run(() =>
+			var t = System.Threading.Tasks.Task.Run(() =>
 				{
 					lock (_RecentSearchRequests)
 					{
