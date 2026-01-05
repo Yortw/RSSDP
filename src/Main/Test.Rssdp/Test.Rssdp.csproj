@@ -18,6 +18,11 @@
   <ItemGroup>
     <ProjectReference Include="..\Lib\Rssdp.csproj" />
   </ItemGroup>
+  <ItemGroup>
+    <None Update="denonbad.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">
       <ItemGroup>

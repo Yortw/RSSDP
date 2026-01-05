@@ -2371,12 +2371,12 @@ references:
   commentId: M:Rssdp.SsdpDevice.#ctor
   fullName: Rssdp.SsdpDevice.SsdpDevice()
   nameWithType: SsdpDevice.SsdpDevice()
-- uid: Rssdp.SsdpDevice.#ctor(System.String)
-  name: SsdpDevice(String)
-  href: api/Rssdp.SsdpDevice.html#Rssdp_SsdpDevice__ctor_System_String_
-  commentId: M:Rssdp.SsdpDevice.#ctor(System.String)
-  fullName: Rssdp.SsdpDevice.SsdpDevice(System.String)
-  nameWithType: SsdpDevice.SsdpDevice(String)
+- uid: Rssdp.SsdpDevice.#ctor(System.String,XmlReaderSettings)
+  name: SsdpDevice(String, XmlReaderSettings)
+  href: api/Rssdp.SsdpDevice.html#Rssdp_SsdpDevice__ctor_System_String_XmlReaderSettings_
+  commentId: M:Rssdp.SsdpDevice.#ctor(System.String,XmlReaderSettings)
+  fullName: Rssdp.SsdpDevice.SsdpDevice(System.String, XmlReaderSettings)
+  nameWithType: SsdpDevice.SsdpDevice(String, XmlReaderSettings)
 - uid: Rssdp.SsdpDevice.#ctor*
   name: SsdpDevice
   href: api/Rssdp.SsdpDevice.html#Rssdp_SsdpDevice__ctor_
@@ -2708,6 +2708,19 @@ references:
   isSpec: "True"
   fullName: Rssdp.SsdpDevice.RemoveService
   nameWithType: SsdpDevice.RemoveService
+- uid: Rssdp.SsdpDevice.SanitizeXmlString(System.String)
+  name: SanitizeXmlString(String)
+  href: api/Rssdp.SsdpDevice.html#Rssdp_SsdpDevice_SanitizeXmlString_System_String_
+  commentId: M:Rssdp.SsdpDevice.SanitizeXmlString(System.String)
+  fullName: Rssdp.SsdpDevice.SanitizeXmlString(System.String)
+  nameWithType: SsdpDevice.SanitizeXmlString(String)
+- uid: Rssdp.SsdpDevice.SanitizeXmlString*
+  name: SanitizeXmlString
+  href: api/Rssdp.SsdpDevice.html#Rssdp_SsdpDevice_SanitizeXmlString_
+  commentId: Overload:Rssdp.SsdpDevice.SanitizeXmlString
+  isSpec: "True"
+  fullName: Rssdp.SsdpDevice.SanitizeXmlString
+  nameWithType: SsdpDevice.SanitizeXmlString
 - uid: Rssdp.SsdpDevice.SerialNumber
   name: SerialNumber
   href: api/Rssdp.SsdpDevice.html#Rssdp_SsdpDevice_SerialNumber
@@ -3205,12 +3218,12 @@ references:
   commentId: M:Rssdp.SsdpEmbeddedDevice.#ctor
   fullName: Rssdp.SsdpEmbeddedDevice.SsdpEmbeddedDevice()
   nameWithType: SsdpEmbeddedDevice.SsdpEmbeddedDevice()
-- uid: Rssdp.SsdpEmbeddedDevice.#ctor(System.String)
-  name: SsdpEmbeddedDevice(String)
-  href: api/Rssdp.SsdpEmbeddedDevice.html#Rssdp_SsdpEmbeddedDevice__ctor_System_String_
-  commentId: M:Rssdp.SsdpEmbeddedDevice.#ctor(System.String)
-  fullName: Rssdp.SsdpEmbeddedDevice.SsdpEmbeddedDevice(System.String)
-  nameWithType: SsdpEmbeddedDevice.SsdpEmbeddedDevice(String)
+- uid: Rssdp.SsdpEmbeddedDevice.#ctor(System.String,XmlReaderSettings)
+  name: SsdpEmbeddedDevice(String, XmlReaderSettings)
+  href: api/Rssdp.SsdpEmbeddedDevice.html#Rssdp_SsdpEmbeddedDevice__ctor_System_String_XmlReaderSettings_
+  commentId: M:Rssdp.SsdpEmbeddedDevice.#ctor(System.String,XmlReaderSettings)
+  fullName: Rssdp.SsdpEmbeddedDevice.SsdpEmbeddedDevice(System.String, XmlReaderSettings)
+  nameWithType: SsdpEmbeddedDevice.SsdpEmbeddedDevice(String, XmlReaderSettings)
 - uid: Rssdp.SsdpEmbeddedDevice.#ctor*
   name: SsdpEmbeddedDevice
   href: api/Rssdp.SsdpEmbeddedDevice.html#Rssdp_SsdpEmbeddedDevice__ctor_

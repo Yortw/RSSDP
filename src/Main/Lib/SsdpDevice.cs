@@ -88,19 +88,22 @@ namespace Rssdp
 		/// </summary>
 		/// <remarks><para>Uses the provided XML string and parent device properties to set the properties of the object. The XML provided must be a valid UPnP device description document.</para></remarks>
 		/// <param name="deviceDescriptionXml">A UPnP device description XML document.</param>
+		/// <param name="xmlReaderSettings">An <see cref="XmlReaderSettings"/> instance used to determine rules for reading and processing the device description document XML.</param>
 		/// <exception cref="System.ArgumentNullException">Thrown if the <paramref name="deviceDescriptionXml"/> argument is null.</exception>
 		/// <exception cref="System.ArgumentException">Thrown if the <paramref name="deviceDescriptionXml"/> argument is empty.</exception>
-		protected SsdpDevice(string deviceDescriptionXml)
+		protected SsdpDevice(string deviceDescriptionXml, XmlReaderSettings xmlReaderSettings)
 			: this()
 		{
 			if (deviceDescriptionXml == null) throw new ArgumentNullException(nameof(deviceDescriptionXml));
 			if (deviceDescriptionXml.Length == 0) throw new ArgumentException("deviceDescriptionXml cannot be an empty string.", nameof(deviceDescriptionXml));
 
-			using (var ms = new System.IO.MemoryStream(System.Text.UTF8Encoding.UTF8.GetBytes(deviceDescriptionXml)))
+			try
 			{
-				var reader = XmlReader.Create(ms);
-
-				LoadDeviceProperties(reader, this);
+				LoadPropertiesFromDeviceDescriptionDocumentXml(deviceDescriptionXml, xmlReaderSettings);
+			}
+			catch (XmlException)
+			{
+				LoadPropertiesFromDeviceDescriptionDocumentXml(SanitizeXmlString(deviceDescriptionXml), xmlReaderSettings);
 			}
 		}
 
@@ -335,6 +338,56 @@ namespace Rssdp
 		{
 			get;
 			private set;
+		}
+
+		/// <summary>
+		/// Removes characters from <paramref name="xml"/> that are not valid in XML.
+		/// </summary>
+		/// <remarks>
+		/// <para>Some devices embed invalid data, such as C style strings with character zero terminators, in their device description documents. While technically invalid, removing these can allow processing the document correctly.</para>
+		/// </remarks>
+		/// <param name="xml">A string containing the XML document to be sanitized.</param>
+		/// <returns></returns>
+		protected static string SanitizeXmlString(string xml)
+		{
+			if (string.IsNullOrEmpty(xml)) return xml;
+			// Filter out characters that are not allowed by XML 1.0.
+			// Allowed ranges: 0x9, 0xA, 0xD, 0x20-0xD7FF, 0xE000-0xFFFD, 0x10000-0x10FFFF
+			var sb = new System.Text.StringBuilder(xml.Length);
+			for (int i = 0; i < xml.Length; i++)
+			{
+				int codePoint;
+				char c = xml[i];
+				if (char.IsHighSurrogate(c) && i + 1 < xml.Length && char.IsLowSurrogate(xml[i + 1]))
+				{
+					codePoint = char.ConvertToUtf32(c, xml[i + 1]);
+					// Advance past the low surrogate
+					i++;
+				}
+				else
+				{
+					codePoint = c;
+				}
+
+				bool allowed =
+					(codePoint == 0x9) ||
+					(codePoint == 0xA) ||
+					(codePoint == 0xD) ||
+					(codePoint >= 0x20 && codePoint <= 0xD7FF) ||
+					(codePoint >= 0xE000 && codePoint <= 0xFFFD) ||
+					(codePoint >= 0x10000 && codePoint <= 0x10FFFF);
+
+				if (allowed)
+				{
+					// Append as original sequence
+					if (codePoint <= 0xFFFF)
+						sb.Append((char)codePoint);
+					else
+						sb.Append(char.ConvertFromUtf32(codePoint));
+				}
+				// else skip invalid code point (e.g., U+0000)
+			}
+			return sb.ToString();
 		}
 
 		#endregion
@@ -647,6 +700,14 @@ namespace Rssdp
 		#endregion
 
 		#region Deserialisation Methods
+
+		private void LoadPropertiesFromDeviceDescriptionDocumentXml(string deviceDescriptionXml, XmlReaderSettings xmlReaderSettings)
+		{
+			using (var reader = XmlReader.Create(new System.IO.StringReader(deviceDescriptionXml), xmlReaderSettings))
+			{
+				LoadDeviceProperties(reader, this);
+			}
+		}
 
 		private void LoadDeviceProperties(XmlReader reader, SsdpDevice device)
 		{

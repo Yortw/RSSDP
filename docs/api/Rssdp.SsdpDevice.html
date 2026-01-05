@@ -299,13 +299,13 @@
   
   
   <a id="Rssdp_SsdpDevice__ctor_" data-uid="Rssdp.SsdpDevice.#ctor*"></a>
-  <h4 id="Rssdp_SsdpDevice__ctor_System_String_" data-uid="Rssdp.SsdpDevice.#ctor(System.String)">SsdpDevice(String)</h4>
+  <h4 id="Rssdp_SsdpDevice__ctor_System_String_XmlReaderSettings_" data-uid="Rssdp.SsdpDevice.#ctor(System.String,XmlReaderSettings)">SsdpDevice(String, XmlReaderSettings)</h4>
   <div class="markdown level1 summary"><p>Deserialisation constructor.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">protected SsdpDevice(string deviceDescriptionXml)</code></pre>
+    <pre><code class="lang-csharp hljs">protected SsdpDevice(string deviceDescriptionXml, XmlReaderSettings xmlReaderSettings)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -323,9 +323,15 @@
         <td><p>A UPnP device description XML document.</p>
 </td>
       </tr>
+      <tr>
+        <td><span class="xref">XmlReaderSettings</span></td>
+        <td><span class="parametername">xmlReaderSettings</span></td>
+        <td><p>An <see cref="!:XmlReaderSettings"></see> instance used to determine rules for reading and processing the device description document XML.</p>
+</td>
+      </tr>
     </tbody>
   </table>
-  <h5 id="Rssdp_SsdpDevice__ctor_System_String__remarks">Remarks</h5>
+  <h5 id="Rssdp_SsdpDevice__ctor_System_String_XmlReaderSettings__remarks">Remarks</h5>
   <div class="markdown level1 remarks"><p>Uses the provided XML string and parent device properties to set the properties of the object. The XML provided must be a valid UPnP device description document.</p></div>
   <h5 class="exceptions">Exceptions</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -1312,6 +1318,53 @@
   <div class="seealso">
       <div><a class="xref" href="Rssdp.SsdpDevice.html#Rssdp_SsdpDevice_ServiceRemoved">ServiceRemoved</a></div>
   </div>
+  
+  
+  <a id="Rssdp_SsdpDevice_SanitizeXmlString_" data-uid="Rssdp.SsdpDevice.SanitizeXmlString*"></a>
+  <h4 id="Rssdp_SsdpDevice_SanitizeXmlString_System_String_" data-uid="Rssdp.SsdpDevice.SanitizeXmlString(System.String)">SanitizeXmlString(String)</h4>
+  <div class="markdown level1 summary"><p>Removes characters from <code data-dev-comment-type="paramref" class="paramref">xml</code> that are not valid in XML.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected static string SanitizeXmlString(string xml)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">xml</span></td>
+        <td><p>A string containing the XML document to be sanitized.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="Rssdp_SsdpDevice_SanitizeXmlString_System_String__remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>Some devices embed invalid data, such as C style strings with character zero terminators, in their device description documents. While technically invalid, removing these can allow processing the document correctly.</p>
+</div>
   
   
   <a id="Rssdp_SsdpDevice_StringToUri_" data-uid="Rssdp.SsdpDevice.StringToUri*"></a>

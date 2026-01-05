@@ -208,14 +208,14 @@ namespace TestRssdp
 		[TestMethod]
 		public void DeserialisationConstructor_ThrowsOnNullDocument()
 		{
-			_ = new SsdpEmbeddedDevice(null);
+			_ = new SsdpEmbeddedDevice(null, new System.Xml.XmlReaderSettings());
 		}
 
 		[ExpectedException(typeof(System.ArgumentException))]
 		[TestMethod]
 		public void DeserialisationConstructor_ThrowsOnEmptyDocument()
 		{
-			_ = new SsdpEmbeddedDevice(String.Empty);
+			_ = new SsdpEmbeddedDevice(String.Empty, new System.Xml.XmlReaderSettings());
 		}
 
 		[ExpectedException(typeof(System.ArgumentException))]

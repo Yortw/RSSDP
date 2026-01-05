@@ -145,7 +145,7 @@ namespace TestRssdp
 		[TestMethod]
 		public void SsdpDevice_ConstructorThrowsArgumentNullIfNotRootDevice()
 		{
-			_ = new SsdpEmbeddedDevice(null);
+			_ = new SsdpEmbeddedDevice(null, new System.Xml.XmlReaderSettings());
 		}
 
 		[ExpectedException(typeof(System.ArgumentNullException))]
@@ -196,17 +196,21 @@ namespace TestRssdp
 		[TestMethod]
 		public void SsdpDevice_EmptyDeviceTypeReturnsEmpty()
 		{
-			var rootDevice = new SsdpRootDevice();
-			rootDevice.DeviceType = String.Empty;
+			var rootDevice = new SsdpRootDevice
+			{
+				DeviceType = String.Empty
+			};
 			Assert.AreEqual(String.Empty, rootDevice.DeviceType);
 		}
 
 		[TestMethod]
 		public void SsdpDevice_FullDeviceTypesReturnsStringWithNullValues()
 		{
-			var rootDevice = new SsdpRootDevice();
-			rootDevice.DeviceType = null;
-			rootDevice.DeviceTypeNamespace = null;
+			var rootDevice = new SsdpRootDevice
+			{
+				DeviceType = null,
+				DeviceTypeNamespace = null
+			};
 			Assert.AreEqual("urn::device::1", rootDevice.FullDeviceType);
 		}
 
@@ -593,6 +597,23 @@ namespace TestRssdp
 			Assert.AreEqual(device.ModelDescription, "TwonkyServer (Windows, T-206)");
 			Assert.AreEqual(device.ModelNumber, "8.4");
 			Assert.AreEqual(device.SerialNumber, "8.4");
+		}
+
+		[TestMethod]
+		public void DeserialisationHandlesNonStandardXmlCharacters()
+		{
+			//See issue #89 in repo
+			var docString = System.IO.File.ReadAllText("denonbad.xml");
+
+			var device = new SsdpRootDevice(new Uri("http://192.168.5.117/UPnP/DeviceDescription"), TimeSpan.FromMinutes(30), docString);
+			Assert.IsFalse(device.CustomProperties.Contains("pv:extension"));
+			Assert.AreEqual(device.Manufacturer, "Denon");
+			Assert.AreEqual(device.ManufacturerUrl, new Uri("http://www.denon.com"));
+			Assert.AreEqual(device.ModelName, "*AVR-E400");
+			Assert.AreEqual(device.ModelUrl, new Uri("http://www.denon.com"));
+			Assert.AreEqual(device.ModelDescription, "AV SURROUND RECEIVER");
+			Assert.AreEqual(device.ModelNumber, "E400");
+			Assert.AreEqual(device.SerialNumber, "0005CD2BA891");
 		}
 
 		#endregion

@@ -1,3 +1,5 @@
+using System.Xml;
+
 namespace Rssdp
 {
 	/// <summary>
@@ -25,10 +27,11 @@ namespace Rssdp
 		/// Deserialisation constructor.
 		/// </summary>
 		/// <param name="deviceDescriptionXml">A UPnP device description XML document.</param>
+		/// <param name="xmlReaderSettings">An <see cref="XmlReaderSettings"/> instance used to determine rules for reading and processing the device description document XML.</param>
 		/// <exception cref="System.ArgumentNullException">Thrown if the <paramref name="deviceDescriptionXml"/> argument is null.</exception>
 		/// <exception cref="System.ArgumentException">Thrown if the <paramref name="deviceDescriptionXml"/> argument is empty.</exception>
-		public SsdpEmbeddedDevice(string deviceDescriptionXml)
-			: base(deviceDescriptionXml)
+		public SsdpEmbeddedDevice(string deviceDescriptionXml, XmlReaderSettings xmlReaderSettings)
+			: base(deviceDescriptionXml, xmlReaderSettings)
 		{
 		}
 

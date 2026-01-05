@@ -327,6 +327,9 @@
       <a class="xref" href="Rssdp.SsdpDevice.html#Rssdp_SsdpDevice_Services">SsdpDevice.Services</a>
     </div>
     <div>
+      <a class="xref" href="Rssdp.SsdpDevice.html#Rssdp_SsdpDevice_SanitizeXmlString_System_String_">SsdpDevice.SanitizeXmlString(String)</a>
+    </div>
+    <div>
       <a class="xref" href="Rssdp.SsdpDevice.html#Rssdp_SsdpDevice_AddDevice_Rssdp_SsdpEmbeddedDevice_">SsdpDevice.AddDevice(SsdpEmbeddedDevice)</a>
     </div>
     <div>
@@ -400,13 +403,13 @@
   
   
   <a id="Rssdp_SsdpEmbeddedDevice__ctor_" data-uid="Rssdp.SsdpEmbeddedDevice.#ctor*"></a>
-  <h4 id="Rssdp_SsdpEmbeddedDevice__ctor_System_String_" data-uid="Rssdp.SsdpEmbeddedDevice.#ctor(System.String)">SsdpEmbeddedDevice(String)</h4>
+  <h4 id="Rssdp_SsdpEmbeddedDevice__ctor_System_String_XmlReaderSettings_" data-uid="Rssdp.SsdpEmbeddedDevice.#ctor(System.String,XmlReaderSettings)">SsdpEmbeddedDevice(String, XmlReaderSettings)</h4>
   <div class="markdown level1 summary"><p>Deserialisation constructor.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public SsdpEmbeddedDevice(string deviceDescriptionXml)</code></pre>
+    <pre><code class="lang-csharp hljs">public SsdpEmbeddedDevice(string deviceDescriptionXml, XmlReaderSettings xmlReaderSettings)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -422,6 +425,12 @@
         <td><span class="xref">System.String</span></td>
         <td><span class="parametername">deviceDescriptionXml</span></td>
         <td><p>A UPnP device description XML document.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">XmlReaderSettings</span></td>
+        <td><span class="parametername">xmlReaderSettings</span></td>
+        <td><p>An <see cref="!:XmlReaderSettings"></see> instance used to determine rules for reading and processing the device description document XML.</p>
 </td>
       </tr>
     </tbody>

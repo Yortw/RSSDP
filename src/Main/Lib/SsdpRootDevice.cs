@@ -67,7 +67,7 @@ namespace Rssdp
 		/// <exception cref="System.ArgumentNullException">Thrown if the <paramref name="deviceDescriptionXml"/> or <paramref name="location"/> arguments are null.</exception>
 		/// <exception cref="System.ArgumentException">Thrown if the <paramref name="deviceDescriptionXml"/> argument is empty.</exception>
 		public SsdpRootDevice(Uri location, TimeSpan cacheLifetime, string deviceDescriptionXml, XmlReaderSettings? xmlReaderSettings)
-			: base(deviceDescriptionXml)
+			: base(deviceDescriptionXml, xmlReaderSettings ?? SecureLenientXmlReaderSettings)
 		{
 			if (location == null) throw new ArgumentNullException(nameof(location));
 
@@ -170,86 +170,38 @@ namespace Rssdp
 
 		private void LoadFromDescriptionDocument(string deviceDescriptionXml, XmlReaderSettings? xmlReaderSettings)
 		{
-			using (var reader = LoadXmlStringAsReader(deviceDescriptionXml, xmlReaderSettings ?? SecureLenientXmlReaderSettings))
+			try
 			{
-				while (!reader.EOF)
+				using (var reader = XmlReader.Create(new StringReader(deviceDescriptionXml), xmlReaderSettings ?? SecureLenientXmlReaderSettings))
 				{
-					reader.Read();
-					if (reader.NodeType != XmlNodeType.Element || reader.LocalName != "root") continue;
-
 					while (!reader.EOF)
 					{
 						reader.Read();
+						if (reader.NodeType != XmlNodeType.Element || reader.LocalName != "root") continue;
 
-						if (reader.NodeType != XmlNodeType.Element) continue;
-
-						if (reader.LocalName == "URLBase")
+						while (!reader.EOF)
 						{
-							this.UrlBase = StringToUri(reader.ReadElementContentAsString());
-							break;
+							reader.Read();
+
+							if (reader.NodeType != XmlNodeType.Element) continue;
+
+							if (reader.LocalName == "URLBase")
+							{
+								this.UrlBase = StringToUri(reader.ReadElementContentAsString());
+								break;
+							}
 						}
 					}
 				}
 			}
-		}
-
-		private static XmlReader LoadXmlStringAsReader(string deviceDescriptionXml, XmlReaderSettings xmlReaderSettings)
-		{
-			try
-			{
-				return XmlReader.Create(new StringReader(deviceDescriptionXml), xmlReaderSettings);
-			}
 			catch (XmlException)
 			{
 				//Try sanitizing the string to remove invalid XML characters
-				string sanitized = SanitizeXmlString(deviceDescriptionXml);
-				return XmlReader.Create(new StringReader(sanitized), xmlReaderSettings);
+				LoadFromDescriptionDocument(SanitizeXmlString(deviceDescriptionXml), xmlReaderSettings);
 			}
 		}
 
 		#endregion
-
-		private static string SanitizeXmlString(string xml)
-		{
-			if (string.IsNullOrEmpty(xml)) return xml;
-			// Filter out characters that are not allowed by XML 1.0.
-			// Allowed ranges: 0x9, 0xA, 0xD, 0x20-0xD7FF, 0xE000-0xFFFD, 0x10000-0x10FFFF
-			var sb = new System.Text.StringBuilder(xml.Length);
-			for (int i = 0; i < xml.Length; i++)
-			{
-				int codePoint;
-				char c = xml[i];
-				if (char.IsHighSurrogate(c) && i + 1 < xml.Length && char.IsLowSurrogate(xml[i + 1]))
-				{
-					codePoint = char.ConvertToUtf32(c, xml[i + 1]);
-					// Advance past the low surrogate
-					i++;
-				}
-				else
-				{
-					codePoint = c;
-				}
-
-				bool allowed =
-					(codePoint == 0x9) ||
-					(codePoint == 0xA) ||
-					(codePoint == 0xD) ||
-					(codePoint >= 0x20 && codePoint <= 0xD7FF) ||
-					(codePoint >= 0xE000 && codePoint <= 0xFFFD) ||
-					(codePoint >= 0x10000 && codePoint <= 0x10FFFF);
-
-				if (allowed)
-				{
-					// Append as original sequence
-					if (codePoint <= 0xFFFF)
-						sb.Append((char)codePoint);
-					else
-						sb.Append(char.ConvertFromUtf32(codePoint));
-				}
-				// else skip invalid code point (e.g., U+0000)
-			}
-			return sb.ToString();
-		}
 
 		#endregion
 
