@@ -95,6 +95,11 @@ namespace Rssdp.Infrastructure
 		/// <para>This property returns a value of 100 milliseconds.</para>
 		/// </remarks>
 		/// <seealso cref="DefaultUdpResendCount"/>
-		public static TimeSpan DefaultUdpResendDelay { get { return _DefaultUdpResendDelay; } } 
+		public static TimeSpan DefaultUdpResendDelay { get { return _DefaultUdpResendDelay; } }
+
+		internal static readonly System.Diagnostics.ActivitySource LocatorActivitySource = new (SsdpConstants.LocatorActivitySourceName, typeof(SsdpConstants).Assembly.GetName().Version?.ToString());
+
+		internal static readonly System.Diagnostics.ActivitySource PublisherActivitySource = new (SsdpConstants.PublisherActivitySourceName, typeof(SsdpConstants).Assembly.GetName().Version?.ToString());
+
 	}
 }

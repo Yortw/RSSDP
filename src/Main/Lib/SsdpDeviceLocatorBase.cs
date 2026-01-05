@@ -55,7 +55,7 @@ namespace Rssdp.Infrastructure
 			_Devices = new List<DiscoveredSsdpDevice>();
 
 			// Create ActivitySource with stable name/version for consumers to subscribe via name.
-			_ActivitySource = new System.Diagnostics.ActivitySource(SsdpConstants.LocatorActivitySourceName, this.GetType().Assembly.GetName().Version?.ToString());
+			_ActivitySource = SsdpConstants.LocatorActivitySource;
 		}
 
 		#endregion

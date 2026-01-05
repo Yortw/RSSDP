@@ -143,8 +143,7 @@ USN: {1}
 			_OSName = osName;
 			_OSVersion = osVersion;
 
-			// Create ActivitySource with stable name/version for consumers to subscribe via name.
-			_ActivitySource = new System.Diagnostics.ActivitySource(SsdpConstants.PublisherActivitySourceName, ServerVersion);
+			_ActivitySource = SsdpConstants.PublisherActivitySource;
 
 			_Log.LogInfo("Publisher started.");
 			_CommsServer.BeginListeningForBroadcasts();

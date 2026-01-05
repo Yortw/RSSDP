@@ -5,6 +5,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Net.NetworkInformation;
 using System.Net.Sockets;
+using System.Diagnostics;
 
 using Rssdp.Infrastructure;
 
@@ -17,10 +18,11 @@ namespace Rssdp
 	public sealed class AggregateSsdpDeviceLocator : IDisposable, ISsdpDeviceLocator
 	{
 		private readonly List<SsdpDeviceLocator> _Locators;
-		private readonly List<string> _AdapterIps = new ();
+		private readonly List<string> _AdapterIps = new();
 		private readonly ISsdpLogger? _Logger;
 		private string? _NotificationFilter;
 		private bool _IsSearching;
+		private readonly ActivitySource _ActivitySource = SsdpConstants.LocatorActivitySource;
 
 		/// <summary>
 		/// Raised when a device becomes available or is found by a search request across any aggregated locator.
@@ -233,8 +235,17 @@ namespace Rssdp
 
 		private async Task<IEnumerable<DiscoveredSsdpDevice>> SearchInternalAsync(string? searchTarget, TimeSpan? searchWaitTime, CancellationToken cancellationToken)
 		{
+			Activity? activity = null;
 			try
 			{
+				if (_ActivitySource.HasListeners())
+				{
+					activity = _ActivitySource.StartActivity("ssdp.aggregate.search", ActivityKind.Client);
+					activity?.SetTag("adapter.count", _Locators.Count);
+					if (searchTarget != null) activity?.SetTag("ssdp.st", searchTarget);
+					if (searchWaitTime != null) activity?.SetTag("ssdp.waittime", searchWaitTime);
+				}
+
 				_IsSearching = true;
 				var tasks = new List<Task<IEnumerable<DiscoveredSsdpDevice>>>(_Locators.Count);
 				foreach (var locator in _Locators)
@@ -245,10 +256,10 @@ namespace Rssdp
 						tasks.Add(locator.SearchAsync(searchWaitTime.Value, cancellationToken));
 					else if (searchTarget != null && searchWaitTime == null)
 						tasks.Add(locator.SearchAsync(searchTarget, cancellationToken));
-					else 
+					else
 						tasks.Add(locator.SearchAsync(searchTarget!, searchWaitTime!.Value, cancellationToken));
 				}
-				
+
 				IEnumerable<DiscoveredSsdpDevice> merged;
 				try
 				{
@@ -301,6 +312,9 @@ namespace Rssdp
 			finally
 			{
 				_IsSearching = false;
+
+				// Close aggregate search activity
+				activity?.Dispose();
 			}
 		}
 
@@ -323,7 +337,6 @@ namespace Rssdp
 				}
 			}
 		}
-
 
 		private static IEnumerable<string> GetAdapterIpAddresses(bool includeIpv4, bool includeIpv6, Func<NetworkInterface, bool>? adapterFilter)
 		{
@@ -357,7 +370,6 @@ namespace Rssdp
 
 			return ips.Distinct();
 		}
-
 
 		private void OnDeviceAvailable(object? sender, DeviceAvailableEventArgs e)
 		{
