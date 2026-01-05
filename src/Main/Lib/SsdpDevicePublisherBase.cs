@@ -436,13 +436,24 @@ USN: {1}
 			//Do not block synchronously as that may tie up a threadpool thread for several seconds.
 			System.Threading.Tasks.Task.Delay(_Random.Next(16, (maxWaitInterval * 1000))).ContinueWith((parentTask) =>
 			{
-				//Copying devices to local array here to avoid threading issues/enumerator exceptions.
-				var devices = GetDevicesMatchingSearchTarget(searchTarget);
+				try
+				{
+					if (this.IsDisposed) return;
 
-				if (devices != null)
-					SendSearchResponses(searchTarget, endPoint, devices);
-				else
-					_Log.LogWarning("Sending search responses for 0 devices (no matching targets).");
+					//Copying devices to local array here to avoid threading issues/enumerator exceptions.
+					var devices = GetDevicesMatchingSearchTarget(searchTarget);
+
+					if (devices != null)
+						SendSearchResponses(searchTarget, endPoint, devices);
+					else
+						_Log.LogWarning("Sending search responses for 0 devices (no matching targets).");
+				}
+				catch (Exception ex)
+				{
+					if (this.IsDisposed) return;
+
+					_Log.LogError($"Error sending device search responses: {ex.Message}");
+				}
 			});
 		}
 
@@ -533,6 +544,8 @@ USN: {1}
 			{
 				foreach (var device in devices)
 				{
+					if (this.IsDisposed) return;
+
 					SendServiceSearchResponses(device, searchTarget, endPoint);
 				}
 			}
@@ -540,6 +553,8 @@ USN: {1}
 			{
 				foreach (var device in devices)
 				{
+					if (this.IsDisposed) return;
+
 					SendDeviceSearchResponses(device, searchTarget, endPoint);
 				}
 			}
@@ -705,18 +720,34 @@ USN: {1}
 		}
 
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Performance", "CA1804:RemoveUnusedLocals", MessageId = "t", Justification = "Capturing task to local variable avoids compiler warning, but value is otherwise not required.")]
-		private void CleanUpRecentSearchRequestsAsync()
+		private async void CleanUpRecentSearchRequestsAsync()
 		{
-			var t = System.Threading.Tasks.Task.Run(() =>
-				{
-					lock (_RecentSearchRequests)
+			try
+			{
+				await System.Threading.Tasks.Task.Run
+				(
+					() =>
 					{
-						foreach (var requestKey in (from r in _RecentSearchRequests where r.Value.IsOld() select r.Key).ToArray())
+						if (this.IsDisposed) return;
+
+						lock (_RecentSearchRequests)
 						{
-							_RecentSearchRequests.Remove(requestKey);
+							foreach (var requestKey in (from r in _RecentSearchRequests where r.Value.IsOld() select r.Key).ToArray())
+							{
+								_RecentSearchRequests.Remove(requestKey);
+
+								if (this.IsDisposed) return;
+							}
 						}
 					}
-				});
+				).ConfigureAwait(false);
+			}
+			catch (Exception ex)
+			{
+				if (this.IsDisposed) return;
+
+				_Log.LogError($"Error cleaning up recent search requests: {ex.Message}");
+			}
 		}
 
 		#endregion
@@ -771,6 +802,8 @@ USN: {1}
 			}
 			catch (Exception ex)
 			{
+				if (this.IsDisposed) return; //If we're disposed the error is likely from being disposed, and boring now anyway.
+
 				_Log.LogError("Publisher stopped, exception " + ex.Message);
 				Dispose();
 			}
@@ -803,11 +836,15 @@ USN: {1}
 
 			foreach (var service in device.Services)
 			{
+				if (this.IsDisposed) return;
+
 				SendAliveNotification(device, service);
 			}
 
 			foreach (var childDevice in device.Devices)
 			{
+				if (this.IsDisposed) return;
+
 				SendAliveNotifications(childDevice, false);
 			}
 		}
@@ -934,11 +971,15 @@ USN: {1}
 
 			foreach (var service in device.Services)
 			{
+				if (this.IsDisposed) return;
+
 				SendByeByeNotification(device, service);
 			}
 
 			foreach (var childDevice in device.Devices)
 			{
+				if (this.IsDisposed) return;
+
 				SendByeByeNotifications(childDevice, false);
 			}
 		}

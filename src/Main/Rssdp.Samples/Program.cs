@@ -100,6 +100,19 @@ namespace Rssdp.Samples
 					WriteOutOptions();
 					break;
 
+				case "X":
+					///Stop any published devices so we send bye bye notifications
+					if (_DevicePublisher != null && _DevicePublisher.Devices.Any()) 
+					{
+						Console.WriteLine("Stopping publishing...");
+						var publishedDevices =_DevicePublisher.Devices.ToList();
+						foreach (var pd in publishedDevices)
+						{
+							_DevicePublisher.RemoveDevice(pd);
+						}
+					}
+					break;
+
 				default:
 					Console.WriteLine("Unknown command. Press ? for a list of valid commands.");
 					break;

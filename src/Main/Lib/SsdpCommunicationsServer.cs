@@ -1,5 +1,6 @@
 using System;
 using System.Net.Http;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace Rssdp.Infrastructure
@@ -28,6 +29,7 @@ namespace Rssdp.Infrastructure
 		  
 		*/
 
+		private readonly CancellationTokenSource _DisposeCancellationToken = new ();
 		private readonly object _BroadcastListenSocketSynchroniser = new ();
 		private IUdpSocket? _BroadcastListenSocket;
 
@@ -234,6 +236,11 @@ namespace Rssdp.Infrastructure
 		{
 			if (disposing)
 			{
+				try
+				{
+					_DisposeCancellationToken.Cancel();
+				} catch (ObjectDisposedException) { }
+
 				lock (_BroadcastListenSocketSynchroniser)
 				{
 					_BroadcastListenSocket?.Dispose();
@@ -243,10 +250,12 @@ namespace Rssdp.Infrastructure
 				{
 					_SendSocket?.Dispose();
 				}
+
+				_DisposeCancellationToken.Dispose();
 			}
 		}
 
-		#endregion
+#endregion
 
 		#region Private Methods
 
@@ -321,8 +330,8 @@ namespace Rssdp.Infrastructure
 						{
 							if (this.IsDisposed) return; //No error or reconnect if we're shutdown.
 
-							await ReconnectBroadcastListeningSocket().ConfigureAwait(false);
 							cancelled = true;
+							await ReconnectBroadcastListeningSocket().ConfigureAwait(false);
 							break;
 						}
 						catch (Exception)
@@ -330,7 +339,7 @@ namespace Rssdp.Infrastructure
 							cancelled = true;
 						}
 					}
-				}).ConfigureAwait(false);
+				}, _DisposeCancellationToken.Token).ConfigureAwait(false);
 			}
 			catch
 			{
@@ -344,7 +353,7 @@ namespace Rssdp.Infrastructure
 		private async Task ReconnectBroadcastListeningSocket()
 		{
 			var success = false;
-			while (!success)
+			while (!success && !this.IsDisposed)
 			{
 				try
 				{
@@ -364,7 +373,15 @@ namespace Rssdp.Infrastructure
 				}
 				catch
 				{
-					await Task.Delay(30000).ConfigureAwait(false);
+					try
+					{
+						await Task.Delay(30000, _DisposeCancellationToken.Token).ConfigureAwait(false);
+					}
+					catch (TaskCanceledException)
+					{
+						// Task was canceled, due to disposal.
+						return;
+					}
 				}
 			}
 		}
