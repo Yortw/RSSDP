@@ -1,0 +1,49 @@
+name: RSSDP PR Gate
+
+on:
+  pull_request:
+    branches:
+      - main
+      - develop
+      - feature/**
+
+jobs:
+  build-and-test:
+    name: Build and Test
+    runs-on: windows-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: |
+            8.0.x
+            6.0.x
+
+      - name: Cache NuGet
+        uses: actions/cache@v4
+        with:
+          path: ~/.nuget/packages
+          key: nuget-${{ runner.os }}-${{ hashFiles('**/*.sln', '**/*.csproj') }}
+          restore-keys: |
+            nuget-${{ runner.os }}-
+
+      - name: Restore
+        run: dotnet restore ./src/Main/RSSDP.sln
+
+      - name: Build
+        run: dotnet build ./src/Main/RSSDP.sln --configuration Release --no-restore
+
+      - name: Test
+        run: dotnet test ./src/Main/RSSDP.sln --configuration Release --no-build --logger "trx;LogFileName=test_results.trx"
+
+      - name: Publish Test Results
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: test-results
+          path: |
+            **/TestResults/*.trx
+            **/TestResults/**/*.trx
