@@ -24,6 +24,12 @@
       </group>
       <group targetFramework=".NetFramework4.5">
       </group>
+      <group targetFramework="net48">
+      </group>
+      <group targetFramework="net6.0">
+      </group>
+      <group targetFramework="net8.0">
+      </group>
       <group targetFramework="monoandroid">
       </group>
       <group targetFramework="Xamarin.iOS10">
@@ -87,6 +93,12 @@
     <file src="lib\net45\Rssdp*.dll" target="lib\net45" />
     <file src="lib\net45\Rssdp*.xml" target="lib\net45" />
     <file src="lib\net45\Rssdp*.pdb" target="lib\net45" />
+    <file src="lib\net48\Release\Rssdp*.dll " target="lib\net48" />
+    <file src="lib\net48\Release\Rssdp*.pdb " target="lib\net48" />
+    <file src="lib\net6.0\Release\Rssdp*.dll " target="lib\net6.0" />
+    <file src="lib\net6.0\Release\Rssdp*.pdb " target="lib\net6.0" />
+    <file src="lib\net8.0\Release\Rssdp*.dll " target="lib\net8.0" />
+    <file src="lib\net8.0\Release\Rssdp*.pdb " target="lib\net8.0" />
     <file src="lib\netcore451\Rssdp*.dll" target="lib\wpa81" />
     <file src="lib\netcore451\Rssdp*.xml" target="lib\wpa81" />
     <file src="lib\netcore451\Rssdp*.pdb" target="lib\wpa81" />
