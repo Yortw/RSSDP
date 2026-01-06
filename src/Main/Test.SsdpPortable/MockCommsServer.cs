@@ -1,289 +1,290 @@
-﻿using System;
+﻿using Rssdp;
+using Rssdp.Infrastructure;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
-using System.Text;
 using System.Threading.Tasks;
-using Rssdp;
-using Rssdp.Infrastructure;
 
 namespace Test.RssdpPortable
 {
-	public class MockCommsServer : DisposableManagedObjectBase, ISsdpCommunicationsServer
-	{
+  public class MockCommsServer : DisposableManagedObjectBase, ISsdpCommunicationsServer
+  {
 
-		private System.Threading.ManualResetEvent _BroadcastAvailableSignal = new System.Threading.ManualResetEvent(false);
-		private System.Collections.Generic.Queue<ReceivedUdpData> _ReceivedBroadcastsQueue = new Queue<ReceivedUdpData>();
+    private System.Threading.ManualResetEvent _BroadcastAvailableSignal = new System.Threading.ManualResetEvent(false);
+    private System.Collections.Generic.Queue<ReceivedUdpData> _ReceivedBroadcastsQueue = new Queue<ReceivedUdpData>();
 
-		private System.Threading.ManualResetEvent _MessageAvailableSignal = new System.Threading.ManualResetEvent(false);
-		private System.Collections.Generic.Queue<ReceivedUdpData> _ReceivedMessageQueue = new Queue<ReceivedUdpData>();
+    private System.Threading.ManualResetEvent _MessageAvailableSignal = new System.Threading.ManualResetEvent(false);
+    private System.Collections.Generic.Queue<ReceivedUdpData> _ReceivedMessageQueue = new Queue<ReceivedUdpData>();
 
-		private System.Threading.AutoResetEvent _MessageProcessedSignal = new System.Threading.AutoResetEvent(false);
+    private System.Threading.AutoResetEvent _MessageProcessedSignal = new System.Threading.AutoResetEvent(false);
 
-		private HttpRequestParser _RequestParser = new HttpRequestParser();
-		private HttpResponseParser _ResponseParser = new HttpResponseParser();
+    private HttpRequestParser _RequestParser = new HttpRequestParser();
+    private HttpResponseParser _ResponseParser = new HttpResponseParser();
 
-		public System.Collections.Generic.Queue<ReceivedUdpData> SentMessages = new Queue<ReceivedUdpData>();
-		public System.Collections.Generic.Queue<ReceivedUdpData> SentBroadcasts = new Queue<ReceivedUdpData>();
+    public System.Collections.Generic.Queue<ReceivedUdpData> SentMessages = new Queue<ReceivedUdpData>();
+    public System.Collections.Generic.Queue<ReceivedUdpData> SentBroadcasts = new Queue<ReceivedUdpData>();
 
-		private System.Threading.ManualResetEvent _SentBroadcastSignal = new System.Threading.ManualResetEvent(false);
-		private System.Threading.ManualResetEvent _SentMessageSignal = new System.Threading.ManualResetEvent(false);
+    private System.Threading.ManualResetEvent _SentBroadcastSignal = new System.Threading.ManualResetEvent(false);
+    private System.Threading.ManualResetEvent _SentMessageSignal = new System.Threading.ManualResetEvent(false);
 
-		private System.Threading.Timer _MessageSentSignalTimer;
-		private System.Threading.Timer _BroadcastSentSignalTimer;
+    private System.Threading.Timer _MessageSentSignalTimer;
+    private System.Threading.Timer _BroadcastSentSignalTimer;
 
-		private System.Threading.Tasks.Task _ListenTask;
+    private System.Threading.Tasks.Task _ListenTask;
 
-		private readonly DeviceNetworkType _deviceNetworkType = DeviceNetworkType.IPv4;
+    private readonly DeviceNetworkType _deviceNetworkType = DeviceNetworkType.IPv4;
 
-		public MockCommsServer()
-		{
-			_MessageSentSignalTimer = new System.Threading.Timer((reserved) => _SentMessageSignal.Set(), null, System.Threading.Timeout.Infinite, System.Threading.Timeout.Infinite);
-			_BroadcastSentSignalTimer = new System.Threading.Timer((reserved) => _SentBroadcastSignal.Set(), null, System.Threading.Timeout.Infinite, System.Threading.Timeout.Infinite);
-		}
+    public MockCommsServer()
+    {
+      _MessageSentSignalTimer = new System.Threading.Timer((reserved) => _SentMessageSignal.Set(), null, System.Threading.Timeout.Infinite, System.Threading.Timeout.Infinite);
+      _BroadcastSentSignalTimer = new System.Threading.Timer((reserved) => _SentBroadcastSignal.Set(), null, System.Threading.Timeout.Infinite, System.Threading.Timeout.Infinite);
+    }
 
-		protected override void Dispose(bool disposing)
-		{
-			var signal = _BroadcastAvailableSignal;
-			_BroadcastAvailableSignal = null;
-			if (signal != null)
-			{
-				signal.Set();
-				signal.Dispose();
-			}
+    protected override void Dispose(bool disposing)
+    {
+      base.Dispose(disposing);
 
-			signal = _MessageAvailableSignal;
-			_MessageAvailableSignal = null;
-			if (signal != null)
-			{
-				signal.Set();
-				signal.Dispose();
-			}
-		}
+      var signal = _BroadcastAvailableSignal;
+      _BroadcastAvailableSignal = null;
+      if (signal != null)
+      {
+        signal.Set();
+        signal.Dispose();
+      }
 
-		#region ISsdpCommunicationsServer Members
+      signal = _MessageAvailableSignal;
+      _MessageAvailableSignal = null;
+      if (signal != null)
+      {
+        signal.Set();
+        signal.Dispose();
+      }
+    }
 
-		public event EventHandler<RequestReceivedEventArgs> RequestReceived;
+    #region ISsdpCommunicationsServer Members
 
-		public event EventHandler<ResponseReceivedEventArgs> ResponseReceived;
+    public event EventHandler<RequestReceivedEventArgs> RequestReceived;
 
-		public void BeginListeningForBroadcasts()
-		{
-			var t = Task.Run(() =>
-				{
-					try
-					{
-						while (!this.IsDisposed)
-						{
-							_BroadcastAvailableSignal.WaitOne();
+    public event EventHandler<ResponseReceivedEventArgs> ResponseReceived;
 
-							if (this.IsDisposed) break;
+    public void BeginListeningForBroadcasts()
+    {
+      var t = Task.Run(() =>
+        {
+          try
+          {
+            while (!this.IsDisposed)
+            {
+              _BroadcastAvailableSignal.WaitOne();
 
-							while (_ReceivedBroadcastsQueue.Any())
-							{
-								if (this.IsDisposed) break;
+              if (this.IsDisposed) break;
 
-								var data = _ReceivedBroadcastsQueue.Dequeue();
-								Action processWork = () => ProcessMessage(System.Text.UTF8Encoding.UTF8.GetString(data.Buffer, 0, data.ReceivedBytes), data.ReceivedFrom);
-								var processTask = TaskEx.Run(processWork);
+              while (_ReceivedBroadcastsQueue.Any())
+              {
+                if (this.IsDisposed) break;
 
-							}
-							_BroadcastAvailableSignal.Reset();
-						}
-					}
-					catch (ObjectDisposedException) { }
-				});
-		}
+                var data = _ReceivedBroadcastsQueue.Dequeue();
+                Action processWork = () => ProcessMessage(System.Text.UTF8Encoding.UTF8.GetString(data.Buffer, 0, data.ReceivedBytes), data.ReceivedFrom);
+                var processTask = TaskEx.Run(processWork);
 
-		public void StopListeningForBroadcasts()
-		{
-			_ReceivedBroadcastsQueue.Clear();
-			_BroadcastAvailableSignal.Dispose();
-			_BroadcastAvailableSignal = new System.Threading.ManualResetEvent(false);
-		}
+              }
+              _BroadcastAvailableSignal.Reset();
+            }
+          }
+          catch (ObjectDisposedException) { }
+        });
+    }
 
-		public void StopListeningForResponses()
-		{
-			_ReceivedMessageQueue.Clear();
-			_MessageAvailableSignal.Dispose();
-			_MessageAvailableSignal = new System.Threading.ManualResetEvent(false);
-		}
+    public void StopListeningForBroadcasts()
+    {
+      _ReceivedBroadcastsQueue.Clear();
+      _BroadcastAvailableSignal.Dispose();
+      _BroadcastAvailableSignal = new System.Threading.ManualResetEvent(false);
+    }
 
-		public void SendMessage(byte[] messageData, UdpEndPoint destination)
-		{
-			if (SsdpConstants.MulticastLocalAdminAddress.Equals(destination.IPAddress) ||
-				SsdpConstants.MulticastLinkLocalAddressV6.Equals(destination.IPAddress))
-				SendMulticastMessage(messageData);
-			else
-			{
-				SentMessages.Enqueue(new ReceivedUdpData() { Buffer = messageData, ReceivedBytes = messageData.Length, ReceivedFrom = destination });
-				SetMessageSentSignal();
-			}
-		}
+    public void StopListeningForResponses()
+    {
+      _ReceivedMessageQueue.Clear();
+      _MessageAvailableSignal.Dispose();
+      _MessageAvailableSignal = new System.Threading.ManualResetEvent(false);
+    }
 
-		private void SetMessageSentSignal()
-		{
-			_MessageSentSignalTimer.Change(40, System.Threading.Timeout.Infinite);
-		}
+    public void SendMessage(byte[] messageData, UdpEndPoint destination)
+    {
+      if (SsdpConstants.MulticastLocalAdminAddress.Equals(destination.IPAddress) ||
+        SsdpConstants.MulticastLinkLocalAddressV6.Equals(destination.IPAddress))
+        SendMulticastMessage(messageData);
+      else
+      {
+        SentMessages.Enqueue(new ReceivedUdpData() { Buffer = messageData, ReceivedBytes = messageData.Length, ReceivedFrom = destination });
+        SetMessageSentSignal();
+      }
+    }
 
-		public void SendMulticastMessage(byte[] messageData)
-		{
-			SentBroadcasts.Enqueue(new ReceivedUdpData()
-			{
-				Buffer = messageData,
-				ReceivedBytes = messageData.Length,
-				ReceivedFrom = new UdpEndPoint()
-				{
-					IPAddress = SsdpConstants.MulticastLocalAdminAddress,
-					Port = SsdpConstants.MulticastPort
-				}
-			});
+    private void SetMessageSentSignal()
+    {
+      _MessageSentSignalTimer.Change(40, System.Threading.Timeout.Infinite);
+    }
 
-			if (_ListenTask == null)
-			{
-				_ListenTask = Task.Run(() =>
-				{
-					try
-					{
-						while (!this.IsDisposed)
-						{
-							_MessageAvailableSignal.WaitOne();
+    public void SendMulticastMessage(byte[] messageData)
+    {
+      SentBroadcasts.Enqueue(new ReceivedUdpData()
+      {
+        Buffer = messageData,
+        ReceivedBytes = messageData.Length,
+        ReceivedFrom = new UdpEndPoint()
+        {
+          IPAddress = SsdpConstants.MulticastLocalAdminAddress,
+          Port = SsdpConstants.MulticastPort
+        }
+      });
 
-							if (this.IsDisposed) break;
+      if (_ListenTask == null)
+      {
+        _ListenTask = Task.Run(() =>
+        {
+          try
+          {
+            while (!this.IsDisposed)
+            {
+              _MessageAvailableSignal.WaitOne();
 
-							while (_ReceivedMessageQueue.Any())
-							{
-								if (this.IsDisposed) break;
+              if (this.IsDisposed) break;
 
-								var data = _ReceivedMessageQueue.Dequeue();
-								Action processWork = () => ProcessMessage(System.Text.UTF8Encoding.UTF8.GetString(data.Buffer, 0, data.ReceivedBytes), data.ReceivedFrom);
-								var processTask = TaskEx.Run(processWork);
-							}
-							_MessageAvailableSignal.Reset();
-						}
-					}
-					catch (ObjectDisposedException) { }
-					finally
-					{
-						_ListenTask = null;
-					}
-				});
-			}
+              while (_ReceivedMessageQueue.Any())
+              {
+                if (this.IsDisposed) break;
 
-			_BroadcastSentSignalTimer.Change(50, System.Threading.Timeout.Infinite);
-			//_SentBroadcastSignal.Set();
-		}
+                var data = _ReceivedMessageQueue.Dequeue();
+                Action processWork = () => ProcessMessage(System.Text.UTF8Encoding.UTF8.GetString(data.Buffer, 0, data.ReceivedBytes), data.ReceivedFrom);
+                var processTask = TaskEx.Run(processWork);
+              }
+              _MessageAvailableSignal.Reset();
+            }
+          }
+          catch (ObjectDisposedException) { }
+          finally
+          {
+            _ListenTask = null;
+          }
+        });
+      }
 
-		public bool IsShared
-		{
-			get;
-			set;
-		}
+      _BroadcastSentSignalTimer.Change(50, System.Threading.Timeout.Infinite);
+      //_SentBroadcastSignal.Set();
+    }
 
-		public DeviceNetworkType DeviceNetworkType
-		{
-			get { return _deviceNetworkType; }
-		}
+    public bool IsShared
+    {
+      get;
+      set;
+    }
 
-		public int UdpSendCount { get; set; } = SsdpConstants.DefaultUdpResendCount;
+    public DeviceNetworkType DeviceNetworkType
+    {
+      get { return _deviceNetworkType; }
+    }
 
-		public TimeSpan UdpSendDelay { get; set; } = SsdpConstants.DefaultUdpResendDelay;
+    public int UdpSendCount { get; set; } = SsdpConstants.DefaultUdpResendCount;
 
-		#endregion
+    public TimeSpan UdpSendDelay { get; set; } = SsdpConstants.DefaultUdpResendDelay;
 
-		public void MockReceiveBroadcast(ReceivedUdpData broadcastMessage)
-		{
-			if (!_ReceivedBroadcastsQueue.Any())
-				_BroadcastAvailableSignal.Reset();
+    #endregion
 
-			_ReceivedBroadcastsQueue.Enqueue(broadcastMessage);
-			_BroadcastAvailableSignal.Set();
-		}
+    public void MockReceiveBroadcast(ReceivedUdpData broadcastMessage)
+    {
+      if (!_ReceivedBroadcastsQueue.Any())
+        _BroadcastAvailableSignal.Reset();
 
-		public void MockReceiveMessage(ReceivedUdpData message)
-		{
-			if (!_ReceivedMessageQueue.Any())
-				_MessageAvailableSignal.Reset();
+      _ReceivedBroadcastsQueue.Enqueue(broadcastMessage);
+      _BroadcastAvailableSignal.Set();
+    }
 
-			_ReceivedMessageQueue.Enqueue(message);
-			_MessageAvailableSignal.Set();
-		}
+    public void MockReceiveMessage(ReceivedUdpData message)
+    {
+      if (!_ReceivedMessageQueue.Any())
+        _MessageAvailableSignal.Reset();
 
-		public void WaitForMockBroadcast(int timeoutMilliseconds)
-		{
-			if (!SentBroadcasts.Any())
-				_SentBroadcastSignal.Reset();
+      _ReceivedMessageQueue.Enqueue(message);
+      _MessageAvailableSignal.Set();
+    }
 
-			_SentBroadcastSignal.WaitOne(timeoutMilliseconds);
-			_SentBroadcastSignal.Reset();
-		}
+    public void WaitForMockBroadcast(int timeoutMilliseconds)
+    {
+      if (!SentBroadcasts.Any())
+        _SentBroadcastSignal.Reset();
 
-		public bool WaitForMockMessage(int timeoutMilliseconds)
-		{
-			if (!SentMessages.Any())
-				_SentMessageSignal.Reset();
+      _SentBroadcastSignal.WaitOne(timeoutMilliseconds);
+      _SentBroadcastSignal.Reset();
+    }
 
-			var retVal = _SentMessageSignal.WaitOne(timeoutMilliseconds);
-			_SentMessageSignal.Reset();
-			return retVal;
-		}
+    public bool WaitForMockMessage(int timeoutMilliseconds)
+    {
+      if (!SentMessages.Any())
+        _SentMessageSignal.Reset();
 
-		public bool WaitForMessageToProcess(int timeoutMillseconds)
-		{
-			return _MessageProcessedSignal.WaitOne(timeoutMillseconds);
-		}
+      var retVal = _SentMessageSignal.WaitOne(timeoutMilliseconds);
+      _SentMessageSignal.Reset();
+      return retVal;
+    }
 
-		private void ProcessMessage(string data, UdpEndPoint endPoint)
-		{
-			//Responses start with the HTTP version, prefixed with HTTP/ while
-			//requests start with a method which can vary and might be one we haven't 
-			//seen/don't know. We'll check if this message is a request or a response
-			//by checking for the static HTTP/ prefix on the start of the message.
-			if (data.StartsWith("HTTP/", StringComparison.OrdinalIgnoreCase))
-			{
-				HttpResponseMessage responseMessage = null;
-				try
-				{
-					responseMessage = _ResponseParser.Parse(data);
-				}
-				catch (ArgumentException) { } // Ignore invalid packets.
+    public bool WaitForMessageToProcess(int timeoutMillseconds)
+    {
+      return _MessageProcessedSignal.WaitOne(timeoutMillseconds);
+    }
 
-				if (responseMessage != null)
-					OnResponseReceived(responseMessage, endPoint);
-			}
-			else
-			{
-				HttpRequestMessage requestMessage = null;
-				try
-				{
-					requestMessage = _RequestParser.Parse(data);
-				}
-				catch (ArgumentException) { } // Ignore invalid packets.
+    private void ProcessMessage(string data, UdpEndPoint endPoint)
+    {
+      //Responses start with the HTTP version, prefixed with HTTP/ while
+      //requests start with a method which can vary and might be one we haven't 
+      //seen/don't know. We'll check if this message is a request or a response
+      //by checking for the static HTTP/ prefix on the start of the message.
+      if (data.StartsWith("HTTP/", StringComparison.OrdinalIgnoreCase))
+      {
+        HttpResponseMessage responseMessage = null;
+        try
+        {
+          responseMessage = _ResponseParser.Parse(data);
+        }
+        catch (ArgumentException) { } // Ignore invalid packets.
 
-				if (requestMessage != null)
-					OnRequestReceived(requestMessage, endPoint);
-			}
-			_MessageProcessedSignal.Set();
-		}
+        if (responseMessage != null)
+          OnResponseReceived(responseMessage, endPoint);
+      }
+      else
+      {
+        HttpRequestMessage requestMessage = null;
+        try
+        {
+          requestMessage = _RequestParser.Parse(data);
+        }
+        catch (ArgumentException) { } // Ignore invalid packets.
 
-		private void OnRequestReceived(HttpRequestMessage data, UdpEndPoint endPoint)
-		{
-			//SSDP specification says only * is currently used but other uri's might
-			//be implemented in the future and should be ignored unless understood.
-			//Section 4.2 - http://tools.ietf.org/html/draft-cai-ssdp-v1-03#page-11
-			if (data.RequestUri.ToString() != "*") return;
+        if (requestMessage != null)
+          OnRequestReceived(requestMessage, endPoint);
+      }
+      _MessageProcessedSignal.Set();
+    }
 
-			var handlers = this.RequestReceived;
-			if (handlers != null)
-				handlers(this, new RequestReceivedEventArgs(data, endPoint));
-		}
+    private void OnRequestReceived(HttpRequestMessage data, UdpEndPoint endPoint)
+    {
+      //SSDP specification says only * is currently used but other uri's might
+      //be implemented in the future and should be ignored unless understood.
+      //Section 4.2 - http://tools.ietf.org/html/draft-cai-ssdp-v1-03#page-11
+      if (data.RequestUri.ToString() != "*") return;
 
-		private void OnResponseReceived(HttpResponseMessage data, UdpEndPoint endPoint)
-		{
-			var handlers = this.ResponseReceived;
-			if (handlers != null)
-				handlers(this, new ResponseReceivedEventArgs(data, endPoint));
-		}
+      var handlers = this.RequestReceived;
+      if (handlers != null)
+        handlers(this, new RequestReceivedEventArgs(data, endPoint));
+    }
 
-	}
+    private void OnResponseReceived(HttpResponseMessage data, UdpEndPoint endPoint)
+    {
+      var handlers = this.ResponseReceived;
+      if (handlers != null)
+        handlers(this, new ResponseReceivedEventArgs(data, endPoint));
+    }
+
+  }
 }

@@ -20,7 +20,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Rssdp.Samples", "Rssdp.Samp
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Rssdp.WinRT", "Rssdp.WinRT\Rssdp.WinRT.csproj", "{62297236-0AD8-4E31-BE6C-91408852FC76}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Rssdp.NetCore", "Rssdp.NetCore\Rssdp.NetCore.csproj", "{AB769ED2-0A3D-41B7-A702-0E5B08DA158E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Rssdp.NetCore", "Rssdp.NetCore\Rssdp.NetCore.csproj", "{AB769ED2-0A3D-41B7-A702-0E5B08DA158E}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Rssdp.Net45", "Rssdp.Net45\Rssdp.Net45.csproj", "{1491D1A7-BBD0-4537-9F49-FDDD86D4989C}"
 EndProject
