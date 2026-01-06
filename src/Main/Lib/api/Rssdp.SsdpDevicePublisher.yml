@@ -6,9 +6,21 @@ items:
   parent: Rssdp
   children:
   - Rssdp.SsdpDevicePublisher.#ctor
+  - Rssdp.SsdpDevicePublisher.#ctor
+  - Rssdp.SsdpDevicePublisher.#ctor
+  - Rssdp.SsdpDevicePublisher.#ctor
+  - Rssdp.SsdpDevicePublisher.#ctor(Rssdp.Infrastructure.ISsdpCommunicationsServer)
+  - Rssdp.SsdpDevicePublisher.#ctor(Rssdp.Infrastructure.ISsdpCommunicationsServer)
+  - Rssdp.SsdpDevicePublisher.#ctor(Rssdp.Infrastructure.ISsdpCommunicationsServer)
   - Rssdp.SsdpDevicePublisher.#ctor(Rssdp.Infrastructure.ISsdpCommunicationsServer)
   - Rssdp.SsdpDevicePublisher.#ctor(Rssdp.Infrastructure.ISsdpCommunicationsServer,Rssdp.ISsdpLogger)
   - Rssdp.SsdpDevicePublisher.#ctor(System.Int32)
+  - Rssdp.SsdpDevicePublisher.#ctor(System.Int32)
+  - Rssdp.SsdpDevicePublisher.#ctor(System.Int32)
+  - Rssdp.SsdpDevicePublisher.#ctor(System.Int32)
+  - Rssdp.SsdpDevicePublisher.#ctor(System.Int32,System.Int32)
+  - Rssdp.SsdpDevicePublisher.#ctor(System.Int32,System.Int32)
+  - Rssdp.SsdpDevicePublisher.#ctor(System.Int32,System.Int32)
   - Rssdp.SsdpDevicePublisher.#ctor(System.Int32,System.Int32)
   - Rssdp.SsdpDevicePublisher.#ctor(System.String)
   langs:
@@ -21,7 +33,7 @@ items:
   source:
     id: SsdpDevicePublisher
     path: ''
-    startLine: 5448
+    startLine: 8313
   assemblies:
   - cs.temp.dll
   namespace: Rssdp
@@ -242,6 +254,396 @@ items:
     id: .ctor
     path: ''
     startLine: 5526
+  assemblies:
+  - cs.temp.dll
+  namespace: Rssdp
+  summary: "\nPartial constructor. \n"
+  remarks: "\n<p>Uses the default <xref href=\"Rssdp.Infrastructure.ISsdpCommunicationsServer\" data-throw-if-not-resolved=\"false\"></xref> implementation and network settings for Windows and the SSDP specification, but specifies the local port to use and multicast time to live setting for socket communications.</p>\n<p>Specify 0 for the <code data-dev-comment-type=\"paramref\" class=\"paramref\">localPort</code> argument to indicate the system should choose it&apos;s own port.</p>\n<p>The <code data-dev-comment-type=\"paramref\" class=\"paramref\">multicastTimeToLive</code> is actually a number of &apos;hops&apos; on the network and not a time based argument.</p>\n"
+  example: []
+  syntax:
+    content: public SsdpDevicePublisher(int localPort, int multicastTimeToLive)
+    parameters:
+    - id: localPort
+      type: System.Int32
+      description: The local port to use for socket communications, specify 0 to have the system choose it&apos;s own.
+    - id: multicastTimeToLive
+      type: System.Int32
+      description: The number of hops a multicast packet can make before it expires. Must be 1 or greater.
+    content.vb: Public Sub New(localPort As Integer, multicastTimeToLive As Integer)
+  overload: Rssdp.SsdpDevicePublisher.#ctor*
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+- uid: Rssdp.SsdpDevicePublisher.#ctor
+  commentId: M:Rssdp.SsdpDevicePublisher.#ctor
+  id: '#ctor'
+  parent: Rssdp.SsdpDevicePublisher
+  langs:
+  - csharp
+  - vb
+  name: SsdpDevicePublisher()
+  nameWithType: SsdpDevicePublisher.SsdpDevicePublisher()
+  fullName: Rssdp.SsdpDevicePublisher.SsdpDevicePublisher()
+  type: Constructor
+  source:
+    id: .ctor
+    path: ''
+    startLine: 8140
+  assemblies:
+  - cs.temp.dll
+  namespace: Rssdp
+  summary: "\nDefault constructor. \n"
+  remarks: "\n<p>Uses the default <xref href=\"Rssdp.Infrastructure.ISsdpCommunicationsServer\" data-throw-if-not-resolved=\"false\"></xref> implementation and network settings for Windows and the SSDP specification.</p>\n"
+  example: []
+  syntax:
+    content: public SsdpDevicePublisher()
+    content.vb: Public Sub New
+  overload: Rssdp.SsdpDevicePublisher.#ctor*
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+- uid: Rssdp.SsdpDevicePublisher.#ctor(Rssdp.Infrastructure.ISsdpCommunicationsServer)
+  commentId: M:Rssdp.SsdpDevicePublisher.#ctor(Rssdp.Infrastructure.ISsdpCommunicationsServer)
+  id: '#ctor(Rssdp.Infrastructure.ISsdpCommunicationsServer)'
+  parent: Rssdp.SsdpDevicePublisher
+  langs:
+  - csharp
+  - vb
+  name: SsdpDevicePublisher(ISsdpCommunicationsServer)
+  nameWithType: SsdpDevicePublisher.SsdpDevicePublisher(ISsdpCommunicationsServer)
+  fullName: Rssdp.SsdpDevicePublisher.SsdpDevicePublisher(Rssdp.Infrastructure.ISsdpCommunicationsServer)
+  type: Constructor
+  source:
+    id: .ctor
+    path: ''
+    startLine: 8153
+  assemblies:
+  - cs.temp.dll
+  namespace: Rssdp
+  summary: "\nFull constructor. \n"
+  remarks: "\n<p>Allows the caller to specify their own <xref href=\"Rssdp.Infrastructure.ISsdpCommunicationsServer\" data-throw-if-not-resolved=\"false\"></xref> implementation for full control over the networking, or for mocking/testing purposes..</p>\n"
+  example: []
+  syntax:
+    content: public SsdpDevicePublisher(ISsdpCommunicationsServer communicationsServer)
+    parameters:
+    - id: communicationsServer
+      type: Rssdp.Infrastructure.ISsdpCommunicationsServer
+    content.vb: Public Sub New(communicationsServer As ISsdpCommunicationsServer)
+  overload: Rssdp.SsdpDevicePublisher.#ctor*
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+- uid: Rssdp.SsdpDevicePublisher.#ctor(System.Int32)
+  commentId: M:Rssdp.SsdpDevicePublisher.#ctor(System.Int32)
+  id: '#ctor(System.Int32)'
+  parent: Rssdp.SsdpDevicePublisher
+  langs:
+  - csharp
+  - vb
+  name: SsdpDevicePublisher(Int32)
+  nameWithType: SsdpDevicePublisher.SsdpDevicePublisher(Int32)
+  fullName: Rssdp.SsdpDevicePublisher.SsdpDevicePublisher(System.Int32)
+  type: Constructor
+  source:
+    id: .ctor
+    path: ''
+    startLine: 8166
+  assemblies:
+  - cs.temp.dll
+  namespace: Rssdp
+  summary: "\nPartial constructor. \n"
+  remarks: "\n<p>Uses the default <xref href=\"Rssdp.Infrastructure.ISsdpCommunicationsServer\" data-throw-if-not-resolved=\"false\"></xref> implementation and network settings for Windows and the SSDP specification, but specifies the local port to use for socket communications. Specify 0 to indicate the system should choose it&apos;s own port.</p>\n"
+  example: []
+  syntax:
+    content: public SsdpDevicePublisher(int localPort)
+    parameters:
+    - id: localPort
+      type: System.Int32
+      description: The local port to use for socket communications, specify 0 to have the system choose it&apos;s own.
+    content.vb: Public Sub New(localPort As Integer)
+  overload: Rssdp.SsdpDevicePublisher.#ctor*
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+- uid: Rssdp.SsdpDevicePublisher.#ctor(System.Int32,System.Int32)
+  commentId: M:Rssdp.SsdpDevicePublisher.#ctor(System.Int32,System.Int32)
+  id: '#ctor(System.Int32,System.Int32)'
+  parent: Rssdp.SsdpDevicePublisher
+  langs:
+  - csharp
+  - vb
+  name: SsdpDevicePublisher(Int32, Int32)
+  nameWithType: SsdpDevicePublisher.SsdpDevicePublisher(Int32, Int32)
+  fullName: Rssdp.SsdpDevicePublisher.SsdpDevicePublisher(System.Int32, System.Int32)
+  type: Constructor
+  source:
+    id: .ctor
+    path: ''
+    startLine: 8183
+  assemblies:
+  - cs.temp.dll
+  namespace: Rssdp
+  summary: "\nPartial constructor. \n"
+  remarks: "\n<p>Uses the default <xref href=\"Rssdp.Infrastructure.ISsdpCommunicationsServer\" data-throw-if-not-resolved=\"false\"></xref> implementation and network settings for Windows and the SSDP specification, but specifies the local port to use and multicast time to live setting for socket communications.</p>\n<p>Specify 0 for the <code data-dev-comment-type=\"paramref\" class=\"paramref\">localPort</code> argument to indicate the system should choose it&apos;s own port.</p>\n<p>The <code data-dev-comment-type=\"paramref\" class=\"paramref\">multicastTimeToLive</code> is actually a number of &apos;hops&apos; on the network and not a time based argument.</p>\n"
+  example: []
+  syntax:
+    content: public SsdpDevicePublisher(int localPort, int multicastTimeToLive)
+    parameters:
+    - id: localPort
+      type: System.Int32
+      description: The local port to use for socket communications, specify 0 to have the system choose it&apos;s own.
+    - id: multicastTimeToLive
+      type: System.Int32
+      description: The number of hops a multicast packet can make before it expires. Must be 1 or greater.
+    content.vb: Public Sub New(localPort As Integer, multicastTimeToLive As Integer)
+  overload: Rssdp.SsdpDevicePublisher.#ctor*
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+- uid: Rssdp.SsdpDevicePublisher.#ctor
+  commentId: M:Rssdp.SsdpDevicePublisher.#ctor
+  id: '#ctor'
+  parent: Rssdp.SsdpDevicePublisher
+  langs:
+  - csharp
+  - vb
+  name: SsdpDevicePublisher()
+  nameWithType: SsdpDevicePublisher.SsdpDevicePublisher()
+  fullName: Rssdp.SsdpDevicePublisher.SsdpDevicePublisher()
+  type: Constructor
+  source:
+    id: .ctor
+    path: ''
+    startLine: 8232
+  assemblies:
+  - cs.temp.dll
+  namespace: Rssdp
+  summary: "\nDefault constructor. \n"
+  remarks: "\n<p>Uses the default <xref href=\"Rssdp.Infrastructure.ISsdpCommunicationsServer\" data-throw-if-not-resolved=\"false\"></xref> implementation and network settings for Windows and the SSDP specification.</p>\n"
+  example: []
+  syntax:
+    content: public SsdpDevicePublisher()
+    content.vb: Public Sub New
+  overload: Rssdp.SsdpDevicePublisher.#ctor*
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+- uid: Rssdp.SsdpDevicePublisher.#ctor(Rssdp.Infrastructure.ISsdpCommunicationsServer)
+  commentId: M:Rssdp.SsdpDevicePublisher.#ctor(Rssdp.Infrastructure.ISsdpCommunicationsServer)
+  id: '#ctor(Rssdp.Infrastructure.ISsdpCommunicationsServer)'
+  parent: Rssdp.SsdpDevicePublisher
+  langs:
+  - csharp
+  - vb
+  name: SsdpDevicePublisher(ISsdpCommunicationsServer)
+  nameWithType: SsdpDevicePublisher.SsdpDevicePublisher(ISsdpCommunicationsServer)
+  fullName: Rssdp.SsdpDevicePublisher.SsdpDevicePublisher(Rssdp.Infrastructure.ISsdpCommunicationsServer)
+  type: Constructor
+  source:
+    id: .ctor
+    path: ''
+    startLine: 8245
+  assemblies:
+  - cs.temp.dll
+  namespace: Rssdp
+  summary: "\nFull constructor. \n"
+  remarks: "\n<p>Allows the caller to specify their own <xref href=\"Rssdp.Infrastructure.ISsdpCommunicationsServer\" data-throw-if-not-resolved=\"false\"></xref> implementation for full control over the networking, or for mocking/testing purposes..</p>\n"
+  example: []
+  syntax:
+    content: public SsdpDevicePublisher(ISsdpCommunicationsServer communicationsServer)
+    parameters:
+    - id: communicationsServer
+      type: Rssdp.Infrastructure.ISsdpCommunicationsServer
+    content.vb: Public Sub New(communicationsServer As ISsdpCommunicationsServer)
+  overload: Rssdp.SsdpDevicePublisher.#ctor*
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+- uid: Rssdp.SsdpDevicePublisher.#ctor(System.Int32)
+  commentId: M:Rssdp.SsdpDevicePublisher.#ctor(System.Int32)
+  id: '#ctor(System.Int32)'
+  parent: Rssdp.SsdpDevicePublisher
+  langs:
+  - csharp
+  - vb
+  name: SsdpDevicePublisher(Int32)
+  nameWithType: SsdpDevicePublisher.SsdpDevicePublisher(Int32)
+  fullName: Rssdp.SsdpDevicePublisher.SsdpDevicePublisher(System.Int32)
+  type: Constructor
+  source:
+    id: .ctor
+    path: ''
+    startLine: 8258
+  assemblies:
+  - cs.temp.dll
+  namespace: Rssdp
+  summary: "\nPartial constructor. \n"
+  remarks: "\n<p>Uses the default <xref href=\"Rssdp.Infrastructure.ISsdpCommunicationsServer\" data-throw-if-not-resolved=\"false\"></xref> implementation and network settings for Windows and the SSDP specification, but specifies the local port to use for socket communications. Specify 0 to indicate the system should choose it&apos;s own port.</p>\n"
+  example: []
+  syntax:
+    content: public SsdpDevicePublisher(int localPort)
+    parameters:
+    - id: localPort
+      type: System.Int32
+      description: The local port to use for socket communications, specify 0 to have the system choose it&apos;s own.
+    content.vb: Public Sub New(localPort As Integer)
+  overload: Rssdp.SsdpDevicePublisher.#ctor*
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+- uid: Rssdp.SsdpDevicePublisher.#ctor(System.Int32,System.Int32)
+  commentId: M:Rssdp.SsdpDevicePublisher.#ctor(System.Int32,System.Int32)
+  id: '#ctor(System.Int32,System.Int32)'
+  parent: Rssdp.SsdpDevicePublisher
+  langs:
+  - csharp
+  - vb
+  name: SsdpDevicePublisher(Int32, Int32)
+  nameWithType: SsdpDevicePublisher.SsdpDevicePublisher(Int32, Int32)
+  fullName: Rssdp.SsdpDevicePublisher.SsdpDevicePublisher(System.Int32, System.Int32)
+  type: Constructor
+  source:
+    id: .ctor
+    path: ''
+    startLine: 8275
+  assemblies:
+  - cs.temp.dll
+  namespace: Rssdp
+  summary: "\nPartial constructor. \n"
+  remarks: "\n<p>Uses the default <xref href=\"Rssdp.Infrastructure.ISsdpCommunicationsServer\" data-throw-if-not-resolved=\"false\"></xref> implementation and network settings for Windows and the SSDP specification, but specifies the local port to use and multicast time to live setting for socket communications.</p>\n<p>Specify 0 for the <code data-dev-comment-type=\"paramref\" class=\"paramref\">localPort</code> argument to indicate the system should choose it&apos;s own port.</p>\n<p>The <code data-dev-comment-type=\"paramref\" class=\"paramref\">multicastTimeToLive</code> is actually a number of &apos;hops&apos; on the network and not a time based argument.</p>\n"
+  example: []
+  syntax:
+    content: public SsdpDevicePublisher(int localPort, int multicastTimeToLive)
+    parameters:
+    - id: localPort
+      type: System.Int32
+      description: The local port to use for socket communications, specify 0 to have the system choose it&apos;s own.
+    - id: multicastTimeToLive
+      type: System.Int32
+      description: The number of hops a multicast packet can make before it expires. Must be 1 or greater.
+    content.vb: Public Sub New(localPort As Integer, multicastTimeToLive As Integer)
+  overload: Rssdp.SsdpDevicePublisher.#ctor*
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+- uid: Rssdp.SsdpDevicePublisher.#ctor
+  commentId: M:Rssdp.SsdpDevicePublisher.#ctor
+  id: '#ctor'
+  parent: Rssdp.SsdpDevicePublisher
+  langs:
+  - csharp
+  - vb
+  name: SsdpDevicePublisher()
+  nameWithType: SsdpDevicePublisher.SsdpDevicePublisher()
+  fullName: Rssdp.SsdpDevicePublisher.SsdpDevicePublisher()
+  type: Constructor
+  source:
+    id: .ctor
+    path: ''
+    startLine: 8324
+  assemblies:
+  - cs.temp.dll
+  namespace: Rssdp
+  summary: "\nDefault constructor. \n"
+  remarks: "\n<p>Uses the default <xref href=\"Rssdp.Infrastructure.ISsdpCommunicationsServer\" data-throw-if-not-resolved=\"false\"></xref> implementation and network settings for Windows and the SSDP specification.</p>\n"
+  example: []
+  syntax:
+    content: public SsdpDevicePublisher()
+    content.vb: Public Sub New
+  overload: Rssdp.SsdpDevicePublisher.#ctor*
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+- uid: Rssdp.SsdpDevicePublisher.#ctor(Rssdp.Infrastructure.ISsdpCommunicationsServer)
+  commentId: M:Rssdp.SsdpDevicePublisher.#ctor(Rssdp.Infrastructure.ISsdpCommunicationsServer)
+  id: '#ctor(Rssdp.Infrastructure.ISsdpCommunicationsServer)'
+  parent: Rssdp.SsdpDevicePublisher
+  langs:
+  - csharp
+  - vb
+  name: SsdpDevicePublisher(ISsdpCommunicationsServer)
+  nameWithType: SsdpDevicePublisher.SsdpDevicePublisher(ISsdpCommunicationsServer)
+  fullName: Rssdp.SsdpDevicePublisher.SsdpDevicePublisher(Rssdp.Infrastructure.ISsdpCommunicationsServer)
+  type: Constructor
+  source:
+    id: .ctor
+    path: ''
+    startLine: 8337
+  assemblies:
+  - cs.temp.dll
+  namespace: Rssdp
+  summary: "\nFull constructor. \n"
+  remarks: "\n<p>Allows the caller to specify their own <xref href=\"Rssdp.Infrastructure.ISsdpCommunicationsServer\" data-throw-if-not-resolved=\"false\"></xref> implementation for full control over the networking, or for mocking/testing purposes..</p>\n"
+  example: []
+  syntax:
+    content: public SsdpDevicePublisher(ISsdpCommunicationsServer communicationsServer)
+    parameters:
+    - id: communicationsServer
+      type: Rssdp.Infrastructure.ISsdpCommunicationsServer
+    content.vb: Public Sub New(communicationsServer As ISsdpCommunicationsServer)
+  overload: Rssdp.SsdpDevicePublisher.#ctor*
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+- uid: Rssdp.SsdpDevicePublisher.#ctor(System.Int32)
+  commentId: M:Rssdp.SsdpDevicePublisher.#ctor(System.Int32)
+  id: '#ctor(System.Int32)'
+  parent: Rssdp.SsdpDevicePublisher
+  langs:
+  - csharp
+  - vb
+  name: SsdpDevicePublisher(Int32)
+  nameWithType: SsdpDevicePublisher.SsdpDevicePublisher(Int32)
+  fullName: Rssdp.SsdpDevicePublisher.SsdpDevicePublisher(System.Int32)
+  type: Constructor
+  source:
+    id: .ctor
+    path: ''
+    startLine: 8350
+  assemblies:
+  - cs.temp.dll
+  namespace: Rssdp
+  summary: "\nPartial constructor. \n"
+  remarks: "\n<p>Uses the default <xref href=\"Rssdp.Infrastructure.ISsdpCommunicationsServer\" data-throw-if-not-resolved=\"false\"></xref> implementation and network settings for Windows and the SSDP specification, but specifies the local port to use for socket communications. Specify 0 to indicate the system should choose it&apos;s own port.</p>\n"
+  example: []
+  syntax:
+    content: public SsdpDevicePublisher(int localPort)
+    parameters:
+    - id: localPort
+      type: System.Int32
+      description: The local port to use for socket communications, specify 0 to have the system choose it&apos;s own.
+    content.vb: Public Sub New(localPort As Integer)
+  overload: Rssdp.SsdpDevicePublisher.#ctor*
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+- uid: Rssdp.SsdpDevicePublisher.#ctor(System.Int32,System.Int32)
+  commentId: M:Rssdp.SsdpDevicePublisher.#ctor(System.Int32,System.Int32)
+  id: '#ctor(System.Int32,System.Int32)'
+  parent: Rssdp.SsdpDevicePublisher
+  langs:
+  - csharp
+  - vb
+  name: SsdpDevicePublisher(Int32, Int32)
+  nameWithType: SsdpDevicePublisher.SsdpDevicePublisher(Int32, Int32)
+  fullName: Rssdp.SsdpDevicePublisher.SsdpDevicePublisher(System.Int32, System.Int32)
+  type: Constructor
+  source:
+    id: .ctor
+    path: ''
+    startLine: 8367
   assemblies:
   - cs.temp.dll
   namespace: Rssdp
