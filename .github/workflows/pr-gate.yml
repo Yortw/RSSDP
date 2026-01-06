@@ -48,4 +48,5 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: test-results
-          path: TestResults/*.trx
+          path: TestResults/**/*.trx
+          if-no-files-found: warn
