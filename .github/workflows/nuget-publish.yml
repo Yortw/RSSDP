@@ -26,6 +26,9 @@ jobs:
         with:
           dotnet-version: 8.0.x
 
+      - name: Install Android workload
+        run: dotnet workload install android --ignore-failed-sources
+
       - name: Restore
         run: dotnet restore ./src/Main/RSSDP.sln
 
