@@ -20,7 +20,7 @@ items:
   source:
     id: SsdpDeviceIcon
     path: ''
-    startLine: 4243
+    startLine: 4245
   assemblies:
   - cs.temp.dll
   namespace: Rssdp
@@ -61,7 +61,7 @@ items:
   source:
     id: MimeType
     path: ''
-    startLine: 4252
+    startLine: 4254
   assemblies:
   - cs.temp.dll
   namespace: Rssdp
@@ -98,7 +98,7 @@ items:
   source:
     id: Url
     path: ''
-    startLine: 4261
+    startLine: 4263
   assemblies:
   - cs.temp.dll
   namespace: Rssdp
@@ -135,7 +135,7 @@ items:
   source:
     id: Width
     path: ''
-    startLine: 4267
+    startLine: 4269
   assemblies:
   - cs.temp.dll
   namespace: Rssdp
@@ -169,7 +169,7 @@ items:
   source:
     id: Height
     path: ''
-    startLine: 4273
+    startLine: 4275
   assemblies:
   - cs.temp.dll
   namespace: Rssdp
@@ -203,7 +203,7 @@ items:
   source:
     id: ColorDepth
     path: ''
-    startLine: 4279
+    startLine: 4281
   assemblies:
   - cs.temp.dll
   namespace: Rssdp

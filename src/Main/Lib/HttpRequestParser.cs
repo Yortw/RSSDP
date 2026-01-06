@@ -37,9 +37,11 @@ namespace Rssdp.Infrastructure
 
 				return retVal;
 			}
-			finally
+			catch
 			{
 				retVal?.Dispose();
+
+				throw;
 			}
 		}
 

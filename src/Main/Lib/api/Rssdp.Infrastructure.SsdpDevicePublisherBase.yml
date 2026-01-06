@@ -27,7 +27,7 @@ items:
   source:
     id: SsdpDevicePublisherBase
     path: ''
-    startLine: 5592
+    startLine: 5594
   assemblies:
   - cs.temp.dll
   namespace: Rssdp.Infrastructure
@@ -80,7 +80,7 @@ items:
   source:
     id: .ctor
     path: ''
-    startLine: 5682
+    startLine: 5684
   assemblies:
   - cs.temp.dll
   namespace: Rssdp.Infrastructure
@@ -118,7 +118,7 @@ items:
   source:
     id: .ctor
     path: ''
-    startLine: 5693
+    startLine: 5695
   assemblies:
   - cs.temp.dll
   namespace: Rssdp.Infrastructure
@@ -159,7 +159,7 @@ items:
   source:
     id: .ctor
     path: ''
-    startLine: 5706
+    startLine: 5708
   assemblies:
   - cs.temp.dll
   namespace: Rssdp.Infrastructure
@@ -203,7 +203,7 @@ items:
   source:
     id: AddDevice
     path: ''
-    startLine: 5749
+    startLine: 5751
   assemblies:
   - cs.temp.dll
   namespace: Rssdp.Infrastructure
@@ -245,7 +245,7 @@ items:
   source:
     id: RemoveDevice
     path: ''
-    startLine: 5797
+    startLine: 5799
   assemblies:
   - cs.temp.dll
   namespace: Rssdp.Infrastructure
@@ -284,7 +284,7 @@ items:
   source:
     id: ActivitySource
     path: ''
-    startLine: 5836
+    startLine: 5838
   assemblies:
   - cs.temp.dll
   namespace: Rssdp.Infrastructure
@@ -317,7 +317,7 @@ items:
   source:
     id: Log
     path: ''
-    startLine: 5847
+    startLine: 5849
   assemblies:
   - cs.temp.dll
   namespace: Rssdp.Infrastructure
@@ -351,7 +351,7 @@ items:
   source:
     id: Devices
     path: ''
-    startLine: 5855
+    startLine: 5857
   assemblies:
   - cs.temp.dll
   namespace: Rssdp.Infrastructure
@@ -386,7 +386,7 @@ items:
   source:
     id: SupportPnpRootDevice
     path: ''
-    startLine: 5870
+    startLine: 5872
   assemblies:
   - cs.temp.dll
   namespace: Rssdp.Infrastructure
@@ -432,7 +432,7 @@ items:
   source:
     id: StandardsMode
     path: ''
-    startLine: 5890
+    startLine: 5892
   assemblies:
   - cs.temp.dll
   namespace: Rssdp.Infrastructure
@@ -466,7 +466,7 @@ items:
   source:
     id: NotificationBroadcastInterval
     path: ''
-    startLine: 5916
+    startLine: 5918
   assemblies:
   - cs.temp.dll
   namespace: Rssdp.Infrastructure
@@ -500,7 +500,7 @@ items:
   source:
     id: Dispose
     path: ''
-    startLine: 5940
+    startLine: 5942
   assemblies:
   - cs.temp.dll
   namespace: Rssdp.Infrastructure

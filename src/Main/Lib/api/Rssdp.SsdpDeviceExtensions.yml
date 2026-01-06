@@ -16,7 +16,7 @@ items:
   source:
     id: SsdpDeviceExtensions
     path: ''
-    startLine: 4202
+    startLine: 4204
   assemblies:
   - cs.temp.dll
   namespace: Rssdp
@@ -57,7 +57,7 @@ items:
   source:
     id: ToRootDevice
     path: ''
-    startLine: 4217
+    startLine: 4219
   assemblies:
   - cs.temp.dll
   namespace: Rssdp

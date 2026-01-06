@@ -27,7 +27,7 @@ items:
   source:
     id: SsdpService
     path: ''
-    startLine: 7239
+    startLine: 7241
   assemblies:
   - cs.temp.dll
   namespace: Rssdp
@@ -66,7 +66,7 @@ items:
   source:
     id: .ctor
     path: ''
-    startLine: 7247
+    startLine: 7249
   assemblies:
   - cs.temp.dll
   namespace: Rssdp
@@ -94,7 +94,7 @@ items:
   source:
     id: .ctor
     path: ''
-    startLine: 7260
+    startLine: 7262
   assemblies:
   - cs.temp.dll
   namespace: Rssdp
@@ -134,7 +134,7 @@ items:
   source:
     id: ServiceType
     path: ''
-    startLine: 7283
+    startLine: 7285
   assemblies:
   - cs.temp.dll
   namespace: Rssdp
@@ -174,7 +174,7 @@ items:
   source:
     id: ServiceTypeNamespace
     path: ''
-    startLine: 7291
+    startLine: 7293
   assemblies:
   - cs.temp.dll
   namespace: Rssdp
@@ -214,7 +214,7 @@ items:
   source:
     id: ServiceVersion
     path: ''
-    startLine: 7300
+    startLine: 7302
   assemblies:
   - cs.temp.dll
   namespace: Rssdp
@@ -255,7 +255,7 @@ items:
   source:
     id: FullServiceType
     path: ''
-    startLine: 7308
+    startLine: 7310
   assemblies:
   - cs.temp.dll
   namespace: Rssdp
@@ -289,7 +289,7 @@ items:
   source:
     id: Uuid
     path: ''
-    startLine: 7328
+    startLine: 7330
   assemblies:
   - cs.temp.dll
   namespace: Rssdp
@@ -323,7 +323,7 @@ items:
   source:
     id: ServiceId
     path: ''
-    startLine: 7336
+    startLine: 7338
   assemblies:
   - cs.temp.dll
   namespace: Rssdp
@@ -357,7 +357,7 @@ items:
   source:
     id: ScpdUrl
     path: ''
-    startLine: 7354
+    startLine: 7356
   assemblies:
   - cs.temp.dll
   namespace: Rssdp
@@ -390,7 +390,7 @@ items:
   source:
     id: ControlUrl
     path: ''
-    startLine: 7358
+    startLine: 7360
   assemblies:
   - cs.temp.dll
   namespace: Rssdp
@@ -423,7 +423,7 @@ items:
   source:
     id: EventSubUrl
     path: ''
-    startLine: 7362
+    startLine: 7364
   assemblies:
   - cs.temp.dll
   namespace: Rssdp
@@ -456,7 +456,7 @@ items:
   source:
     id: WriteServiceDescriptionXml
     path: ''
-    startLine: 7373
+    startLine: 7375
   assemblies:
   - cs.temp.dll
   namespace: Rssdp
