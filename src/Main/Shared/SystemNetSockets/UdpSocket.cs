@@ -65,12 +65,25 @@ namespace Rssdp
           catch (ObjectDisposedException) { if (!this.IsDisposed) throw; } //Only rethrow disposed exceptions if we're NOT disposed, because then they are unexpected.
         }, state);
 #else
-      try
-      {
-        _Socket.BeginReceiveFrom(state.Buffer, 0, state.Buffer.Length, System.Net.Sockets.SocketFlags.None, ref state.EndPoint,
-          new AsyncCallback((result) => ProcessResponse(state, () => state.Socket.EndReceiveFrom(result, ref state.EndPoint))), state);
-      }
-      catch (ObjectDisposedException) { if (!this.IsDisposed) throw; } //Only rethrow disposed exceptions if we're NOT disposed, because then they are unexpected.
+			try
+			{
+				_Socket.BeginReceiveFrom(state.Buffer, 0, state.Buffer.Length, System.Net.Sockets.SocketFlags.None, ref state.EndPoint,
+					new AsyncCallback((result) => ProcessResponse(state,
+            () =>
+						{
+							try
+							{
+								return state.Socket.EndReceiveFrom(result, ref state.EndPoint);
+							}
+							catch (ObjectDisposedException)
+							{
+								if (!this.IsDisposed) throw;
+							} //Only rethrow disposed exceptions if we're NOT disposed, because then they are unexpected.
+							return 0;
+						}	))
+					, state);
+			}
+			catch (ObjectDisposedException) { if (!this.IsDisposed) throw; } 
 
 #endif
 
