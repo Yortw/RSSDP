@@ -14,24 +14,28 @@ namespace TestRssdp
 
 		#region Constructor Tests
 
-		[ExpectedException(typeof(System.ArgumentNullException))]
 		[TestMethod]
 		public void SsdpService_ConstructorThrowsArgumentNullIfXmlStringNull()
 		{
-			var device = new SsdpService(null);
+			Assert.Throws<System.ArgumentNullException>(() =>
+			{
+				var device = new SsdpService(null);
+			});
 		}
 
-		[ExpectedException(typeof(System.ArgumentException))]
 		[TestMethod]
 		public void SsdpService_ConstructorThrowsArgumentNullIfXmlStringEmpty()
 		{
-			var device = new SsdpService(String.Empty);
+			Assert.Throws<System.ArgumentException>(() =>
+			{
+				var device = new SsdpService(String.Empty);
+			});	
 		}
 
 		[TestMethod]
 		public void SsdpService_ConstructsOkWithDefaultConstructor()
 		{
-			var device = new SsdpService();
+			_ = new SsdpService();
 		}
 
 		#endregion
@@ -41,16 +45,20 @@ namespace TestRssdp
 		[TestMethod]
 		public void SsdpService_NullServiceTypeNamespaceReturnsNull()
 		{
-			var service = new SsdpService();
-			service.ServiceTypeNamespace = null;
-			Assert.AreEqual(null, service.ServiceTypeNamespace);
+			var service = new SsdpService
+			{
+				ServiceTypeNamespace = null
+			};
+			Assert.IsNull(service.ServiceTypeNamespace);
 		}
 
 		[TestMethod]
 		public void SsdpService_EmptyDeviceTypeNamespaceReturnsEmpty()
 		{
-			var service = new SsdpService();
-			service.ServiceTypeNamespace = String.Empty;
+			var service = new SsdpService
+			{
+				ServiceTypeNamespace = String.Empty
+			};
 			Assert.AreEqual(String.Empty, service.ServiceTypeNamespace);
 		}
 
@@ -61,43 +69,53 @@ namespace TestRssdp
 		[TestMethod]
 		public void SsdpService_NullServiceTypeReturnsNull()
 		{
-			var service = new SsdpService();
-			service.ServiceType = null;
-			Assert.AreEqual(null, service.ServiceType);
+			var service = new SsdpService
+			{
+				ServiceType = null
+			};
+			Assert.IsNull(service.ServiceType);
 		}
 
 		[TestMethod]
 		public void SsdpService_EmptyServiceTypeReturnsEmpty()
 		{
-			var service = new SsdpService();
-			service.ServiceType = String.Empty;
+			var service = new SsdpService
+			{
+				ServiceType = String.Empty
+			};
 			Assert.AreEqual(String.Empty, service.ServiceType);
 		}
 
 		[TestMethod]
 		public void SsdpService_FullServiceTypesReturnsStringWithNullValues()
 		{
-			var service = new SsdpService();
-			service.ServiceType = null;
-			service.ServiceTypeNamespace = null;
+			var service = new SsdpService
+			{
+				ServiceType = null,
+				ServiceTypeNamespace = null
+			};
 			Assert.AreEqual("urn::service::1", service.FullServiceType);
 		}
 
 		[TestMethod]
 		public void SsdpService_FullServiceTypesReturnsExpectedString()
 		{
-			var service = new SsdpService();
-			service.ServiceType = "testservicetype";
-			service.ServiceTypeNamespace = "my-test-namespace";
+			var service = new SsdpService
+			{
+				ServiceType = "testservicetype",
+				ServiceTypeNamespace = "my-test-namespace"
+			};
 			Assert.AreEqual("urn:my-test-namespace:service:testservicetype:1", service.FullServiceType);
 		}
 
 		[TestMethod]
 		public void SsdpService_FullServiceTypesReplacesDotsInVendorNamespace()
 		{
-			var service = new SsdpService();
-			service.ServiceType = "testservicetype";
-			service.ServiceTypeNamespace = "my.test.namespace.org";
+			var service = new SsdpService
+			{
+				ServiceType = "testservicetype",
+				ServiceTypeNamespace = "my.test.namespace.org"
+			};
 			Assert.AreEqual("urn:my-test-namespace-org:service:testservicetype:1", service.FullServiceType);
 		}
 

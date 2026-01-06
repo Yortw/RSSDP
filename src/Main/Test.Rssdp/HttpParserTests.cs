@@ -17,36 +17,32 @@ namespace TestRssdp
 
 		#region Argument Checking
 
-		[ExpectedException(typeof(System.ArgumentNullException))]
 		[TestMethod]
 		public void HttpResponseParser_ThrowsOnNull()
 		{
 			var parser = new HttpResponseParser();
-			parser.Parse(null);
+			Assert.Throws<ArgumentNullException>(() => parser.Parse(null));
 		}
 
-		[ExpectedException(typeof(System.ArgumentException))]
 		[TestMethod]
 		public void HttpResponseParser_ThrowsOnEmpty()
 		{
 			var parser = new HttpResponseParser();
-			parser.Parse(String.Empty);
+			Assert.Throws<ArgumentException>(() => parser.Parse(String.Empty));
 		}
 
-		[ExpectedException(typeof(System.ArgumentException))]
 		[TestMethod]
 		public void HttpResponseParser_ThrowsOnMisingCrLf()
 		{
 			var parser = new HttpRequestParser();
-			parser.Parse("HTTP/1.1 200 OK");
+			Assert.Throws<ArgumentException>(() => parser.Parse("HTTP/1.1 200 OK"));
 		}
 
-		[ExpectedException(typeof(System.ArgumentException))]
 		[TestMethod]
 		public void HttpResponseParser_ThrowsOnInvalidHeader()
 		{
 			var parser = new HttpResponseParser();
-			parser.Parse("HTTP1.1 200 OK" + Environment.NewLine);
+			Assert.Throws<ArgumentException>(() => parser.Parse("HTTP1.1 200 OK" + Environment.NewLine));
 		}
 
 		#endregion
@@ -57,28 +53,25 @@ namespace TestRssdp
 
 		#region Argument Checking
 
-		[ExpectedException(typeof(System.ArgumentNullException))]
 		[TestMethod]
 		public void HttpRequestParser_ThrowsOnNull()
 		{
 			var parser = new HttpRequestParser();
-			parser.Parse(null);
+			Assert.Throws<ArgumentNullException>(() => parser.Parse(null));
 		}
 
-		[ExpectedException(typeof(System.ArgumentException))]
 		[TestMethod]
 		public void HttpRequestParser_ThrowsOnEmpty()
 		{
 			var parser = new HttpRequestParser();
-			parser.Parse(String.Empty);
+			Assert.Throws<ArgumentException>(() => parser.Parse(String.Empty));
 		}
 
-		[ExpectedException(typeof(System.ArgumentException))]
 		[TestMethod]
 		public void HttpRequestParser_ThrowsOnMisingCrLf()
 		{
 			var parser = new HttpRequestParser();
-			parser.Parse("GET * HTTP/1.1");
+			Assert.Throws<ArgumentException>(() => parser.Parse("GET * HTTP/1.1"));
 		}
 
 		[TestMethod]

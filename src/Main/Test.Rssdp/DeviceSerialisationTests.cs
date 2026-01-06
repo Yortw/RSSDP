@@ -13,24 +13,28 @@ namespace TestRssdp
 
 		private const string UpnpDeviceXmlNamespace = "urn:schemas-upnp-org:device-1-0";
 
-		[ExpectedException(typeof(System.InvalidOperationException))]
 		[TestMethod]
 		public void ToDescriptionDocument_ThrowsWithNullUuid()
 		{
 			var rootDevice = CreateSampleRootDevice();
 			rootDevice.Uuid = null;
 
-			_ = rootDevice.ToDescriptionDocument();
+			Assert.Throws<System.InvalidOperationException>(() =>
+			{
+				_ = rootDevice.ToDescriptionDocument();
+			});
 		}
 
-		[ExpectedException(typeof(System.InvalidOperationException))]
 		[TestMethod]
 		public void ToDescriptionDocument_ThrowsWithEmptyUuid()
 		{
 			var rootDevice = CreateSampleRootDevice();
 			rootDevice.Uuid = String.Empty;
 
-			_ = rootDevice.ToDescriptionDocument();
+			Assert.Throws<System.InvalidOperationException>(() =>
+			{
+				_ = rootDevice.ToDescriptionDocument();
+			});
 		}
 
 		[TestMethod]
@@ -39,7 +43,7 @@ namespace TestRssdp
 			var rootDevice = CreateSampleRootDevice();
 
 			var descriptionDocument = rootDevice.ToDescriptionDocument();
-			Assert.AreNotEqual(null, descriptionDocument);
+			Assert.IsNotNull(descriptionDocument);
 			Assert.AreNotEqual(String.Empty, descriptionDocument);
 		}
 
@@ -50,7 +54,7 @@ namespace TestRssdp
 
 			var descriptionDocument = rootDevice.ToDescriptionDocument();
 
-			Assert.AreEqual(true, descriptionDocument.StartsWith("<?xml version=\"1.0\" encoding=\"utf-8\"?>"));
+			Assert.StartsWith("<?xml version=\"1.0\" encoding=\"utf-8\"?>", descriptionDocument);
 		}
 
 		[TestMethod]
@@ -163,15 +167,13 @@ namespace TestRssdp
 			Assert.IsTrue(deviceNodes.Where((n) => n.Elements(XName.Get("UDN", UpnpDeviceXmlNamespace)).First().Value == rootDevice.Devices.Last().Udn).Any());
 		}
 
-		[ExpectedException(typeof(System.ArgumentNullException))]
 		[TestMethod]
 		public void ToDescriptionDocument_WriteDeviceDescriptionXml_ThrowsIfWriterNull()
 		{
 			var device = new MockCustomDevice();
-			device.DoInvalidWrite(null, CreateSampleRootDevice());
+			Assert.Throws<System.ArgumentNullException>(() => { device.DoInvalidWrite(null, CreateSampleRootDevice()); });
 		}
 
-		[ExpectedException(typeof(System.ArgumentNullException))]
 		[TestMethod]
 		public void ToDescriptionDocument_WriteDeviceDescriptionXml_ThrowsIfDeviceNull()
 		{
@@ -180,7 +182,7 @@ namespace TestRssdp
 			{
 				using (var writer = XmlWriter.Create(ms))
 				{
-					device.DoInvalidWrite(writer, null);
+					Assert.Throws<System.ArgumentNullException>(() => { device.DoInvalidWrite(writer, null); });
 				}
 			}
 		}

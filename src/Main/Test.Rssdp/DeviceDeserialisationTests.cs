@@ -201,42 +201,52 @@ namespace TestRssdp
 			modelUrlNode.Value = String.Empty;
 
 			var deserialisedDevice = new SsdpRootDevice(rootDevice.Location, rootDevice.CacheLifetime, doc.ToString());
-			Assert.AreEqual(null, deserialisedDevice.ModelUrl);
+			Assert.IsNull(deserialisedDevice.ModelUrl);
 		}
 
-		[ExpectedException(typeof(System.ArgumentNullException))]
 		[TestMethod]
 		public void DeserialisationConstructor_ThrowsOnNullDocument()
 		{
-			_ = new SsdpEmbeddedDevice(null, new System.Xml.XmlReaderSettings());
+			Assert.Throws<System.ArgumentNullException>(() =>
+			{
+				_ = new SsdpEmbeddedDevice(null, new System.Xml.XmlReaderSettings());
+			});	
 		}
 
-		[ExpectedException(typeof(System.ArgumentException))]
 		[TestMethod]
 		public void DeserialisationConstructor_ThrowsOnEmptyDocument()
 		{
-			_ = new SsdpEmbeddedDevice(String.Empty, new System.Xml.XmlReaderSettings());
+			Assert.Throws<System.ArgumentException>(() =>
+			{
+				_ = new SsdpEmbeddedDevice(String.Empty, new System.Xml.XmlReaderSettings());
+			});	
 		}
 
-		[ExpectedException(typeof(System.ArgumentException))]
 		[TestMethod]
 		public void RootDeviceDeserialisationConstructor_ThrowsOnEmptyDocument()
 		{
-			_ = new SsdpRootDevice(new Uri("http://somedevice:1700"), TimeSpan.FromMinutes(30), String.Empty);
+			Assert.Throws<System.ArgumentException>(() =>
+			{
+				_ = new SsdpRootDevice(new Uri("http://somedevice:1700"), TimeSpan.FromMinutes(30), String.Empty);
+			});	
 		}
 
-		[ExpectedException(typeof(System.ArgumentNullException))]
 		[TestMethod]
 		public void RootDeviceDeserialisationConstructor_ThrowsOnNullDocument()
 		{
-			_ = new SsdpRootDevice(new Uri("http://somedevice:1700"), TimeSpan.FromMinutes(30), null);
+			Assert.Throws<System.ArgumentNullException>(() =>
+			{
+				_ = new SsdpRootDevice(new Uri("http://somedevice:1700"), TimeSpan.FromMinutes(30), null);
+			});
 		}
 
-		[ExpectedException(typeof(System.ArgumentNullException))]
 		[TestMethod]
 		public void RootDeviceDeserialisationConstructor_ThrowsOnLocation()
 		{
-			_ = new SsdpRootDevice(null, TimeSpan.FromMinutes(30), "<root />");
+			Assert.Throws<System.ArgumentNullException>(() =>
+			{
+				_ = new SsdpRootDevice(null, TimeSpan.FromMinutes(30), null);
+			});
 		}
 
 		private void AssertDevicesAreSame(SsdpRootDevice originalDevice, SsdpRootDevice deserialisedDevice)

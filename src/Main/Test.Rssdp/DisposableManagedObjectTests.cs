@@ -21,7 +21,6 @@ namespace TestRssdp
 			Assert.IsTrue(testObject.IsDisposed);
 		}
 
-		[ExpectedException(typeof(System.ObjectDisposedException))]
 		[TestMethod]
 		public void DisposableManagedObject_ThrowIfDisposedDoesWhatItSaysOnTheTin()
 		{
@@ -29,7 +28,11 @@ namespace TestRssdp
 			var result = testObject.TestMethod();
 			Assert.AreEqual("oops", result);
 			testObject.Dispose();
-			result = testObject.TestMethod();
+
+			Assert.Throws<System.ObjectDisposedException>(() =>
+			{
+				_ = testObject.TestMethod();
+			});
 		}
 
 	}

@@ -14,12 +14,14 @@ namespace TestRssdp
 
 		#region AddDevice Tests
 
-		[ExpectedException(typeof(System.ArgumentNullException))]
 		[TestMethod]
 		public void SsdpDevice_AddDevice_ThrowsArgumentNullOnNullDevice()
 		{
 			var rootDevice = new SsdpRootDevice();
-			rootDevice.AddDevice(null);
+			Assert.Throws<System.ArgumentNullException>(() =>
+			{
+				rootDevice.AddDevice(null);
+			});
 		}
 
 		[TestMethod]
@@ -68,16 +70,17 @@ namespace TestRssdp
 			Assert.AreEqual(rootDevice, embeddedDevice2.RootDevice);
 		}
 
-		[ExpectedException(typeof(InvalidOperationException))]
 		[TestMethod]
 		public void SsdpDevice_AddDevice_ThrowsAddingDeviceToSelf()
 		{
 			var embeddedDevice = new SsdpEmbeddedDevice();
 
-			embeddedDevice.AddDevice(embeddedDevice);
+			Assert.Throws<InvalidOperationException>(() =>
+			{
+				embeddedDevice.AddDevice(embeddedDevice);
+			});
 		}
 
-		[ExpectedException(typeof(InvalidOperationException))]
 		[TestMethod]
 		public void SsdpDevice_AddDevice_ThrowsAddingDeviceToMultipleParents()
 		{
@@ -88,7 +91,10 @@ namespace TestRssdp
 
 
 			rootDevice1.AddDevice(embeddedDevice);
-			rootDevice2.AddDevice(embeddedDevice);
+			Assert.Throws<InvalidOperationException>(() =>
+			{
+				rootDevice2.AddDevice(embeddedDevice);
+			});
 		}
 
 		#endregion
@@ -129,30 +135,36 @@ namespace TestRssdp
 			Assert.AreEqual(0, rootDevice.Devices.Count());
 		}
 
-		[ExpectedException(typeof(System.ArgumentNullException))]
 		[TestMethod]
 		public void SsdpDevice_RemoveDevice_ThrowsArgumentNullOnNullDevice()
 		{
 			var rootDevice = new SsdpRootDevice();
-			rootDevice.RemoveDevice(null);
+			Assert.Throws<System.ArgumentNullException>(() =>
+			{
+				rootDevice.RemoveDevice(null);
+			});
 		}
 
 		#endregion
 
 		#region Constructor Tests
 
-		[ExpectedException(typeof(System.ArgumentNullException))]
 		[TestMethod]
 		public void SsdpDevice_ConstructorThrowsArgumentNullIfNotRootDevice()
 		{
-			_ = new SsdpEmbeddedDevice(null, new System.Xml.XmlReaderSettings());
+			Assert.Throws<System.ArgumentNullException>(() =>
+			{
+				_ = new SsdpEmbeddedDevice(null, new System.Xml.XmlReaderSettings());
+			});
 		}
 
-		[ExpectedException(typeof(System.ArgumentNullException))]
 		[TestMethod]
 		public void DeviceEventArgs_ConstructorThrowsOnNullDevice()
 		{
-			_ = new DeviceEventArgs(null);
+			Assert.Throws<System.ArgumentNullException>(() =>
+			{
+				_ = new DeviceEventArgs(null);
+			});
 		}
 
 		#endregion
@@ -166,7 +178,7 @@ namespace TestRssdp
 			{
 				DeviceTypeNamespace = null
 			};
-			Assert.AreEqual(null, rootDevice.DeviceTypeNamespace);
+			Assert.IsNull(rootDevice.DeviceTypeNamespace);
 		}
 
 		[TestMethod]
@@ -190,7 +202,7 @@ namespace TestRssdp
 			{
 				DeviceType = null
 			};
-			Assert.AreEqual(null, rootDevice.DeviceType);
+			Assert.IsNull(rootDevice.DeviceType);
 		}
 
 		[TestMethod]
@@ -240,7 +252,7 @@ namespace TestRssdp
 		{
 			var device = new SsdpEmbeddedDevice();
 
-			Assert.AreEqual(null, device.RootDevice);
+			Assert.IsNull(device.RootDevice);
 		}
 
 		[TestMethod]
@@ -255,13 +267,15 @@ namespace TestRssdp
 
 		#region Extension Tests
 
-		[ExpectedException(typeof(System.ArgumentNullException))]
 		[TestMethod]
 		public void SsdpDevice_ToRootDevice_ThrowsOnNullSource()
 		{
 			SsdpDevice device = null;
 
-			device.ToRootDevice();
+			Assert.Throws<System.ArgumentNullException>(() =>
+			{
+				device.ToRootDevice();
+			});
 		}
 
 		#endregion
@@ -541,7 +555,7 @@ namespace TestRssdp
 	        Assert.AreEqual("minimserver.com", device.Manufacturer);
 	        Assert.AreEqual("MinimServer", device.ModelName);
 	        Assert.AreEqual("uuid:df5bda28-1b1a-4a62-89ed-0acc041ee8e4", device.Udn);
-	        Assert.AreEqual(4, device.Icons.Count);
+	        Assert.HasCount(4, device.Icons);
 	        Assert.AreEqual(4, device.Icons.Select(icon => icon.Url.ToString()).Distinct().Count());
         }
 
@@ -555,7 +569,7 @@ namespace TestRssdp
 	        Assert.AreEqual("minimserver.com", device.Manufacturer);
 	        Assert.AreEqual("MinimServer", device.ModelName);
 	        Assert.AreEqual("uuid:df5bda28-1b1a-4a62-89ed-0acc041ee8e4", device.Udn);
-	        Assert.AreEqual(4, device.Icons.Count);
+	        Assert.HasCount(4, device.Icons);
 	        var d = device.Icons.Select(icon => icon.Url.ToString()).Distinct();
 	        Assert.AreEqual(4, device.Icons.Select(icon => icon.Url.ToString()).Distinct().Count());
 	    }
@@ -590,13 +604,13 @@ namespace TestRssdp
 
 			var device = new SsdpRootDevice(new Uri("http://192.168.1.11/UPnP/DeviceDescription"), TimeSpan.FromMinutes(30), docString);
 			Assert.IsFalse(device.CustomProperties.Contains("pv:extension"));
-			Assert.AreEqual(device.Manufacturer, "PacketVideo");
+			Assert.AreEqual("PacketVideo", device.Manufacturer);
 			Assert.AreEqual(device.ManufacturerUrl, new Uri("http://www.pv.com"));
-			Assert.AreEqual(device.ModelName, "TwonkyServer");
+			Assert.AreEqual("TwonkyServer", device.ModelName);
 			Assert.AreEqual(device.ModelUrl, new Uri("http://www.twonky.com"));
-			Assert.AreEqual(device.ModelDescription, "TwonkyServer (Windows, T-206)");
-			Assert.AreEqual(device.ModelNumber, "8.4");
-			Assert.AreEqual(device.SerialNumber, "8.4");
+			Assert.AreEqual("TwonkyServer (Windows, T-206)", device.ModelDescription);
+			Assert.AreEqual("8.4", device.ModelNumber);
+			Assert.AreEqual("8.4", device.SerialNumber);
 		}
 
 		[TestMethod]
@@ -607,25 +621,27 @@ namespace TestRssdp
 
 			var device = new SsdpRootDevice(new Uri("http://192.168.5.117/UPnP/DeviceDescription"), TimeSpan.FromMinutes(30), docString);
 			Assert.IsFalse(device.CustomProperties.Contains("pv:extension"));
-			Assert.AreEqual(device.Manufacturer, "Denon");
+			Assert.AreEqual("Denon", device.Manufacturer);
 			Assert.AreEqual(device.ManufacturerUrl, new Uri("http://www.denon.com"));
-			Assert.AreEqual(device.ModelName, "*AVR-E400");
+			Assert.AreEqual("*AVR-E400", device.ModelName);
 			Assert.AreEqual(device.ModelUrl, new Uri("http://www.denon.com"));
-			Assert.AreEqual(device.ModelDescription, "AV SURROUND RECEIVER");
-			Assert.AreEqual(device.ModelNumber, "E400");
-			Assert.AreEqual(device.SerialNumber, "0005CD2BA891");
+			Assert.AreEqual("AV SURROUND RECEIVER", device.ModelDescription);
+			Assert.AreEqual("E400", device.ModelNumber);
+			Assert.AreEqual("0005CD2BA891", device.SerialNumber);
 		}
 
 		#endregion
 
 		#region Service Tests
 
-		[ExpectedException(typeof(System.ArgumentNullException))]
 		[TestMethod]
 		public void SsdpDevice_AddService_ThrowsArgumentNullOnNullService()
 		{
 			var rootDevice = new SsdpRootDevice();
-			rootDevice.AddService(null);
+			Assert.Throws<System.ArgumentNullException>(() =>
+			{
+				rootDevice.AddService(null);
+			});
 		}
 
 		[TestMethod]
@@ -658,12 +674,14 @@ namespace TestRssdp
 			Assert.AreEqual(1, rootDevice.Services.Count());
 		}
 
-		[ExpectedException(typeof(System.ArgumentNullException))]
 		[TestMethod]
 		public void SsdpDevice_RemoveService_ThrowsArgumentNullOnNullService()
 		{
 			var rootDevice = new SsdpRootDevice();
-			rootDevice.AddService(null);
+			Assert.Throws<System.ArgumentNullException>(() =>
+			{
+				rootDevice.RemoveService(null);
+			});
 		}
 
 		[TestMethod]
