@@ -23,6 +23,9 @@ jobs:
             8.0.x
             6.0.x
 
+      - name: Install Android workload
+        run: dotnet workload install android --ignore-failed-sources
+
       - name: Cache NuGet
         uses: actions/cache@v4
         with:
