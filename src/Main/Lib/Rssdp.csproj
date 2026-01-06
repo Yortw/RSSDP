@@ -1,0 +1,120 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<!-- <TargetFrameworks>netstandard2.0;net48;net6.0;net8.0;net8.0-android;net8.0-ios</TargetFrameworks> -->
+		<TargetFrameworks>netstandard2.0;net48;net6.0;net8.0;net8.0-android34.0</TargetFrameworks>
+		<langversion>latest</langversion>
+		<RootNamespace>Rssdp</RootNamespace>
+		<AssemblyName>Rssdp</AssemblyName>
+		<GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+		<PackageId>Rssdp</PackageId>
+		<Title>Rssdp</Title>
+		<Version>$(VersionPrefix)5.0.0-beta2</Version>
+		<Authors>Troy Willmot</Authors>
+		<Owners>Yortw</Owners>
+		<Description>Really Simple Service Discovery Protocol - a 100% .Net implementation of the SSDP protocol for publishing custom/basic devices, and discovering all device types on a network.</Description>
+		<Copyright>Copyright 2015, © Troy Willmot. All rights reserved.</Copyright>
+		<PackageProjectUrl>https://github.com/Yortw/RSSDP</PackageProjectUrl>
+		<PackageIcon>RssdpIcon.png</PackageIcon>
+		<PackageReadmeFile>README.md</PackageReadmeFile>
+		<PackageTags>ssdp discovery device service protocol upnp</PackageTags>
+		<PackageReleaseNotes>
+			* Modernised solution to use single multi-target project, in built package creation etc.
+			* Dropped unsupported/dead platforms
+			* Added support for newer platforms
+			* Modernised internal code with newer syntax
+			* Add nullability annotations/support
+			* Updated/reduced dependencies
+			* Added activity tracing, can be connected to logging systems/open API/application insights etc.
+			* Fixed some possible hangs/race conditions on socket handling
+			* Added support for cancellation tokens on the locator SearchAsync methods
+			* Added AggregateSsdpDeviceLocator simplifying searching across multiple network adapters
+			* Changed to use github actions for builds/tests/publishing
+			* Update sample and package test projects
+			* Minor updates to readme etc.
+			* Improved XML reading for device description documents, making it more secure and tolerant of bad characters, and added support for custom xml reader settings.
+			* Note: there are some breaking changes at the code level which may or may not affect client application code depending on your usage</PackageReleaseNotes>
+		<RepositoryType>git</RepositoryType>
+		<RepositoryUrl>https://github.com/Yortw/RSSDP.git</RepositoryUrl>
+		<PackageLicenseExpression>MIT</PackageLicenseExpression>
+		<IncludeSymbols>True</IncludeSymbols>
+		<EnableNETAnalyzers>True</EnableNETAnalyzers>
+		<EnforceCodeStyleInBuild>True</EnforceCodeStyleInBuild>
+		<AnalysisLevel>latest-recommended</AnalysisLevel>
+		<CheckEolWorkloads>false</CheckEolWorkloads>
+		<SuppressTfmSupportBuildWarnings>true</SuppressTfmSupportBuildWarnings>
+		<Nullable>enable</Nullable>
+
+		<!-- Required for UAP support -->
+		<AssetTargetFallback Condition="'$(TargetFramework)' == 'uap10.0.16299'">$(AssetTargetFallback);net472;netcore50</AssetTargetFallback>
+
+		<!-- Required for Android/iOS - specifies minimum supported OS versions -->
+		<SupportedOSPlatformVersion Condition="$(TargetFramework.StartsWith('net8.0-android'))">21.0</SupportedOSPlatformVersion>
+		<SupportedOSPlatformVersion Condition="$(TargetFramework.StartsWith('net8.0-ios'))">11.0</SupportedOSPlatformVersion>
+		<Product>Really Simple Service Discovery Protocol</Product>
+		<GenerateDocumentationFile>True</GenerateDocumentationFile>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<Compile Remove="api\**" />
+		<EmbeddedResource Remove="api\**" />
+		<None Remove="api\**" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<None Remove="favicon.ico" />
+		<None Remove="log.txt" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<None Include="..\..\..\README.md">
+			<Pack>True</Pack>
+			<PackagePath>\</PackagePath>
+			<Visible>False</Visible>
+		</None>
+		<None Include="..\..\..\RssdpIcon.png">
+			<Pack>True</Pack>
+			<PackagePath>\</PackagePath>
+			<Visible>False</Visible>
+		</None>
+		<None Include="RssdpIcon.ico">
+			<Pack>True</Pack>
+			<PackagePath>\</PackagePath>
+			<Visible>False</Visible>
+		</None>
+	</ItemGroup>
+
+	<ItemGroup Condition="'$(TargetFramework)' == 'net48'">
+		<PackageReference Include="docfx.console" Version="2.59.4">
+			<PrivateAssets>all</PrivateAssets>
+			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+		</PackageReference>
+		<PackageReference Include="System.Net.Http" Version="4.3.4" />
+		<PackageReference Include="System.Diagnostics.DiagnosticSource" Version="10.0.1" />
+	</ItemGroup>
+
+	<ItemGroup Condition="'$(TargetFramework)' == 'netstandard2.0'">
+		<PackageReference Include="System.Diagnostics.DiagnosticSource" Version="10.0.1" />
+	</ItemGroup>
+
+	<!-- Copies ../../README.md to Lib/index.md before every project build -->
+	<Target Name="CopyReadmeToLibIndex" BeforeTargets="BeforeBuild">
+		<!-- Resolve SolutionDir if available, otherwise fall back to the project directory -->
+		<PropertyGroup>
+			<_BaseDir Condition="'$(SolutionDir)' != ''">$(SolutionDir)</_BaseDir>
+			<_BaseDir Condition="'$(_BaseDir)' == ''">$(MSBuildProjectDirectory)\</_BaseDir>
+
+			<!-- Paths are expressed relative to the solution folder, as requested -->
+			<_Source>$(_BaseDir)..\..\README.md</_Source>
+			<_DestDir>$(_BaseDir)Lib\</_DestDir>
+			<_Dest>$(_DestDir)index.md</_Dest>
+		</PropertyGroup>
+
+		<!-- Ensure destination directory exists -->
+		<MakeDir Directories="$(_DestDir)" Condition="!Exists('$(_DestDir)')" />
+
+		<!-- Perform the copy (silently skip if source does not exist) -->
+		<Copy SourceFiles="$(_Source)" DestinationFiles="$(_Dest)" SkipUnchangedFiles="true" Condition="Exists('$(_Source)')" />
+	</Target>
+
+</Project>

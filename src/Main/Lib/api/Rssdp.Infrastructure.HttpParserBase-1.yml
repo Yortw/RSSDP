@@ -1,0 +1,639 @@
+### YamlMime:ManagedReference
+items:
+- uid: Rssdp.Infrastructure.HttpParserBase`1
+  commentId: T:Rssdp.Infrastructure.HttpParserBase`1
+  id: HttpParserBase`1
+  parent: Rssdp.Infrastructure
+  children:
+  - Rssdp.Infrastructure.HttpParserBase`1.IsContentHeader(System.String)
+  - Rssdp.Infrastructure.HttpParserBase`1.Parse(`0,System.Net.Http.Headers.HttpHeaders,System.String)
+  - Rssdp.Infrastructure.HttpParserBase`1.Parse(System.String)
+  - Rssdp.Infrastructure.HttpParserBase`1.ParseHttpVersion(System.String)
+  - Rssdp.Infrastructure.HttpParserBase`1.ParseStatusLine(System.String,`0)
+  langs:
+  - csharp
+  - vb
+  name: HttpParserBase<T>
+  nameWithType: HttpParserBase<T>
+  fullName: Rssdp.Infrastructure.HttpParserBase<T>
+  type: Class
+  source:
+    id: HttpParserBase
+    path: ''
+    startLine: 1255
+  assemblies:
+  - cs.temp.dll
+  namespace: Rssdp.Infrastructure
+  summary: "\nA base class for the <xref href=\"Rssdp.Infrastructure.HttpResponseParser\" data-throw-if-not-resolved=\"false\"></xref> and <xref href=\"Rssdp.Infrastructure.HttpRequestParser\" data-throw-if-not-resolved=\"false\"></xref> classes. Not intended for direct use.\n"
+  example: []
+  syntax:
+    content: >-
+      public abstract class HttpParserBase<T>
+          where T : new()
+    typeParameters:
+    - id: T
+      description: ''
+    content.vb: Public MustInherit Class HttpParserBase(Of T As New)
+  inheritance:
+  - System.Object
+  derivedClasses:
+  - Rssdp.Infrastructure.HttpRequestParser
+  - Rssdp.Infrastructure.HttpResponseParser
+  inheritedMembers:
+  - System.Object.ToString
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  nameWithType.vb: HttpParserBase(Of T)
+  modifiers.csharp:
+  - public
+  - abstract
+  - class
+  modifiers.vb:
+  - Public
+  - MustInherit
+  - Class
+  fullName.vb: Rssdp.Infrastructure.HttpParserBase(Of T)
+  name.vb: HttpParserBase(Of T)
+- uid: Rssdp.Infrastructure.HttpParserBase`1.Parse(System.String)
+  commentId: M:Rssdp.Infrastructure.HttpParserBase`1.Parse(System.String)
+  id: Parse(System.String)
+  parent: Rssdp.Infrastructure.HttpParserBase`1
+  langs:
+  - csharp
+  - vb
+  name: Parse(String)
+  nameWithType: HttpParserBase<T>.Parse(String)
+  fullName: Rssdp.Infrastructure.HttpParserBase<T>.Parse(System.String)
+  type: Method
+  source:
+    id: Parse
+    path: ''
+    startLine: 1272
+  assemblies:
+  - cs.temp.dll
+  namespace: Rssdp.Infrastructure
+  summary: "\nParses the <code data-dev-comment-type=\"paramref\" class=\"paramref\">data</code> provided into either a <see cref=\"!:System.Net.Http.HttpRequestMessage\"></see> or <see cref=\"!:System.Net.Http.HttpResponseMessage\"></see> object.\n"
+  example: []
+  syntax:
+    content: public abstract T Parse(string data)
+    parameters:
+    - id: data
+      type: System.String
+      description: A string containing the HTTP message to parse.
+    return:
+      type: '{T}'
+      description: Either a <see cref="!:System.Net.Http.HttpRequestMessage"></see> or <see cref="!:System.Net.Http.HttpResponseMessage"></see> object containing the parsed data.
+    content.vb: Public MustOverride Function Parse(data As String) As T
+  overload: Rssdp.Infrastructure.HttpParserBase`1.Parse*
+  nameWithType.vb: HttpParserBase(Of T).Parse(String)
+  modifiers.csharp:
+  - public
+  - abstract
+  modifiers.vb:
+  - Public
+  - MustOverride
+  fullName.vb: Rssdp.Infrastructure.HttpParserBase(Of T).Parse(System.String)
+- uid: Rssdp.Infrastructure.HttpParserBase`1.Parse(`0,System.Net.Http.Headers.HttpHeaders,System.String)
+  commentId: M:Rssdp.Infrastructure.HttpParserBase`1.Parse(`0,System.Net.Http.Headers.HttpHeaders,System.String)
+  id: Parse(`0,System.Net.Http.Headers.HttpHeaders,System.String)
+  parent: Rssdp.Infrastructure.HttpParserBase`1
+  langs:
+  - csharp
+  - vb
+  name: Parse(T, Http.Headers.HttpHeaders, String)
+  nameWithType: HttpParserBase<T>.Parse(T, Http.Headers.HttpHeaders, String)
+  fullName: Rssdp.Infrastructure.HttpParserBase<T>.Parse(T, System.Net.Http.Headers.HttpHeaders, System.String)
+  type: Method
+  source:
+    id: Parse
+    path: ''
+    startLine: 1281
+  assemblies:
+  - cs.temp.dll
+  namespace: Rssdp.Infrastructure
+  summary: "\nParses a string containing either an HTTP request or response into a <see cref=\"!:System.Net.Http.HttpRequestMessage\"></see> or <see cref=\"!:System.Net.Http.HttpResponseMessage\"></see> object.\n"
+  example: []
+  syntax:
+    content: protected virtual HttpContent Parse(T message, Http.Headers.HttpHeaders headers, string data)
+    parameters:
+    - id: message
+      type: '{T}'
+      description: A <see cref="!:System.Net.Http.HttpRequestMessage"></see> or <see cref="!:System.Net.Http.HttpResponseMessage"></see> object representing the parsed message.
+    - id: headers
+      type: System.Net.Http.Headers.HttpHeaders
+      description: A reference to the <see cref="!:System.Net.Http.Headers.HttpHeaders"></see> collection for the <code data-dev-comment-type="paramref" class="paramref">message</code> object.
+    - id: data
+      type: System.String
+      description: A string containing the data to be parsed.
+    return:
+      type: HttpContent
+      description: An <see cref="!:System.Net.Http.HttpContent"></see> object containing the content of the parsed message.
+    content.vb: Protected Overridable Function Parse(message As T, headers As Http.Headers.HttpHeaders, data As String) As HttpContent
+  overload: Rssdp.Infrastructure.HttpParserBase`1.Parse*
+  nameWithType.vb: HttpParserBase(Of T).Parse(T, Http.Headers.HttpHeaders, String)
+  modifiers.csharp:
+  - protected
+  - virtual
+  modifiers.vb:
+  - Protected
+  - Overridable
+  fullName.vb: Rssdp.Infrastructure.HttpParserBase(Of T).Parse(T, System.Net.Http.Headers.HttpHeaders, System.String)
+- uid: Rssdp.Infrastructure.HttpParserBase`1.ParseStatusLine(System.String,`0)
+  commentId: M:Rssdp.Infrastructure.HttpParserBase`1.ParseStatusLine(System.String,`0)
+  id: ParseStatusLine(System.String,`0)
+  parent: Rssdp.Infrastructure.HttpParserBase`1
+  langs:
+  - csharp
+  - vb
+  name: ParseStatusLine(String, T)
+  nameWithType: HttpParserBase<T>.ParseStatusLine(String, T)
+  fullName: Rssdp.Infrastructure.HttpParserBase<T>.ParseStatusLine(System.String, T)
+  type: Method
+  source:
+    id: ParseStatusLine
+    path: ''
+    startLine: 1337
+  assemblies:
+  - cs.temp.dll
+  namespace: Rssdp.Infrastructure
+  summary: "\nUsed to parse the first line of an HTTP request or response and assign the values to the appropriate properties on the <code data-dev-comment-type=\"paramref\" class=\"paramref\">message</code>.\n"
+  example: []
+  syntax:
+    content: protected abstract void ParseStatusLine(string data, T message)
+    parameters:
+    - id: data
+      type: System.String
+      description: The first line of the HTTP message to be parsed.
+    - id: message
+      type: '{T}'
+      description: Either a <see cref="!:System.Net.Http.HttpResponseMessage"></see> or <see cref="!:System.Net.Http.HttpRequestMessage"></see> to assign the parsed values to.
+    content.vb: Protected MustOverride Sub ParseStatusLine(data As String, message As T)
+  overload: Rssdp.Infrastructure.HttpParserBase`1.ParseStatusLine*
+  nameWithType.vb: HttpParserBase(Of T).ParseStatusLine(String, T)
+  modifiers.csharp:
+  - protected
+  - abstract
+  modifiers.vb:
+  - Protected
+  - MustOverride
+  fullName.vb: Rssdp.Infrastructure.HttpParserBase(Of T).ParseStatusLine(System.String, T)
+- uid: Rssdp.Infrastructure.HttpParserBase`1.IsContentHeader(System.String)
+  commentId: M:Rssdp.Infrastructure.HttpParserBase`1.IsContentHeader(System.String)
+  id: IsContentHeader(System.String)
+  parent: Rssdp.Infrastructure.HttpParserBase`1
+  langs:
+  - csharp
+  - vb
+  name: IsContentHeader(String)
+  nameWithType: HttpParserBase<T>.IsContentHeader(String)
+  fullName: Rssdp.Infrastructure.HttpParserBase<T>.IsContentHeader(System.String)
+  type: Method
+  source:
+    id: IsContentHeader
+    path: ''
+    startLine: 1343
+  assemblies:
+  - cs.temp.dll
+  namespace: Rssdp.Infrastructure
+  summary: "\nReturns a boolean indicating whether the specified HTTP header name represents a content header (true), or a message header (false).\n"
+  example: []
+  syntax:
+    content: protected abstract bool IsContentHeader(string headerName)
+    parameters:
+    - id: headerName
+      type: System.String
+      description: A string containing the name of the header to return the type of.
+    return:
+      type: System.Boolean
+    content.vb: Protected MustOverride Function IsContentHeader(headerName As String) As Boolean
+  overload: Rssdp.Infrastructure.HttpParserBase`1.IsContentHeader*
+  nameWithType.vb: HttpParserBase(Of T).IsContentHeader(String)
+  modifiers.csharp:
+  - protected
+  - abstract
+  modifiers.vb:
+  - Protected
+  - MustOverride
+  fullName.vb: Rssdp.Infrastructure.HttpParserBase(Of T).IsContentHeader(System.String)
+- uid: Rssdp.Infrastructure.HttpParserBase`1.ParseHttpVersion(System.String)
+  commentId: M:Rssdp.Infrastructure.HttpParserBase`1.ParseHttpVersion(System.String)
+  id: ParseHttpVersion(System.String)
+  parent: Rssdp.Infrastructure.HttpParserBase`1
+  langs:
+  - csharp
+  - vb
+  name: ParseHttpVersion(String)
+  nameWithType: HttpParserBase<T>.ParseHttpVersion(String)
+  fullName: Rssdp.Infrastructure.HttpParserBase<T>.ParseHttpVersion(System.String)
+  type: Method
+  source:
+    id: ParseHttpVersion
+    path: ''
+    startLine: 1350
+  assemblies:
+  - cs.temp.dll
+  namespace: Rssdp.Infrastructure
+  summary: "\nParses the HTTP version text from an HTTP request or response status line and returns a <xref href=\"System.Version\" data-throw-if-not-resolved=\"false\"></xref> object representing the parsed values.\n"
+  example: []
+  syntax:
+    content: protected static Version ParseHttpVersion(string versionData)
+    parameters:
+    - id: versionData
+      type: System.String
+      description: A string containing the HTTP version, from the message status line.
+    return:
+      type: System.Version
+      description: A <xref href="System.Version" data-throw-if-not-resolved="false"></xref> object containing the parsed version data.
+    content.vb: Protected Shared Function ParseHttpVersion(versionData As String) As Version
+  overload: Rssdp.Infrastructure.HttpParserBase`1.ParseHttpVersion*
+  nameWithType.vb: HttpParserBase(Of T).ParseHttpVersion(String)
+  modifiers.csharp:
+  - protected
+  - static
+  modifiers.vb:
+  - Protected
+  - Shared
+  fullName.vb: Rssdp.Infrastructure.HttpParserBase(Of T).ParseHttpVersion(System.String)
+references:
+- uid: Rssdp.Infrastructure.HttpResponseParser
+  commentId: T:Rssdp.Infrastructure.HttpResponseParser
+  name: HttpResponseParser
+  nameWithType: HttpResponseParser
+  fullName: Rssdp.Infrastructure.HttpResponseParser
+- uid: Rssdp.Infrastructure.HttpRequestParser
+  commentId: T:Rssdp.Infrastructure.HttpRequestParser
+  name: HttpRequestParser
+  nameWithType: HttpRequestParser
+  fullName: Rssdp.Infrastructure.HttpRequestParser
+- uid: Rssdp.Infrastructure
+  commentId: N:Rssdp.Infrastructure
+  name: Rssdp.Infrastructure
+  nameWithType: Rssdp.Infrastructure
+  fullName: Rssdp.Infrastructure
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  name: Object
+  nameWithType: Object
+  fullName: System.Object
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  name: ToString()
+  nameWithType: Object.ToString()
+  fullName: System.Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    nameWithType: Object.ToString
+    fullName: System.Object.ToString
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    nameWithType: Object.ToString
+    fullName: System.Object.ToString
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  name: Equals(Object)
+  nameWithType: Object.Equals(Object)
+  fullName: System.Object.Equals(System.Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  name: Equals(Object, Object)
+  nameWithType: Object.Equals(Object, Object)
+  fullName: System.Object.Equals(System.Object, System.Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  name: ReferenceEquals(Object, Object)
+  nameWithType: Object.ReferenceEquals(Object, Object)
+  fullName: System.Object.ReferenceEquals(System.Object, System.Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    nameWithType: Object.ReferenceEquals
+    fullName: System.Object.ReferenceEquals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    nameWithType: Object.ReferenceEquals
+    fullName: System.Object.ReferenceEquals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  name: GetHashCode()
+  nameWithType: Object.GetHashCode()
+  fullName: System.Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    nameWithType: Object.GetHashCode
+    fullName: System.Object.GetHashCode
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    nameWithType: Object.GetHashCode
+    fullName: System.Object.GetHashCode
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  name: GetType()
+  nameWithType: Object.GetType()
+  fullName: System.Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    nameWithType: Object.GetType
+    fullName: System.Object.GetType
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    nameWithType: Object.GetType
+    fullName: System.Object.GetType
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  name: MemberwiseClone()
+  nameWithType: Object.MemberwiseClone()
+  fullName: System.Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    nameWithType: Object.MemberwiseClone
+    fullName: System.Object.MemberwiseClone
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    nameWithType: Object.MemberwiseClone
+    fullName: System.Object.MemberwiseClone
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Rssdp.Infrastructure.HttpParserBase`1.Parse*
+  commentId: Overload:Rssdp.Infrastructure.HttpParserBase`1.Parse
+  name: Parse
+  nameWithType: HttpParserBase<T>.Parse
+  fullName: Rssdp.Infrastructure.HttpParserBase<T>.Parse
+  nameWithType.vb: HttpParserBase(Of T).Parse
+  fullName.vb: Rssdp.Infrastructure.HttpParserBase(Of T).Parse
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  name: String
+  nameWithType: String
+  fullName: System.String
+- uid: '{T}'
+  commentId: '!:T'
+  definition: T
+  name: T
+  nameWithType: T
+  fullName: T
+- uid: T
+  name: T
+  nameWithType: T
+  fullName: T
+- uid: System.Net.Http.Headers.HttpHeaders
+  commentId: '!:System.Net.Http.Headers.HttpHeaders'
+  isExternal: true
+  name: Http.Headers.HttpHeaders
+  nameWithType: Http.Headers.HttpHeaders
+  fullName: System.Net.Http.Headers.HttpHeaders
+- uid: HttpContent
+  commentId: '!:HttpContent'
+  isExternal: true
+  name: HttpContent
+  nameWithType: HttpContent
+  fullName: HttpContent
+- uid: Rssdp.Infrastructure.HttpParserBase`1.ParseStatusLine*
+  commentId: Overload:Rssdp.Infrastructure.HttpParserBase`1.ParseStatusLine
+  name: ParseStatusLine
+  nameWithType: HttpParserBase<T>.ParseStatusLine
+  fullName: Rssdp.Infrastructure.HttpParserBase<T>.ParseStatusLine
+  nameWithType.vb: HttpParserBase(Of T).ParseStatusLine
+  fullName.vb: Rssdp.Infrastructure.HttpParserBase(Of T).ParseStatusLine
+- uid: Rssdp.Infrastructure.HttpParserBase`1.IsContentHeader*
+  commentId: Overload:Rssdp.Infrastructure.HttpParserBase`1.IsContentHeader
+  name: IsContentHeader
+  nameWithType: HttpParserBase<T>.IsContentHeader
+  fullName: Rssdp.Infrastructure.HttpParserBase<T>.IsContentHeader
+  nameWithType.vb: HttpParserBase(Of T).IsContentHeader
+  fullName.vb: Rssdp.Infrastructure.HttpParserBase(Of T).IsContentHeader
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  name: Boolean
+  nameWithType: Boolean
+  fullName: System.Boolean
+- uid: System.Version
+  commentId: T:System.Version
+  parent: System
+  isExternal: true
+  name: Version
+  nameWithType: Version
+  fullName: System.Version
+- uid: Rssdp.Infrastructure.HttpParserBase`1.ParseHttpVersion*
+  commentId: Overload:Rssdp.Infrastructure.HttpParserBase`1.ParseHttpVersion
+  name: ParseHttpVersion
+  nameWithType: HttpParserBase<T>.ParseHttpVersion
+  fullName: Rssdp.Infrastructure.HttpParserBase<T>.ParseHttpVersion
+  nameWithType.vb: HttpParserBase(Of T).ParseHttpVersion
+  fullName.vb: Rssdp.Infrastructure.HttpParserBase(Of T).ParseHttpVersion

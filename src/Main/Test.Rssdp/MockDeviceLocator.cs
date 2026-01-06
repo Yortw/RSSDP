@@ -1,0 +1,21 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using Rssdp.Infrastructure;
+
+namespace TestRssdp
+{
+	public class MockDeviceLocator : SsdpDeviceLocatorBase
+	{
+		public MockDeviceLocator() : base(new MockCommsServer())
+		{
+		}
+
+		public MockDeviceLocator(ISsdpCommunicationsServer commsServer)
+			: base(commsServer)
+		{
+		}
+	}
+}

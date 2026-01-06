@@ -1,0 +1,723 @@
+### YamlMime:ManagedReference
+items:
+- uid: Rssdp.NullLogger
+  commentId: T:Rssdp.NullLogger
+  id: NullLogger
+  parent: Rssdp
+  children:
+  - Rssdp.NullLogger.Instance
+  - Rssdp.NullLogger.LogError(System.String)
+  - Rssdp.NullLogger.LogInfo(System.String)
+  - Rssdp.NullLogger.LogVerbose(System.String)
+  - Rssdp.NullLogger.LogWarning(System.String)
+  langs:
+  - csharp
+  - vb
+  name: NullLogger
+  nameWithType: NullLogger
+  fullName: Rssdp.NullLogger
+  type: Class
+  source:
+    id: NullLogger
+    path: ''
+    startLine: 2086
+  assemblies:
+  - cs.temp.dll
+  namespace: Rssdp
+  summary: "\nProvides a <xref href=\"Rssdp.ISsdpLogger\" data-throw-if-not-resolved=\"false\"></xref> implementation that does nothing, effectively disabling logging. Use the <xref href=\"Rssdp.NullLogger.Instance\" data-throw-if-not-resolved=\"false\"></xref> property to obtain an instance as the constructor is private.\n"
+  remarks: "\n<p>This logger is inherently thread-safe and the <xref href=\"Rssdp.NullLogger.Instance\" data-throw-if-not-resolved=\"false\"></xref> value can be shared among multiple components.</p>\n"
+  example: []
+  syntax:
+    content: 'public class NullLogger : ISsdpLogger'
+    content.vb: >-
+      Public Class NullLogger
+          Implements ISsdpLogger
+  inheritance:
+  - System.Object
+  implements:
+  - Rssdp.ISsdpLogger
+  inheritedMembers:
+  - System.Object.ToString
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  modifiers.csharp:
+  - public
+  - class
+  modifiers.vb:
+  - Public
+  - Class
+- uid: Rssdp.NullLogger.Instance
+  commentId: P:Rssdp.NullLogger.Instance
+  id: Instance
+  parent: Rssdp.NullLogger
+  langs:
+  - csharp
+  - vb
+  name: Instance
+  nameWithType: NullLogger.Instance
+  fullName: Rssdp.NullLogger.Instance
+  type: Property
+  source:
+    id: Instance
+    path: ''
+    startLine: 2098
+  assemblies:
+  - cs.temp.dll
+  namespace: Rssdp
+  summary: "\nProvides a single instance of <xref href=\"Rssdp.NullLogger\" data-throw-if-not-resolved=\"false\"></xref>.\n"
+  example: []
+  syntax:
+    content: public static ISsdpLogger Instance { get; }
+    parameters: []
+    return:
+      type: Rssdp.ISsdpLogger
+    content.vb: Public Shared ReadOnly Property Instance As ISsdpLogger
+  overload: Rssdp.NullLogger.Instance*
+  modifiers.csharp:
+  - public
+  - static
+  - get
+  modifiers.vb:
+  - Public
+  - Shared
+  - ReadOnly
+- uid: Rssdp.NullLogger.LogError(System.String)
+  commentId: M:Rssdp.NullLogger.LogError(System.String)
+  id: LogError(System.String)
+  parent: Rssdp.NullLogger
+  langs:
+  - csharp
+  - vb
+  name: LogError(String)
+  nameWithType: NullLogger.LogError(String)
+  fullName: Rssdp.NullLogger.LogError(System.String)
+  type: Method
+  source:
+    id: LogError
+    path: ''
+    startLine: 2107
+  assemblies:
+  - cs.temp.dll
+  namespace: Rssdp
+  summary: "\nDoes nothing.\n"
+  example: []
+  syntax:
+    content: public void LogError(string message)
+    parameters:
+    - id: message
+      type: System.String
+      description: Unused as this implementation does not log.
+    content.vb: Public Sub LogError(message As String)
+  overload: Rssdp.NullLogger.LogError*
+  implements:
+  - Rssdp.ISsdpLogger.LogError(System.String)
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+- uid: Rssdp.NullLogger.LogInfo(System.String)
+  commentId: M:Rssdp.NullLogger.LogInfo(System.String)
+  id: LogInfo(System.String)
+  parent: Rssdp.NullLogger
+  langs:
+  - csharp
+  - vb
+  name: LogInfo(String)
+  nameWithType: NullLogger.LogInfo(String)
+  fullName: Rssdp.NullLogger.LogInfo(System.String)
+  type: Method
+  source:
+    id: LogInfo
+    path: ''
+    startLine: 2115
+  assemblies:
+  - cs.temp.dll
+  namespace: Rssdp
+  summary: "\nDoes nothing.\n"
+  example: []
+  syntax:
+    content: public void LogInfo(string message)
+    parameters:
+    - id: message
+      type: System.String
+      description: Unused as this implementation does not log.
+    content.vb: Public Sub LogInfo(message As String)
+  overload: Rssdp.NullLogger.LogInfo*
+  implements:
+  - Rssdp.ISsdpLogger.LogInfo(System.String)
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+- uid: Rssdp.NullLogger.LogVerbose(System.String)
+  commentId: M:Rssdp.NullLogger.LogVerbose(System.String)
+  id: LogVerbose(System.String)
+  parent: Rssdp.NullLogger
+  langs:
+  - csharp
+  - vb
+  name: LogVerbose(String)
+  nameWithType: NullLogger.LogVerbose(String)
+  fullName: Rssdp.NullLogger.LogVerbose(System.String)
+  type: Method
+  source:
+    id: LogVerbose
+    path: ''
+    startLine: 2123
+  assemblies:
+  - cs.temp.dll
+  namespace: Rssdp
+  summary: "\nDoes nothing.\n"
+  example: []
+  syntax:
+    content: public void LogVerbose(string message)
+    parameters:
+    - id: message
+      type: System.String
+      description: Unused as this implementation does not log.
+    content.vb: Public Sub LogVerbose(message As String)
+  overload: Rssdp.NullLogger.LogVerbose*
+  implements:
+  - Rssdp.ISsdpLogger.LogVerbose(System.String)
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+- uid: Rssdp.NullLogger.LogWarning(System.String)
+  commentId: M:Rssdp.NullLogger.LogWarning(System.String)
+  id: LogWarning(System.String)
+  parent: Rssdp.NullLogger
+  langs:
+  - csharp
+  - vb
+  name: LogWarning(String)
+  nameWithType: NullLogger.LogWarning(String)
+  fullName: Rssdp.NullLogger.LogWarning(System.String)
+  type: Method
+  source:
+    id: LogWarning
+    path: ''
+    startLine: 2131
+  assemblies:
+  - cs.temp.dll
+  namespace: Rssdp
+  summary: "\nDoes nothing.\n"
+  example: []
+  syntax:
+    content: public void LogWarning(string message)
+    parameters:
+    - id: message
+      type: System.String
+      description: Unused as this implementation does not log.
+    content.vb: Public Sub LogWarning(message As String)
+  overload: Rssdp.NullLogger.LogWarning*
+  implements:
+  - Rssdp.ISsdpLogger.LogWarning(System.String)
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+references:
+- uid: Rssdp.ISsdpLogger
+  commentId: T:Rssdp.ISsdpLogger
+  parent: Rssdp
+  name: ISsdpLogger
+  nameWithType: ISsdpLogger
+  fullName: Rssdp.ISsdpLogger
+- uid: Rssdp.NullLogger.Instance
+  commentId: P:Rssdp.NullLogger.Instance
+  isExternal: true
+- uid: Rssdp
+  commentId: N:Rssdp
+  name: Rssdp
+  nameWithType: Rssdp
+  fullName: Rssdp
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  name: Object
+  nameWithType: Object
+  fullName: System.Object
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  name: ToString()
+  nameWithType: Object.ToString()
+  fullName: System.Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    nameWithType: Object.ToString
+    fullName: System.Object.ToString
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    nameWithType: Object.ToString
+    fullName: System.Object.ToString
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  name: Equals(Object)
+  nameWithType: Object.Equals(Object)
+  fullName: System.Object.Equals(System.Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  name: Equals(Object, Object)
+  nameWithType: Object.Equals(Object, Object)
+  fullName: System.Object.Equals(System.Object, System.Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  name: ReferenceEquals(Object, Object)
+  nameWithType: Object.ReferenceEquals(Object, Object)
+  fullName: System.Object.ReferenceEquals(System.Object, System.Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    nameWithType: Object.ReferenceEquals
+    fullName: System.Object.ReferenceEquals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    nameWithType: Object.ReferenceEquals
+    fullName: System.Object.ReferenceEquals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  name: GetHashCode()
+  nameWithType: Object.GetHashCode()
+  fullName: System.Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    nameWithType: Object.GetHashCode
+    fullName: System.Object.GetHashCode
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    nameWithType: Object.GetHashCode
+    fullName: System.Object.GetHashCode
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  name: GetType()
+  nameWithType: Object.GetType()
+  fullName: System.Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    nameWithType: Object.GetType
+    fullName: System.Object.GetType
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    nameWithType: Object.GetType
+    fullName: System.Object.GetType
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  name: MemberwiseClone()
+  nameWithType: Object.MemberwiseClone()
+  fullName: System.Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    nameWithType: Object.MemberwiseClone
+    fullName: System.Object.MemberwiseClone
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    nameWithType: Object.MemberwiseClone
+    fullName: System.Object.MemberwiseClone
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Rssdp.NullLogger
+  commentId: T:Rssdp.NullLogger
+  name: NullLogger
+  nameWithType: NullLogger
+  fullName: Rssdp.NullLogger
+- uid: Rssdp.NullLogger.Instance*
+  commentId: Overload:Rssdp.NullLogger.Instance
+  name: Instance
+  nameWithType: NullLogger.Instance
+  fullName: Rssdp.NullLogger.Instance
+- uid: Rssdp.NullLogger.LogError*
+  commentId: Overload:Rssdp.NullLogger.LogError
+  name: LogError
+  nameWithType: NullLogger.LogError
+  fullName: Rssdp.NullLogger.LogError
+- uid: Rssdp.ISsdpLogger.LogError(System.String)
+  commentId: M:Rssdp.ISsdpLogger.LogError(System.String)
+  parent: Rssdp.ISsdpLogger
+  isExternal: true
+  name: LogError(String)
+  nameWithType: ISsdpLogger.LogError(String)
+  fullName: Rssdp.ISsdpLogger.LogError(System.String)
+  spec.csharp:
+  - uid: Rssdp.ISsdpLogger.LogError(System.String)
+    name: LogError
+    nameWithType: ISsdpLogger.LogError
+    fullName: Rssdp.ISsdpLogger.LogError
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: Rssdp.ISsdpLogger.LogError(System.String)
+    name: LogError
+    nameWithType: ISsdpLogger.LogError
+    fullName: Rssdp.ISsdpLogger.LogError
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  name: String
+  nameWithType: String
+  fullName: System.String
+- uid: Rssdp.NullLogger.LogInfo*
+  commentId: Overload:Rssdp.NullLogger.LogInfo
+  name: LogInfo
+  nameWithType: NullLogger.LogInfo
+  fullName: Rssdp.NullLogger.LogInfo
+- uid: Rssdp.ISsdpLogger.LogInfo(System.String)
+  commentId: M:Rssdp.ISsdpLogger.LogInfo(System.String)
+  parent: Rssdp.ISsdpLogger
+  isExternal: true
+  name: LogInfo(String)
+  nameWithType: ISsdpLogger.LogInfo(String)
+  fullName: Rssdp.ISsdpLogger.LogInfo(System.String)
+  spec.csharp:
+  - uid: Rssdp.ISsdpLogger.LogInfo(System.String)
+    name: LogInfo
+    nameWithType: ISsdpLogger.LogInfo
+    fullName: Rssdp.ISsdpLogger.LogInfo
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: Rssdp.ISsdpLogger.LogInfo(System.String)
+    name: LogInfo
+    nameWithType: ISsdpLogger.LogInfo
+    fullName: Rssdp.ISsdpLogger.LogInfo
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: Rssdp.NullLogger.LogVerbose*
+  commentId: Overload:Rssdp.NullLogger.LogVerbose
+  name: LogVerbose
+  nameWithType: NullLogger.LogVerbose
+  fullName: Rssdp.NullLogger.LogVerbose
+- uid: Rssdp.ISsdpLogger.LogVerbose(System.String)
+  commentId: M:Rssdp.ISsdpLogger.LogVerbose(System.String)
+  parent: Rssdp.ISsdpLogger
+  isExternal: true
+  name: LogVerbose(String)
+  nameWithType: ISsdpLogger.LogVerbose(String)
+  fullName: Rssdp.ISsdpLogger.LogVerbose(System.String)
+  spec.csharp:
+  - uid: Rssdp.ISsdpLogger.LogVerbose(System.String)
+    name: LogVerbose
+    nameWithType: ISsdpLogger.LogVerbose
+    fullName: Rssdp.ISsdpLogger.LogVerbose
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: Rssdp.ISsdpLogger.LogVerbose(System.String)
+    name: LogVerbose
+    nameWithType: ISsdpLogger.LogVerbose
+    fullName: Rssdp.ISsdpLogger.LogVerbose
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: Rssdp.NullLogger.LogWarning*
+  commentId: Overload:Rssdp.NullLogger.LogWarning
+  name: LogWarning
+  nameWithType: NullLogger.LogWarning
+  fullName: Rssdp.NullLogger.LogWarning
+- uid: Rssdp.ISsdpLogger.LogWarning(System.String)
+  commentId: M:Rssdp.ISsdpLogger.LogWarning(System.String)
+  parent: Rssdp.ISsdpLogger
+  isExternal: true
+  name: LogWarning(String)
+  nameWithType: ISsdpLogger.LogWarning(String)
+  fullName: Rssdp.ISsdpLogger.LogWarning(System.String)
+  spec.csharp:
+  - uid: Rssdp.ISsdpLogger.LogWarning(System.String)
+    name: LogWarning
+    nameWithType: ISsdpLogger.LogWarning
+    fullName: Rssdp.ISsdpLogger.LogWarning
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: Rssdp.ISsdpLogger.LogWarning(System.String)
+    name: LogWarning
+    nameWithType: ISsdpLogger.LogWarning
+    fullName: Rssdp.ISsdpLogger.LogWarning
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )

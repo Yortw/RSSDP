@@ -1,0 +1,106 @@
+### YamlMime:ManagedReference
+items:
+- uid: Rssdp.DeviceNetworkType
+  commentId: T:Rssdp.DeviceNetworkType
+  id: DeviceNetworkType
+  parent: Rssdp
+  children:
+  - Rssdp.DeviceNetworkType.IPv4
+  - Rssdp.DeviceNetworkType.IPv6
+  langs:
+  - csharp
+  - vb
+  name: DeviceNetworkType
+  nameWithType: DeviceNetworkType
+  fullName: Rssdp.DeviceNetworkType
+  type: Enum
+  source:
+    id: DeviceNetworkType
+    path: ''
+    startLine: 815
+  assemblies:
+  - cs.temp.dll
+  namespace: Rssdp
+  summary: "\nWhat type of sockets will be created: ipv6 or ipv4\n"
+  example: []
+  syntax:
+    content: public enum DeviceNetworkType
+    content.vb: Public Enum DeviceNetworkType
+  modifiers.csharp:
+  - public
+  - enum
+  modifiers.vb:
+  - Public
+  - Enum
+- uid: Rssdp.DeviceNetworkType.IPv4
+  commentId: F:Rssdp.DeviceNetworkType.IPv4
+  id: IPv4
+  parent: Rssdp.DeviceNetworkType
+  langs:
+  - csharp
+  - vb
+  name: IPv4
+  nameWithType: DeviceNetworkType.IPv4
+  fullName: Rssdp.DeviceNetworkType.IPv4
+  type: Field
+  source:
+    id: IPv4
+    path: ''
+    startLine: 820
+  assemblies:
+  - cs.temp.dll
+  namespace: Rssdp
+  summary: "\nEquals to AddressFamily.InternetNetwork\n"
+  example: []
+  syntax:
+    content: IPv4 = 0
+    return:
+      type: Rssdp.DeviceNetworkType
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: Rssdp.DeviceNetworkType.IPv6
+  commentId: F:Rssdp.DeviceNetworkType.IPv6
+  id: IPv6
+  parent: Rssdp.DeviceNetworkType
+  langs:
+  - csharp
+  - vb
+  name: IPv6
+  nameWithType: DeviceNetworkType.IPv6
+  fullName: Rssdp.DeviceNetworkType.IPv6
+  type: Field
+  source:
+    id: IPv6
+    path: ''
+    startLine: 824
+  assemblies:
+  - cs.temp.dll
+  namespace: Rssdp
+  summary: "\nEquals to AddressFamily.InternetNetworkV6\n"
+  example: []
+  syntax:
+    content: IPv6 = 1
+    return:
+      type: Rssdp.DeviceNetworkType
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+references:
+- uid: Rssdp
+  commentId: N:Rssdp
+  name: Rssdp
+  nameWithType: Rssdp
+  fullName: Rssdp
+- uid: Rssdp.DeviceNetworkType
+  commentId: T:Rssdp.DeviceNetworkType
+  parent: Rssdp
+  name: DeviceNetworkType
+  nameWithType: DeviceNetworkType
+  fullName: Rssdp.DeviceNetworkType

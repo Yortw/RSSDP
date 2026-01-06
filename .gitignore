@@ -80,7 +80,6 @@ TestResults
 *.nupkg
 /src/Main/RSSDP.Portable/packages
 /src/Main/.nuget
-/src/Main/lib
 /src/Main/packages/
 /src/RssdpPackageTests/packages
 /src/Main/.vs/RSSDP/v15/sqlite3
@@ -95,3 +94,4 @@ log.txt
 /src/Main/Rssdp.Net45/log.txt
 /src/.nuget/NuGet.exe.g80d5rb.partial
 /src/.nuget/NuGet.exe.stpoc8w.partial
+/src/Main/Lib/api

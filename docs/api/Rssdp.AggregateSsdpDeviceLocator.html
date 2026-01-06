@@ -1,0 +1,833 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Class AggregateSsdpDeviceLocator
+   | RSSDP </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Class AggregateSsdpDeviceLocator
+   | RSSDP ">
+    <meta name="generator" content="docfx 2.59.4.0">
+    
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <meta property="docfx:navrel" content="../toc">
+    <meta property="docfx:tocrel" content="toc">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../images/RssdpIconSmall.png" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+                
+                <ul class="nav level1 navbar-nav">
+                      <li>
+                          <a href="../api/Rssdp.html" title="API Documentation">API Documentation</a>
+                      </li>
+                </ul>    </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div>
+              <div class="sidefilter">
+                <form class="toc-filter">
+                  <span class="glyphicon glyphicon-filter filter-icon"></span>
+                  <input type="text" id="toc_filter_input" placeholder="Enter here to filter..." onkeypress="if(event.keyCode==13) {return false;}">
+                </form>
+              </div>
+              <div class="sidetoc">
+                <div class="toc" id="toc">
+                  
+                  <ul class="nav level1">
+                    <li class="">
+                      <span class="expand-stub"></span>
+                      <a href="Rssdp.html" title="Rssdp" class="">Rssdp</a>
+                        
+                        <ul class="nav level2">
+                          <li class="active">
+                            <a href="Rssdp.AggregateSsdpDeviceLocator.html" title="AggregateSsdpDeviceLocator" class="active">AggregateSsdpDeviceLocator</a>
+                          </li>
+                          <li class="">
+                            <a href="Rssdp.CustomHttpHeader.html" title="CustomHttpHeader" class="">CustomHttpHeader</a>
+                          </li>
+                          <li class="">
+                            <a href="Rssdp.CustomHttpHeadersCollection.html" title="CustomHttpHeadersCollection" class="">CustomHttpHeadersCollection</a>
+                          </li>
+                          <li class="">
+                            <a href="Rssdp.DeviceAvailableEventArgs.html" title="DeviceAvailableEventArgs" class="">DeviceAvailableEventArgs</a>
+                          </li>
+                          <li class="">
+                            <a href="Rssdp.DeviceEventArgs.html" title="DeviceEventArgs" class="">DeviceEventArgs</a>
+                          </li>
+                          <li class="">
+                            <a href="Rssdp.DeviceNetworkType.html" title="DeviceNetworkType" class="">DeviceNetworkType</a>
+                          </li>
+                          <li class="">
+                            <a href="Rssdp.DeviceNetworkTypeExtensions.html" title="DeviceNetworkTypeExtensions" class="">DeviceNetworkTypeExtensions</a>
+                          </li>
+                          <li class="">
+                            <a href="Rssdp.DeviceUnavailableEventArgs.html" title="DeviceUnavailableEventArgs" class="">DeviceUnavailableEventArgs</a>
+                          </li>
+                          <li class="">
+                            <a href="Rssdp.DiscoveredSsdpDevice.html" title="DiscoveredSsdpDevice" class="">DiscoveredSsdpDevice</a>
+                          </li>
+                          <li class="">
+                            <a href="Rssdp.ExceptionExtensions.html" title="ExceptionExtensions" class="">ExceptionExtensions</a>
+                          </li>
+                          <li class="">
+                            <a href="Rssdp.ISsdpLogger.html" title="ISsdpLogger" class="">ISsdpLogger</a>
+                          </li>
+                          <li class="">
+                            <a href="Rssdp.NullLogger.html" title="NullLogger" class="">NullLogger</a>
+                          </li>
+                          <li class="">
+                            <a href="Rssdp.ServiceEventArgs.html" title="ServiceEventArgs" class="">ServiceEventArgs</a>
+                          </li>
+                          <li class="">
+                            <a href="Rssdp.SocketClosedException.html" title="SocketClosedException" class="">SocketClosedException</a>
+                          </li>
+                          <li class="">
+                            <a href="Rssdp.SocketFactory.html" title="SocketFactory" class="">SocketFactory</a>
+                          </li>
+                          <li class="">
+                            <a href="Rssdp.SsdpDevice.html" title="SsdpDevice" class="">SsdpDevice</a>
+                          </li>
+                          <li class="">
+                            <a href="Rssdp.SsdpDeviceExtensions.html" title="SsdpDeviceExtensions" class="">SsdpDeviceExtensions</a>
+                          </li>
+                          <li class="">
+                            <a href="Rssdp.SsdpDeviceIcon.html" title="SsdpDeviceIcon" class="">SsdpDeviceIcon</a>
+                          </li>
+                          <li class="">
+                            <a href="Rssdp.SsdpDeviceLocator.html" title="SsdpDeviceLocator" class="">SsdpDeviceLocator</a>
+                          </li>
+                          <li class="">
+                            <a href="Rssdp.SsdpDevicePropertiesCollection.html" title="SsdpDevicePropertiesCollection" class="">SsdpDevicePropertiesCollection</a>
+                          </li>
+                          <li class="">
+                            <a href="Rssdp.SsdpDeviceProperty.html" title="SsdpDeviceProperty" class="">SsdpDeviceProperty</a>
+                          </li>
+                          <li class="">
+                            <a href="Rssdp.SsdpDevicePublisher.html" title="SsdpDevicePublisher" class="">SsdpDevicePublisher</a>
+                          </li>
+                          <li class="">
+                            <a href="Rssdp.SsdpEmbeddedDevice.html" title="SsdpEmbeddedDevice" class="">SsdpEmbeddedDevice</a>
+                          </li>
+                          <li class="">
+                            <a href="Rssdp.SsdpRootDevice.html" title="SsdpRootDevice" class="">SsdpRootDevice</a>
+                          </li>
+                          <li class="">
+                            <a href="Rssdp.SsdpService.html" title="SsdpService" class="">SsdpService</a>
+                          </li>
+                          <li class="">
+                            <a href="Rssdp.SsdpStandardsMode.html" title="SsdpStandardsMode" class="">SsdpStandardsMode</a>
+                          </li>
+                          <li class="">
+                            <a href="Rssdp.SsdpTraceLogger.html" title="SsdpTraceLogger" class="">SsdpTraceLogger</a>
+                          </li>
+                        </ul>  </li>
+                    <li class="">
+                      <span class="expand-stub"></span>
+                      <a href="Rssdp.Infrastructure.html" title="Rssdp.Infrastructure" class="">Rssdp.Infrastructure</a>
+                        
+                        <ul class="nav level2">
+                          <li class="">
+                            <a href="Rssdp.Infrastructure.DisposableManagedObjectBase.html" title="DisposableManagedObjectBase" class="">DisposableManagedObjectBase</a>
+                          </li>
+                          <li class="">
+                            <a href="Rssdp.Infrastructure.HttpParserBase-1.html" title="HttpParserBase&lt;T&gt;" class="">HttpParserBase&lt;T&gt;</a>
+                          </li>
+                          <li class="">
+                            <a href="Rssdp.Infrastructure.HttpRequestParser.html" title="HttpRequestParser" class="">HttpRequestParser</a>
+                          </li>
+                          <li class="">
+                            <a href="Rssdp.Infrastructure.HttpResponseParser.html" title="HttpResponseParser" class="">HttpResponseParser</a>
+                          </li>
+                          <li class="">
+                            <a href="Rssdp.Infrastructure.ISocketFactory.html" title="ISocketFactory" class="">ISocketFactory</a>
+                          </li>
+                          <li class="">
+                            <a href="Rssdp.Infrastructure.ISsdpCommunicationsServer.html" title="ISsdpCommunicationsServer" class="">ISsdpCommunicationsServer</a>
+                          </li>
+                          <li class="">
+                            <a href="Rssdp.Infrastructure.ISsdpDeviceLocator.html" title="ISsdpDeviceLocator" class="">ISsdpDeviceLocator</a>
+                          </li>
+                          <li class="">
+                            <a href="Rssdp.Infrastructure.ISsdpDevicePublisher.html" title="ISsdpDevicePublisher" class="">ISsdpDevicePublisher</a>
+                          </li>
+                          <li class="">
+                            <a href="Rssdp.Infrastructure.IUdpSocket.html" title="IUdpSocket" class="">IUdpSocket</a>
+                          </li>
+                          <li class="">
+                            <a href="Rssdp.Infrastructure.IUpnpDeviceValidator.html" title="IUpnpDeviceValidator" class="">IUpnpDeviceValidator</a>
+                          </li>
+                          <li class="">
+                            <a href="Rssdp.Infrastructure.ReceivedUdpData.html" title="ReceivedUdpData" class="">ReceivedUdpData</a>
+                          </li>
+                          <li class="">
+                            <a href="Rssdp.Infrastructure.RequestReceivedEventArgs.html" title="RequestReceivedEventArgs" class="">RequestReceivedEventArgs</a>
+                          </li>
+                          <li class="">
+                            <a href="Rssdp.Infrastructure.ResponseReceivedEventArgs.html" title="ResponseReceivedEventArgs" class="">ResponseReceivedEventArgs</a>
+                          </li>
+                          <li class="">
+                            <a href="Rssdp.Infrastructure.SsdpCommunicationsServer.html" title="SsdpCommunicationsServer" class="">SsdpCommunicationsServer</a>
+                          </li>
+                          <li class="">
+                            <a href="Rssdp.Infrastructure.SsdpConstants.html" title="SsdpConstants" class="">SsdpConstants</a>
+                          </li>
+                          <li class="">
+                            <a href="Rssdp.Infrastructure.SsdpDeviceLocatorBase.html" title="SsdpDeviceLocatorBase" class="">SsdpDeviceLocatorBase</a>
+                          </li>
+                          <li class="">
+                            <a href="Rssdp.Infrastructure.SsdpDevicePublisherBase.html" title="SsdpDevicePublisherBase" class="">SsdpDevicePublisherBase</a>
+                          </li>
+                          <li class="">
+                            <a href="Rssdp.Infrastructure.UdpEndPoint.html" title="UdpEndPoint" class="">UdpEndPoint</a>
+                          </li>
+                          <li class="">
+                            <a href="Rssdp.Infrastructure.Upnp10DeviceValidator.html" title="Upnp10DeviceValidator" class="">Upnp10DeviceValidator</a>
+                          </li>
+                        </ul>  </li>
+                  </ul>        </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="Rssdp.AggregateSsdpDeviceLocator">
+  
+  
+  <h1 id="Rssdp_AggregateSsdpDeviceLocator" data-uid="Rssdp.AggregateSsdpDeviceLocator" class="text-break">Class AggregateSsdpDeviceLocator
+  </h1>
+  <div class="markdown level0 summary"><p>Aggregates multiple <a class="xref" href="Rssdp.SsdpDeviceLocator.html">SsdpDeviceLocator</a> instances bound to different local adapter IP addresses
+to enable discovery across multiple network interfaces.</p>
+</div>
+  <div class="markdown level0 conceptual"></div>
+  <div class="inheritance">
+    <h5>Inheritance</h5>
+    <div class="level0"><span class="xref">System.Object</span></div>
+    <div class="level1"><span class="xref">AggregateSsdpDeviceLocator</span></div>
+  </div>
+  <div class="implements">
+    <h5>Implements</h5>
+    <div><span class="xref">System.IDisposable</span></div>
+    <div><a class="xref" href="Rssdp.Infrastructure.ISsdpDeviceLocator.html">ISsdpDeviceLocator</a></div>
+  </div>
+  <div class="inheritedMembers">
+    <h5>Inherited Members</h5>
+    <div>
+      <span class="xref">System.Object.ToString()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.Equals(System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.Equals(System.Object, System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.ReferenceEquals(System.Object, System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.GetHashCode()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.GetType()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.MemberwiseClone()</span>
+    </div>
+  </div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="Rssdp.html">Rssdp</a></h6>
+  <h6><strong>Assembly</strong>: cs.temp.dll.dll</h6>
+  <h5 id="Rssdp_AggregateSsdpDeviceLocator_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public sealed class AggregateSsdpDeviceLocator : IDisposable, ISsdpDeviceLocator</code></pre>
+  </div>
+  <h3 id="constructors">Constructors
+  </h3>
+  
+  
+  <a id="Rssdp_AggregateSsdpDeviceLocator__ctor_" data-uid="Rssdp.AggregateSsdpDeviceLocator.#ctor*"></a>
+  <h4 id="Rssdp_AggregateSsdpDeviceLocator__ctor_System_Boolean_System_Boolean_System_Func_System_Net_NetworkInformation_NetworkInterface_System_Boolean__Rssdp_ISsdpLogger_" data-uid="Rssdp.AggregateSsdpDeviceLocator.#ctor(System.Boolean,System.Boolean,System.Func{System.Net.NetworkInformation.NetworkInterface,System.Boolean},Rssdp.ISsdpLogger)">AggregateSsdpDeviceLocator(Boolean, Boolean, Func&lt;NetworkInterface, Boolean&gt;, ISsdpLogger)</h4>
+  <div class="markdown level1 summary"><p>Creates an aggregate device locator by discovering local adapter IP addresses.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public AggregateSsdpDeviceLocator(bool includeIpv4 = true, bool includeIpv6 = false, Func&lt;NetworkInterface, bool&gt; adapterFilter = null, ISsdpLogger logger = null)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><span class="parametername">includeIpv4</span></td>
+        <td><p>If true, include IPv4 addresses.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><span class="parametername">includeIpv6</span></td>
+        <td><p>If true, include IPv6 addresses.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Func</span>&lt;<span class="xref">System.Net.NetworkInformation.NetworkInterface</span>, <span class="xref">System.Boolean</span>&gt;</td>
+        <td><span class="parametername">adapterFilter</span></td>
+        <td><p>Optional filter to include only specific adapters. If null, a sensible default filter is applied.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Rssdp.ISsdpLogger.html">ISsdpLogger</a></td>
+        <td><span class="parametername">logger</span></td>
+        <td><p>Optional logger for diagnostics.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="Rssdp_AggregateSsdpDeviceLocator__ctor_" data-uid="Rssdp.AggregateSsdpDeviceLocator.#ctor*"></a>
+  <h4 id="Rssdp_AggregateSsdpDeviceLocator__ctor_System_Collections_Generic_IEnumerable_System_String__Rssdp_ISsdpLogger_" data-uid="Rssdp.AggregateSsdpDeviceLocator.#ctor(System.Collections.Generic.IEnumerable{System.String},Rssdp.ISsdpLogger)">AggregateSsdpDeviceLocator(IEnumerable&lt;String&gt;, ISsdpLogger)</h4>
+  <div class="markdown level1 summary"><p>Creates an aggregate device locator that queries multiple network adapters.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public AggregateSsdpDeviceLocator(IEnumerable&lt;string&gt; localIpAddresses, ISsdpLogger logger = null)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.IEnumerable</span>&lt;<span class="xref">System.String</span>&gt;</td>
+        <td><span class="parametername">localIpAddresses</span></td>
+        <td><p>A collection of local adapter IP addresses to bind individual locators to. Null/empty entries are ignored. Must contain at least one valid address.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Rssdp.ISsdpLogger.html">ISsdpLogger</a></td>
+        <td><span class="parametername">logger</span></td>
+        <td><p>Optional logger for diagnostics.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.ArgumentNullException</span></td>
+        <td><p>Thrown when <code data-dev-comment-type="paramref" class="paramref">localIpAddresses</code> is null.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.ArgumentException</span></td>
+        <td><p>Thrown when no valid IP addresses are provided.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="properties">Properties
+  </h3>
+  
+  
+  <a id="Rssdp_AggregateSsdpDeviceLocator_IsSearching_" data-uid="Rssdp.AggregateSsdpDeviceLocator.IsSearching*"></a>
+  <h4 id="Rssdp_AggregateSsdpDeviceLocator_IsSearching" data-uid="Rssdp.AggregateSsdpDeviceLocator.IsSearching">IsSearching</h4>
+  <div class="markdown level1 summary"><p>Indicates whether a search is currently in progress across any aggregated locator.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool IsSearching { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="Rssdp_AggregateSsdpDeviceLocator_NotificationFilter_" data-uid="Rssdp.AggregateSsdpDeviceLocator.NotificationFilter*"></a>
+  <h4 id="Rssdp_AggregateSsdpDeviceLocator_NotificationFilter" data-uid="Rssdp.AggregateSsdpDeviceLocator.NotificationFilter">NotificationFilter</h4>
+  <div class="markdown level1 summary"><p>Gets or sets the filter for notifications. Notifications not matching the filter will not raise <a class="xref" href="Rssdp.AggregateSsdpDeviceLocator.html#Rssdp_AggregateSsdpDeviceLocator_DeviceAvailable">DeviceAvailable</a> or <a class="xref" href="Rssdp.AggregateSsdpDeviceLocator.html#Rssdp_AggregateSsdpDeviceLocator_DeviceUnavailable">DeviceUnavailable</a>.
+The value is applied to all aggregated locators.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string NotificationFilter { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="methods">Methods
+  </h3>
+  
+  
+  <a id="Rssdp_AggregateSsdpDeviceLocator_Dispose_" data-uid="Rssdp.AggregateSsdpDeviceLocator.Dispose*"></a>
+  <h4 id="Rssdp_AggregateSsdpDeviceLocator_Dispose" data-uid="Rssdp.AggregateSsdpDeviceLocator.Dispose">Dispose()</h4>
+  <div class="markdown level1 summary"><p>Disposes the aggregate locator and all underlying locators, detaching event handlers.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void Dispose()</code></pre>
+  </div>
+  
+  
+  <a id="Rssdp_AggregateSsdpDeviceLocator_SearchAsync_" data-uid="Rssdp.AggregateSsdpDeviceLocator.SearchAsync*"></a>
+  <h4 id="Rssdp_AggregateSsdpDeviceLocator_SearchAsync_System_String_System_Threading_CancellationToken_" data-uid="Rssdp.AggregateSsdpDeviceLocator.SearchAsync(System.String,System.Threading.CancellationToken)">SearchAsync(String, CancellationToken)</h4>
+  <div class="markdown level1 summary"><p>Asynchronously performs a search for the specified search target using the default timeout across all aggregated locators.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;IEnumerable&lt;DiscoveredSsdpDevice&gt;&gt; SearchAsync(string searchTarget, CancellationToken cancellationToken = default(CancellationToken))</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">searchTarget</span></td>
+        <td><p>Search criteria such as device type, root device, or UUID.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Threading.CancellationToken</span></td>
+        <td><span class="parametername">cancellationToken</span></td>
+        <td><p>A token used to cancel the search across all locators.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<span class="xref">System.Collections.Generic.IEnumerable</span>&lt;<a class="xref" href="Rssdp.DiscoveredSsdpDevice.html">DiscoveredSsdpDevice</a>&gt;&gt;</td>
+        <td><p>A task whose result is a de-duplicated sequence of discovered devices.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="Rssdp_AggregateSsdpDeviceLocator_SearchAsync_" data-uid="Rssdp.AggregateSsdpDeviceLocator.SearchAsync*"></a>
+  <h4 id="Rssdp_AggregateSsdpDeviceLocator_SearchAsync_System_String_System_TimeSpan_System_Threading_CancellationToken_" data-uid="Rssdp.AggregateSsdpDeviceLocator.SearchAsync(System.String,System.TimeSpan,System.Threading.CancellationToken)">SearchAsync(String, TimeSpan, CancellationToken)</h4>
+  <div class="markdown level1 summary"><p>Asynchronously performs a search for the specified search target using the provided timeout across all aggregated locators.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;IEnumerable&lt;DiscoveredSsdpDevice&gt;&gt; SearchAsync(string searchTarget, TimeSpan searchWaitTime, CancellationToken cancellationToken = default(CancellationToken))</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">searchTarget</span></td>
+        <td><p>Search criteria such as device type, root device, or UUID.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.TimeSpan</span></td>
+        <td><span class="parametername">searchWaitTime</span></td>
+        <td><p>The time to wait for responses.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Threading.CancellationToken</span></td>
+        <td><span class="parametername">cancellationToken</span></td>
+        <td><p>A token used to cancel the search across all locators.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<span class="xref">System.Collections.Generic.IEnumerable</span>&lt;<a class="xref" href="Rssdp.DiscoveredSsdpDevice.html">DiscoveredSsdpDevice</a>&gt;&gt;</td>
+        <td><p>A task whose result is a de-duplicated sequence of discovered devices.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="Rssdp_AggregateSsdpDeviceLocator_SearchAsync_" data-uid="Rssdp.AggregateSsdpDeviceLocator.SearchAsync*"></a>
+  <h4 id="Rssdp_AggregateSsdpDeviceLocator_SearchAsync_System_Threading_CancellationToken_" data-uid="Rssdp.AggregateSsdpDeviceLocator.SearchAsync(System.Threading.CancellationToken)">SearchAsync(CancellationToken)</h4>
+  <div class="markdown level1 summary"><p>Asynchronously performs a search for all devices using the default search timeout across all aggregated locators.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;IEnumerable&lt;DiscoveredSsdpDevice&gt;&gt; SearchAsync(CancellationToken cancellationToken = default(CancellationToken))</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Threading.CancellationToken</span></td>
+        <td><span class="parametername">cancellationToken</span></td>
+        <td><p>A token used to cancel the search across all locators.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<span class="xref">System.Collections.Generic.IEnumerable</span>&lt;<a class="xref" href="Rssdp.DiscoveredSsdpDevice.html">DiscoveredSsdpDevice</a>&gt;&gt;</td>
+        <td><p>A task whose result is a de-duplicated sequence of discovered devices.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="Rssdp_AggregateSsdpDeviceLocator_SearchAsync_" data-uid="Rssdp.AggregateSsdpDeviceLocator.SearchAsync*"></a>
+  <h4 id="Rssdp_AggregateSsdpDeviceLocator_SearchAsync_System_TimeSpan_System_Threading_CancellationToken_" data-uid="Rssdp.AggregateSsdpDeviceLocator.SearchAsync(System.TimeSpan,System.Threading.CancellationToken)">SearchAsync(TimeSpan, CancellationToken)</h4>
+  <div class="markdown level1 summary"><p>Asynchronously performs a search for all devices using the provided timeout across all aggregated locators.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;IEnumerable&lt;DiscoveredSsdpDevice&gt;&gt; SearchAsync(TimeSpan searchWaitTime, CancellationToken cancellationToken = default(CancellationToken))</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.TimeSpan</span></td>
+        <td><span class="parametername">searchWaitTime</span></td>
+        <td><p>The time to wait for responses.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Threading.CancellationToken</span></td>
+        <td><span class="parametername">cancellationToken</span></td>
+        <td><p>A token used to cancel the search across all locators.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<span class="xref">System.Collections.Generic.IEnumerable</span>&lt;<a class="xref" href="Rssdp.DiscoveredSsdpDevice.html">DiscoveredSsdpDevice</a>&gt;&gt;</td>
+        <td><p>A task whose result is a de-duplicated sequence of discovered devices.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="Rssdp_AggregateSsdpDeviceLocator_StartListeningForNotifications_" data-uid="Rssdp.AggregateSsdpDeviceLocator.StartListeningForNotifications*"></a>
+  <h4 id="Rssdp_AggregateSsdpDeviceLocator_StartListeningForNotifications" data-uid="Rssdp.AggregateSsdpDeviceLocator.StartListeningForNotifications">StartListeningForNotifications()</h4>
+  <div class="markdown level1 summary"><p>Starts listening for broadcast notifications of device availability on all aggregated locators.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void StartListeningForNotifications()</code></pre>
+  </div>
+  
+  
+  <a id="Rssdp_AggregateSsdpDeviceLocator_StartListeningForNotificationsAsync_" data-uid="Rssdp.AggregateSsdpDeviceLocator.StartListeningForNotificationsAsync*"></a>
+  <h4 id="Rssdp_AggregateSsdpDeviceLocator_StartListeningForNotificationsAsync" data-uid="Rssdp.AggregateSsdpDeviceLocator.StartListeningForNotificationsAsync">StartListeningForNotificationsAsync()</h4>
+  <div class="markdown level1 summary"><p>Asynchronously starts listening for multicast notifications on all aggregated locators and awaits per-adapter completion.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public async Task StartListeningForNotificationsAsync()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Threading.Tasks.Task</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="Rssdp_AggregateSsdpDeviceLocator_StopListeningForNotifications_" data-uid="Rssdp.AggregateSsdpDeviceLocator.StopListeningForNotifications*"></a>
+  <h4 id="Rssdp_AggregateSsdpDeviceLocator_StopListeningForNotifications" data-uid="Rssdp.AggregateSsdpDeviceLocator.StopListeningForNotifications">StopListeningForNotifications()</h4>
+  <div class="markdown level1 summary"><p>Stops listening for broadcast notifications on all aggregated locators.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void StopListeningForNotifications()</code></pre>
+  </div>
+  
+  
+  <a id="Rssdp_AggregateSsdpDeviceLocator_StopListeningForNotificationsAsync_" data-uid="Rssdp.AggregateSsdpDeviceLocator.StopListeningForNotificationsAsync*"></a>
+  <h4 id="Rssdp_AggregateSsdpDeviceLocator_StopListeningForNotificationsAsync" data-uid="Rssdp.AggregateSsdpDeviceLocator.StopListeningForNotificationsAsync">StopListeningForNotificationsAsync()</h4>
+  <div class="markdown level1 summary"><p>Asynchronously stops listening for multicast notifications on all aggregated locators and awaits per-adapter completion.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public async Task StopListeningForNotificationsAsync()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Threading.Tasks.Task</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="events">Events
+  </h3>
+  
+  
+  <h4 id="Rssdp_AggregateSsdpDeviceLocator_DeviceAvailable" data-uid="Rssdp.AggregateSsdpDeviceLocator.DeviceAvailable">DeviceAvailable</h4>
+  <div class="markdown level1 summary"><p>Raised when a device becomes available or is found by a search request across any aggregated locator.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public event EventHandler&lt;DeviceAvailableEventArgs&gt; DeviceAvailable</code></pre>
+  </div>
+  <h5 class="eventType">Event Type</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.EventHandler</span>&lt;<a class="xref" href="Rssdp.DeviceAvailableEventArgs.html">DeviceAvailableEventArgs</a>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <h4 id="Rssdp_AggregateSsdpDeviceLocator_DeviceUnavailable" data-uid="Rssdp.AggregateSsdpDeviceLocator.DeviceUnavailable">DeviceUnavailable</h4>
+  <div class="markdown level1 summary"><p>Raised when a device explicitly notifies of shutdown or expires from the cache across any aggregated locator.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public event EventHandler&lt;DeviceUnavailableEventArgs&gt; DeviceUnavailable</code></pre>
+  </div>
+  <h5 class="eventType">Event Type</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.EventHandler</span>&lt;<a class="xref" href="Rssdp.DeviceUnavailableEventArgs.html">DeviceUnavailableEventArgs</a>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="implements">Implements</h3>
+  <div>
+      <span class="xref">System.IDisposable</span>
+  </div>
+  <div>
+      <a class="xref" href="Rssdp.Infrastructure.ISsdpDeviceLocator.html">ISsdpDeviceLocator</a>
+  </div>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In This Article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            Copyright (c) 2015 Troy Willmot
+            
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>

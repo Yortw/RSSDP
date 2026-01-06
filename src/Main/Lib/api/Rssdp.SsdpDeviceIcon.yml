@@ -1,0 +1,581 @@
+### YamlMime:ManagedReference
+items:
+- uid: Rssdp.SsdpDeviceIcon
+  commentId: T:Rssdp.SsdpDeviceIcon
+  id: SsdpDeviceIcon
+  parent: Rssdp
+  children:
+  - Rssdp.SsdpDeviceIcon.ColorDepth
+  - Rssdp.SsdpDeviceIcon.Height
+  - Rssdp.SsdpDeviceIcon.MimeType
+  - Rssdp.SsdpDeviceIcon.Url
+  - Rssdp.SsdpDeviceIcon.Width
+  langs:
+  - csharp
+  - vb
+  name: SsdpDeviceIcon
+  nameWithType: SsdpDeviceIcon
+  fullName: Rssdp.SsdpDeviceIcon
+  type: Class
+  source:
+    id: SsdpDeviceIcon
+    path: ''
+    startLine: 4243
+  assemblies:
+  - cs.temp.dll
+  namespace: Rssdp
+  summary: "\nRepresents an icon published by an <xref href=\"Rssdp.SsdpDevice\" data-throw-if-not-resolved=\"false\"></xref>.\n"
+  example: []
+  syntax:
+    content: public sealed class SsdpDeviceIcon
+    content.vb: Public NotInheritable Class SsdpDeviceIcon
+  inheritance:
+  - System.Object
+  inheritedMembers:
+  - System.Object.ToString
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  modifiers.csharp:
+  - public
+  - sealed
+  - class
+  modifiers.vb:
+  - Public
+  - NotInheritable
+  - Class
+- uid: Rssdp.SsdpDeviceIcon.MimeType
+  commentId: P:Rssdp.SsdpDeviceIcon.MimeType
+  id: MimeType
+  parent: Rssdp.SsdpDeviceIcon
+  langs:
+  - csharp
+  - vb
+  name: MimeType
+  nameWithType: SsdpDeviceIcon.MimeType
+  fullName: Rssdp.SsdpDeviceIcon.MimeType
+  type: Property
+  source:
+    id: MimeType
+    path: ''
+    startLine: 4252
+  assemblies:
+  - cs.temp.dll
+  namespace: Rssdp
+  summary: "\nThe mime type for the image data returned by the <xref href=\"Rssdp.SsdpDeviceIcon.Url\" data-throw-if-not-resolved=\"false\"></xref> property.\n"
+  remarks: "\n<p>Required. Icon&apos;s MIME type (cf. RFC 2045, 2046, and 2387). Single MIME image type. At least one icon should be of type “image/png” (Portable Network Graphics, see IETF RFC 2083).</p> \n"
+  example: []
+  syntax:
+    content: public string MimeType { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Property MimeType As String
+  overload: Rssdp.SsdpDeviceIcon.MimeType*
+  seealso:
+  - linkId: Rssdp.SsdpDeviceIcon.Url
+    commentId: P:Rssdp.SsdpDeviceIcon.Url
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: Rssdp.SsdpDeviceIcon.Url
+  commentId: P:Rssdp.SsdpDeviceIcon.Url
+  id: Url
+  parent: Rssdp.SsdpDeviceIcon
+  langs:
+  - csharp
+  - vb
+  name: Url
+  nameWithType: SsdpDeviceIcon.Url
+  fullName: Rssdp.SsdpDeviceIcon.Url
+  type: Property
+  source:
+    id: Url
+    path: ''
+    startLine: 4261
+  assemblies:
+  - cs.temp.dll
+  namespace: Rssdp
+  summary: "\nThe URL that can be called with an HTTP GET command to retrieve the image data.\n"
+  remarks: "\n<p>Required. May be relative to base URL. Specified by UPnP vendor. Single URL.</p>\n"
+  example: []
+  syntax:
+    content: public Uri Url { get; set; }
+    parameters: []
+    return:
+      type: System.Uri
+    content.vb: Public Property Url As Uri
+  overload: Rssdp.SsdpDeviceIcon.Url*
+  seealso:
+  - linkId: Rssdp.SsdpDeviceIcon.MimeType
+    commentId: P:Rssdp.SsdpDeviceIcon.MimeType
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: Rssdp.SsdpDeviceIcon.Width
+  commentId: P:Rssdp.SsdpDeviceIcon.Width
+  id: Width
+  parent: Rssdp.SsdpDeviceIcon
+  langs:
+  - csharp
+  - vb
+  name: Width
+  nameWithType: SsdpDeviceIcon.Width
+  fullName: Rssdp.SsdpDeviceIcon.Width
+  type: Property
+  source:
+    id: Width
+    path: ''
+    startLine: 4267
+  assemblies:
+  - cs.temp.dll
+  namespace: Rssdp
+  summary: "\nThe width of the image in pixels.\n"
+  remarks: <p>Required, must be greater than zero.</p>
+  example: []
+  syntax:
+    content: public int Width { get; set; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public Property Width As Integer
+  overload: Rssdp.SsdpDeviceIcon.Width*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: Rssdp.SsdpDeviceIcon.Height
+  commentId: P:Rssdp.SsdpDeviceIcon.Height
+  id: Height
+  parent: Rssdp.SsdpDeviceIcon
+  langs:
+  - csharp
+  - vb
+  name: Height
+  nameWithType: SsdpDeviceIcon.Height
+  fullName: Rssdp.SsdpDeviceIcon.Height
+  type: Property
+  source:
+    id: Height
+    path: ''
+    startLine: 4273
+  assemblies:
+  - cs.temp.dll
+  namespace: Rssdp
+  summary: "\nThe height of the image in pixels.\n"
+  remarks: <p>Required, must be greater than zero.</p>
+  example: []
+  syntax:
+    content: public int Height { get; set; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public Property Height As Integer
+  overload: Rssdp.SsdpDeviceIcon.Height*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: Rssdp.SsdpDeviceIcon.ColorDepth
+  commentId: P:Rssdp.SsdpDeviceIcon.ColorDepth
+  id: ColorDepth
+  parent: Rssdp.SsdpDeviceIcon
+  langs:
+  - csharp
+  - vb
+  name: ColorDepth
+  nameWithType: SsdpDeviceIcon.ColorDepth
+  fullName: Rssdp.SsdpDeviceIcon.ColorDepth
+  type: Property
+  source:
+    id: ColorDepth
+    path: ''
+    startLine: 4279
+  assemblies:
+  - cs.temp.dll
+  namespace: Rssdp
+  summary: "\nThe colour depth of the image.\n"
+  remarks: <p>Required, must be greater than zero.</p>
+  example: []
+  syntax:
+    content: public int ColorDepth { get; set; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public Property ColorDepth As Integer
+  overload: Rssdp.SsdpDeviceIcon.ColorDepth*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+references:
+- uid: Rssdp.SsdpDevice
+  commentId: T:Rssdp.SsdpDevice
+  parent: Rssdp
+  name: SsdpDevice
+  nameWithType: SsdpDevice
+  fullName: Rssdp.SsdpDevice
+- uid: Rssdp
+  commentId: N:Rssdp
+  name: Rssdp
+  nameWithType: Rssdp
+  fullName: Rssdp
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  name: Object
+  nameWithType: Object
+  fullName: System.Object
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  name: ToString()
+  nameWithType: Object.ToString()
+  fullName: System.Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    nameWithType: Object.ToString
+    fullName: System.Object.ToString
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    nameWithType: Object.ToString
+    fullName: System.Object.ToString
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  name: Equals(Object)
+  nameWithType: Object.Equals(Object)
+  fullName: System.Object.Equals(System.Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  name: Equals(Object, Object)
+  nameWithType: Object.Equals(Object, Object)
+  fullName: System.Object.Equals(System.Object, System.Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  name: ReferenceEquals(Object, Object)
+  nameWithType: Object.ReferenceEquals(Object, Object)
+  fullName: System.Object.ReferenceEquals(System.Object, System.Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    nameWithType: Object.ReferenceEquals
+    fullName: System.Object.ReferenceEquals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    nameWithType: Object.ReferenceEquals
+    fullName: System.Object.ReferenceEquals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  name: GetHashCode()
+  nameWithType: Object.GetHashCode()
+  fullName: System.Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    nameWithType: Object.GetHashCode
+    fullName: System.Object.GetHashCode
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    nameWithType: Object.GetHashCode
+    fullName: System.Object.GetHashCode
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  name: GetType()
+  nameWithType: Object.GetType()
+  fullName: System.Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    nameWithType: Object.GetType
+    fullName: System.Object.GetType
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    nameWithType: Object.GetType
+    fullName: System.Object.GetType
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  name: MemberwiseClone()
+  nameWithType: Object.MemberwiseClone()
+  fullName: System.Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    nameWithType: Object.MemberwiseClone
+    fullName: System.Object.MemberwiseClone
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    nameWithType: Object.MemberwiseClone
+    fullName: System.Object.MemberwiseClone
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Rssdp.SsdpDeviceIcon.Url
+  commentId: P:Rssdp.SsdpDeviceIcon.Url
+  isExternal: true
+- uid: Rssdp.SsdpDeviceIcon.MimeType*
+  commentId: Overload:Rssdp.SsdpDeviceIcon.MimeType
+  name: MimeType
+  nameWithType: SsdpDeviceIcon.MimeType
+  fullName: Rssdp.SsdpDeviceIcon.MimeType
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  name: String
+  nameWithType: String
+  fullName: System.String
+- uid: Rssdp.SsdpDeviceIcon.MimeType
+  commentId: P:Rssdp.SsdpDeviceIcon.MimeType
+  isExternal: true
+- uid: Rssdp.SsdpDeviceIcon.Url*
+  commentId: Overload:Rssdp.SsdpDeviceIcon.Url
+  name: Url
+  nameWithType: SsdpDeviceIcon.Url
+  fullName: Rssdp.SsdpDeviceIcon.Url
+- uid: System.Uri
+  commentId: T:System.Uri
+  parent: System
+  isExternal: true
+  name: Uri
+  nameWithType: Uri
+  fullName: System.Uri
+- uid: Rssdp.SsdpDeviceIcon.Width*
+  commentId: Overload:Rssdp.SsdpDeviceIcon.Width
+  name: Width
+  nameWithType: SsdpDeviceIcon.Width
+  fullName: Rssdp.SsdpDeviceIcon.Width
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  name: Int32
+  nameWithType: Int32
+  fullName: System.Int32
+- uid: Rssdp.SsdpDeviceIcon.Height*
+  commentId: Overload:Rssdp.SsdpDeviceIcon.Height
+  name: Height
+  nameWithType: SsdpDeviceIcon.Height
+  fullName: Rssdp.SsdpDeviceIcon.Height
+- uid: Rssdp.SsdpDeviceIcon.ColorDepth*
+  commentId: Overload:Rssdp.SsdpDeviceIcon.ColorDepth
+  name: ColorDepth
+  nameWithType: SsdpDeviceIcon.ColorDepth
+  fullName: Rssdp.SsdpDeviceIcon.ColorDepth

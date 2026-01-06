@@ -1,0 +1,141 @@
+### YamlMime:ManagedReference
+items:
+- uid: Rssdp.SsdpStandardsMode
+  commentId: T:Rssdp.SsdpStandardsMode
+  id: SsdpStandardsMode
+  parent: Rssdp
+  children:
+  - Rssdp.SsdpStandardsMode.Default
+  - Rssdp.SsdpStandardsMode.Relaxed
+  - Rssdp.SsdpStandardsMode.Strict
+  langs:
+  - csharp
+  - vb
+  name: SsdpStandardsMode
+  nameWithType: SsdpStandardsMode
+  fullName: Rssdp.SsdpStandardsMode
+  type: Enum
+  source:
+    id: SsdpStandardsMode
+    path: ''
+    startLine: 7528
+  assemblies:
+  - cs.temp.dll
+  namespace: Rssdp
+  summary: "\nAn enum whose values control how strictly RSSDP follows the SSDP specification.\n"
+  example: []
+  syntax:
+    content: public enum SsdpStandardsMode
+    content.vb: Public Enum SsdpStandardsMode
+  modifiers.csharp:
+  - public
+  - enum
+  modifiers.vb:
+  - Public
+  - Enum
+- uid: Rssdp.SsdpStandardsMode.Default
+  commentId: F:Rssdp.SsdpStandardsMode.Default
+  id: Default
+  parent: Rssdp.SsdpStandardsMode
+  langs:
+  - csharp
+  - vb
+  name: Default
+  nameWithType: SsdpStandardsMode.Default
+  fullName: Rssdp.SsdpStandardsMode.Default
+  type: Field
+  source:
+    id: Default
+    path: ''
+    startLine: 7533
+  assemblies:
+  - cs.temp.dll
+  namespace: Rssdp
+  summary: "\nEquivalent to <xref href=\"Rssdp.SsdpStandardsMode.Relaxed\" data-throw-if-not-resolved=\"false\"></xref>\n"
+  example: []
+  syntax:
+    content: Default = 0
+    return:
+      type: Rssdp.SsdpStandardsMode
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: Rssdp.SsdpStandardsMode.Relaxed
+  commentId: F:Rssdp.SsdpStandardsMode.Relaxed
+  id: Relaxed
+  parent: Rssdp.SsdpStandardsMode
+  langs:
+  - csharp
+  - vb
+  name: Relaxed
+  nameWithType: SsdpStandardsMode.Relaxed
+  fullName: Rssdp.SsdpStandardsMode.Relaxed
+  type: Field
+  source:
+    id: Relaxed
+    path: ''
+    startLine: 7540
+  assemblies:
+  - cs.temp.dll
+  namespace: Rssdp
+  summary: "\nRSSDP will not strictly follow the specification, but will instead behave in ways that are compatible with most SSDP devices.\n"
+  remarks: "\n<p>This mode provides maximum compatibility with other SSDP based systems.</p>\n"
+  example: []
+  syntax:
+    content: Relaxed = 1
+    return:
+      type: Rssdp.SsdpStandardsMode
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: Rssdp.SsdpStandardsMode.Strict
+  commentId: F:Rssdp.SsdpStandardsMode.Strict
+  id: Strict
+  parent: Rssdp.SsdpStandardsMode
+  langs:
+  - csharp
+  - vb
+  name: Strict
+  nameWithType: SsdpStandardsMode.Strict
+  fullName: Rssdp.SsdpStandardsMode.Strict
+  type: Field
+  source:
+    id: Strict
+    path: ''
+    startLine: 7544
+  assemblies:
+  - cs.temp.dll
+  namespace: Rssdp
+  summary: "\nRSSDP will strictly follow the SSDP specification even where other implementations commonly deviate.\n"
+  example: []
+  syntax:
+    content: Strict = 2
+    return:
+      type: Rssdp.SsdpStandardsMode
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+references:
+- uid: Rssdp
+  commentId: N:Rssdp
+  name: Rssdp
+  nameWithType: Rssdp
+  fullName: Rssdp
+- uid: Rssdp.SsdpStandardsMode.Relaxed
+  commentId: F:Rssdp.SsdpStandardsMode.Relaxed
+  isExternal: true
+- uid: Rssdp.SsdpStandardsMode
+  commentId: T:Rssdp.SsdpStandardsMode
+  parent: Rssdp
+  name: SsdpStandardsMode
+  nameWithType: SsdpStandardsMode
+  fullName: Rssdp.SsdpStandardsMode

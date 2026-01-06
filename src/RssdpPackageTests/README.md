@@ -1,0 +1,2 @@
+# RSSDP Nuget Package Tests
+Some extremely trivial sample apps that reference RSSDP via nuget package, so beta packages can be tested in a simple environment, without messing up the proper sample app or production code.

@@ -1,0 +1,275 @@
+### YamlMime:ManagedReference
+items:
+- uid: Rssdp.Infrastructure.ISsdpDevicePublisher
+  commentId: T:Rssdp.Infrastructure.ISsdpDevicePublisher
+  id: ISsdpDevicePublisher
+  parent: Rssdp.Infrastructure
+  children:
+  - Rssdp.Infrastructure.ISsdpDevicePublisher.AddDevice(Rssdp.SsdpRootDevice)
+  - Rssdp.Infrastructure.ISsdpDevicePublisher.Devices
+  - Rssdp.Infrastructure.ISsdpDevicePublisher.RemoveDevice(Rssdp.SsdpRootDevice)
+  langs:
+  - csharp
+  - vb
+  name: ISsdpDevicePublisher
+  nameWithType: ISsdpDevicePublisher
+  fullName: Rssdp.Infrastructure.ISsdpDevicePublisher
+  type: Interface
+  source:
+    id: ISsdpDevicePublisher
+    path: ''
+    startLine: 1970
+  assemblies:
+  - cs.temp.dll
+  namespace: Rssdp.Infrastructure
+  summary: "\nInterface for components that publish the existence of SSDP devices.\n"
+  remarks: "\n<p>Publishing a device includes sending notifications (alive and byebye) as well as responding to search requests when appropriate.</p>\n"
+  example: []
+  syntax:
+    content: public interface ISsdpDevicePublisher
+    content.vb: Public Interface ISsdpDevicePublisher
+  seealso:
+  - linkId: Rssdp.SsdpRootDevice
+    commentId: T:Rssdp.SsdpRootDevice
+  - linkId: Rssdp.Infrastructure.ISsdpDeviceLocator
+    commentId: T:Rssdp.Infrastructure.ISsdpDeviceLocator
+  modifiers.csharp:
+  - public
+  - interface
+  modifiers.vb:
+  - Public
+  - Interface
+- uid: Rssdp.Infrastructure.ISsdpDevicePublisher.AddDevice(Rssdp.SsdpRootDevice)
+  commentId: M:Rssdp.Infrastructure.ISsdpDevicePublisher.AddDevice(Rssdp.SsdpRootDevice)
+  id: AddDevice(Rssdp.SsdpRootDevice)
+  parent: Rssdp.Infrastructure.ISsdpDevicePublisher
+  langs:
+  - csharp
+  - vb
+  name: AddDevice(SsdpRootDevice)
+  nameWithType: ISsdpDevicePublisher.AddDevice(SsdpRootDevice)
+  fullName: Rssdp.Infrastructure.ISsdpDevicePublisher.AddDevice(Rssdp.SsdpRootDevice)
+  type: Method
+  source:
+    id: AddDevice
+    path: ''
+    startLine: 1977
+  assemblies:
+  - cs.temp.dll
+  namespace: Rssdp.Infrastructure
+  summary: "\nAdds a device (and it&apos;s children) to the list of devices being published by this server, making them discoverable to SSDP clients.\n"
+  example: []
+  syntax:
+    content: void AddDevice(SsdpRootDevice device)
+    parameters:
+    - id: device
+      type: Rssdp.SsdpRootDevice
+      description: The <xref href="Rssdp.SsdpRootDevice" data-throw-if-not-resolved="false"></xref> instance to add.
+    content.vb: Sub AddDevice(device As SsdpRootDevice)
+  overload: Rssdp.Infrastructure.ISsdpDevicePublisher.AddDevice*
+- uid: Rssdp.Infrastructure.ISsdpDevicePublisher.RemoveDevice(Rssdp.SsdpRootDevice)
+  commentId: M:Rssdp.Infrastructure.ISsdpDevicePublisher.RemoveDevice(Rssdp.SsdpRootDevice)
+  id: RemoveDevice(Rssdp.SsdpRootDevice)
+  parent: Rssdp.Infrastructure.ISsdpDevicePublisher
+  langs:
+  - csharp
+  - vb
+  name: RemoveDevice(SsdpRootDevice)
+  nameWithType: ISsdpDevicePublisher.RemoveDevice(SsdpRootDevice)
+  fullName: Rssdp.Infrastructure.ISsdpDevicePublisher.RemoveDevice(Rssdp.SsdpRootDevice)
+  type: Method
+  source:
+    id: RemoveDevice
+    path: ''
+    startLine: 1984
+  assemblies:
+  - cs.temp.dll
+  namespace: Rssdp.Infrastructure
+  summary: "\nRemoves a device (and it&apos;s children) from the list of devices being published by this server, making them undiscoverable.\n"
+  example: []
+  syntax:
+    content: void RemoveDevice(SsdpRootDevice device)
+    parameters:
+    - id: device
+      type: Rssdp.SsdpRootDevice
+      description: The <xref href="Rssdp.SsdpRootDevice" data-throw-if-not-resolved="false"></xref> instance to add.
+    content.vb: Sub RemoveDevice(device As SsdpRootDevice)
+  overload: Rssdp.Infrastructure.ISsdpDevicePublisher.RemoveDevice*
+- uid: Rssdp.Infrastructure.ISsdpDevicePublisher.Devices
+  commentId: P:Rssdp.Infrastructure.ISsdpDevicePublisher.Devices
+  id: Devices
+  parent: Rssdp.Infrastructure.ISsdpDevicePublisher
+  langs:
+  - csharp
+  - vb
+  name: Devices
+  nameWithType: ISsdpDevicePublisher.Devices
+  fullName: Rssdp.Infrastructure.ISsdpDevicePublisher.Devices
+  type: Property
+  source:
+    id: Devices
+    path: ''
+    startLine: 1990
+  assemblies:
+  - cs.temp.dll
+  namespace: Rssdp.Infrastructure
+  summary: "\nReturns a read only list of devices being published by this instance.\n"
+  example: []
+  syntax:
+    content: IEnumerable<SsdpRootDevice> Devices { get; }
+    parameters: []
+    return:
+      type: System.Collections.Generic.IEnumerable{Rssdp.SsdpRootDevice}
+    content.vb: ReadOnly Property Devices As IEnumerable(Of SsdpRootDevice)
+  overload: Rssdp.Infrastructure.ISsdpDevicePublisher.Devices*
+  seealso:
+  - linkId: Rssdp.SsdpDevice
+    commentId: T:Rssdp.SsdpDevice
+  modifiers.csharp:
+  - get
+  modifiers.vb:
+  - ReadOnly
+references:
+- uid: Rssdp.SsdpRootDevice
+  commentId: T:Rssdp.SsdpRootDevice
+  parent: Rssdp
+  name: SsdpRootDevice
+  nameWithType: SsdpRootDevice
+  fullName: Rssdp.SsdpRootDevice
+- uid: Rssdp.Infrastructure.ISsdpDeviceLocator
+  commentId: T:Rssdp.Infrastructure.ISsdpDeviceLocator
+  parent: Rssdp.Infrastructure
+  name: ISsdpDeviceLocator
+  nameWithType: ISsdpDeviceLocator
+  fullName: Rssdp.Infrastructure.ISsdpDeviceLocator
+- uid: Rssdp.Infrastructure
+  commentId: N:Rssdp.Infrastructure
+  name: Rssdp.Infrastructure
+  nameWithType: Rssdp.Infrastructure
+  fullName: Rssdp.Infrastructure
+- uid: Rssdp
+  commentId: N:Rssdp
+  name: Rssdp
+  nameWithType: Rssdp
+  fullName: Rssdp
+- uid: System.Threading.Tasks.Task
+  commentId: T:System.Threading.Tasks.Task
+  parent: System.Threading.Tasks
+  isExternal: true
+  name: Task
+  nameWithType: Task
+  fullName: System.Threading.Tasks.Task
+- uid: Rssdp.Infrastructure.ISsdpDevicePublisher.AddDevice*
+  commentId: Overload:Rssdp.Infrastructure.ISsdpDevicePublisher.AddDevice
+  name: AddDevice
+  nameWithType: ISsdpDevicePublisher.AddDevice
+  fullName: Rssdp.Infrastructure.ISsdpDevicePublisher.AddDevice
+- uid: System.Threading.Tasks
+  commentId: N:System.Threading.Tasks
+  isExternal: true
+  name: System.Threading.Tasks
+  nameWithType: System.Threading.Tasks
+  fullName: System.Threading.Tasks
+- uid: Rssdp.Infrastructure.ISsdpDevicePublisher.RemoveDevice*
+  commentId: Overload:Rssdp.Infrastructure.ISsdpDevicePublisher.RemoveDevice
+  name: RemoveDevice
+  nameWithType: ISsdpDevicePublisher.RemoveDevice
+  fullName: Rssdp.Infrastructure.ISsdpDevicePublisher.RemoveDevice
+- uid: Rssdp.SsdpDevice
+  commentId: T:Rssdp.SsdpDevice
+  parent: Rssdp
+  name: SsdpDevice
+  nameWithType: SsdpDevice
+  fullName: Rssdp.SsdpDevice
+- uid: Rssdp.Infrastructure.ISsdpDevicePublisher.Devices*
+  commentId: Overload:Rssdp.Infrastructure.ISsdpDevicePublisher.Devices
+  name: Devices
+  nameWithType: ISsdpDevicePublisher.Devices
+  fullName: Rssdp.Infrastructure.ISsdpDevicePublisher.Devices
+- uid: System.Collections.Generic.IEnumerable{Rssdp.SsdpRootDevice}
+  commentId: T:System.Collections.Generic.IEnumerable{Rssdp.SsdpRootDevice}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.IEnumerable`1
+  name: IEnumerable<SsdpRootDevice>
+  nameWithType: IEnumerable<SsdpRootDevice>
+  fullName: System.Collections.Generic.IEnumerable<Rssdp.SsdpRootDevice>
+  nameWithType.vb: IEnumerable(Of SsdpRootDevice)
+  fullName.vb: System.Collections.Generic.IEnumerable(Of Rssdp.SsdpRootDevice)
+  name.vb: IEnumerable(Of SsdpRootDevice)
+  spec.csharp:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    nameWithType: IEnumerable
+    fullName: System.Collections.Generic.IEnumerable
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: Rssdp.SsdpRootDevice
+    name: SsdpRootDevice
+    nameWithType: SsdpRootDevice
+    fullName: Rssdp.SsdpRootDevice
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    nameWithType: IEnumerable
+    fullName: System.Collections.Generic.IEnumerable
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: Rssdp.SsdpRootDevice
+    name: SsdpRootDevice
+    nameWithType: SsdpRootDevice
+    fullName: Rssdp.SsdpRootDevice
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Collections.Generic.IEnumerable`1
+  commentId: T:System.Collections.Generic.IEnumerable`1
+  isExternal: true
+  name: IEnumerable<T>
+  nameWithType: IEnumerable<T>
+  fullName: System.Collections.Generic.IEnumerable<T>
+  nameWithType.vb: IEnumerable(Of T)
+  fullName.vb: System.Collections.Generic.IEnumerable(Of T)
+  name.vb: IEnumerable(Of T)
+  spec.csharp:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    nameWithType: IEnumerable
+    fullName: System.Collections.Generic.IEnumerable
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    nameWithType: IEnumerable
+    fullName: System.Collections.Generic.IEnumerable
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Collections.Generic
+  commentId: N:System.Collections.Generic
+  isExternal: true
+  name: System.Collections.Generic
+  nameWithType: System.Collections.Generic
+  fullName: System.Collections.Generic

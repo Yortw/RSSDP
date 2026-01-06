@@ -8,9 +8,9 @@
     <title>(Really) Simple Service Discovery Protocol For .Net | RSSDP </title>
     <meta name="viewport" content="width=device-width">
     <meta name="title" content="(Really) Simple Service Discovery Protocol For .Net | RSSDP ">
-    <meta name="generator" content="docfx 2.24.0.0">
+    <meta name="generator" content="docfx 2.59.4.0">
     
-    <link rel="shortcut icon" href="images/RssdpIcon.ico">
+    <link rel="shortcut icon" href="favicon.ico">
     <link rel="stylesheet" href="styles/docfx.vendor.css">
     <link rel="stylesheet" href="styles/docfx.css">
     <link rel="stylesheet" href="styles/main.css">
@@ -20,7 +20,7 @@
     
     
   </head>
-  <body data-spy="scroll" data-target="#affix">
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
     <div id="wrapper">
       <header>
         
@@ -44,12 +44,12 @@
                   <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
                 </div>
               </form>
+                
                 <ul class="nav level1 navbar-nav">
-                  <li class="">
-                    <a href="api/Rssdp.html" title="API Documentation" class="">API Documentation</a>
-                  </li>
-                </ul>
-            </div>
+                      <li>
+                          <a href="api/Rssdp.html" title="API Documentation">API Documentation</a>
+                      </li>
+                </ul>    </div>
           </div>
         </nav>
         
@@ -73,20 +73,18 @@ to discover devices and services on a (local) network.</p>
 <p>RSSDP is designed primarily to publish and discover custom or &#39;basic&#39; devices, and as such does not implement the full UPnP device architecture. If you are 
 looking to build a device for which a full UPnP device schema exists, this is not the library for you (sorry! though I guess you can fork and extend if you like).
 If you are looking for a way to discover a custom service (such as a proprietary REST or SOAP service) from a device, RSSDP might be the solution for you.</p>
-<p><a href="https://github.com/Yortw/RSSDP/blob/master/LICENSE.md"><img src="https://img.shields.io/github/license/mashape/apistatus.svg" alt="GitHub license"></a> </p>
+<p><a href="https://github.com/Yortw/RSSDP/blob/master/LICENSE"><img src="https://img.shields.io/github/license/mashape/apistatus.svg" alt="GitHub license"></a> </p>
 <h2 id="supported-platforms">Supported Platforms</h2>
 <p>Currently;</p>
 <ul>
-<li>.Net Framework 4.03+</li>
-<li>Windows Phone Silverlight (8.0+) </li>
-<li>Xamarin.iOS Unified</li>
-<li>Xamarin.Android (Only tested with emulator)</li>
-<li>WinRT (Windows Store Apps 8.1)</li>
-<li>UWP 10+ (Windows 10 Universal Programs)</li>
-<li>.NET Core (ASP.NET Core 1.0+, .NET Standard 1.3+)</li>
+<li>.Net Desktop Framework 4.8/4.81</li>
+<li>.NET 6.0, 8.0+</li>
+<li>.NET 8.0-android</li>
+<li>.Net Standard 2.0 for any other compatible framework</li>
 </ul>
+<p>Note: iOS should be supported by one of these targets (most likely Net 8.0) but I currently lack the hardware to test on.</p>
 <h2 id="build-status">Build Status</h2>
-<p><a href="https://ci.appveyor.com/project/Yortw/rssdp"><img src="https://ci.appveyor.com/api/projects/status/f4e33as09yx0lsn4?svg=true" alt="Build status"></a></p>
+<p> <img src="https://github.com/Yortw/RSSDP/actions/workflows/nuget-publish.yml/badge.svg" alt="NuGet Publish"> <img src="https://github.com/Yortw/RSSDP/actions/workflows/pr-gate.yml/badge.svg?branch=main" alt="PR Gate"></p>
 <h2 id="how-do-i-use-rssdp">How do I use RSSDP?</h2>
 <p><em>We got your samples right here</em></p>
 <p>There is a sample console applicaton included in the repository. If you don&#39;t want to &quot;read the source, Luke&quot;, then here&#39;s some tips and examples to get you started. You can also check out our <a href="https://github.com/Yortw/RSSDP/wiki/Frequently-Asked-Questions">FAQ</a> and our <a href="http://yortw.github.io/RSSDP/api/Rssdp.html">API Reference documentation</a>.</p>
@@ -219,16 +217,58 @@ async static void deviceLocator_DeviceAvailable(object sender, DeviceAvailableEv
 <pre><code class="lang-C#">var devicePublisher = new SsdpDevicePublisher(IPAddress.IPv6Any.ToString());
 var devicePublisher = new SsdpDevicePublisher(&quot;fe80::dc06:c198:7078:afdd&quot;);
 var deviceLocator = new SsdpDeviceLocator(&quot;fe80::dc06:c198:7078:afdd&quot;);
-</code></pre><h5 id="for-projects-ipv6-is-not-supported-on-windowsphonesl-or-winrt-but-is-for-uwp">For projects: IPv6 is not supported on WindowsPhoneSL or WinRT (but is for UWP).</h5>
+</code></pre><h3 id="android-permissions">Android Permissions</h3>
+<p>The RSSDP package tests solution in this repo contains a working (device search) Android sample which can be used as a reference.
+You&#39;ll require the following permissions in your AndroidManifest.xml file;</p>
+<pre><code class="lang-xml">&lt;uses-permission android:name=&quot;android.permission.INTERNET&quot; /&gt;
+&lt;uses-permission android:name=&quot;android.permission.ACCESS_NETWORK_STATE&quot; /&gt;
+&lt;uses-permission android:name=&quot;android.permission.ACCESS_WIFI_STATE&quot; /&gt;
+&lt;uses-permission android:name=&quot;android.permission.CHANGE_WIFI_MULTICAST_STATE&quot; /&gt;
+</code></pre><h4 id="ios-permissions">iOS Permissions</h4>
+<p>iOS requires apps to declare the types of network services they intend to use in their Info.plist file. I don&#39;t have the hardware to test this so I can&#39;t provide a guaranteed working example, 
+but the MAUI project in the Rssdp package tests solution contains an iOS project which may be of some help.</p>
+<p>iOS requires explicit privacy text and an entitlement to use UDP multicast (needed by SSDP on 239.255.255.250:1900). Configure the following:</p>
+<ul>
+<li>Add <code>NSLocalNetworkUsageDescription</code> to <code>Info.plist</code> with a human-readable reason. iOS will prompt the user to allow local network access.</li>
+<li>Add the Multicast Networking entitlement (<code>com.apple.developer.networking.multicast</code>) in your app entitlements and set it to true.</li>
+</ul>
+<p>Example <code>Info.plist</code> entries:</p>
+<pre><code class="lang-xml">&lt;key&gt;NSLocalNetworkUsageDescription&lt;/key&gt;
+&lt;string&gt;This app discovers local devices using SSDP multicast.&lt;/string&gt;
+</code></pre><p>Example <code>Entitlements.plist</code> entries:</p>
+<pre><code class="lang-xml">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;!DOCTYPE plist PUBLIC &quot;-//Apple//DTD PLIST 1.0//EN&quot; &quot;http://www.apple.com/DTDs/PropertyList-1.0.dtd&quot;&gt;
+&lt;plist version=&quot;1.0&quot;&gt;
+  &lt;dict&gt;
+    &lt;key&gt;com.apple.developer.networking.multicast&lt;/key&gt;
+    &lt;true/&gt;
+  &lt;/dict&gt;
+&lt;/plist&gt;
+</code></pre><p>Notes:</p>
+<ul>
+<li>Test on a physical device; the iOS simulator does not fully support multicast networking.</li>
+<li>Ensure the device is on a Wi‑Fi network that permits multicast/broadcast. Some routers/APs block multicast by default.</li>
+<li>For IPv6 networks, create <code>SsdpDeviceLocator</code> or <code>SsdpDevicePublisher</code> with an IPv6 address if needed (see IPv6 support section above).</li>
+</ul>
+<h4 id="migrating-from-older-versions-of-rssdp">Migrating from older versions of RSSDP</h4>
+<p>V5 introduces some breaking changes. These should be pretty minor and mostly revolve around improving nullability support. You&#39;ll find some classes no longer have parameterless constructors, and some properties are now read-only.
+If you&#39;re just searching for devices you probably won&#39;t notice. If you&#39;re publishing devices you&#39;ll likely notice <em>SsdpDeviceProperty</em>* now requires the Namespace and Name properties to be passed via contructor, i.e</p>
+<pre><code class="lang-C#">new Rssdp.SsdpDeviceProperty() { Namespace = &quot;my-system&quot;, Name = &quot;TenantIdentifier&quot;, Value = &quot;mytenant&quot; };
+</code></pre><p>becomes </p>
+<pre><code class="lang-C#">new Rssdp.SsdpDeviceProperty(&quot;my-system&quot;, &quot;TenantIdentifier&quot;) { Value = &quot;mytenant&quot; };
+</code></pre><p>The following classes have a similar breaking change but are typically instantiated internally, so most clients won&#39;t be affected;</p>
+<ul>
+<li>UdpEndpoint</li>
+<li>DiscoveredSsdpDevice</li>
+</ul>
 <h2 id="why-rssdp">Why RSSDP?</h2>
 <p><em>Aren&#39;t there already lots of SSDP implementations?</em></p>
 <p>I needed to find a custom/proprietary service on local networks from a mobile device. I decided this had been done before and I shouldn&#39;t re-invent the wheel so I started looking for 
 existing, standard protocols that did this. I decided Zeroconf and SSDP seemed like the best two, and Zeroconf looked like the more efficient, less overhead option. Unfortunately I also need a solution where</p>
 <ul>
 <li>I could publish a device. Many other libraries only focus on discovery.</li>
-<li>the publish component runs on (at least) .Net 4.0, without relying on any external services. Many other implementations are just wrappers around a Windows or Linux service, which I couldn&#39;t guarantee would be installed/enabled etc.</li>
-<li>the discovery component (at least) runs on Windows Phone and Xamarin.iOS. Preferably also .Net 4.0, Xamain.Android, WinRT and Compact Framework projects. A lot of other implementations don&#39;t support the Xamarin platforms.</li>
-<li>the API was consistent across platforms so I can write as little code with as little conditional compilation as possible (especially in Xamarin Forms projects).</li>
+<li>the library supported a number of .Net platforms, including (initially) some that were already old or niche.</li>
+<li>the API was consistent across platforms so I can write as little code with as little conditional compilation as possible (especially in Xamarin Forms/now MAUI projects).</li>
 <li>the library wasn&#39;t massive and didn&#39;t have huge numbers of dependencies, I want to keep my deployment footprint as small as possible.</li>
 <li>the library guided me (at least a little) towards publishing devices correctly, i.e correct device types, not leaving out required fields etc.</li>
 </ul>
@@ -250,7 +290,7 @@ haven&#39;t really considered how many variations of a wheel might be needed.</p
 <li><a href="http://opentools.homeip.net/dev-tools-for-upnp">UPnP Developer Tools</a></li>
 </ul>
 <h2 id="contributing">Contributing</h2>
-<p>We&#39;d love your assistance! Please see the <a href="CONTRIBUTING.md">CONTRIBUTING.md</a> file for information on how to contribute.</p>
+<p>We&#39;d love your assistance! Please see the <a href="https://github.com/Yortw/RSSDP/blob/master/CONTRIBUTING.md">CONTRIBUTING.md</a> file for information on how to contribute.</p>
 </article>
           </div>
           
@@ -259,12 +299,13 @@ haven&#39;t really considered how many variations of a wheel might be needed.</p
               <div class="contribution">
                 <ul class="nav">
                   <li>
-                    <a href="https://github.com/Yortw/RSSDP/blob/master/src/Main/Rssdp.Net45/index.md/#L1" class="contribution-link">Improve this Doc</a>
+                    <a href="https://github.com/Yortw/RSSDP/blob/mod/v5-rebase/src/Main/Lib/index.md/#L1" class="contribution-link">Improve this Doc</a>
                   </li>
                 </ul>
               </div>
               <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
-              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+                <h5>In This Article</h5>
+                <div></div>
               </nav>
             </div>
           </div>
@@ -278,7 +319,7 @@ haven&#39;t really considered how many variations of a wheel might be needed.</p
             <span class="pull-right">
               <a href="#top">Back to top</a>
             </span>
-            Copyright (c) 2017 Troy Willmot
+            Copyright (c) 2015 Troy Willmot
             
           </div>
         </div>
