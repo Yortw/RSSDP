@@ -53,6 +53,7 @@
 		<SupportedOSPlatformVersion Condition="$(TargetFramework.StartsWith('net8.0-ios'))">11.0</SupportedOSPlatformVersion>
 		<Product>Really Simple Service Discovery Protocol</Product>
 		<GenerateDocumentationFile>True</GenerateDocumentationFile>
+		<SymbolPackageFormat>snupkg</SymbolPackageFormat>
 	</PropertyGroup>
 
 	<ItemGroup>
