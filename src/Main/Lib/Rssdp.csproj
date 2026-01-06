@@ -25,9 +25,9 @@
 			* Modernised internal code with newer syntax
 			* Add nullability annotations/support
 			* Updated/reduced dependencies
-			* Added activity tracing, an be connected to logging systems/open API/application insights etc.
+			* Added activity tracing, can be connected to logging systems/open API/application insights etc.
 			* Fixed some possible hangs/race conditions on socket handling
-			* Added support for cancellation tokens on the location SearchAsync methods
+			* Added support for cancellation tokens on the locator SearchAsync methods
 			* Added AggregateSsdpDeviceLocator simplifying searching across multiple network adapters
 			* Changed to use github actions for builds/tests/publishing
 			* Update sample and package test projects
