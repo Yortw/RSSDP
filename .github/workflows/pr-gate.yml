@@ -41,7 +41,7 @@ jobs:
         run: dotnet build ./src/Main/RSSDP.sln --configuration Release --no-restore
 
       - name: Test
-        run: dotnet test ./src/Main/RSSDP.sln --configuration Release --no-build --logger "trx;LogFileName=test_results.trx"
+        run: dotnet test ./src/Main/RSSDP.sln --configuration Release --no-build --logger "trx;LogFileName=test_results.trx" --results-directory TestResults
 
       - name: Publish Test Results
         if: always()
