@@ -26,11 +26,17 @@ jobs:
         with:
           dotnet-version: 8.0.x
 
+      - name: Install Android workload
+        run: dotnet workload install android --ignore-failed-sources
+
       - name: Restore
         run: dotnet restore ./src/Main/RSSDP.sln
 
       - name: Build
         run: dotnet build ./src/Main/RSSDP.sln --configuration Release --no-restore
+
+      - name: Test
+        run: dotnet test ./src/Main/RSSDP.sln --configuration Release --no-build --logger "trx;LogFileName=test_results.trx" --results-directory TestResults
 
       - name: Determine Version and Project Path
         id: meta
@@ -56,7 +62,7 @@ jobs:
       - name: Publish to NuGet.org
         env:
           NUGET_API_KEY: ${{ secrets.NUGET_API_KEY }}
-        run: dotnet nuget push "./artifacts/*.nupkg" --source "https://api.nuget.org/v3/index.json" --api-key "$NUGET_API_KEY" --skip-duplicate
+        run: dotnet nuget push artifacts\Rssdp.*.nupkg --source https://api.nuget.org/v3/index.json --api-key $env:NUGET_API_KEY --skip-duplicate
 
       - name: Upload Package Artifact
         if: always()

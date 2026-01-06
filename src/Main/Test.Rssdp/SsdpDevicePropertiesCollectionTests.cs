@@ -28,10 +28,12 @@ namespace TestRssdp
 		}
 
 		[TestMethod]
-		[ExpectedException(typeof(System.ArgumentOutOfRangeException))]
 		public void SsdpDevicePropertiesCollection_CapacityConstructor_FailsWithNegativeValue()
 		{
-			_ = new SsdpDevicePropertiesCollection(-1);
+			Assert.Throws<System.ArgumentOutOfRangeException>(() =>
+			{
+				_ = new SsdpDevicePropertiesCollection(-1);
+			});
 		}
 
 		#endregion
@@ -39,22 +41,26 @@ namespace TestRssdp
 		#region Add Tests
 
 		[TestMethod]
-		[ExpectedException(typeof(System.ArgumentNullException))]
 		public void SsdpDevicePropertiesCollection_Add_NullThrows()
 		{
 			var properties = new SsdpDevicePropertiesCollection();
 
-			properties.Add(null);
+			Assert.Throws<System.ArgumentNullException>(() =>
+			{
+				properties.Add(null);
+			});
 		}
 
 		[TestMethod]
-		[ExpectedException(typeof(System.ArgumentException))]
 		public void SsdpDevicePropertiesCollection_Add_EmptyFullNameThrows()
 		{
 			var properties = new SsdpDevicePropertiesCollection();
 			var p = new SsdpDeviceProperty(string.Empty, string.Empty, null);
 
-			properties.Add(p);
+			Assert.Throws<System.ArgumentException>(() =>
+			{
+				properties.Add(p);
+			});
 		}
 
 		#endregion
@@ -62,39 +68,47 @@ namespace TestRssdp
 		#region Remove Tests
 
 		[TestMethod]
-		[ExpectedException(typeof(System.ArgumentNullException))]
 		public void SsdpDevicePropertiesCollection_Remove_NullThrows()
 		{
 			var properties = new SsdpDevicePropertiesCollection();
 
-			properties.Remove((SsdpDeviceProperty)null);
+			Assert.Throws<System.ArgumentNullException>(() =>
+			{
+				properties.Remove((SsdpDeviceProperty)null);
+			});
 		}
 
 		[TestMethod]
-		[ExpectedException(typeof(System.ArgumentException))]
 		public void SsdpDevicePropertiesCollection_Remove_NullKeyThrows()
 		{
 			var properties = new SsdpDevicePropertiesCollection();
 
-			properties.Remove((string)null);
+			Assert.Throws<System.ArgumentException>(() =>
+			{
+				properties.Remove((string)null);
+			});
 		}
 
 		[TestMethod]
-		[ExpectedException(typeof(System.ArgumentException))]
 		public void SsdpDevicePropertiesCollection_Remove_EmptyKeyThrows()
 		{
 			var properties = new SsdpDevicePropertiesCollection();
 
-			properties.Remove(String.Empty);
+			Assert.Throws<System.ArgumentException>(() =>
+			{
+				properties.Remove(String.Empty);
+			});
 		}
 
 		[TestMethod]
-		[ExpectedException(typeof(System.ArgumentException))]
 		public void SsdpDevicePropertiesCollection_Remove_EmptyFullNameThrows()
 		{
 			var properties = new SsdpDevicePropertiesCollection();
 			var p = new SsdpDeviceProperty(string.Empty, string.Empty, null);
-			properties.Remove(p);
+			Assert.Throws<System.ArgumentException>(() =>
+			{
+				properties.Remove(p);
+			});
 		}
 
 		[TestMethod]
@@ -105,7 +119,7 @@ namespace TestRssdp
 
 			properties.Add(p);
 
-			Assert.AreEqual(true, properties.Remove(p));
+			Assert.IsTrue(properties.Remove(p));
 			Assert.AreEqual(0, properties.Count);
 		}
 
@@ -118,7 +132,7 @@ namespace TestRssdp
 
 			properties.Add(p);
 
-			Assert.AreEqual(false, properties.Remove(p2));
+			Assert.IsFalse(properties.Remove(p2));
 			Assert.AreEqual(1, properties.Count);
 		}
 
@@ -130,7 +144,7 @@ namespace TestRssdp
 
 			properties.Add(p);
 
-			Assert.AreEqual(true, properties.Remove(p.FullName));
+			Assert.IsTrue(properties.Remove(p.FullName));
 			Assert.AreEqual(0, properties.Count);
 		}
 
@@ -139,38 +153,47 @@ namespace TestRssdp
 		#region Contains Tests
 
 		[TestMethod]
-		[ExpectedException(typeof(System.ArgumentException))]
 		public void SsdpDevicePropertiesCollection_Contains_NullNameThrows()
 		{
 			var properties = new SsdpDevicePropertiesCollection();
-			properties.Contains((string)null);
+			Assert.Throws<System.ArgumentException>(() =>
+			{
+				properties.Contains((string)null);
+			});
 		}
 
 		[TestMethod]
-		[ExpectedException(typeof(System.ArgumentException))]
 		public void SsdpDevicePropertiesCollection_Contains_EmptyNameThrows()
 		{
 			var properties = new SsdpDevicePropertiesCollection();
-			properties.Contains(String.Empty);
+			Assert.Throws<System.ArgumentException>(() =>
+			{
+				properties.Contains(String.Empty);
+			});
 		}
 
 		[TestMethod]
-		[ExpectedException(typeof(System.ArgumentNullException))]
 		public void SsdpDevicePropertiesCollection_Contains_NullPropertyThrows()
 		{
 			var properties = new SsdpDevicePropertiesCollection();
-			properties.Contains((SsdpDeviceProperty)null);
+			Assert.Throws<System.ArgumentNullException>(() =>
+			{
+				properties.Contains((SsdpDeviceProperty)null);
+			});
 		}
 
 		[TestMethod]
-		[ExpectedException(typeof(System.ArgumentException))]
 		public void SsdpDevicePropertiesCollection_Contains_PropertyWithEmptyNameThrows()
 		{
 			var properties = new SsdpDevicePropertiesCollection();
 			var p = new SsdpDeviceProperty(string.Empty, string.Empty, null);
 
-			properties.Contains(p);
+			Assert.Throws<System.ArgumentException>(() =>
+			{
+				properties.Contains(p);
+			});
 		}
+
 		[TestMethod]
 		public void SsdpDevicePropertiesCollection_Contains_ReturnsTrueForExistingKey()
 		{
@@ -179,7 +202,7 @@ namespace TestRssdp
 
 			properties.Add(prop);
 
-			Assert.AreEqual(true, properties.Contains(prop.FullName));
+			Assert.IsTrue(properties.Contains(prop.FullName));
 		}
 
 		[TestMethod]
@@ -190,7 +213,7 @@ namespace TestRssdp
 
 			properties.Add(prop);
 
-			Assert.AreEqual(false, properties.Contains("NotAValidKey"));
+			Assert.IsFalse(properties.Contains("NotAValidKey"));
 		}
 
 		[TestMethod]
@@ -201,7 +224,7 @@ namespace TestRssdp
 
 			properties.Add(prop);
 
-			Assert.AreEqual(true, properties.Contains(prop));
+			Assert.IsTrue(properties.Contains(prop));
 		}
 
 		[TestMethod]
@@ -214,7 +237,7 @@ namespace TestRssdp
 
 			properties.Add(prop);
 
-			Assert.AreEqual(false, properties.Contains(prop2));
+			Assert.IsFalse(properties.Contains(prop2));
 		}
 
 		[TestMethod]
@@ -226,7 +249,7 @@ namespace TestRssdp
 
 			properties.Add(prop);
 
-			Assert.AreEqual(false, properties.Contains(prop2));
+			Assert.IsFalse(properties.Contains(prop2));
 		}
 
 		#endregion
@@ -242,9 +265,9 @@ namespace TestRssdp
 			properties.Add(prop);
 			var enumerator = properties.GetEnumerator();
 
-			Assert.AreEqual(true, enumerator.MoveNext());
+			Assert.IsTrue(enumerator.MoveNext());
 			Assert.AreEqual(prop, enumerator.Current);
-			Assert.AreEqual(false, enumerator.MoveNext());
+			Assert.IsFalse(enumerator.MoveNext());
 		}
 
 		[TestMethod]
@@ -256,9 +279,9 @@ namespace TestRssdp
 			properties.Add(prop);
 			var enumerator = ((IEnumerable)properties).GetEnumerator();
 
-			Assert.AreEqual(true, enumerator.MoveNext());
+			Assert.IsTrue(enumerator.MoveNext());
 			Assert.AreEqual(prop, enumerator.Current);
-			Assert.AreEqual(false, enumerator.MoveNext());
+			Assert.IsFalse(enumerator.MoveNext());
 		}
 
 		#endregion
@@ -275,7 +298,6 @@ namespace TestRssdp
 			Assert.AreEqual(p, properties[p.FullName]);
 		}
 
-		[ExpectedException(typeof(System.Collections.Generic.KeyNotFoundException))]
 		[TestMethod]
 		public void SsdpDevicePropertiesCollection_Indexer_ThrowsOnUnknownKey()
 		{
@@ -284,7 +306,10 @@ namespace TestRssdp
 
 			properties.Add(p);
 
-			Assert.AreEqual(p, properties["NotAValidKey"]);
+			Assert.Throws<System.Collections.Generic.KeyNotFoundException>(() =>
+			{
+				var value = properties["NotAValidKey"];
+			});
 		}
 
 		#endregion

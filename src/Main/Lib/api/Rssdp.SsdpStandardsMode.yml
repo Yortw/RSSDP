@@ -18,7 +18,7 @@ items:
   source:
     id: SsdpStandardsMode
     path: ''
-    startLine: 7528
+    startLine: 7530
   assemblies:
   - cs.temp.dll
   namespace: Rssdp
@@ -47,7 +47,7 @@ items:
   source:
     id: Default
     path: ''
-    startLine: 7533
+    startLine: 7535
   assemblies:
   - cs.temp.dll
   namespace: Rssdp
@@ -77,7 +77,7 @@ items:
   source:
     id: Relaxed
     path: ''
-    startLine: 7540
+    startLine: 7542
   assemblies:
   - cs.temp.dll
   namespace: Rssdp
@@ -108,7 +108,7 @@ items:
   source:
     id: Strict
     path: ''
-    startLine: 7544
+    startLine: 7546
   assemblies:
   - cs.temp.dll
   namespace: Rssdp

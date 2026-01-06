@@ -21,7 +21,7 @@ items:
   source:
     id: SsdpDeviceProperty
     path: ''
-    startLine: 5389
+    startLine: 5391
   assemblies:
   - cs.temp.dll
   namespace: Rssdp
@@ -62,7 +62,7 @@ items:
   source:
     id: .ctor
     path: ''
-    startLine: 5397
+    startLine: 5399
   assemblies:
   - cs.temp.dll
   namespace: Rssdp
@@ -97,7 +97,7 @@ items:
   source:
     id: .ctor
     path: ''
-    startLine: 5407
+    startLine: 5409
   assemblies:
   - cs.temp.dll
   namespace: Rssdp
@@ -135,7 +135,7 @@ items:
   source:
     id: Namespace
     path: ''
-    startLine: 5417
+    startLine: 5419
   assemblies:
   - cs.temp.dll
   namespace: Rssdp
@@ -168,7 +168,7 @@ items:
   source:
     id: Name
     path: ''
-    startLine: 5422
+    startLine: 5424
   assemblies:
   - cs.temp.dll
   namespace: Rssdp
@@ -201,7 +201,7 @@ items:
   source:
     id: FullName
     path: ''
-    startLine: 5427
+    startLine: 5429
   assemblies:
   - cs.temp.dll
   namespace: Rssdp
@@ -234,7 +234,7 @@ items:
   source:
     id: Value
     path: ''
-    startLine: 5432
+    startLine: 5434
   assemblies:
   - cs.temp.dll
   namespace: Rssdp

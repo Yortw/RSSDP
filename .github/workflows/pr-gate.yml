@@ -23,6 +23,9 @@ jobs:
             8.0.x
             6.0.x
 
+      - name: Install Android workload
+        run: dotnet workload install android --ignore-failed-sources
+
       - name: Cache NuGet
         uses: actions/cache@v4
         with:
@@ -38,13 +41,12 @@ jobs:
         run: dotnet build ./src/Main/RSSDP.sln --configuration Release --no-restore
 
       - name: Test
-        run: dotnet test ./src/Main/RSSDP.sln --configuration Release --no-build --logger "trx;LogFileName=test_results.trx"
+        run: dotnet test ./src/Main/RSSDP.sln --configuration Release --no-build --logger "trx;LogFileName=test_results.trx" --results-directory TestResults
 
       - name: Publish Test Results
         if: always()
         uses: actions/upload-artifact@v4
         with:
           name: test-results
-          path: |
-            **/TestResults/*.trx
-            **/TestResults/**/*.trx
+          path: TestResults/**/*.trx
+          if-no-files-found: warn

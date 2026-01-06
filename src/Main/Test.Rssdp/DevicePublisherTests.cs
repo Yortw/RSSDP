@@ -17,133 +17,63 @@ namespace TestRssdp
 
 		#region Constructors
 
-		[ExpectedException(typeof(System.ArgumentNullException))]
 		[TestMethod]
 		public void Publisher_Constructor_ThrowsOnNullCommsServer()
 		{
-			_ = new SsdpRootDevice()
+			Assert.Throws<System.ArgumentNullException>(() =>
 			{
-				FriendlyName = "Basic Device 1",
-				Manufacturer = "Test Manufacturer",
-				ManufacturerUrl = new Uri("http://testmanufacturer.com"),
-				ModelDescription = "A test model device",
-				ModelName = "Test Model",
-				ModelNumber = "Model #1234",
-				ModelUrl = new Uri("http://modelurl.com"),
-				SerialNumber = "SN-123",
-				Uuid = System.Guid.NewGuid().ToString(),
-				Location = new Uri("http://testdevice:1700/xml")
-			};
-
-			_ = new TestDevicePublisher(null);
+				_ = new TestDevicePublisher(null);
+			});
 		}
 
-		[ExpectedException(typeof(System.ArgumentNullException))]
 		[TestMethod]
 		public void Publisher_Constructor_ThrowsOnNullOS()
 		{
-			_ = new SsdpRootDevice()
-			{
-				FriendlyName = "Basic Device 1",
-				Manufacturer = "Test Manufacturer",
-				ManufacturerUrl = new Uri("http://testmanufacturer.com"),
-				ModelDescription = "A test model device",
-				ModelName = "Test Model",
-				ModelNumber = "Model #1234",
-				ModelUrl = new Uri("http://modelurl.com"),
-				SerialNumber = "SN-123",
-				Uuid = System.Guid.NewGuid().ToString(),
-				Location = new Uri("http://testdevice:1700/xml")
-			};
-
 			var server = new MockCommsServer();
-			_ = new TestDevicePublisher(server, null, "1.1");
+			Assert.Throws<System.ArgumentNullException>(() =>
+			{
+				_ = new TestDevicePublisher(server, null, "1.1");
+			});
 		}
 
-		[ExpectedException(typeof(System.ArgumentNullException))]
 		[TestMethod]
 		public void Publisher_Constructor_ThrowsOnNullOSVersion()
 		{
-			_ = new SsdpRootDevice()
-			{
-				FriendlyName = "Basic Device 1",
-				Manufacturer = "Test Manufacturer",
-				ManufacturerUrl = new Uri("http://testmanufacturer.com"),
-				ModelDescription = "A test model device",
-				ModelName = "Test Model",
-				ModelNumber = "Model #1234",
-				ModelUrl = new Uri("http://modelurl.com"),
-				SerialNumber = "SN-123",
-				Uuid = System.Guid.NewGuid().ToString(),
-				Location = new Uri("http://testdevice:1700/xml")
-			};
-
 			var server = new MockCommsServer();
-			_ = new TestDevicePublisher(server, "TestOS", null);
+			
+			Assert.Throws<System.ArgumentNullException>(() => { _ = new TestDevicePublisher(server, "TestOS", null); });
 		}
 
-		[ExpectedException(typeof(System.ArgumentException))]
 		[TestMethod]
 		public void Publisher_Constructor_ThrowsOnEmptyOS()
 		{
-			_ = new SsdpRootDevice()
-			{
-				FriendlyName = "Basic Device 1",
-				Manufacturer = "Test Manufacturer",
-				ManufacturerUrl = new Uri("http://testmanufacturer.com"),
-				ModelDescription = "A test model device",
-				ModelName = "Test Model",
-				ModelNumber = "Model #1234",
-				ModelUrl = new Uri("http://modelurl.com"),
-				SerialNumber = "SN-123",
-				Uuid = System.Guid.NewGuid().ToString(),
-				Location = new Uri("http://testdevice:1700/xml")
-			};
-
 			var server = new MockCommsServer();
-			_ = new TestDevicePublisher(server, String.Empty, "1.1");
+			Assert.Throws<System.ArgumentException>(() => { _ = new TestDevicePublisher(server, String.Empty, "1.1"); });
 		}
 
-		[ExpectedException(typeof(System.ArgumentException))]
 		[TestMethod]
 		public void Publisher_Constructor_ThrowsOnEmptyOSVersion()
 		{
-			_ = new SsdpRootDevice()
-			{
-				FriendlyName = "Basic Device 1",
-				Manufacturer = "Test Manufacturer",
-				ManufacturerUrl = new Uri("http://testmanufacturer.com"),
-				ModelDescription = "A test model device",
-				ModelName = "Test Model",
-				ModelNumber = "Model #1234",
-				ModelUrl = new Uri("http://modelurl.com"),
-				SerialNumber = "SN-123",
-				Uuid = System.Guid.NewGuid().ToString(),
-				Location = new Uri("http://testdevice:1700/xml")
-			};
-
 			var server = new MockCommsServer();
-			_ = new TestDevicePublisher(server, "TestOS", String.Empty);
+			Assert.Throws<System.ArgumentException>(() => { _ = new TestDevicePublisher(server, "TestOS", String.Empty); });
 		}
 
 		#endregion
 
-		[ExpectedException(typeof(System.ArgumentNullException))]
 		[TestMethod]
 		public void Publisher_AddDevice_ThrowsOnNullDevice()
 		{
 			var server = new MockCommsServer();
 			var publisher = new TestDevicePublisher(server);
-			publisher.AddDevice(null);
+			Assert.Throws<System.ArgumentNullException>(() => { publisher.AddDevice(null); });
 		}
 
-		[ExpectedException(typeof(System.ArgumentNullException))]
 		[TestMethod]
 		public void Publisher_RemoveDevice_ThrowsOnNullDevice()
 		{
 			var server = new MockCommsServer();
 			var publisher = new TestDevicePublisher(server);
-			publisher.RemoveDevice(null);
+			Assert.Throws<System.ArgumentNullException>(() => { publisher.RemoveDevice(null); });
 		}
 
 		#endregion
@@ -182,7 +112,6 @@ namespace TestRssdp
 			Assert.IsTrue(publisher.IsDisposed);
 		}
 
-		[ExpectedException(typeof(System.ObjectDisposedException))]
 		[TestMethod]
 		public void Publisher_AddDeviceThrowsWhenDisposed()
 		{
@@ -203,10 +132,10 @@ namespace TestRssdp
 			var server = new MockCommsServer();
 			var publisher = new TestDevicePublisher(server);
 			publisher.Dispose();
-			publisher.AddDevice(rootDevice);
+			
+			Assert.Throws<System.ObjectDisposedException>(() => { publisher.AddDevice(rootDevice); });
 		}
 
-		[ExpectedException(typeof(System.ObjectDisposedException))]
 		[TestMethod]
 		public void Publisher_RemoveDeviceThrowsWhenDisposed()
 		{
@@ -227,7 +156,7 @@ namespace TestRssdp
 			var server = new MockCommsServer();
 			var publisher = new TestDevicePublisher(server);
 			publisher.Dispose();
-			publisher.RemoveDevice(rootDevice);
+			Assert.Throws<System.ObjectDisposedException>(() => { publisher.RemoveDevice(rootDevice); });
 		}
 
 		#endregion
@@ -258,7 +187,7 @@ namespace TestRssdp
 				var pnpRootDeviceNotifications = GetNotificationsForSearchTarget(aliveNotifications, SsdpConstants.PnpDeviceTypeRootDevice);
 
 				Assert.AreEqual(1, publisher.Devices.Count());
-				Assert.IsTrue(upnpRootDeviceNotifications.Count() >= 1);
+				Assert.IsGreaterThanOrEqualTo(1, upnpRootDeviceNotifications.Count());
 				Assert.AreEqual(0, pnpRootDeviceNotifications.Count());
 			}
 		}
@@ -287,8 +216,8 @@ namespace TestRssdp
 				var upnpRootDeviceNotifications = GetNotificationsForSearchTarget(aliveNotifications, SsdpConstants.UpnpDeviceTypeRootDevice);
 				var pnpRootDeviceNotifications = GetNotificationsForSearchTarget(aliveNotifications, SsdpConstants.UpnpDeviceTypeRootDevice);
 
-				Assert.IsTrue(upnpRootDeviceNotifications.Count() >= 1);
-				Assert.IsTrue(pnpRootDeviceNotifications.Count() >= 1);
+				Assert.IsGreaterThanOrEqualTo(1, upnpRootDeviceNotifications.Count());
+				Assert.IsGreaterThanOrEqualTo(1, pnpRootDeviceNotifications.Count());
 
 			}
 		}
@@ -317,7 +246,7 @@ namespace TestRssdp
 
 				var udnDeviceNotifications = GetNotificationsForSearchTarget(aliveNotifications, rootDevice.Udn);
 
-				Assert.IsTrue(udnDeviceNotifications.Count() >= 1);
+				Assert.IsGreaterThanOrEqualTo(1, udnDeviceNotifications.Count());
 			}
 		}
 
@@ -344,7 +273,7 @@ namespace TestRssdp
 
 				var deviceTypeNotifications = GetNotificationsForSearchTarget(aliveNotifications, rootDevice.FullDeviceType);
 
-				Assert.IsTrue(deviceTypeNotifications.Count() >= 1);
+				Assert.IsGreaterThanOrEqualTo(1, deviceTypeNotifications.Count());
 			}
 		}
 
@@ -378,8 +307,8 @@ namespace TestRssdp
 					});
 
 				Assert.AreEqual(1, rootDevice.Devices.Count());
-				Assert.IsTrue(deviceTypeNotifications.Count() >= 1);
-				Assert.IsTrue(udnNotifications.Count() >= 1);
+				Assert.IsGreaterThanOrEqualTo(1, deviceTypeNotifications.Count());
+				Assert.IsGreaterThanOrEqualTo(1, udnNotifications.Count());
 				Assert.AreEqual(0, rootDeviceNotificationsForEmbeddedDevice.Count());
 			}
 		}
@@ -416,8 +345,8 @@ namespace TestRssdp
 				});
 
 				Assert.AreEqual(1, parentDevice.Devices.Count());
-				Assert.IsTrue(deviceTypeNotifications.Count() >= 1);
-				Assert.IsTrue(udnNotifications.Count() >= 1);
+				Assert.IsGreaterThanOrEqualTo(1, deviceTypeNotifications.Count());
+				Assert.IsGreaterThanOrEqualTo(1, udnNotifications.Count());
 				Assert.AreEqual(0, rootDeviceNotificationsForEmbeddedDevice.Count());
 			}
 		}
@@ -458,8 +387,8 @@ namespace TestRssdp
 					return n.Headers.GetValues("USN").First() == embeddedDevice.Udn + "::" + embeddedDevice.FullDeviceType;
 				});
 
-				Assert.IsTrue(deviceTypeNotifications.Count() >= 1);
-				Assert.IsTrue(udnNotifications.Count() >= 1);
+				Assert.IsGreaterThanOrEqualTo(1, deviceTypeNotifications.Count());
+				Assert.IsGreaterThanOrEqualTo(1, udnNotifications.Count());
 				Assert.AreEqual(0, rootDeviceNotificationsForEmbeddedDevice.Count());
 			}
 		}
@@ -502,8 +431,8 @@ namespace TestRssdp
 					return n.Headers.GetValues("USN").First() == embeddedDevice.Udn + "::" + embeddedDevice.FullDeviceType;
 				});
 
-				Assert.IsTrue(deviceTypeNotifications.Count() >= 1);
-				Assert.IsTrue(udnNotifications.Count() >= 1);
+				Assert.IsGreaterThanOrEqualTo(1, deviceTypeNotifications.Count());
+				Assert.IsGreaterThanOrEqualTo(1, udnNotifications.Count());
 				Assert.AreEqual(0, rootDeviceNotificationsForEmbeddedDevice.Count());
 			}
 		}
@@ -555,7 +484,7 @@ namespace TestRssdp
 				var pnpRootDeviceNotifications = GetNotificationsForSearchTarget(byebyeNotifications, SsdpConstants.PnpDeviceTypeRootDevice);
 
 				Assert.AreEqual(0, publisher.Devices.Count());
-				Assert.IsTrue(upnpRootDeviceNotifications.Count() >= 1);
+				Assert.IsGreaterThanOrEqualTo(1, upnpRootDeviceNotifications.Count());
 				Assert.AreEqual(0, pnpRootDeviceNotifications.Count());
 			}
 		}
@@ -585,8 +514,8 @@ namespace TestRssdp
 				var pnpRootDeviceNotifications = GetNotificationsForSearchTarget(byebyeNotifications, SsdpConstants.PnpDeviceTypeRootDevice);
 
 				Assert.AreEqual(0, publisher.Devices.Count());
-				Assert.IsTrue(upnpRootDeviceNotifications.Count() >= 1);
-				Assert.IsTrue(pnpRootDeviceNotifications.Count() >= 1);
+				Assert.IsGreaterThanOrEqualTo(1, upnpRootDeviceNotifications.Count());
+				Assert.IsGreaterThanOrEqualTo(1, pnpRootDeviceNotifications.Count());
 			}
 		}
 
@@ -613,7 +542,7 @@ namespace TestRssdp
 
 				var udnRootDeviceNotifications = GetNotificationsForSearchTarget(byebyeNotifications, rootDevice.Udn);
 
-				Assert.IsTrue(udnRootDeviceNotifications.Count() >= 1);
+				Assert.IsGreaterThanOrEqualTo(1, udnRootDeviceNotifications.Count());
 			}
 		}
 
@@ -640,7 +569,7 @@ namespace TestRssdp
 
 				var deviceTypeRootDeviceNotifications = GetNotificationsForSearchTarget(byebyeNotifications, String.Format("urn:{0}", rootDevice.FullDeviceType));
 
-				Assert.IsTrue(deviceTypeRootDeviceNotifications.Count() >= 1);
+				Assert.IsGreaterThanOrEqualTo(1, deviceTypeRootDeviceNotifications.Count());
 			}
 		}
 
@@ -669,8 +598,8 @@ namespace TestRssdp
 				var udnRootDeviceNotifications = GetNotificationsForSearchTarget(byebyeNotifications, embeddedDevice.Udn);
 				var deviceTypeRootDeviceNotifications = GetNotificationsForSearchTarget(byebyeNotifications, String.Format("urn:{0}", embeddedDevice.FullDeviceType));
 
-				Assert.IsTrue(udnRootDeviceNotifications.Count() >= 1);
-				Assert.IsTrue(deviceTypeRootDeviceNotifications.Count() >= 1);
+				Assert.IsGreaterThanOrEqualTo(1, udnRootDeviceNotifications.Count());
+				Assert.IsGreaterThanOrEqualTo(1, deviceTypeRootDeviceNotifications.Count());
 			}
 		}
 
@@ -701,8 +630,8 @@ namespace TestRssdp
 				var udnRootDeviceNotifications = GetNotificationsForSearchTarget(byebyeNotifications, embeddedDevice.Udn);
 				var deviceTypeRootDeviceNotifications = GetNotificationsForSearchTarget(byebyeNotifications, String.Format("urn:{0}", embeddedDevice.FullDeviceType));
 
-				Assert.IsTrue(udnRootDeviceNotifications.Count() >= 1);
-				Assert.IsTrue(deviceTypeRootDeviceNotifications.Count() >= 1);
+				Assert.IsGreaterThanOrEqualTo(1, udnRootDeviceNotifications.Count());
+				Assert.IsGreaterThanOrEqualTo(1, deviceTypeRootDeviceNotifications.Count());
 			}
 		}
 
@@ -736,8 +665,8 @@ namespace TestRssdp
 					return n.Headers.GetValues("USN").First() == embeddedDevice.Udn + "::" + embeddedDevice.FullDeviceType;
 				});
 
-				Assert.IsTrue(deviceTypeNotifications.Count() >= 1);
-				Assert.IsTrue(udnNotifications.Count() >= 1);
+				Assert.IsGreaterThanOrEqualTo(1, deviceTypeNotifications.Count());
+				Assert.IsGreaterThanOrEqualTo(1, udnNotifications.Count());
 				Assert.AreEqual(0, rootDeviceNotificationsForEmbeddedDevice.Count());
 			}
 		}
@@ -774,8 +703,8 @@ namespace TestRssdp
 					return n.Headers.GetValues("USN").First() == embeddedDevice.Udn + "::" + embeddedDevice.FullDeviceType;
 				});
 
-				Assert.IsTrue(deviceTypeNotifications.Count() >= 1);
-				Assert.IsTrue(udnNotifications.Count() >= 1);
+				Assert.IsGreaterThanOrEqualTo(1, deviceTypeNotifications.Count());
+				Assert.IsGreaterThanOrEqualTo(1, udnNotifications.Count());
 				Assert.AreEqual(0, rootDeviceNotificationsForEmbeddedDevice.Count());
 			}
 		}
@@ -972,7 +901,6 @@ namespace TestRssdp
 		#region Periodic Alive Notifications
 
 		[TestMethod]
-		[ExpectedException(typeof(ArgumentException))]
 		public void Publisher_NotificationBroadcastInterval_ThrowsOnNegativeTimeSpan()
 		{
 			var rootDevice = CreateValidRootDevice();
@@ -981,7 +909,7 @@ namespace TestRssdp
 			var server = new MockCommsServer();
 			using (var publisher = new TestDevicePublisher(server))
 			{
-				publisher.NotificationBroadcastInterval = TimeSpan.FromSeconds(-1);
+				Assert.Throws<System.ArgumentException>(() => { publisher.NotificationBroadcastInterval = TimeSpan.FromSeconds(-1); });
 			}
 		}
 
@@ -1015,10 +943,10 @@ namespace TestRssdp
 				var udnDeviceNotifications = GetNotificationsForSearchTarget(aliveNotifications, rootDevice.Udn);
 				var deviceTypeNotifications = GetNotificationsForSearchTarget(aliveNotifications, rootDevice.FullDeviceType);
 
-				Assert.IsTrue(upnpRootDeviceNotifications.Count() >= 1, "Incorrect number of upnp root device notifications");
+				Assert.IsGreaterThanOrEqualTo(1, upnpRootDeviceNotifications.Count(), "Incorrect number of upnp root device notifications");
 				Assert.AreEqual(0, pnpRootDeviceNotifications.Count(), "Incorrect number of pnp root device notifications");
-				Assert.IsTrue(udnDeviceNotifications.Count() >= 1, "Incorrect number of udn device notifications");
-				Assert.IsTrue(deviceTypeNotifications.Count() >= 1, "Incorrect number of device type notifications");
+				Assert.IsGreaterThanOrEqualTo(1, udnDeviceNotifications.Count(), "Incorrect number of udn device notifications");
+				Assert.IsGreaterThanOrEqualTo(1, deviceTypeNotifications.Count(), "Incorrect number of device type notifications");
 			}
 		}
 
@@ -1090,10 +1018,10 @@ namespace TestRssdp
 				var udnDeviceNotifications = GetNotificationsForSearchTarget(aliveNotifications, rootDevice.Udn);
 				var deviceTypeNotifications = GetNotificationsForSearchTarget(aliveNotifications, rootDevice.FullDeviceType);
 
-				Assert.IsTrue(upnpRootDeviceNotifications.Count() >= 1);
+				Assert.IsGreaterThanOrEqualTo(1, upnpRootDeviceNotifications.Count());
 				Assert.AreEqual(0, pnpRootDeviceNotifications.Count());
-				Assert.IsTrue(udnDeviceNotifications.Count() >= 1);
-				Assert.IsTrue(deviceTypeNotifications.Count() >= 1);
+				Assert.IsGreaterThanOrEqualTo(1, udnDeviceNotifications.Count());
+				Assert.IsGreaterThanOrEqualTo(1, deviceTypeNotifications.Count());
 			}
 		}
 
@@ -1129,10 +1057,10 @@ namespace TestRssdp
 				var udnDeviceNotifications = GetNotificationsForSearchTarget(aliveNotifications, rootDevice.Udn);
 				var deviceTypeNotifications = GetNotificationsForSearchTarget(aliveNotifications, rootDevice.FullDeviceType);
 
-				Assert.IsTrue(upnpRootDeviceNotifications.Count() >= 1);
+				Assert.IsGreaterThanOrEqualTo(1, upnpRootDeviceNotifications.Count());
 				Assert.AreEqual(0, pnpRootDeviceNotifications.Count());
-				Assert.IsTrue(udnDeviceNotifications.Count() >= 1);
-				Assert.IsTrue(deviceTypeNotifications.Count() >= 1);
+				Assert.IsGreaterThanOrEqualTo(1, udnDeviceNotifications.Count());
+				Assert.IsGreaterThanOrEqualTo(1, deviceTypeNotifications.Count());
 			}
 		}
 
@@ -1170,10 +1098,10 @@ namespace TestRssdp
 				var udnDeviceNotifications = GetNotificationsForSearchTarget(aliveNotifications, rootDevice.Udn);
 				var deviceTypeNotifications = GetNotificationsForSearchTarget(aliveNotifications, rootDevice.FullDeviceType);
 
-				Assert.IsTrue(upnpRootDeviceNotifications.Count() >= 1);
+				Assert.IsGreaterThanOrEqualTo(1, upnpRootDeviceNotifications.Count());
 				Assert.AreEqual(0, pnpRootDeviceNotifications.Count());
-				Assert.IsTrue(udnDeviceNotifications.Count() >= 1);
-				Assert.IsTrue(deviceTypeNotifications.Count() >= 1);
+				Assert.IsGreaterThanOrEqualTo(1, udnDeviceNotifications.Count());
+				Assert.IsGreaterThanOrEqualTo(1, deviceTypeNotifications.Count());
 			}
 		}
 
@@ -1228,7 +1156,7 @@ namespace TestRssdp
 
 				var searchResponses = GetSentMessages(server.SentMessages);
 				Assert.AreEqual(0, searchResponses.Where((r) => !r.IsSuccessStatusCode).Count());
-				Assert.IsTrue(GetResponses(searchResponses, rootDevice.FullDeviceType).Count() >= 1);
+				Assert.IsGreaterThanOrEqualTo(1, GetResponses(searchResponses, rootDevice.FullDeviceType).Count());
 				Assert.AreEqual(0, searchResponses.Where((r) => !r.Headers.GetValues("USN").First().StartsWith(rootDevice.Udn)).Count());
 			}
 		}
@@ -1255,7 +1183,7 @@ namespace TestRssdp
 
 				var searchResponses = GetSentMessages(server.SentMessages);
 				Assert.AreEqual(0, searchResponses.Where((r) => !r.IsSuccessStatusCode).Count());
-				Assert.IsTrue(GetResponses(searchResponses, rootDevice.FullDeviceType).Count() >= 1, "No response for full device type");
+				Assert.IsGreaterThanOrEqualTo(1, GetResponses(searchResponses, rootDevice.FullDeviceType).Count(), "No response for full device type");
 				Assert.AreEqual(0, searchResponses.Where((r) => !r.Headers.GetValues("USN").First().StartsWith(rootDevice.Udn)).Count());
 			}
 		}
@@ -1311,8 +1239,8 @@ namespace TestRssdp
 				var searchResponses = GetSentMessages(server.SentMessages);
 
 				Assert.AreEqual(0, searchResponses.Where((r) => !r.IsSuccessStatusCode).Count());
-				Assert.IsTrue(GetResponses(searchResponses, SsdpConstants.UpnpDeviceTypeRootDevice).Count() == 1);
-				Assert.IsTrue(GetResponses(searchResponses, SsdpConstants.PnpDeviceTypeRootDevice).Count() == 0);
+				Assert.AreEqual(1, GetResponses(searchResponses, SsdpConstants.UpnpDeviceTypeRootDevice).Count());
+				Assert.AreEqual(0, GetResponses(searchResponses, SsdpConstants.PnpDeviceTypeRootDevice).Count());
 				Assert.AreEqual(0, searchResponses.Where((r) => !r.Headers.GetValues("USN").First().StartsWith(rootDevice.Udn)).Count());
 				Assert.AreEqual(0, searchResponses.Where((r) => !r.Headers.GetValues(testHeader.Name).First().StartsWith(testHeader.Value)).Count());
 			}
@@ -1527,7 +1455,7 @@ namespace TestRssdp
 
 				var searchResponses = GetSentMessages(server.SentMessages);
 				Assert.AreEqual(0, searchResponses.Where((r) => !r.IsSuccessStatusCode).Count());
-				Assert.IsTrue(GetResponses(searchResponses, SsdpConstants.UpnpDeviceTypeRootDevice).Count() == 1);
+				Assert.AreEqual(1, GetResponses(searchResponses, SsdpConstants.UpnpDeviceTypeRootDevice).Count());
 			}
 		}
 
@@ -1551,8 +1479,8 @@ namespace TestRssdp
 
 				var searchResponses = GetSentMessages(server.SentMessages);
 				Assert.AreEqual(0, searchResponses.Where((r) => !r.IsSuccessStatusCode).Count());
-				Assert.IsTrue(searchResponses.Count() == 4);
-				Assert.IsTrue(GetResponses(searchResponses, SsdpConstants.UpnpDeviceTypeRootDevice).Count() == 2);
+				Assert.AreEqual(4, searchResponses.Count());
+				Assert.AreEqual(2, GetResponses(searchResponses, SsdpConstants.UpnpDeviceTypeRootDevice).Count());
 			}
 		}
 
@@ -1591,7 +1519,7 @@ namespace TestRssdp
 				//System.Threading.Thread.Sleep(1000);
 
 				Assert.AreEqual(0, searchResponses.Where((r) => !r.IsSuccessStatusCode).Count());
-				Assert.IsTrue(GetResponses(searchResponses, SsdpConstants.UpnpDeviceTypeRootDevice).Count() > 0);
+				Assert.IsGreaterThan(0, GetResponses(searchResponses, SsdpConstants.UpnpDeviceTypeRootDevice).Count());
 			}
 		}
 

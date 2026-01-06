@@ -15,14 +15,17 @@ namespace TestRssdp
 
 		#region Root Device Validations
 
-		[ExpectedException(typeof(System.ArgumentNullException))]
 		[TestMethod]
 		public void UPnP10DeviceValidator_ThrowsOnNullRootDevice()
 		{
 			SsdpRootDevice testDevice = null;
 
 			var validator = new Upnp10DeviceValidator();
-			var results = validator.GetValidationErrors(testDevice);
+			Assert.Throws<System.ArgumentNullException>(() =>
+			{
+				_ = validator.GetValidationErrors(testDevice);
+			});	
+		
 		}
 
 		[TestMethod]
@@ -68,7 +71,7 @@ namespace TestRssdp
 			var results = validator.GetValidationErrors(testDevice);
 			Assert.IsNotNull(results);
 			Assert.AreEqual(1, results.Count());
-			Assert.IsTrue(results.First().IndexOf("location", StringComparison.OrdinalIgnoreCase) >= 0);
+			Assert.IsGreaterThanOrEqualTo(0, results.First().IndexOf("location", StringComparison.OrdinalIgnoreCase));
 		}
 
 		[TestMethod]
@@ -92,21 +95,24 @@ namespace TestRssdp
 			var results = validator.GetValidationErrors(testDevice);
 			Assert.IsNotNull(results);
 			Assert.AreEqual(1, results.Count());
-			Assert.IsTrue(results.First().IndexOf("location", StringComparison.OrdinalIgnoreCase) >= 0);
+			Assert.IsGreaterThanOrEqualTo(0, results.First().IndexOf("location", StringComparison.OrdinalIgnoreCase));
 		}
 
 		#endregion
 
 		#region Device Validations
 
-		[ExpectedException(typeof(System.ArgumentNullException))]
 		[TestMethod]
 		public void UPnP10DeviceValidator_ThrowsOnNullDevice()
 		{
 			SsdpDevice testDevice = null;
 
 			var validator = new Upnp10DeviceValidator();
-			var results = validator.GetValidationErrors(testDevice);
+			
+			Assert.Throws<System.ArgumentNullException>(() =>
+			{
+				_ = validator.GetValidationErrors(testDevice);
+			});	
 		}
 
 		[TestMethod]
@@ -225,7 +231,7 @@ namespace TestRssdp
 			var results = validator.GetValidationErrors(testDevice);
 			Assert.IsNotNull(results);
 			Assert.AreEqual(1, results.Count());
-			Assert.IsTrue(results.First().IndexOf("UPC", StringComparison.OrdinalIgnoreCase) >= 0);
+			Assert.IsGreaterThanOrEqualTo(0, results.First().IndexOf("UPC", StringComparison.OrdinalIgnoreCase));
 		}
 
 		[TestMethod]
@@ -265,7 +271,7 @@ namespace TestRssdp
 			var results = validator.GetValidationErrors(testDevice);
 			Assert.IsNotNull(results);
 			Assert.AreEqual(1, results.Count());
-			Assert.IsTrue(results.First().IndexOf("UPC", StringComparison.OrdinalIgnoreCase) >= 0);
+			Assert.IsGreaterThanOrEqualTo(0, results.First().IndexOf("UPC", StringComparison.OrdinalIgnoreCase));
 		}
 
 		[TestMethod]
@@ -305,7 +311,7 @@ namespace TestRssdp
 			var results = validator.GetValidationErrors(testDevice);
 			Assert.IsNotNull(results);
 			Assert.AreEqual(1, results.Count());
-			Assert.IsTrue(results.First().IndexOf("UPC", StringComparison.OrdinalIgnoreCase) >= 0);
+			Assert.IsGreaterThanOrEqualTo(0, results.First().IndexOf("UPC", StringComparison.OrdinalIgnoreCase));
 		}
 
 		#endregion
@@ -347,7 +353,7 @@ namespace TestRssdp
 			var validator = new Upnp10DeviceValidator();
 			var results = validator.GetValidationErrors(testDevice);
 			Assert.IsNotNull(results);
-			Assert.IsTrue(results.First().IndexOf("uuid", StringComparison.OrdinalIgnoreCase) >= 0);
+			Assert.IsGreaterThanOrEqualTo(0, results.First().IndexOf("uuid", StringComparison.OrdinalIgnoreCase));
 		}
 
 		[TestMethod]
@@ -385,7 +391,7 @@ namespace TestRssdp
 			var validator = new Upnp10DeviceValidator();
 			var results = validator.GetValidationErrors(testDevice);
 			Assert.IsNotNull(results);
-			Assert.IsTrue(results.First().IndexOf("uuid", StringComparison.OrdinalIgnoreCase) >= 0);
+			Assert.IsGreaterThanOrEqualTo(0, results.First().IndexOf("uuid", StringComparison.OrdinalIgnoreCase));
 		}
 
 		#endregion
@@ -428,7 +434,7 @@ namespace TestRssdp
 			var validator = new Upnp10DeviceValidator();
 			var results = validator.GetValidationErrors(testDevice);
 			Assert.IsNotNull(results);
-			Assert.IsTrue(results.First().IndexOf("udn", StringComparison.OrdinalIgnoreCase) >= 0);
+			Assert.IsGreaterThanOrEqualTo(0, results.First().IndexOf("udn", StringComparison.OrdinalIgnoreCase));
 		}
 
 		[TestMethod]
@@ -467,7 +473,7 @@ namespace TestRssdp
 			var validator = new Upnp10DeviceValidator();
 			var results = validator.GetValidationErrors(testDevice);
 			Assert.IsNotNull(results);
-			Assert.IsTrue(results.First().IndexOf("uuid", StringComparison.OrdinalIgnoreCase) >= 0);
+			Assert.IsGreaterThanOrEqualTo(0, results.First().IndexOf("uuid", StringComparison.OrdinalIgnoreCase));
 		}
 
 		[TestMethod]
@@ -535,7 +541,7 @@ namespace TestRssdp
 			var validator = new Upnp10DeviceValidator();
 			var results = validator.GetValidationErrors(rootDevice);
 			Assert.IsNotNull(results);
-			Assert.IsTrue(results.First().IndexOf("DeviceType", StringComparison.OrdinalIgnoreCase) >= 0);
+			Assert.IsGreaterThanOrEqualTo(0, results.First().IndexOf("DeviceType", StringComparison.OrdinalIgnoreCase));
 		}
 
 		[TestMethod]
@@ -559,7 +565,7 @@ namespace TestRssdp
 			var validator = new Upnp10DeviceValidator();
 			var results = validator.GetValidationErrors(rootDevice);
 			Assert.IsNotNull(results);
-			Assert.IsTrue(results.First().IndexOf("DeviceType", StringComparison.OrdinalIgnoreCase) >= 0);
+			Assert.IsGreaterThanOrEqualTo(0, results.First().IndexOf("DeviceType", StringComparison.OrdinalIgnoreCase));
 		}
 
 		#endregion
@@ -587,7 +593,7 @@ namespace TestRssdp
 			var validator = new Upnp10DeviceValidator();
 			var results = validator.GetValidationErrors(rootDevice);
 			Assert.IsNotNull(results);
-			Assert.IsTrue(results.First().IndexOf("DeviceVersion", StringComparison.OrdinalIgnoreCase) >= 0);
+			Assert.IsGreaterThanOrEqualTo(0, results.First().IndexOf("DeviceVersion", StringComparison.OrdinalIgnoreCase));
 		}
 
 		[TestMethod]
@@ -611,7 +617,7 @@ namespace TestRssdp
 			var validator = new Upnp10DeviceValidator();
 			var results = validator.GetValidationErrors(rootDevice);
 			Assert.IsNotNull(results);
-			Assert.IsTrue(results.First().IndexOf("DeviceVersion", StringComparison.OrdinalIgnoreCase) >= 0);
+			Assert.IsGreaterThanOrEqualTo(0, results.First().IndexOf("DeviceVersion", StringComparison.OrdinalIgnoreCase));
 		}
 
 		#endregion
@@ -654,7 +660,7 @@ namespace TestRssdp
 			var validator = new Upnp10DeviceValidator();
 			var results = validator.GetValidationErrors(testDevice);
 			Assert.IsNotNull(results);
-			Assert.IsTrue(results.First().IndexOf("DeviceTypeNamespace", StringComparison.OrdinalIgnoreCase) >= 0);
+			Assert.IsGreaterThanOrEqualTo(0, results.First().IndexOf("DeviceTypeNamespace", StringComparison.OrdinalIgnoreCase));
 		}
 
 		[TestMethod]
@@ -693,7 +699,7 @@ namespace TestRssdp
 			var validator = new Upnp10DeviceValidator();
 			var results = validator.GetValidationErrors(testDevice);
 			Assert.IsNotNull(results);
-			Assert.IsTrue(results.First().IndexOf("DeviceTypeNamespace", StringComparison.OrdinalIgnoreCase) >= 0);
+			Assert.IsGreaterThanOrEqualTo(0, results.First().IndexOf("DeviceTypeNamespace", StringComparison.OrdinalIgnoreCase));
 		}
 
 		[TestMethod]
@@ -717,7 +723,7 @@ namespace TestRssdp
 			var validator = new Upnp10DeviceValidator();
 			var results = validator.GetValidationErrors(rootDevice);
 			Assert.IsNotNull(results);
-			Assert.IsTrue(results.First().IndexOf("DeviceTypeNamespace", StringComparison.OrdinalIgnoreCase) >= 0);
+			Assert.IsGreaterThanOrEqualTo(0, results.First().IndexOf("DeviceTypeNamespace", StringComparison.OrdinalIgnoreCase));
 		}
 
 		[TestMethod]
@@ -741,7 +747,7 @@ namespace TestRssdp
 			var validator = new Upnp10DeviceValidator();
 			var results = validator.GetValidationErrors(rootDevice);
 			Assert.IsNotNull(results);
-			Assert.IsTrue(results.First().IndexOf("DeviceTypeNamespace", StringComparison.OrdinalIgnoreCase) >= 0);
+			Assert.IsGreaterThanOrEqualTo(0, results.First().IndexOf("DeviceTypeNamespace", StringComparison.OrdinalIgnoreCase));
 		}
 
 		#endregion
@@ -784,7 +790,7 @@ namespace TestRssdp
 			var validator = new Upnp10DeviceValidator();
 			var results = validator.GetValidationErrors(testDevice);
 			Assert.IsNotNull(results);
-			Assert.IsTrue(results.First().IndexOf("FriendlyName", StringComparison.OrdinalIgnoreCase) >= 0);
+			Assert.IsGreaterThanOrEqualTo(0, results.First().IndexOf("FriendlyName", StringComparison.OrdinalIgnoreCase));
 		}
 
 		[TestMethod]
@@ -823,7 +829,7 @@ namespace TestRssdp
 			var validator = new Upnp10DeviceValidator();
 			var results = validator.GetValidationErrors(testDevice);
 			Assert.IsNotNull(results);
-			Assert.IsTrue(results.First().IndexOf("FriendlyName", StringComparison.OrdinalIgnoreCase) >= 0);
+			Assert.IsGreaterThanOrEqualTo(0, results.First().IndexOf("FriendlyName", StringComparison.OrdinalIgnoreCase));
 		}
 
 		[TestMethod]
@@ -862,7 +868,7 @@ namespace TestRssdp
 			var validator = new Upnp10DeviceValidator();
 			var results = validator.GetValidationErrors(testDevice);
 			Assert.IsNotNull(results);
-			Assert.IsTrue(results.First().IndexOf("FriendlyName", StringComparison.OrdinalIgnoreCase) >= 0);
+			Assert.IsGreaterThanOrEqualTo(0, results.First().IndexOf("FriendlyName", StringComparison.OrdinalIgnoreCase));
 		}
 
 		#endregion
@@ -905,7 +911,7 @@ namespace TestRssdp
 			var validator = new Upnp10DeviceValidator();
 			var results = validator.GetValidationErrors(testDevice);
 			Assert.IsNotNull(results);
-			Assert.IsTrue(results.First().IndexOf("Manufacturer", StringComparison.OrdinalIgnoreCase) >= 0);
+			Assert.IsGreaterThanOrEqualTo(0, results.First().IndexOf("Manufacturer", StringComparison.OrdinalIgnoreCase));
 		}
 
 		[TestMethod]
@@ -944,7 +950,7 @@ namespace TestRssdp
 			var validator = new Upnp10DeviceValidator();
 			var results = validator.GetValidationErrors(testDevice);
 			Assert.IsNotNull(results);
-			Assert.IsTrue(results.First().IndexOf("Manufacturer", StringComparison.OrdinalIgnoreCase) >= 0);
+			Assert.IsGreaterThanOrEqualTo(0, results.First().IndexOf("Manufacturer", StringComparison.OrdinalIgnoreCase));
 		}
 
 		[TestMethod]
@@ -983,7 +989,7 @@ namespace TestRssdp
 			var validator = new Upnp10DeviceValidator();
 			var results = validator.GetValidationErrors(testDevice);
 			Assert.IsNotNull(results);
-			Assert.IsTrue(results.First().IndexOf("Manufacturer", StringComparison.OrdinalIgnoreCase) >= 0);
+			Assert.IsGreaterThanOrEqualTo(0, results.First().IndexOf("Manufacturer", StringComparison.OrdinalIgnoreCase));
 		}
 
 		#endregion
@@ -1026,7 +1032,7 @@ namespace TestRssdp
 			var validator = new Upnp10DeviceValidator();
 			var results = validator.GetValidationErrors(testDevice);
 			Assert.IsNotNull(results);
-			Assert.IsTrue(results.First().IndexOf("ModelName", StringComparison.OrdinalIgnoreCase) >= 0);
+			Assert.IsGreaterThanOrEqualTo(0, results.First().IndexOf("ModelName", StringComparison.OrdinalIgnoreCase));
 		}
 
 		[TestMethod]
@@ -1065,7 +1071,7 @@ namespace TestRssdp
 			var validator = new Upnp10DeviceValidator();
 			var results = validator.GetValidationErrors(testDevice);
 			Assert.IsNotNull(results);
-			Assert.IsTrue(results.First().IndexOf("ModelName", StringComparison.OrdinalIgnoreCase) >= 0);
+			Assert.IsGreaterThanOrEqualTo(0, results.First().IndexOf("ModelName", StringComparison.OrdinalIgnoreCase));
 		}
 
 		[TestMethod]
@@ -1104,7 +1110,7 @@ namespace TestRssdp
 			var validator = new Upnp10DeviceValidator();
 			var results = validator.GetValidationErrors(testDevice);
 			Assert.IsNotNull(results);
-			Assert.IsTrue(results.First().IndexOf("ModelName", StringComparison.OrdinalIgnoreCase) >= 0);
+			Assert.IsGreaterThanOrEqualTo(0, results.First().IndexOf("ModelName", StringComparison.OrdinalIgnoreCase));
 		}
 
 		#endregion
@@ -1147,7 +1153,7 @@ namespace TestRssdp
 			var validator = new Upnp10DeviceValidator();
 			var results = validator.GetValidationErrors(testDevice);
 			Assert.IsNotNull(results);
-			Assert.IsTrue(results.First().IndexOf("ModelNumber", StringComparison.OrdinalIgnoreCase) >= 0);
+			Assert.IsGreaterThanOrEqualTo(0, results.First().IndexOf("ModelNumber", StringComparison.OrdinalIgnoreCase));
 		}
 
 		#endregion
@@ -1190,7 +1196,7 @@ namespace TestRssdp
 			var validator = new Upnp10DeviceValidator();
 			var results = validator.GetValidationErrors(testDevice);
 			Assert.IsNotNull(results);
-			Assert.IsTrue(results.First().IndexOf("SerialNumber", StringComparison.OrdinalIgnoreCase) >= 0);
+			Assert.IsGreaterThanOrEqualTo(0, results.First().IndexOf("SerialNumber", StringComparison.OrdinalIgnoreCase));
 		}
 
 		#endregion
@@ -1233,7 +1239,7 @@ namespace TestRssdp
 			var validator = new Upnp10DeviceValidator();
 			var results = validator.GetValidationErrors(testDevice);
 			Assert.IsNotNull(results);
-			Assert.IsTrue(results.First().IndexOf("ModelDescription", StringComparison.OrdinalIgnoreCase) >= 0);
+			Assert.IsGreaterThanOrEqualTo(0, results.First().IndexOf("ModelDescription", StringComparison.OrdinalIgnoreCase));
 		}
 
 		#endregion
@@ -1243,20 +1249,6 @@ namespace TestRssdp
 		[TestMethod]
 		public void UPnP10DeviceValidator_PassesValidIcon()
 		{
-			var rootDevice = new SsdpRootDevice()
-			{
-				FriendlyName = "Basic Device 1",
-				Manufacturer = "Test Manufacturer",
-				ManufacturerUrl = new Uri("http://testmanufacturer.com"),
-				ModelDescription = "A test model device",
-				ModelName = "Test Model",
-				ModelNumber = "Model #1234",
-				ModelUrl = new Uri("http://modelurl.com"),
-				SerialNumber = "SN-123",
-				Uuid = System.Guid.NewGuid().ToString(),
-				Location = new Uri("http://testdevice:1700/xml"),
-			};
-
 			var testDevice = new SsdpEmbeddedDevice()
 			{
 				DeviceType = "TestEmbeddedDevice",
@@ -1335,26 +1327,12 @@ namespace TestRssdp
 			var results = validator.GetValidationErrors(testDevice);
 			Assert.IsNotNull(results);
 			Assert.AreEqual(1, results.Count());
-			Assert.IsTrue(results.First().IndexOf("mime type", StringComparison.OrdinalIgnoreCase) >= 0);
+			Assert.IsGreaterThanOrEqualTo(0, results.First().IndexOf("mime type", StringComparison.OrdinalIgnoreCase));
 		}
 
 		[TestMethod]
 		public void UPnP10DeviceValidator_FailsIconEmptyMimeType()
 		{
-			var rootDevice = new SsdpRootDevice()
-			{
-				FriendlyName = "Basic Device 1",
-				Manufacturer = "Test Manufacturer",
-				ManufacturerUrl = new Uri("http://testmanufacturer.com"),
-				ModelDescription = "A test model device",
-				ModelName = "Test Model",
-				ModelNumber = "Model #1234",
-				ModelUrl = new Uri("http://modelurl.com"),
-				SerialNumber = "SN-123",
-				Uuid = System.Guid.NewGuid().ToString(),
-				Location = new Uri("http://testdevice:1700/xml"),
-			};
-
 			var testDevice = new SsdpEmbeddedDevice()
 			{
 				DeviceType = "TestEmbeddedDevice",
@@ -1384,7 +1362,7 @@ namespace TestRssdp
 			var results = validator.GetValidationErrors(testDevice);
 			Assert.IsNotNull(results);
 			Assert.AreEqual(1, results.Count());
-			Assert.IsTrue(results.First().IndexOf("mime type", StringComparison.OrdinalIgnoreCase) >= 0);			
+			Assert.IsGreaterThanOrEqualTo(0, results.First().IndexOf("mime type", StringComparison.OrdinalIgnoreCase));			
 		}
 
 		[TestMethod]
@@ -1434,7 +1412,7 @@ namespace TestRssdp
 			var results = validator.GetValidationErrors(testDevice);
 			Assert.IsNotNull(results);
 			Assert.AreEqual(1, results.Count());
-			Assert.IsTrue(results.First().IndexOf("url", StringComparison.OrdinalIgnoreCase) >= 0);
+			Assert.IsGreaterThanOrEqualTo(0, results.First().IndexOf("url", StringComparison.OrdinalIgnoreCase));
 		}
 
 		[TestMethod]
@@ -1484,7 +1462,7 @@ namespace TestRssdp
 			var results = validator.GetValidationErrors(testDevice);
 			Assert.IsNotNull(results);
 			Assert.AreEqual(1, results.Count());
-			Assert.IsTrue(results.First().IndexOf("colordepth", StringComparison.OrdinalIgnoreCase) >= 0);
+			Assert.IsGreaterThanOrEqualTo(0, results.First().IndexOf("colordepth", StringComparison.OrdinalIgnoreCase));
 		}
 
 		[TestMethod]
@@ -1534,26 +1512,12 @@ namespace TestRssdp
 			var results = validator.GetValidationErrors(testDevice);
 			Assert.IsNotNull(results);
 			Assert.AreEqual(1, results.Count());
-			Assert.IsTrue(results.First().IndexOf("colordepth", StringComparison.OrdinalIgnoreCase) >= 0);
+			Assert.IsGreaterThanOrEqualTo(0, results.First().IndexOf("colordepth", StringComparison.OrdinalIgnoreCase));
 		}
 
 		[TestMethod]
 		public void UPnP10DeviceValidator_FailsZeroWidth()
 		{
-			var rootDevice = new SsdpRootDevice()
-			{
-				FriendlyName = "Basic Device 1",
-				Manufacturer = "Test Manufacturer",
-				ManufacturerUrl = new Uri("http://testmanufacturer.com"),
-				ModelDescription = "A test model device",
-				ModelName = "Test Model",
-				ModelNumber = "Model #1234",
-				ModelUrl = new Uri("http://modelurl.com"),
-				SerialNumber = "SN-123",
-				Uuid = System.Guid.NewGuid().ToString(),
-				Location = new Uri("http://testdevice:1700/xml"),
-			};
-
 			var testDevice = new SsdpEmbeddedDevice()
 			{
 				DeviceType = "TestEmbeddedDevice",
@@ -1583,7 +1547,7 @@ namespace TestRssdp
 			var results = validator.GetValidationErrors(testDevice);
 			Assert.IsNotNull(results);
 			Assert.AreEqual(1, results.Count());
-			Assert.IsTrue(results.First().IndexOf("width", StringComparison.OrdinalIgnoreCase) >= 0);
+			Assert.IsGreaterThanOrEqualTo(0, results.First().IndexOf("width", StringComparison.OrdinalIgnoreCase));
 		}
 
 		[TestMethod]
@@ -1633,26 +1597,12 @@ namespace TestRssdp
 			var results = validator.GetValidationErrors(testDevice);
 			Assert.IsNotNull(results);
 			Assert.AreEqual(1, results.Count());
-			Assert.IsTrue(results.First().IndexOf("width", StringComparison.OrdinalIgnoreCase) >= 0);
+			Assert.IsGreaterThanOrEqualTo(0, results.First().IndexOf("width", StringComparison.OrdinalIgnoreCase));
 		}
 
 		[TestMethod]
 		public void UPnP10DeviceValidator_FailsZeroHeight()
 		{
-			var rootDevice = new SsdpRootDevice()
-			{
-				FriendlyName = "Basic Device 1",
-				Manufacturer = "Test Manufacturer",
-				ManufacturerUrl = new Uri("http://testmanufacturer.com"),
-				ModelDescription = "A test model device",
-				ModelName = "Test Model",
-				ModelNumber = "Model #1234",
-				ModelUrl = new Uri("http://modelurl.com"),
-				SerialNumber = "SN-123",
-				Uuid = System.Guid.NewGuid().ToString(),
-				Location = new Uri("http://testdevice:1700/xml"),
-			};
-
 			var testDevice = new SsdpEmbeddedDevice()
 			{
 				DeviceType = "TestEmbeddedDevice",
@@ -1682,7 +1632,7 @@ namespace TestRssdp
 			var results = validator.GetValidationErrors(testDevice);
 			Assert.IsNotNull(results);
 			Assert.AreEqual(1, results.Count());
-			Assert.IsTrue(results.First().IndexOf("width", StringComparison.OrdinalIgnoreCase) >= 0);
+			Assert.IsGreaterThanOrEqualTo(0, results.First().IndexOf("width", StringComparison.OrdinalIgnoreCase));
 		}
 
 		[TestMethod]
@@ -1732,7 +1682,7 @@ namespace TestRssdp
 			var results = validator.GetValidationErrors(testDevice);
 			Assert.IsNotNull(results);
 			Assert.AreEqual(1, results.Count());
-			Assert.IsTrue(results.First().IndexOf("width", StringComparison.OrdinalIgnoreCase) >= 0);
+			Assert.IsGreaterThanOrEqualTo(0, results.First().IndexOf("width", StringComparison.OrdinalIgnoreCase));
 		}
 
 		#endregion
@@ -1777,7 +1727,7 @@ namespace TestRssdp
 			var results = validator.GetValidationErrors(testDevice);
 			Assert.IsNotNull(results);
 			Assert.AreNotEqual(0, results.Count());
-			Assert.IsTrue(results.First().IndexOf("Embedded Device", StringComparison.OrdinalIgnoreCase) >= 0);
+			Assert.IsGreaterThanOrEqualTo(0, results.First().IndexOf("Embedded Device", StringComparison.OrdinalIgnoreCase));
 		}
 
 		#endregion
@@ -2084,14 +2034,17 @@ namespace TestRssdp
 
 		#region ThrowIfInvalidTests
 
-		[ExpectedException(typeof(System.ArgumentNullException))]
 		[TestMethod]
 		public void UPnP10DeviceValidator_ThrowIfInvalidThrowsOnNullRootDevice()
 		{
 			SsdpRootDevice testDevice = null;
 
 			var validator = new Upnp10DeviceValidator();
-			validator.ThrowIfDeviceInvalid(testDevice);
+
+			Assert.Throws<System.ArgumentNullException>(() =>
+			{
+				validator.ThrowIfDeviceInvalid(testDevice);
+			});
 		}
 
 		[TestMethod]
@@ -2115,7 +2068,6 @@ namespace TestRssdp
 			validator.ThrowIfDeviceInvalid(testDevice);
 		}
 		
-		[ExpectedException(typeof(System.InvalidOperationException))]
 		[TestMethod]
 		public void UPnP10DeviceValidator_ThrowIfInvalidThrowsOnValidationError()
 		{
@@ -2134,7 +2086,10 @@ namespace TestRssdp
 			};
 
 			var validator = new Upnp10DeviceValidator();
-			validator.ThrowIfDeviceInvalid(testDevice);
+			Assert.Throws<System.InvalidOperationException>(() =>
+			{
+				validator.ThrowIfDeviceInvalid(testDevice);
+			});		
 		}
 
 		#endregion

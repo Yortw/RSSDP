@@ -16,25 +16,29 @@ namespace TestRssdp
 
 		#region Constructor Tests
 
-		[ExpectedException(typeof(System.ArgumentNullException))]
 		[TestMethod()]
 		public void DeviceLocator_Constructor_ThrowsOnNullCommsServer()
 		{
-			_ = new MockDeviceLocator(null);
+			Assert.Throws<System.ArgumentNullException>(() =>
+			{
+				_ = new MockDeviceLocator(null);
+			});	
 		}
 
 		#endregion
 
 		#region Notifications Tests
 
-		[ExpectedException(typeof(System.ObjectDisposedException))]
 		[TestMethod()]
 		public void DeviceLocator_Notifications_StartListeningThrowsIfDisposed()
 		{
 			var deviceLocator = new MockDeviceLocator();
 			deviceLocator.Dispose();
 
-			deviceLocator.StartListeningForNotifications();
+			Assert.Throws<System.ObjectDisposedException>(() =>
+			{
+				deviceLocator.StartListeningForNotifications();
+			});	
 		}
 
 		[TestMethod()]
@@ -205,14 +209,16 @@ namespace TestRssdp
 			Assert.IsFalse(receivedNotification);
 		}
 
-		[ExpectedException(typeof(System.ObjectDisposedException))]
 		[TestMethod()]
 		public void DeviceLocator_Notifications_Notifications_StopListeningThrowsIfDisposed()
 		{
 			var deviceLocator = new MockDeviceLocator();
 			deviceLocator.Dispose();
 
-			deviceLocator.StopListeningForNotifications();
+			Assert.Throws<System.ObjectDisposedException>(() =>
+			{
+				deviceLocator.StopListeningForNotifications();
+			});
 		}
 
 		[TestMethod()]
@@ -425,7 +431,7 @@ namespace TestRssdp
 				server.MockReceiveBroadcast(GetMockAliveNotification(publishedDevice));
 				signal.WaitOne(10000);
 
-				var t = deviceLocator.SearchAsync(TimeSpan.FromSeconds(5));
+				var t = deviceLocator.SearchAsync(TimeSpan.FromSeconds(5), TestContext.CancellationToken);
 
 				var updatedDevice = CreateDeviceTree();
 				updatedDevice.Uuid = publishedDevice.Uuid;
@@ -474,7 +480,7 @@ namespace TestRssdp
 
 				Assert.IsTrue(discoveredDevices.Any());
 				Assert.IsNotNull(first.ResponseHeaders);
-				Assert.AreEqual(first.ResponseHeaders.GetValues("NTS").FirstOrDefault(), "ssdp:alive");
+				Assert.AreEqual("ssdp:alive", first.ResponseHeaders.GetValues("NTS").FirstOrDefault());
 			}
 		}
 
@@ -499,7 +505,7 @@ namespace TestRssdp
 				server.MockReceiveBroadcast(GetMockAliveNotification(publishedDevice));
 				signal.WaitOne(10000);
 
-				var t = deviceLocator.SearchAsync(TimeSpan.FromSeconds(5));
+				var t = deviceLocator.SearchAsync(TimeSpan.FromSeconds(5), TestContext.CancellationToken);
 
 				var updatedDevice = CreateDeviceTree();
 				updatedDevice.Uuid = publishedDevice.Uuid;
@@ -539,20 +545,20 @@ namespace TestRssdp
 						deviceLocator.Dispose();
 					});
 
-				var t = deviceLocator.SearchAsync();
+				var t = deviceLocator.SearchAsync(TestContext.CancellationToken);
 
 				AggregateException exception = null;
 				try
 				{
-					t.Wait();
+					t.Wait(TestContext.CancellationToken);
 				}
 				catch (AggregateException aex)
 				{
 					exception = aex;
 				}
 
-				Assert.AreNotEqual(null, exception);
-				Assert.AreEqual(1, exception.InnerExceptions.Count);
+				Assert.IsNotNull(exception);
+				Assert.HasCount(1, exception.InnerExceptions);
 				Assert.AreEqual(typeof(System.ObjectDisposedException), exception.InnerExceptions.First().GetType());
 			}
 		}
@@ -563,8 +569,8 @@ namespace TestRssdp
 			var server = new MockCommsServer();
 			var deviceLocator = new MockDeviceLocator(server);
 
-			var t = deviceLocator.SearchAsync();
-			t.Wait();
+			var t = deviceLocator.SearchAsync(TestContext.CancellationToken);
+			t.Wait(TestContext.CancellationToken);
 
 			Assert.IsTrue(server.SentBroadcasts.Any());
 			var searchRequestData = server.SentBroadcasts.First();
@@ -583,8 +589,8 @@ namespace TestRssdp
 			var deviceLocator = new MockDeviceLocator(server);
 
 			var searchTarget = "uuid:" + Guid.NewGuid().ToString();
-			var t = deviceLocator.SearchAsync(searchTarget);
-			t.Wait();
+			var t = deviceLocator.SearchAsync(searchTarget, TestContext.CancellationToken);
+			t.Wait(TestContext.CancellationToken);
 
 			Assert.IsTrue(server.SentBroadcasts.Any());
 			var searchRequestData = server.SentBroadcasts.First();
@@ -603,8 +609,8 @@ namespace TestRssdp
 			var deviceLocator = new MockDeviceLocator(server);
 
 			var searchTime = TimeSpan.FromSeconds(2);
-			var t = deviceLocator.SearchAsync(searchTime);
-			t.Wait();
+			var t = deviceLocator.SearchAsync(searchTime, TestContext.CancellationToken);
+			t.Wait(TestContext.CancellationToken);
 
 			Assert.IsTrue(server.SentBroadcasts.Any());
 			var searchRequestData = server.SentBroadcasts.First();
@@ -616,7 +622,6 @@ namespace TestRssdp
 			Assert.AreEqual((searchTime.TotalSeconds - 1).ToString(), GetFirstHeaderValue(searchRequest, "MX"));
 		}
 
-		[ExpectedException(typeof(System.ArgumentException))]
 		[TestMethod]
 		public void DeviceLocator_SearchAsync_ThrowsIfSearchTime1Second()
 		{
@@ -624,11 +629,14 @@ namespace TestRssdp
 			var deviceLocator = new MockDeviceLocator(server);
 
 			var searchTime = TimeSpan.FromSeconds(1);
-			var t = deviceLocator.SearchAsync(searchTime);
-			t.GetAwaiter().GetResult();
+			var t = deviceLocator.SearchAsync(searchTime, TestContext.CancellationToken);
+
+			Assert.Throws<System.ArgumentException>(() =>
+			{
+				t.GetAwaiter().GetResult();
+			});
 		}
 
-		[ExpectedException(typeof(System.ArgumentException))]
 		[TestMethod]
 		public void DeviceLocator_SearchAsync_ThrowsIfSearchTimeLessThan1Second()
 		{
@@ -636,11 +644,14 @@ namespace TestRssdp
 			var deviceLocator = new MockDeviceLocator(server);
 
 			var searchTime = TimeSpan.FromMilliseconds(500);
-			var t = deviceLocator.SearchAsync(searchTime);
-			t.GetAwaiter().GetResult();
+			var t = deviceLocator.SearchAsync(searchTime, TestContext.CancellationToken);
+
+			Assert.Throws<System.ArgumentException>(() =>
+			{
+				t.GetAwaiter().GetResult();
+			});
 		}
 
-		[ExpectedException(typeof(System.ArgumentException))]
 		[TestMethod]
 		public void DeviceLocator_SearchAsync_ThrowsIfSearchTimeNegative()
 		{
@@ -648,11 +659,14 @@ namespace TestRssdp
 			var deviceLocator = new MockDeviceLocator(server);
 
 			var searchTime = TimeSpan.FromSeconds(-5);
-			var t = deviceLocator.SearchAsync(searchTime);
-			t.GetAwaiter().GetResult();
+			var t = deviceLocator.SearchAsync(searchTime, TestContext.CancellationToken);
+
+			Assert.Throws<System.ArgumentException>(() =>
+			{
+				t.GetAwaiter().GetResult();
+			});
 		}
 
-		[ExpectedException(typeof(System.ArgumentNullException))]
 		[TestMethod]
 		public void DeviceLocator_SearchAsync_ThrowsIfSearchTargetNull()
 		{
@@ -660,11 +674,14 @@ namespace TestRssdp
 			var deviceLocator = new MockDeviceLocator(server);
 
 			string searchTarget = null;
-			var t = deviceLocator.SearchAsync(searchTarget);
-			t.GetAwaiter().GetResult();
+			var t = deviceLocator.SearchAsync(searchTarget, TestContext.CancellationToken);
+
+			Assert.Throws<System.ArgumentNullException>(() =>
+			{
+				t.GetAwaiter().GetResult();
+			});
 		}
 
-		[ExpectedException(typeof(System.ArgumentException))]
 		[TestMethod]
 		public void DeviceLocator_SearchAsync_ThrowsIfSearchTargetEmpty()
 		{
@@ -672,8 +689,12 @@ namespace TestRssdp
 			var deviceLocator = new MockDeviceLocator(server);
 
 			string searchTarget = String.Empty;
-			var t = deviceLocator.SearchAsync(searchTarget);
-			t.GetAwaiter().GetResult();
+			var t = deviceLocator.SearchAsync(searchTarget, TestContext.CancellationToken);
+
+			Assert.Throws<System.ArgumentException>(() =>
+			{
+				t.GetAwaiter().GetResult();
+			});
 		}
 
 		[TestMethod]
@@ -683,13 +704,12 @@ namespace TestRssdp
 			var deviceLocator = new MockDeviceLocator(server);
 
 			string searchTarget = "ssdp:all";
-			var t = deviceLocator.SearchAsync(searchTarget, TimeSpan.Zero);
+			var t = deviceLocator.SearchAsync(searchTarget, TimeSpan.Zero, TestContext.CancellationToken);
 			t.GetAwaiter().GetResult();
 			server.Dispose();
 			deviceLocator.Dispose();
 		}
 
-		[ExpectedException(typeof(System.InvalidOperationException))]
 		[TestMethod]
 		public void DeviceLocator_SearchAsync_ThrowsOnDuplicateConcurrentSearch()
 		{
@@ -697,9 +717,12 @@ namespace TestRssdp
 			var deviceLocator = new MockDeviceLocator(server);
 
 			string searchTarget = "ssdp:all";
-			var t = deviceLocator.SearchAsync(searchTarget, TimeSpan.FromSeconds(10));
-			var t2 = deviceLocator.SearchAsync(searchTarget, TimeSpan.FromSeconds(1.5));
-			t2.GetAwaiter().GetResult();
+			var t = deviceLocator.SearchAsync(searchTarget, TimeSpan.FromSeconds(10), TestContext.CancellationToken);
+			var t2 = deviceLocator.SearchAsync(searchTarget, TimeSpan.FromSeconds(1.5), TestContext.CancellationToken);
+			Assert.Throws<System.InvalidOperationException>(() =>
+			{
+				t2.GetAwaiter().GetResult();
+			});
 			t.GetAwaiter().GetResult();
 		}
 
@@ -728,10 +751,10 @@ namespace TestRssdp
 				eventSignal.WaitOne(10000);
 				Assert.IsTrue(receivedNotification);
 
-				var results = deviceLocator.SearchAsync(TimeSpan.Zero).GetAwaiter().GetResult();
+				var results = deviceLocator.SearchAsync(TimeSpan.Zero, TestContext.CancellationToken).GetAwaiter().GetResult();
 				Assert.IsNotNull(results);
 				Assert.IsTrue(results.Any());
-				Assert.IsTrue(results.First().Usn == device.Usn);
+				Assert.AreEqual(device.Usn, results.First().Usn);
 			}
 		}
 
@@ -744,16 +767,16 @@ namespace TestRssdp
 			var sw = new Stopwatch();
 			sw.Start();
 			var cts = new System.Threading.CancellationTokenSource();
-			_ = Task.Delay(1000).ContinueWith((pt) => cts.Cancel());
+			_ = Task.Delay(1000, TestContext.CancellationToken).ContinueWith((pt) => cts.Cancel(), TestContext.CancellationToken);
 
-			await Assert.ThrowsExceptionAsync<TaskCanceledException>(async () =>
+			await Assert.ThrowsAsync<TaskCanceledException>(async () =>
 			{
 				await deviceLocator.SearchAsync(TimeSpan.FromSeconds(60), cts.Token);
 			});
 
 			sw.Stop();
 
-			Assert.IsTrue(sw.Elapsed.TotalSeconds < 5);
+			Assert.IsLessThan(5, sw.Elapsed.TotalSeconds);
 		}
 
 		[TestMethod()]
@@ -777,7 +800,7 @@ namespace TestRssdp
 				server.MockReceiveBroadcast(GetMockAliveNotification());
 				server.WaitForMessageToProcess(10000);
 
-				var t = deviceLocator.SearchAsync(TimeSpan.FromSeconds(3));
+				var t = deviceLocator.SearchAsync(TimeSpan.FromSeconds(3), TestContext.CancellationToken);
 				System.Threading.Thread.Sleep(500);
 				server.MockReceiveBroadcast(GetMockByeByeNotification());
 				eventSignal.WaitOne(10000);
@@ -810,7 +833,7 @@ namespace TestRssdp
 					eventSignal.Set();
 				};
 
-				var t = deviceLocator.SearchAsync(TimeSpan.FromSeconds(3));
+				var t = deviceLocator.SearchAsync(TimeSpan.FromSeconds(3), TestContext.CancellationToken);
 				System.Threading.Thread.Sleep(500);
 				server.MockReceiveMessage(GetMockSearchResponse(publishedDevice, publishedDevice.Udn));
 				eventSignal.WaitOne(10000);
@@ -844,7 +867,7 @@ namespace TestRssdp
 					eventSignal.Set();
 				};
 
-				var t = deviceLocator.SearchAsync(TimeSpan.FromSeconds(3));
+				var t = deviceLocator.SearchAsync(TimeSpan.FromSeconds(3), TestContext.CancellationToken);
 				System.Threading.Thread.Sleep(500);
 				server.MockReceiveMessage(GetMockSearchResponse(publishedDevice, publishedDevice.Udn));
 				eventSignal.WaitOne(10000);
@@ -884,7 +907,7 @@ namespace TestRssdp
 					eventSignal.Set();
 				};
 
-				var t = deviceLocator.SearchAsync(TimeSpan.FromSeconds(3));
+				var t = deviceLocator.SearchAsync(TimeSpan.FromSeconds(3), TestContext.CancellationToken);
 				System.Threading.Thread.Sleep(500);
 				server.MockReceiveMessage(GetMockSearchResponseWithCustomCacheHeader(publishedDevice, publishedDevice.Udn, null));
 				eventSignal.WaitOne(10000);
@@ -918,7 +941,7 @@ namespace TestRssdp
 					eventSignal.Set();
 				};
 
-				var t = deviceLocator.SearchAsync(TimeSpan.FromSeconds(3));
+				var t = deviceLocator.SearchAsync(TimeSpan.FromSeconds(3), TestContext.CancellationToken);
 				System.Threading.Thread.Sleep(500);
 				server.MockReceiveMessage(GetMockSearchResponseWithCustomCacheHeader(publishedDevice, publishedDevice.Udn, String.Format("CACHE-CONTROL: public, s-maxage={0}", publishedDevice.CacheLifetime.TotalSeconds)));
 				eventSignal.WaitOne(10000);
@@ -949,7 +972,7 @@ namespace TestRssdp
 					eventSignal.Set();
 				};
 
-				var t = deviceLocator.SearchAsync(TimeSpan.FromSeconds(3));
+				var t = deviceLocator.SearchAsync(TimeSpan.FromSeconds(3), TestContext.CancellationToken);
 				System.Threading.Thread.Sleep(500);
 				server.MockReceiveMessage(GetMockSearchResponseWithCustomCacheHeader(publishedDevice, publishedDevice.Udn, String.Format("CACHE-CONTROL: public")));
 				eventSignal.WaitOne(10000);
@@ -983,7 +1006,7 @@ namespace TestRssdp
 				};
 
 
-				var task = deviceLocator.SearchAsync(TimeSpan.FromSeconds(2));
+				var task = deviceLocator.SearchAsync(TimeSpan.FromSeconds(2), TestContext.CancellationToken);
 				server.MockReceiveMessage(GetMockSearchResponse(publishedDevice, publishedDevice.Udn));
 				eventSignal.WaitOne(10000);
 				Assert.IsTrue(receivedNotification);
@@ -991,7 +1014,7 @@ namespace TestRssdp
 
 				Assert.IsNotNull(results);
 				Assert.IsTrue(results.Any());
-				Assert.IsTrue(results.First().Usn == device.Usn);
+				Assert.AreEqual(device.Usn, results.First().Usn);
 			}
 		}
 
@@ -1023,7 +1046,7 @@ namespace TestRssdp
 				};
 
 
-				var task = deviceLocator.SearchAsync(publishedDevice.Udn);
+				var task = deviceLocator.SearchAsync(publishedDevice.Udn, TestContext.CancellationToken);
 				server.MockReceiveBroadcast(GetMockAliveNotification(publishedDevice2));
 				server.WaitForMessageToProcess(5000);
 				eventSignal.Reset();
@@ -1035,7 +1058,7 @@ namespace TestRssdp
 
 				Assert.IsNotNull(results);
 				Assert.AreEqual(1, results.Count());
-				Assert.IsTrue(results.First().Usn == device.Usn);
+				Assert.AreEqual(device.Usn, results.First().Usn);
 			}
 		}
 
@@ -1047,8 +1070,8 @@ namespace TestRssdp
 		{
 			var deviceLocator = new MockDeviceLocator();
 			Assert.IsFalse(deviceLocator.IsSearching);
-			var task = deviceLocator.SearchAsync(TimeSpan.FromSeconds(1.5));
-			task.Wait();
+			var task = deviceLocator.SearchAsync(TimeSpan.FromSeconds(1.5), TestContext.CancellationToken);
+			task.Wait(TestContext.CancellationToken);
 
 			Assert.IsFalse(deviceLocator.IsSearching);
 		}
@@ -1058,10 +1081,10 @@ namespace TestRssdp
 		{
 			var deviceLocator = new MockDeviceLocator();
 			Assert.IsFalse(deviceLocator.IsSearching);
-			var task = deviceLocator.SearchAsync(TimeSpan.FromSeconds(1.5));
+			var task = deviceLocator.SearchAsync(TimeSpan.FromSeconds(1.5), TestContext.CancellationToken);
 			Assert.IsTrue(deviceLocator.IsSearching);
 
-			task.Wait();
+			task.Wait(TestContext.CancellationToken);
 		}
 
 		#endregion
@@ -1070,18 +1093,22 @@ namespace TestRssdp
 
 		#region Event Arguments Tests
 
-		[ExpectedException(typeof(System.ArgumentNullException))]
 		[TestMethod]
 		public void DeviceAvailableEventArgs_Constructor_ThrowsOnNullDevice()
 		{
-			_ = new DeviceAvailableEventArgs(null, true);
+			Assert.Throws<System.ArgumentNullException>(() =>
+			{
+				_ = new DeviceAvailableEventArgs(null, true);
+			});
 		}
 
-		[ExpectedException(typeof(System.ArgumentNullException))]
 		[TestMethod]
 		public void DeviceUnavailableEventArgs_Constructor_ThrowsOnNullDevice()
 		{
-			_ = new DeviceUnavailableEventArgs(null, false);
+			Assert.Throws<System.ArgumentNullException>(() =>
+			{
+				_ = new DeviceUnavailableEventArgs(null, false);
+			});	
 		}
 
 		#endregion
@@ -1332,6 +1359,8 @@ CACHE-CONTROL: public, max-age={4}
 
 			return retVal;
 		}
+
+		public TestContext TestContext { get; set; }
 
 		#endregion
 

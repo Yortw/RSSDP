@@ -41,41 +41,51 @@ namespace TestRssdp
 			Assert.AreEqual(1702, mockSocket.LocalPort);
 		}
 
-		[ExpectedException(typeof(System.ArgumentNullException))]
 		[TestMethod]
 		public void CommsServer_MinimumConstructor_NullSocketFactoryThrowsExeption()
 		{
-			_ = new SsdpCommunicationsServer(null);
+			Assert.Throws<ArgumentNullException>(() =>
+			{
+				_ = new SsdpCommunicationsServer(null);
+			});
 		}
 
-		[ExpectedException(typeof(System.ArgumentNullException))]
 		[TestMethod]
 		public void CommsServer_FactoryAndSocketConstructor_NullSocketFactoryThrowsExeption()
 		{
-			_ = new SsdpCommunicationsServer(null, 1701);
+			Assert.Throws<ArgumentNullException>(() =>
+			{
+				_ = new SsdpCommunicationsServer(null, 1701);
+			});
 		}
 
-		[ExpectedException(typeof(System.ArgumentNullException))]
 		[TestMethod]
 		public void CommsServer_FullConstructor_NullSocketFactoryThrowsExeption()
 		{
-			_ = new SsdpCommunicationsServer(null, 1701, 4);
+			Assert.Throws<ArgumentNullException>(() =>
+			{
+				_ = new SsdpCommunicationsServer(null, 1701, 4);
+			});
 		}
 
-		[ExpectedException(typeof(System.ArgumentOutOfRangeException))]
 		[TestMethod]
 		public void CommsServer_FullConstructor_NegativeMulticastTtlThrowsException()
 		{
 			var socketFactory = new MockSocketFactory();
-			_ = new SsdpCommunicationsServer(socketFactory, 1701, -1);
+			Assert.Throws<ArgumentOutOfRangeException>(() =>
+			{
+				_ = new SsdpCommunicationsServer(socketFactory, 1701, -1);
+			});
 		}
 
-		[ExpectedException(typeof(System.ArgumentOutOfRangeException))]
 		[TestMethod]
 		public void CommsServer_FullConstructor_ZeroMulticastTtlThrowsException()
 		{
 			var socketFactory = new MockSocketFactory();
-			_ = new SsdpCommunicationsServer(socketFactory, 1701, 0);
+			Assert.Throws<ArgumentOutOfRangeException>(() =>
+			{
+				_ = new SsdpCommunicationsServer(socketFactory, 1701, 0);
+			});
 		}
 
 		[TestMethod]
@@ -165,7 +175,6 @@ SsdpConstants.MulticastPort,
 			}
 		}
 
-		[ExpectedException(typeof(System.ObjectDisposedException))]
 		[TestMethod]
 		public void CommsServer_BeginListeningForBroadcastsThrowsIfDisposed()
 		{
@@ -173,10 +182,12 @@ SsdpConstants.MulticastPort,
 			var server = new SsdpCommunicationsServer(socketFactory);
 			server.Dispose();
 
-			server.BeginListeningForBroadcasts();
+			Assert.Throws<ObjectDisposedException>(() =>
+			{
+				server.BeginListeningForBroadcasts();
+			});	
 		}
 
-		[ExpectedException(typeof(System.ObjectDisposedException))]
 		[TestMethod]
 		public void CommsServer_StopListeningForBroadcastsThrowsIfDisposed()
 		{
@@ -184,10 +195,12 @@ SsdpConstants.MulticastPort,
 			var server = new SsdpCommunicationsServer(socketFactory);
 			server.Dispose();
 
-			server.StopListeningForBroadcasts();
+			Assert.Throws<ObjectDisposedException>(() =>
+			{
+				server.StopListeningForBroadcasts();
+			});
 		}
 
-		[ExpectedException(typeof(System.ObjectDisposedException))]
 		[TestMethod]
 		public void CommsServer_StopListeningForResponsesThrowsIfDisposed()
 		{
@@ -195,7 +208,10 @@ SsdpConstants.MulticastPort,
 			var server = new SsdpCommunicationsServer(socketFactory);
 			server.Dispose();
 
-			server.StopListeningForResponses();
+			Assert.Throws<ObjectDisposedException>(() =>
+			{
+				server.StopListeningForResponses();
+			});
 		}
 
 		[TestMethod]
@@ -294,15 +310,20 @@ SsdpConstants.MulticastPort,
 			Assert.AreEqual(destination.Port, mockSocket.LastSentTo.Port);
 		}
 
-		[ExpectedException(typeof(System.ArgumentNullException))]
 		[TestMethod]
 		public void CommsServer_SendNullMessageThrowsException()
 		{
 			var socketFactory = new MockSocketFactory();
 			var server = new SsdpCommunicationsServer(socketFactory);
-
 			UdpEndPoint destination = new UdpEndPoint("192.168.1.100", 1701);
-			server.SendMessage(null, destination);
+
+			Assert.Throws<ArgumentNullException>
+			(
+				() =>
+				{
+					server.SendMessage(null, destination);
+				}
+			);
 		}
 
 		[TestMethod]
@@ -654,7 +675,7 @@ some content here
 				var mockSocket = socketFactory.MulticastSocket as MockSocket;
 				mockSocket.MockReceive(System.Text.UTF8Encoding.UTF8.GetBytes(message), SsdpConstants.MulticastLocalAdminEndpoint);
 
-				eventReceivedSignal.WaitOne(10000);
+				eventReceivedSignal.WaitOne(30000);
 				Assert.IsTrue(requestReceived);
 				Assert.IsFalse(responseReceived);
 				Assert.AreEqual("UTF8", receivedMessage.Content.Headers.ContentEncoding.FirstOrDefault());

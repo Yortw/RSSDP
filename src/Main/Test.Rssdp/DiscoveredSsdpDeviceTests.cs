@@ -163,7 +163,6 @@ namespace TestRssdp
 			}
 		}
 
-		[ExpectedException(typeof(HttpRequestException))]
 		[TestMethod]
 		public void DiscoveredDevice_GetDeviceInfo_CreatesDefaultClient()
 		{
@@ -185,7 +184,10 @@ namespace TestRssdp
 					DescriptionLocation = publishedDevice.Location
 				};
 
-				_ = discoveredDevice.GetDeviceInfo().GetAwaiter().GetResult();
+				Assert.Throws<HttpRequestException>(() =>
+				{
+					_ = discoveredDevice.GetDeviceInfo().GetAwaiter().GetResult();
+				});	
 			}
 		}
 

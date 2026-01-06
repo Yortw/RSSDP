@@ -18,20 +18,22 @@ namespace TestRssdp
 		[TestMethod]
 		public void CustomHttpHeadersCollection_CapacityConstructor_Succeeds()
 		{
-			var properties = new CustomHttpHeadersCollection(10);
+			_ = new CustomHttpHeadersCollection(10);
 		}
 
 		[TestMethod]
 		public void CustomHttpHeadersCollection_CapacityConstructor_SucceedsWithZeroValue()
 		{
-			var properties = new CustomHttpHeadersCollection(0);
+			_ = new CustomHttpHeadersCollection(0);
 		}
 
 		[TestMethod]
-		[ExpectedException(typeof(System.ArgumentOutOfRangeException))]
 		public void CustomHttpHeadersCollection_CapacityConstructor_FailsWithNegativeValue()
 		{
-			var properties = new CustomHttpHeadersCollection(-1);
+			Assert.Throws<System.ArgumentOutOfRangeException>(() =>
+			{
+				_ = new CustomHttpHeadersCollection(-1);
+			});
 		}
 
 		#endregion
@@ -39,12 +41,14 @@ namespace TestRssdp
 		#region Add Tests
 
 		[TestMethod]
-		[ExpectedException(typeof(System.ArgumentNullException))]
 		public void CustomHttpHeadersCollection_Add_NullThrows()
 		{
 			var properties = new CustomHttpHeadersCollection();
 
-			properties.Add(null);
+			Assert.Throws<System.ArgumentNullException>(() =>
+			{
+				properties.Add((CustomHttpHeader)null);
+			});
 		}
 
 		#endregion
@@ -52,30 +56,36 @@ namespace TestRssdp
 		#region Remove Tests
 
 		[TestMethod]
-		[ExpectedException(typeof(System.ArgumentNullException))]
 		public void CustomHttpHeadersCollection_Remove_NullThrows()
 		{
 			var properties = new CustomHttpHeadersCollection();
 
-			properties.Remove((CustomHttpHeader)null);
+			Assert.Throws<System.ArgumentNullException>(() =>
+			{
+				properties.Remove((CustomHttpHeader)null);
+			});
 		}
 
 		[TestMethod]
-		[ExpectedException(typeof(System.ArgumentException))]
 		public void CustomHttpHeadersCollection_Remove_NullKeyThrows()
 		{
 			var properties = new CustomHttpHeadersCollection();
 
-			properties.Remove((string)null);
+			Assert.Throws<System.ArgumentException>(() =>
+			{
+				properties.Remove((string)null);
+			});
 		}
 
 		[TestMethod]
-		[ExpectedException(typeof(System.ArgumentException))]
 		public void CustomHttpHeadersCollection_Remove_EmptyKeyThrows()
 		{
 			var properties = new CustomHttpHeadersCollection();
 
-			properties.Remove(String.Empty);
+			Assert.Throws<System.ArgumentException>(() =>
+			{
+				properties.Remove(String.Empty);
+			});	
 		}
 
 		[TestMethod]
@@ -86,7 +96,7 @@ namespace TestRssdp
 
 			properties.Add(p);
 
-			Assert.AreEqual(true, properties.Remove(p));
+			Assert.IsTrue(properties.Remove(p));
 			Assert.AreEqual(0, properties.Count);
 		}
 
@@ -100,7 +110,7 @@ namespace TestRssdp
 
 			properties.Add(p);
 
-			Assert.AreEqual(false, properties.Remove(p2));
+			Assert.IsFalse(properties.Remove(p2));
 			Assert.AreEqual(1, properties.Count);
 		}
 
@@ -112,7 +122,7 @@ namespace TestRssdp
 
 			properties.Add(p);
 
-			Assert.AreEqual(true, properties.Remove(p.Name));
+			Assert.IsTrue(properties.Remove(p.Name));
 			Assert.AreEqual(0, properties.Count);
 		}
 
@@ -121,27 +131,35 @@ namespace TestRssdp
 		#region Contains Tests
 
 		[TestMethod]
-		[ExpectedException(typeof(System.ArgumentException))]
 		public void CustomHttpHeadersCollection_Contains_NullNameThrows()
 		{
 			var properties = new CustomHttpHeadersCollection();
-			properties.Contains((string)null);
+
+			Assert.Throws<System.ArgumentException>(() =>
+			{
+				properties.Contains((string)null);
+			});	
 		}
 
 		[TestMethod]
-		[ExpectedException(typeof(System.ArgumentException))]
 		public void CustomHttpHeadersCollection_Contains_EmptyNameThrows()
 		{
 			var properties = new CustomHttpHeadersCollection();
-			properties.Contains(String.Empty);
+
+			Assert.Throws<System.ArgumentException>(() =>
+			{
+				properties.Contains(String.Empty);
+			});
 		}
 
 		[TestMethod]
-		[ExpectedException(typeof(System.ArgumentNullException))]
 		public void CustomHttpHeadersCollection_Contains_NullPropertyThrows()
 		{
 			var properties = new CustomHttpHeadersCollection();
-			properties.Contains((CustomHttpHeader)null);
+			Assert.Throws<System.ArgumentNullException>(() =>
+			{
+				_ = properties.Contains((CustomHttpHeader)null);
+			});
 		}
 
 		[TestMethod]
@@ -152,7 +170,7 @@ namespace TestRssdp
 
 			properties.Add(prop);
 
-			Assert.AreEqual(true, properties.Contains(prop.Name));
+			Assert.IsTrue(properties.Contains(prop.Name));
 		}
 
 		[TestMethod]
@@ -163,7 +181,7 @@ namespace TestRssdp
 
 			properties.Add(prop);
 
-			Assert.AreEqual(false, properties.Contains("NotAValidKey"));
+			Assert.IsFalse(properties.Contains("NotAValidKey"));
 		}
 
 		[TestMethod]
@@ -174,7 +192,7 @@ namespace TestRssdp
 
 			properties.Add(prop);
 
-			Assert.AreEqual(true, properties.Contains(prop));
+			Assert.IsTrue(properties.Contains(prop));
 		}
 
 		[TestMethod]
@@ -187,7 +205,7 @@ namespace TestRssdp
 
 			properties.Add(prop);
 
-			Assert.AreEqual(false, properties.Contains(prop2));
+			Assert.IsFalse(properties.Contains(prop2));
 		}
 
 		[TestMethod]
@@ -200,7 +218,7 @@ namespace TestRssdp
 
 			properties.Add(prop);
 
-			Assert.AreEqual(false, properties.Contains(prop2));
+			Assert.IsFalse(properties.Contains(prop2));
 		}
 
 		#endregion
@@ -216,9 +234,9 @@ namespace TestRssdp
 			properties.Add(prop);
 			var enumerator = properties.GetEnumerator();
 
-			Assert.AreEqual(true, enumerator.MoveNext());
+			Assert.IsTrue(enumerator.MoveNext());
 			Assert.AreEqual(prop, enumerator.Current);
-			Assert.AreEqual(false, enumerator.MoveNext());
+			Assert.IsFalse(enumerator.MoveNext());
 		}
 
 		[TestMethod]
@@ -230,9 +248,9 @@ namespace TestRssdp
 			properties.Add(prop);
 			var enumerator = ((IEnumerable)properties).GetEnumerator();
 
-			Assert.AreEqual(true, enumerator.MoveNext());
+			Assert.IsTrue(enumerator.MoveNext());
 			Assert.AreEqual(prop, enumerator.Current);
-			Assert.AreEqual(false, enumerator.MoveNext());
+			Assert.IsFalse(enumerator.MoveNext());
 		}
 
 		#endregion
@@ -250,7 +268,6 @@ namespace TestRssdp
 			Assert.AreEqual(p, properties[p.Name]);
 		}
 
-		[ExpectedException(typeof(System.Collections.Generic.KeyNotFoundException))]
 		[TestMethod]
 		public void CustomHttpHeadersCollection_Indexer_ThrowsOnUnknownKey()
 		{
@@ -259,7 +276,10 @@ namespace TestRssdp
 
 			properties.Add(p);
 
-			Assert.AreEqual(p, properties["NotAValidKey"]);
+			Assert.Throws<System.Collections.Generic.KeyNotFoundException>(() =>
+			{
+				_ = properties["NotAValidKey"];
+			});
 		}
 
 		#endregion

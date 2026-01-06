@@ -102,7 +102,7 @@ items:
   source:
     id: ParseStatusLine
     path: ''
-    startLine: 1553
+    startLine: 1555
   assemblies:
   - cs.temp.dll
   namespace: Rssdp.Infrastructure
@@ -140,7 +140,7 @@ items:
   source:
     id: IsContentHeader
     path: ''
-    startLine: 1574
+    startLine: 1576
   assemblies:
   - cs.temp.dll
   namespace: Rssdp.Infrastructure

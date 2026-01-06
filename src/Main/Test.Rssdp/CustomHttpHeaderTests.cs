@@ -35,43 +35,53 @@ namespace TestRssdp
 		{
 			var header = new CustomHttpHeader("X-TestName", null);
 			Assert.AreEqual("X-TestName", header.Name);
-			Assert.AreEqual(null, header.Value);
+			Assert.IsNull(header.Value);
 			Assert.AreEqual("X-TestName: ", header.ToString());
 		}
 
 		[TestMethod()]
-		[ExpectedException(typeof(System.ArgumentNullException))]
 		public void CustomHttpHeader_ThrowsOnNullName()
 		{
-			var header = new CustomHttpHeader(null, "Test Value");
+			Assert.Throws<System.ArgumentNullException>(() =>
+			{
+				_ = new CustomHttpHeader(null, "Test Value");
+			});
 		}
 
 		[TestMethod()]
-		[ExpectedException(typeof(System.ArgumentException))]
 		public void CustomHttpHeader_ThrowsOnEmptyName()
 		{
-			var header = new CustomHttpHeader(String.Empty, "Test Value");
+			Assert.Throws<System.ArgumentException>(() =>
+			{
+				_ = new CustomHttpHeader(String.Empty, "Test Value");
+			});	
 		}
 
 		[TestMethod()]
-		[ExpectedException(typeof(System.ArgumentException))]
 		public void CustomHttpHeader_ThrowsOnValueWithLineFeed()
 		{
-			var header = new CustomHttpHeader("X-TestName", "Test\nValue");
+			Assert.Throws<System.ArgumentException>(() =>
+			{
+				_ = new CustomHttpHeader("X-TestName", "Test\nValue");
+			});
 		}
 
 		[TestMethod()]
-		[ExpectedException(typeof(System.ArgumentException))]
 		public void CustomHttpHeader_ThrowsOnValueWithCarriageReturnFeed()
 		{
-			var header = new CustomHttpHeader("X-TestName", "Test\rValue");
+			Assert.Throws<System.ArgumentException>(() =>
+			{
+				_ = new CustomHttpHeader("X-TestName", "Test\r\nValue");
+			});	
 		}
 
 		[TestMethod()]
-		[ExpectedException(typeof(System.ArgumentException))]
 		public void CustomHttpHeader_ThrowsOnNameWithColonFeed()
 		{
-			var header = new CustomHttpHeader("X:TestName", "Test Value");
+			Assert.Throws<System.ArgumentException>(() =>
+			{
+				_ = new CustomHttpHeader("X:TestName", "Test Value");
+			});	
 		}
 
 	}
