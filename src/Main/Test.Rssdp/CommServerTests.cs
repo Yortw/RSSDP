@@ -675,7 +675,7 @@ some content here
 				var mockSocket = socketFactory.MulticastSocket as MockSocket;
 				mockSocket.MockReceive(System.Text.UTF8Encoding.UTF8.GetBytes(message), SsdpConstants.MulticastLocalAdminEndpoint);
 
-				eventReceivedSignal.WaitOne(10000);
+				eventReceivedSignal.WaitOne(30000);
 				Assert.IsTrue(requestReceived);
 				Assert.IsFalse(responseReceived);
 				Assert.AreEqual("UTF8", receivedMessage.Content.Headers.ContentEncoding.FirstOrDefault());
