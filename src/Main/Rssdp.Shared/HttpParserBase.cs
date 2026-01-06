@@ -64,7 +64,7 @@ namespace Rssdp.Infrastructure
 						if (lineIndex < lines.Length - 1)
 						{
 							//This is inefficient in multiple ways, but not sure of a good way of correcting. Revisit.
-							var body = System.Text.UTF8Encoding.UTF8.GetBytes(String.Join(null, lines, lineIndex, lines.Length - lineIndex));
+							var body = Encoding.UTF8.GetBytes(String.Join(null, lines, lineIndex, lines.Length - lineIndex));
 							contentStream.Write(body, 0, body.Length);
 							contentStream.Seek(0, System.IO.SeekOrigin.Begin);
 						}
