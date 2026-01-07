@@ -2,11 +2,7 @@ name: RSSDP PR Gate
 
 on:
   pull_request:
-    branches:
-      - main
-      - master
-      - develop
-      - feature/**
+    types: [opened, synchronize, reopened]
 
 jobs:
   build-and-test:
