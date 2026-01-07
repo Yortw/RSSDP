@@ -136,10 +136,6 @@ namespace TestRssdp
 			server.BeginListeningForBroadcasts();
 
 			var socket1 = socketFactory.MulticastSocket;
-			System.Threading.Thread.Sleep(500);
-
-			socketFactory.ThrowSocketClosedException();
-			System.Threading.Thread.Sleep(2000);
 
 			var requestReceived = false;
 			using (var eventReceivedSignal = new System.Threading.ManualResetEvent(false))
@@ -152,6 +148,20 @@ namespace TestRssdp
 					eventReceivedSignal.Set();
 				};
 
+				// Trigger socket closed on the original multicast socket.
+				socketFactory.ThrowSocketClosedException();
+
+				// Wait until the server has recreated the multicast socket.
+				var waitUntil = DateTime.UtcNow + TimeSpan.FromSeconds(10);
+				while (DateTime.UtcNow < waitUntil && (socketFactory.MulticastSocket == null || ReferenceEquals(socketFactory.MulticastSocket, socket1)))
+				{
+					System.Threading.Thread.Sleep(50);
+				}
+
+				// Ensure we actually reconnected before proceeding.
+				Assert.IsNotNull(socketFactory.MulticastSocket, "Multicast socket was not recreated.");
+				Assert.AreNotEqual(socket1, socketFactory.MulticastSocket, "Multicast socket instance did not change after reconnect.");
+
 				var message = String.Format(@"M-SEARCH * HTTP/1.1
 HOST: {0}:{1}
 MAN: ""ssdp:discover""
@@ -161,17 +171,17 @@ CONTENT-ENCODING:UTF8
 
 some content here
 ",
-SsdpConstants.MulticastLocalAdminAddress,
-SsdpConstants.MulticastPort,
-"test search target",
-"1"
-);
+				  SsdpConstants.MulticastLocalAdminAddress,
+				  SsdpConstants.MulticastPort,
+				  "test search target",
+				  "1"
+				);
 
+				// Send on the new multicast socket after reconnection is confirmed.
 				socketFactory.MulticastSocket.MockReceive(System.Text.UTF8Encoding.UTF8.GetBytes(message), SsdpConstants.MulticastLocalAdminEndpoint);
 
-				eventReceivedSignal.WaitOne(120000);
-				Assert.AreNotEqual(socket1, socketFactory.MulticastSocket);
-				Assert.IsTrue(requestReceived);
+				eventReceivedSignal.WaitOne(10000);
+				Assert.IsTrue(requestReceived, "Request was not received after reconnection.");
 			}
 		}
 
