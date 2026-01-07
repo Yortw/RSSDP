@@ -19,7 +19,7 @@ items:
   source:
     id: UdpEndPoint
     path: ''
-    startLine: 7618
+    startLine: 7596
   assemblies:
   - cs.temp.dll
   namespace: Rssdp.Infrastructure
@@ -59,7 +59,7 @@ items:
   source:
     id: .ctor
     path: ''
-    startLine: 7629
+    startLine: 7607
   assemblies:
   - cs.temp.dll
   namespace: Rssdp.Infrastructure
@@ -101,7 +101,7 @@ items:
   source:
     id: IPAddress
     path: ''
-    startLine: 7644
+    startLine: 7622
   assemblies:
   - cs.temp.dll
   namespace: Rssdp.Infrastructure
@@ -135,7 +135,7 @@ items:
   source:
     id: Port
     path: ''
-    startLine: 7649
+    startLine: 7627
   assemblies:
   - cs.temp.dll
   namespace: Rssdp.Infrastructure
@@ -168,7 +168,7 @@ items:
   source:
     id: ToString
     path: ''
-    startLine: 7655
+    startLine: 7633
   assemblies:
   - cs.temp.dll
   namespace: Rssdp.Infrastructure

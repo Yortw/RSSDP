@@ -53,7 +53,7 @@ items:
   source:
     id: SsdpDevice
     path: ''
-    startLine: 3175
+    startLine: 3167
   assemblies:
   - cs.temp.dll
   namespace: Rssdp
@@ -103,7 +103,7 @@ items:
   source:
     id: DeviceAdded
     path: ''
-    startLine: 3199
+    startLine: 3191
   assemblies:
   - cs.temp.dll
   namespace: Rssdp
@@ -137,7 +137,7 @@ items:
   source:
     id: DeviceRemoved
     path: ''
-    startLine: 3206
+    startLine: 3198
   assemblies:
   - cs.temp.dll
   namespace: Rssdp
@@ -171,7 +171,7 @@ items:
   source:
     id: ServiceAdded
     path: ''
-    startLine: 3213
+    startLine: 3205
   assemblies:
   - cs.temp.dll
   namespace: Rssdp
@@ -205,7 +205,7 @@ items:
   source:
     id: ServiceRemoved
     path: ''
-    startLine: 3220
+    startLine: 3212
   assemblies:
   - cs.temp.dll
   namespace: Rssdp
@@ -239,7 +239,7 @@ items:
   source:
     id: .ctor
     path: ''
-    startLine: 3229
+    startLine: 3221
   assemblies:
   - cs.temp.dll
   namespace: Rssdp
@@ -267,7 +267,7 @@ items:
   source:
     id: .ctor
     path: ''
-    startLine: 3252
+    startLine: 3244
   assemblies:
   - cs.temp.dll
   namespace: Rssdp
@@ -310,7 +310,7 @@ items:
   source:
     id: DeviceType
     path: ''
-    startLine: 3281
+    startLine: 3273
   assemblies:
   - cs.temp.dll
   namespace: Rssdp
@@ -351,7 +351,7 @@ items:
   source:
     id: DeviceTypeNamespace
     path: ''
-    startLine: 3300
+    startLine: 3292
   assemblies:
   - cs.temp.dll
   namespace: Rssdp
@@ -392,7 +392,7 @@ items:
   source:
     id: DeviceVersion
     path: ''
-    startLine: 3319
+    startLine: 3311
   assemblies:
   - cs.temp.dll
   namespace: Rssdp
@@ -433,7 +433,7 @@ items:
   source:
     id: FullDeviceType
     path: ''
-    startLine: 3337
+    startLine: 3329
   assemblies:
   - cs.temp.dll
   namespace: Rssdp
@@ -467,7 +467,7 @@ items:
   source:
     id: Uuid
     path: ''
-    startLine: 3356
+    startLine: 3348
   assemblies:
   - cs.temp.dll
   namespace: Rssdp
@@ -501,7 +501,7 @@ items:
   source:
     id: Udn
     path: ''
-    startLine: 3366
+    startLine: 3358
   assemblies:
   - cs.temp.dll
   namespace: Rssdp
@@ -535,7 +535,7 @@ items:
   source:
     id: FriendlyName
     path: ''
-    startLine: 3385
+    startLine: 3377
   assemblies:
   - cs.temp.dll
   namespace: Rssdp
@@ -569,7 +569,7 @@ items:
   source:
     id: Manufacturer
     path: ''
-    startLine: 3390
+    startLine: 3382
   assemblies:
   - cs.temp.dll
   namespace: Rssdp
@@ -602,7 +602,7 @@ items:
   source:
     id: ManufacturerUrl
     path: ''
-    startLine: 3395
+    startLine: 3387
   assemblies:
   - cs.temp.dll
   namespace: Rssdp
@@ -635,7 +635,7 @@ items:
   source:
     id: ModelDescription
     path: ''
-    startLine: 3401
+    startLine: 3393
   assemblies:
   - cs.temp.dll
   namespace: Rssdp
@@ -669,7 +669,7 @@ items:
   source:
     id: ModelName
     path: ''
-    startLine: 3406
+    startLine: 3398
   assemblies:
   - cs.temp.dll
   namespace: Rssdp
@@ -702,7 +702,7 @@ items:
   source:
     id: ModelNumber
     path: ''
-    startLine: 3411
+    startLine: 3403
   assemblies:
   - cs.temp.dll
   namespace: Rssdp
@@ -735,7 +735,7 @@ items:
   source:
     id: ModelUrl
     path: ''
-    startLine: 3419
+    startLine: 3411
   assemblies:
   - cs.temp.dll
   namespace: Rssdp
@@ -769,7 +769,7 @@ items:
   source:
     id: SerialNumber
     path: ''
-    startLine: 3424
+    startLine: 3416
   assemblies:
   - cs.temp.dll
   namespace: Rssdp
@@ -802,7 +802,7 @@ items:
   source:
     id: Upc
     path: ''
-    startLine: 3432
+    startLine: 3424
   assemblies:
   - cs.temp.dll
   namespace: Rssdp
@@ -836,7 +836,7 @@ items:
   source:
     id: PresentationUrl
     path: ''
-    startLine: 3440
+    startLine: 3432
   assemblies:
   - cs.temp.dll
   namespace: Rssdp
@@ -870,7 +870,7 @@ items:
   source:
     id: Icons
     path: ''
-    startLine: 3447
+    startLine: 3439
   assemblies:
   - cs.temp.dll
   namespace: Rssdp
@@ -903,7 +903,7 @@ items:
   source:
     id: Devices
     path: ''
-    startLine: 3458
+    startLine: 3450
   assemblies:
   - cs.temp.dll
   namespace: Rssdp
@@ -941,7 +941,7 @@ items:
   source:
     id: CustomProperties
     path: ''
-    startLine: 3467
+    startLine: 3459
   assemblies:
   - cs.temp.dll
   namespace: Rssdp
@@ -974,7 +974,7 @@ items:
   source:
     id: CustomResponseHeaders
     path: ''
-    startLine: 3482
+    startLine: 3474
   assemblies:
   - cs.temp.dll
   namespace: Rssdp
@@ -1008,7 +1008,7 @@ items:
   source:
     id: Services
     path: ''
-    startLine: 3495
+    startLine: 3487
   assemblies:
   - cs.temp.dll
   namespace: Rssdp
@@ -1046,7 +1046,7 @@ items:
   source:
     id: SanitizeXmlString
     path: ''
-    startLine: 3509
+    startLine: 3501
   assemblies:
   - cs.temp.dll
   namespace: Rssdp
@@ -1084,7 +1084,7 @@ items:
   source:
     id: AddDevice
     path: ''
-    startLine: 3568
+    startLine: 3560
   assemblies:
   - cs.temp.dll
   namespace: Rssdp
@@ -1127,7 +1127,7 @@ items:
   source:
     id: RemoveDevice
     path: ''
-    startLine: 3599
+    startLine: 3591
   assemblies:
   - cs.temp.dll
   namespace: Rssdp
@@ -1167,7 +1167,7 @@ items:
   source:
     id: OnDeviceAdded
     path: ''
-    startLine: 3622
+    startLine: 3614
   assemblies:
   - cs.temp.dll
   namespace: Rssdp
@@ -1206,7 +1206,7 @@ items:
   source:
     id: OnDeviceRemoved
     path: ''
-    startLine: 3633
+    startLine: 3625
   assemblies:
   - cs.temp.dll
   namespace: Rssdp
@@ -1246,7 +1246,7 @@ items:
   source:
     id: AddService
     path: ''
-    startLine: 3652
+    startLine: 3644
   assemblies:
   - cs.temp.dll
   namespace: Rssdp
@@ -1286,7 +1286,7 @@ items:
   source:
     id: RemoveService
     path: ''
-    startLine: 3679
+    startLine: 3671
   assemblies:
   - cs.temp.dll
   namespace: Rssdp
@@ -1326,7 +1326,7 @@ items:
   source:
     id: OnServiceAdded
     path: ''
-    startLine: 3699
+    startLine: 3691
   assemblies:
   - cs.temp.dll
   namespace: Rssdp
@@ -1365,7 +1365,7 @@ items:
   source:
     id: OnServiceRemoved
     path: ''
-    startLine: 3710
+    startLine: 3702
   assemblies:
   - cs.temp.dll
   namespace: Rssdp
@@ -1405,7 +1405,7 @@ items:
   source:
     id: WriteDeviceDescriptionXml
     path: ''
-    startLine: 3723
+    startLine: 3715
   assemblies:
   - cs.temp.dll
   namespace: Rssdp
@@ -1446,7 +1446,7 @@ items:
   source:
     id: StringToUri
     path: ''
-    startLine: 3758
+    startLine: 3750
   assemblies:
   - cs.temp.dll
   namespace: Rssdp

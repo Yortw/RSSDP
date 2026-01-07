@@ -19,7 +19,6 @@ namespace Rssdp.Infrastructure
 		/// <param name="multicastTimeToLive">The multicast time to live value. Actually a maximum number of network hops for UDP packets.</param>
 		/// <param name="localPort">The local port to bind to.</param>
 		/// <returns>A <see cref="IUdpSocket"/> implementation.</returns>
-		[System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "ip", Justification="IP is a well known and understood abbreviation and the full name is excessive.")]
 		IUdpSocket CreateUdpMulticastSocket(int multicastTimeToLive, int localPort);
 
 		/// <summary>

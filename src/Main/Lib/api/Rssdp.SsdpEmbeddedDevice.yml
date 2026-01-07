@@ -18,7 +18,7 @@ items:
   source:
     id: SsdpEmbeddedDevice
     path: ''
-    startLine: 6963
+    startLine: 6943
   assemblies:
   - cs.temp.dll
   namespace: Rssdp
@@ -96,7 +96,7 @@ items:
   source:
     id: .ctor
     path: ''
-    startLine: 6977
+    startLine: 6957
   assemblies:
   - cs.temp.dll
   namespace: Rssdp
@@ -124,7 +124,7 @@ items:
   source:
     id: .ctor
     path: ''
-    startLine: 6988
+    startLine: 6968
   assemblies:
   - cs.temp.dll
   namespace: Rssdp
@@ -166,7 +166,7 @@ items:
   source:
     id: RootDevice
     path: ''
-    startLine: 7000
+    startLine: 6980
   assemblies:
   - cs.temp.dll
   namespace: Rssdp

@@ -20,7 +20,7 @@ items:
   source:
     id: NullLogger
     path: ''
-    startLine: 2088
+    startLine: 2084
   assemblies:
   - cs.temp.dll
   namespace: Rssdp
@@ -64,7 +64,7 @@ items:
   source:
     id: Instance
     path: ''
-    startLine: 2100
+    startLine: 2096
   assemblies:
   - cs.temp.dll
   namespace: Rssdp
@@ -99,7 +99,7 @@ items:
   source:
     id: LogError
     path: ''
-    startLine: 2109
+    startLine: 2105
   assemblies:
   - cs.temp.dll
   namespace: Rssdp
@@ -133,7 +133,7 @@ items:
   source:
     id: LogInfo
     path: ''
-    startLine: 2117
+    startLine: 2113
   assemblies:
   - cs.temp.dll
   namespace: Rssdp
@@ -167,7 +167,7 @@ items:
   source:
     id: LogVerbose
     path: ''
-    startLine: 2125
+    startLine: 2121
   assemblies:
   - cs.temp.dll
   namespace: Rssdp
@@ -201,7 +201,7 @@ items:
   source:
     id: LogWarning
     path: ''
-    startLine: 2133
+    startLine: 2129
   assemblies:
   - cs.temp.dll
   namespace: Rssdp

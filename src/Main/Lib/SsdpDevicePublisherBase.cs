@@ -165,7 +165,6 @@ USN: {1}
 		/// <param name="device">The <see cref="SsdpDevice"/> instance to add.</param>
 		/// <exception cref="System.ArgumentNullException">Thrown if the <paramref name="device"/> argument is null.</exception>
 		/// <exception cref="System.InvalidOperationException">Thrown if the <paramref name="device"/> contains property values that are not acceptable to the UPnP 1.0 specification.</exception>
-		[System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Performance", "CA1804:RemoveUnusedLocals", MessageId = "t", Justification = "Capture task to local variable supresses compiler warning, but task is not really needed.")]
 		public void AddDevice(SsdpRootDevice device)
 		{
 			if (device == null) throw new ArgumentNullException(nameof(device));
@@ -719,7 +718,6 @@ USN: {1}
 			return isDuplicateRequest;
 		}
 
-		[System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Performance", "CA1804:RemoveUnusedLocals", MessageId = "t", Justification = "Capturing task to local variable avoids compiler warning, but value is otherwise not required.")]
 		private async void CleanUpRecentSearchRequestsAsync()
 		{
 			try
@@ -756,7 +754,6 @@ USN: {1}
 
 		#region Alive
 
-		[System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1031:DoNotCatchGeneralExceptionTypes")]
 		private void SendAllAliveNotifications(object? state)
 		{
 			try
@@ -984,7 +981,6 @@ USN: {1}
 			}
 		}
 
-		[System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", "CA2204:Literals should be spelled correctly", MessageId = "byebye", Justification = "Correct value for this type of notification in SSDP.")]
 		private void SendByeByeNotification(SsdpDevice device, string notificationType, string uniqueServiceName)
 		{
 			System.Diagnostics.Activity? activity = null;

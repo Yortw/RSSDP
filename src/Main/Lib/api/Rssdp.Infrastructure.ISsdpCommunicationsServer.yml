@@ -25,7 +25,7 @@ items:
   source:
     id: ISsdpCommunicationsServer
     path: ''
-    startLine: 1738
+    startLine: 1734
   assemblies:
   - cs.temp.dll
   namespace: Rssdp.Infrastructure
@@ -58,7 +58,7 @@ items:
   source:
     id: RequestReceived
     path: ''
-    startLine: 1746
+    startLine: 1742
   assemblies:
   - cs.temp.dll
   namespace: Rssdp.Infrastructure
@@ -83,7 +83,7 @@ items:
   source:
     id: ResponseReceived
     path: ''
-    startLine: 1751
+    startLine: 1747
   assemblies:
   - cs.temp.dll
   namespace: Rssdp.Infrastructure
@@ -108,7 +108,7 @@ items:
   source:
     id: BeginListeningForBroadcasts
     path: ''
-    startLine: 1760
+    startLine: 1756
   assemblies:
   - cs.temp.dll
   namespace: Rssdp.Infrastructure
@@ -132,7 +132,7 @@ items:
   source:
     id: StopListeningForBroadcasts
     path: ''
-    startLine: 1765
+    startLine: 1761
   assemblies:
   - cs.temp.dll
   namespace: Rssdp.Infrastructure
@@ -156,7 +156,7 @@ items:
   source:
     id: StopListeningForResponses
     path: ''
-    startLine: 1770
+    startLine: 1766
   assemblies:
   - cs.temp.dll
   namespace: Rssdp.Infrastructure
@@ -180,7 +180,7 @@ items:
   source:
     id: SendMessage
     path: ''
-    startLine: 1777
+    startLine: 1773
   assemblies:
   - cs.temp.dll
   namespace: Rssdp.Infrastructure
@@ -214,7 +214,7 @@ items:
   source:
     id: IsShared
     path: ''
-    startLine: 1789
+    startLine: 1785
   assemblies:
   - cs.temp.dll
   namespace: Rssdp.Infrastructure
@@ -245,7 +245,7 @@ items:
   source:
     id: DeviceNetworkType
     path: ''
-    startLine: 1794
+    startLine: 1790
   assemblies:
   - cs.temp.dll
   namespace: Rssdp.Infrastructure
@@ -276,7 +276,7 @@ items:
   source:
     id: UdpSendCount
     path: ''
-    startLine: 1800
+    startLine: 1796
   assemblies:
   - cs.temp.dll
   namespace: Rssdp.Infrastructure
@@ -309,7 +309,7 @@ items:
   source:
     id: UdpSendDelay
     path: ''
-    startLine: 1806
+    startLine: 1802
   assemblies:
   - cs.temp.dll
   namespace: Rssdp.Infrastructure

@@ -21,7 +21,6 @@ namespace Rssdp
 		/// <remarks>
 		/// <para>Uses the default <see cref="ISsdpCommunicationsServer"/> implementation and network settings for Windows and the SSDP specification.</para>
 		/// </remarks>
-		[System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Reliability", "CA2000:Dispose objects before losing scope", Justification = "No way to do this here, and we don't want to dispose it except in the (rare) case of an exception anyway.")]
 		public SsdpDevicePublisher()
 			: this(new SsdpCommunicationsServer(new SocketFactory(null)))
 		{
@@ -59,7 +58,6 @@ namespace Rssdp
 		/// <remarks>
 		/// <para>Uses the default <see cref="ISsdpCommunicationsServer"/> implementation and network settings for Windows and the SSDP specification, but specifies the local port to use for socket communications. Specify 0 to indicate the system should choose it's own port.</para>
 		/// </remarks>
-		[System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Reliability", "CA2000:Dispose objects before losing scope", Justification = "No way to do this here, and we don't want to dispose it except in the (rare) case of an exception anyway.")]
 		public SsdpDevicePublisher(int localPort)
 			: this(new SsdpCommunicationsServer(new SocketFactory(null), localPort), new SsdpTraceLogger())
 		{
@@ -71,7 +69,6 @@ namespace Rssdp
 		/// </summary>
 		/// <param name="ipAddress">The IP address of the local network adapter to bind sockets to. 
 		/// Null or empty string will use <see cref="IPAddress.Any"/>.</param>
-		[System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Reliability", "CA2000:Dispose objects before losing scope", Justification = "No way to do this here, and we don't want to dispose it except in the (rare) case of an exception anyway.")]
 		public SsdpDevicePublisher(string ipAddress)
 			: this(new SsdpCommunicationsServer(new SocketFactory(ipAddress)))
 		{
@@ -88,7 +85,6 @@ namespace Rssdp
 		/// <para>Specify 0 for the <paramref name="localPort"/> argument to indicate the system should choose it's own port.</para>
 		/// <para>The <paramref name="multicastTimeToLive"/> is actually a number of 'hops' on the network and not a time based argument.</para>
 		/// </remarks>
-		[System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Reliability", "CA2000:Dispose objects before losing scope", Justification = "No way to do this here, and we don't want to dispose it except in the (rare) case of an exception anyway.")]
 		public SsdpDevicePublisher(int localPort, int multicastTimeToLive)
 			: this(new SsdpCommunicationsServer(new SocketFactory(null), localPort, multicastTimeToLive))
 		{

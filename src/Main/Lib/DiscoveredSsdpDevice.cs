@@ -186,7 +186,6 @@ namespace Rssdp
 		#region Private Methods
 
 
-		[System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Reliability", "CA2000:Dispose objects before losing scope", Justification = "Can't call dispose on the handler since we pass it to the HttpClient, which outlives the scope of this method.")]
 		private static HttpClient GetDefaultClient()
 		{
 			if (s_DefaultHttpClient == null)

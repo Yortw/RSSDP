@@ -30,7 +30,7 @@ items:
   source:
     id: SsdpConstants
     path: ''
-    startLine: 3061
+    startLine: 3053
   assemblies:
   - cs.temp.dll
   namespace: Rssdp.Infrastructure
@@ -70,7 +70,7 @@ items:
   source:
     id: MulticastLinkLocalAddressV6
     path: ''
-    startLine: 3066
+    startLine: 3058
   assemblies:
   - cs.temp.dll
   namespace: Rssdp.Infrastructure
@@ -101,7 +101,7 @@ items:
   source:
     id: MulticastLocalAdminAddress
     path: ''
-    startLine: 3070
+    startLine: 3062
   assemblies:
   - cs.temp.dll
   namespace: Rssdp.Infrastructure
@@ -132,7 +132,7 @@ items:
   source:
     id: MulticastPort
     path: ''
-    startLine: 3074
+    startLine: 3066
   assemblies:
   - cs.temp.dll
   namespace: Rssdp.Infrastructure
@@ -163,7 +163,7 @@ items:
   source:
     id: SsdpDefaultMulticastTimeToLive
     path: ''
-    startLine: 3078
+    startLine: 3070
   assemblies:
   - cs.temp.dll
   namespace: Rssdp.Infrastructure
@@ -194,7 +194,7 @@ items:
   source:
     id: MulticastLocalAdminEndpoint
     path: ''
-    startLine: 3083
+    startLine: 3075
   assemblies:
   - cs.temp.dll
   namespace: Rssdp.Infrastructure
@@ -227,7 +227,7 @@ items:
   source:
     id: DefaultUdpSocketBufferSize
     path: ''
-    startLine: 3095
+    startLine: 3087
   assemblies:
   - cs.temp.dll
   namespace: Rssdp.Infrastructure
@@ -258,7 +258,7 @@ items:
   source:
     id: MaxUdpSocketBufferSize
     path: ''
-    startLine: 3099
+    startLine: 3091
   assemblies:
   - cs.temp.dll
   namespace: Rssdp.Infrastructure
@@ -289,7 +289,7 @@ items:
   source:
     id: UpnpDeviceTypeNamespace
     path: ''
-    startLine: 3104
+    startLine: 3096
   assemblies:
   - cs.temp.dll
   namespace: Rssdp.Infrastructure
@@ -320,7 +320,7 @@ items:
   source:
     id: UpnpDeviceTypeRootDevice
     path: ''
-    startLine: 3108
+    startLine: 3100
   assemblies:
   - cs.temp.dll
   namespace: Rssdp.Infrastructure
@@ -351,7 +351,7 @@ items:
   source:
     id: PnpDeviceTypeRootDevice
     path: ''
-    startLine: 3113
+    startLine: 3105
   assemblies:
   - cs.temp.dll
   namespace: Rssdp.Infrastructure
@@ -382,7 +382,7 @@ items:
   source:
     id: UpnpDeviceTypeBasicDevice
     path: ''
-    startLine: 3117
+    startLine: 3109
   assemblies:
   - cs.temp.dll
   namespace: Rssdp.Infrastructure
@@ -413,7 +413,7 @@ items:
   source:
     id: DefaultUdpResendCount
     path: ''
-    startLine: 3129
+    startLine: 3121
   assemblies:
   - cs.temp.dll
   namespace: Rssdp.Infrastructure
@@ -445,7 +445,7 @@ items:
   source:
     id: PublisherActivitySourceName
     path: ''
-    startLine: 3136
+    startLine: 3128
   assemblies:
   - cs.temp.dll
   namespace: Rssdp.Infrastructure
@@ -476,7 +476,7 @@ items:
   source:
     id: LocatorActivitySourceName
     path: ''
-    startLine: 3141
+    startLine: 3133
   assemblies:
   - cs.temp.dll
   namespace: Rssdp.Infrastructure
@@ -507,7 +507,7 @@ items:
   source:
     id: DefaultUdpResendDelay
     path: ''
-    startLine: 3150
+    startLine: 3142
   assemblies:
   - cs.temp.dll
   namespace: Rssdp.Infrastructure
