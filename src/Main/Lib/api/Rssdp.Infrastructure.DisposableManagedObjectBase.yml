@@ -19,7 +19,7 @@ items:
   source:
     id: DisposableManagedObjectBase
     path: ''
-    startLine: 1136
+    startLine: 1135
   assemblies:
   - cs.temp.dll
   namespace: Rssdp.Infrastructure
@@ -68,7 +68,7 @@ items:
   source:
     id: Dispose
     path: ''
-    startLine: 1145
+    startLine: 1144
   assemblies:
   - cs.temp.dll
   namespace: Rssdp.Infrastructure
@@ -102,7 +102,7 @@ items:
   source:
     id: ThrowIfDisposed
     path: ''
-    startLine: 1153
+    startLine: 1152
   assemblies:
   - cs.temp.dll
   namespace: Rssdp.Infrastructure
@@ -141,7 +141,7 @@ items:
   source:
     id: IsDisposed
     path: ''
-    startLine: 1166
+    startLine: 1165
   assemblies:
   - cs.temp.dll
   namespace: Rssdp.Infrastructure
@@ -177,7 +177,7 @@ items:
   source:
     id: Dispose
     path: ''
-    startLine: 1183
+    startLine: 1182
   assemblies:
   - cs.temp.dll
   namespace: Rssdp.Infrastructure

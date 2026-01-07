@@ -121,7 +121,6 @@ namespace Rssdp
 
 		#region Private Methods
 
-		[System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1031:DoNotCatchGeneralExceptionTypes", Justification = "Exceptions via task methods should be reported by task completion source, so this should be ok.")]
 		private static void ProcessResponse(AsyncReceiveState state, Func<int> receiveData)
 		{
 			try

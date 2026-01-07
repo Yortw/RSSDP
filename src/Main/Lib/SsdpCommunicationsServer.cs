@@ -304,7 +304,6 @@ namespace Rssdp.Infrastructure
 			return _SendSocket;
 		}
 
-		[System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Performance", "CA1804:RemoveUnusedLocals", MessageId = "t", Justification = "Capturing task to local variable removes compiler warning, task is not otherwise required.")]
 		private async void ListenToSocket(IUdpSocket socket)
 		{
 			// Tasks are captured to local variables even if we don't use them just to avoid compiler warnings.
@@ -349,7 +348,6 @@ namespace Rssdp.Infrastructure
 			}
 		}
 
-		[System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1031:DoNotCatchGeneralExceptionTypes")]
 		private async Task ReconnectBroadcastListeningSocket()
 		{
 			var success = false;

@@ -153,7 +153,6 @@ namespace Rssdp.Infrastructure
 		/// <para>By design RSSDP does not support 'publishing services' as it is intended for use with non-standard UPnP devices that don't publish UPnP style services. However, it is still possible to use RSSDP to search for devices implemetning these services if you know the service type.</para>
 		/// </remarks>
 		/// <returns>A task whose result is an <see cref="IEnumerable{T}"/> of <see cref="DiscoveredSsdpDevice" /> instances, representing all found devices.</returns>
-		[System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Performance", "CA1804:RemoveUnusedLocals", MessageId = "expireTask", Justification = "Task is not actually required, but capturing to local variable suppresses compiler warning")]
 		public async Task<IEnumerable<DiscoveredSsdpDevice>> SearchAsync(string searchTarget, TimeSpan searchWaitTime, CancellationToken cancellationToken = default)
 		{
 			if (searchTarget == null) throw new ArgumentNullException(nameof(searchTarget));
@@ -208,7 +207,7 @@ namespace Rssdp.Infrastructure
 						_SearchResults = null;
 					}
 
-					var expireTask = RemoveExpiredDevicesFromCacheAsync();
+					_ = RemoveExpiredDevicesFromCacheAsync();
 				}
 				finally
 				{

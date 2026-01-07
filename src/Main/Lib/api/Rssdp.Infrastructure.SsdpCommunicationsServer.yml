@@ -29,7 +29,7 @@ items:
   source:
     id: SsdpCommunicationsServer
     path: ''
-    startLine: 2611
+    startLine: 2605
   assemblies:
   - cs.temp.dll
   namespace: Rssdp.Infrastructure
@@ -80,7 +80,7 @@ items:
   source:
     id: RequestReceived
     path: ''
-    startLine: 2656
+    startLine: 2650
   assemblies:
   - cs.temp.dll
   namespace: Rssdp.Infrastructure
@@ -111,7 +111,7 @@ items:
   source:
     id: ResponseReceived
     path: ''
-    startLine: 2661
+    startLine: 2655
   assemblies:
   - cs.temp.dll
   namespace: Rssdp.Infrastructure
@@ -142,7 +142,7 @@ items:
   source:
     id: UdpSendCount
     path: ''
-    startLine: 2671
+    startLine: 2665
   assemblies:
   - cs.temp.dll
   namespace: Rssdp.Infrastructure
@@ -180,7 +180,7 @@ items:
   source:
     id: UdpSendDelay
     path: ''
-    startLine: 2677
+    startLine: 2671
   assemblies:
   - cs.temp.dll
   namespace: Rssdp.Infrastructure
@@ -218,7 +218,7 @@ items:
   source:
     id: .ctor
     path: ''
-    startLine: 2688
+    startLine: 2682
   assemblies:
   - cs.temp.dll
   namespace: Rssdp.Infrastructure
@@ -254,7 +254,7 @@ items:
   source:
     id: .ctor
     path: ''
-    startLine: 2699
+    startLine: 2693
   assemblies:
   - cs.temp.dll
   namespace: Rssdp.Infrastructure
@@ -293,7 +293,7 @@ items:
   source:
     id: .ctor
     path: ''
-    startLine: 2712
+    startLine: 2706
   assemblies:
   - cs.temp.dll
   namespace: Rssdp.Infrastructure
@@ -338,7 +338,7 @@ items:
   source:
     id: BeginListeningForBroadcasts
     path: ''
-    startLine: 2737
+    startLine: 2731
   assemblies:
   - cs.temp.dll
   namespace: Rssdp.Infrastructure
@@ -372,7 +372,7 @@ items:
   source:
     id: StopListeningForBroadcasts
     path: ''
-    startLine: 2754
+    startLine: 2748
   assemblies:
   - cs.temp.dll
   namespace: Rssdp.Infrastructure
@@ -406,7 +406,7 @@ items:
   source:
     id: SendMessage
     path: ''
-    startLine: 2775
+    startLine: 2769
   assemblies:
   - cs.temp.dll
   namespace: Rssdp.Infrastructure
@@ -453,7 +453,7 @@ items:
   source:
     id: StopListeningForResponses
     path: ''
-    startLine: 2794
+    startLine: 2788
   assemblies:
   - cs.temp.dll
   namespace: Rssdp.Infrastructure
@@ -487,7 +487,7 @@ items:
   source:
     id: IsShared
     path: ''
-    startLine: 2816
+    startLine: 2810
   assemblies:
   - cs.temp.dll
   namespace: Rssdp.Infrastructure
@@ -523,7 +523,7 @@ items:
   source:
     id: DeviceNetworkType
     path: ''
-    startLine: 2825
+    startLine: 2819
   assemblies:
   - cs.temp.dll
   namespace: Rssdp.Infrastructure
@@ -558,7 +558,7 @@ items:
   source:
     id: Dispose
     path: ''
-    startLine: 2835
+    startLine: 2829
   assemblies:
   - cs.temp.dll
   namespace: Rssdp.Infrastructure

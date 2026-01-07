@@ -127,7 +127,6 @@ namespace Rssdp
 		/// Saves the property values of this device object to an a string in the full UPnP device description XML format, including child devices and outer root node and XML document declaration.
 		/// </summary>
 		/// <returns>A string containing XML in the UPnP device description format</returns>
-		[System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2202:Do not dispose objects multiple times", Justification = "Dispsoing memory stream twice is 'safe' and easier to read than correct code for ensuring it is only closed once.")]
 		public virtual string ToDescriptionDocument()
 		{
 			if (String.IsNullOrEmpty(this.Uuid)) throw new InvalidOperationException("Must provide a UUID value.");
